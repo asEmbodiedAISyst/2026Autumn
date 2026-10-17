@@ -68,10 +68,10 @@ def arrow(c,x1,y1,x2,y2):
 def header(c,w,h,title,question,page):
  line(c,26,h-33,title,21,True,BLUE)
  paragraph(c,26,h-54,question,w-52,11,15)
- line(c,26,h-82,'Mode: Source analysis / Project development   Claim: __________   Source/configuration freeze: __________   Date: __________',9)
+ line(c,26,h-82,'Team ID: Team____   Project: __________________   Claim: ________   Configuration: __________   Date: __________',9)
  c.setStrokeColor(HexColor(BLUE));c.line(26,h-94,w-26,h-94)
  line(c,26,18,'Record source + origin + context; separate support and access limits. Use this class reading for support/context rules.',8.5,color=GRAY)
- line(c,w-70,18,f'v1.2 / {page}',8.5,color=GRAY)
+ line(c,w-70,18,f'v1.3 / {page}',8.5,color=GRAY)
 
 def box(c,x,y,w,h,title,help):
  rect(c,x,y,w,h)

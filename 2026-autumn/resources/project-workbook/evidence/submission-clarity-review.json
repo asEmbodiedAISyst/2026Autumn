@@ -1,0 +1,55 @@
+{
+  "version": "1.3",
+  "questions_and_fields_unchanged": true,
+  "all13worksheetpages_rendered_reviewed": true,
+  "classes": [
+    {
+      "class": 12,
+      "filename": "submissions/class12/TeamNN-Class12-Claim.pdf",
+      "pages": 2,
+      "team_id_on_every_page": true,
+      "requirements_first": true,
+      "links_resolve": true
+    },
+    {
+      "class": 13,
+      "filename": "submissions/class13/TeamNN-Class13-Experience.pdf",
+      "pages": 2,
+      "team_id_on_every_page": true,
+      "requirements_first": true,
+      "links_resolve": true
+    },
+    {
+      "class": 14,
+      "filename": "submissions/class14/TeamNN-Class14-System.pdf",
+      "pages": 2,
+      "team_id_on_every_page": true,
+      "requirements_first": true,
+      "links_resolve": true
+    },
+    {
+      "class": 15,
+      "filename": "submissions/class15/TeamNN-Class15-Grounding.pdf",
+      "pages": 2,
+      "team_id_on_every_page": true,
+      "requirements_first": true,
+      "links_resolve": true
+    },
+    {
+      "class": 16,
+      "filename": "submissions/class16/TeamNN-Class16-Learning.pdf",
+      "pages": 2,
+      "team_id_on_every_page": true,
+      "requirements_first": true,
+      "links_resolve": true
+    },
+    {
+      "class": 17,
+      "filename": "submissions/class17/TeamNN-Class17-Decision.pdf",
+      "pages": 3,
+      "team_id_on_every_page": true,
+      "requirements_first": true,
+      "links_resolve": true
+    }
+  ]
+}

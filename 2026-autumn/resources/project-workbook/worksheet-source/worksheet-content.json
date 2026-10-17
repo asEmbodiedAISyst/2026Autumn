@@ -1,5 +1,5 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "date": "2026-10-17",
   "worksheets": [
     {
@@ -36,7 +36,7 @@
       "milestone": "Commit the claim, its proposed protocol, baseline and resource check. A numerical result is not required at this first checkpoint.",
       "pitfall": "A promising platform is mistaken for a project claim; success criteria are vague or adjusted after seeing results.",
       "example": "A LEAP-based object-retention and rotation study is narrower than reproducing every manipulation, accessibility and durability claim in the LEAP paper. The hardware name does not identify the contribution.",
-      "submission_path": "submissions/class12/worksheet.pdf"
+      "submission_path": "submissions/class12/TeamNN-Class12-Claim.pdf"
     },
     {
       "number": 2,
@@ -72,7 +72,7 @@
       "milestone": "Commit the episode map and one pilot record or an explicit missing-evidence plan. Update the claim if the pilot exposes an untestable condition.",
       "pitfall": "One selected success is treated as reliable performance; a planned episode is presented as an observed result.",
       "example": "A command to rotate an object is not a measured rotation. Joint motion, object retention and object orientation are different observations. A drop or manual reset belongs in the episode record.",
-      "submission_path": "submissions/class13/worksheet.pdf"
+      "submission_path": "submissions/class13/TeamNN-Class13-Experience.pdf"
     },
     {
       "number": 3,
@@ -108,7 +108,7 @@
       "milestone": "Commit the architecture, configuration ID, interface test and evidence. Reproduce the test from a clean process or record the unresolved dependency.",
       "pitfall": "An inventory replaces an architecture; an ordinal rating is treated as a measured engineering bottleneck.",
       "example": "For a hand, an action vector needs declared actuator order, units, interpretation and limits. Even a correct learned policy can fail through a wrong command mapping. A paper cannot resolve the mapping of a student's own build.",
-      "submission_path": "submissions/class14/worksheet.pdf"
+      "submission_path": "submissions/class14/TeamNN-Class14-System.pdf"
     },
     {
       "number": 4,
@@ -144,7 +144,7 @@
       "milestone": "Commit the paired protocol, comparison data/plot and decision. Mark physical evidence unavailable where applicable rather than inventing a Sim2Real result.",
       "pitfall": "Simulation and hardware results from different conditions are subtracted; a plausible cause is asserted without a diagnostic test.",
       "example": "The retained LEAP paper analysis flags that the paper's angular-velocity comparison is simulation evidence. It cannot be subtracted from a hardware video to calculate a measured transfer gap.",
-      "submission_path": "submissions/class15/worksheet.pdf"
+      "submission_path": "submissions/class15/TeamNN-Class15-Grounding.pdf"
     },
     {
       "number": 5,
@@ -180,7 +180,7 @@
       "milestone": "Commit the frozen protocol, split manifest, all trial outcomes, comparison and interpretation. A negative result is a valid finding; an incomplete evaluation remains incomplete.",
       "pitfall": "Adjacent frames are called independent trials; the test set is reused for tuning; successful episodes alone form the denominator.",
       "example": "A LEAP comparison can evaluate a frozen policy and a reference controller under identical conditions. The result concerns that configuration and protocol, not universal superiority of learning or of the hand.",
-      "submission_path": "submissions/class16/worksheet.pdf"
+      "submission_path": "submissions/class16/TeamNN-Class16-Learning.pdf"
     },
     {
       "number": 6,
@@ -216,7 +216,7 @@
       "milestone": "Commit the completed screen, supported final claim, conditions and reproducibility instructions at the evidence freeze. Keep subsequent changes traceable.",
       "pitfall": "A favorable mean hides a blocking unknown; a simulation demonstration is approved for hardware without the required evidence.",
       "example": "For a simulation-only manipulation project, the next action might be release of the simulation package. Hardware deployment remains unsupported. Checks outside that decision require a reasoned NA; missing evidence needed for the decision remains NR.",
-      "submission_path": "submissions/class17/worksheet.pdf"
+      "submission_path": "submissions/class17/TeamNN-Class17-Decision.pdf"
     }
   ],
   "gates": [

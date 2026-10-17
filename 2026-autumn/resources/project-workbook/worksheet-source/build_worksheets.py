@@ -12,7 +12,7 @@ p=argparse.ArgumentParser();p.add_argument('--regular',type=Path,required=True);
 spec=importlib.util.spec_from_file_location('team',HERE/'generate_team_guide.py');t=importlib.util.module_from_spec(spec);spec.loader.exec_module(t);m=t.m
 m.setup_fonts(a.regular,a.semibold);pdfmetrics.registerFontFamily(m.REG,normal=m.REG,bold=m.BOLD,italic=m.REG,boldItalic=m.BOLD)
 d=json.loads((HERE/'worksheet-content.json').read_text())
-c=canvas.Canvas(str(ROOT/'Project-Worksheets.pdf'),pagesize=landscape(A4),initialFontName=m.REG);c.setTitle('Six project worksheets - definitions 1.2');c.setAuthor('ROB7103/8103 teaching team')
+c=canvas.Canvas(str(ROOT/'Project-Worksheets.pdf'),pagesize=landscape(A4),initialFontName=m.REG);c.setTitle('Six project worksheets - definitions 1.3');c.setAuthor('ROB7103/8103 teaching team')
 for ws in d['worksheets'][:5]:m.first_five(c,ws)
 m.decision_front(c,d);m.decision_back(c,d);c.save();t.build_submission(ROOT/'Submission-Worksheets.pdf',d)
 print('Rebuilt blank canvases, combined submission pack and six class downloads.')

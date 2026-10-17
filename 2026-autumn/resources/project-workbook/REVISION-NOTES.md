@@ -9,3 +9,7 @@
 - Added six per-class printable downloads; no interactive forms.
 
 The blank pack has 13 pages: five A4 canvas/review pairs, two A3 Decision sides and one A4 Decision review page. Unchanged Decision questions and ratings retain their established meaning.
+
+## Submission clarity update - worksheet definitions 1.3
+
+Moved the complete submission instructions to the start of every Class12-17 page. Added assigned Team01-Team08 identifiers to PDF headers, team-specific submitted filenames, UTC+4 deadlines, explicit remote-main push steps and TA deadline snapshot collection. The worksheet questions and 27 Decision checks are unchanged. This convention supersedes the earlier generic worksheet.pdf filename.

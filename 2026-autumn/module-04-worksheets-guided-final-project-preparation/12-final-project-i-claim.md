@@ -6,6 +6,37 @@ layout:
 
 # 12 Final Project I: Claim
 
+## Submit before leaving class
+
+**One PDF per team. Submit by 13 November 2026 at 10:50, Abu Dhabi time (UTC+4).**
+
+| Requirement | What your team must do |
+| --- | --- |
+| Download | [Worksheet 1: Claim](../resources/project-workbook/Class12-Claim.pdf) |
+| Required contents | Both A4 pages: the worksheet canvas and the signed evidence/team-review page. Include any labelled continuation pages in the same PDF. |
+| Team identifier | Use your assigned **Team01–Team08**, matching your private repository, for example `2026Autumn-Team01`. Write this identifier and the project title on every page. |
+| Folder | `submissions/class12/` in your assigned private team repository |
+| Filename | `TeamNN-Class12-Claim.pdf` — replace `NN` with your assigned two-digit team number |
+| Example for Team01 | `submissions/class12/Team01-Class12-Claim.pdf` |
+| Branch | Remote `main` on GitHub |
+
+### Prepare and submit
+
+1. Complete the worksheet by hand. Answer each prompt, or explain what is unfinished and what you will do next. Every member signs the team-review page.
+2. Scan all required pages into **one readable PDF**. Check page order, orientation and that nothing is cropped. Keep the paper original for your records.
+3. Name the PDF as shown above and put it in the specified folder in **your assigned private repository**. Reference supporting evidence by its existing repository path; do not copy it into another submission form.
+4. Commit and **push to `main` before the deadline**. Open the PDF on GitHub and confirm every page is present and readable. A file saved only on your computer or an unpushed commit is not submitted.
+
+### How the teaching team collects it
+
+At the deadline, the TA collects the named PDF from your team's remote `main` branch, records the repository commit and collection time, and retains that version. The repository, filename and identifier on the pages connect the PDF to your team. Confirm teaching-team access before the deadline; report an access problem promptly.
+
+**No separate upload, email, release, tag, manifest or physical hand-in is required.** Later changes do not replace the collected version. Keep the initial PDF; save later dated, signed revisions in `submissions/class12/revisions/`.
+
+The file above is the required worksheet submission. The [editable project record](../resources/project-workbook/project-record.md) is a working aid, not a second submission. Use the guidance below while doing your project work.
+
+## Reading and project guidance
+
 A project can produce hours of video without answering a useful question. Before building more hardware or collecting more episodes, decide what capability those records should support and what comparison could show that the capability is missing.
 
 This reading helps you turn a project idea into a bounded claim. Read it before class and use it while working on your project. Most of the session is reserved for project work and targeted instructor/TA discussion. The worksheet records your reasoning at a checkpoint; it does not require a successful experiment today.
@@ -104,23 +135,11 @@ Use project work to check feasibility, perform a pilot or narrow the claim. An a
 
 Before submitting, compare what changed with the artifact that supports it. Identify what remains assumed, planned or unresolved; decide whether an earlier worksheet needs revision; and name the next useful action. Ask the instructor/TA to challenge a specific uncertainty when needed. A complete worksheet can report a failed pilot, a negative finding or a blocked test honestly.
 
-## Submit before leaving class
+## Check your completed worksheet
 
-**Deadline: 13 November 2026 at 10:50.** Follow an explicitly announced schedule change if one occurs.
+**What the worksheet should explain:** One selected claim, its conditions, a measure/comparator and the next feasible test. A numerical result is not required.
 
-Download [Worksheet 1: Claim](../resources/project-workbook/Class12-Claim.pdf). Complete both pages by hand and obtain every team member's signature on the evidence/team-review page. Scan the complete package, including any identified continuations, into one legible PDF.
-
-**Required file in your assigned private team repository:** `submissions/class12/worksheet.pdf`
-
-Commit and **push** this file before the deadline. Open it on GitHub to check that every page is readable and confirm that the TA has repository read access. The TA collects this file directly; no separate physical hand-in is required. Retain the paper original. These printable PDFs have no interactive fields. No proxy signatures.
-
-Cite supporting evidence using exact paths within the same team repository, with run/configuration IDs and an existing evidence version or commit where useful. Do not duplicate large artifacts in each submission folder. Mark missing or restricted evidence and its effect on the claim. The [editable project record](../resources/project-workbook/project-record.md) supports your work; the signed worksheet PDF is the required checkpoint file.
-
-Preserve the initial `worksheet.pdf`. Put later dated, signed revisions in `submissions/class12/revisions/` with a short change record; do not rewrite Git history. A worksheet can cite an earlier evidence commit, but cannot contain the hash of the commit that first contains itself. The [complete blank pack](../resources/project-workbook/Submission-Worksheets.pdf) remains available for printing all six worksheets.
-
-**Useful checkpoint:** One selected claim, its conditions, a measure/comparator and the next feasible test. A numerical result is not required.
-
-**Supporting record:** Selected and rejected claim sentences; proposed protocol and outcome rule; comparison/budget definition; resource/access check; pilot plan and available source or configuration references.
+**Evidence to reference where available:** Selected and rejected claim sentences; proposed protocol and outcome rule; comparison/budget definition; resource/access check; pilot plan and available source or configuration references.
 
 If an experiment is unfinished, complete the worksheet from the available evidence and identify the exact missing evidence/dependency, owner, next verification and affected claim. This documents the checkpoint; it does not complete the experiment. The supporting record is part of the same project, not an additional form or duplicate upload. Signatures record team review, not scientific success.
 

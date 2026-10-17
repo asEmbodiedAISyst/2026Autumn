@@ -32,8 +32,8 @@ def footer(c,doc):
 def review_page(ws):
  buf=io.BytesIO();w,h=landscape(A4);c=canvas.Canvas(buf,pagesize=(w,h),initialFontName=REG);c.setTitle('Worksheet '+str(ws['number'])+' - evidence and team review');c.setAuthor('ROB7103/8103 teaching team')
  m.line(c,26,h-34,f"Worksheet {ws['number']} / {ws['name']} - evidence and team review",20,True,m.BLUE)
- m.line(c,26,h-57,f"Class {ws['class']} | Due {ws['date']} before {ws['time'].split('–')[-1]} | Include every canvas and review page",9.3,color=m.GRAY)
- m.line(c,26,h-82,'Team / project: ______________________________  Claim ID: __________  Worksheet revision: __________',10)
+ m.line(c,26,h-57,f"Class {ws['class']} | Due {ws['date']} before {ws['time'].split('–')[-1]} Abu Dhabi (UTC+4) | Include every canvas and review page",9.3,color=m.GRAY)
+ m.line(c,26,h-82,'Team ID: Team____   Project title: ____________________________  Claim ID: ________  Revision: ________',10)
  m.line(c,26,h-105,'Date: ______________  Mode: Project development (label source analysis separately)   Pages / IDs: ______________',9.5)
  m.line(c,26,h-127,'Configuration / evidence version (an earlier commit or artifact ID): _____________________________________________',9.5)
  top=h-147;xs=[26,94,374,w-26];m.line(c,26,top,'Evidence ID',9,True);m.line(c,94,top,'Repo-relative path + evidence ID',9,True);m.line(c,374,top,'Origin; what it supports; limitation / access gap',9,True)
@@ -47,8 +47,8 @@ def review_page(ws):
   x=26+(k%2)*(bw+gap);y=top-(k//2+1)*bh
   m.line(c,x,y+29,f'{k+1}. Name / student ID: ___________________________________',9)
   m.line(c,x,y+8,'Signature: _______________________  Date: ______________',9)
- m.paragraph(c,26,45,f"Push one legible complete PDF to {ws['submission_path']} in your assigned private team repository by the deadline. TA collects this file; no physical hand-in. Include identified continuations; keep later revisions separate.",w-52,8,10)
- m.line(c,26,17,'ROB7103/8103 | Handwritten checkpoint submission | Guide v1.1 / worksheet definitions v1.2',8,color=m.GRAY);c.showPage();c.save();return PdfReader(buf).pages[0]
+ m.paragraph(c,26,45,f"Replace NN with your team number (01-08). Push {ws['submission_path']} to remote main by the deadline. TA retains that version; no physical hand-in. Include all pages and identified continuations.",w-52,8,10)
+ m.line(c,26,17,'ROB7103/8103 | Handwritten checkpoint submission | Guide v1.1 / worksheet definitions v1.3',8,color=m.GRAY);c.showPage();c.save();return PdfReader(buf).pages[0]
 
 def build_submission(path,data):
  reader=PdfReader(ROOT/'Project-Worksheets.pdf');writer=PdfWriter()

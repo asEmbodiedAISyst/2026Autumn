@@ -6,6 +6,37 @@ layout:
 
 # 17 Final Project VI: Decision
 
+## Submit before leaving class
+
+**One PDF per team. Submit by 25 November 2026 at 11:50, Abu Dhabi time (UTC+4).**
+
+| Requirement | What your team must do |
+| --- | --- |
+| Download | [Worksheet 6: Decision](../resources/project-workbook/Class17-Decision.pdf) |
+| Required contents | All three pages: both A3 Decision sides and the signed A4 evidence/team-review page; retain all 27 checks. Include any labelled continuation pages in the same PDF. |
+| Team identifier | Use your assigned **Team01–Team08**, matching your private repository, for example `2026Autumn-Team01`. Write this identifier and the project title on every page. |
+| Folder | `submissions/class17/` in your assigned private team repository |
+| Filename | `TeamNN-Class17-Decision.pdf` — replace `NN` with your assigned two-digit team number |
+| Example for Team01 | `submissions/class17/Team01-Class17-Decision.pdf` |
+| Branch | Remote `main` on GitHub |
+
+### Prepare and submit
+
+1. Complete the worksheet by hand. Answer each prompt, or explain what is unfinished and what you will do next. Every member signs the team-review page.
+2. Scan all required pages into **one readable PDF**. Check page order, orientation and that nothing is cropped. Keep the paper original for your records.
+3. Name the PDF as shown above and put it in the specified folder in **your assigned private repository**. Reference supporting evidence by its existing repository path; do not copy it into another submission form.
+4. Commit and **push to `main` before the deadline**. Open the PDF on GitHub and confirm every page is present and readable. A file saved only on your computer or an unpushed commit is not submitted.
+
+### How the teaching team collects it
+
+At the deadline, the TA collects the named PDF from your team's remote `main` branch, records the repository commit and collection time, and retains that version. The repository, filename and identifier on the pages connect the PDF to your team. Confirm teaching-team access before the deadline; report an access problem promptly.
+
+**No separate upload, email, release, tag, manifest or physical hand-in is required.** Later changes do not replace the collected version. Keep the initial PDF; save later dated, signed revisions in `submissions/class17/revisions/`.
+
+The file above is the required worksheet submission. The [editable project record](../resources/project-workbook/project-record.md) is a working aid, not a second submission. Use the guidance below while doing your project work.
+
+## Reading and project guidance
+
 A project can support release of a simulation analysis while leaving physical deployment unsupported. It can produce a defensible negative finding while exposing a useful next experiment. A decision connects what the evidence establishes to one specific action and its conditions.
 
 Read this page before class and bring your earlier views and drafted Decision references. Most of the session is for resolving consequential evidence, reconciling the claim and completing the project record. Do not begin all 27 checks from an empty sheet today.
@@ -154,23 +185,11 @@ Choose advance, advance with conditions, revise and reassess, or stop/rescope fo
 
 Before submitting, compare what changed with the artifact that supports it. Identify what remains assumed, planned or unresolved; decide whether an earlier worksheet needs revision; and name the next useful action. Ask the instructor/TA to challenge a specific uncertainty when needed. A complete worksheet can report a failed pilot, a negative finding or a blocked test honestly.
 
-## Submit before leaving class
+## Check your completed worksheet
 
-**Deadline: 25 November 2026 at 11:50.** Follow an explicitly announced schedule change if one occurs.
+**What the worksheet should explain:** The complete Decision screen, a bounded conclusion, owned conditions and an identified evidence freeze.
 
-Download [Worksheet 6: Decision](../resources/project-workbook/Class17-Decision.pdf). Complete all three pages by hand and obtain every team member's signature on the evidence/team-review page. Include both A3 Decision sides and the A4 review page. Scan the complete package, including any identified continuations, into one legible PDF.
-
-**Required file in your assigned private team repository:** `submissions/class17/worksheet.pdf`
-
-Commit and **push** this file before the deadline. Open it on GitHub to check that every page is readable and confirm that the TA has repository read access. The TA collects this file directly; no separate physical hand-in is required. Retain the paper original. These printable PDFs have no interactive fields. No proxy signatures.
-
-Cite supporting evidence using exact paths within the same team repository, with run/configuration IDs and an existing evidence version or commit where useful. Do not duplicate large artifacts in each submission folder. Mark missing or restricted evidence and its effect on the claim. The [editable project record](../resources/project-workbook/project-record.md) supports your work; the signed worksheet PDF is the required checkpoint file.
-
-Preserve the initial `worksheet.pdf`. Put later dated, signed revisions in `submissions/class17/revisions/` with a short change record; do not rewrite Git history. A worksheet can cite an earlier evidence commit, but cannot contain the hash of the commit that first contains itself. The [complete blank pack](../resources/project-workbook/Submission-Worksheets.pdf) remains available for printing all six worksheets.
-
-**Useful checkpoint:** The complete Decision screen, a bounded conclusion, owned conditions and an identified evidence freeze.
-
-**Supporting record:** Both A3 Decision sides and the evidence/team-review page; all 27 check references/statuses; reconciled claim; action-critical conditions and disagreements; configuration/evidence-freeze commit; reproduction record or unresolved dependencies.
+**Evidence to reference where available:** Both A3 Decision sides and the evidence/team-review page; all 27 check references/statuses; reconciled claim; action-critical conditions and disagreements; configuration/evidence-freeze commit; reproduction record or unresolved dependencies.
 
 If an experiment is unfinished, complete the worksheet from the available evidence and identify the exact missing evidence/dependency, owner, next verification and affected claim. This documents the checkpoint; it does not complete the experiment. The supporting record is part of the same project, not an additional form or duplicate upload. Signatures record team review, not scientific success.
 
