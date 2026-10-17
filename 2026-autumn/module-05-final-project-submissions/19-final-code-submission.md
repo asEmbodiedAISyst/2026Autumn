@@ -10,6 +10,12 @@ layout:
 
 **Public holiday: no class meeting. The submission deadline remains in effect.**
 
+## Team preparation and the submission deadline
+
+This milestone continues your final-project preparation. Use your team's preparation time to finish the implementation, check that the supplied files support the reported results, and make `code/README.md` usable by another reader. Use the guidance below as a reference for that work.
+
+**There is no class meeting on this public holiday.** Work independently with your team and push the required `code/` contents, including `code/README.md`, to your assigned private team repository's `main` branch by the deadline above. Leave time to check the uploaded files on GitHub. The deadline is the submission checkpoint; no separate class attendance or additional progress form is required.
+
 ## Submission requirements
 
 The [NeurIPS code guidelines](https://neurips.cc/public/guides/CodeSubmissionPolicy) state:

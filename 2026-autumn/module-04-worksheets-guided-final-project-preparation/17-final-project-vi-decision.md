@@ -6,6 +6,12 @@ layout:
 
 # 17 Final Project VI: Decision
 
+## How we will use this class
+
+**Most of this class is reserved for final-project preparation with your team.** After a short introduction, use the working time to review your evidence, qualify the claim it supports and choose your next action. Discuss questions and evidence with the teaching team as you work. The readings and filled examples below are references for your project; use them to support your decisions and worksheet entries.
+
+**Before class ends, each team must submit Worksheet 6: Decision.** Complete it by hand, obtain every member's signature, scan all required pages into one readable PDF, and push it to your assigned private team repository's `main` branch by the deadline below. Leave enough time to scan, upload and check the PDF on GitHub. This is a checkpoint of your current project work: where evidence or a result is missing, explain what is unfinished and your next step. You can revise the worksheet later while preserving this class's submitted version.
+
 ## Submit before leaving class
 
 **One PDF per team. Submit by 25 November 2026 at 11:50, Abu Dhabi time (UTC+4).**

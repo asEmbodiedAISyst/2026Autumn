@@ -10,6 +10,12 @@ layout:
 
 **Public holiday: no class meeting. The submission deadline remains in effect.**
 
+## Team preparation and the submission deadline
+
+This milestone continues your final-project preparation. Use your team's preparation time to finish the video, check that it explains your system and evidence, and bring the six final worksheets into agreement with your final project. Use the examples below to improve the explanation of your own work.
+
+**There is no class meeting on this public holiday.** Work independently with your team and push `video/TeamNN-video.mp4` and all six final signed worksheet PDFs in `worksheets/` to your assigned private team repository's `main` branch by the deadline above. Reserve time to check video playback and every PDF on GitHub. Both the video and the final worksheets are required at this checkpoint; a later revision does not replace the collected version.
+
 ## Submission requirements
 
 Use the [RSS 2026 video specifications](https://roboticsconference.org/2026/information/presentationInstructions/):

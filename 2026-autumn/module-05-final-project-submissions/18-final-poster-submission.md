@@ -6,6 +6,12 @@ layout:
 
 # 18 Final Poster Submission
 
+## How we will use this class
+
+**Most of this class is reserved for final-project and poster preparation with your team.** After a short introduction, work on the connection between your claim, system, evidence and conclusion. Use the examples below when deciding what the poster should show, and discuss unclear claims or figures with the teaching team. Use the working time to improve the project evidence and finish the poster together.
+
+**Before class ends, each team must submit its final poster PDF.** Push `poster/TeamNN-poster.pdf` to your assigned private team repository's `main` branch by the deadline below. Reserve time to open the uploaded PDF, check its layout and confirm that it is the version your team intends to submit for printing. The poster is the required submission for this class; follow the requirements below.
+
 **Deadline: 27 November 2026, 10:50 — Abu Dhabi time (UTC+4).**
 
 ## Submission requirements
