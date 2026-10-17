@@ -12,8 +12,9 @@ The **2026 Autumn showcase** brings all eight teams together for live presentati
 | --- | --- |
 | 09:00–09:10 | Set up posters and check video playback. |
 | 09:10–10:10 | **Team01–Team08**, in order: four-minute presentation, three-minute Q&A and 30 seconds to change teams. |
-| 10:10–10:40 | Poster session: all eight posters open for discussion, with Audience Choice voting. |
-| 10:40–10:50 | Awards session. |
+| 10:10–10:30 | Poster session: all eight posters open for discussion, with Audience Choice voting. |
+| 10:30–10:40 | Awards session. |
+| 10:40–10:50 | Wrap-up and cleaning up: take down posters, pack equipment and leave L12 tidy. |
 
 ## Team presentations and Q&A
 
@@ -33,7 +34,7 @@ If operating physical hardware, use the tested configuration and confirm the ope
 
 ## Awards
 
-The final ten minutes celebrate the projects and presentations:
+The ten-minute awards session celebrates the projects and presentations:
 
 | Award | Recognises |
 | --- | --- |
