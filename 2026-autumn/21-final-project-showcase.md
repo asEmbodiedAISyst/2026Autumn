@@ -4,33 +4,38 @@ description: 04 December 2026 · 09:00–10:50 · L12
 
 # 21 Final Project Showcase
 
-The final class is a **video presentation session followed by poster presentations and discussion**. This adapts the [RSS plenary-and-poster format](https://roboticsconference.org/2026/information/presentationInstructions/) to our course: we play the narrated or captioned videos already submitted, then discuss each project at its poster.
+All eight teams form one **2026 Autumn group**. The session follows the [RSS presentation format](https://roboticsconference.org/2026/information/presentationInstructions/): live presentations over non-narrated video, a shared Q&A, then a group poster session. For our course, **every member of every team** joins the Q&A at the front of the class.
 
 ## Session programme
 
 | Time | Activity |
 | --- | --- |
 | 09:00–09:10 | Set up posters and check video playback. |
-| 09:10–09:50 | Video presentations, in order **Team01–Team08**, including transitions. |
-| 09:50–10:40 | Poster presentations, questions and discussion. |
+| 09:10–09:50 | Live presentations by **Team01–Team08**: up to four minutes per team, with time for transitions. |
+| 09:50–10:10 | Shared Q&A with all members of all eight teams at the front. |
+| 10:10–10:40 | Group poster session: all eight posters open for discussion. |
 | 10:40–10:50 | Wrap-up and pack-up. |
 
-## Video presentations
+## Live presentations
 
-The teaching team announces each project and plays its submitted video within the four-minute limit. Watch the other teams’ videos and note questions to discuss at their posters. Keep extended explanations and questions for the poster session.
+A speaker from each team presents on site while the team's video plays in the background. Keep the talk within four minutes and rehearse with the video's fixed timing. Hold questions until all eight teams have presented.
 
-Use the existing narrated or captioned video from Class 20; no additional slides, silent-video version or presentation recording are required.
+Use the visual track of the video already submitted for Class 20, with its recorded soundtrack muted during playback. Explain the project live; existing captions can remain visible. This is a playback arrangement for Class 21 and does not change the Class 20 submission requirements or require a second video file or additional slide deck.
 
-## Poster presentations and discussion
+## Shared Q&A
 
-Display your submitted poster at the position assigned in L12. Keep at least one team member at the poster while others visit other projects, and rotate roles so everyone can participate. All members should be available for questions from the teaching team.
+After Team08, **all student members of Team01–Team08 come to the front together**. The instructor moderates one Q&A for the whole group. Questions may address any team or compare projects; the relevant team members answer. Keep longer technical discussions for the posters.
 
-Give visitors a short explanation of your team’s contribution, main result and important limitation. Use the poster to answer their questions, with the submitted repository, results or video available when more detail is needed. Distinguish your own evidence from published examples and identify any changes since the collected submission.
+## Group poster session
+
+All eight teams then present their submitted posters at the assigned positions in L12. Keep at least one member at each poster and rotate roles so others can visit the other projects. All members should remain available for questions from the teaching team.
+
+Give visitors a short explanation of your contribution, main result and important limitation. Use your submitted repository, results or video for detail. Distinguish your own evidence from published examples and identify any changes since the collected submission.
 
 If you operate physical hardware during a poster discussion, use the tested configuration and confirm the operator, stop and reset arrangements with the instructor/TA.
 
 ## Arrive ready
 
-Have your poster ready for display under the Class 18 printing arrangements, and check playback of the submitted video before the session. Bring a device that can open your repository and supporting results during discussion.
+Have your poster ready for display under the Class 18 printing arrangements. Check muted video playback and rehearse the live talk before the session. Bring a device that can open your repository and supporting results.
 
-Use the artifacts already submitted under [Class 18 — Poster](module-05-final-project-submissions/18-final-poster-submission.md), [Class 19 — Code](module-05-final-project-submissions/19-final-code-submission.md) and [Class 20 — Video and final worksheets](module-05-final-project-submissions/20-final-video-submission.md). **Class 21 adds no new submission.**
+Use the artifacts already submitted under [Class 18 — Poster](module-05-final-project-submissions/18-final-poster-submission.md), [Class 19 — Code](module-05-final-project-submissions/19-final-code-submission.md) and [Class 20 — Video and final worksheets](module-05-final-project-submissions/20-final-video-submission.md). **Class 21 adds no new submission.** All agreed filenames, deadlines and timestamped collection arrangements remain unchanged.
