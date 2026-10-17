@@ -1,0 +1,197 @@
+{
+  "M0": {
+    "mujoco_version": "3.3.7",
+    "base": {
+      "model_file": "consolidation/additional_material/models/1DOF-M0.xml",
+      "case": "M0",
+      "radius_override_mm": null,
+      "nq": 1,
+      "nv": 1,
+      "nu": 1,
+      "external_moving_mass_kg": 1e-06,
+      "joint_axis_local": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "joint_range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "timestep_s": 0.002,
+      "collision_enabled_geom_count": 0,
+      "gravity_probe_q_rad": 0.4,
+      "joint_inertia_kg_m2": 9.999999999999903e-13,
+      "gravity_bias_Nm": 6.462348535570529e-27,
+      "zero_control_qacc_rad_s2": -6.462348535570592e-15,
+      "scope": "declared structural model, not a hardware motion prediction"
+    }
+  },
+  "B0": {
+    "mujoco_version": "3.3.7",
+    "base": {
+      "model_file": "consolidation/additional_material/models/1DOF-B0.xml",
+      "case": "B0",
+      "radius_override_mm": null,
+      "nq": 1,
+      "nv": 1,
+      "nu": 1,
+      "external_moving_mass_kg": 0.11,
+      "joint_axis_local": [
+        -2.465190328815662e-32,
+        1.0,
+        1.0963452368173417e-15
+      ],
+      "joint_range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "timestep_s": 0.002,
+      "collision_enabled_geom_count": 0,
+      "gravity_probe_q_rad": 0.4,
+      "joint_inertia_kg_m2": 0.0004181575499256694,
+      "gravity_bias_Nm": 2.7543697947169776e-14,
+      "zero_control_qacc_rad_s2": -6.586918722875115e-11,
+      "scope": "declared structural model, not a hardware motion prediction"
+    }
+  },
+  "B1": {
+    "mujoco_version": "3.3.7",
+    "base": {
+      "model_file": "consolidation/additional_material/models/1DOF-B1.xml",
+      "case": "B1",
+      "radius_override_mm": null,
+      "nq": 1,
+      "nv": 1,
+      "nu": 1,
+      "external_moving_mass_kg": 0.11,
+      "joint_axis_local": [
+        0.0,
+        1.0,
+        1.0963452368173417e-15
+      ],
+      "joint_range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "timestep_s": 0.002,
+      "collision_enabled_geom_count": 0,
+      "gravity_probe_q_rad": 0.4,
+      "joint_inertia_kg_m2": 0.0006645575499256693,
+      "gravity_bias_Nm": 2.7536759053265868e-14,
+      "zero_control_qacc_rad_s2": -4.143622934739941e-11,
+      "scope": "declared structural model, not a hardware motion prediction"
+    }
+  },
+  "B2": {
+    "mujoco_version": "3.3.7",
+    "base": {
+      "model_file": "consolidation/additional_material/models/1DOF-B2.xml",
+      "case": "B2",
+      "radius_override_mm": null,
+      "nq": 1,
+      "nv": 1,
+      "nu": 1,
+      "external_moving_mass_kg": 0.11,
+      "joint_axis_local": [
+        0.0,
+        1.0,
+        1.0963452368173417e-15
+      ],
+      "joint_range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "timestep_s": 0.002,
+      "collision_enabled_geom_count": 0,
+      "gravity_probe_q_rad": 0.4,
+      "joint_inertia_kg_m2": 0.0009813575499256696,
+      "gravity_bias_Nm": 2.755757573497759e-14,
+      "zero_control_qacc_rad_s2": -2.808107578839625e-11,
+      "scope": "declared structural model, not a hardware motion prediction"
+    }
+  },
+  "G1": {
+    "mujoco_version": "3.3.7",
+    "base": {
+      "model_file": "consolidation/additional_material/models/1DOF-G1.xml",
+      "case": "G1",
+      "radius_override_mm": null,
+      "nq": 1,
+      "nv": 1,
+      "nu": 1,
+      "external_moving_mass_kg": 0.11,
+      "joint_axis_local": [
+        0.0,
+        1.0,
+        1.0963452368173417e-15
+      ],
+      "joint_range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "timestep_s": 0.002,
+      "collision_enabled_geom_count": 0,
+      "gravity_probe_q_rad": 0.4,
+      "joint_inertia_kg_m2": 0.00069975754992567,
+      "gravity_bias_Nm": -0.06361068279219732,
+      "zero_control_qacc_rad_s2": 90.90388920984734,
+      "scope": "declared structural model, not a hardware motion prediction"
+    }
+  },
+  "B2_radius80": {
+    "mujoco_version": "3.3.7",
+    "base": {
+      "model_file": "consolidation/additional_material/models/1DOF-B2.xml",
+      "case": "B2",
+      "radius_override_mm": null,
+      "nq": 1,
+      "nv": 1,
+      "nu": 1,
+      "external_moving_mass_kg": 0.11,
+      "joint_axis_local": [
+        0.0,
+        1.0,
+        1.0963452368173417e-15
+      ],
+      "joint_range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "timestep_s": 0.002,
+      "collision_enabled_geom_count": 0,
+      "gravity_probe_q_rad": 0.4,
+      "joint_inertia_kg_m2": 0.0009813575499256696,
+      "gravity_bias_Nm": 2.755757573497759e-14,
+      "zero_control_qacc_rad_s2": -2.808107578839625e-11,
+      "scope": "declared structural model, not a hardware motion prediction"
+    },
+    "modified": {
+      "model_file": "consolidation/additional_material/models/1DOF-B2.xml",
+      "case": "B2",
+      "radius_override_mm": 80.0,
+      "nq": 1,
+      "nv": 1,
+      "nu": 1,
+      "external_moving_mass_kg": 0.11,
+      "joint_axis_local": [
+        0.0,
+        1.0,
+        1.0963452368173417e-15
+      ],
+      "joint_range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "timestep_s": 0.002,
+      "collision_enabled_geom_count": 0,
+      "gravity_probe_q_rad": 0.4,
+      "joint_inertia_kg_m2": 0.0006645575499256693,
+      "gravity_bias_Nm": 2.7536759053265868e-14,
+      "zero_control_qacc_rad_s2": -4.143622934739941e-11,
+      "scope": "declared structural model, not a hardware motion prediction"
+    },
+    "inertia_change_kg_m2": -0.00031680000000000033,
+    "point_mass_expected_change_kg_m2": -0.0003168000000000001
+  }
+}
