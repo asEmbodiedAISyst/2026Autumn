@@ -1,0 +1,37 @@
+{
+  "source_file_sha256_checks": 80,
+  "source_hashes_preserved": true,
+  "xc330_moving_fixture_mass_kg": 0.098,
+  "xc330_fixture_inertias_match_loaded_mujoco": true,
+  "xc330_replay_max_published_difference_rad": 0.0,
+  "fresh_H1_integral_parameters": {
+    "armature": 0.01070688676534984,
+    "damping": 0.03647832779506292,
+    "frictionloss": 0.010226937934344626
+  },
+  "fresh_vs_source_saved_parameter_absolute_differences": {
+    "armature": 0.0,
+    "damping": 0.0,
+    "frictionloss": 0.0
+  },
+  "fresh_vs_source_saved_equal_episode_rmse_absolute_differences_rad": {
+    "calibration": 0.0,
+    "model_selection": 0.0,
+    "held_out": 0.0
+  },
+  "fresh_H1_integral_equal_episode_rmse_rad": {
+    "calibration": 0.011945456613826169,
+    "model_selection": 0.012093049452668508,
+    "held_out": 0.023343066855748808
+  },
+  "verification_elapsed_seconds": 24.986,
+  "fresh_output_error_fit_executed": false,
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.2.6",
+    "matplotlib": "3.10.3",
+    "mujoco": "3.3.7",
+    "scipy": "1.16.2",
+    "pyarrow": "21.0.0"
+  }
+}

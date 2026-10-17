@@ -1,6 +1,6 @@
 {
   "class": 3,
-  "source_version": "0.15",
+  "source_version": "0.16",
   "scope": "Complete single-page notes, class-scoped media and required supporting resources",
   "files_sha256": {
     "2026-autumn/resources/class03/requirements-core.txt": "206e9eda290a4f06a66aeb098f52b04fc0a5ce13114cb67a384b39e8a785120d",

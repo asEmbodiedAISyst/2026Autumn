@@ -14,7 +14,7 @@ An actuator receives a command, applies effort and produces motion that can be m
 
 Our running example is an XC330 actuator carrying a link and two payload assemblies. We follow it from the physical mechanism through CAD, robot description and MuJoCo. The RS06 demonstration applies the same inspection method to another actuator. The student activity returns to XC330 and changes one declared payload parameter.
 
-The new task is to make and inspect an executable representation. Actuator-family history, product selection and control-law introductions remain in Class 02. Here, geometry, coordinate frames, rigid connections and mass distribution determine what the simulated mechanism does. Class 04 will test and identify its response quantitatively.
+The new task is to make and inspect an executable representation. Actuator-family history, product selection and control-law introductions remain in Class 02. Here, geometry, coordinate frames, rigid connections and mass distribution determine what the simulated mechanism does. Class 04 develops quantitative identification and response comparison using a separately documented 98 g campaign. It carries forward the inspection method, while keeping that campaign distinct from this 110 g structural model.
 
 By the end, you should be able to:
 
@@ -184,7 +184,7 @@ Position, velocity and current-related control laws were introduced in Class 02.
 
 Preserve the applied command sequence, controller settings, fixture identity and observations. Establish compatible time bases and compare positions at matched times. Choose an error metric and operating conditions before interpreting agreement. Keep independent trajectories for checking predictions beyond the data used to adjust the model.
 
-Class 03 prepares a structurally inspectable representation and specifies this test. Class 04 develops identification and quantitative response comparison. Our immediate evidence statement should say what was checked, how, and over which conditions.
+Class 03 prepares a structurally inspectable representation and specifies this test. Class 04 develops identification and quantitative response comparison on its own declared fixture/data family; its scores do not validate the 110 g model inspected here. Our immediate evidence statement should say what was checked, how, and over which conditions.
 
 **Checkpoint:** A model compiles and displays the expected assembly. What additional evidence would you need before using it to predict a new physical position trajectory?
 
