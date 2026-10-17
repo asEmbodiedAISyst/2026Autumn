@@ -8,7 +8,7 @@ description: Basic digitization of physical embodiment · ROB7103/8103
 
 What does a digital representation preserve, and which parts can we validate?
 
-[Class 02](02-actuator-basics-for-controlled-action.md) established how an actuator turns a request into physical action, what position/velocity/current-related control asks for, and how TDS and UDS/user-manual information describes its use. We now ask how to represent the mechanism receiving those commands. A digital model must specify what moves, where motion occurs, how mass is distributed and how effort enters the system. Its usefulness depends on preserving the properties needed for a stated task and checking those properties against appropriate evidence.
+An actuator receives a command, applies effort and produces motion that can be measured. Here we ask how to represent the mechanism receiving that effort. A digital model must specify what moves, where motion occurs, how mass is distributed and how effort enters the system. Its usefulness depends on preserving the properties needed for a stated task and checking those properties against appropriate evidence. For the actuator functions, control objectives and TDS/UDS document reading that precede this model, see [Class 02](02-actuator-basics-for-controlled-action.md).
 
 Our running example is an XC330 actuator carrying a link and two payload assemblies. We follow it from the physical mechanism through CAD, robot description and MuJoCo. The RS06 demonstration applies the same inspection method to another actuator. The student activity returns to XC330 and changes one declared payload parameter.
 
@@ -20,7 +20,9 @@ By the end, you should be able to:
 - Inspect geometry, frames, joints, mass, inertia and collision assumptions.
 - Define validation for a physical actuator with a specified link/payload experiment.
 
-[Lecture](#start-with-what-moves) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](#start-with-what-moves) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Run the repository examples](#run-the-repository-examples)
+
+You can complete the reading and model-inspection activity using the figures, XML excerpts, tables and recorded measurements on this page and in this repository. The Python examples reproduce the numerical checks. Handling a physical actuator, opening CAD and inspecting a printer are extensions when those facilities are available; identify source-record comparisons separately from measurements you make yourself.
 
 ## 1. Geometry alone does not establish behavioral correspondence
 
@@ -36,7 +38,7 @@ Several manufactured parts can form one moving rigid assembly. Separate model bo
 
 ![Physical grouping and executable body tree](../media/class03/body-tree-classroom.png)
 
-*Figure 2. A declared teaching schematic: the housing is fixed, the link rotates through one hinge, and attached payload bodies have no additional joints. The grouping does not depict internal gearbox components.*
+*Figure 2. Read the tree from top to bottom: the fixed housing supports one hinge, the link rotates at that hinge, and the two attached payload groups introduce no extra joints. The left sketch groups the same external mechanism physically.*
 
 This abstraction already contains choices. We treat the link and attachments as rigid and omit cable flexibility and shaft play. Those choices may be adequate for a limited free-motion experiment. They need reconsideration if the task depends on structural vibration, backlash or cable interference.
 
@@ -60,14 +62,14 @@ The stronger claim requires stronger evidence. Calling a CAD assembly a twin doe
 
 ## 2. Sim2Real differences enter throughout the physical and digital chain
 
-Class 02 explained why a request and reported response can differ. For digitization, the next question is which differences enter the representation and which conditions must accompany its tests. Treat the controller, units and clocks as an interface contract inherited from that discussion, then inspect how the model declarations and physical construction implement it.
+A requested command and reported response can differ because of delivery delays, controller behaviour and sensing. For digitization, record the controller mode, input units, limits and clock definitions as an interface contract, then inspect how the model and physical construction implement it.
 
 | Stage | Concrete example | What to inspect or record |
 |---|---|---|
 | Design | A cable or compliant connection is omitted | Whether that feature matters for the intended motion |
 | Manufacturing | A printed link uses infill rather than solid material | Actual dimensions, mass and process settings |
 | Assembly | Clearance permits play or a shaft is misaligned | Fit, mounting, fasteners and reference pose |
-| Input and observation interface | A target/reference or timestamp is interpreted differently in the model | Preserve the mode, units, limits and clock definitions established in Class 02 |
+| Input and observation interface | A target/reference or timestamp is interpreted differently in the model | Record mode, units, limits and clock definitions |
 | Simulation | Contact is disabled or a passive effect is omitted | Explicit model settings and their intended scope |
 
 Suppose simulated motion begins earlier than physical motion. Increasing inertia may make the simulated response look slower, but this can compensate for a timing error without explaining it. First inspect what the timestamp means, when the command is applied, and whether the physical and simulated inputs have the same interpretation.
@@ -105,6 +107,8 @@ The source XML also retains approximately 0.11859 kg on its fixed `XC330-M288-T`
 ![Declared XC330 fixture configurations](../media/class03/configuration_mass_positions.png)
 
 *Figure 3. B0, B1 and B2 place equal 44 g assemblies at symmetric radii. G1 places them on one side. Each complete assembly includes its pin. These are declared positions in the 110 g teaching family.*
+
+The fixture names identify model configurations: M0 has no external link/payload load; B0, B1 and B2 use symmetric payload positions; G1 places both assemblies on the same side.
 
 Compare B0 at ±60 mm with B2 at ±100 mm. Convert to SI units before calculating:
 
@@ -149,6 +153,8 @@ For our later position-response experiment, the target is a specified actuator a
 
 *Figure 4. Declared conceptual comparison. Physical and simulated inputs must have compatible meaning and conditions; measured and predicted outputs must be aligned before comparison. The diagram contains no experimental trajectories.*
 
+Read Figure 4 along both branches: specify the experimental instruction and controller settings, obtain measured and predicted outputs, then align their observation times before comparing them. A hardware position request and a model torque input require an explicit controller mapping; sharing a numerical value is not enough.
+
 Three checks answer different questions:
 
 1. **Implementation:** does the model implement the intended body tree, units, parameters and settings?
@@ -166,7 +172,7 @@ J\ddot q+\tau_f(\dot q)+\tau_g(q)
 =\tau_a+\tau_{\mathrm{ext}}.
 $$
 
-The payload-placement calculation estimates a contribution to $$J$$. Gravity contributes $$\tau_g(q)$$ on the left; friction is represented separately by $$\tau_f$$. The initial free-motion comparison has no applied external contact torque, so $$\tau_{\mathrm{ext}}=0$$. This does not set friction or gravity to zero on the real device. The equation organizes physical contributions without identifying their unknown values (Featherstone 2008).
+Here q is in radians, angular acceleration is in rad/s², J is in kg m² and torques are in N m. The payload-placement calculation estimates a contribution to $$J$$. Gravity contributes $$\tau_g(q)$$ on the left; friction is represented separately by $$\tau_f$$. The initial free-motion comparison has no applied external contact torque, so $$\tau_{\mathrm{ext}}=0$$. This does not set friction or gravity to zero on the real device. The equation organizes physical contributions without identifying their unknown values (Featherstone 2008).
 
 The core XC330 XML has no added joint `armature`; its compiled inertia here comes from the moving rigid bodies. If reflected motor inertia is later introduced through `armature` or a fitted total $$J$$, avoid counting it twice. The RS06 prepared model has an armature term and separate passive terms, so its numerical inertia/effort description is a different contract.
 
@@ -210,7 +216,7 @@ A coordinate is useful only when we know **which point, which frame and which un
 </body>
 ```
 
-The excerpt rounds negligible export terms and omits unrelated attributes. `pos="0.100 0 0"` means that P is 0.100 m along the **Link frame's x direction** from the Link origin. It does not mean world x = 0.100 m. The hinge origin J is at [0, 0.007, 0] m in that same Link frame; the body origin and joint origin are distinct locations.
+This is an explanatory excerpt: the ellipses omit attributes, so load the complete B2 XML from the repository rather than copying this fragment into a viewer. Negligible export-roundoff terms are rounded here. `pos="0.100 0 0"` means that P is 0.100 m along the **Link frame's x direction** from the Link origin. It does not mean world x = 0.100 m. The hinge origin J is at [0, 0.007, 0] m in that same Link frame; the body origin and joint origin are distinct locations.
 
 **Identify what stays fixed.** When the joint turns, P stays attached at the same Link-frame coordinates. Its world coordinates change. In this model's zero pose, the Link axes align with the world axes and the joint is located at [−0.210, 0.0035, 0.370] m in the world. The positive hinge axis is +y, so positive rotation moves the initially positive-x payload toward negative world z.
 
@@ -239,7 +245,7 @@ The y value includes the −0.007 m offset from J to P: 0.0035 − 0.007 = −0.
 
 **Convert units at the correct boundary.** The CAD distance 100 mm becomes 0.100 m in the body position. `scale="0.001 0.001 0.001"` scales the mesh vertices; it does **not** scale `body pos`, `joint pos` or inertial positions for you. Writing `pos="100 0 0"` would put the attachment 100 m away. Convert display degrees to radians before assigning `data.qpos`; `compiler angle="radian"` governs angle-valued XML attributes, not a viewer's preferred display units. The joint axis [0, 1, 0] is a direction and has no length unit.
 
-You can reproduce the coordinate check from `2026-autumn/resources/class03` with `python code/class03_frames.py --q-deg 30`. The calculation and expected results above remain sufficient without running it.
+After the [repository setup](#run-the-repository-examples), reproduce this check from `2026-autumn/resources/class03` with `python code/class03_frames.py --q-deg 30`. The calculation and expected results above remain sufficient without running it.
 
 **Checkpoint:** Why can P keep the same coordinates in `Link` while moving in the world? If the mesh looks correct but the payload is far away, which position and unit declarations should you check?
 
@@ -247,7 +253,9 @@ You can reproduce the coordinate check from `2026-autumn/resources/class03` with
 
 ![Visual geometry, a candidate collision simplification and inertial properties](../media/class03/geometry-roles-classroom.png)
 
-*Figure 7. Three roles for a conceptual link. The collision rectangle is an illustrative candidate, not an enabled contact model in the supplied free-motion fixtures. The inertia sketch identifies a mass-distribution description rather than a rendered surface.*
+*Figure 7. Three descriptions of the same conceptual link: the visual surface retains holes, a candidate collision rectangle simplifies those surfaces, and the inertial panel marks the centre of mass while retaining the link outline. The supplied fixtures currently disable contact.*
+
+Read Figure 7 by asking what each description controls. A simplified contact rectangle fills the visual holes; that is acceptable only when those holes are irrelevant to the contact task. The inertial description assigns mass, centre of mass and inertia independently of those surface details.
 
 Visual geometry supports recognition. Collision geometry defines the surfaces participating in modeled contact. Explicit inertial properties describe mass distribution. A detailed visual mesh need not be the best collision approximation, and a collision approximation need not determine inertia when inertial records are supplied separately.
 
@@ -319,9 +327,9 @@ Printing turns nominal geometry into a part with an actual material structure an
 
 ![Nominal and as-built interface checks](../media/class03/printed-interface-classroom.png)
 
-*Figure 8. Declared manufacturing schematic. The dashed inner boundary exaggerates a possible bore difference to explain fit inspection; it is not a measured tolerance, print result or deformation prediction.*
+*Figure 8. The solid circle is the nominal bore. The dashed circle illustrates a possible smaller, offset as-built bore. Compare diameter and alignment rather than appearance alone; the difference is exaggerated and is not a measured tolerance.*
 
-Choose a functional dimension, such as a shaft interface or mounting-hole location. Compare the nominal CAD value with the prepared printed part and state the measurement method. Check whether the intended fit allows rotation or creates unwanted play. Record the complete moving mass with its fasteners rather than assuming the mass of the link alone represents the assembly.
+Choose a functional dimension, such as a shaft interface or mounting-hole location. Compare the nominal CAD value with the prepared printed part and state the measurement method. Check whether the intended fit allows rotation or creates unwanted play. Record the complete moving mass with its fasteners rather than assuming the mass of the link alone represents the assembly. If you are working from the repository alone, compare the declared CAD/model masses with the included fixture mass record and label that as a source-record check, not a new weighing experiment.
 
 If the printed link has the expected outline but a different measured mass, update the mass record. Scaling its CAD inertia can be an initial approximation, but it retains assumptions about internal distribution. If the connection visibly flexes or moves relative to the shaft, changing mass alone will not correct the joint model.
 
@@ -333,13 +341,19 @@ The H2D preparation connects these decisions to fabrication. Inspect the supplie
 
 ### Inspect the RS06 mechanical reference
 
-Use the RS06 document introduced in Class 02 to identify its output axis and mounting interfaces. Open the [RS06 motor STEP](../resources/class03/preparation/demonstration/rs06/RS06_vendor_motor.step) and compare its output axis and mounting interfaces with the engineering drawing. Identify the component origin, a nominal dimension and the properties reported by CAD.
+Open the [RS06 motor STEP](../resources/class03/preparation/demonstration/rs06/RS06_vendor_motor.step) and compare its output axis and mounting interfaces with the engineering drawing. Locate the shaft centreline and mounting-hole pattern, then compare their orientation with the model. If CAD is available, inspect a nominal dimension and the reported physical properties.
 
 ![RS06 mechanical reference](../media/class03/RS06_outline_and_mounting_dimensions.png)
 
-*Figure 9. Manufacturer mechanical reference supplied with the RS06 material. Nominal drawing values are distinct from measurements of the available unit.*
+*Figure 9a. Use the shaft centreline and mounting interfaces to orient the RS06 motor reference. Drawing values are manufacturer nominal values, not measurements of the available unit.*
 
 Keep manufacturer values, CAD estimates and actual measurements in separate ledger entries. The motor STEP is a component reference rather than a complete editable fixture assembly. Use the prepared fixture/export records to inspect the assembled mechanism.
+
+![RS06 fixture configurations shown as CAD renders](../media/class03/rs06-fixture-cad.jpg)
+
+*Figure 9b. Identify the fixed motor housing and moving link: M0 has no external fixture, B0 has the balanced link, B1 adds both large end payloads, and G1 has one large end payload. These are CAD renders, not physical photographs.*
+
+The RS06 and XC330 use different fixtures. In particular, RS06 B0 means a balanced link without the large payload discs, whereas XC330 B0 includes its two 44 g assemblies. Reuse the inspection method, not the masses or the meaning of a case label without checking the actuator family.
 
 ### Inspect the joint and export decisions
 
@@ -395,18 +409,26 @@ The [RS06 source export](../resources/class03/preparation/rs06_fixtures/source-a
 
 Load the [prepared RS06 B1 model](../resources/class03/preparation/rs06_fixtures/model-sources/B1.xml). Find `rs06_joint`, its local axis, parent transforms, range, inertial records and position actuator. Compare the source export with this prepared model to identify added actuator/passive assumptions.
 
-Inspect a small positive displacement and check its direction. Compare gravity enabled and disabled at the same pose and control settings. A position actuator may resist gravity, so distinguish generalized gravity bias from net acceleration or observed movement. The saved records below use zero velocity and a 0.4 rad joint position in MuJoCo 3.3.7:
+![Prepared RS06 model configurations loaded in MuJoCo](../media/class03/rs06-model-loads.png)
+
+*Figure 11. Compare the loaded RS06 configurations with Figure 9b: check the link, end-payload arrangement and one-hinge structure. A changed camera view does not establish a changed mechanism.*
+
+After the repository setup, run `python code/class03_rs06_inspect.py --case all` from `2026-autumn/resources/class03`. It loads the bundled RS06 models, reports the local joint axis/range and moving mass, and compares gravity bias with gravity enabled/disabled at a fixed pose. Use the figure and table if a live viewer is unavailable.
+
+Inspect a small positive displacement in a viewer when available and check its direction. Compare gravity enabled and disabled at the same pose and control settings. A position actuator may resist gravity, so distinguish generalized gravity bias from net acceleration or observed movement. The saved records below use zero velocity and a 0.4 rad joint position in MuJoCo 3.3.7:
 
 | Fixture | Coordinates / velocities / actuators | Gravity-on bias (N m) | Gravity-off bias (N m) |
 |---|---:|---:|---:|
 | B1 | 1 / 1 / 1 | 0.0003684003 | 0 |
 | G1 | 1 / 1 / 1 | 1.165962 | 0 |
 
+A zero position command is not a torque-off command: at this 0.4 rad pose the prepared position actuator requests −20 N m to return toward zero, separately from the gravity-bias entries. The inspection script reports that actuator effort so it cannot be mistaken for gravity torque.
+
 These are numerical checks of the declared models, not new physical measurements. At zero velocity, `qfrc_bias` contains the gravity term on the left of the dynamics equation: the unconstrained applied gravitational torque has the opposite sign. It is not the servo effort needed after adding passive terms or the net acceleration of the controlled joint. [Raw RS06 records](../resources/class03/results/class03-core/rs06-inspection.json) provide the complete saved fallback.
 
 ### Compare the printed part and H2D preparation
 
-Show a prepared printed link. Compare a dimension, a clearance and the assembled mass with their design/recorded values. Open [Link_for_H2D.3mf](../resources/class03/preparation/demonstration/h2d/Link_for_H2D.3mf), confirm units, inspect the actual printer/nozzle/plate/material configuration, and review orientation and the sliced preview. Explain how those choices relate to fit and property uncertainty.
+When a printed link is available, compare a dimension, a clearance and the assembled mass with their design/recorded values. With repository files alone, use the CAD assembly and mass record to identify the nominal values and state which physical checks remain to be performed. Open [Link_for_H2D.3mf](../resources/class03/preparation/demonstration/h2d/Link_for_H2D.3mf), confirm units, inspect the actual printer/nozzle/plate/material configuration, and review orientation and the sliced preview. Explain how those choices relate to fit and property uncertainty.
 
 Finish by naming one implementation check, one physical check and one behavioral claim that still needs evidence. Keep the RS06 fixture properties distinct from the XC330 teaching family.
 
@@ -414,13 +436,13 @@ Finish by naming one implementation check, one physical check and one behavioral
 
 ### Inspect the supplied XC330 model
 
-Use the B2 model with the 22 g link and two complete 44 g assemblies at ±100 mm. Locate the housing, moving assembly and hinge. Record the joint axis, zero convention, declared range, geometry scale and complete moving mass. Identify the input as torque in N m for `xc330_motor`, rather than assuming a position command because the physical device is a servo. Identify one modeling choice such as disabled contact.
+Use the [B2 XML](../resources/class03/consolidation/additional_material/models/1DOF-B2.xml) with the 22 g link and two complete 44 g assemblies at ±100 mm. Locate the housing, moving assembly and hinge. Record the joint axis, zero convention, declared range, geometry scale and complete moving mass. Identify the input as torque in N m for `xc330_motor`, rather than assuming a position command because the physical device is a servo. Identify one modeling choice such as disabled contact.
 
 ### Predict, calculate and inspect one change
 
 Move both payload centres inward to ±80 mm, retaining their masses, internal properties and orientations. Before revealing the output, predict whether moving mass, rotational inertia, balance and joint count change. Calculate the placement-dependent inertia difference using SI units.
 
-In a prepared environment, run the supplied [offline inspection script](../resources/class03/code/class03_inspect.py):
+After the repository setup below, run the supplied [offline inspection script](../resources/class03/code/class03_inspect.py):
 
 ```sh
 python code/class03_inspect.py --case B2 --radius-mm 80
@@ -438,7 +460,7 @@ The [raw inspection output](../resources/class03/results/class03-core/inspection
 
 ### Compare with the actual or printed component
 
-Check one dimension or mass against the available assembly or printed part. Record its value, unit and method. If using the supplied photograph and mass record instead, identify them as source records and state what additional physical measurement would strengthen the claim. Inspect the printer when feasible.
+Check one dimension or mass against the available assembly or printed part. Record its value, unit and method. For a repository-only submission, compare the B2 model’s 0.110 kg moving mass with the B2 row of the included mass record. Identify that comparison as a source-record check and propose one dimensional or clearance measurement you would make on the built assembly. Inspect the printer when feasible.
 
 ### Submit a compact inspection record
 
@@ -453,19 +475,40 @@ Check one dimension or mass against the available assembly or printed part. Reco
 
 Conclude with two sentences: what the representation is ready to support, and which claim needs further evidence. A screenshot is not a substitute for the recorded quantities and interpretation.
 
-## Practical preparation and resources
+## Run the repository examples
 
-The instructor/TA prepares Fusion, ACDC4Robot, MuJoCo and the slicer before class. Have the reference drawings, intermediate exports, model assets, printed component and mass/dimension records ready. Installation and account registration are preflight tasks.
+Download or clone the **student repository**, preserving its folder structure. The required scripts, XML, meshes, CAD, mass records and saved results are all included. Reading the lesson and using its saved tables requires no Python, CAD software or hardware.
 
-To prepare the offline inspection environment, run the following from `2026-autumn/resources/class03` in the downloaded repository:
+For the executable checks, use Python 3.12. From the repository root on macOS/Linux:
 
 ```sh
+cd 2026-autumn/resources/class03
 python3.12 -m venv .venv-class03-core
-.venv-class03-core/bin/python -m pip install mujoco==3.3.7
-.venv-class03-core/bin/python code/class03_inspect.py --case B2
+. .venv-class03-core/bin/activate
+python -m pip install -r requirements-core.txt
 ```
 
-The activity command assumes this environment is selected. The XML excerpts, coordinate tables, interface screenshots and saved model results provide the complete reading path without installing software during class. CAD, model, engineering drawing and printing files are linked as supporting downloads; the teaching sequence remains on this page.
+In Windows PowerShell, prepare the same folder and use its Python executable directly:
+
+```powershell
+cd 2026-autumn/resources/class03
+py -3.12 -m venv .venv-class03-core
+.\.venv-class03-core\Scripts\python.exe -m pip install -r requirements-core.txt
+```
+
+The examples below use `python` from the activated macOS/Linux environment. In PowerShell, replace that executable with `.\.venv-class03-core\Scripts\python.exe`; activation is unnecessary.
+
+```sh
+python code/class03_inspect.py --case B2 --radius-mm 80
+python code/class03_frames.py --q-deg 30
+python code/class03_rs06_inspect.py --case all
+```
+
+The first command compares original and modified B2 inertia while preserving mass and joint count. The second calculates the payload attachment’s world coordinates and compares them with MuJoCo. The third checks the RS06 models, gravity bias and actuator-effort distinction. All three use only bundled model files, perform no hardware communication and require no graphical display.
+
+The expected values are already shown in the lecture and activity tables. If you cannot run the tools, use those tables to complete the same reasoning and label your evidence as supplied model results.
+
+For the instructor/TA demonstration, prepare Fusion/ACDC4Robot and the slicer separately when available. The CAD, intermediate exports, screenshots and printing file are supplied for inspection. A fresh CAD export, new print or physical measurement is not required to complete the repository-only activity.
 
 ## Reference
 

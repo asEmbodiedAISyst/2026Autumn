@@ -31,7 +31,7 @@ def body_tree(variant):
     for x in [8,38]:ax.add_patch(Circle((x,20),3,facecolor='#D9EAF5',edgecolor=B,lw=.8))
     text(ax,23,10,'Link + attached payloads\nmove about one hinge')
     box(ax,60,32,30,7,'World / fixed housing');arrow(ax,(75,32),(75,26));box(ax,60,18,30,8,'Rotating link')
-    text(ax,52,28,'Hinge',ha='left');line(ax,(75,18),(75,14));line(ax,(61,14),(89,14))
+    text(ax,72,29,'Hinge',ha='right');line(ax,(75,18),(75,14));line(ax,(61,14),(89,14))
     for x in [61,89]:line(ax,(x,14),(x,11))
     box(ax,49,3,24,8,'Pin + payload 1');box(ax,77,3,22,8,'Pin + payload 2')
     text(ax,75,.8,'Rigid attachments: no extra joints',fontsize=plt.rcParams['font.size']*.8)
@@ -49,8 +49,8 @@ def geometry_roles(variant):
             ax.add_patch(Rectangle((cx-13,20),26,8,facecolor='none',edgecolor=O,lw=1,linestyle='--'))
             text(ax,cx,13,'Simplified candidate')
         else:
-            line(ax,(cx-13,24),(cx+13,24),color=GRAY)
-            for x in [cx-11,cx+11]:ax.add_patch(Circle((x,24),3,facecolor='#D9EAF5',edgecolor=B,lw=.8))
+            ax.add_patch(Rectangle((cx-13,20),26,8,facecolor='#D9EAF5',edgecolor=B,lw=.8))
+            line(ax,(cx,18),(cx,30),color=GRAY,linestyle=':')
             ax.plot(cx,24,'+',color=O,ms=6,mew=1);text(ax,cx,13,'Mass, COM, inertia')
     text(ax,50,34,'Same conceptual link; three different modeling roles',fontsize=plt.rcParams['font.size']*.85)
     return fig
@@ -74,7 +74,8 @@ def printed_interface(variant):
         line(ax,(cx-10,26),(cx+10,26),color=GRAY,linestyle='--');line(ax,(cx,16),(cx,36),color=GRAY,linestyle='--')
     ax.add_patch(Circle((76,26),4.1,facecolor='none',edgecolor=O,lw=1,linestyle='--'))
     text(ax,24,10,'Designed diameter\nand material');text(ax,75,10,'Measure fit, clearance\nand complete moving mass')
-    text(ax,50,2,'Declared schematic: clearance exaggerated; no measured tolerances',fontsize=plt.rcParams['font.size']*.85)
+    text(ax,50,5,'Solid circle: nominal bore. Dashed circle: possible as-built bore.',fontsize=plt.rcParams['font.size']*.85)
+    text(ax,50,1,'Declared schematic: clearance exaggerated; no measured tolerances',fontsize=plt.rcParams['font.size']*.85)
     return fig
 
 FUNCTIONS={'body-tree':body_tree,'geometry-roles':geometry_roles,'validation-chain':evidence_chain,'printed-interface':printed_interface}
