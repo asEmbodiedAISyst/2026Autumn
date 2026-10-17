@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch,FancyArrowPatch
 R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'source'))
 from figure_typography import apply_publication_style
-p=argparse.ArgumentParser();p.add_argument('--font-dir',type=Path,required=True);p.add_argument('--output-dir',type=Path,default=R/'media');a=p.parse_args();a.output_dir.mkdir(parents=True,exist_ok=True)
+p=argparse.ArgumentParser();p.add_argument('--font-dir',type=Path,required=True);p.add_argument('--output-dir',type=Path,default=R/'media');p.add_argument('--only',help='Export one named figure; leave others untouched');a=p.parse_args();a.output_dir.mkdir(parents=True,exist_ok=True)
 font=apply_publication_style([a.font_dir/'MiSans-Regular.ttf',a.font_dir/'MiSans-Semibold.ttf'])
 B='#0072B2';O='#D55E00';K='#243448';G='#667785'
 def box(ax,x,y,w,h,text,color=B):
@@ -21,10 +21,12 @@ def canvas():
  f,ax=plt.subplots(figsize=(10.8,4.5));ax.set(xlim=(0,1),ylim=(0,1));ax.axis('off');return f,ax
 S=json.loads((R/'results/lesson-summary.json').read_text());params=list(csv.DictReader((R/'data/fitted_parameters.csv').open()));tr=list(csv.DictReader((R/'data/paired-trace.csv').open()))
 for variant,fs in [('classroom',13),('paper',9)]:
- plt.rcParams.update({'font.family':'MiSans','font.size':fs,'axes.labelsize':fs,'xtick.labelsize':fs-1,'ytick.labelsize':fs-1,'legend.fontsize':fs-1,'pdf.fonttype':42,'svg.fonttype':'none'})
+ plt.rcParams.update({'font.family':'MiSans','font.size':fs,'axes.titlesize':fs,'axes.labelsize':fs,'xtick.labelsize':fs-1,'ytick.labelsize':fs-1,'legend.fontsize':fs-1,'pdf.fonttype':42,'svg.fonttype':'none'})
  def save(fig,name):
+  if a.only and name!=a.only:
+   plt.close(fig);return
+  if variant=='paper':fig.set_size_inches(7.165,4.5 if name=='paired-traces' else 3.4)
   fig.tight_layout(pad=1.5)
-  if variant=='paper':fig.set_size_inches(7.165,3.4)
   for ext in ['png','pdf','svg']:
    dst=a.output_dir/f'{name}-{variant}.{ext}';fig.savefig(dst,dpi=240 if variant=='classroom' else 450,facecolor='white')
    if ext=='svg':dst.write_text('\n'.join(l.rstrip() for l in dst.read_text().splitlines())+'\n')
@@ -52,11 +54,24 @@ for variant,fs in [('classroom',13),('paper',9)]:
  for c,col,marker in [('H1',B,'o'),('H2',O,'s')]:
   rr=[v for v in params if v['controller_id']==c];ax.scatter([int(v['motor_id']) for v in rr],[float(v['armature_kg_m2'])*1000 for v in rr],label=c,color=col,marker=marker,s=45)
  ax.set(xlabel='Motor ID (categorical)',ylabel='Effective armature (10⁻³ kg m²)',xticks=x);ax.legend(frameon=False,ncol=2);ax.spines[['top','right']].set_visible(False);save(f,'effective-armature')
- f,axes=plt.subplots(2,1,figsize=(10.8,6.5),sharex=True)
- for ax,m in zip(axes,[0,9]):
-  rr=[r for r in tr if int(r['motor_id'])==m];tt=[float(r['time_s']) for r in rr]
-  for key,label,col,style in [('hardware_position_rad','Encoder',K,'-'),('synthetic_baseline_position_rad','Baseline',O,'--'),('hardware_fitted_position_rad','Fitted',B,'-')]:ax.plot(tt,[float(r[key]) for r in rr],label=label,color=col,ls=style,lw=1.3)
-  ax.set(ylabel='Position (rad)',title=f'Motor {m}');ax.spines[['top','right']].set_visible(False)
- axes[0].legend(ncol=3,frameon=False,loc='upper left');axes[-1].set_xlabel('Recorded time (s)');save(f,'paired-traces')
+ f,axes=plt.subplots(2,2,figsize=(12.8,6.6),sharex=True,sharey='col')
+ residuals=[]
+ for row,m in enumerate([0,9]):
+  pos,res=axes[row];rr=[r for r in tr if int(r['motor_id'])==m];tt=np.array([float(r['time_s']) for r in rr]);measured=np.array([float(r['hardware_position_rad']) for r in rr])
+  pos.plot(tt,measured,label='Encoder',color=K,lw=1.4)
+  for key,label,col,style in [('synthetic_baseline_position_rad','Baseline',O,'--'),('hardware_fitted_position_rad','Fitted',B,'-')]:
+   pred=np.array([float(r[key]) for r in rr]);delta=pred-measured;residuals.extend(delta)
+   pos.plot(tt,pred,label=label,color=col,ls=style,lw=1.3)
+   res.plot(tt,delta,label=label,color=col,ls=style,lw=1.3)
+  pos.set(ylabel='Position (rad)',title=f'Motor {m}: response and predictions',ylim=(-.75,.85))
+  res.set(ylabel='Prediction − encoder (rad)',title=f'Motor {m}: signed residuals')
+  res.axhline(0,color=G,lw=.7)
+  for ax in [pos,res]:ax.spines[['top','right']].set_visible(False);ax.grid(alpha=.18);ax.set_xlim(tt[0],tt[-1]);ax.set_xlabel('Recorded time (s)')
+ limit=max(abs(float(v)) for v in residuals)*1.12
+ for row in axes:
+  row[1].set_ylim(-limit,limit)
+ axes[0,0].legend(ncol=3,frameon=False,fontsize=fs-2,loc='upper left')
+ axes[0,1].legend(ncol=2,frameon=False,fontsize=fs-2,loc='upper right')
+ save(f,'paired-traces')
  f,ax=canvas();box(ax,.03,.64,.36,.23,'Encoder reading\n+ sign / zero / units');box(ax,.61,.64,.36,.23,'Camera → marker pose\n+ calibration / body transform');arrow(ax,(.22,.61),(.40,.33));arrow(ax,(.78,.61),(.60,.33));box(ax,.21,.07,.58,.25,'Common joint angle and clock\nThen compare, including uncertainty');save(f,'measurement-chain')
 (a.output_dir/'figure-font-check.json').write_text(json.dumps(font,indent=2)+'\n')

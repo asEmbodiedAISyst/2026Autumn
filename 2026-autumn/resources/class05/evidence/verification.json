@@ -1,40 +1,129 @@
 {
-  "standard_library_activity": "Passed from independent student-only copy with unrelated working directory",
+  "revision": "1.1",
+  "isolated_python": true,
+  "standard_library_activity": "Passed from student-only copy and unrelated working directory",
   "events": 30,
   "heldout_motor_records": 480,
+  "all_paired_rows": 4000,
   "baseline_rmse_rad": 0.02402090317445498,
-  "fitted_rmse_rad": 0.016337739731842403,
-  "reduction_percent": 31.98532289486615,
+  "fitted_rmse_rad": 0.016337739731842396,
+  "reduction_percent": 31.985322894866176,
+  "selected_trace_checks": [
+    {
+      "episode_id": "G1_16__H1__P06_heldout_composite__R01__M00",
+      "motor": 0,
+      "method": "hardware_fitted",
+      "sample_count": 1101,
+      "start_s": 0.0,
+      "end_s": 11.000286455000001,
+      "rmse_rad": 0.02226663243452989,
+      "published_rmse_rad": 0.0222666324345,
+      "absolute_difference_rad": 2.9889285491080386e-14
+    },
+    {
+      "episode_id": "G1_16__H1__P06_heldout_composite__R01__M00",
+      "motor": 0,
+      "method": "synthetic_baseline",
+      "sample_count": 1101,
+      "start_s": 0.0,
+      "end_s": 11.000286455000001,
+      "rmse_rad": 0.038194462434118094,
+      "published_rmse_rad": 0.0381944624341,
+      "absolute_difference_rad": 1.8096635301390052e-14
+    },
+    {
+      "episode_id": "G1_16__H1__P06_heldout_composite__R01__M09",
+      "motor": 9,
+      "method": "hardware_fitted",
+      "sample_count": 1095,
+      "start_s": 0.0,
+      "end_s": 10.990389566000001,
+      "rmse_rad": 0.021381407907159478,
+      "published_rmse_rad": 0.0213814079072,
+      "absolute_difference_rad": 4.0523140398818214e-14
+    },
+    {
+      "episode_id": "G1_16__H1__P06_heldout_composite__R01__M09",
+      "motor": 9,
+      "method": "synthetic_baseline",
+      "sample_count": 1095,
+      "start_s": 0.0,
+      "end_s": 10.990389566000001,
+      "rmse_rad": 0.03816500169668748,
+      "published_rmse_rad": 0.0381650016967,
+      "absolute_difference_rad": 1.251776460264864e-14
+    }
+  ],
   "scenes": [
     {
       "controller": "H1",
       "nq": 16,
       "nv": 16,
       "nu": 16,
+      "timestep_s": 0.002,
       "contact_enabled_geom_count": 0,
       "largest_off_diagonal_inertia_kg_m2": 0.0,
+      "nominal_moving_fixture_mass_motor0_kg": 0.113,
       "requested_effort_at_zero_state_Nm": 0.1984066,
       "applied_effort_motor0_Nm": 0.1551,
-      "scope": "Declared independent-hinge model; no hardware validation or replay."
+      "scope": "Declared independent-hinge model; no hardware validation or campaign replay.",
+      "moving_example": {
+        "general_actuator_input_Nm": 0.5143738,
+        "state_bias_Nm": -0.3968132,
+        "unlimited_effort_Nm": 0.11756059999999997,
+        "applied_effort_Nm": 0.11756060000000002,
+        "computed_bounded_effort_Nm": 0.11756059999999997
+      },
+      "wrong_input_applied_effort_motor0_Nm": -0.1551,
+      "finite_after_steps": 100
     },
     {
       "controller": "H2",
       "nq": 16,
       "nv": 16,
       "nu": 16,
+      "timestep_s": 0.002,
       "contact_enabled_geom_count": 0,
       "largest_off_diagonal_inertia_kg_m2": 0.0,
+      "nominal_moving_fixture_mass_motor0_kg": 0.113,
       "requested_effort_at_zero_state_Nm": 0.2510678,
       "applied_effort_motor0_Nm": 0.1551,
-      "scope": "Declared independent-hinge model; no hardware validation or replay."
+      "scope": "Declared independent-hinge model; no hardware validation or campaign replay.",
+      "moving_example": {
+        "general_actuator_input_Nm": 0.6723573999999999,
+        "state_bias_Nm": -0.5021356,
+        "unlimited_effort_Nm": 0.17022179999999992,
+        "applied_effort_Nm": 0.1551,
+        "computed_bounded_effort_Nm": 0.1551
+      },
+      "wrong_input_applied_effort_motor0_Nm": -0.1551,
+      "finite_after_steps": 100
     }
   ],
   "figures": 10,
-  "math_expressions": 17,
-  "vector_checks": "All authored PDF fonts embedded and SVG text editable",
+  "figure_8_improved_with_signed_residuals": true,
+  "source_csv_model_and_other_figure_bytes_preserved": true,
+  "required_links_checked": 65,
+  "anchors_checked": 8,
   "limitations": [
-    "No new hardware, optical calibration or neural training",
-    "Stored metric reaggregation; no optimizer rerun",
-    "Model checks in MuJoCo3.3.7; Windows instructions not executed on Windows"
-  ]
+    "Saved prediction analysis; no fresh optimizer or population replay",
+    "Nominal113gfixture correspondence unresolved",
+    "No powered hardware, optical calibration or neural training",
+    "Classroom timing requires rehearsal"
+  ],
+  "math_expressions_in_main_lesson": 26,
+  "strict_math_expressions_with_companions": 52,
+  "strict_math_failures": 0,
+  "figure8_fonts": {
+    "normal": {
+      "filename": "MiSans-Regular.ttf",
+      "family": "MiSans",
+      "sha256": "9c120f0a849bc0aa5048daae2a3c0f6eecd828b5b33fce682a9622833f5feea6"
+    },
+    "semibold": {
+      "filename": "MiSans-Bold.ttf",
+      "family": "MiSans",
+      "sha256": "d0c1d327952ed935e86fb78a97a6c182b44f2c2b08777326786b1f8b26d1fe1e"
+    }
+  }
 }

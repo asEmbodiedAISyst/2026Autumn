@@ -1,24 +1,28 @@
 {
-  "url": "https://x.ancorasir.com/rob7103-8103/module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator",
-  "content_commit": "9e18140",
-  "single_page": true,
-  "description": "28 October 2026 \u00b7 10:30\u201311:50 \u00b7 CR6",
-  "loaded_figures": 10,
-  "katex_expressions": 17,
-  "katex_errors": 0,
-  "tables": 7,
-  "image_table_width_px": 865,
-  "display_equation_width_px": 768,
-  "horizontal_page_overflow": false,
-  "same_page_navigation": "All four targets exist",
-  "visual_checks": [
-    "All authored diagrams and plots reviewed locally",
-    "Live coupled-dynamics and matrix calculation legible",
-    "Live image loading and measurement-chain figure confirmed",
-    "Table and equation widths checked against scroll extents"
-  ],
-  "limitations": [
-    "Desktop GitBook display checked; no projector or mobile acceptance claimed",
-    "No new physical measurements, optical calibration or neural training"
-  ]
+  "revision": "1.1",
+  "current_review_status": "pending refreshed preview/live review",
+  "previous_revision_review": {
+    "url": "https://x.ancorasir.com/rob7103-8103/module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator",
+    "content_commit": "9e18140",
+    "single_page": true,
+    "description": "28 October 2026 \u00b7 10:30\u201311:50 \u00b7 CR6",
+    "loaded_figures": 10,
+    "katex_expressions": 17,
+    "katex_errors": 0,
+    "tables": 7,
+    "image_table_width_px": 865,
+    "display_equation_width_px": 768,
+    "horizontal_page_overflow": false,
+    "same_page_navigation": "All four targets exist",
+    "visual_checks": [
+      "All authored diagrams and plots reviewed locally",
+      "Live coupled-dynamics and matrix calculation legible",
+      "Live image loading and measurement-chain figure confirmed",
+      "Table and equation widths checked against scroll extents"
+    ],
+    "limitations": [
+      "Desktop GitBook display checked; no projector or mobile acceptance claimed",
+      "No new physical measurements, optical calibration or neural training"
+    ]
+  }
 }
