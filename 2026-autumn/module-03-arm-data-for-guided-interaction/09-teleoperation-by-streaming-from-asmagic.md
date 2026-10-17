@@ -39,7 +39,7 @@ The response path starts with the simulated mechanism. It supplies joint positio
 
 ![Command path and response record](../media/class09/teleop-path-classroom.png)
 
-> Figure 1. Schematic of the supplied bridge. The recorder must retain action and response semantics with separate command and robot-response paths.
+*Figure 1. Schematic of the supplied bridge. The recorder must retain action and response semantics with separate command and robot-response paths.*
 
 Suppose the operator asks for a point outside the workspace. The controller may clip it or reject an IK update. A record of phone positions alone would suggest movement that the robot never executed. A record of final joint positions alone would omit what was requested and would not distinguish blocked commands from a stationary operator.
 
@@ -83,7 +83,7 @@ The code names this matrix `EE_TF_IPHONE`; we write `R_EP` throughout so it cann
 
 ![Read the columns of the mapping](../media/class09/phone-axes-classroom.png)
 
-> Figure 2. Declared axis correspondence in the supplied software. The axes are drawn independently; use the stated mapping to relate them. This is a frame convention, not a physical calibration measurement.
+*Figure 2. Declared axis correspondence in the supplied software. The axes are drawn independently; use the stated mapping to relate them. This is a frame convention, not a physical calibration measurement.*
 
 **Worked check:** Multiplying `R_EP` by the phone vector `[0.01, 0.02, 0]` gives `[0.02, 0.01, 0]` m in the TCP-oriented coordinates. Multiplication by its transpose reverses the mapping. In this particular matrix `R_EP` equals its transpose, but that coincidence is not a general rule for rotations.
 
@@ -135,7 +135,7 @@ $$
 
 ![One tick has a bounded target increment](../media/class09/motion-limit-classroom.png)
 
-> Figure 3. Constructed arithmetic showing how the speed bound limits an individual requested displacement. It is not a measured arm trajectory.
+*Figure 3. Constructed arithmetic showing how the speed bound limits an individual requested displacement. It is not a measured arm trajectory.*
 
 **Worked example:** An unbounded 40 mm request cannot become a 40 mm jump in the next target. The nominal bound allows about 8.33 mm. The remaining displacement may be requested again on subsequent ticks. Orientation is separately limited to 90°/s, or 3° per nominal tick. These are target limits, not guarantees about physical end-effector velocity during a failure.
 
@@ -188,7 +188,7 @@ The bridge observes joint state, renders the two cameras, appends the row and im
 
 ![The recording boundary](../media/class09/recording-order-classroom.png)
 
-> Figure 4. Schematic of the code's observation/action/step ordering. The recorder stamps its row after rendering; this is not a claim of simultaneous physical camera and encoder acquisition.
+*Figure 4. Schematic of the code's observation/action/step ordering. The recorder stamps its row after rendering; this is not a claim of simultaneous physical camera and encoder acquisition.*
 
 The row contains `frame_index`, wall-clock `timestamp`, seven `state.*` channels, seven `action.*` channels, `phone_age` and `blocked`. The episode metadata records scene, nominal rate, channel names and conventions. It does not save a full model/code hash or the task/reset definition. Separate `front` and `side` directories hold corresponding simulated camera images.
 
@@ -216,7 +216,7 @@ A training pair at time k is a declared observation and action. The next measure
 
 ![Raw signs, converted targets and residuals](../media/class09/command-state-classroom.png)
 
-> Figure 5. The retained local circular-motion recording. Left: raw elbow action and state. Middle: action converted into motor-target coordinates. Right: measured state minus converted motor target. These are simulation records, not physical tracking data.
+*Figure 5. The retained local circular-motion recording. Left: raw elbow action and state. Middle: action converted into motor-target coordinates. Right: measured state minus converted motor target. These are simulation records, not physical tracking data.*
 
 Read the panels in order. First notice the raw sign difference. Next apply the declared direction conversion. Only then interpret the residual. A flat segment can mean a stationary request, a workspace/IK rejection, a stale stream or a paused operator. Inspect `blocked`, pose age and command history before assigning a cause.
 
@@ -238,7 +238,7 @@ For the 170 saved circle rows, there are 169 intervals between the first and las
 
 ![Inspect the time intervals and stale-input rule](../media/class09/stream-record-classroom.png)
 
-> Figure 6. Upper panel: intervals from a recorded local fake-phone run, compared with the nominal 30 Hz period. Lower panel: receiver-side pose age during a separate deliberate stream interruption. The two panels are different tests, not a shared time-synchronized experiment.
+*Figure 6. Upper panel: intervals from a recorded local fake-phone run, compared with the nominal 30 Hz period. Lower panel: receiver-side pose age during a separate deliberate stream interruption. The two panels are different tests, not a shared time-synchronized experiment.*
 
 The retained circular-motion test contains 170 frames over about 5.86 s of recorded timestamps. Its effective rate is approximately 28.84 Hz, although metadata declares nominal 30 Hz. The largest observed interval is about 42.8 ms. These values describe this local test and workload, not a guarantee for every Mac.
 
@@ -276,7 +276,7 @@ Select a row and its matching front/side image pair. Check channel order, conver
 
 ![Two views from the same recorded simulation row](../media/class09/episode-views-classroom.png)
 
-> Figure 7. Front and side views from frame 0 of the retained circle episode. Both are rendered simulation images, associated with the same CSV row. Neither is a phone camera image. The two views make the scene and camera keys concrete; they do not establish physical camera calibration.
+*Figure 7. Front and side views from frame 0 of the retained circle episode. Both are rendered simulation images, associated with the same CSV row. Neither is a phone camera image. The two views make the scene and camera keys concrete; they do not establish physical camera calibration.*
 
 The first two retained rows make the action/state comparison explicit. Figure 7 shows the images for row 0; each original front/side image is 640 × 480 pixels. The next row gives a nonzero residual to calculate.
 

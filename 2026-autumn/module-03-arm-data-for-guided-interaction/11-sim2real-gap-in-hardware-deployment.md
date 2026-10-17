@@ -90,7 +90,7 @@ Holding the last command when a frame is late, skipping a policy update and exec
 
 ![Observation age and travel during an illustrative delay](../media/class11/latency-budget-classroom.png)
 
-> Figure 1. Constructed timing example: 20 ms capture/transport, 40 ms preprocessing/inference and 20 ms scheduling/execution sum to 80 ms. The lower-panel travel scale assumes constant 0.10 m/s. These values illustrate a timing budget; they are not measured phone, robot or policy latency.
+*Figure 1. Constructed timing example: 20 ms capture/transport, 40 ms preprocessing/inference and 20 ms scheduling/execution sum to 80 ms. The lower-panel travel scale assumes constant 0.10 m/s. These values illustrate a timing budget; they are not measured phone, robot or policy latency.*
 
 ### Match actuation and contact under a declared experiment
 
@@ -116,7 +116,7 @@ An incremental action needs a reference. If `Δp` is added to the previous comma
 
 ![The reference changes the trajectory](../media/class11/reference-choice-classroom.png)
 
-> Figure 2. Constructed one-dimensional lag example. Each tick requests a 10 mm increment and the toy mechanism closes half the remaining target error. This is not robot data or a reproduction of a reported policy result.
+*Figure 2. Constructed one-dimensional lag example. Each tick requests a 10 mm increment and the toy mechanism closes half the remaining target error. This is not robot data or a reproduction of a reported policy result.*
 
 **Worked sequence:** Start at 0 mm. Under command-relative updates, successive targets are 10, 20 and 30 mm; the toy measured positions become 5, 12.5 and 21.25 mm. Under measured-relative updates, targets are 10, 15 and 20 mm; measured positions become 5, 10 and 15 mm. The same numerical increment has different closed-loop consequences.
 
@@ -151,7 +151,7 @@ A useful progression is interface inspection, deterministic replay, open-loop pr
 
 ![Checks and their evidence boundaries](../media/class11/evidence-checks-classroom.png)
 
-> Figure 3. Conceptual progression of checks. The order helps control cost and isolate faults; it is not a universal project grade or proof that every project needs hardware.
+*Figure 3. Conceptual progression of checks. The order helps control cost and isolate faults; it is not a universal project grade or proof that every project needs hardware.*
 
 An interface check can detect wrong units before any action is executed. A replay can test whether recorded state and commands suffice to reproduce a transition. Open-loop prediction tests a policy against held-out recorded observations, as motivated by the imitation-learning setting of ACT (Zhao et al. 2023). A shadow check can inspect proposed commands before physical execution. A physical rollout finally observes the real system under a declared protocol.
 
@@ -173,7 +173,7 @@ Consider replaying a pushing sequence with the cube shifted. The arm's initial j
 
 ![The ingredients of an exact repeat](../media/class11/replay-components-classroom.png)
 
-> Figure 4. Constructed simulation replay with the retained pusher model. The example restores MuJoCo's integration state and issues the same scripted joint targets. The reported zero difference is conditional on this exact repeat.
+*Figure 4. Constructed simulation replay with the retained pusher model. The example restores MuJoCo's integration state and issues the same scripted joint targets. The reported zero difference is conditional on this exact repeat.*
 
 The local example runs sixty control steps, covering two seconds, then restores the saved integration state and repeats the commands. The maximum numeric difference across recorded position and velocity entries is zero in the tested run. These entries have different units; a zero-equality diagnostic is meaningful here, but their combined maximum is not a physical error magnitude for comparisons between nonidentical runs. It uses MuJoCo 3.14.0 and the same model/timestep. It is not a replay of the missing trained policy and is not a hardware comparison.
 
@@ -187,7 +187,7 @@ The bundled reset-comparison experiment gives the cube an initial +0.20 m/s velo
 
 ![Cube trajectory discrepancy under two reset procedures](../media/class11/reset-comparison-classroom.png)
 
-> Figure 5. Controlled simulation experiment using the bundled model. Both reset procedures are compared with the same scripted reference. Full integration-state restoration has zero recorded xy discrepancy; the deliberately incomplete reset differs. This diagnoses state completeness in this constructed case, not a learned policy or a physical friction parameter.
+*Figure 5. Controlled simulation experiment using the bundled model. Both reset procedures are compared with the same scripted reference. Full integration-state restoration has zero recorded xy discrepancy; the deliberately incomplete reset differs. This diagnoses state completeness in this constructed case, not a learned policy or a physical friction parameter.*
 
 The incomplete reset changes more than cube velocity: it resets other integration-state fields as well. It therefore supports a state-completeness diagnosis, while isolating the effect of velocity alone would need a further comparison that restores the full state and changes only that velocity. The 4.93 mm trajectory discrepancy is also not a cube-to-goal score or a measured hardware error.
 
@@ -246,7 +246,7 @@ The complete JSON uses seeds 100000–100049. All eighteen recorded failures end
 
 ![Keep all stored outcomes visible](../media/class11/stored-outcomes-classroom.png)
 
-> Figure 6. Left: the fifty supplied binary outcomes. Right: the 32/50 fraction with a descriptive 95% Wilson interval, approximately 0.501–0.759. The interval assumes independent comparable Bernoulli trials; it is not a hardware-transfer interval or a training-seed uncertainty estimate.
+*Figure 6. Left: the fifty supplied binary outcomes. Right: the 32/50 fraction with a descriptive 95% Wilson interval, approximately 0.501–0.759. The interval assumes independent comparable Bernoulli trials; it is not a hardware-transfer interval or a training-seed uncertainty estimate.*
 
 Fifty evaluation attempts do not make a score exact. Outcomes can also share training runs, conditions and implementation errors. The interval only describes a particular sampling model. It does not cover uncertainty from a new trained checkpoint, changed camera or hardware. The 95% level refers to the interval procedure under its sampling assumptions, not a 95% task-success requirement (NIST/SEMATECH n.d.).
 
@@ -266,7 +266,7 @@ The selected failure is episode 0 of the supplied video set. Its summary reports
 
 ![A selected failed rollout](../media/class11/failure-frames-classroom.png)
 
-> Figure 7. Selected frames 0, 225 and 449 from the supplied episode-0 failure video. The figure crops the policy-view half of the two-view video, without retouching; the full video retains the observer view. These samples alone do not locate the exact onset of failure.
+*Figure 7. Selected frames 0, 225 and 449 from the supplied episode-0 failure video. The figure crops the policy-view half of the two-view video, without retouching; the full video retains the observer view. These samples alone do not locate the exact onset of failure.*
 
 The saved `ik_ok=1.0` is not an episode-wide IK success fraction. In the included environment, `ik_ok` describes the current step, and the supplied evaluator copies scalar fields from the final `info` dictionary into its result. It therefore reports the last step's flag under that code. It does not establish that all 450 steps passed IK, that every target was achieved dynamically, or that the cube reached its goal. A per-step log is needed to calculate a fraction. Likewise, the final distance alone does not tell us whether the problem was visibility, action execution, contact or insufficient recovery data.
 
@@ -291,7 +291,7 @@ A failure analysis should connect observation, competing explanations and a meas
 
 ![Turn a diagnosis into a test](../media/class11/next-experiment-classroom.png)
 
-> Figure 8. Conceptual design of a discriminating next experiment.
+*Figure 8. Conceptual design of a discriminating next experiment.*
 
 For example, keep the controller and target trajectory fixed and compare full-state versus incomplete-state replay. If only the incomplete reset changes the result, the finding supports a state-completeness explanation for that replay discrepancy. It does not identify a hardware friction error.
 

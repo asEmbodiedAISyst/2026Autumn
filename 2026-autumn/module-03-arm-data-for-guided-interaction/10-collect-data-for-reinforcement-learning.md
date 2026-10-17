@@ -36,7 +36,7 @@ A **demonstration** records observations and actions selected by an operator or 
 
 ![Demonstration, reinforcement-learning experience and evaluation records](../media/class10/learning-records-classroom.png)
 
-> Figure 1. Record types answer different questions. Their roles depend on available information and intended use, not on file extensions.
+*Figure 1. Record types answer different questions. Their roles depend on available information and intended use, not on file extensions.*
 
 A simple behavior-cloning objective is:
 
@@ -74,7 +74,7 @@ The [Universal Manipulation Interface](https://umi-gripper.github.io/) motivates
 
 ![Nine-value tool-pose schema and camera input](../media/class10/tool-schema-classroom.png)
 
-> Figure 2. The pusher schema contains three position values and two rotation-matrix columns. It describes a pose interface, not nine robot joints.
+*Figure 2. The pusher schema contains three position values and two rotation-matrix columns. It describes a pose interface, not nine robot joints.*
 
 The pilot declares:
 
@@ -198,7 +198,7 @@ The supplied simulated pilot contains **ten episodes and 638 retained frames**. 
 
 ![Example learner-camera views from the simulated pilot](../media/class10/pilot-views-classroom.png)
 
-> Figure 3. Selected frames from the supplied phone-camera simulation video. They support visual inspection, not an automatic visibility score or a physical collection claim.
+*Figure 3. Selected frames from the supplied phone-camera simulation video. They support visual inspection, not an automatic visibility score or a physical collection claim.*
 
 Inspect the learner's actual observation. Can the cube, goal and relevant tool interaction be seen? Are task phases missing? Does a camera turn away just as contact matters? A schema can pass while its images provide inadequate task information.
 
@@ -219,7 +219,7 @@ The portable numeric audit checks counts, dimensions, finite values and stored t
 
 ![Numeric audit of the ten-episode pilot](../media/class10/pilot-audit-classroom.png)
 
-> Figure 4. Retained pilot audit. Lines mark the stated 0.25 m/s speed limit and 15 mm final-frame distance threshold. The plotted speed is inferred from the pose sequence and nominal sample rate; no policy is trained or evaluated.
+*Figure 4. Retained pilot audit. Lines mark the stated 0.25 m/s speed limit and 15 mm final-frame distance threshold. The plotted speed is inferred from the pose sequence and nominal sample rate; no policy is trained or evaluated.*
 
 For nominal sample rate $$f$$, the action-pose finite-difference speed is:
 
@@ -266,7 +266,7 @@ The prepared IK audit reconstructs observed tool poses at a declared canonical r
 
 ![Canonical target-frame reachability and yaw warnings](../media/class10/pilot-reach-classroom.png)
 
-> Figure 5. Retained model/solver-dependent audit. Reach percentages are rounded terminal values. The 98% reach fraction and ±60-degree yaw lines are audit thresholds, not hardware qualification.
+*Figure 5. Retained model/solver-dependent audit. Reach percentages are rounded terminal values. The 98% reach fraction and ±60-degree yaw lines are audit thresholds, not hardware qualification.*
 
 The labels “reachable” in the saved report mean **solver-reported success under this particular audit**, rather than certified reachability. It uses position residual below 5 mm and cross-product orientation residual norm below 0.05. That orientation residual is a small-error measure; it is not a global geodesic-angle bound and can vanish for a 180° mismatch. The numerical solver is useful locally, while a qualified executor needs a final-pose check with an appropriate rotation metric.
 
@@ -300,7 +300,7 @@ Adjacent frames in one episode are strongly related. Randomly distributing them 
 
 ![Illustrative whole-episode training, selection and test split](../media/class10/episode-splits-classroom.png)
 
-> Figure 6. Constructed episode-level split. A–J are an illustration; they are not an executed split of the supplied pilot.
+*Figure 6. Constructed episode-level split. A–J are an illustration; they are not an executed split of the supplied pilot.*
 
 Choose the split unit from the claim. For new attempts under the same conditions, hold out complete episodes. For a new operator, object arrangement, camera or session, reserve that factor explicitly. Different seeds identify distinct simulator attempts under a versioned reset; they do not automatically establish the desired distribution shift.
 
@@ -316,7 +316,7 @@ Distinguish **predicted chunk length** from **executed actions before replanning
 
 ![Nominal action execution and replanning intervals](../media/class10/action-chunks-classroom.png)
 
-> Figure 7. Constructed replanning examples at nominal 30 Hz. They illustrate feedback opportunities, not a measured ranking of policy success.
+*Figure 7. Constructed replanning examples at nominal 30 Hz. They illustrate feedback opportunities, not a measured ranking of policy success.*
 
 If the executor applies $$n$$ actions at nominal rate $$f$$, its nominal open-loop interval is:
 
