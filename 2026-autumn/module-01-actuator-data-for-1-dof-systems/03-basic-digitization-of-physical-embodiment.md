@@ -28,13 +28,13 @@ Place the physical actuator and its link/payload assembly beside their digital r
 
 ![Physical fixture, CAD assembly and MuJoCo representation](../media/class03/physical_cad_mjcf_comparison.png)
 
-*Figure 1. The declared B2 fixture in physical, CAD and simulator views. Appearance establishes recognizable geometry; each view supports different claims about structure and behavior.* [Figure sources](#figure-sources)
+*Figure 1. The declared B2 fixture in physical, CAD and simulator views. Appearance establishes recognizable geometry; each view supports different claims about structure and behavior.*
 
 Several manufactured parts can form one moving rigid assembly. Separate model bodies can also preserve component bookkeeping while remaining rigidly attached. Neither the number of parts nor the number of meshes determines the number of degrees of freedom. Our one hinge supplies one rotational coordinate. Adding a payload mesh should not accidentally add another independent motion.
 
 ![Physical grouping and executable body tree](../media/class03/body-tree-classroom.png)
 
-*Figure 2. A declared teaching schematic: the housing is fixed, the link rotates through one hinge, and attached payload bodies have no additional joints. The grouping does not depict internal gearbox components.* [Figure sources](#figure-sources)
+*Figure 2. A declared teaching schematic: the housing is fixed, the link rotates through one hinge, and attached payload bodies have no additional joints. The grouping does not depict internal gearbox components.*
 
 This abstraction already contains choices. We treat the link and attachments as rigid and omit cable flexibility and shaft play. Those choices may be adequate for a limited free-motion experiment. They need reconsideration if the task depends on structural vibration, backlash or cable interference.
 
@@ -97,11 +97,11 @@ $$
 
 The first term is the component's inertia about an axis through its centre of mass parallel to the joint axis. The distance r is perpendicular to those axes. Add the contributions of all components moving with the joint. The term involving squared distance explains why placing a payload farther out increases joint inertia.
 
-Our declared XC330 teaching family uses a 22 g link and two complete 44 g pin–payload assemblies. These masses come from the submission's physical record. The model's component inertias are CAD-derived estimates scaled to the recorded masses. Their status remains different from an independently measured inertia.
+Our declared XC330 teaching family uses a 22 g link and two complete 44 g pin–payload assemblies. The included [fixture mass record](../resources/class03/records/fixture-masses.txt) reports these masses. The model's component inertias are CAD-derived estimates scaled to the recorded masses. Their status remains different from an independently measured inertia.
 
 ![Declared XC330 fixture configurations](../media/class03/configuration_mass_positions.png)
 
-*Figure 3. B0, B1 and B2 place equal 44 g assemblies at symmetric radii. G1 places them on one side. Each complete assembly includes its pin. These are declared positions in the 110 g teaching family.* [Figure sources](#figure-sources)
+*Figure 3. B0, B1 and B2 place equal 44 g assemblies at symmetric radii. G1 places them on one side. Each complete assembly includes its pin. These are declared positions in the 110 g teaching family.*
 
 Compare B0 at ±60 mm with B2 at ±100 mm. Convert to SI units before calculating:
 
@@ -144,7 +144,7 @@ For our later position-response experiment, the target is a specified actuator a
 
 ![Matched conditions, physical and digital outputs, and three evidence levels](../media/class03/validation-chain-classroom.png)
 
-*Figure 4. Declared conceptual comparison. Physical and simulated inputs must have compatible meaning and conditions; measured and predicted outputs must be aligned before comparison. The diagram contains no experimental trajectories.* [Figure sources](#figure-sources)
+*Figure 4. Declared conceptual comparison. Physical and simulated inputs must have compatible meaning and conditions; measured and predicted outputs must be aligned before comparison. The diagram contains no experimental trajectories.*
 
 Three checks answer different questions:
 
@@ -181,7 +181,7 @@ Class 03 prepares a structurally inspectable representation and specifies this t
 
 ![The digitization workflow](../media/class03/digitization_workflow.png)
 
-*Figure 5. The physical-to-executable chain preserves selected information at each stage. Export transfers a representation; inspection establishes what was transferred.* [Figure sources](#figure-sources)
+*Figure 5. The physical-to-executable chain preserves selected information at each stage. Export transfers a representation; inspection establishes what was transferred.*
 
 CAD contains parts, dimensions, assembly relationships and material assumptions. Geometry assets contain exported surfaces and their scale. A robot description contains mechanical structure and parameter declarations. These layers remain conceptually distinct even when an exporter writes them together.
 
@@ -191,25 +191,58 @@ For our assembly, anchor the housing, introduce the link's hinge, and attach the
 
 ### Trace frames and units
 
-A position needs both a value and a coordinate frame. The body's parent-relative pose locates its origin and axes. To express a child-frame point in the parent frame, rotate its coordinates and then add the child origin's parent-frame position:
+A coordinate is useful only when we know **which point, which frame and which unit** it describes. Trace one identifiable point in the supplied B2 assembly: P is the origin of `Pin_1`, where the positive-side pin and payload are attached to the link. Follow it from the XML to its position in the simulator.
+
+**Read the local coordinates.** These selected declarations place the hinge and the pin in the `Link` body:
+
+```xml
+<body name="Link" ...>
+  <joint name="actuator_joint" type="hinge"
+         pos="0 0.007 0" axis="0 1 0" ... />
+  <body name="Pin_1" pos="0.100 0 0" ...>
+    <!-- Payload_1 is rigidly attached inside this body -->
+  </body>
+</body>
+```
+
+The excerpt rounds negligible export terms and omits unrelated attributes. `pos="0.100 0 0"` means that P is 0.100 m along the **Link frame's x direction** from the Link origin. It does not mean world x = 0.100 m. The hinge origin J is at [0, 0.007, 0] m in that same Link frame; the body origin and joint origin are distinct locations.
+
+**Identify what stays fixed.** When the joint turns, P stays attached at the same Link-frame coordinates. Its world coordinates change. In this model's zero pose, the Link axes align with the world axes and the joint is located at [−0.210, 0.0035, 0.370] m in the world. The positive hinge axis is +y, so positive rotation moves the initially positive-x payload toward negative world z.
+
+![Trace a pin attachment point through the actual B2 model and its units](../media/class03/frames-and-units-classroom.png)
+
+*Figure 6. The same B2 attachment point at zero and +30° joint positions. The plot shows displacement from the joint in the world x–z plane; the table reports absolute world coordinates. The 7 mm axial offset is outside this projection. These are declared model coordinates, verified against MuJoCo, rather than hardware measurements.*
+
+**Calculate and check the world coordinates.** Subtract the joint's Link-frame position before rotating; then add the joint's world position. For this model, that gives
 
 $$
-{}^{A}p={}^A R_B\,{}^B p+{}^A p_B.
+{}^W p_P(q)=
+\begin{bmatrix}
+-0.210+0.100\cos q\\
+-0.0035\\
+0.370-0.100\sin q
+\end{bmatrix}\ \mathrm{m}.
 $$
 
-![Worked rotation and translation](../media/class03/frame-transform-classroom.png)
+The y value includes the −0.007 m offset from J to P: 0.0035 − 0.007 = −0.0035 m. At zero angle the x and z offsets are [0.100, 0]; at +30° they become approximately [0.08660, −0.05000] m.
 
-*Figure 6. Constructed coordinate example independent of the hardware: rotate by +90° about z, then translate. No fixture measurements are inferred from these teaching coordinates.* [Figure sources](#figure-sources)
+| Quantity | Joint at 0° | Joint at +30° |
+|---|---|---|
+| P in the Link frame (m) | [0.100, 0, 0] | [0.100, 0, 0] |
+| P in the world frame (m) | [−0.110, −0.0035, 0.370] | [−0.123397, −0.0035, 0.320] |
+| Joint input in radians | 0 | 0.523599 |
 
-The child point [0.08, 0, 0] m becomes [0, 0.08, 0] m after rotation. Adding [0.10, 0.02, 0] m gives [0.10, 0.10, 0] m. An axis is a direction rather than a point, so transform its direction by rotation without adding translation.
+**Convert units at the correct boundary.** The CAD distance 100 mm becomes 0.100 m in the body position. `scale="0.001 0.001 0.001"` scales the mesh vertices; it does **not** scale `body pos`, `joint pos` or inertial positions for you. Writing `pos="100 0 0"` would put the attachment 100 m away. Convert display degrees to radians before assigning `data.qpos`; `compiler angle="radian"` governs angle-valued XML attributes, not a viewer's preferred display units. The joint axis [0, 1, 0] is a direction and has no length unit.
 
-Check units separately. An exported 100 mm dimension should span 0.100 m in this package. The mesh scale `0.001 0.001 0.001` converts millimetres to metres; body and joint positions still require their own checks. Zooming the viewer cannot establish correct scale. Record angular units and distinguish a declared joint range from a measured physical stop.
+You can reproduce the coordinate check from `2026-autumn/resources/class03` with `python code/class03_frames.py --q-deg 30`. The calculation and expected results above remain sufficient without running it.
+
+**Checkpoint:** Why can P keep the same coordinates in `Link` while moving in the world? If the mesh looks correct but the payload is far away, which position and unit declarations should you check?
 
 ### Separate visual, collision and inertial descriptions
 
 ![Visual geometry, a candidate collision simplification and inertial properties](../media/class03/geometry-roles-classroom.png)
 
-*Figure 7. Three roles for a conceptual link. The collision rectangle is an illustrative candidate, not an enabled contact model in the supplied free-motion fixtures. The inertia sketch identifies a mass-distribution description rather than a rendered surface.* [Figure sources](#figure-sources)
+*Figure 7. Three roles for a conceptual link. The collision rectangle is an illustrative candidate, not an enabled contact model in the supplied free-motion fixtures. The inertia sketch identifies a mass-distribution description rather than a rendered surface.*
 
 Visual geometry supports recognition. Collision geometry defines the surfaces participating in modeled contact. Explicit inertial properties describe mass distribution. A detailed visual mesh need not be the best collision approximation, and a collision approximation need not determine inertia when inertial records are supplied separately.
 
@@ -240,7 +273,7 @@ Printing turns nominal geometry into a part with an actual material structure an
 
 ![Nominal and as-built interface checks](../media/class03/printed-interface-classroom.png)
 
-*Figure 8. Declared manufacturing schematic. The dashed inner boundary exaggerates a possible bore difference to explain fit inspection; it is not a measured tolerance, print result or deformation prediction.* [Figure sources](#figure-sources)
+*Figure 8. Declared manufacturing schematic. The dashed inner boundary exaggerates a possible bore difference to explain fit inspection; it is not a measured tolerance, print result or deformation prediction.*
 
 Choose a functional dimension, such as a shaft interface or mounting-hole location. Compare the nominal CAD value with the prepared printed part and state the measurement method. Check whether the intended fit allows rotation or creates unwanted play. Record the complete moving mass with its fasteners rather than assuming the mass of the link alone represents the assembly.
 
@@ -258,19 +291,59 @@ Open the [RS06 motor STEP](../resources/class03/preparation/demonstration/rs06/R
 
 ![RS06 mechanical reference](../media/class03/RS06_outline_and_mounting_dimensions.png)
 
-*Figure 9. Manufacturer mechanical reference supplied with the RS06 material. Nominal drawing values are distinct from measurements of the available unit.* [Figure sources](#figure-sources)
+*Figure 9. Manufacturer mechanical reference supplied with the RS06 material. Nominal drawing values are distinct from measurements of the available unit.*
 
 Keep manufacturer values, CAD estimates and actual measurements in separate ledger entries. The motor STEP is a component reference rather than a complete editable fixture assembly. Use the prepared fixture/export records to inspect the assembled mechanism.
 
 ### Inspect the joint and export decisions
 
-Identify the fixed base, rotating fixture, revolute joint and rigid attachments. In a prepared jointed CAD assembly, inspect reference pose, axis, material assignment and simplification decisions. Preserve the intermediate export to make those decisions traceable.
+The sequence below shows the current XC330 Fusion workflow. Use it to identify the modeling decisions, then apply the same checks to the prepared RS06 model. The complete screenshots are included here so no second repository or source page is needed. A [B2 CAD assembly](../resources/class03/cad/1DOF-B2.step) is also included for geometry inspection; a STEP import should not be assumed to retain the original editable Fusion joint setup.
 
-![Recorded Fusion and ACDC4Robot workflow](../media/class03/fusion_acdc_workflow.png)
+**1. Choose the joint origin.** The joint dialog identifies Link and XC330 as the two components. Locate the output-shaft interface and inspect the selected origins and offsets before accepting the joint.
 
-*Figure 10. Recorded XC330 interface views illustrate joint/material assignment and export selection. They show the workflow; they are not a new RS06 export.* [Figure sources](#figure-sources)
+![Choose the joint origin in Fusion](../media/class03/fusion-01-joint-origin.png)
 
-Open the existing [RS06 source export](../resources/class03/preparation/rs06_fixtures/source-assets/mjcf/test_station_balanced_payload/test_station_balanced_payload.xml) and [export report](../resources/class03/preparation/rs06_fixtures/source-assets/mjcf/test_station_balanced_payload/export_report.txt). Trace meshes, transforms and joint declarations. Use these prepared files when the complete jointed CAD assembly is unavailable.
+*Figure 10a. Choose the joint origin; recorded XC330 interface view.*
+
+**2. Align the moving link.** The transparent link and selected component origins expose the alignment decision. Check that the intended shaft and link attachment coincide; do not infer alignment only from the camera view.
+
+![Align the moving link in Fusion](../media/class03/fusion-02-component-alignment.png)
+
+*Figure 10b. Align the moving link; recorded XC330 interface view.*
+
+**3. Set the revolute motion.** The Motion tab shows a revolute joint and a selected rotation axis. The limit checkboxes in this capture are not enabled; this screenshot does not verify the ±90° range later declared in the MJCF.
+
+![Set the revolute motion in Fusion](../media/class03/fusion-03-revolute-motion.png)
+
+*Figure 10c. Set the revolute motion; recorded XC330 interface view.*
+
+**4. Locate the payload and pin origins.** The Position tab selects the payload and pin attachment origins. This is an attachment-coordinate decision, not a material-property measurement.
+
+![Locate the payload and pin origins in Fusion](../media/class03/fusion-04-payload-pin-origins.png)
+
+*Figure 10d. Locate the payload and pin origins; recorded XC330 interface view.*
+
+**5. Make the payload attachment rigid.** The Motion tab explicitly shows Rigid. The payload follows its parent attachment without introducing a second moving degree of freedom.
+
+![Make the payload attachment rigid in Fusion](../media/class03/fusion-05-rigid-payload.png)
+
+*Figure 10e. Make the payload attachment rigid; recorded XC330 interface view.*
+
+**6. Repeat and inspect the second attachment.** The second payload/pin joint is positioned through the selected origins and offsets. Check both sides of the assembly rather than assuming that one correct attachment guarantees symmetry.
+
+![Repeat and inspect the second attachment in Fusion](../media/class03/fusion-06-second-payload.png)
+
+*Figure 10f. Repeat and inspect the second attachment; recorded XC330 interface view.*
+
+**7. Export the robot description.** The ACDC4Robot dialog selects MJCF and MuJoCo. Export the assembled mechanism and inspect the generated XML and meshes; selecting an export format alone does not validate them.
+
+![Export the robot description in Fusion](../media/class03/fusion-07-mjcf-export.png)
+
+*Figure 10g. Export the robot description; recorded XC330 interface view.*
+
+Check the material assignment and CAD physical-property report separately: the joint dialogs above do not establish the component mass or inertia. Compare those estimates with the assembly's recorded mass before using them in dynamics.
+
+The [RS06 source export](../resources/class03/preparation/rs06_fixtures/source-assets/mjcf/test_station_balanced_payload/test_station_balanced_payload.xml) and [export report](../resources/class03/preparation/rs06_fixtures/source-assets/mjcf/test_station_balanced_payload/export_report.txt) are included in this repository. Trace their mesh paths and joint declarations, then compare the source export with the prepared model below. The RS06 motor STEP is a component reference; the complete original jointed RS06 Fusion assembly is not required to follow this prepared-model inspection.
 
 ### Inspect the executable model and gravity
 
@@ -346,15 +419,4 @@ python3.12 -m venv .venv-class03-core
 .venv-class03-core/bin/python code/class03_inspect.py --case B2
 ```
 
-The activity command assumes this environment is selected. The saved tables provide the numerical fallback without an installation during class. CAD, model, engineering drawing and printing files are linked as supporting downloads; the teaching sequence remains on this page.
-
-## Figure sources
-
-| Figures | Inputs and generating source |
-|---|---|
-| 1, 3, 5 and 10 | Retained physical/CAD/model comparison, 110 g fixture schematic, conceptual workflow and recorded Fusion captures; [submission generator](../resources/class03/consolidation/additional_material/code/generate_figures.py) |
-| 2, 4, 7 and 8 | New declared teaching schematics; functions `body_tree`, `evidence_chain`, `geometry_roles` and `printed_interface` in [class03_figures.py](../resources/class03/code/class03_figures.py) |
-| 6 | Declared rotation/translation example; [visual_lessons.py](../resources/class03/code/visual_lessons.py) |
-| 9 | Manufacturer drawing supplied with the [RS06 manual](../resources/class03/preparation/demonstration/rs06/RS06_User_Manual_260713.pdf) |
-
-[Figure reproduction record](../media/class03/FIGURE-CODE.md#full-notes-teaching-schematics) documents the new MiSans figures, parameters and editable masters. The diagrams introduce no physical measurements or simulated experiments.
+The activity command assumes this environment is selected. The XML excerpts, coordinate tables, interface screenshots and saved model results provide the complete reading path without installing software during class. CAD, model, engineering drawing and printing files are linked as supporting downloads; the teaching sequence remains on this page.

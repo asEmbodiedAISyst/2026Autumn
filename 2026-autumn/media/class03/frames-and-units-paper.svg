@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="515.905512pt" height="268.270866pt" viewBox="0 0 515.905512 268.270866" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T16:29:26.531235</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 268.270866 
+L 515.905512 268.270866 
+L 515.905512 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 30.954331 213.5653 
+L 268.270866 213.5653 
+L 268.270866 38.609314 
+L 30.954331 38.609314 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 93.814215 120.166462 
+Q 93.377994 120.961588 93.318206 121.070566 
+" clip-path="url(#p13f8ee588f)" style="fill: none; stroke: #243448; stroke-width: 0.7; stroke-linecap: round"/>
+    <path d="M 95.892392 119.289116 
+L 93.318206 121.070566 
+L 93.437557 117.942347 
+" clip-path="url(#p13f8ee588f)" style="fill: none; stroke: #243448; stroke-width: 0.7; stroke-linecap: round"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m9bdbe31124" d="M 0 0 
+L 0 2.5 
+" style="stroke: #000000; stroke-width: 0.6"/>
+      </defs>
+      <g>
+       <use xlink:href="#m9bdbe31124" x="56.937893" y="213.5653" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 5.95px; font-family: 'MiSans'; text-anchor: middle" x="56.937893" y="223.9683" transform="rotate(-0 56.937893 223.9683)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m9bdbe31124" x="143.549767" y="213.5653" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 5.95px; font-family: 'MiSans'; text-anchor: middle" x="143.549767" y="223.9683" transform="rotate(-0 143.549767 223.9683)">50</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m9bdbe31124" x="230.161641" y="213.5653" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 5.95px; font-family: 'MiSans'; text-anchor: middle" x="230.161641" y="223.9683" transform="rotate(-0 230.161641 223.9683)">100</text>
+     </g>
+    </g>
+    <g id="text_4">
+     <text style="font-size: 7px; font-family: 'MiSans'; text-anchor: middle" x="149.612598" y="235.0978" transform="rotate(-0 149.612598 235.0978)">Displacement from joint along world x (mm)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_4">
+      <defs>
+       <path id="mace71d4fd6" d="M 0 0 
+L -2.5 0 
+" style="stroke: #000000; stroke-width: 0.6"/>
+      </defs>
+      <g>
+       <use xlink:href="#mace71d4fd6" x="30.954331" y="187.581738" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 5.95px; font-family: 'MiSans'; text-anchor: end" x="24.954331" y="189.783238" transform="rotate(-0 24.954331 189.783238)">−50</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mace71d4fd6" x="30.954331" y="100.969864" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 5.95px; font-family: 'MiSans'; text-anchor: end" x="24.954331" y="103.171364" transform="rotate(-0 24.954331 103.171364)">0</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mace71d4fd6" x="30.954331" y="57.663926" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 5.95px; font-family: 'MiSans'; text-anchor: end" x="24.954331" y="59.865426" transform="rotate(-0 24.954331 59.865426)">25</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 7px; font-family: 'MiSans'; text-anchor: middle" x="8.449049" y="126.087307" transform="rotate(-90 8.449049 126.087307)">Displacement from joint along world z (mm)</text>
+    </g>
+   </g>
+   <g id="line2d_7">
+    <path d="M 56.937893 100.969864 
+L 230.161641 100.969864 
+" clip-path="url(#p13f8ee588f)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #0072b2"/>
+    <defs>
+     <path id="m227125225c" d="M 0 1.5 
+C 0.397805 1.5 0.77937 1.341951 1.06066 1.06066 
+C 1.341951 0.77937 1.5 0.397805 1.5 0 
+C 1.5 -0.397805 1.341951 -0.77937 1.06066 -1.06066 
+C 0.77937 -1.341951 0.397805 -1.5 0 -1.5 
+C -0.397805 -1.5 -0.77937 -1.341951 -1.06066 -1.06066 
+C -1.341951 -0.77937 -1.5 -0.397805 -1.5 0 
+C -1.5 0.397805 -1.341951 0.77937 -1.06066 1.06066 
+C -0.77937 1.341951 -0.397805 1.5 0 1.5 
+z
+" style="stroke: #0072b2"/>
+    </defs>
+    <g clip-path="url(#p13f8ee588f)">
+     <use xlink:href="#m227125225c" x="56.937893" y="100.969864" style="fill: #0072b2; stroke: #0072b2"/>
+     <use xlink:href="#m227125225c" x="230.161641" y="100.969864" style="fill: #0072b2; stroke: #0072b2"/>
+    </g>
+   </g>
+   <g id="line2d_8">
+    <path d="M 56.937893 100.969864 
+L 206.95406 187.581738 
+" clip-path="url(#p13f8ee588f)" style="fill: none; stroke: #d55e00; stroke-width: 1.2; stroke-linecap: square"/>
+    <defs>
+     <path id="mcfc906be83" d="M 0 1.5 
+C 0.397805 1.5 0.77937 1.341951 1.06066 1.06066 
+C 1.341951 0.77937 1.5 0.397805 1.5 0 
+C 1.5 -0.397805 1.341951 -0.77937 1.06066 -1.06066 
+C 0.77937 -1.341951 0.397805 -1.5 0 -1.5 
+C -0.397805 -1.5 -0.77937 -1.341951 -1.06066 -1.06066 
+C -1.341951 -0.77937 -1.5 -0.397805 -1.5 0 
+C -1.5 0.397805 -1.341951 0.77937 -1.06066 1.06066 
+C -0.77937 1.341951 -0.397805 1.5 0 1.5 
+z
+" style="stroke: #d55e00"/>
+    </defs>
+    <g clip-path="url(#p13f8ee588f)">
+     <use xlink:href="#mcfc906be83" x="56.937893" y="100.969864" style="fill: #d55e00; stroke: #d55e00"/>
+     <use xlink:href="#mcfc906be83" x="206.95406" y="187.581738" style="fill: #d55e00; stroke: #d55e00"/>
+    </g>
+   </g>
+   <g id="line2d_9">
+    <path d="M 98.511593 100.969864 
+L 98.501699 101.876789 
+L 98.472024 102.783283 
+L 98.42258 103.688914 
+L 98.353392 104.59325 
+L 98.264493 105.495862 
+L 98.155924 106.39632 
+L 98.027738 107.294196 
+L 97.879995 108.189061 
+L 97.712766 109.08049 
+L 97.52613 109.968059 
+L 97.320176 110.851345 
+L 97.095003 111.729929 
+L 96.850717 112.603391 
+L 96.587435 113.471316 
+L 96.305282 114.333291 
+L 96.004392 115.188906 
+L 95.684908 116.037754 
+L 95.346983 116.87943 
+L 94.990777 117.713533 
+L 94.616461 118.539668 
+L 94.224211 119.357441 
+L 93.814215 120.166462 
+L 93.386668 120.966346 
+L 92.941773 121.756713 
+" clip-path="url(#p13f8ee588f)" style="fill: none; stroke: #243448; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 30.954331 213.5653 
+L 30.954331 38.609314 
+" style="fill: none; stroke: #000000; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 30.954331 213.5653 
+L 268.270866 213.5653 
+" style="fill: none; stroke: #000000; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 5.95px; font-family: 'MiSans'; fill: #243448" transform="translate(63.866843 54.494895)">J: fixed pivot</text>
+    <text style="font-size: 5.95px; font-family: 'MiSans'; fill: #243448" transform="translate(63.866843 61.128401)">+y into page</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 5.95px; font-family: 'MiSans'; text-anchor: start; fill: #0072b2" x="153.943192" y="76.718539" transform="rotate(-0 153.943192 76.718539)">P at zero pose</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 5.95px; font-family: 'MiSans'; text-anchor: start; fill: #d55e00" x="96.779355" y="199.7074" transform="rotate(-0 96.779355 199.7074)">P after rotation</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 5.95px; font-family: 'MiSans'; text-anchor: start; fill: #243448" x="114.10173" y="125.221188" transform="rotate(-0 114.10173 125.221188)">+30 deg</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'MiSans'; text-anchor: start" x="30.954331" y="26.609314" transform="rotate(-0 30.954331 26.609314)">Same payload point, two joint poses</text>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="mbaa59144f7" d="M 0 2.95804 
+C 0.784481 2.95804 1.536938 2.646362 2.09165 2.09165 
+C 2.646362 1.536938 2.95804 0.784481 2.95804 0 
+C 2.95804 -0.784481 2.646362 -1.536938 2.09165 -2.09165 
+C 1.536938 -2.646362 0.784481 -2.95804 0 -2.95804 
+C -0.784481 -2.95804 -1.536938 -2.646362 -2.09165 -2.09165 
+C -2.646362 -1.536938 -2.95804 -0.784481 -2.95804 0 
+C -2.95804 0.784481 -2.646362 1.536938 -2.09165 2.09165 
+C -1.536938 2.646362 -0.784481 2.95804 0 2.95804 
+z
+" style="stroke: #243448"/>
+    </defs>
+    <g clip-path="url(#p13f8ee588f)">
+     <use xlink:href="#mbaa59144f7" x="56.937893" y="100.969864" style="fill: #ffffff; stroke: #243448"/>
+    </g>
+   </g>
+   <g id="line2d_10">
+    <defs>
+     <path id="ma51b759583" d="M -2 2 
+L 2 -2 
+M -2 -2 
+L 2 2 
+" style="stroke: #243448; stroke-width: 0.6"/>
+    </defs>
+    <g clip-path="url(#p13f8ee588f)">
+     <use xlink:href="#ma51b759583" x="56.937893" y="100.969864" style="fill: #243448; stroke: #243448; stroke-width: 0.6"/>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="text_14">
+    <text style="font-weight: 600; font-size: 6.58px; font-family: 'MiSans'; text-anchor: start; fill: #243448" x="304.384252" y="26.489201" transform="rotate(-0 304.384252 26.489201)">Read the model</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 6.58px; font-family: 'MiSans'; text-anchor: start; fill: #243448" x="304.384252" y="41.661186" transform="rotate(-0 304.384252 41.661186)">Pin_1 origin in Link:</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 6.58px; font-family: 'MiSans'; text-anchor: start; fill: #243448" x="304.384252" y="57.06964" transform="rotate(-0 304.384252 57.06964)">P = (0.100, 0, 0) m</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 6.58px; font-family: 'MiSans'; text-anchor: start; fill: #243448" x="304.384252" y="72.136756" transform="rotate(-0 304.384252 72.136756)">This local coordinate stays fixed.</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 600; font-size: 6.58px; font-family: 'MiSans'; text-anchor: start; fill: #243448" x="304.384252" y="102.678127" transform="rotate(-0 304.384252 102.678127)">Convert units once</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 6.58px; font-family: 'MiSans'; text-anchor: start; fill: #243448" x="304.384252" y="117.75758" transform="rotate(-0 304.384252 117.75758)">100 mm = 0.100 m</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 6.58px; font-family: 'MiSans'; text-anchor: start; fill: #243448" x="304.384252" y="133.087897" transform="rotate(-0 304.384252 133.087897)">30 deg = 0.5236 rad</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 6.58px; font-family: 'MiSans'; text-anchor: start; fill: #243448" x="304.384252" y="148.325682" transform="rotate(-0 304.384252 148.325682)">Mesh scale 0.001 applies to vertices.</text>
+   </g>
+   <g id="text_22">
+    <text style="font-weight: 600; font-size: 6.58px; font-family: 'MiSans'; text-anchor: start; fill: #243448" x="304.384252" y="179.123056" transform="rotate(-0 304.384252 179.123056)">Check the world position</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 6.58px; font-family: 'MiSans'; text-anchor: start; fill: #243448" x="304.384252" y="194.604506" transform="rotate(-0 304.384252 194.604506)">q = 0: (-110, -3.5, 370) mm</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 6.58px; font-family: 'MiSans'; text-anchor: start; fill: #243448" x="304.384252" y="209.842292" transform="rotate(-0 304.384252 209.842292)">q = 30: (-123.4, -3.5, 320) mm</text>
+   </g>
+  </g>
+  <g id="text_25">
+   <text style="font-size: 5.46px; font-family: 'MiSans'; text-anchor: middle; fill: #243448" x="257.952756" y="262.905449" transform="rotate(-0 257.952756 262.905449)">B2 model coordinates; x-z projection. The -7 mm axial offset from J to P is out of this view.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p13f8ee588f">
+   <rect x="30.954331" y="38.609314" width="237.316535" height="174.955986"/>
+  </clipPath>
+ </defs>
+</svg>

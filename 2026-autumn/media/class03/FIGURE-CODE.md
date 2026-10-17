@@ -27,3 +27,12 @@ Generation succeeded locally. All four classroom images were visually inspected.
 ## Retained source images
 
 The six earlier PNGs remain unchanged: physical_cad_mjcf_comparison, configuration_mass_positions, digitization_workflow, fusion_acdc_workflow, frame-transform-classroom and RS06_outline_and_mounting_dimensions. Their figure-by-figure meaning and original generating source are identified on the Class03 lesson page. The original photo/screenshot composition inputs are not all bundled in this compact student package; a complete rerun of the original submission generator is not claimed.
+
+
+## Model based frame and units figure
+
+Generator: code/class03_frame_figure.py, using code/class03_frames.py and bundled consolidation/additional_material/models/1DOF-B2.xml. Run from the class folder with `python code/class03_frame_figure.py --font-dir /path/to/MiSans --model consolidation/additional_material/models/1DOF-B2.xml --output-dir media`. Requires MuJoCo3.3.7, NumPy2.2.6 and Matplotlib3.10.3. Genuine MiSans Regular/Semibold preflight uses source/figure_typography.py and source/publication.mplstyle. Fonts remain local dependencies.
+
+Output frames-and-units-paper/classroom in PNG/PDF/SVG. Paper182mm/7pt/450dpi; classroom11.5in/12pt/180dpi; TrueTypePDF fonts and editableSVGtext. Model-derived positions at0and30degrees are projected into world x-z displacements from the joint; the table contains absolute world coordinates. No simulation trajectory, hardware measurement, image editing, filtering or random sampling. The raw 7mm axialoffset is declared. MuJoCo forward positions match Rodrigues-rotation calculations at−30,0,30,60degrees.
+
+Visual/export/font review passed. frame-figure-check.json records model coordinates and font hashes. Source screenshots fusion-01 through fusion-07 are copied unchanged from the15October captures; source blob hashes are retained in evidence/standalone-revision.json.
