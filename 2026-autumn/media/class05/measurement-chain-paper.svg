@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="515.88pt" height="244.8pt" viewBox="0 0 515.88 244.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T17:31:49.417786</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 244.8
+L 515.88 244.8
+L 515.88 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 23.895275 94.35
+L 203.163575 94.35
+Q 210.633088 94.35 210.633088 90.984
+L 210.633088 39.372
+Q 210.633088 36.006 203.163575 36.006
+L 23.895275 36.006
+Q 16.425762 36.006 16.425762 39.372
+L 16.425762 90.984
+Q 16.425762 94.35 23.895275 94.35
+z
+" clip-path="url(#p99aef45bf1)" style="fill: #f2f6f8; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 312.716425 94.35
+L 491.984725 94.35
+Q 499.454237 94.35 499.454237 90.984
+L 499.454237 39.372
+Q 499.454237 36.006 491.984725 36.006
+L 312.716425 36.006
+Q 305.246913 36.006 305.246913 39.372
+L 305.246913 90.984
+Q 305.246913 94.35 312.716425 94.35
+z
+" clip-path="url(#p99aef45bf1)" style="fill: #f2f6f8; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 120.147615 98.864571
+Q 163.327724 129.133086 205.409226 158.631496
+" clip-path="url(#p99aef45bf1)" style="fill: none; stroke: #667785; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 202.643593 153.517664
+L 205.409226 158.631496
+L 199.658781 157.775703
+z
+" clip-path="url(#p99aef45bf1)" style="fill: #667785; stroke: #667785; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 395.732385 98.864571
+Q 352.552276 129.133086 310.470774 158.631496
+" clip-path="url(#p99aef45bf1)" style="fill: none; stroke: #667785; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 316.221219 157.775703
+L 310.470774 158.631496
+L 313.236407 153.517664
+z
+" clip-path="url(#p99aef45bf1)" style="fill: #667785; stroke: #667785; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 113.529425 222.258
+L 402.350575 222.258
+Q 409.820087 222.258 409.820087 218.892
+L 409.820087 162.792
+Q 409.820087 159.426 402.350575 159.426
+L 113.529425 159.426
+Q 106.059912 159.426 106.059912 162.792
+L 106.059912 218.892
+Q 106.059912 222.258 113.529425 222.258
+z
+" clip-path="url(#p99aef45bf1)" style="fill: #f2f6f8; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 9px; font-family: 'MiSans'; fill: #243448" transform="translate(79.567081 62.482781)">Encoder reading</text>
+    <text style="font-size: 9px; font-family: 'MiSans'; fill: #243448" transform="translate(73.267081 72.643219)">+ sign / zero / units</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9px; font-family: 'MiSans'; fill: #243448" transform="translate(353.502372 62.609344)">Camera → marker pose</text>
+    <text style="font-size: 9px; font-family: 'MiSans'; fill: #243448" transform="translate(340.529013 72.643219)">+ calibration / body transform</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 9px; font-family: 'MiSans'; fill: #243448" transform="translate(195.259922 188.146781)">Common joint angle and clock</text>
+    <text style="font-size: 9px; font-family: 'MiSans'; fill: #243448" transform="translate(182.055937 198.307219)">Then compare, including uncertainty</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p99aef45bf1">
+   <rect x="8.95625" y="10.2" width="497.9675" height="224.4"/>
+  </clipPath>
+ </defs>
+</svg>

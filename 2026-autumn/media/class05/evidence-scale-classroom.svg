@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="777.6pt" height="324pt" viewBox="0 0 777.6 324" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T17:31:45.495230</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 324
+L 777.6 324
+L 777.6 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 41.658 126.375
+L 218.922 126.375
+Q 230.001 126.375 230.001 122.1
+L 230.001 53.7
+Q 230.001 49.425 218.922 49.425
+L 41.658 49.425
+Q 30.579 49.425 30.579 53.7
+L 30.579 122.1
+Q 30.579 126.375 41.658 126.375
+z
+" clip-path="url(#p1b22d79768)" style="fill: #f2f6f8; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 300.168 126.375
+L 477.432 126.375
+Q 488.511 126.375 488.511 122.1
+L 488.511 53.7
+Q 488.511 49.425 477.432 49.425
+L 300.168 49.425
+Q 289.089 49.425 289.089 53.7
+L 289.089 122.1
+Q 289.089 126.375 300.168 126.375
+z
+" clip-path="url(#p1b22d79768)" style="fill: #f2f6f8; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 558.678 126.375
+L 735.942 126.375
+Q 747.021 126.375 747.021 122.1
+L 747.021 53.7
+Q 747.021 49.425 735.942 49.425
+L 558.678 49.425
+Q 547.599 49.425 547.599 53.7
+L 547.599 122.1
+Q 547.599 126.375 558.678 126.375
+z
+" clip-path="url(#p1b22d79768)" style="fill: #f2f6f8; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 228.309577 87.9
+Q 255.851058 87.9 282.050899 87.9
+" clip-path="url(#p1b22d79768)" style="fill: none; stroke: #667785; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 276.850899 85.3
+L 282.050899 87.9
+L 276.850899 90.5
+z
+" clip-path="url(#p1b22d79768)" style="fill: #667785; stroke: #667785; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 486.819577 87.9
+Q 514.361058 87.9 540.560899 87.9
+" clip-path="url(#p1b22d79768)" style="fill: none; stroke: #667785; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 535.360899 85.3
+L 540.560899 87.9
+L 535.360899 90.5
+z
+" clip-path="url(#p1b22d79768)" style="fill: #667785; stroke: #667785; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(91.081797 84.208)">One actuator</text>
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(96.918594 98.482)">One fixture</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(342.915078 84.299406)">16 independent</text>
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(366.660391 98.573406)">fixtures</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(596.908594 84.006906)">Connected robot</text>
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(604.482109 98.500281)">Coupled joints</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 13px; font-family: 'MiSans'" transform="translate(73.636406 176.226)">Device + controller</text>
+    <text style="font-size: 13px; font-family: 'MiSans'" transform="translate(85.471484 190.5)">+ fixture + task</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 13px; font-family: 'MiSans'" transform="translate(346.686094 176.226)">Motor identity</text>
+    <text style="font-size: 13px; font-family: 'MiSans'" transform="translate(326.972813 190.5)">Bus / supply / clocks</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 13px; font-family: 'MiSans'" transform="translate(606.613906 176.043187)">Configuration</text>
+    <text style="font-size: 13px; font-family: 'MiSans'" transform="translate(599.755391 190.5)">Inertia / contact</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: 'MiSans'; text-anchor: middle" x="388.8" y="276" transform="rotate(-0 388.8 276)">Each change needs its own evidence; actuator count alone does not establish coupling.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p1b22d79768">
+   <rect x="19.5" y="19.5" width="738.6" height="285"/>
+  </clipPath>
+ </defs>
+</svg>

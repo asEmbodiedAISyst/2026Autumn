@@ -1,0 +1,234 @@
+{
+  "scope": "Supplied metrics reaggregation; no new fitting",
+  "events": 30,
+  "records": 480,
+  "baseline": 0.02402090317445498,
+  "fitted": 0.016337739731842403,
+  "reduction": 31.98532289486615,
+  "cells": [
+    {
+      "motor": 0,
+      "controller": "H1",
+      "baseline": 0.032694922830166666,
+      "fitted": 0.019939234978591333,
+      "reduction": 39.01427728652115
+    },
+    {
+      "motor": 1,
+      "controller": "H1",
+      "baseline": 0.024199276067339997,
+      "fitted": 0.016084840329506668,
+      "reduction": 33.531729276748045
+    },
+    {
+      "motor": 2,
+      "controller": "H1",
+      "baseline": 0.029295520075853333,
+      "fitted": 0.018952623332918663,
+      "reduction": 35.30538702216024
+    },
+    {
+      "motor": 3,
+      "controller": "H1",
+      "baseline": 0.02470773035682667,
+      "fitted": 0.017681110608544,
+      "reduction": 28.438952695390885
+    },
+    {
+      "motor": 4,
+      "controller": "H1",
+      "baseline": 0.029322556277713335,
+      "fitted": 0.018738624656804,
+      "reduction": 36.09484630422101
+    },
+    {
+      "motor": 5,
+      "controller": "H1",
+      "baseline": 0.025722968518006664,
+      "fitted": 0.017354418635161333,
+      "reduction": 32.533375286709834
+    },
+    {
+      "motor": 6,
+      "controller": "H1",
+      "baseline": 0.02890422543560667,
+      "fitted": 0.018440373056019997,
+      "reduction": 36.20180863485937
+    },
+    {
+      "motor": 7,
+      "controller": "H1",
+      "baseline": 0.02537612719204667,
+      "fitted": 0.01676841367988067,
+      "reduction": 33.92051689772351
+    },
+    {
+      "motor": 8,
+      "controller": "H1",
+      "baseline": 0.02308339295783333,
+      "fitted": 0.016808492955891333,
+      "reduction": 27.183612103317834
+    },
+    {
+      "motor": 9,
+      "controller": "H1",
+      "baseline": 0.03326585660783333,
+      "fitted": 0.02137496556724733,
+      "reduction": 35.74503185282766
+    },
+    {
+      "motor": 10,
+      "controller": "H1",
+      "baseline": 0.02460675025334667,
+      "fitted": 0.016683939398758,
+      "reduction": 32.19771311943607
+    },
+    {
+      "motor": 11,
+      "controller": "H1",
+      "baseline": 0.03042275387362,
+      "fitted": 0.018073239957293333,
+      "reduction": 40.59301786954633
+    },
+    {
+      "motor": 12,
+      "controller": "H1",
+      "baseline": 0.024245981865959998,
+      "fitted": 0.016305034739746666,
+      "reduction": 32.75160053370318
+    },
+    {
+      "motor": 13,
+      "controller": "H1",
+      "baseline": 0.028087653028013335,
+      "fitted": 0.01814546438563266,
+      "reduction": 35.39700747678987
+    },
+    {
+      "motor": 14,
+      "controller": "H1",
+      "baseline": 0.02887468166018666,
+      "fitted": 0.018063434596161998,
+      "reduction": 37.441961062142404
+    },
+    {
+      "motor": 15,
+      "controller": "H1",
+      "baseline": 0.029452464289326664,
+      "fitted": 0.018988774337146002,
+      "reduction": 35.52738354723214
+    },
+    {
+      "motor": 0,
+      "controller": "H2",
+      "baseline": 0.02431168392561333,
+      "fitted": 0.01665358208323667,
+      "reduction": 31.49967672255126
+    },
+    {
+      "motor": 1,
+      "controller": "H2",
+      "baseline": 0.017700468898980668,
+      "fitted": 0.012912418743577335,
+      "reduction": 27.050414216309637
+    },
+    {
+      "motor": 2,
+      "controller": "H2",
+      "baseline": 0.021667901728753335,
+      "fitted": 0.015375331970185332,
+      "reduction": 29.04097423617975
+    },
+    {
+      "motor": 3,
+      "controller": "H2",
+      "baseline": 0.018153079943293335,
+      "fitted": 0.01459564406831467,
+      "reduction": 19.596872189685712
+    },
+    {
+      "motor": 4,
+      "controller": "H2",
+      "baseline": 0.021665934365440002,
+      "fitted": 0.015383628871635333,
+      "reduction": 28.996236155066402
+    },
+    {
+      "motor": 5,
+      "controller": "H2",
+      "baseline": 0.018974236098666667,
+      "fitted": 0.014178483596264,
+      "reduction": 25.275075515370382
+    },
+    {
+      "motor": 6,
+      "controller": "H2",
+      "baseline": 0.02136309166678,
+      "fitted": 0.014807591635787333,
+      "reduction": 30.686101680622336
+    },
+    {
+      "motor": 7,
+      "controller": "H2",
+      "baseline": 0.018722365179773333,
+      "fitted": 0.013714465247992668,
+      "reduction": 26.748222693524525
+    },
+    {
+      "motor": 8,
+      "controller": "H2",
+      "baseline": 0.016913389222546666,
+      "fitted": 0.013514491436316665,
+      "reduction": 20.095900008610013
+    },
+    {
+      "motor": 9,
+      "controller": "H2",
+      "baseline": 0.024735935909806668,
+      "fitted": 0.017582465058435335,
+      "reduction": 28.91934583536542
+    },
+    {
+      "motor": 10,
+      "controller": "H2",
+      "baseline": 0.018014898199426664,
+      "fitted": 0.013356918124580668,
+      "reduction": 25.856266426164098
+    },
+    {
+      "motor": 11,
+      "controller": "H2",
+      "baseline": 0.022462662615133338,
+      "fitted": 0.014553459412231332,
+      "reduction": 35.21044383034757
+    },
+    {
+      "motor": 12,
+      "controller": "H2",
+      "baseline": 0.017787053821885335,
+      "fitted": 0.012843672347132665,
+      "reduction": 27.79201954553201
+    },
+    {
+      "motor": 13,
+      "controller": "H2",
+      "baseline": 0.020757980928106667,
+      "fitted": 0.014749837001813334,
+      "reduction": 28.943778044222988
+    },
+    {
+      "motor": 14,
+      "controller": "H2",
+      "baseline": 0.02139014540126,
+      "fitted": 0.014675342771564664,
+      "reduction": 31.392038266835698
+    },
+    {
+      "motor": 15,
+      "controller": "H2",
+      "baseline": 0.02178521238741333,
+      "fitted": 0.015507353834584668,
+      "reduction": 28.817063800836618
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "standard_library_activity": "Passed from independent student-only copy with unrelated working directory",
+  "events": 30,
+  "heldout_motor_records": 480,
+  "baseline_rmse_rad": 0.02402090317445498,
+  "fitted_rmse_rad": 0.016337739731842403,
+  "reduction_percent": 31.98532289486615,
+  "scenes": [
+    {
+      "controller": "H1",
+      "nq": 16,
+      "nv": 16,
+      "nu": 16,
+      "contact_enabled_geom_count": 0,
+      "largest_off_diagonal_inertia_kg_m2": 0.0,
+      "requested_effort_at_zero_state_Nm": 0.1984066,
+      "applied_effort_motor0_Nm": 0.1551,
+      "scope": "Declared independent-hinge model; no hardware validation or replay."
+    },
+    {
+      "controller": "H2",
+      "nq": 16,
+      "nv": 16,
+      "nu": 16,
+      "contact_enabled_geom_count": 0,
+      "largest_off_diagonal_inertia_kg_m2": 0.0,
+      "requested_effort_at_zero_state_Nm": 0.2510678,
+      "applied_effort_motor0_Nm": 0.1551,
+      "scope": "Declared independent-hinge model; no hardware validation or replay."
+    }
+  ],
+  "figures": 10,
+  "math_expressions": 17,
+  "vector_checks": "All authored PDF fonts embedded and SVG text editable",
+  "limitations": [
+    "No new hardware, optical calibration or neural training",
+    "Stored metric reaggregation; no optimizer rerun",
+    "Model checks in MuJoCo3.3.7; Windows instructions not executed on Windows"
+  ]
+}

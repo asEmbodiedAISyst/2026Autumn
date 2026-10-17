@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="777.6pt" height="324pt" viewBox="0 0 777.6 324" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T17:31:45.668304</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 324
+L 777.6 324
+L 777.6 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 49.044 137.775
+L 233.694 137.775
+Q 244.773 137.775 244.773 133.5
+L 244.773 62.25
+Q 244.773 57.975 233.694 57.975
+L 49.044 57.975
+Q 37.965 57.975 37.965 62.25
+L 37.965 133.5
+Q 37.965 137.775 49.044 137.775
+z
+" clip-path="url(#p1996d779cd)" style="fill: #f2f6f8; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 300.168 137.775
+L 484.818 137.775
+Q 495.897 137.775 495.897 133.5
+L 495.897 62.25
+Q 495.897 57.975 484.818 57.975
+L 300.168 57.975
+Q 289.089 57.975 289.089 62.25
+L 289.089 133.5
+Q 289.089 137.775 300.168 137.775
+z
+" clip-path="url(#p1996d779cd)" style="fill: #f2f6f8; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 551.292 137.775
+L 728.556 137.775
+Q 739.635 137.775 739.635 133.5
+L 739.635 62.25
+Q 739.635 57.975 728.556 57.975
+L 551.292 57.975
+Q 540.213 57.975 540.213 62.25
+L 540.213 133.5
+Q 540.213 137.775 551.292 137.775
+z
+" clip-path="url(#p1996d779cd)" style="fill: #f2f6f8; stroke: #0072b2; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 243.078872 99.3
+Q 263.236589 99.3 282.052664 99.3
+" clip-path="url(#p1996d779cd)" style="fill: none; stroke: #667785; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 276.852664 96.7
+L 282.052664 99.3
+L 276.852664 101.9
+z
+" clip-path="url(#p1996d779cd)" style="fill: #667785; stroke: #667785; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 494.202872 99.3
+Q 514.360589 99.3 533.176664 99.3
+" clip-path="url(#p1996d779cd)" style="fill: none; stroke: #667785; stroke-width: 1.2; stroke-linecap: round"/>
+    <path d="M 527.976664 96.7
+L 533.176664 99.3
+L 527.976664 101.9
+z
+" clip-path="url(#p1996d779cd)" style="fill: #667785; stroke: #667785; stroke-width: 1.2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 122.904 274.575
+L 654.696 274.575
+Q 665.775 274.575 665.775 270.3
+L 665.775 201.9
+Q 665.775 197.625 654.696 197.625
+L 122.904 197.625
+Q 111.825 197.625 111.825 201.9
+L 111.825 270.3
+Q 111.825 274.575 122.904 274.575
+z
+" clip-path="url(#p1996d779cd)" style="fill: #f2f6f8; stroke: #d55e00; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(94.393297 94.183)">Logged internal</text>
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(109.693687 108.639813)">references</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(346.329797 93.981906)">Actuator model</text>
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(352.335188 108.475281)">+ rigid fixture</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(611.218375 94.091594)">Predicted</text>
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(597.355094 108.365594)">encoder angle</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(230.502656 232.206906)">Outside this replay: request-to-reference generation,</text>
+    <text style="font-size: 13px; font-family: 'MiSans'; fill: #243448" transform="translate(213.937813 246.883094)">shared electrical supply, bus scheduling and rack flexibility</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p1996d779cd">
+   <rect x="19.5" y="19.5" width="738.6" height="285"/>
+  </clipPath>
+ </defs>
+</svg>
