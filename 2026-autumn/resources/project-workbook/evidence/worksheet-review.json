@@ -92,5 +92,20 @@
     }
   },
   "public_source_reproduction": "all seven submission PDF text/page contents match isolated rebuild",
-  "rendered_review": "all13worksheet pages and13guide pages visually reviewed"
+  "rendered_review": "all13worksheet pages and13guide pages visually reviewed",
+  "live_gitbook": {
+    "classes": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "each_exact_submission_path_visible": true,
+    "each_class_specific_pdf_link_visible": true,
+    "repo_only_collection_visible": true,
+    "class17_submission_section_visual_review": "readable; exact path and all-three-pages instructions visible",
+    "github_download_file": "Class17-Decision.pdf visible at e621bea, 41.1KB; raw download control available"
+  }
 }
