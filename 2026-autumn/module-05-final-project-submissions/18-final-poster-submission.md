@@ -45,4 +45,10 @@ Only the LEAP link below is a verified public poster. No public poster was locat
 | [Walk These Ways — project](https://gmargo11.github.io/walk-these-ways/) | Tunable behaviors and condition-dependent success and failure. |
 | [DayDreamer — project](https://danijar.com/project/daydreamer/) | Physical learning progression, task results and recovery. |
 
+### Optional preparation references
+
+- Amanda Butler, Amy Chan and Helen Lycett (2017), [Using design principles to inform scientific posters](https://blogs.nature.com/blog/using-design-principles-to-inform-scientific-posters/) — This Nature-hosted article gives practical advice on layout, concise text, visual balance and readability at viewing distance.
+- Nicolas P. Rougier, Michael Droettboom and Philip E. Bourne (2014), [Ten Simple Rules for Better Figures](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833) — Illustrated examples explain clear plots, captions, colour and avoiding misleading graphics for poster figures.
+- Nature, [Nature research figure guide](https://research-figure-guide.nature.com/figures/) — This official guide covers accessible colours, resolution, panel export and image integrity when preparing finished artwork.
+
 Optional tips: Thomas C. Erren and Philip E. Bourne, [“Ten Simple Rules for a Good Poster Presentation”](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0030102), PLOS Computational Biology (2007).

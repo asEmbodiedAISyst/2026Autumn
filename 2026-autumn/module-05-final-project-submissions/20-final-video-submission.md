@@ -45,4 +45,10 @@ Use the [Classes 12–17 filled examples](../module-04-worksheets-guided-final-p
 | Walk These Ways: [project video](https://www.youtube.com/watch?v=FViNnwLk5wI) | Identify terrain/task, gait tuning and the behavior's limits. |
 | DayDreamer: [project video](https://www.youtube.com/watch?v=xAXvfVTgqr0) | Explain physical learning time, perturbations and recovery. |
 
+### Optional preparation references
+
+- Eric Rosen, Stefanie Tellex and George Konidaris (2020), [Steps Towards Best Practices For Robot Videos](https://arxiv.org/abs/2007.06218) — This robotics preprint proposes practices for disclosing edits, trial selection, failures, playback speed and supporting systems.
+- EGU; created by Orinoco Communications with Sam Illingworth’s input, [Video abstract toolkit](https://www.soil-journal.net/about/promote_your_work/video_abstract_toolkit.html) — This step-by-step toolkit covers audience, script and shot planning, filming, sound and editing, with a worked script example.
+- ACM SIGCHI, [Guide for Videos](https://sigchi.org/resources/guides-for-authors/videos/) — This guide explains research-video recording, narration, readable visuals, audio and captions, distinguishing demonstrations, previews and recorded talks.
+
 Optional export help: [HandBrake’s official preview guide](https://handbrake.fr/docs/en/latest/workflow/preview-settings.html), following the encoder linked by RSS.

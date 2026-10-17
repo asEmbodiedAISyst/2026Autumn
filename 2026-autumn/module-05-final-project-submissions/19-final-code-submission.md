@@ -41,4 +41,10 @@ The [Classes 12–17 filled examples](../module-04-worksheets-guided-final-proje
 
 Linked datasets/checkpoints differ between projects; a README or selected release does not establish access to every original experiment record. Document what your team actually supplies and can reproduce.
 
+### Optional preparation references
+
+- Greg Wilson, Jennifer Bryan and colleagues (2017), [Good enough practices in scientific computing](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510) — This article explains dependencies, usage examples, small test inputs with expected outputs and an understandable project overview.
+- Benjamin D. Lee (2018), [Ten simple rules for documenting scientific software](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1006561) — This article explains usable READMEs, examples, quickstarts and checking instructions with someone unfamiliar with the software.
+- Geir Kjetil Sandve and colleagues (2013), [Ten Simple Rules for Reproducible Computational Research](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285) — This article connects a reported result to its code, software versions, parameters, randomness and underlying plot data.
+
 Optional guidance: [Papers with Code research-code tips](https://github.com/paperswithcode/releasing-research-code) and its [README template](https://github.com/paperswithcode/releasing-research-code/blob/master/templates/README.md), linked from NeurIPS. Adapt the relevant sections to your project.
