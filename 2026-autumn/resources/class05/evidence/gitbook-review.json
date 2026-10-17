@@ -1,24 +1,49 @@
 {
-  "url": "https://x.ancorasir.com/rob7103-8103/module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator",
-  "content_commit": "9e18140",
-  "single_page": true,
-  "description": "28 October 2026 \u00b7 10:30\u201311:50 \u00b7 CR6",
+  "revision": "1.1",
+  "reviewed_content_commit": "d108fb5c2f801e5669429675aee56f3c15080960",
+  "checked_utc": "2026-10-17T15:28:54.464172+00:00",
+  "current_review_status": "Preview verified; live publication checked separately after merge",
+  "preview_url": "https://x.ancorasir.com/rob7103-8103/~/revisions/rWF2OsSTMfN9tFvRdb34/module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator",
   "loaded_figures": 10,
-  "katex_expressions": 17,
+  "katex_expressions": 26,
   "katex_errors": 0,
-  "tables": 7,
-  "image_table_width_px": 865,
-  "display_equation_width_px": 768,
+  "display_equation_overflow": 0,
   "horizontal_page_overflow": false,
-  "same_page_navigation": "All four targets exist",
+  "corrected_demonstration_row": {
+    "H1_Nm": 0.1175606,
+    "H2_Nm": 0.1551
+  },
   "visual_checks": [
-    "All authored diagrams and plots reviewed locally",
-    "Live coupled-dynamics and matrix calculation legible",
-    "Live image loading and measurement-chain figure confirmed",
-    "Table and equation widths checked against scroll extents"
+    "Revised signed-residual illustration and selected-episode table",
+    "Input-contract table and worked effort calculation",
+    "All ten figures loaded through lesson navigation"
   ],
   "limitations": [
-    "Desktop GitBook display checked; no projector or mobile acceptance claimed",
+    "Desktop review; no projector or timed classroom rehearsal",
     "No new physical measurements, optical calibration or neural training"
-  ]
+  ],
+  "previous_revision_review": {
+    "url": "https://x.ancorasir.com/rob7103-8103/module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator",
+    "content_commit": "9e18140",
+    "single_page": true,
+    "description": "28 October 2026 \u00b7 10:30\u201311:50 \u00b7 CR6",
+    "loaded_figures": 10,
+    "katex_expressions": 17,
+    "katex_errors": 0,
+    "tables": 7,
+    "image_table_width_px": 865,
+    "display_equation_width_px": 768,
+    "horizontal_page_overflow": false,
+    "same_page_navigation": "All four targets exist",
+    "visual_checks": [
+      "All authored diagrams and plots reviewed locally",
+      "Live coupled-dynamics and matrix calculation legible",
+      "Live image loading and measurement-chain figure confirmed",
+      "Table and equation widths checked against scroll extents"
+    ],
+    "limitations": [
+      "Desktop GitBook display checked; no projector or mobile acceptance claimed",
+      "No new physical measurements, optical calibration or neural training"
+    ]
+  }
 }
