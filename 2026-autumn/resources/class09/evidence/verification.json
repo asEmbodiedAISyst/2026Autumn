@@ -63,5 +63,70 @@
     "last_ten_max_action_change": 0.0,
     "simulation_only": true
   },
-  "retained_complete_episodes": true
+  "retained_complete_episodes": true,
+  "scope_note": "Historical mapping/audit and fresh runtime cases above refer to different executions. In particular circle.frames=132 and dropout.frames=170 above are historical runtime reruns, not the distributed circle/dropout artifacts. The retained_episode_audit below identifies and audits the current distributed episodes. No new live phone, network or hardware run was performed in this offline review.",
+  "retained_episode_audit": {
+    "circle": {
+      "csv_sha256": "7026f2c331ffb8451519280593b9976ea57a10418687b7113b4e470f63905f33",
+      "frames": 170,
+      "image_counts": {
+        "front": 170,
+        "side": 170
+      },
+      "image_size_wh": [
+        640,
+        480
+      ],
+      "first_timestamp": 0.1202,
+      "last_timestamp": 5.9806,
+      "elapsed_s": 5.8604,
+      "effective_hz": 28.83762200532387,
+      "max_interval_s": 0.04279999999999995,
+      "first_two_elbow_rows": [
+        {
+          "action": -68.58304807715955,
+          "state": 68.58304807715955,
+          "state_minus_motor_target_deg": 0.0
+        },
+        {
+          "action": -67.84636874253405,
+          "state": 68.58304807715955,
+          "state_minus_motor_target_deg": 0.7366793346254923
+        }
+      ],
+      "last_ten_max_action_change": 0.6910554653053396,
+      "max_receiver_age_s": 0.0207
+    },
+    "dropout": {
+      "csv_sha256": "eb8dc0c38d11e1c5a795333b1aae9728c4419e70990b993ad17deefda5649f9c",
+      "frames": 169,
+      "image_counts": {
+        "front": 169,
+        "side": 169
+      },
+      "image_size_wh": [
+        640,
+        480
+      ],
+      "first_timestamp": 0.122,
+      "last_timestamp": 5.9628,
+      "elapsed_s": 5.8408,
+      "effective_hz": 28.763183125599234,
+      "max_interval_s": 0.040000000000000036,
+      "first_two_elbow_rows": [
+        {
+          "action": -68.58304807715955,
+          "state": 68.58304807715955,
+          "state_minus_motor_target_deg": 0.0
+        },
+        {
+          "action": -67.72052295892085,
+          "state": 68.58304807715955,
+          "state_minus_motor_target_deg": 0.8625251182386933
+        }
+      ],
+      "last_ten_max_action_change": 1.5867095506418016e-15,
+      "max_receiver_age_s": 3.1515
+    }
+  }
 }
