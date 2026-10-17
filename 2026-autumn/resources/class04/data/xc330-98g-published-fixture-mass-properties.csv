@@ -1,0 +1,6 @@
+fixture_id,payload_center_positions_mm,link_mass_kg,pin_mass_each_kg,payload_mass_each_kg,total_added_moving_mass_kg,fixture_inertia_kg_m2,unsigned_first_moment_kg_m,signed_MuJoCo_first_moment_kg_m,maximum_gravity_torque_Nm
+M0,none,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+B0,"-60, +60",0.006,0.004,0.042,0.098,0.00037105467403154667,0.0,0.0,0.0
+B1,"-80, +80",0.006,0.004,0.042,0.098,0.0006286546740315467,0.0,0.0,0.0
+B2,"-100, +100",0.006,0.004,0.042,0.098,0.0009598546740315468,0.0,0.0,0.0
+G1,"+60, +100",0.006,0.004,0.042,0.098,0.0006654546740315467,0.00736,-0.00736,0.0722016

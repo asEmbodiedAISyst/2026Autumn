@@ -1,0 +1,144 @@
+{
+  "campaign": "XC330 Real-Position v2, 98 g fixture family",
+  "source_commit": "9821dae9cb14ecfcd9fde3f97f14308a21f5bc00",
+  "fixture_mass_parts_kg": {
+    "link_mass_kg": 0.006,
+    "pin_mass_each_kg": 0.004,
+    "payload_mass_each_kg": 0.042
+  },
+  "fixture_definition": "One 0.006 kg link plus two pins of 0.004 kg and two payloads of 0.042 kg; 0.098 kg total for B0/B1/B2/G1. M0 has no added moving fixture.",
+  "fixtures": {
+    "M0": {
+      "fixture_id": "M0",
+      "moving_mass_kg": 0.0,
+      "inertia_kg_m2": 0.0,
+      "unsigned_first_moment_kg_m": 0.0,
+      "signed_first_moment_kg_m": 0.0,
+      "maximum_gravity_torque_Nm": 0.0,
+      "radii_m": []
+    },
+    "B0": {
+      "fixture_id": "B0",
+      "moving_mass_kg": 0.098,
+      "inertia_kg_m2": 0.00037105467403154667,
+      "unsigned_first_moment_kg_m": 0.0,
+      "signed_first_moment_kg_m": 0.0,
+      "maximum_gravity_torque_Nm": 0.0,
+      "radii_m": [
+        -0.06,
+        0.06
+      ]
+    },
+    "B1": {
+      "fixture_id": "B1",
+      "moving_mass_kg": 0.098,
+      "inertia_kg_m2": 0.0006286546740315467,
+      "unsigned_first_moment_kg_m": 0.0,
+      "signed_first_moment_kg_m": 0.0,
+      "maximum_gravity_torque_Nm": 0.0,
+      "radii_m": [
+        -0.08,
+        0.08
+      ]
+    },
+    "B2": {
+      "fixture_id": "B2",
+      "moving_mass_kg": 0.098,
+      "inertia_kg_m2": 0.0009598546740315468,
+      "unsigned_first_moment_kg_m": 0.0,
+      "signed_first_moment_kg_m": 0.0,
+      "maximum_gravity_torque_Nm": 0.0,
+      "radii_m": [
+        -0.1,
+        0.1
+      ]
+    },
+    "G1": {
+      "fixture_id": "G1",
+      "moving_mass_kg": 0.098,
+      "inertia_kg_m2": 0.0006654546740315467,
+      "unsigned_first_moment_kg_m": 0.00736,
+      "signed_first_moment_kg_m": -0.00736,
+      "maximum_gravity_torque_Nm": 0.0722016,
+      "radii_m": [
+        0.06,
+        0.1
+      ]
+    }
+  },
+  "controller": {
+    "mode": "Current-Based Position Control (Operating Mode 5)",
+    "input_boundary": "recorded internal Position Trajectory and Velocity Trajectory",
+    "external_goal_role": "preserved for comparison; not replay input",
+    "raw_gains": {
+      "H1": {
+        "P": 600,
+        "I": 0,
+        "D": 150
+      },
+      "H2": {
+        "P": 800,
+        "I": 0,
+        "D": 150
+      }
+    },
+    "fixed_SI_gains": {
+      "H1": {
+        "kp_Nm_per_rad": 1.57983562710739,
+        "kv_Nm_s_per_rad": 0.20211461523105595
+      },
+      "H2": {
+        "kp_Nm_per_rad": 2.106447502809853,
+        "kv_Nm_s_per_rad": 0.20211461523105595
+      }
+    },
+    "fixed_effort_limit_Nm": 0.1551,
+    "mapping_status": "fixed engineering conversion; no controller gains fitted; not independently verified shaft torque"
+  },
+  "joint_candidates": {
+    "method1": {
+      "H1": {
+        "armature": 0.010706886765349692,
+        "damping": 0.03647832779506367,
+        "frictionloss": 0.010226937934345186
+      },
+      "H2": {
+        "armature": 0.009350032958585431,
+        "damping": 0.041525128686114895,
+        "frictionloss": 0.00834277844040701
+      }
+    },
+    "method2": {
+      "H1": {
+        "armature": 0.00632962729586566,
+        "damping": 0.04256643460373195,
+        "frictionloss": 0.007363036739462707
+      },
+      "H2": {
+        "armature": 0.004922444630792548,
+        "damping": 0.04431815643289998,
+        "frictionloss": 0.0059971849301738225
+      }
+    }
+  },
+  "joint_parameter_units": {
+    "armature": "kg\u00b7m\u00b2",
+    "damping": "N\u00b7m\u00b7s/rad",
+    "frictionloss": "N\u00b7m"
+  },
+  "analysis_grid_dt_s": 0.01,
+  "mujoco_timestep_s": 0.002,
+  "integrator": "implicitfast",
+  "replay_initialization": "Each episode starts at its first processed physical position and velocity; internal references held at preceding 10 ms sample over five 2 ms simulation substeps.",
+  "scoring": "All samples of the active-profile cropped and interpolated episode; no additional mask, filtering, time shift, alignment optimization or burn-in exclusion.",
+  "model_difference_from_Class03": "This campaign uses 6 g link + two 46 g pin/payload assemblies (98 g), whereas the reviewed Class03 presentation uses 22 g link + two 44 g assemblies (110 g). Fixture labels are local identifiers and do not establish matching mass properties. Class03 illustrative torque channel and earlier Class02 stall-based teaching bounds are not the fixed Mode5 engineering controller used here.",
+  "fitting_scope": "Published frozen candidates only; no refitting in this export. Calibration M0/B0/B1/B2 under H1/H2; P04/P05 model-selection; P06/P07 held out. H1 and H2 have separate effective joint parameter vectors.",
+  "method_names": {
+    "method1": "integral regression (M1)",
+    "method2": "simulation output-error fitting (M2)"
+  },
+  "selected_episodes": [
+    "B1__H1__P06_heldout_composite__R01",
+    "G1__H1__P06_heldout_composite__R01"
+  ]
+}

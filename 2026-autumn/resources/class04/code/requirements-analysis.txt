@@ -1,0 +1,4 @@
+# No third-party packages are needed with analyze_episode.py --no-plot.
+# These versions reproduce the optional plotting environment used for the saved figures.
+numpy==2.2.6
+matplotlib==3.10.3
