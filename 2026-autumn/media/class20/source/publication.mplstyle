@@ -1,0 +1,44 @@
+# Publication baseline. Set physical canvas dimensions and refine layout in code.
+font.family: MiSans
+font.sans-serif: MiSans
+font.size: 7
+text.color: black
+axes.labelsize: 7
+axes.titlesize: 7
+axes.labelcolor: black
+axes.edgecolor: black
+axes.linewidth: 0.6
+axes.spines.top: False
+axes.spines.right: False
+axes.grid: False
+xtick.labelsize: 7
+ytick.labelsize: 7
+xtick.color: black
+ytick.color: black
+xtick.major.width: 0.6
+ytick.major.width: 0.6
+xtick.major.size: 2.5
+ytick.major.size: 2.5
+lines.linewidth: 0.8
+lines.markersize: 3
+legend.fontsize: 7
+legend.frameon: False
+figure.facecolor: white
+axes.facecolor: white
+savefig.facecolor: white
+savefig.dpi: 450
+pdf.fonttype: 42
+ps.fonttype: 42
+svg.fonttype: none
+
+# Use only MiSans for mathematical labels; no implicit math-font substitution.
+mathtext.fontset: custom
+mathtext.rm: MiSans
+mathtext.it: MiSans
+mathtext.bf: MiSans:weight=semibold
+mathtext.bfit: MiSans:weight=semibold
+mathtext.sf: MiSans
+mathtext.tt: MiSans
+mathtext.cal: MiSans
+mathtext.fallback: None
+text.usetex: False

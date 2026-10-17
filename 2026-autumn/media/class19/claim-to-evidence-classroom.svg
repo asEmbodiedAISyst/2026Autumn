@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1031.811024pt" height="544.251969pt" viewBox="0 0 1031.811024 544.251969" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T20:44:49.976324</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 544.251969 
+L 1031.811024 544.251969 
+L 1031.811024 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 311.541244 70.752756 
+Q 332.758648 70.752756 352.187198 70.752756 
+" clip-path="url(#pe2362031fa)" style="fill: none; stroke: #25333f; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 346.587198 67.952756 
+L 352.187198 70.752756 
+L 346.587198 73.552756 
+z
+" clip-path="url(#pe2362031fa)" style="fill: #25333f; stroke: #25333f; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 698.469434 70.752756 
+Q 714.526044 70.752756 728.7938 70.752756 
+" clip-path="url(#pe2362031fa)" style="fill: none; stroke: #25333f; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 723.1938 67.952756 
+L 728.7938 70.752756 
+L 723.1938 73.552756 
+z
+" clip-path="url(#pe2362031fa)" style="fill: #25333f; stroke: #25333f; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 36.113386 470.777953 
+L 995.697638 470.777953 
+" clip-path="url(#pe2362031fa)" style="fill: none; stroke: #b8c0c5; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 16px; font-family: 'MiSans'; text-anchor: start" x="36.113386" y="46.895118" transform="rotate(-0 36.113386 46.895118)">a</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 600; font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #25333f" x="77.385827" y="45.115118" transform="rotate(-0 77.385827 45.115118)">Declared experiment</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 16px; font-family: 'MiSans'; text-anchor: start" x="392.088189" y="46.895118" transform="rotate(-0 392.088189 46.895118)">b</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 600; font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #25333f" x="433.36063" y="45.115118" transform="rotate(-0 433.36063 45.115118)">Retained outcomes</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 16px; font-family: 'MiSans'; text-anchor: start" x="753.222047" y="46.895118" transform="rotate(-0 753.222047 46.895118)">c</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 600; font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #25333f" x="794.494488" y="45.115118" transform="rotate(-0 794.494488 45.115118)">Supported scope</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #25333f" x="36.113386" y="115.867874" transform="rotate(-0 36.113386 115.867874)">Policy</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #65727d" x="36.113386" y="139.270709" transform="rotate(-0 36.113386 139.270709)">Identified exported model</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 600; font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #25333f" x="36.113386" y="173.014331" transform="rotate(-0 36.113386 173.014331)">Observations</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #65727d" x="36.113386" y="196.417165" transform="rotate(-0 36.113386 196.417165)">Original noise (level 1.0)</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 600; font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #25333f" x="36.113386" y="230.160787" transform="rotate(-0 36.113386 230.160787)">Trials</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #65727d" x="36.113386" y="253.563622" transform="rotate(-0 36.113386 253.563622)">Seeds 20000–20099</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 600; font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #25333f" x="36.113386" y="287.307244" transform="rotate(-0 36.113386 287.307244)">Success</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #65727d" x="36.113386" y="310.710079" transform="rotate(-0 36.113386 310.710079)">First target; error &lt; 0.1 rad</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 600; font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #25333f" x="36.113386" y="344.453701" transform="rotate(-0 36.113386 344.453701)">Limit</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #65727d" x="36.113386" y="367.856535" transform="rotate(-0 36.113386 367.856535)">1000 actions; 50 simulated s</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 600; font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #245c83" x="412.724409" y="402.746457" transform="rotate(-0 412.724409 402.746457)">88 / 100 = 88%</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #65727d" x="412.724409" y="429.959055" transform="rotate(-0 412.724409 429.959055)">All timeouts retained in denominator</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 600; font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #245c83" x="753.222047" y="132.195433" transform="rotate(-0 753.222047 132.195433)">First-goal simulation</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #65727d" x="753.222047" y="162.129291" transform="rotate(-0 753.222047 162.129291)">88 / 100 under this protocol</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 600; font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #65727d" x="753.222047" y="235.603307" transform="rotate(-0 753.222047 235.603307)">Continuous replay</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #65727d" x="753.222047" y="265.537165" transform="rotate(-0 753.222047 265.537165)">Different protocol / event counter</text>
+   </g>
+   <g id="text_23">
+    <text style="font-weight: 600; font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #65727d" x="753.222047" y="339.011181" transform="rotate(-0 753.222047 339.011181)">Training and hardware</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #65727d" x="753.222047" y="368.945039" transform="rotate(-0 753.222047 368.945039)">Not established by this record</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #25333f" x="36.113386" y="499.930854" transform="rotate(-0 36.113386 499.930854)">Changing noise, horizon or success rule changes the experiment.</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #65727d" x="36.113386" y="527.143452" transform="rotate(-0 36.113386 527.143452)">Saved simulation evidence; this figure does not execute an evaluation.</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_4">
+    <path d="M 397.247244 331.993701 
+L 686.154331 331.993701 
+L 686.154331 119.735433 
+L 397.247244 119.735433 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 397.247244 164.179973 
+L 639.378898 164.179973 
+L 639.378898 129.383536 
+L 397.247244 129.383536 
+z
+" clip-path="url(#p63fc17024c)" style="fill: #245c83"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 397.247244 243.262786 
+L 430.265197 243.262786 
+L 430.265197 208.466348 
+L 397.247244 208.466348 
+z
+" clip-path="url(#p63fc17024c)" style="fill: #a45b21"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 397.247244 322.345598 
+L 397.247244 322.345598 
+L 397.247244 287.54916 
+L 397.247244 287.54916 
+z
+" clip-path="url(#p63fc17024c)" style="fill: #65727d"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_2">
+      <defs>
+       <path id="m0cc0074867" d="M 0 0 
+L 0 2.5 
+" style="stroke: #000000; stroke-width: 0.6"/>
+      </defs>
+      <g>
+       <use xlink:href="#m0cc0074867" x="397.247244" y="331.993701" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_27">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="397.247244" y="350.453701" transform="rotate(-0 397.247244 350.453701)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m0cc0074867" x="534.822047" y="331.993701" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_28">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="534.822047" y="350.453701" transform="rotate(-0 534.822047 350.453701)">50</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m0cc0074867" x="672.39685" y="331.993701" style="stroke: #000000; stroke-width: 0.6"/>
+      </g>
+     </g>
+     <g id="text_29">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="672.39685" y="350.453701" transform="rotate(-0 672.39685 350.453701)">100</text>
+     </g>
+    </g>
+    <g id="text_30">
+     <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="541.700787" y="368.453701" transform="rotate(-0 541.700787 368.453701)">Episodes (n = 100)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5"/>
+     <g id="text_31">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="393.747244" y="153.011755" transform="rotate(-0 393.747244 153.011755)">Success</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6"/>
+     <g id="text_32">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="393.747244" y="232.094567" transform="rotate(-0 393.747244 232.094567)">Timeout</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7"/>
+     <g id="text_33">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="393.747244" y="311.177379" transform="rotate(-0 393.747244 311.177379)">Fall</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_8">
+    <path d="M 397.247244 331.993701 
+L 686.154331 331.993701 
+" style="fill: none; stroke: #000000; stroke-width: 0.6; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #25333f" x="644.88189" y="152.241755" transform="rotate(-0 644.88189 152.241755)">88</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #25333f" x="435.768189" y="231.324567" transform="rotate(-0 435.768189 231.324567)">12</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #25333f" x="402.750236" y="310.407379" transform="rotate(-0 402.750236 310.407379)">0</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe2362031fa">
+   <rect x="0" y="0" width="1031.811024" height="544.251969"/>
+  </clipPath>
+  <clipPath id="p63fc17024c">
+   <rect x="397.247244" y="119.735433" width="288.907087" height="212.258268"/>
+  </clipPath>
+ </defs>
+</svg>

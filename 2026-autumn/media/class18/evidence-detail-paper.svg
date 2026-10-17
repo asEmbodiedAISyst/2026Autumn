@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="515.905512pt" height="249.448819pt" viewBox="0 0 515.905512 249.448819" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T20:50:39.337680</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 249.448819 
+L 515.905512 249.448819 
+L 515.905512 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'MiSans'; text-anchor: start; fill: #172932" x="10.31811" y="19.377073" transform="rotate(-0 10.31811 19.377073)">a  Percentage without its experiment</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 600; font-size: 39px; font-family: 'MiSans'; text-anchor: start; fill: #17618c" x="19.846317" y="88.279689" transform="rotate(-0 19.846317 88.279689)">88%</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 15px; font-family: 'MiSans'; text-anchor: start; fill: #172932" x="19.846317" y="135.811555" transform="rotate(-0 19.846317 135.811555)">“It works!”</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7px; font-family: 'MiSans'; fill: #a33132" transform="translate(19.846317 174.463504)">Missing: denominator, failures,</text>
+    <text style="font-size: 7px; font-family: 'MiSans'; fill: #a33132" transform="translate(19.846317 183.472723)">success rule and simulation scope.</text>
+    <text style="font-size: 7px; font-family: 'MiSans'; fill: #a33132" transform="translate(19.846317 192.432723)">This is an intentionally incomplete caption.</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_2">
+    <path d="M 279.48996 83.216126 
+L 447.186404 83.216126 
+L 447.186404 53.382047 
+L 279.48996 53.382047 
+z
+" clip-path="url(#p148b3679b7)" style="fill: #17618c; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 447.186404 83.216126 
+L 470.054101 83.216126 
+L 470.054101 53.382047 
+L 447.186404 53.382047 
+z
+" clip-path="url(#p148b3679b7)" style="fill: url(#h8aed9dcfdc); stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 8px; font-family: 'MiSans'; text-anchor: start; fill: #172932" x="269.961753" y="19.433323" transform="rotate(-0 269.961753 19.433323)">b  Evidence with an interpretable caption</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 600; font-size: 11px; font-family: 'MiSans'; text-anchor: start; fill: #172932" x="279.48996" y="109.323286" transform="rotate(-0 279.48996 109.323286)">88/100 first targets reached</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 7px; font-family: 'MiSans'; fill: #172932" transform="translate(279.48996 142.593715)">12 timeouts; 0 falls. Native MuJoCo 3.6.0,</text>
+    <text style="font-size: 7px; font-family: 'MiSans'; fill: #172932" transform="translate(279.48996 151.294496)">original observation noise; seeds 20000–20099.</text>
+    <text style="font-size: 7px; font-family: 'MiSans'; fill: #172932" transform="translate(279.48996 160.254496)">First goal below 0.1 rad before fall or 50 s.</text>
+    <text style="font-size: 7px; font-family: 'MiSans'; fill: #172932" transform="translate(279.48996 169.949496)">All 100 trial outcomes are retained.</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 7px; font-family: 'MiSans'; fill: #17618c" transform="translate(279.48996 208.887441)">Supports this simulated first-goal protocol.</text>
+    <text style="font-size: 7px; font-family: 'MiSans'; fill: #17618c" transform="translate(279.48996 217.89666)">Physical-hand reliability remains untested.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p148b3679b7">
+   <rect x="269.961753" y="7.483465" width="238.205177" height="229.492913"/>
+  </clipPath>
+ </defs>
+ <defs>
+  <pattern id="h8aed9dcfdc" patternUnits="userSpaceOnUse" x="0" y="0" width="72" height="72">
+   <rect x="0" y="0" width="73" height="73" fill="#a95b12"/>
+   <path d="M -36 36 
+L 36 -36 
+M -32 40 
+L 40 -32 
+M -28 44 
+L 44 -28 
+M -24 48 
+L 48 -24 
+M -20 52 
+L 52 -20 
+M -16 56 
+L 56 -16 
+M -12 60 
+L 60 -12 
+M -8 64 
+L 64 -8 
+M -4 68 
+L 68 -4 
+M 0 72 
+L 72 0 
+M 4 76 
+L 76 4 
+M 8 80 
+L 80 8 
+M 12 84 
+L 84 12 
+M 16 88 
+L 88 16 
+M 20 92 
+L 92 20 
+M 24 96 
+L 96 24 
+M 28 100 
+L 100 28 
+M 32 104 
+L 104 32 
+M 36 108 
+L 108 36 
+" style="fill: #ffffff; stroke: #ffffff; stroke-width: 1.0; stroke-linecap: butt; stroke-linejoin: miter"/>
+  </pattern>
+ </defs>
+</svg>

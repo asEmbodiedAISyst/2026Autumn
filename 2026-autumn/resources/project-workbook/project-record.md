@@ -274,4 +274,4 @@ Project development: [exact next action; advance / advance with conditions / rev
 | --- | --- | --- | --- | --- |
 | [enter] | [enter] | [enter] | [enter] | [enter] |
 
-Link the exact submitted artifact commits through submissions/poster.md, code.md and video.md. A later record points to an earlier assessed commit; it cannot contain its own final commit hash. Preserve differences between milestones.
+Keep the final poster in `poster/`, the code and its entry-point README in `code/`, and the final video in `video/` in the assigned team repository. Commit and push to `main` before each deadline; the teaching team records and collects the remote revision at that deadline. No separate student collection record is required. Preserve the scientific links in the table and explain differences between milestone versions.

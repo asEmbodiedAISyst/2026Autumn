@@ -59,7 +59,7 @@ Assessment combines individual participation with a progressive team project.
   * 30%: Six staged project records
   * 25%: Working system and reproducibility package
   * 10%: Consolidated and updated project record
-  * 10%: Narrated project video
+  * 10%: Project video with narration or explanatory captions
   * 10%: Oral briefing and response to questions
   * 5%: Technical poster
 
@@ -117,10 +117,10 @@ Develop one team project through six worksheets: **Claim → Experience → Syst
 
 Complete one worksheet for each of Classes 12–17. Submit it handwritten and signed by every team member before the end of the corresponding session. You may revise earlier worksheets as your project develops; keep earlier submissions and explain any material changes.
 
-The final project package includes the worksheet portfolio, reproducible code and environment instructions, relevant data and results, a technical poster and a narrated video. Present and demonstrate the project at the final showcase. Detailed artifact requirements will be supplied separately.
+The final project package includes the worksheet portfolio, reproducible code and environment instructions, relevant data and results, a technical poster and a video with narration or explanatory captions. Present and demonstrate the project at the final showcase. [Class 18](module-05-final-project-submissions/18-final-poster-submission.md), [Class 19](module-05-final-project-submissions/19-final-code-submission.md) and [Class 20](module-05-final-project-submissions/20-final-video-submission.md) provide the preparation notes and artifact requirements.
 
-Each team will have a private project repository for its instructions, development and final submission. We will provide repository links when teams are assigned.
+Use your assigned private team repository for development and final submission. The [Class 01 repository introduction](first-class/01-course-introduction-with-asmagicbrain.md#your-assigned-team-repository) links the eight repositories and explains the folder and deadline-collection workflow.
 
 ### Course Materials
 
-This page provides the Autumn 2026 course information and schedule. Individual class pages are not available yet. Dates and assessment details follow the current course plan; we will announce any approved changes here. No-class dates in the schedule do not automatically cancel listed submission deadlines. All times are Abu Dhabi time (UTC+4).
+This page provides the Autumn 2026 course information and schedule. Individual class pages are available through the course navigation. Dates and assessment details follow the current course plan; we will announce any approved changes here. Delivery arrangements do not reduce the complete teaching content for Classes 19 and 20 or automatically cancel listed submission deadlines. All times are Abu Dhabi time (UTC+4).

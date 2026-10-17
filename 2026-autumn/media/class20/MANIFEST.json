@@ -1,0 +1,21 @@
+{
+  "algorithm": "SHA-256",
+  "sha256": {
+    "FIGURE-CODE.md": "c85751986bd914b95aa7ac6eb51bb320612975e67c093c6293587eb4d5854713",
+    "course-video-storyboard-classroom.pdf": "58ba4b4a9950c119ce3ef971818e06d687c024e62d56b85cf8e5e7807e1db371",
+    "course-video-storyboard-classroom.png": "d648706bf58252bae413379da01d29caa5005054b9d2bec234b2ab978462e06e",
+    "course-video-storyboard-classroom.svg": "d864e444b1a7fc50a1bd5cd5d9b8d28784392e5665d6d969a8eb2e2d1a305608",
+    "course-video-storyboard-paper.pdf": "0e17c0e3a862b02a303f8eeae70c4640e1a3f6bfbc9374bffba011d7fe4b3d0c",
+    "course-video-storyboard-paper.png": "48310308bec5fa0978ef34de892927d1338ad9de900e05b74bba74e154f68c72",
+    "course-video-storyboard-paper.svg": "87c870b09b3ceb9ee4df6ac195b5f8b39153ad7cf36a8156d7acc71043690d62",
+    "figure-provenance.json": "3006c9b1cf6b7d4914ef3c2c1c33fed639c4f0b940e5e85b4fc1de97efda7a45",
+    "source/LEAP-ASSET-LICENSE": "5a91c3d709c2ee3a71f166b46e3208cebd83c0c7a870746c729b31a01f156984",
+    "source/PLAYGROUND-LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "source/figure_typography.py": "0dad99a9b76b786e8ef247daabc10bc9cdd59e774de0f579af8d1f01532f82ca",
+    "source/frames/step-0001.png": "36a6c316949e9c7cfecb90e03853be8d63dce8171b8180f54ce42ddd9aee8b60",
+    "source/frames/step-0356.png": "2880f95ed1fdda952177cc5d338bea20317b3398b2502ea7312623b80f4bc933",
+    "source/frames/step-1000.png": "66bd55acb254028d1b28ce529ec1bcde5204e7add945af18dd3a9c398acbfe0e",
+    "source/make_figures.py": "9fd7060b28b85c2ab7c1112fc21198ef596eb1aa9f624c4169eedbeb1045d798",
+    "source/publication.mplstyle": "c36746fa610ae67a8ecfbc8bf640a6bf558426169fcf712f06c184a49a656b96"
+  }
+}
