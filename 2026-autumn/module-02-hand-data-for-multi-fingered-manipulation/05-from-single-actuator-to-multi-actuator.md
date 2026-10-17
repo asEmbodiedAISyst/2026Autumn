@@ -74,7 +74,7 @@ H(q)\ddot q+C(q,\dot q)+\tau_f(\dot q)
 \tau_{\mathrm{ext}}=J_c(q)^\mathsf{T}f_c.
 $$
 
-Here $$q$$ is the vector of joint coordinates, $$H$$ is the inertia matrix, and $$C=c+g$$ collects velocity-dependent rigid-body terms and gravity, matching the notation in Classes 02–04. The term $$\tau_f$$ represents passive resistance, $$\tau_a$$ is applied actuator effort, and $$\tau_{\mathrm{ext}}$$ is externally applied generalized effort. The contact Jacobian $$J_c$$ maps joint velocity to contact motion; its transpose maps contact force $$f_c$$ to generalized effort. For revolute joints, effort is torque in N m. This equation organizes the terms; it does not supply unknown parameters.
+Here $$q$$ is the vector of joint coordinates, $$H$$ is the inertia matrix, and $$C=c+g$$ collects velocity-dependent rigid-body terms and gravity, matching the notation in Classes 02–04. The term $$\tau_f$$ represents passive resistance, $$\tau_a$$ is applied actuator effort, and $$\tau_{\mathrm{ext}}$$ is externally applied generalized effort. For the point-contact expression here, $$J_c$$ maps joint velocity to the contact point's linear velocity, and $$f_c$$ is the force exerted on the robot at that point. Express both in the same frame and use the same point. The transpose maps that force to generalized effort; the body applying it experiences the opposite force. Other applied external loads contribute their own generalized terms (Featherstone 2008). For revolute joints, effort is torque in N m. This equation organizes the terms; it does not supply unknown parameters.
 
 Off-diagonal inertia terms are a concrete example of coupling. Suppose, only for illustration,
 
@@ -161,6 +161,18 @@ $$
 
 Here $$p$$ is the unconstrained scalar actuator force. The unit hinge transmission makes the limited output a joint torque in N m. The input $$u$$ is a force-like reference sum in N m; it is neither an angle nor already the final applied torque.
 
+The motor 0 declaration in the supplied H1 XML makes this mapping explicit:
+
+```xml
+<general name="xc330_position_m00" joint="actuator_joint_m00"
+         gear="1" dyntype="none" gaintype="fixed" gainprm="1"
+         biastype="affine" biasprm="0 -1.579836 -0.202115"
+         ctrllimited="false" forcelimited="true"
+         forcerange="-0.1551 0.1551" />
+```
+
+The input itself is not clipped to ±0.1551: the example's reference sum can be 0.5143738 N m. The affine bias first subtracts the simulated position/velocity contribution; the force limit then bounds the resulting actuator output. Because `gear="1"`, its output has the same numerical value as the applied generalized joint torque. This explains why this input contract differs from Class 04's already bounded motor-effort input (MuJoCo developers n.d.-a, n.d.-b).
+
 | Executable example | Meaning of the input slot | Where feedback is calculated |
 |---|---|---|
 | Class 03 XC330 motor | Generalized torque request | No embedded position servo in the supplied structural model |
@@ -180,7 +192,7 @@ $$
 
 The applied effort is therefore 0.1175606 N m. If we instead passed an already computed feedback effort into this general-actuator input, its bias would subtract the state contribution again. That double subtraction would request −0.2792526 N m and clip to −0.1551 N m in this example: even the sign would be wrong. Use the actuator definition rather than the array name to determine an input's meaning.
 
-The inspection script checks this arithmetic against the actual XML without changing source models. Its short finite-state run tests the executable scene, not the physical trajectory replay. The scene has a 2 ms simulation step; this is not a measurement of the servo firmware or acquisition rate. The [MuJoCo actuator documentation](https://mujoco.readthedocs.io/en/3.3.7/modeling.html#actuation-model) defines gain, bias, force limits and transmission.
+The inspection script checks this arithmetic against the actual XML without changing source models. Its short finite-state run tests the executable scene, not the physical trajectory replay. The scene has a 2 ms simulation step; this is not a measurement of the servo firmware or acquisition rate. The [MuJoCo actuation model](https://mujoco.readthedocs.io/en/3.3.7/computation/index.html#actuation-model) and [general-actuator XML reference](https://mujoco.readthedocs.io/en/3.3.7/XMLreference.html#actuator-general) define the gain, bias, force limits and transmission.
 
 Effective armature, damping and friction-loss parameters are selected for each motor/controller pair. They can absorb missing effects as well as physical resistance or inertia. A controller-dependent armature estimate should not be reported as an independently measured invariant rotor inertia. Before interpreting a fitted term, check units, signs, initial state, input identity and clock alignment.
 
@@ -221,7 +233,7 @@ The accepted campaign contains 125 simultaneous science events. Every event cont
 | Held-out evaluation | 30 | 480 |
 | Total | 125 | 2000 |
 
-There are sixteen motor identities and two controller contexts, giving **32 selected parameter vectors**. Each held-out motor/controller cell has fifteen records. These fits are applied across the campaign's tested fixtures and profiles; they are not 32 unrelated physical tests.
+There are sixteen motor identities and two controller contexts, giving **32 selected parameter vectors**. Each held-out motor/controller cell has fifteen records: five B1/P06, five G1/P06 and five G1/P07. The cell mean therefore combines fixture and profile conditions; it is not the score of one G1 episode. These fits are applied across the campaign's tested fixtures and profiles; they are not 32 unrelated physical tests.
 
 ![How collection events produce paired prediction records](../media/class05/experiment-units-classroom.png)
 
@@ -229,7 +241,7 @@ There are sixteen motor identities and two controller contexts, giving **32 sele
 
 Different motors in the same event may share disturbances. Do not treat the 480 records as 480 independent repetitions of the complete setup. Retain `simultaneous_episode_id` when joining, splitting or resampling. For uncertainty in performance on new collection events, preserve that event grouping rather than resampling individual motor rows as if unrelated.
 
-The [episode list](../resources/class05/data/EPISODES_USED.csv), [metric table](../resources/class05/data/episode_metrics.csv) and [selected parameters](../resources/class05/data/fitted_parameters.csv) are included in this repository. The script checks paired model rows and grouping; it does not refit the models or recover measurements omitted from the compact package.
+The [episode list](../resources/class05/data/EPISODES_USED.csv), [metric table](../resources/class05/data/episode_metrics.csv) and [selected parameters](../resources/class05/data/fitted_parameters.csv) are included in this repository. The [data guide](../resources/class05/data/README.md) defines the columns and scope, while the [source record](../resources/class05/evidence/provenance.json) distinguishes original-source hashes from released files. The event list preserves the accepted event identities and fields while omitting private development-path columns. The checks pair predictions and preserve grouping; they do not refit the models or recover measurements omitted from the compact package.
 
 ### Know which two predictions are being compared
 
@@ -241,7 +253,7 @@ The label **synthetic_baseline** identifies one supplied parameter vector shared
 | Damping (N m s/rad) | 0.014961695 | 0.039311835 |
 | Friction loss (N m) | 0.010089165 | 0.017770652 |
 
-The source records describe two numerical fitting starts for each of 32 motor/controller cells: 64 candidate vectors. Calibration records estimate them, model-selection error selects one successful candidate per cell, and the 32 selected vectors are frozen before the source's held-out scoring step. Two starts are alternative optimizer initializations, not two physical trials or two identification methods.
+The supplied [selection record](../resources/class05/data/selection-record.json) describes two numerical fitting starts for each of 32 motor/controller cells: 64 candidate vectors. Calibration records estimate them, model-selection error selects one successful candidate per cell, and the 32 selected vectors are frozen before the source's held-out scoring step. Two starts are alternative optimizer initializations, not two physical trials or two identification methods.
 
 The accepted event list has 36 calibration events per controller, 12 selection events under H1 and 11 under H2, and 15 held-out events under each. Keep the actual 23 selection events; do not copy Class 04's 24-event matrix into this campaign. The compact package preserves scores and selected parameters. Its checks do not rerun the optimizer, reconstruct excluded raw records or independently establish a prospective collection procedure.
 
@@ -291,7 +303,7 @@ A different friction-loss parameter similarly does not prove a physical friction
 
 *Figure 8. Left: encoder and stored baseline/fitted trajectories; right: signed prediction-minus-encoder residuals on a common vertical scale. Rows show motors 0 and 9 in the same G1/H1/P06/R01 held-out collection event. The selected trace illustrates local discrepancies, not the population average. The supplied per-motor trace intervals reproduce their corresponding episode metrics; the population table separately averages records.*
 
-The selected CSV permits a direct RMSE check, not only inspection of saved summary scores:
+The [selected CSV](../resources/class05/data/paired-trace.csv) permits a direct RMSE check against the [saved summary](../resources/class05/results/lesson-summary.json). It contains encoder positions and stored predictions, plus a recorded position reference. It does not contain the full reference/velocity/initial-state/configuration stream needed to reconstruct the original physical-data replay. Recalculating the score and stepping the separate combined scene are therefore different checks:
 
 | Selected G1 / H1 / P06 / R01 record | Retained samples | Baseline episode RMSE (rad) | Fitted episode RMSE (rad) |
 |---|---:|---:|---:|
@@ -302,7 +314,7 @@ For motor 0, square each of the 1,101 fitted-minus-encoder differences, average 
 
 The motor 0 result of 0.0222666324 rad belongs to **this episode**. Its H1 cell mean of about 0.019939 rad averages fifteen held-out records. Their difference is expected; substituting the group mean for the plotted episode would mislabel the result.
 
-Each motor retains its own recorded time vector. The two series have different sample counts and end times even though they belong to one shared collection event. Inspect timestamps before aligning signals across motors; matching row indices alone is not a synchronization method. This also means the compact trace cannot establish a new encoder sampling specification for the device.
+Each motor retains its own recorded time vector. Motor 0 spans 0–11.000286455 s; motor 9 spans 0–10.990389566 s. The different sample counts and end times are retained even though both belong to one shared collection event. Inspect timestamps before aligning signals across motors; matching row indices alone is not a synchronization method. This also means the compact trace cannot establish a new encoder sampling specification for the device.
 
 Read the time series before interpreting the mean. Locate a reversal or region of larger discrepancy, compare prediction with encoder at the same recorded time, and ask whether the difference appears in one motor or both. A visually closer curve is useful evidence for that trace; selecting one favorable event does not replace the full held-out comparison.
 
@@ -314,7 +326,7 @@ The campaign scores **encoder position**. Camera views and ArUco detections help
 
 *Figure 9. Retained source detection images. The outlines and IDs show marker detections in two views. They do not establish camera calibration, joint-axis angle or synchronized measurement uncertainty. Use the marker arrangement as physical context.*
 
-To construct an optical angle, calibrate the camera and marker geometry, establish the marker-to-moving-body transform and fixed reference, define the joint axis and zero, and align the video clock with the encoder clock. Inspect occlusions and pose ambiguities, then quantify uncertainty. A marker's image-plane orientation is generally not the physical hinge angle under an arbitrary viewpoint.
+To construct an optical angle, calibrate the camera and marker geometry, establish the marker-to-moving-body transform and fixed reference, define the joint axis and zero, and align the video clock with the encoder clock. Inspect occlusions and pose ambiguities, then quantify uncertainty. A marker's image-plane orientation is generally not the physical hinge angle under an arbitrary viewpoint. The [OpenCV pose-estimation documentation](https://docs.opencv.org/4.13.0/d5/dae/tutorial_aruco_detection.html) distinguishes corner/ID detection from pose recovery using calibrated camera parameters and known marker geometry (OpenCV contributors n.d.).
 
 ![Two measurement paths to a common joint angle](../media/class05/measurement-chain-classroom.png)
 
@@ -332,7 +344,7 @@ If optical and encoder readings disagree, do not choose a winner from visual pla
 
 Place Figure 1 beside Figures 2 and 3. Identify one fixed housing, one moving fixture and its motor identity. Contrast the collection rack with a chain of connected joints. State the input and output being compared, and distinguish the campaign's 113 g model construction from the earlier fixture descriptions.
 
-Open the supplied [B2/H1 scene](../resources/class05/models/combined/B2_H1.xml) and [B2/H2 scene](../resources/class05/models/combined/B2_H2.xml) as text. Identify a motor-specific hinge, actuator and passive parameters. Use the saved scene checks below to connect the declared model to the worked input calculation:
+Use the [data and units guide](../resources/class05/data/README.md) to identify the recorded fields before interpreting the models. Open the supplied [B2/H1 scene](../resources/class05/models/combined/B2_H1.xml) and [B2/H2 scene](../resources/class05/models/combined/B2_H2.xml) as text. Identify a motor-specific hinge, actuator and passive parameters. Use the saved scene checks below to connect the declared model to the worked input calculation:
 
 | Scene check | B2/H1 | B2/H2 |
 |---|---:|---:|
@@ -358,7 +370,7 @@ Use the original marker images in Figure 9 and the measurement chain in Figure 1
 
 ### Compare two motors and make one bounded decision
 
-Use the four-row comparison table to predict which motor/context has the smallest fitted error and which has the largest percentage reduction. Check the prediction against the supplied values and explain the difference between the two questions.
+Use the four-row comparison table to predict which motor/context has the smallest fitted error and which has the largest percentage reduction. Its entries are means over the fifteen-record mixed held-out set for each motor/context. Figure 8 and its episode table refer separately to the single selected G1 event. Check the prediction against the supplied values and explain the difference between the two questions.
 
 1. Record the H1 baseline and fitted mean RMSEs for motors 0 and 9. Calculate one reduction yourself; use the supplied H2 rows for comparison without repeating all calculations.
 2. Explain why 480 held-out motor records represent thirty shared collection events. State how you would keep that grouping in a new split.
@@ -370,7 +382,7 @@ Submit a compact record:
 
 | Field | Required content |
 |---|---|
-| Identity and boundary | Motor IDs, controller context, fixture and scored output |
+| Identity and boundary | Motor IDs, controller context, scored output and whether the result is the mixed-condition mean or selected G1 episode |
 | Numerical comparison | Both model errors, units, one reduction calculation |
 | Grouping | Shared-event count and split rule |
 | Interpretation | One supported observation and one unresolved explanation |
@@ -380,9 +392,20 @@ A defensible conclusion reports improved held-out encoder-position prediction un
 
 ## Carry the evidence into manipulation
 
-The next class introduces a multi-fingered manipulation task. Keep today's distinction explicit: actuator predictions describe how commands produce joint motion under a declared model; manipulation also depends on connected-body mechanics, object state, contact, observations and the policy's decisions. A fixture result is a useful component of that argument, and the manipulation experiment must supply the remaining evidence.
+[Class 06](06-learned-in-hand-cube-reorientation.md) introduces a multi-fingered manipulation task. Keep today's distinction explicit: actuator predictions describe how commands produce joint motion under a declared model; manipulation also depends on connected-body mechanics, object state, contact, observations and the policy's decisions. A fixture result is a useful component of that argument, and the manipulation experiment must supply the remaining evidence.
 
 
 ## References
 
-Hwangbo, Jemin, Joonho Lee, Alexey Dosovitskiy, Dario Bellicoso, Vassilios Tsounis, Vladlen Koltun, and Marco Hutter. 2019. “Learning Agile and Dynamic Motor Skills for Legged Robots.” *Science Robotics* 4 (26): eaau5872. [https://doi.org/10.1126/scirobotics.aau5872](https://doi.org/10.1126/scirobotics.aau5872). The [open manuscript](https://arxiv.org/abs/1901.08652) supplies the original platform, actuator-learning method and policy-transfer experiments.
+Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer.
+
+Hwangbo, Jemin, Joonho Lee, Alexey Dosovitskiy, Dario Bellicoso, Vassilios Tsounis, Vladlen Koltun, and Marco Hutter. 2019. “Learning Agile and Dynamic Motor Skills for Legged Robots.” *Science Robotics* 4 (26): eaau5872. [Published article](https://doi.org/10.1126/scirobotics.aau5872). The [open manuscript](https://arxiv.org/abs/1901.08652) supplies the original platform, actuator-learning method and policy-transfer experiments.
+
+
+MuJoCo developers. n.d.-a. “Computation.” *MuJoCo Documentation*, version 3.3.7. Accessed October 17, 2026. [Actuation model](https://mujoco.readthedocs.io/en/3.3.7/computation/index.html#actuation-model).
+
+MuJoCo developers. n.d.-b. “XML Reference.” *MuJoCo Documentation*, version 3.3.7. Accessed October 17, 2026. [General actuator](https://mujoco.readthedocs.io/en/3.3.7/XMLreference.html#actuator-general).
+
+OpenCV contributors. n.d. “Detection of ArUco Markers.” *OpenCV Documentation*, version 4.13.0. Accessed October 17, 2026. [Marker detection and pose estimation](https://docs.opencv.org/4.13.0/d5/dae/tutorial_aruco_detection.html).
+
+The supplied campaign's [data guide](../resources/class05/data/README.md), [provenance record](../resources/class05/evidence/provenance.json) and [selection declaration](../resources/class05/data/selection-record.json) identify the numerical evidence used in this lesson. The research and software references explain methods; they do not independently validate the supplied fixture or collection procedure.
