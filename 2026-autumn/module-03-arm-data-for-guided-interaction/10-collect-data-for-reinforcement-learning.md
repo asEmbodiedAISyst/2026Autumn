@@ -24,13 +24,17 @@ By the end, you should be able to:
 - Read an ACT configuration and result without confusing different tools, datasets or action spaces.
 - Write a concise contract and justify whether to collect, adapt, inspect or reject.
 
+Classes 02–05 established the meanings of requested, measured and simulated quantities. Classes 06–07 showed why a learner's observations and timing must match its implementation. Classes 08–09 established an arm interface and a traceable command/response record. Here we decide whether a collection procedure supplies the evidence an intended learner and executor require. We change to a camera pusher, so we must declare the new tool and schema instead of simply renaming Class 09's motor channels.
+
+[Lecture](#choose-the-record-from-the-learning-question) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Resources and continuation](#resources-and-continuation)
+
 ## Choose the record from the learning question
 
 A **demonstration** records observations and actions selected by an operator or another declared expert. A behavior-cloning learner uses those pairs as supervised examples. A **reinforcement learner** optimizes a reward objective using interaction experience. An **evaluation record** describes what a frozen policy did under specified conditions and how its outcomes were judged.
 
 ![Demonstration, reinforcement-learning experience and evaluation records](../media/class10/learning-records-classroom.png)
 
-*Figure 1. Record types answer different questions. Their roles depend on available information and intended use, not on file extensions.*
+> Figure 1. Record types answer different questions. Their roles depend on available information and intended use, not on file extensions.
 
 A simple behavior-cloning objective is:
 
@@ -41,7 +45,7 @@ $$
 
 Here $$o_i$$ is the observation, $$a_i$$ is the demonstrated action, and the policy's prediction is compared with that action through a loss. This expression states the supervised-learning idea; it does not specify ACT's complete architecture or training loss.
 
-A reinforcement-learning objective instead maximizes expected discounted return:
+A reinforcement-learning objective instead maximizes expected discounted return (Sutton and Barto 2018):
 
 $$
 \max_\theta\;\mathbb E_{\pi_\theta}
@@ -52,9 +56,11 @@ A transition record can include observation, action, reward, next observation an
 
 **Worked distinction:** an image, measured tool pose and demonstrated next pose can supervise an imitation learner. A success flag can support filtering or evaluation. In the LEAP hand RL example, a cube-manipulation policy obtains reward-bearing simulator transitions and is optimized for return. The ACT pusher learner instead imitates recorded observation/next-pose pairs. Both require declared observations and actions, but their supervision and update procedures differ.
 
+An observation need not reveal the full physical state. A tool pose alone does not describe cube motion, contact forces or camera visibility. A learning method may need images, recent history or another state estimate to distinguish situations that look identical in the chosen features. This connects to Class 06's explicit policy-observation construction: a file called `observation.state` is not automatically a complete Markov state or the full generalized state of a rigid-body model.
+
 ### Why low demonstration loss is insufficient
 
-A demonstrator visits particular states. A learned policy's own small errors can take it to different states and images, after which it must act on observations that may be poorly represented in training. The [DAgger paper](https://proceedings.mlr.press/v15/ross11a.html) develops this policy-induced distribution issue. It motivates closed-loop rollout and failure review here; this class does not implement DAgger.
+A demonstrator visits particular states. A learned policy's own small errors can take it to different states and images, after which it must act on observations that may be poorly represented in training. Ross, Gordon, and Bagnell (2011) develop this policy-induced distribution issue in [DAgger](https://proceedings.mlr.press/v15/ross11a.html). It motivates closed-loop rollout and failure review here; this class does not implement DAgger.
 
 **Predict:** a dataset contains successful approaches to a cube but no recovery after the tool passes it. What will the learner see after its first overshoot? More copies of the same clean approach may not supply the missing recovery behavior. A decision to collect more should identify the intended coverage change.
 
@@ -62,11 +68,11 @@ A demonstrator visits particular states. A learned policy's own small errors can
 
 The pilot uses a **pusher tool with a tool-mounted camera**. Its state/action representation is a tool pose, rather than six arm angles and a gripper command. Handheld and robot-mounted collection aim to preserve a useful tool-camera relationship while changing who moves the tool.
 
-The [Universal Manipulation Interface](https://umi-gripper.github.io/) motivates careful relative-trajectory and latency interfaces. The simpler course pusher is a separate implementation; it does not inherit UMI's transfer results.
+The [Universal Manipulation Interface](https://umi-gripper.github.io/) motivates careful relative-trajectory and latency interfaces (Chi et al. 2024). The simpler course pusher is a separate implementation; it does not inherit UMI's transfer results.
 
 ![Nine-value tool-pose schema and camera input](../media/class10/tool-schema-classroom.png)
 
-*Figure 2. The pusher schema contains three position values and two rotation-matrix columns. It describes a pose interface, not nine robot joints.*
+> Figure 2. The pusher schema contains three position values and two rotation-matrix columns. It describes a pose interface, not nine robot joints.
 
 The pilot declares:
 
@@ -83,7 +89,16 @@ The nine pose features are ordered:
 x, y, z, r11, r21, r31, r12, r22, r32
 ```
 
-Position is in metres. The other six values are unitless entries from the first two rotation-matrix columns. They encode three-dimensional orientation; they are not six independent rotational degrees of freedom. A decoder must recover a valid orthonormal rotation and specify how degenerate predictions are handled. [Zhou and colleagues](https://arxiv.org/abs/1812.07035) explain the motivation for continuous rotation representations in neural networks.
+Position is in metres. The other six values are unitless entries from the first two rotation-matrix columns. They encode three-dimensional orientation; they are not six independent rotational degrees of freedom. A decoder must recover a valid orthonormal rotation and specify how degenerate predictions are handled. Zhou et al. (2019) explain the motivation for continuous rotation representations in neural networks. In the supplied code, `to_rot6d` concatenates the first two columns; `from_rot6d` orthogonalizes predicted columns. For nonzero, nonparallel input vectors u and v, its geometric construction is
+
+$$
+b_1=\frac{u}{\|u\|},\qquad
+\tilde b_2=v-(b_1^Tv)b_1,\qquad
+b_2=\frac{\tilde b_2}{\|\tilde b_2\|},\qquad
+R=[b_1\ b_2\ b_1\times b_2].
+$$
+
+The third column is reconstructed by a cross product. Six stored orientation values therefore describe a three-degree-of-freedom rotation through a constrained representation. The code protects division with a small denominator floor, but that alone does not make zero or parallel predictions valid rotations: an all-zero input produces a zero matrix, not a member of SO(3). An executor needs an explicit validity test and a declared reject/hold rule. Valid stored rotations and arbitrary network outputs require different checks.
 
 The simulated environment-state field is privileged evaluation information. Do not silently add object/goal coordinates to a deployed actor that receives only camera images and tool pose. A third-person scene render can also reveal information absent from the policy's camera.
 
@@ -91,30 +106,39 @@ The simulated environment-state field is privileged evaluation information. Do n
 
 In the retained **handheld recorder**, the previous measured state and image are paired with the next measured tool pose as `action`. That action is a demonstration target derived from motion, not an issued motor command. A robot teleoperation recorder uses a different convention: previous observation paired with the limited applied command.
 
+For this pilot, all 628 available within-episode adjacent pairs satisfy `action[k] = observation.state[k+1]` exactly. Thus a row contains the current observation and a next-pose target expressed in the same episode frame. The action is not the difference between the two poses. Do not shift it forward again during conversion. Each episode's last action has no following saved state in that episode; never attach the next episode's first state as its outcome.
+
+This also differs from Class 09: that bridge saves the current joint observation beside the joint command issued for the subsequent simulated transition. A pose derived from what a demonstrator did next and a bounded command sent to a robot can share a learning role while having different acquisition semantics.
+
 Identical feature names and dimensions do not make those semantics identical. The training and execution pipeline must preserve the declared alignment, units and meaning. An off-by-one-frame error, an unrecorded executor limit or a change from measured pose to applied target can alter what the learner is being asked to predict.
 
 ## Transform camera pose into the episode frame
 
-The pose stream initially describes a camera. A fixed mounting transform relates the camera to the tool tip. If the camera position and orientation are expressed in a common world frame, the geometric mapping has the form:
+The pose stream initially describes a camera. Define W as a gravity-aligned collection frame, C as the camera frame, T as the tool-tip frame and F as the episode frame. As in Classes 03, 07 and 09, `R_AB` maps coordinates from B into A, while `p_AB` locates the origin of B in A. This explicit source/destination convention follows the coordinate discipline of Featherstone (2008). A homogeneous point transform here is distinct from a 6 × 6 spatial motion or force transform.
+
+A fixed mounting transform locates the tool tip relative to the camera:
 
 $$
 \begin{aligned}
-\mathbf p_{\mathrm{tip}}&=\mathbf p_{\mathrm{cam}}
-+R_{\mathrm{cam}}\mathbf p_{\mathrm{cam\rightarrow tip}},\\
-R_{\mathrm{tip}}&=R_{\mathrm{cam}}R_{\mathrm{cam\rightarrow tip}}.
+\mathbf p_{WT}&=\mathbf p_{WC}+R_{WC}\mathbf p_{CT},\\
+R_{WT}&=R_{WC}R_{CT}.
 \end{aligned}
 $$
 
-Changing the tool-camera mounting offset changes the recorded tip pose even when the image still looks plausible. The mounting transform, scale and time alignment belong in the contract.
+The original handheld recorder implements this through `tcp_pose`, `P_CAM_TCP` and `R_CAM_TCP`, after converting the incoming tracking coordinates to a declared z-up frame. A camera frame, the phone body frame used in Class 09 and an episode frame are separate definitions. Do not copy Class 09's body-axis matrix into this camera interface without verifying the relationship.
 
-Each episode then establishes an origin at its initial tool-tip position and a **yaw-only heading**, while retaining world up. For initial position $$\mathbf p_0$$ and heading rotation $$R_h$$:
+Changing the tool-camera mounting offset changes the recorded tip pose even when the image still looks plausible. As an illustrative calculation, let the offset be [0,0,−0.16] m. A +90° camera rotation about world y turns that offset into [−0.16,0,0] m. Adding the offset directly without rotation would put the tip at the wrong point. The physical mounting transform, scale and time alignment belong in the contract; a relative representation does not remove mounting errors.
+
+Each episode establishes an origin at its initial tool-tip position and a **yaw-only heading**, while retaining world up. Let `p_WT0` be the initial tip position and `R_WF` the rotation about world z given by the initial tool yaw. Then
 
 $$
-\mathbf p_e=R_h^T(\mathbf p_w-\mathbf p_0),\qquad
-R_e=R_h^TR_w.
+\mathbf p_{FT}=R_{WF}^T(\mathbf p_{WT}-\mathbf p_{WT0}),\qquad
+R_{FT}=R_{WF}^TR_{WT}.
 $$
 
-Reconstruction uses the same stored origin and heading. A displacement [0.10, 0, 0] m means ten centimetres along the episode's forward axis. With a 90-degree heading change, it maps along a different robot-base axis.
+`EpisodeFrame.encode` implements these two operations; `to_rot6d` stores the orientation columns. `EpisodeFrame.decode` reverses them using the chosen origin and heading. A robot's new initial position/heading selects a new realization of the same relative trajectory; it does not recover the original physical room coordinates unless those were retained.
+
+**Worked reconstruction:** choose robot start [0.33,0,0.12] m and an episode heading of +90° about base z. The relative position [0.10,0,0] m decodes to [0.33,0.10,0.12] m. It is ten centimetres along episode +x, which is base +y here. Because F is yaw-only, the initial downward tool rotation remains in the orientation features; the first rotation is not necessarily identity. With the declared downward start, its stored columns are [1,0,0,0,−1,0].
 
 Relative coordinates remove a declared dependence on global origin and heading. They do not establish reachability, equivalent contact, camera-domain compatibility or latency matching. A human trajectory that is convenient in one frame may become unsuitable when reconstructed at a different robot start.
 
@@ -172,7 +196,7 @@ The supplied simulated pilot contains **ten episodes and 638 retained frames**. 
 
 ![Example learner-camera views from the simulated pilot](../media/class10/pilot-views-classroom.png)
 
-*Figure 3. Selected frames from the supplied phone-camera simulation video. They support visual inspection, not an automatic visibility score or a physical collection claim.*
+> Figure 3. Selected frames from the supplied phone-camera simulation video. They support visual inspection, not an automatic visibility score or a physical collection claim.
 
 Inspect the learner's actual observation. Can the cube, goal and relevant tool interaction be seen? Are task phases missing? Does a camera turn away just as contact matters? A schema can pass while its images provide inadequate task information.
 
@@ -193,7 +217,7 @@ The portable numeric audit checks counts, dimensions, finite values and stored t
 
 ![Numeric audit of the ten-episode pilot](../media/class10/pilot-audit-classroom.png)
 
-*Figure 4. Retained pilot audit. Lines mark the stated 0.25 m/s speed limit and 15 mm final-frame distance threshold. The plotted speed is inferred from the pose sequence and nominal sample rate; no policy is trained or evaluated.*
+> Figure 4. Retained pilot audit. Lines mark the stated 0.25 m/s speed limit and 15 mm final-frame distance threshold. The plotted speed is inferred from the pose sequence and nominal sample rate; no policy is trained or evaluated.
 
 For nominal sample rate $$f$$, the action-pose finite-difference speed is:
 
@@ -202,7 +226,9 @@ v_k^{\mathrm{pose}}=
 f\left\lVert\mathbf p^{a}_{k+1}-\mathbf p^{a}_{k}\right\rVert_2.
 $$
 
-This is a speed implied by the sampled demonstration sequence. The original report calls it `peak_command_speed`, but the handheld action is a next measured pose. It is not a calibrated measurement of physical command velocity or camera-acquisition timing.
+This is a speed implied by the sampled demonstration sequence. For example, at 30 Hz a 20 mm change between successive action positions implies 0.60 m/s. A 0.25 m/s executor can advance a target by only about 8.33 mm per nominal interval, so it cannot follow that sampled timing unchanged. This calculation concerns successive target poses and nominal intervals; it is separate from the state-to-next-target displacement in one row.
+
+The original report calls it `peak_command_speed`, but the handheld action is a next measured pose. It is not a calibrated measurement of physical command velocity or camera-acquisition timing.
 
 ### Two contrasting episodes
 
@@ -210,6 +236,15 @@ This is a speed implied by the sampled demonstration sequence. The original repo
 | --- | ---: | ---: | --- |
 | 4 | 32.03 mm | Approximately 0.25 m/s | Outside the final-frame goal radius; speed alone does not reject it |
 | 6 | 4.67 mm | Approximately 0.60 m/s | Inside the final-frame radius, but exceeds the declared 0.25 m/s speed limit |
+
+Use the final saved environment-state values to reconstruct the geometry directly. The following coordinates are rounded to six decimals; the retained audit uses the full stored precision.
+
+| Episode | Cube x (m) | Cube y (m) | Goal x (m) | Goal y (m) |
+|---|---:|---:|---:|---:|
+| 4 | 0.406478 | 0.042160 | 0.433564 | 0.025060 |
+| 6 | 0.381522 | 0.014925 | 0.376856 | 0.014661 |
+
+For episode 4, the centre difference is approximately [−0.027086,0.017100] m. Its Euclidean norm is about 0.03203 m, so the final snapshot lies outside the strict 0.015 m radius. Episode 6 gives approximately [0.004666,0.000264] m and 0.00467 m, inside that radius. The test uses both planar coordinates; comparing only x would discard part of the error.
 
 Episode 6's implied peak speed is about 2.4 times the target limit. An executor that slows or clips that trajectory changes its timing and potentially its contact and image sequence. Declare the adaptation and re-evaluate it, or recollect under the intended limits.
 
@@ -219,7 +254,7 @@ For episode 4, the [source fault-reference file](../resources/class10/saved/audi
 
 ### Stored timestamps need acquisition provenance
 
-The pilot audit can verify the sample grid stored in the dataset. It cannot establish that a real camera acquired frames at precisely that cadence. The retained handheld recorder samples the latest streamed pose/image on a nominal loop and does not pass independent acquisition timestamps into the recorded dataset. Its previous observation can also persist across stream loss.
+The pilot audit can verify the sample grid stored in the dataset. It cannot establish that a real camera acquired frames at precisely that cadence. The retained handheld recorder samples the latest streamed pose/image on a nominal loop and does not pass independent acquisition timestamps into the recorded dataset. Its previous observation can also persist across stream loss. The next received pose can then become the target paired with an older observation even when the saved index grid remains uniform. Class 09's receiver-age field and this pilot's nominal timestamps are different diagnostics; neither supplies a missing packet-specific capture-to-action association.
 
 Therefore, uniformly spaced stored timestamps do not prove the absence of gaps or a physically measured 30 Hz camera stream. Record acquisition, reception and action times where available, together with resampling and gap-handling rules. A correct time grid can still pair the wrong image and action.
 
@@ -229,9 +264,13 @@ The prepared IK audit reconstructs observed tool poses at a declared canonical r
 
 ![Canonical target-frame reachability and yaw warnings](../media/class10/pilot-reach-classroom.png)
 
-*Figure 5. Retained model/solver-dependent audit. Reach percentages are rounded terminal values. The 98% reach fraction and ±60-degree yaw lines are audit thresholds, not hardware qualification.*
+> Figure 5. Retained model/solver-dependent audit. Reach percentages are rounded terminal values. The 98% reach fraction and ±60-degree yaw lines are audit thresholds, not hardware qualification.
 
-In the retained check, episode 2 has approximately **46%** reachable frames and episode 7 approximately **31%**. Episode 6 is approximately 91%, and episode 9 approximately 72%. Other records raise yaw warnings even when their IK fraction is high.
+The labels “reachable” in the saved report mean **solver-reported success under this particular audit**, rather than certified reachability. It uses position residual below 5 mm and cross-product orientation residual norm below 0.05. That orientation residual is a small-error measure; it is not a global geodesic-angle bound and can vanish for a 180° mismatch. The numerical solver is useful locally, while a qualified executor needs a final-pose check with an appropriate rotation metric.
+
+The audit uses angular weight 0.3, unlike Class 09's 0.5, and can retry for 300 iterations after a 30-iteration initial solve. These are implementation choices, not changes to the meaning of a rigid-body rotation. Keep them with the model/frame identity when comparing reports.
+
+In the retained check, episode 2 has approximately **46%** solver-reported reachable frames and episode 7 approximately **31%**. Episode 6 is approximately 91%, and episode 9 approximately 72%. Other records raise yaw warnings even when their IK fraction is high.
 
 The IK audit computes its speed diagnostic from decoded observed-state positions. The numeric audit computes speed from action positions. Preserve that distinction even when their values happen to be similar in this pilot.
 
@@ -259,7 +298,7 @@ Adjacent frames in one episode are strongly related. Randomly distributing them 
 
 ![Illustrative whole-episode training, selection and test split](../media/class10/episode-splits-classroom.png)
 
-*Figure 6. Constructed episode-level split. A–J are an illustration; they are not an executed split of the supplied pilot.*
+> Figure 6. Constructed episode-level split. A–J are an illustration; they are not an executed split of the supplied pilot.
 
 Choose the split unit from the claim. For new attempts under the same conditions, hold out complete episodes. For a new operator, object arrangement, camera or session, reserve that factor explicitly. Different seeds identify distinct simulator attempts under a versioned reset; they do not automatically establish the desired distribution shift.
 
@@ -269,13 +308,13 @@ Fit normalization and other learned preprocessing on training data only. An epis
 
 ## Understand the ACT example and its interface
 
-[Action Chunking with Transformers](https://tonyzhaozh.github.io/aloha/) predicts sequences of actions through an imitation-learning model. Its original design uses a transformer-based conditional generative formulation. For this class, the practical questions are what an action sequence means and how the executor uses it.
+[Action Chunking with Transformers](https://tonyzhaozh.github.io/aloha/) predicts sequences of actions through an imitation-learning model (Zhao et al. 2023). Its original design uses a transformer-based conditional generative formulation. For this class, the practical questions are what an action sequence means and how the executor uses it.
 
 Distinguish **predicted chunk length** from **executed actions before replanning**. A policy can predict a long sequence while an executor applies only a prefix before requesting a new observation. Some implementations combine overlapping predictions; inspect the actual executor rather than assuming every implementation uses the same options.
 
 ![Nominal action execution and replanning intervals](../media/class10/action-chunks-classroom.png)
 
-*Figure 7. Constructed replanning examples at nominal 30 Hz. They illustrate feedback opportunities, not a measured ranking of policy success.*
+> Figure 7. Constructed replanning examples at nominal 30 Hz. They illustrate feedback opportunities, not a measured ranking of policy success.
 
 If the executor applies $$n$$ actions at nominal rate $$f$$, its nominal open-loop interval is:
 
@@ -334,7 +373,7 @@ Inspect the retained canonical IK/physics report. Compare episodes 2 and 7 and i
 
 ### Interpret the training recipe and recorded result
 
-Open the separate ACT baseline recipe, result JSON and selected successful/failed clips. Count 24 successes across all fifty trials. Identify the seven-channel gripper branch before discussing the score. Explain which missing artifacts prevent exact inference reproduction. No full training run or checkpoint substitution is needed for this demonstration.
+Open the separate ACT baseline recipe, result JSON and selected successful/failed clips. Count 24 successes across all fifty trials. Identify the seven-channel gripper branch before discussing the score. Explain which missing artifacts prevent exact inference reproduction. The [selected failure clip](../resources/class10/recorded-policy/class10_act_push_cube_ep000.mp4) and [selected success clip](../resources/class10/recorded-policy/class10_act_push_cube_ep002.mp4) illustrate individual attempts. Their selection cannot replace the 50-trial denominator. No full training run or checkpoint substitution is needed for this demonstration.
 
 ### Draft the contract together
 
@@ -342,7 +381,7 @@ Fill the feature, action-alignment, timing, outcome and split rows. Turn one war
 
 ## Student activity
 
-Use the supplied pilot and partly specified contract. Base each decision on the identified records, figures and calculations. The task concerns interpreting evidence; it does not require new training or a successful robot rollout.
+Use the pilot evidence and schema above as the supplied contract context. Complete the compact response record below during the activity; the full downloadable contract is for later project development. Base each decision on the identified records, figures and calculations. The task concerns interpreting evidence; it does not require new training or a successful robot rollout.
 
 ### Make separate episode decisions
 
@@ -354,7 +393,7 @@ Choose an IK, yaw or reachability warning. State the observed result, one possib
 
 ### Complete the short contract
 
-Refer to the nine-feature schema rather than renaming or reordering it. Specify learner purpose, observation/action meaning, episode and target frames, nominal versus measured timing, the actual outcome evaluator, split unit, preprocessing boundary and at least one reject or inspect rule.
+Refer to the declared nine-feature schema, frame definitions, action alignment and timestamp limitations rather than copying or reordering them. State the intended learner and make three decisions: which outcome rule applies, what split/preprocessing boundary you propose, and which evidence still prevents acceptance. Cite the known definitions and complete only these decision fields in the short response. Expand the full contract later when preparing an actual collection.
 
 ### Choose the next action
 
@@ -379,3 +418,22 @@ Save the contract and audit with the team's experiment files. A useful response 
 - [DAgger](https://proceedings.mlr.press/v15/ross11a.html), [ACT](https://tonyzhaozh.github.io/aloha/) and [UMI](https://umi-gripper.github.io/) primary research sources.
 
 Full ACT or RL training can continue as a project when the matching dataset, environment, executor, checkpoints and compute are arranged. The course supplies examples and repositories rather than guaranteed GPU capacity. Preserve the task and interface contract, reserve evaluation conditions before tuning, and test the resulting policy in closed loop.
+
+
+Class 11 follows these interface assumptions into deployment: a matched feature shape must still become a valid, timed command for the chosen mechanism. Keep the dataset, tool, camera, normalization, executor and evaluator identities attached to each result when diagnosing a Sim2Real gap.
+
+## References
+
+The [pilot metadata](../resources/class10/data/pilot_push_cube_handheld/meta/info.json), [exported frame records](../resources/class10/data/pilot_push_cube_handheld/frames.csv), [numeric audit](../resources/class10/saved/numeric-audit.json), [canonical IK report](../resources/class10/saved/canonical-ik.json) and [separate ACT outcome record](../resources/class10/recorded-policy/results_act_push_cube_40k.json) identify this lesson's supplied evidence. The [model notice](../resources/class10/model/rebot_b601_rs_mjcf/NOTICE.md) and [CERN-OHL-W licence](../resources/class10/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W) identify the retained mechanical source. Algorithm papers support the concepts; their reported performance does not become a result for this course pilot.
+
+Chi, Cheng, Zhenjia Xu, Chuer Pan, Eric Cousineau, Benjamin Burchfiel, Siyuan Feng, Russ Tedrake, and Shuran Song. 2024. “Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots.” In *Proceedings of Robotics: Science and Systems*. [Paper and project](https://umi-gripper.github.io/).
+
+Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. [Spatial-vector resources](https://royfeatherstone.org/spatial/v2/index.html).
+
+Ross, Stephane, Geoffrey Gordon, and Drew Bagnell. 2011. “A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning.” In *Proceedings of the Fourteenth International Conference on Artificial Intelligence and Statistics*, 15:627–35. [Primary paper](https://proceedings.mlr.press/v15/ross11a.html).
+
+Sutton, Richard S., and Andrew G. Barto. 2018. *Reinforcement Learning: An Introduction*. 2nd ed. MIT Press. [Publisher record](https://mitpress.mit.edu/9780262039246/reinforcement-learning/).
+
+Zhao, Tony Z., Vikash Kumar, Sergey Levine, and Chelsea Finn. 2023. “Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.” In *Proceedings of Robotics: Science and Systems*. [Primary paper](https://www.roboticsproceedings.org/rss19/p016.html).
+
+Zhou, Yi, Connelly Barnes, Jingwan Lu, Jimei Yang, and Hao Li. 2019. “On the Continuity of Rotation Representations in Neural Networks.” In *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*, 5745–53. [Author manuscript](https://arxiv.org/abs/1812.07035).
