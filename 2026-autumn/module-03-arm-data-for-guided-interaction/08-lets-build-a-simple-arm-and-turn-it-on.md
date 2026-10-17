@@ -101,9 +101,9 @@ Record the joint vector, frame, tool definition and calibration identity togethe
 
 ## Joint order, units and signs
 
-The six arm joints are `joint1` through `joint6`. Their recorded channel names and the gripper follow this order:
+The six arm joints are `joint1` through `joint6`. The supplied viewer declares these channel names, with the gripper last:
 
-| Entry | Model interface | Recorded channel |
+| Entry | Model interface | Declared channel |
 | ---: | --- | --- |
 | 1 | joint1 | shoulder_pan |
 | 2 | joint2 | shoulder_lift |
@@ -113,7 +113,7 @@ The six arm joints are `joint1` through `joint6`. Their recorded channel names a
 | 6 | joint6 | wrist_roll |
 | 7 | Gripper tendon actuator | gripper |
 
-A command vector needs an order and a schema. Here, arm position targets in MuJoCo use radians; the retained motor-state convention uses degrees. Convert explicitly:
+A command vector needs an order and a schema. Here, arm position targets in MuJoCo use radians; the retained course motor-state convention uses degrees. Convert explicitly:
 
 $$
 \theta_{\mathrm{deg}}=q_{\mathrm{rad}}\frac{180}{\pi}.
