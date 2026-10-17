@@ -1,10 +1,7 @@
-# Class 07 code
+# Class 07 component-test sources
 
-Run commands and the complete teaching sequence are on the single Class 07 student page. From the Class 07 resource folder:
+[Course page](../../../module-02-hand-data-for-multi-fingered-manipulation/07-rotating-a-cube-with-visual-feedback.md) · [Resource inventory](../README.md)
 
-- `python3 code/inspect_results.py` checks supplied records using the standard library.
-- `python code/perception_lab.py --output runs/perception-01` runs the synthetic exercise after installing requirements-perception.txt; choose a fresh output folder.
-- `feedback_experiment.py` reuses adjacent ../class06/code assets, or an explicit --class06-code path, with requirements-simulation.txt.
-- `verify_package.py` checks the distributed Class 07 code/results hashes.
+`perception_lab.py` generates known-corner projections and a PnP sensitivity exercise. `inspect_results.py` reads supplied numerical records using standard Python. `feedback_experiment.py` delays/holds nine target-relative pose-error features using the adjacent Class 06 native runtime; it is not a raw-image estimator or live tracking integration. `verify_package.py` verifies the distributed code/result checksums.
 
-No script opens a phone connection or sends hardware commands.
+The synthetic and simulation requirements are declared separately. Environment setup, working directories, execution and output handling belong to the separately prepared example package; the course page contains the scientific explanation and complete reading activity. No script opens a phone connection or sends hardware commands.
