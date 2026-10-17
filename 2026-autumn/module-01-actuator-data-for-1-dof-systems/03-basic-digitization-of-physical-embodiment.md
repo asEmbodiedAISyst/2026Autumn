@@ -16,13 +16,13 @@ Our running example is an XC330 actuator carrying a link and two payload assembl
 
 The new task is to make and inspect an executable representation. Actuator-family history, product selection and control-law introductions remain in Class 02. Here, geometry, coordinate frames, rigid connections and mass distribution determine what the simulated mechanism does. Class 04 develops quantitative identification and response comparison using a separately documented 98 g campaign. It carries forward the inspection method, while keeping that campaign distinct from this 110 g structural model.
 
-By the end, you should be able to:
+By the end of this class, you should be able to:
 
 - Distinguish a digital representation, digital cousin and task-bounded digital twin through their intended use and evidence of correspondence.
 - Inspect geometry, frames, joints, mass, inertia and collision assumptions.
 - Define validation for a physical actuator with a specified link/payload experiment.
 
-[Lecture](#start-with-what-moves) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](#geometry-alone-does-not-establish-behavioral-correspondence) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
 The figures, XML excerpts, tables and recorded measurements on this page support the reading and model-inspection activity. Handling a physical actuator, opening CAD and inspecting a printer are extensions when those facilities are available; identify source-record comparisons separately from measurements you make yourself.
 

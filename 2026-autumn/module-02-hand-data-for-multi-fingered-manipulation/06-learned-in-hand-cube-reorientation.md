@@ -14,7 +14,7 @@ Turning a cube in your hand requires more than moving fingers. Some contacts sup
 
 We study a simulated LEAP Hand using a supplied pretrained policy. The hand provides a concrete robot-learning platform (Shaw, Agarwal, and Pathak 2023); the policy and reorientation task used here come from MuJoCo Playground (Google DeepMind 2026). The held cube is the physical object in the simulation. A separate goal cube displays the desired orientation. M/B/Z/U/A/I artwork makes the faces easy to follow, but the policy receives joint and cube-pose features—not letters or images. The practical runs the controller in native MuJoCo; it does not train a policy or move hardware.
 
-By the end, you should be able to:
+By the end of this class, you should be able to:
 
 - Distinguish a complete orientation target from a face pointing upward.
 - Connect joint targets, actuator response and contact wrench to object motion.
@@ -22,7 +22,7 @@ By the end, you should be able to:
 - Read a native rollout and distinguish first-goal success, successful steps, stalls and drops.
 - Test a display-only cube change while preserving the policy and physical conditions.
 
-[Lecture](#matching-the-upward-letter-is-not-enough) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](#start-with-the-held-cube-and-the-goal-cube) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
 The figures, animation, equations and saved results provide a complete reading route on this page. The selected recordings, comparison tables and worked calculations support the demonstration and activity without a local simulator.
 

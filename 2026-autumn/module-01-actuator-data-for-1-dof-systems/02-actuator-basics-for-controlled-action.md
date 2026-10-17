@@ -18,7 +18,17 @@ Control can also be open loop: a predetermined input is applied without correcti
 
 This class develops that connection through four devices: ROBOTIS XC330-M288-T and XL330-M288-T, followed by RobStride RS06 and RS00. The same questions apply throughout: What is requested? What produces effort? What moves? What is sensed? What do the reported numbers mean?
 
+By the end of this class, you should be able to:
+
+- Explain how a motor, transmission, drive and sensing can form a physical feedback process.
+- Distinguish position, velocity and current/torque-related requests from the resulting measured behaviour.
+- Explain how transmission ratio and sensing affect actuator behaviour and physical interaction.
+- Interpret the XC330/XL330 and RS06/RS00 examples using model-specific operating conditions.
+- Find TDS, UDS and SDS information, check units and limits, and identify what the documents do not establish.
+
 [Lecture](#from-a-motor-to-an-actuator) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+
+Use the worked examples, source figures and official documents to answer the questions below. The physical inspection uses unpowered XC330 and XL330 units as specified in the demonstration and activity.
 
 ## From a motor to an actuator
 

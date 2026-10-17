@@ -6,17 +6,27 @@ layout:
 
 # 11 Sim2Real Gap in Hardware Deployment
 
+## Central question
+
+What evidence supports a claim that a learned behavior transfers and remains useful?
+
 A policy can perform well in one simulator and fail when the camera, timing or executor changes. It can also fail because an interface was interpreted incorrectly rather than because learning itself was ineffective. Our task is to distinguish these explanations and state what a result actually supports.
 
 The required session remains simulation-based. We can inspect interfaces, run a constructed full-state replay, examine recorded policy outcomes and diagnose a selected failure. The current student repository includes the replay model/code, outcome JSON and selected success/failure videos. It does not include the exact learned-policy weights and saved processors needed to rerun those evaluations. Hardware teleoperation reported by the source is distinct from measured physical policy rollout evidence.
 
-**Central question:** What evidence supports a claim that a learned behavior transfers and remains useful?
-
-By the end of this class, you should be able to inspect a deployment interface, separate timing/contact mismatch from an interface error, explain the evidence provided by replay and shadow checks, diagnose a recorded failure, and write a bounded claim with a discriminating next experiment.
-
 Classes 02–05 established actuator, model and dataset identities. Classes 06–07 connected a manipulation policy to its observation and timing contract. Classes 08–09 established an arm and teleoperation interface; Class 10 asked whether demonstration records suit a learner and executor. Here we test the next link: what changes between that declared system and the system used for evaluation, and which experiment can distinguish the resulting explanations? We reuse the earlier mathematics and interfaces while keeping their different data and fixtures identifiable.
 
-[Lecture](#observation-action-compatibility-and-calibration) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Project handoff](#project-handoff)
+By the end of this class, you should be able to:
+
+- Inspect the observation, action and configuration conventions of a deployment interface.
+- Distinguish a possible timing or contact mismatch from an interface error.
+- Explain what replay and shadow checks establish and which claims they leave open.
+- Diagnose a recorded failure without treating a plausible explanation as a demonstrated cause.
+- Write a bounded transfer claim and propose an experiment that can distinguish competing explanations.
+
+[Lecture](#observation-action-compatibility-and-calibration) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+
+The supplied figures, replay records and selected videos support the demonstration and activity on this page. Use saved results when local execution is unavailable, and distinguish a scripted replay, a recorded policy evaluation and a physical deployment.
 
 ## Observation/action compatibility and calibration
 

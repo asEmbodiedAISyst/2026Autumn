@@ -6,17 +6,26 @@ layout:
 
 # 09 Teleoperation by Streaming from asMagic
 
+## Central question
+
+What must align for a teleoperated demonstration to become usable robot data?
+
 Move a phone, and an arm moves. That observation is only the beginning. To use the movement as data, we must know what the phone measured, how its coordinates became a robot request, which request reached the simulated actuator, and which robot state and image belong beside it.
 
 This class uses a supplied reBot B601-RS simulation with an arm, gripper, table and two cameras. All required models, code and recordings are included in the current student repository. An asMagic phone can provide the operator pose, but a local phone simulator provides the required reproducible path. We will study the command path, coordinate mapping, limits, recording order and timing. The output is an inspectable episode, not a trained policy or a claim of hardware teleoperation readiness.
 
-**Central question:** What must align for a teleoperated demonstration to become usable robot data?
-
-By the end of this class, you should be able to trace operator input through mapping and control to robot response; check frames, units and limits; distinguish phone streams from robot observations; and audit an episode’s identity, ordering and timestamps.
-
 Classes 02–05 established why commands, model coordinates and measured responses need separate meanings. Classes 06–07 applied that distinction to policy and visual feedback. Class 08 established this arm's bounded joint/gripper interface and numerical IK. Here the new problem is how an operator's motion enters that interface and how the experiment preserves the resulting evidence. We reuse the earlier mechanics rather than identify the actuator again.
 
-[Lecture](#teleoperation-command-and-response-paths) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Completion checks](#completion-checks)
+By the end of this class, you should be able to:
+
+- Trace operator input through mapping, limits and control to the robot response.
+- Check coordinate frames, units and limits at the teleoperation interface.
+- Distinguish phone streams, issued actions and robot observations.
+- Audit an episode's identity, action/image ordering and timestamps.
+
+[Lecture](#teleoperation-command-and-response-paths) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+
+The supplied figures, worked examples and episode excerpts support the demonstration and activity on this page. A separately prepared local simulation or phone session can extend the demonstration; distinguish a supplied record from a new run.
 
 ## Teleoperation command and response paths
 

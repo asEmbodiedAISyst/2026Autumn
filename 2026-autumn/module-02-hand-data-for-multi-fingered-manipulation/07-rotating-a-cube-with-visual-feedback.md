@@ -14,7 +14,7 @@ Move a camera around a stationary cube, then rotate the cube while keeping the c
 
 Classes 02–05 distinguished requested, measured and simulated quantities. The same distinction now applies to object pose: an estimate from an image is neither a direct view of the complete physical state nor a command. The Class 06 actor already receives cube-pose features as well as joint information. Today's problem is to supply a usable observation from vision, preserving the policy's required frame, feature convention and timing. We investigate two separate components: a synthetic known-corner pose-estimation exercise, and native MuJoCo diagnostics that delay or hold selected pose-error features. They are reproducible component tests, not a completed image-to-policy system.
 
-By the end, you should be able to:
+By the end of this class, you should be able to:
 
 - Distinguish object reorientation from Rubik's Cube solving.
 - Separate device, camera, marker, object and hand poses.
@@ -22,7 +22,7 @@ By the end, you should be able to:
 - Interpret uncertainty, visibility, measurement age and missing observations.
 - Design a controlled visual-feedback test and distinguish hand retargeting from phone-pose teleoperation.
 
-[Lecture](#learn-from-the-original-example-without-changing-its-claim) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](#object-reorientation-and-visual-feedback) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
 The figures, calculations and saved results support a complete reading and activity route on this page. The perception exercise requires no phone, physical hand or GPU. The retained native diagnostics use the Class 06 policy and model. Their reported traces and results provide the evidence for the reading and activity.
 

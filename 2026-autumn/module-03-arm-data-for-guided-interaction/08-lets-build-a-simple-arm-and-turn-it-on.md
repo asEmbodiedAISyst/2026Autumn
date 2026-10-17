@@ -8,13 +8,13 @@ layout:
 
 ## Central question
 
-**What evidence shows that an arm or its simulation is ready for a controlled experiment?**
+What evidence shows that an arm or its simulation is ready for a controlled experiment?
 
 A robot that moves can still have the wrong joint order, an incorrect sign, an unsuitable limit or a misinterpreted gripper command. A rendered arm can look convincing while its control interface is inconsistent. Commissioning means establishing the configuration and evidence needed for a specified next operation.
 
 This class uses the **reBot Arm B601-RS MuJoCo simulation**. The mechanism has six rotary arm joints and a parallel gripper. We will inspect its description, identify its frames and interfaces, predict which movements are permitted, and examine bounded motion. The same questions guide a physical commissioning session, with additional checks of the actual assembly, communication and calibration.
 
-By the end, you should be able to:
+By the end of this class, you should be able to:
 
 - Read the arm's joint and actuator arrangement from the compiled model.
 - Distinguish a coordinate frame, model zero, working home configuration and physical calibration zero.

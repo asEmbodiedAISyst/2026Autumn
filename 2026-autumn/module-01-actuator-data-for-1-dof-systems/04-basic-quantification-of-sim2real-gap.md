@@ -8,29 +8,39 @@ description: 27 October 2026 · 09:00–10:20 · CR6
 
 How do we estimate a MuJoCo model, quantify its discrepancy from physical actuator responses, and judge its usefulness for a specified task?
 
-## From apparent agreement to a defined comparison
-
 A simulated trajectory can look close to a physical trajectory while missing a repeatable offset, a reversal or a response under a different load. Conversely, an actuator can follow its requested motion poorly while a model predicts that imperfect response closely. To interpret agreement, we need to name the two quantities being compared, make their conditions compatible and report a numerical discrepancy together with its context.
 
+Our example is one **XC330-M288-T in current-based position operation**, driving a rigid link and payload assembly about one joint. The numerical replay receives recorded internal position and velocity references. It predicts position using its own evolving simulated state. This is a conditional response model: it does not predict how firmware generates those references from an external goal.
+
+[Class 03](03-basic-digitization-of-physical-embodiment.md) established how to inspect an executable mechanical representation. Here we estimate uncertain effective parameters and test predictions against recorded physical responses. The records use a separately documented 98 g fixture; Class 03's structural example uses 110 g. Keep those configurations distinct when interpreting the comparison.
+
+By the end of this class, you should be able to:
+
+- Specify the signals, input boundary, fixture and conditions of a model-to-hardware comparison.
+- Explain the roles of the two identification methods and their effective parameters.
+- Calculate or interpret position RMSE with its units and grouping rule.
+- Read a signed residual while distinguishing tracking error from model prediction error.
+- Make a model-use decision limited to the tested conditions and available evidence.
+
+[Lecture](#from-apparent-agreement-to-a-defined-comparison) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+
+The supplied traces, metric tables and worked calculations support the demonstration and activity on this page. Running a new identification or operating hardware is not required to interpret the retained comparison.
+
+## From apparent agreement to a defined comparison
+
 The **Sim2Real gap** in this class is the difference between simulated and measured **joint position** under declared input, controller, fixture and processing conditions. It is not one permanent number belonging to an actuator or simulator. Changing the command boundary, payload, operating range or scoring rule changes the question.
+
+**Predict:** If hardware and simulation both lag their reference by the same amount, is their model-to-hardware gap necessarily large?
 
 ![Frozen XC330 prediction and physical response for the eccentric held-out case](../media/class04/xc330-H1-G1-P06.png)
 
 *Figure 1. One recorded XC330 H1/G1/P06/R01 episode and two frozen MuJoCo candidates. The lower panel retains the signed model-to-measurement residual. These are predictions from the 98 g campaign; no parameter is adjusted to this episode. Method 2's position RMSE is approximately 0.02191 rad. Read the signal labels before deciding what the overlay establishes.*
-
-Our example is one **XC330-M288-T in current-based position operation**, driving a rigid link and payload assembly about one joint. The numerical replay receives recorded internal position and velocity references. It predicts position using its own evolving simulated state. This is a conditional response model: it does not predict how firmware generates those references from an external goal.
 
 [Class 02](02-actuator-basics-for-controlled-action.md) established how an application request becomes controlled physical motion. [Class 03](03-basic-digitization-of-physical-embodiment.md) represented a joint, coordinate frames and moving mass in an executable model. Here we ask a further question: **how well does a declared model predict a recorded physical response, and what should we change or trust on that evidence?**
 
 Joint position is an angle; its time derivatives are velocity and acceleration. Fixture inertia describes resistance to angular acceleration, and gravity torque depends on mass distribution and pose. Those concepts carry forward. The numerical dataset here belongs to a separately documented 98 g fixture, whereas Class 03's structural example uses 110 g. We identify that distinction before using any result. Starting from the supplied model, we estimate three uncertain effective parameters and evaluate its predictions.
 
 Begin with a prediction claim and decide which observations can test it. Use informative motions to estimate a model, then compare its frozen predictions with physical records. Constructed examples let us check a calculation against a known answer; the recorded actuator responses test whether that model is useful under the declared conditions. This connects the mechanics to an evidence-based decision about simulation (Ljung 1999).
-
-By the end, you should be able to specify a fair comparison, explain the two identification methods, calculate or interpret position RMSE, read a residual and make a model-use decision limited to the evidence.
-
-[Lecture](#from-apparent-agreement-to-a-defined-comparison) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
-
-**Predict:** If hardware and simulation both lag their reference by the same amount, is their model-to-hardware gap necessarily large?
 
 ## Specify the comparison
 

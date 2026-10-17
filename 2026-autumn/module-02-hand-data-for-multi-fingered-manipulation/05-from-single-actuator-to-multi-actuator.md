@@ -14,7 +14,7 @@ A good prediction for one actuator is evidence about a particular device, fixtur
 
 We use a supplied sixteen-XC330 campaign to examine this transition. The motors carry separate fixtures: they operate together but do not form a connected hand or arm. That distinction lets us study motor-specific prediction errors before introducing the contact-rich manipulation of Class 06.
 
-By the end, you should be able to:
+By the end of this class, you should be able to:
 
 - Distinguish individual variation, shared-operation effects and mechanical coupling.
 - Read the input, output and physical assumptions of a population actuator model.
@@ -22,7 +22,7 @@ By the end, you should be able to:
 - Compare paired held-out predictions while preserving collection-event grouping.
 - State what encoder and camera records establish, and what calibration they still need.
 
-[Lecture](#start-with-a-bounded-single-actuator-claim) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](#review-the-single-actuator-validation-task) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
 The figures, worked examples and result tables provide a complete reading and activity route on this page. The activity uses the supplied figures, metric tables and worked calculations. CAD software, motors, cameras and neural-network training are not required to complete it.
 

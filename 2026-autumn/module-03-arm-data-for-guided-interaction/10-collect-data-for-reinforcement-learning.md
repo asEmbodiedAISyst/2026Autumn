@@ -8,13 +8,15 @@ layout:
 
 ## Central question
 
-**What must a dataset establish before it is suitable for the intended learner and executor?**
+What must a dataset establish before it is suitable for the intended learner and executor?
 
 Robot data acquire meaning through their task, observations, actions and collection procedure. A large folder can contain correctly shaped arrays that are poorly aligned, visually uninformative or impossible for the target robot to execute. Collecting more of those records preserves the problem.
 
 This class separates reinforcement-learning experience from demonstrations and evaluation records. Its concrete arm-learning example is **demonstration-based imitation learning with ACT**. We inspect a small simulated pusher pilot, identify what its records establish, and write a dataset contract. The practical uses a numeric audit and a prepared model/IK check; full training and physical robot operation are outside the required activity.
 
-By the end, you should be able to:
+Classes 02–05 established the meanings of requested, measured and simulated quantities. Classes 06–07 showed why a learner's observations and timing must match its implementation. Classes 08–09 established an arm interface and a traceable command/response record. Here we decide whether a collection procedure supplies the evidence an intended learner and executor require. We change to a camera pusher, so we must declare the new tool and schema instead of simply renaming Class 09's motor channels.
+
+By the end of this class, you should be able to:
 
 - Distinguish demonstration pairs, reward-bearing experience and frozen-policy evaluation records.
 - Define a task through initial conditions, reset, outcome and intervention rules.
@@ -24,9 +26,9 @@ By the end, you should be able to:
 - Read an ACT configuration and result without confusing different tools, datasets or action spaces.
 - Write a concise contract and justify whether to collect, adapt, inspect or reject.
 
-Classes 02–05 established the meanings of requested, measured and simulated quantities. Classes 06–07 showed why a learner's observations and timing must match its implementation. Classes 08–09 established an arm interface and a traceable command/response record. Here we decide whether a collection procedure supplies the evidence an intended learner and executor require. We change to a camera pusher, so we must declare the new tool and schema instead of simply renaming Class 09's motor channels.
+[Lecture](#choose-the-record-from-the-learning-question) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-[Lecture](#choose-the-record-from-the-learning-question) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Resources and continuation](#resources-and-continuation)
+The supplied figures, worked examples and pilot audit results support the demonstration and activity on this page. Inspecting the recorded ACT result is distinct from rerunning its checkpoint; neither training nor hardware operation is required for the activity.
 
 ## Choose the record from the learning question
 
