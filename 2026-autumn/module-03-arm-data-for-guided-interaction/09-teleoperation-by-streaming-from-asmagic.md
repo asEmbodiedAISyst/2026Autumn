@@ -14,7 +14,7 @@ This class uses a supplied reBot B601-RS simulation with an arm, gripper, table 
 
 By the end of this class, you should be able to trace operator input through mapping and control to robot response; check frames, units and limits; distinguish phone streams from robot observations; and audit an episode’s identity, ordering and timestamps.
 
-[Lecture](#lecture) · [Instructor/TA demonstration](#instructorta-demonstration) · [Student activity](#student-activity) · [Completion checks](#completion-checks)
+[Lecture](#lecture) · [Instructor/TA demonstration](#instructor-ta-demonstration) · [Student activity](#student-activity) · [Completion checks](#completion-checks)
 
 ### Lecture
 
