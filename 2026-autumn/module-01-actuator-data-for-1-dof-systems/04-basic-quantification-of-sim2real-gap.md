@@ -207,12 +207,15 @@ The [native replay engine](../resources/class04/native/code/upstream/run_chapter
 | $$\tau_g$$ | `data.qfrc_bias[0]` at zero velocity | Left-hand gravity bias, not the applied gravitational force's sign |
 | $$\tau_C$$ | `data.ctrl[0]`, through the motor's unit transmission | Limited simulated output effort in N m |
 
-**Worked control step.** In H1, suppose the simulated state is 0.2 rad and 0.4 rad/s, while the recorded references are 0.3 rad and 0.2 rad/s. Using the unrounded coefficients in the configuration card,
+**Worked control step.** In H1, suppose the simulated state is 0.2 rad and 0.4 rad/s, while the recorded references are 0.3 rad and 0.2 rad/s. Using the unrounded coefficients in the configuration card, let the requested effort before limiting be $$\tau_{\mathrm{req}}$$:
 
 $$
-\tau_C=\operatorname{clip}\bigl(1.5798356271(0.3-0.2)
-+0.2021146152(0.2-0.4),-0.1551,0.1551\bigr)
-\approx0.117561\ \mathrm{N\,m}.
+\begin{aligned}
+\tau_{\mathrm{req}}&=K_p^C(0.1)+K_v^C(-0.2)\\
+&=0.1175606397\ \mathrm{N\,m},\\
+\tau_C&=\operatorname{clip}(\tau_{\mathrm{req}},-0.1551,0.1551)\\
+&\approx0.117561\ \mathrm{N\,m}.
+\end{aligned}
 $$
 
 This is a computed model effort, not a measured hardware torque. A position error of 0.2 rad with zero velocity error would request about 0.316 N m before clipping, so only 0.1551 N m is applied in this model. Increasing error beyond that point cannot increase its permitted effort.
