@@ -102,3 +102,14 @@ Regenerate before class; supplied figures are available offline. See media/FIGUR
 Run `python code/visual_lessons.py classroom` or `paper` to recreate the additional original illustrations and separate measured gain/phase panels. The classroom variants use 19 pt MiSans master lettering; projection readability must still be checked at actual display scale.
 
 Open `media/interactive/actuator-explorer.html` in a browser. It runs offline from the extracted class package and uses locally installed MiSans or the optional local font files; keep the package folders together. If local file opening is restricted, run `python -m http.server 8765 --bind 127.0.0.1` from the class folder and open `http://127.0.0.1:8765/media/interactive/actuator-explorer.html`. Stop this local server with Ctrl+C. No package installation or hardware connection is required. HTML execution inside asMagicBrain Preview/Present is not assumed; the supplied static equivalents remain the teaching fallback.
+
+## Reproduce the restored source figures
+
+After [local MiSans setup](source/fonts/README.md), run these in the same isolated numerical environment:
+
+```bash
+python code/assistant_figures.py --figure architecture
+python code/assistant_figures.py --figure telemetry
+```
+
+Both commands use the existing numerical requirements, need no Pandas and do not connect hardware. Inputs are the declared functional schematic and the complete audited CSV. Outputs go to `media/generated-assistant/` as PNG/PDF/SVG, separate from reviewed publication files. `--font-dir` and `--output-dir` accept alternative local dependency/output folders. Source photographs, CAD renders and manufacturer graphics are retained originals; their unpublished underlying production files are not invented.
