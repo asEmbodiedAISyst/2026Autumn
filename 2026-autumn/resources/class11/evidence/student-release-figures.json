@@ -1,0 +1,42 @@
+{
+  "class": 11,
+  "figures": [
+    {
+      "file": "media/class11/evidence-checks-classroom.png",
+      "sha256": "20a4c75a0d23b87669d7cf1e3ff3c960b6790acdefcb7e09db54398f1d9d2861"
+    },
+    {
+      "file": "media/class11/failure-frames-classroom.png",
+      "sha256": "5fd5083a7636bfad40f28f86b19cfd0cb52772597832e266638cb736110d6e4f"
+    },
+    {
+      "file": "media/class11/latency-budget-classroom.png",
+      "sha256": "ad0e8314df464499b05706b5d2ad0f51ae642079067f9821d5287f587a7c5aa9"
+    },
+    {
+      "file": "media/class11/next-experiment-classroom.png",
+      "sha256": "8fdd3c066c2f7ad904fadde9225db9311a829e31d54361bde983be64b634e026"
+    },
+    {
+      "file": "media/class11/reference-choice-classroom.png",
+      "sha256": "d3309a48a1fefce07f7be02c96f18fa02df344951e00ffa6a4bbcb79476253e6"
+    },
+    {
+      "file": "media/class11/replay-components-classroom.png",
+      "sha256": "118d7a16c70e4bdb1264aba8c283d4a51a0fd6400e8a31421ef1bbc1a48de89a"
+    },
+    {
+      "file": "media/class11/reset-comparison-classroom.png",
+      "sha256": "4bc037ea623b78ce67ceff29a70d7848cc667a794d89d3c00d7c92c72d5d2b01"
+    },
+    {
+      "file": "media/class11/stored-outcomes-classroom.png",
+      "sha256": "586b41dbe780f725db461d014f3406f4ad06633a89495915c161b2f1e670fde0"
+    }
+  ],
+  "new_figures": [
+    "latency-budget",
+    "reset-comparison"
+  ],
+  "scope": "Simulation evidence, recorded policy outcomes and clearly declared constructed examples."
+}

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="921.6pt" height="259.2pt" viewBox="0 0 921.6 259.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T19:46:42.576898</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 259.2
+L 921.6 259.2
+L 921.6 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 181.84 202.6
+L 904.8 202.6
+L 904.8 16.8
+L 181.84 16.8
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 181.84 86.69619
+L 181.84 86.69619
+L 181.84 44.227619
+L 181.84 44.227619
+z
+" clip-path="url(#p98fde85d9d)" style="fill: #177e89"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 181.84 175.172381
+L 756.974093 175.172381
+L 756.974093 132.70381
+L 181.84 132.70381
+z
+" clip-path="url(#p98fde85d9d)" style="fill: #d48020"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="me4a48d7047" d="M 0 0
+L 0 3.5
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#me4a48d7047" x="181.84" y="202.6" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="181.84" y="219.96" transform="rotate(-0 181.84 219.96)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#me4a48d7047" x="298.446452" y="202.6" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="298.446452" y="219.96" transform="rotate(-0 298.446452 219.96)">1</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#me4a48d7047" x="415.052903" y="202.6" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="415.052903" y="219.96" transform="rotate(-0 415.052903 219.96)">2</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#me4a48d7047" x="531.659355" y="202.6" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="531.659355" y="219.96" transform="rotate(-0 531.659355 219.96)">3</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#me4a48d7047" x="648.265806" y="202.6" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="648.265806" y="219.96" transform="rotate(-0 648.265806 219.96)">4</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#me4a48d7047" x="764.872258" y="202.6" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="764.872258" y="219.96" transform="rotate(-0 764.872258 219.96)">5</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#me4a48d7047" x="881.47871" y="202.6" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="881.47871" y="219.96" transform="rotate(-0 881.47871 219.96)">6</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="543.32" y="238.66" transform="rotate(-0 543.32 238.66)">Maximum cube xy separation from the reference (mm)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_8">
+      <defs>
+       <path id="m80bae56e0f" d="M 0 0
+L -3.5 0
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m80bae56e0f" x="181.84" y="65.461905" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="174.84" y="70.740342" transform="rotate(-0 174.84 70.740342)">Integration-state restore</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m80bae56e0f" x="181.84" y="153.938095" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="174.84" y="159.118095" transform="rotate(-0 174.84 159.118095)">qpos-only restore</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_5">
+    <path d="M 181.84 202.6
+L 181.84 16.8
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 181.84 202.6
+L 904.8 202.6
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #177e89" x="198.164903" y="69.171905" transform="rotate(-0 198.164903 69.171905)">0.00 mm</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #d48020" x="773.298997" y="157.648095" transform="rotate(-0 773.298997 157.648095)">4.93 mm</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: start; fill: #177e89" x="426.713548" y="69.270342" transform="rotate(-0 426.713548 69.270342)">Same initial velocity and state</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 12px; font-family: 'MiSans'; text-anchor: start" x="333.428387" y="115.893333" transform="rotate(-0 333.428387 115.893333)">Identical joint commands; initial cube velocity = +0.20 m/s</text>
+   </g>
+   <g id="PathCollection_1">
+    <defs>
+     <path id="m3ccdfb2294" d="M 0 3.354102
+C 0.889518 3.354102 1.742724 3.000693 2.371708 2.371708
+C 3.000693 1.742724 3.354102 0.889518 3.354102 0
+C 3.354102 -0.889518 3.000693 -1.742724 2.371708 -2.371708
+C 1.742724 -3.000693 0.889518 -3.354102 0 -3.354102
+C -0.889518 -3.354102 -1.742724 -3.000693 -2.371708 -2.371708
+C -3.000693 -1.742724 -3.354102 -0.889518 -3.354102 0
+C -3.354102 0.889518 -3.000693 1.742724 -2.371708 2.371708
+C -1.742724 3.000693 -0.889518 3.354102 0 3.354102
+z
+" style="stroke: #177e89"/>
+    </defs>
+    <g clip-path="url(#p98fde85d9d)">
+     <use xlink:href="#m3ccdfb2294" x="181.84" y="65.461905" style="fill: #177e89; stroke: #177e89"/>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p98fde85d9d">
+   <rect x="181.84" y="16.8" width="722.96" height="185.8"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,28 @@
+{
+  "0": {
+    "decoded_frames": 450,
+    "fps": 30.0,
+    "shape": [
+      480,
+      1280,
+      3
+    ],
+    "selected_raw_frames_exact": [
+      0,
+      225,
+      449
+    ],
+    "sha256": "d2416fef6db9c08f7537c6b68deae73ee7780c1021ef28a8b0047f316db31a02"
+  },
+  "2": {
+    "decoded_frames": 125,
+    "fps": 30.0,
+    "shape": [
+      480,
+      1280,
+      3
+    ],
+    "selected_raw_frames_exact": [],
+    "sha256": "8cae2b270305af9bc844b697408fb3e3c2c8a32a0fdc10e816fad30c62dcfb48"
+  }
+}

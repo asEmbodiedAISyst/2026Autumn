@@ -1,0 +1,6 @@
+<!-- Handheld pusher tool (no robot): the tool is a mocap body driven by the phone pose; task: push_t. -->
+<mujoco model="rebot_handheld_push_t">
+  <include file="handheld_tool.xml"/>
+  <include file="table_env.xml"/>
+  <include file="objects_push_t.xml"/>
+</mujoco>

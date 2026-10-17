@@ -1,0 +1,10 @@
+{
+  "scope": "constructed full-integration-state replay with identical MuJoCo model and scripted joint targets; not a policy rollout or hardware comparison",
+  "mujoco": "3.14.0",
+  "control_steps": 60,
+  "duration_s": 2.0,
+  "physics_timestep_s": 0.00196078431372549,
+  "finite": true,
+  "max_abs_state_difference": 0.0,
+  "passed": true
+}

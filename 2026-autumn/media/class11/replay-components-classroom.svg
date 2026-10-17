@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="918.311811pt" height="224.28pt" viewBox="0 0 918.311811 224.28" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-14T23:22:22.766673</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 224.28
+L 918.311811 224.28
+L 918.311811 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 45.748472 118.2804
+L 238.971512 118.2804
+L 238.971512 36.4084
+L 45.748472 36.4084
+z
+" clip-path="url(#p60b1ead292)" style="fill: #0072b2; fill-opacity: 0.062745; stroke: #0072b2; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 242.766682 77.3444
+Q 247.508718 77.3444 250.685505 77.3444
+" clip-path="url(#p60b1ead292)" style="fill: none; stroke: #303740; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 245.885505 74.9444
+L 250.685505 77.3444
+L 245.885505 79.7444
+z
+" clip-path="url(#p60b1ead292)" style="fill: #303740; stroke: #303740; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 256.945748 118.2804
+L 450.168787 118.2804
+L 450.168787 36.4084
+L 256.945748 36.4084
+z
+" clip-path="url(#p60b1ead292)" style="fill: #177e89; fill-opacity: 0.062745; stroke: #177e89; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 453.963958 77.3444
+Q 458.705993 77.3444 461.882781 77.3444
+" clip-path="url(#p60b1ead292)" style="fill: none; stroke: #303740; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 457.082781 74.9444
+L 461.882781 77.3444
+L 457.082781 79.7444
+z
+" clip-path="url(#p60b1ead292)" style="fill: #303740; stroke: #303740; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 468.143024 118.2804
+L 661.366063 118.2804
+L 661.366063 36.4084
+L 468.143024 36.4084
+z
+" clip-path="url(#p60b1ead292)" style="fill: #d48020; fill-opacity: 0.062745; stroke: #d48020; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 665.161233 77.3444
+Q 669.903269 77.3444 673.080056 77.3444
+" clip-path="url(#p60b1ead292)" style="fill: none; stroke: #303740; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 668.280056 74.9444
+L 673.080056 77.3444
+L 668.280056 79.7444
+z
+" clip-path="url(#p60b1ead292)" style="fill: #303740; stroke: #303740; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 679.340299 118.2804
+L 872.563339 118.2804
+L 872.563339 36.4084
+L 679.340299 36.4084
+z
+" clip-path="url(#p60b1ead292)" style="fill: #303740; fill-opacity: 0.062745; stroke: #303740; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 14px; font-family: 'MiSans'" transform="translate(116.116555 72.8224)">Model +</text>
+    <text style="font-size: 14px; font-family: 'MiSans'" transform="translate(114.387336 91.3864)">timestep</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 14px; font-family: 'MiSans'" transform="translate(318.872268 72.723963)">Integration</text>
+    <text style="font-size: 14px; font-family: 'MiSans'" transform="translate(337.729611 92.884838)">state</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 14px; font-family: 'MiSans'" transform="translate(530.796887 72.723963)">Same joint</text>
+    <text style="font-size: 14px; font-family: 'MiSans'" transform="translate(529.54345 92.884838)">commands</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 14px; font-family: 'MiSans'" transform="translate(745.451506 72.023963)">Repeated</text>
+    <text style="font-size: 14px; font-family: 'MiSans'" transform="translate(745.3126 91.987963)">trajectory</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="459.155906" y="182.3976" transform="rotate(-0 459.155906 182.3976)">Constructed replay: 60 steps, maximum absolute state difference = 0</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p60b1ead292">
+   <rect x="9.8" y="9.8" width="898.711811" height="204.68"/>
+  </clipPath>
+ </defs>
+</svg>

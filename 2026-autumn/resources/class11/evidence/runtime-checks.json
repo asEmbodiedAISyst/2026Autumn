@@ -1,0 +1,68 @@
+[
+  {
+    "command": [
+      ".venv/bin/python",
+      "code/lesson_lab.py",
+      "replay"
+    ],
+    "result": {
+      "scope": "constructed full-integration-state replay with identical MuJoCo model and scripted joint targets; not a policy rollout or hardware comparison",
+      "mujoco": "3.14.0",
+      "control_steps": 60,
+      "duration_s": 2.0,
+      "physics_timestep_s": 0.00196078431372549,
+      "finite": true,
+      "max_abs_state_difference": 0.0,
+      "passed": true
+    }
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "code/compare_reset.py"
+    ],
+    "result": {
+      "scope": "constructed replay reset experiment in the same simulator; no policy or hardware claim",
+      "mujoco": "3.14.0",
+      "steps": 60,
+      "duration_s": 2.0,
+      "initial_cube_vx_m_per_s": 0.2,
+      "full_restore_max_cube_xy_difference_m": 0.0,
+      "qpos_only_max_cube_xy_difference_m": 0.004932266485472736,
+      "interpretation": "qpos-only comparison omits velocity and other integration state; state-completeness contrast, not friction identification"
+    }
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "code/lesson_lab.py",
+      "results",
+      "--out",
+      "results/recorded-policy-summary.json"
+    ],
+    "result": {
+      "source": "results_act_ip17_cube300_handheld_060000_pusher_n100.json",
+      "episodes": 50,
+      "successes": 32,
+      "success_rate": 0.64,
+      "wilson_95_descriptive_interval": [
+        0.501410168761127,
+        0.7586125034815325
+      ],
+      "failure_episode_0": {
+        "episode": 0,
+        "seed": 100000,
+        "success": false,
+        "steps": 450,
+        "ik_ok": 1.0,
+        "distance": 0.03107410625131502
+      },
+      "scope": "stored evaluation outcomes only; binomial interval assumes independent comparable trials; policy not rerun"
+    }
+  },
+  {
+    "math": "5expressions strictKaTeX passed",
+    "videos": "450 and125frames decode,3selectedfailureframes exactpixel matches",
+    "scope": "No policy inference or powered hardware"
+  }
+]
