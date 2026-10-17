@@ -339,7 +339,8 @@ Open the supplied [B2/H1 scene](../resources/class05/models/combined/B2_H1.xml) 
 | Coordinates / velocities / inputs | 16 / 16 / 16 | 16 / 16 / 16 |
 | Contact-enabled geometries | 0 | 0 |
 | Largest off-diagonal hinge inertia (kg m²) | 0 | 0 |
-| Effort at zero state for q-reference 0.1 rad, velocity-reference 0.2 rad/s (N m) | 0.1551 | 0.1551 |\n| Effort at state (0.2 rad, 0.4 rad/s), references (0.3 rad, 0.2 rad/s), N m | 0.1175606 | 0.1551 |
+| Effort at zero state for q-reference 0.1 rad, velocity-reference 0.2 rad/s (N m) | 0.1551 | 0.1551 |
+| Effort at state (0.2 rad, 0.4 rad/s), references (0.3 rad, 0.2 rad/s), N m | 0.1175606 | 0.1551 |
 
 The inspector checks the initial and worked-example poses, reports the nominal moving-fixture mass, and steps a short prescribed input for finite state. It does not replay the physical campaign, reproduce training or validate rack dynamics. Its numeric input construction follows the effective controller described above.
 
