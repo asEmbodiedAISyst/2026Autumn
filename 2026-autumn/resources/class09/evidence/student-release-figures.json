@@ -1,6 +1,5 @@
 {
   "class": 9,
-  "source_commit": "bfb3665",
   "figures": [
     {
       "file": "media/class09/command-state-classroom.png",
@@ -20,7 +19,7 @@
     },
     {
       "file": "media/class09/recording-order-classroom.png",
-      "sha256": "29b52f3cb2c2bd870e8a5739ede783e75da94b4b079c047811d0f764bc42fd12"
+      "sha256": "7ba68e9ecf0fde67d8012d6d5e3bc7b03aa117da05e77dcb2eb53beb2250cd7a"
     },
     {
       "file": "media/class09/stream-record-classroom.png",
@@ -31,5 +30,5 @@
       "sha256": "1b5cd0f8b682066769a38536149b296544c83f1e2e30ad5b00a8d5f2f634da34"
     }
   ],
-  "scope": "Seven lesson illustrations; first two redrawn and seventh composed from retained frame0. New generation function source/draw_lesson.py supersedes corresponding branches of retained generator."
+  "scope": "Seven reviewed lesson illustrations. Command/response and axes redrawn, recording order corrected against executable code, seventh composed from retained simulation frame0. See source/draw_lesson.py and retained generator."
 }
