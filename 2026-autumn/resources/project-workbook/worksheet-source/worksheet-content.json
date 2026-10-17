@@ -1,0 +1,417 @@
+{
+  "version": "1.2",
+  "date": "2026-10-17",
+  "worksheets": [
+    {
+      "number": 1,
+      "class": 12,
+      "name": "Claim",
+      "date": "13 November 2026",
+      "time": "09:00–10:50",
+      "room": "L12",
+      "duration": 110,
+      "question": "What capability are we testing, under which conditions?",
+      "output": "One bounded claim, its comparison and the next experiment.",
+      "prompt": "Our [system] will [perform a capability] in [conditions], evaluated using [measure and criterion] against [comparison].",
+      "fields": [
+        [
+          "1. System and capability",
+          "Name your system, tested capability and physical mechanism. Separate your proposed claim from published results."
+        ],
+        [
+          "2. Conditions and boundary",
+          "State task, configuration, conditions and exclusions. Use Project development for your own final project."
+        ],
+        [
+          "3. Measure and comparison",
+          "Define measure, units, trial unit, criterion and comparator before evaluation. Label proposed versus observed values."
+        ],
+        [
+          "4. Purpose and next test",
+          "Select one feasible pilot and check resources/access. State what outcome would challenge the claim; results may be pending."
+        ]
+      ],
+      "challenge": "Could your system work as shown while your claim is still false? Write one such outcome.",
+      "practice": "Choose one capability from your project idea. Write two competing claim sentences, then select the one you can challenge with the available time and equipment. Record why the other is too broad. Specify a baseline and one pilot trial without changing its outcome criterion after observing the result.",
+      "milestone": "Commit the claim, its proposed protocol, baseline and resource check. A numerical result is not required at this first checkpoint.",
+      "pitfall": "A promising platform is mistaken for a project claim; success criteria are vague or adjusted after seeing results.",
+      "example": "A LEAP-based object-retention and rotation study is narrower than reproducing every manipulation, accessibility and durability claim in the LEAP paper. The hardware name does not identify the contribution.",
+      "submission_path": "submissions/class12/worksheet.pdf"
+    },
+    {
+      "number": 2,
+      "class": 13,
+      "name": "Experience",
+      "date": "17 November 2026",
+      "time": "09:00–10:20",
+      "room": "CR6",
+      "duration": 80,
+      "question": "What interaction data does one episode generate, and how will we use them?",
+      "output": "One episode map, its interaction-data record and a justified next variation.",
+      "prompt": "Objective → Start → Input → Action → Response → Outcome → Record and reuse",
+      "fields": [
+        [
+          "1. Objective and start",
+          "Link the claim, episode start/reset and end rule. Label this episode planned, team-observed or externally reported."
+        ],
+        [
+          "2. Input and action",
+          "Identify observations, timestamps, commands and executed actions where known. Distinguish command from response."
+        ],
+        [
+          "3. Response and outcome",
+          "Record response, outcome rule, failures, timeouts and interventions. A selected success does not establish reliability."
+        ],
+        [
+          "4. Record and reuse",
+          "List the retained interaction data: observations, actions, responses, outcomes and context. State intended use and missing fields."
+        ]
+      ],
+      "challenge": "What could make the recorded outcome misleading? Mark missing measurements or an alternative explanation.",
+      "practice": "Draw one representative interaction episode. Instrument or inspect the record needed to distinguish command, response and outcome. Run a pilot if possible; otherwise retain the planned label. Select the next condition because it challenges an assumption, not because it makes a nicer demonstration.",
+      "milestone": "Commit the episode map and one pilot record or an explicit missing-evidence plan. Update the claim if the pilot exposes an untestable condition.",
+      "pitfall": "One selected success is treated as reliable performance; a planned episode is presented as an observed result.",
+      "example": "A command to rotate an object is not a measured rotation. Joint motion, object retention and object orientation are different observations. A drop or manual reset belongs in the episode record.",
+      "submission_path": "submissions/class13/worksheet.pdf"
+    },
+    {
+      "number": 3,
+      "class": 14,
+      "name": "System",
+      "date": "18 November 2026",
+      "time": "10:30–11:50",
+      "room": "CR6",
+      "duration": 80,
+      "question": "What system produces that interaction?",
+      "output": "One labeled feedback loop, a configuration reference and a critical interface acceptance test.",
+      "prompt": "World/body → Observe → Compute/decide → Admit/action → World/body; operator authority and evidence recording cross the loop.",
+      "fields": [
+        [
+          "1. World and observations",
+          "Draw embodiment/environment and sensing. Mark frames, measured quantities and implemented versus planned components."
+        ],
+        [
+          "2. Decision and action",
+          "Connect observations to computation/control and action. Declare action meaning, units, order, rates and limits."
+        ],
+        [
+          "3. Authority and record",
+          "Add operator authority, logging, stop/reset/recovery and configuration ID. Identify evidence kept at each critical interface."
+        ],
+        [
+          "4. Critical interface evidence",
+          "Select one consequential interface. State acceptance criterion, test evidence and result, or pending test with owner."
+        ]
+      ],
+      "challenge": "If an interface is late, missing or misordered, how will you detect it and what action is allowed?",
+      "practice": "Draw the smallest complete system loop. Annotate the observation and action arrows with quantity, units, ordering, source clock and rate. Test one consequential interface using a recorded input or controlled trial. Distinguish an observed constraint from a suspected constraint.",
+      "milestone": "Commit the architecture, configuration ID, interface test and evidence. Reproduce the test from a clean process or record the unresolved dependency.",
+      "pitfall": "An inventory replaces an architecture; an ordinal rating is treated as a measured engineering bottleneck.",
+      "example": "For a hand, an action vector needs declared actuator order, units, interpretation and limits. Even a correct learned policy can fail through a wrong command mapping. A paper cannot resolve the mapping of a student's own build.",
+      "submission_path": "submissions/class14/worksheet.pdf"
+    },
+    {
+      "number": 4,
+      "class": 15,
+      "name": "Grounding",
+      "date": "20 November 2026",
+      "time": "09:00–10:50",
+      "room": "L12",
+      "duration": 110,
+      "question": "What connects the representation or interpretation to physical evidence?",
+      "output": "One matched comparison, its uncertainty or limits, and a discrepancy decision.",
+      "prompt": "Prediction / representation | Matched reference | Difference and limits | Conclusion / next check",
+      "fields": [
+        [
+          "1. Comparison boundary",
+          "Name the prediction/measurement and reference. Match conditions; identify simulated versus physical evidence."
+        ],
+        [
+          "2. Quantities and validity",
+          "Declare quantity, units, frame, tolerance and measurement limits. Distinguish a chosen tolerance from observed uncertainty."
+        ],
+        [
+          "3. Results and uncertainty",
+          "Give paired outcomes, trial counts and uncertainty or limits. If untested, record the protocol and missing evidence explicitly."
+        ],
+        [
+          "4. Interpretation and challenge",
+          "Bound the conclusion and consider another cause of the difference. Choose a diagnostic test or scope restriction."
+        ]
+      ],
+      "challenge": "Could sensing error, reset differences or selection explain the discrepancy instead of model error?",
+      "practice": "Choose the model assumption most important to your claim. Design a comparison with matched conditions and run it with the evidence available. Use recorded physical data when available. A simulator consistency check remains digital validation; do not label it hardware transfer.",
+      "milestone": "Commit the paired protocol, comparison data/plot and decision. Mark physical evidence unavailable where applicable rather than inventing a Sim2Real result.",
+      "pitfall": "Simulation and hardware results from different conditions are subtracted; a plausible cause is asserted without a diagnostic test.",
+      "example": "The retained LEAP paper analysis flags that the paper's angular-velocity comparison is simulation evidence. It cannot be subtracted from a hardware video to calculate a measured transfer gap.",
+      "submission_path": "submissions/class15/worksheet.pdf"
+    },
+    {
+      "number": 5,
+      "class": 16,
+      "name": "Learning",
+      "date": "24 November 2026",
+      "time": "09:00–10:20",
+      "room": "CR6",
+      "duration": 80,
+      "question": "How is experience used, and what contribution is supported?",
+      "output": "A fair held-out comparison, failure analysis and a retain/revise/reject decision.",
+      "prompt": "Role of data | Frozen comparator and candidate | Fair evaluation | Failures and interpretation",
+      "fields": [
+        [
+          "1. Role of experience",
+          "State how interaction data support training, inference, evaluation or design. No new training is required; explain your scope."
+        ],
+        [
+          "2. Data and independence",
+          "Identify data origin, selection and development/test groups. Keep related episodes together; disclose tuning or leakage."
+        ],
+        [
+          "3. Comparison and limits",
+          "Compare frozen methods or data strategies under matched conditions and budgets. Include denominators and all failure outcomes."
+        ],
+        [
+          "4. Supported contribution",
+          "Retain, revise or reject the bounded contribution. No improvement is valid; an unfinished evaluation is not a negative result."
+        ]
+      ],
+      "challenge": "Would the apparent improvement survive the same reset, action limits and trial budget for both methods?",
+      "practice": "Freeze a candidate and comparator before held-out evaluation. Run the matched evaluation or clearly report what could not be completed. Investigate one failure and one alternative explanation. A pretrained component may be evaluated without retraining. If learning is outside the claim, justify that boundary and evaluate the claimed component without inventing a learned-method result.",
+      "milestone": "Commit the frozen protocol, split manifest, all trial outcomes, comparison and interpretation. A negative result is a valid finding; an incomplete evaluation remains incomplete.",
+      "pitfall": "Adjacent frames are called independent trials; the test set is reused for tuning; successful episodes alone form the denominator.",
+      "example": "A LEAP comparison can evaluate a frozen policy and a reference controller under identical conditions. The result concerns that configuration and protocol, not universal superiority of learning or of the hand.",
+      "submission_path": "submissions/class16/worksheet.pdf"
+    },
+    {
+      "number": 6,
+      "class": 17,
+      "name": "Decision",
+      "date": "25 November 2026",
+      "time": "10:30–11:50",
+      "room": "CR6",
+      "duration": 80,
+      "question": "What conclusion and next action does the evidence justify?",
+      "output": "A bounded conclusion, the full 1–3–9–27 screen and owned conditions for the next action.",
+      "prompt": "Advance | Advance with conditions | Revise and reassess | Stop or rescope",
+      "fields": [
+        [
+          "1. Assessment boundary",
+          "Declare your project claim, next action, configuration and evidence freeze. Keep any source analysis explicitly separate."
+        ],
+        [
+          "2. Evidence screen",
+          "Complete all 27 checks: evidence basis, support, context and limits. NR/NE/NA need reasons; identify action-critical checks."
+        ],
+        [
+          "3. Conclusion and conditions",
+          "State supported and unsupported uses. Choose advance, advance with conditions, revise/reassess or stop/rescope."
+        ],
+        [
+          "4. Reassessment",
+          "Name conditions, owners, verification and reassessment triggers. Link the frozen evidence and retain later revisions."
+        ]
+      ],
+      "challenge": "Which unresolved condition would block the next action even if all other results were favorable?",
+      "practice": "Prepare evidence references before class. Independently inspect consequential checks, reconcile disagreements, then decide the bounded next action. Use the full two-sided screen. A completed screen is not a readiness award, certification or grade calculated by averaging.",
+      "milestone": "Commit the completed screen, supported final claim, conditions and reproducibility instructions at the evidence freeze. Keep subsequent changes traceable.",
+      "pitfall": "A favorable mean hides a blocking unknown; a simulation demonstration is approved for hardware without the required evidence.",
+      "example": "For a simulation-only manipulation project, the next action might be release of the simulation package. Hardware deployment remains unsupported. Checks outside that decision require a reasoned NA; missing evidence needed for the decision remains NR.",
+      "submission_path": "submissions/class17/worksheet.pdf"
+    }
+  ],
+  "gates": [
+    {
+      "id": "G1",
+      "name": "Grounded physical problem",
+      "checks": [
+        [
+          "G1.1",
+          "Mechanism",
+          "Is the claimed mechanism explicit, physically credible and open to challenge?"
+        ],
+        [
+          "G1.2",
+          "Closed loop",
+          "Are the implemented body, observations, controller, actions, environment and human roles identified?"
+        ],
+        [
+          "G1.3",
+          "Task boundary",
+          "Are task conditions, episode boundaries, outcomes and exclusions stated?"
+        ]
+      ]
+    },
+    {
+      "id": "G2",
+      "name": "Measurable embodiment",
+      "checks": [
+        [
+          "G2.1",
+          "Embodiment",
+          "Is the embodiment or physical coupling realized and identified at the claimed stage?"
+        ],
+        [
+          "G2.2",
+          "Observability",
+          "Are measurements and references suitable for the claimed outcomes, with relevant validity limits?"
+        ],
+        [
+          "G2.3",
+          "Interfaces",
+          "Are consequential interfaces, action meanings, units and timing described or verified?"
+        ]
+      ]
+    },
+    {
+      "id": "G3",
+      "name": "Controlled physical evidence",
+      "checks": [
+        [
+          "G3.1",
+          "Commissioning",
+          "What limits, resets, interventions, fault handling and recovery are described or tested?"
+        ],
+        [
+          "G3.2",
+          "Experience record",
+          "What observations, actions, outcomes and contextual records are available or described?"
+        ],
+        [
+          "G3.3",
+          "Grounding gap",
+          "How are model, measurement or interpretation connected to physical evidence under comparable conditions?"
+        ]
+      ]
+    },
+    {
+      "id": "U1",
+      "name": "Bounded claim logic",
+      "checks": [
+        [
+          "U1.1",
+          "Claim",
+          "Can the available evidence support or challenge the specific claim, without expanding its scope?"
+        ],
+        [
+          "U1.2",
+          "Role of experience",
+          "Is the role of experience in learning, inference, adaptation, evaluation or design insight explicit?"
+        ],
+        [
+          "U1.3",
+          "Comparators",
+          "Are comparators or alternative explanations appropriate to the contribution being claimed?"
+        ]
+      ]
+    },
+    {
+      "id": "U2",
+      "name": "Representative experience",
+      "checks": [
+        [
+          "U2.1",
+          "Correspondence",
+          "Are data, model, policy, embodiment and evaluation configurations linked where needed?"
+        ],
+        [
+          "U2.2",
+          "Coverage",
+          "Are coverage, sampling, failures, evaluation partitions and leakage addressed for the claim?"
+        ],
+        [
+          "U2.3",
+          "Governance",
+          "What provenance, rights, human participation and data safeguards are reported where relevant?"
+        ]
+      ]
+    },
+    {
+      "id": "U3",
+      "name": "Reproducibility and challenge",
+      "checks": [
+        [
+          "U3.1",
+          "Reconstruction",
+          "What is available to reconstruct the system and evaluation, and what remains unverified?"
+        ],
+        [
+          "U3.2",
+          "Evaluation",
+          "Are protocol, denominators, repetitions, uncertainty and exclusions reported appropriately?"
+        ],
+        [
+          "U3.3",
+          "Failure analysis",
+          "Are failure modes, interventions, competing explanations and negative results examined?"
+        ]
+      ]
+    },
+    {
+      "id": "M1",
+      "name": "Evidence traceability",
+      "checks": [
+        [
+          "M1.1",
+          "Identification",
+          "Are claims, configurations, datasets and experiments distinguishable and source-linked?"
+        ],
+        [
+          "M1.2",
+          "Change control",
+          "Are variants, updates or corrections traceable, and is their effect on conclusions assessed?"
+        ],
+        [
+          "M1.3",
+          "Counterevidence",
+          "Are material failures, null findings, ambiguous outcomes and counterevidence retained?"
+        ]
+      ]
+    },
+    {
+      "id": "M2",
+      "name": "Resources, burdens and benefits",
+      "checks": [
+        [
+          "M2.1",
+          "Resources",
+          "Are relevant hardware, compute, time, skills and maintenance resources stated?"
+        ],
+        [
+          "M2.2",
+          "Data burden",
+          "Are collection, annotation, reset, storage and human effort addressed where consequential?"
+        ],
+        [
+          "M2.3",
+          "Benefit",
+          "Is the claimed benefit justified against costs and relevant alternatives within the study?"
+        ]
+      ]
+    },
+    {
+      "id": "M3",
+      "name": "Continuing operation",
+      "checks": [
+        [
+          "M3.1",
+          "Monitoring",
+          "What detects mismatch, degradation, invalid measurements or faults in the claimed setting?"
+        ],
+        [
+          "M3.2",
+          "Operations",
+          "What human authority, maintenance, recovery and update practices are described for this stage?"
+        ],
+        [
+          "M3.3",
+          "Sustainment",
+          "What duration, units, contexts or repeated-use evidence supports the claimed persistence?"
+        ]
+      ]
+    }
+  ],
+  "assessment_modes": [
+    "Source analysis",
+    "Project development"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "definitions": "1.2",
+  "decision_questions_unchanged": true,
+  "pdfs": {
+    "Class12-Claim.pdf": {
+      "pages": 2,
+      "sizes": [
+        [
+          841.89,
+          595.28
+        ],
+        [
+          841.89,
+          595.28
+        ]
+      ],
+      "interactive_fields": 0
+    },
+    "Class13-Experience.pdf": {
+      "pages": 2,
+      "sizes": [
+        [
+          841.89,
+          595.28
+        ],
+        [
+          841.89,
+          595.28
+        ]
+      ],
+      "interactive_fields": 0
+    },
+    "Class14-System.pdf": {
+      "pages": 2,
+      "sizes": [
+        [
+          841.89,
+          595.28
+        ],
+        [
+          841.89,
+          595.28
+        ]
+      ],
+      "interactive_fields": 0
+    },
+    "Class15-Grounding.pdf": {
+      "pages": 2,
+      "sizes": [
+        [
+          841.89,
+          595.28
+        ],
+        [
+          841.89,
+          595.28
+        ]
+      ],
+      "interactive_fields": 0
+    },
+    "Class16-Learning.pdf": {
+      "pages": 2,
+      "sizes": [
+        [
+          841.89,
+          595.28
+        ],
+        [
+          841.89,
+          595.28
+        ]
+      ],
+      "interactive_fields": 0
+    },
+    "Class17-Decision.pdf": {
+      "pages": 3,
+      "sizes": [
+        [
+          1190.55,
+          841.89
+        ],
+        [
+          1190.55,
+          841.89
+        ],
+        [
+          841.89,
+          595.28
+        ]
+      ],
+      "interactive_fields": 0
+    }
+  },
+  "public_source_reproduction": "all seven submission PDF text/page contents match isolated rebuild",
+  "rendered_review": "all13worksheet pages and13guide pages visually reviewed"
+}

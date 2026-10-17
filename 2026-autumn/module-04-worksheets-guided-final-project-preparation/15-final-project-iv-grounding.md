@@ -113,9 +113,15 @@ Before submitting, compare what changed with the artifact that supports it. Iden
 
 **Deadline: 20 November 2026 at 10:50.** Follow an explicitly announced schedule change if one occurs.
 
-Submit the complete handwritten **Worksheet 4: Grounding** package, signed by every team member, including its evidence/team-review page. Use pages **7–8** of the [blank submission pack](../resources/project-workbook/Submission-Worksheets.pdf). Digital drafts support preparation but do not replace the signed handwritten original. No proxy signatures.
+Download [Worksheet 4: Grounding](../resources/project-workbook/Class15-Grounding.pdf). Complete both pages by hand and obtain every team member's signature on the evidence/team-review page. Scan the complete package, including any identified continuations, into one legible PDF.
 
-Preserve a legible scan, the current project record, supporting artifacts or accessible references, and the milestone commit in your private team repository. The [editable project record](../resources/project-workbook/project-record.md) can hold all six views and their evidence; do not start six separate projects. Keep later dated, signed revisions traceable without overwriting the original submission.
+**Required file in your assigned private team repository:** `submissions/class15/worksheet.pdf`
+
+Commit and **push** this file before the deadline. Open it on GitHub to check that every page is readable and confirm that the TA has repository read access. The TA collects this file directly; no separate physical hand-in is required. Retain the paper original. These printable PDFs have no interactive fields. No proxy signatures.
+
+Cite supporting evidence using exact paths within the same team repository, with run/configuration IDs and an existing evidence version or commit where useful. Do not duplicate large artifacts in each submission folder. Mark missing or restricted evidence and its effect on the claim. The [editable project record](../resources/project-workbook/project-record.md) supports your work; the signed worksheet PDF is the required checkpoint file.
+
+Preserve the initial `worksheet.pdf`. Put later dated, signed revisions in `submissions/class15/revisions/` with a short change record; do not rewrite Git history. A worksheet can cite an earlier evidence commit, but cannot contain the hash of the commit that first contains itself. The [complete blank pack](../resources/project-workbook/Submission-Worksheets.pdf) remains available for printing all six worksheets.
 
 **Useful checkpoint:** One matched comparison or correspondence analysis, its uncertainty/limits and a justified interpretation or scope revision.
 

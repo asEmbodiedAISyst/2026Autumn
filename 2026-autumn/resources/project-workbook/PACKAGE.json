@@ -9,9 +9,9 @@
   ],
   "single_page_per_class": true,
   "files_sha256": {
-    "2026-autumn/resources/project-workbook/project-record.md": "e2380d1e7ae024962bffb0d67b471be8abab613bcc15ea54f9f471f3146edde2",
-    "2026-autumn/resources/project-workbook/README.md": "818a48c61feb65faa92e104e072eb173acc402c051d6479e3e9cac37a84e5181",
-    "2026-autumn/resources/project-workbook/Submission-Worksheets.pdf": "16622b2f1b8d9b817eca4c6631817b848d21b0a0fa69cfcd8b895e4f09b717e5",
+    "2026-autumn/resources/project-workbook/project-record.md": "eeaf19cfec7f582d8b9089feeae3a9fb7d437e4f95fd0503b363044df3a582f2",
+    "2026-autumn/resources/project-workbook/README.md": "2135c9346bf8440f8cda4514669c8963a4cef5a56ac660e6127f467cde14de5a",
+    "2026-autumn/resources/project-workbook/Submission-Worksheets.pdf": "018764dcbd6b23cb9f4e7607fb7c77179c59838618251064d23bfb1fbc3129a6",
     "2026-autumn/resources/project-workbook/evidence/math-check.json": "d56a2af1ee0f2a6f9ab6ba4d3c9f35b799cd65199afd5cdf408d198786c56687",
     "2026-autumn/resources/project-workbook/evidence/content-checks.json": "726c0f54fc5b2d66fa7c82431d12e89aaeb9d861813362f30e247b40842bb25a",
     "2026-autumn/resources/project-workbook/evidence/gitbook-review.json": "953389c8610d4ceca08dd24e1c6e708a0eff7f30f9479ab415504b51cd6f557b",
@@ -102,6 +102,29 @@
     "2026-autumn/media/class17/evidence-dimensions-paper.svg": "38a2e177c635ab5e22f0ad68422b40457cbd30a9db8db5346568d5ad38a69dd4",
     "2026-autumn/media/class17/action-boundary-classroom.pdf": "9bfb681e52bf4461f5629719b63dded33b4c902cd0f000470e3f8a09f995ef6d",
     "2026-autumn/media/class17/action-boundary-paper.png": "62ee10ed9e5fe8b71624c2ff9b9b2bb84e05bd8b0694c43eb53ed5186271363b",
-    "2026-autumn/media/class17/evidence-dimensions-classroom.pdf": "4ddc12ba95dd49186b4f5e1d048613ab0902adb1a12f9ac736a4c0993b2ecc41"
-  }
+    "2026-autumn/media/class17/evidence-dimensions-classroom.pdf": "4ddc12ba95dd49186b4f5e1d048613ab0902adb1a12f9ac736a4c0993b2ecc41",
+    "2026-autumn/resources/project-workbook/Class15-Grounding.pdf": "aafe8d6911c4cdc2036e57117917fe7a4da3701b8749818eda335a5537c52478",
+    "2026-autumn/resources/project-workbook/Class12-Claim.pdf": "cec5e75664ccb604eb63deb1fb4ba244eaca9409b590fcff6f773b6bdb0a0642",
+    "2026-autumn/resources/project-workbook/Class17-Decision.pdf": "438de0b71e3ad6ea6220ae3ee11bc34ebd2bdff69f334accad04f37e8af5c93c",
+    "2026-autumn/resources/project-workbook/Class16-Learning.pdf": "99fce8c2946a4ebaba2a1f34b31fa599adf5270b2dc3909fddfc6284ea2443b5",
+    "2026-autumn/resources/project-workbook/REVISION-NOTES.md": "9dd0b93dc4b75484f331d15abee53b9d1273efa437682db6d198eec45e98ed5f",
+    "2026-autumn/resources/project-workbook/Class14-System.pdf": "1007e8063c9633b9dfcbd9d438a0eceb1abea44cbd238bfd457af1e726bafdf5",
+    "2026-autumn/resources/project-workbook/Class13-Experience.pdf": "108b143ebc0dab60114bee7a5b80a4204324494caaa0ee2dd8a1792edc81a4b6",
+    "2026-autumn/resources/project-workbook/evidence/worksheet-review.json": "9e79adeba9c5e9572392e15b2d1df21a63f60a9b42197777deb616ff4a6fd4f9",
+    "2026-autumn/resources/project-workbook/worksheet-source/generate_team_guide.py": "d708d6b36104070e01f605bf1abd710aaa3c48fc99b5cf1347f423a205a1c637",
+    "2026-autumn/resources/project-workbook/worksheet-source/requirements.txt": "5981bfdc8969a44d46417718ffa6697105bc9801db073c14bc1c784b9e0d6f1b",
+    "2026-autumn/resources/project-workbook/worksheet-source/generate_workbook.py": "c02ad6c6a25201be03666a46c903c85fe905e6f5ee424651883cebbf6c303942",
+    "2026-autumn/resources/project-workbook/worksheet-source/build_worksheets.py": "ad3fca2d3c26abb878cb671a6ebe0fd5f30ed2056c8e206752226ccbbfdc08d0",
+    "2026-autumn/resources/project-workbook/worksheet-source/worksheet-content.json": "e10adc4d8b4be504064e59997dcb5411c560bac4f7b0e0f2cff63c266d840a98",
+    "2026-autumn/resources/project-workbook/worksheet-source/README.md": "5e9150ad4fcbcff7045bc71e8a4cbe63992224f1c1633d2861053cce3c38290c"
+  },
+  "worksheet_definitions": "1.2",
+  "submission_paths": [
+    "submissions/class12/worksheet.pdf",
+    "submissions/class13/worksheet.pdf",
+    "submissions/class14/worksheet.pdf",
+    "submissions/class15/worksheet.pdf",
+    "submissions/class16/worksheet.pdf",
+    "submissions/class17/worksheet.pdf"
+  ]
 }

@@ -1,6 +1,6 @@
 # Team project record
 
-This is one evolving digital draft. Submit the corresponding worksheet handwritten and signed by every team member before the end of Classes 12–17. Preserve private scans of the signed originals and later dated, signed revisions. See the [advance guide](https://x.ancorasir.com/rob7103-8103/module-04-worksheets-guided-final-project-preparation/12-final-project-i-claim).
+This is one evolving digital draft. Submit the corresponding worksheet handwritten and signed by every team member before the end of Classes 12–17. Push the complete scan to submissions/classXX/worksheet.pdf in the assigned private team repository; no physical hand-in is required. Preserve later dated, signed revisions separately. See the [advance guide](https://x.ancorasir.com/rob7103-8103/module-04-worksheets-guided-final-project-preparation/12-final-project-i-claim).
 
 Team: [enter] · Project/claim ID: [enter] · Configuration ID: [enter]
 
@@ -32,25 +32,25 @@ Configuration/source version and evidence freeze: [enter]
 
 ### 1. System and capability
 
-Identify the claim and its physical mechanism; distinguish the authors claim from your proposed claim.
+Name your system, tested capability and physical mechanism. Separate your proposed claim from published results.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 2. Conditions and boundary
 
-State task, system version, conditions and exclusions. Identify source analysis or project development.
+State task, configuration, conditions and exclusions. Use Project development for your own final project.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 3. Measure and comparison
 
-Give the measure, units, trial unit and comparator. Distinguish reported outcome from proposed criterion.
+Define measure, units, trial unit, criterion and comparator before evaluation. Label proposed versus observed values.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 4. Purpose and next test
 
-What contribution is supported? What missing comparison or next test would strengthen the claim?
+Select one feasible pilot and check resources/access. State what outcome would challenge the claim; results may be pending.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
@@ -60,31 +60,31 @@ What contribution is supported? What missing comparison or next test would stren
 
 ## 2. Experience
 
-**What happens during one interaction, and what can we learn from it?**
+**What interaction data does one episode generate, and how will we use them?**
 
 Configuration/source version and evidence freeze: [enter]
 
 ### 1. Objective and start
 
-Reference the claim and source. Distinguish a reconstructed reported episode, an observed episode and a plan.
+Link the claim, episode start/reset and end rule. Label this episode planned, team-observed or externally reported.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 2. Input and action
 
-Identify observations, commands and physical interaction. Mark unavailable timing or execution detail.
+Identify observations, timestamps, commands and executed actions where known. Distinguish command from response.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 3. Response and outcome
 
-Describe reported response, outcomes, failures and intervention. A schematic is not a new recorded trial.
+Record response, outcome rule, failures, timeouts and interventions. A selected success does not establish reliability.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 4. Record and reuse
 
-What record informs learning, inference or evaluation? State its source and the limits of reuse.
+List the retained interaction data: observations, actions, responses, outcomes and context. State intended use and missing fields.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
@@ -100,25 +100,25 @@ Configuration/source version and evidence freeze: [enter]
 
 ### 1. World and observations
 
-Identify embodiment, environment, sensing and frames; separate implemented facts from missing details.
+Draw embodiment/environment and sensing. Mark frames, measured quantities and implemented versus planned components.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 2. Decision and action
 
-Describe implemented controller, action meaning, compute and rates. Do not infer undocumented settings.
+Connect observations to computation/control and action. Declare action meaning, units, order, rates and limits.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 3. Authority and record
 
-Identify human roles, limits, logging and reset/recovery where reported; record source or configuration IDs.
+Add operator authority, logging, stop/reset/recovery and configuration ID. Identify evidence kept at each critical interface.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 4. Critical interface evidence
 
-What interface evidence is reported or tested? Separate available evidence from a proposed acceptance test.
+Select one consequential interface. State acceptance criterion, test evidence and result, or pending test with owner.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
@@ -134,25 +134,25 @@ Configuration/source version and evidence freeze: [enter]
 
 ### 1. Comparison boundary
 
-What representation, measurement or task result is compared with which reference? Are conditions matched?
+Name the prediction/measurement and reference. Match conditions; identify simulated versus physical evidence.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 2. Quantities and validity
 
-Identify measures, units, references, tolerances and measurement ceilings; distinguish fact from assumption.
+Declare quantity, units, frame, tolerance and measurement limits. Distinguish a chosen tolerance from observed uncertainty.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 3. Results and uncertainty
 
-Enter reported or measured outcomes with trial counts and uncertainty. Mark data not inspected or not reported.
+Give paired outcomes, trial counts and uncertainty or limits. If untested, record the protocol and missing evidence explicitly.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 4. Interpretation and challenge
 
-What does the comparison support? Distinguish observed difference from cause; identify a diagnostic test.
+Bound the conclusion and consider another cause of the difference. Choose a diagnostic test or scope restriction.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
@@ -168,25 +168,25 @@ Configuration/source version and evidence freeze: [enter]
 
 ### 1. Role of experience
 
-Identify training, inference/adaptation, evaluation or design insight; not every physical system updates weights.
+State how interaction data support training, inference, evaluation or design. No new training is required; explain your scope.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 2. Data and independence
 
-Identify data origins, development/test roles, sampling and leakage checks; do not infer unreported partitions.
+Identify data origin, selection and development/test groups. Keep related episodes together; disclose tuning or leakage.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 3. Comparison and limits
 
-Compare methods under stated conditions; give denominators, failures and ablations with source pointers.
+Compare frozen methods or data strategies under matched conditions and budgets. Include denominators and all failure outcomes.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 4. Supported contribution
 
-What capability or knowledge is supported? Which alternatives remain? Define a next test or scope restriction.
+Retain, revise or reject the bounded contribution. No improvement is valid; an unfinished evaluation is not a negative result.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
@@ -202,25 +202,25 @@ Configuration/source version and evidence freeze: [enter]
 
 ### 1. Assessment boundary
 
-Choose source analysis or project development; declare claim, sources/version and the exact question or action.
+Declare your project claim, next action, configuration and evidence freeze. Keep any source analysis explicitly separate.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 2. Evidence screen
 
-Review all 27 checks; distinguish core claim support, extensions, not reported, not examined and not applicable.
+Complete all 27 checks: evidence basis, support, context and limits. NR/NE/NA need reasons; identify action-critical checks.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 3. Conclusion and conditions
 
-Source mode: bounded finding and gaps. Project mode: action, critical checks, conditions and owners.
+State supported and unsupported uses. Choose advance, advance with conditions, revise/reassess or stop/rescope.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
 ### 4. Reassessment
 
-Identify corrections, configuration changes, counterevidence and the records needed to revisit the conclusion.
+Name conditions, owners, verification and reassessment triggers. Link the frozen evidence and retain later revisions.
 
 [Entry; artifact/source ID; origin; interpretation and limits]
 
@@ -274,4 +274,4 @@ Project development: [exact next action; advance / advance with conditions / rev
 | --- | --- | --- | --- | --- |
 | [enter] | [enter] | [enter] | [enter] | [enter] |
 
-Keep the final poster in `poster/`, the code and its entry-point README in `code/`, and the final video in `video/` in the assigned team repository. Commit and push to `main` before each deadline; the teaching team records and collects the remote revision at that deadline. No separate student collection record is required. Preserve the scientific links in the table and explain differences between milestone versions.
+Link the exact submitted artifact commits through submissions/poster.md, code.md and video.md. A later record points to an earlier assessed commit; it cannot contain its own final commit hash. Preserve differences between milestones.
