@@ -1,0 +1,124 @@
+{
+  "nq": 8,
+  "nv": 8,
+  "nu": 7,
+  "joints": [
+    {
+      "name": "joint1",
+      "model_range_rad": [
+        -2.8,
+        2.8
+      ],
+      "model_range_deg": [
+        -160.42818263663048,
+        160.42818263663048
+      ],
+      "software_motor_limit_deg": [
+        -145,
+        145
+      ],
+      "home_rad": 0.0,
+      "home_deg": 0.0
+    },
+    {
+      "name": "joint2",
+      "model_range_rad": [
+        0.0,
+        3.14
+      ],
+      "model_range_deg": [
+        0.0,
+        179.9087476710785
+      ],
+      "software_motor_limit_deg": [
+        0,
+        170
+      ],
+      "home_rad": 1.532,
+      "home_deg": 87.77713421404212
+    },
+    {
+      "name": "joint3",
+      "model_range_rad": [
+        0.0,
+        3.14
+      ],
+      "model_range_deg": [
+        0.0,
+        179.9087476710785
+      ],
+      "software_motor_limit_deg": [
+        0,
+        200
+      ],
+      "home_rad": 1.197,
+      "home_deg": 68.58304807715955
+    },
+    {
+      "name": "joint4",
+      "model_range_rad": [
+        -1.57,
+        1.57
+      ],
+      "model_range_deg": [
+        -89.95437383553924,
+        89.95437383553924
+      ],
+      "software_motor_limit_deg": [
+        -80,
+        90
+      ],
+      "home_rad": -1.236,
+      "home_deg": -70.81758347816975
+    },
+    {
+      "name": "joint5",
+      "model_range_rad": [
+        -1.57,
+        1.57
+      ],
+      "model_range_deg": [
+        -89.95437383553924,
+        89.95437383553924
+      ],
+      "software_motor_limit_deg": [
+        -90,
+        90
+      ],
+      "home_rad": 0.0,
+      "home_deg": 0.0
+    },
+    {
+      "name": "joint6",
+      "model_range_rad": [
+        -3.14,
+        3.14
+      ],
+      "model_range_deg": [
+        -179.9087476710785,
+        179.9087476710785
+      ],
+      "software_motor_limit_deg": [
+        -130,
+        130
+      ],
+      "home_rad": 0.0,
+      "home_deg": 0.0
+    }
+  ],
+  "home_tcp_m": [
+    0.2500332162623992,
+    -3.42487321286704e-07,
+    0.09985521773825695
+  ],
+  "zero_tcp_m": [
+    0.2867099999988765,
+    9.099440146577757e-08,
+    0.21774670766727264
+  ],
+  "control_hz": 30,
+  "physics_timestep_s": 0.00196078431372549,
+  "substeps": 17,
+  "control_period_s": 0.03333333333333333,
+  "scope": "compiled simulation only; motor limits are supplied code declarations"
+}

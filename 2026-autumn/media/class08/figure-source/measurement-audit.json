@@ -1,0 +1,17 @@
+{
+  "rows": 180,
+  "first_pre_step_time_s": 0.0,
+  "last_pre_step_time_s": 5.966666666666646,
+  "nominal_control_period_s": 0.03333333333333333,
+  "total_advanced_simulation_time_s": 6.0,
+  "max_abs_pre_step_state_minus_target_deg": 1.3264337276199711,
+  "min_signed_pre_step_state_minus_target_deg": -1.3264337276199711,
+  "max_signed_pre_step_state_minus_target_deg": 1.3264283954000433,
+  "target_min_deg": 77.77713421404212,
+  "target_max_deg": 97.77713421404212,
+  "measurement": "pre-step state minus target selected for same upcoming update; no filtering or time shift",
+  "physics_timestep_s": 0.00196078431372549,
+  "substeps": 17,
+  "lecture_time_labels": false,
+  "visual_review": "All six classroom PNGs inspected; labels, axes, units and rendering boundaries retained. No output edits needed."
+}
