@@ -4,18 +4,20 @@ The current lecture uses original illustrations to connect physical devices, pub
 
 ## Figure-to-source record
 
-| Lecture figure | File | Source and operation |
+| Lecture figure | Published filename | Source and operation |
 |---|---|---|
-| 1 | `telemetry-motion-v08-classroom.png` | Saved XC330 Mode-5 record; existing `code/lesson_figures_v08.py` |
-| 2 | `hardware-identity-v08-classroom.png` | Existing course physical/CAD identity panel; `code/lesson_figures_v08.py` |
+| 1 | `02-command-reference-response.png` | Saved XC330 Mode-5 record; existing `code/lesson_figures_v08.py` |
+| 2 | `01-actuator-and-geometry.png` | Existing course physical/CAD identity panel; `code/lesson_figures_v08.py` |
 | 3 | `source-performance-curve.png` | Supplied original ROBOTIS performance-curve image; unchanged pixels and original labels |
-| 4 | `supplier/robotis-position-controller.png` | Official ROBOTIS controller image; WebP-to-PNG format conversion only |
-| 5 | `supplier/robotis-current-position-controller.png` | Official ROBOTIS current-based position image; format conversion only |
-| 6 | `supplier/leap-hand-figure1.png` | Shaw, Agarwal, and Pathak (2023), Figure 1; cropped from PDF page 1 |
-| 7 | `supplier/aloha-figure1.png` | Zhao, Kumar, Levine, and Finn (2023), Figure 1; cropped from PDF page 1 |
-| 8 | `supplier/rs06-manual-page09.png` | Supplied RS06 revision-260713 manual, PDF page 9, printed page 8; whole-page rendering |
-| 9 | `supplier/rs00-manual-page08.png` | Supplied RS00 revision-260713 manual, PDF page 8, printed page 7; whole-page rendering |
-| 10 | `communication-parts-v08-classroom.png` | Existing course component panel; `code/lesson_figures_v08.py` |
+| 4 | `robotis-position-controller.png` | Official ROBOTIS controller image; WebP-to-PNG format conversion only |
+| 5 | `robotis-current-position-controller.png` | Official ROBOTIS current-based position image; format conversion only |
+| 6 | `leap-hand-figure1.png` | Shaw, Agarwal, and Pathak (2023), Figure 1; cropped from PDF page 1 |
+| 7 | `aloha-figure1.png` | Zhao, Kumar, Levine, and Finn (2023), Figure 1; cropped from PDF page 1 |
+| 8 | `rs06-manual-page09.png` | Supplied RS06 revision-260713 manual, PDF page 9, printed page 8; whole-page rendering |
+| 9 | `rs00-manual-page08.png` | Supplied RS00 revision-260713 manual, PDF page 8, printed page 7; whole-page rendering |
+| 10 | `03-interface-components.png` | Existing course component panel; `code/lesson_figures_v08.py` |
+
+Published filenames are relative to `2026-autumn/.gitbook/assets/class02/`. [FIGURE-CODE.md](FIGURE-CODE.md#current-lecture-figure-map) maps them to retained master files and generation functions.
 
 The LEAP and ALOHA figure extracts omit surrounding article text and captions. Their original panel labels remain. The lecture supplies new attributed captions and does not present any paper result as a class-reproduced measurement. Copyright in source material remains with its respective authors/publishers/manufacturers; attribution is not a grant of additional reuse rights.
 
