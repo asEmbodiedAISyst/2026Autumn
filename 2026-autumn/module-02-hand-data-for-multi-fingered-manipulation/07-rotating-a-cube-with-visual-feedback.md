@@ -22,9 +22,9 @@ By the end, you should be able to:
 - Interpret uncertainty, visibility, measurement age and missing observations.
 - Design a controlled visual-feedback test and distinguish hand retargeting from phone-pose teleoperation.
 
-[Lecture](#learn-from-the-original-example-without-changing-its-claim) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Run the repository examples](#run-the-repository-examples)
+[Lecture](#learn-from-the-original-example-without-changing-its-claim) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The figures, calculations and saved results support a complete reading and activity route on this page. The perception exercise requires no phone, physical hand or GPU. Native diagnostics reuse the Class 06 policy/model resources already included in the same student repository. Prepare dependencies before class; a saved-record route is provided.
+The figures, calculations and saved results support a complete reading and activity route on this page. The perception exercise requires no phone, physical hand or GPU. The retained native diagnostics use the Class 06 policy and model. Their reported traces and results provide the evidence for the reading and activity.
 
 ## Object reorientation and visual feedback
 
@@ -247,31 +247,19 @@ Work through Figure 3 on paper: rotate the point, then add the camera origin. As
 
 ### Recover a declared synthetic pose
 
-With dependencies prepared, run the synthetic exercise from the Class 07 resource folder:
-
-```sh
-python code/perception_lab.py --output runs/perception-01
-```
-
-Read the declared camera matrix, 70 mm square and generated correspondences. Inspect noise-free recovery and the three-correspondence unavailable gate, then compare the sensitivity table with Figure 5. Explain why this test does not implement a marker detector or calibrate a physical camera. Use the supplied summary if execution is unavailable.
+Use the synthetic pose-recovery example and its sensitivity results. Read the declared camera matrix, 70 mm square and generated correspondences. Inspect noise-free recovery and the three-correspondence unavailable gate, then compare the sensitivity table with Figure 5. Explain why this test does not implement a marker detector or calibrate a physical camera. Use the declared correspondences and result table to support the interpretation.
 
 ### Compare timing interventions
 
-Run the dependency-free result inspector and open Figure 7:
+Open Figure 7 and compare the three reported diagnostics. Locate the first delayed feature and a dropped packet in the supplied traces. Compare first-goal time, successful-step count, termination and maximum age. Relate 150 ms to three control intervals and to the 0.15 rad constant-speed estimate. Preserve the capture-time goal distinction.
 
-```sh
-python3 code/inspect_results.py
-```
-
-Locate the first delayed feature and a dropped packet in the supplied traces. Compare first-goal time, successful-step count, termination and maximum age. Relate 150 ms to three control intervals and to the 0.15 rad constant-speed estimate. Preserve the capture-time goal distinction.
-
-For a live numerical rerun, use the prepared native environment and fresh output folders as listed below. The saved traces provide the complete demonstration route if live execution is unavailable. End with one supported observation and a new measurement that would distinguish an alternative explanation.
+The saved traces provide the evidence for this comparison. End with one supported observation and a new measurement that would distinguish an alternative explanation.
 
 ## Student activity
 
 ### Calculate, inspect and bound the conclusion
 
-Use the page's worked examples and result tables, then reproduce the synthetic exercise when the environment is ready.
+Use the page's worked examples, synthetic experiment description and result tables.
 
 1. Transform the camera-frame point (0.20, 0.03, 0.40) m into the hand frame using the declared 90° rotation and camera origin. Show the rotation before translation.
 2. Calculate the apparent width of the 70 mm segment at 0.50 m depth with 700 px focal length. Predict the width at twice that depth.
@@ -291,40 +279,4 @@ Submit a compact record:
 | Intervention | Selected feature channels, delay/loss setting and outputs |
 | Conclusion | One supported observation and one untested claim |
 
-If you use supplied tables rather than executing code, label them as saved evidence. A qualitative camera observation can reveal viewpoint or occlusion changes, but does not replace a calibrated cube-pose experiment. No phone or hardware hand is required.
-
-## Run the repository examples
-
-Download or clone the [student repository](https://github.com/asEmbodiedAISyst/2026Autumn), keeping its folder structure. From the repository root, the result inspector needs only standard Python:
-
-```sh
-cd 2026-autumn/resources/class07
-python3 code/inspect_results.py
-```
-
-In Windows PowerShell, use `py -3 code/inspect_results.py` from the same folder. The [saved perception summary](../resources/class07/results/perception-summary.json), [500 trial rows](../resources/class07/results/pnp-trials.csv) and three supplied native trace/summary folders are included locally.
-
-For the executable synthetic exercise, prepare Python 3.12 on macOS/Linux:
-
-```sh
-python3.12 -m venv .venv-class07
-. .venv-class07/bin/activate
-python -m pip install -r code/requirements-perception.txt
-python code/verify_package.py
-python code/perception_lab.py --output runs/perception-01
-```
-
-Use a fresh output directory; the lab refuses to overwrite existing evidence. It creates a new `perception-summary.json` and `pnp-trials.csv` while preserving the supplied results. In PowerShell, create the environment using `py -3.12 -m venv .venv-class07`, then use `.\.venv-class07\Scripts\python.exe` instead of `python` for installation and commands; activation is unnecessary. The Windows command form has not been executed in this review.
-
-For native feedback reruns, install the pinned simulation requirements in that environment:
-
-```sh
-python -m pip install -r code/requirements-simulation.txt
-python code/feedback_experiment.py --output runs/baseline-01
-python code/feedback_experiment.py --delay-steps 3 --output runs/delay150-01
-python code/feedback_experiment.py --dropout .3 --output runs/dropout30-01
-```
-
-The script finds the adjacent `resources/class06/code` directory by default. Those policy, model, source and licence files are already in this student repository; no private checkout is needed. Keep both resource folders when copying the practical, or supply `--class06-code` with the relocated code path. Numerical reruns need no display, GPU or live network stream. Native execution is verified on Apple-silicon macOS; optional-backend notices do not replace checking process exit and result files.
-
-Keep the original Class 06 licences and notices with its reused runtime. The required Class 07 reasoning remains complete using the page and supplied records. Camera tracking, visual policy training, finger retargeting and physical evaluation remain separate development work.
+Identify the supplied tables and traces used as saved evidence. A qualitative camera observation can reveal viewpoint or occlusion changes, but does not replace a calibrated cube-pose experiment. No phone or hardware hand is required.

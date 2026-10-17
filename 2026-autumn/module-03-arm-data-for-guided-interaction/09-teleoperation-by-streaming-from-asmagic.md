@@ -235,67 +235,29 @@ The important result of this class is an inspectable command/response episode wi
 
 ### Instructor/TA demonstration
 
-#### Prepare the simulation and retained fallback
+#### Inspect the mapping and retained recording
 
-Clone or update the [current student repository](https://github.com/asEmbodiedAISyst/2026Autumn), then open a terminal at its root. Use a Python 3.12 environment prepared before class. The pinned requirements are the retained macOS test environment; other platforms need their own verification.
+Use the declared identity-orientation example to check the target [0.27, 0.01, 0.10] m. Then inspect the retained circular-motion episode: 170 frames, seven state/action channels, increasing timestamps and an effective rate near 28.84 Hz. These are properties of this recorded simulation, rather than guaranteed streaming specifications.
 
-```sh
-cd 2026-autumn/resources/class09
-python3.12 -m venv .venv
-.venv/bin/python -m pip install -r requirements-tested-macos.txt
-.venv/bin/python code/lesson_lab.py mapping
-.venv/bin/python code/lesson_lab.py audit
-```
+#### Trace action, observation and transition
 
-The mapping command should print target `[0.27, 0.01, 0.10]` m for the declared identity-orientation example. The audit should find 170 frames, seven state/action channels, increasing timestamps and an effective rate near 28.84 Hz in the retained circle. The complete retained circle and dropout episodes, including both image folders, are included under `data/recorded/`. They provide a fallback if a live stream or renderer is unavailable.
-
-#### Trace, record and inspect
-
-Keep both terminals in `2026-autumn/resources/class09`. Start the loopback publisher in Terminal A:
-
-```sh
-.venv/bin/python consolidation/package/additional_material/code/fake_phone.py --pattern circle --port 18739
-```
-
-In Terminal B, run the prepared bridge:
-
-```sh
-.venv/bin/python consolidation/package/additional_material/code/teleop_rebot_rs_sim.py --phone-ip 127.0.0.1 --phone-port 18739 --no-viewer --duration 6 --out results/live-circle
-```
-
-Use a fresh output directory for each attempt. This command automatically starts the headless simulation and records a numbered episode. Check the log for stream reception, teleoperation start and the saved episode path. Stop the publisher with Ctrl+C afterwards.
-
-Open the generated `meta.json`, `frames.csv` and a matching front/side image pair. Check the first row’s channel order, convert its elbow action to a motor target and interpret the residual. Run:
-
-```sh
-.venv/bin/python code/lesson_lab.py audit --recording results/live-circle/episode_000/frames.csv
-```
-
-The new frame count and wall-clock rate may differ from the retained run because rendering and machine workload affect acquisition. Compare measured values rather than demanding identical timestamps.
+Select a row and its matching front/side image pair. Check channel order, convert the elbow action into motor-target coordinates and interpret the residual. Locate when the state and images are recorded relative to the issued action and the subsequent physics step. Explain why using the following state as the same-step observation would change the learning example.
 
 ![Two views from the same recorded simulation row](../media/class09/episode-views-classroom.png)
 
 > Figure 7. Front and side views from frame 0 of the retained circle episode. Both are rendered simulation images, associated with the same CSV row. Neither is a phone camera image. The two views make the scene and camera keys concrete; they do not establish physical camera calibration.
 
-For an interactive macOS viewer, use `.venv/bin/mjpython` with the same bridge, omitting `--no-viewer --duration 6`. Space engages/pauses the mapping, Right arrow starts/stops recording, Left arrow discards a recording and Enter toggles the gripper. The viewer must have keyboard focus. Re-engagement uses the current commanded TCP pose as its reference; dynamics can still lag it.
+A local protocol-compatible publisher supplies the retained operator pose. The two images are rendered simulation views; neither is a phone-camera observation. Compare clock intervals and recording provenance rather than assuming that the nominal update rate describes every acquisition.
 
-#### Introduce one timing fault
+#### Interpret one timing fault
 
-Stop the circle publisher. Start a new publisher with the matrix form and a line pattern:
+Inspect the retained interruption trace. Predict what should hold when the latest input becomes stale: the target stays fixed, while the simulated mechanism can continue converging. Observe receiver-side age, the timeout rule and the last ten action rows. A flat action trace supports a held command; it does not prove zero measured velocity. Contrast stale input with a rejected IK candidate marked by `blocked=1`.
 
-```sh
-.venv/bin/python consolidation/package/additional_material/code/fake_phone.py --matrix --pattern line --port 18739
-```
+#### Compare with the original app interface
 
-Run the same headless bridge in Terminal B with a new output path, such as `results/live-dropout`. While it is recording, stop the publisher. Only one publisher should own the selected port. Observe the stale-stream warning, increasing receiver age and retained action target after the timeout. Inspect the last rows and compare their seven actions. If interruption timing is inconvenient, use the bundled `data/recorded/dropout/frames.csv` and its matching images.
+When an already prepared asMagic interface is available, identify its AR/device-pose, camera and IMU streams. Test the meaning of one translation and rotation axis. Explain which streams the bridge actually uses and which observations the recorder retains. A protocol-compatible pose source can test the mapping without establishing physical camera calibration or wireless reliability.
 
-Ask students to predict what should hold: the target stays fixed while the simulated mechanism can continue converging. A flat action trace supports a held command; it does not prove zero measured velocity. Contrast a stale-input event with `blocked=1` from IK rejection.
-
-#### Show the original app interface when available
-
-Use the original asMagic app’s Data Streaming page on an already prepared iPhone. Put phone and computer on a reachable network, enable AR Data and use the displayed phone IP and verified port (the supplied interface defaults to 8000). Substitute these values for the loopback IP/port in the viewer command. Check the received pose format and rate, then test one phone axis at a time before recording.
-
-Record the actual installed app build separately from the pinned Python package version. Phone streaming is a useful extension of the demonstration; the local publisher and retained episodes cover the required exercise. The available app streams and the fields retained by this bridge remain different things.
+Pause and re-engagement provide a final comparison: re-engagement establishes new references from the current commanded TCP pose, while actual motion may still lag that command. Name the additional calibration and timing evidence needed before interpreting a physical phone-to-arm experiment.
 
 ### Student activity
 
@@ -303,7 +265,7 @@ Work from the retained circle/dropout episodes or a fresh simulation run. No pho
 
 1. **Check the interface.** Identify the seven channel names in order and both image keys. Select a row and open its matching front and side images. Record episode identity, frame index, image dimensions and timestamp. Explain why the two images do not make this a phone-camera dataset.
 2. **Convert before comparing.** Copy the selected elbow action and state, apply the direction vector and calculate state-minus-motor-target in degrees. Explain why a raw sign difference is insufficient evidence of an inverted motor.
-3. **Audit time and missing input.** Use the audit command to report frame count, elapsed timestamp interval, effective frequency and largest inter-frame gap. Inspect the dropout tail and distinguish receiver age from sensor-to-actuator latency. Name another possible cause of a flat trace.
+3. **Audit time and missing input.** Report frame count, elapsed timestamp interval, effective frequency and largest inter-frame gap from the retained timestamp record and the reported checks. Inspect the dropout tail and distinguish receiver age from sensor-to-actuator latency. Name another possible cause of a flat trace.
 4. **Define one repeatable task.** Complete the contract below. Separate a mapping diagnostic from an attempted manipulation and define how a reset reproduces the start.
 
 | Contract field | Your declaration |

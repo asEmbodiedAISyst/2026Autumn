@@ -18,7 +18,7 @@ By the end of this class, you should be able to inspect a deployment interface, 
 
 ### Lecture
 
-## 1. Observation/action compatibility and calibration
+## Observation/action compatibility and calibration
 
 Evaluate the complete configured system and identify which comparison each test makes. A narrow, repeatable simulation result is useful evidence. Extending it to a new observation domain or physical mechanism requires additional tests rather than a broader label.
 
@@ -62,7 +62,7 @@ The policy image key is `observation.images.phone`: a tool-mounted camera view i
 
 **Calibration belongs to the contract.** A correct joint order does not fix an incorrect zero offset. A correct pose encoding does not fix an incorrect camera-to-tip transform. Declare which quantities came from CAD, which were measured, and the load/configuration under which a calibration was checked. A representation match makes a test meaningful; it does not establish equal physical behaviour.
 
-## 2. Timing, latency, actuation and contact mismatch
+## Timing, latency, actuation and contact mismatch
 
 ### Follow the age of an observation to the actuator
 
@@ -119,7 +119,7 @@ The categories can interact. Camera delay affects which physical state an image 
 
 Changing several items at once can repair a system but makes causal explanation harder. Record each change and separate a practical repair from an identified mechanism.
 
-## 3. Replay, shadow checks and supervised physical evaluation
+## Replay, shadow checks and supervised physical evaluation
 
 ### Use checks that answer different questions
 
@@ -189,7 +189,7 @@ A policy trained on physical camera images can be evaluated in simulation as a s
 
 The supplied inference scripts require exact weights and processors. Until those are available, this class can inspect the procedure and source records, but cannot claim to have rerun their learned-policy predictions.
 
-## 4. Nominal and held-out conditions, failures and bounded claims
+## Nominal and held-out conditions, failures and bounded claims
 
 ### Read the denominator and the exact run
 
@@ -245,7 +245,7 @@ For a camera hypothesis, vary a declared camera factor while keeping the physics
 
 A shadow check can inspect a policy's proposed actions in a simulated or non-actuating path before a physical trial. Its role is bounded: acceptable numeric outputs do not establish that the physical task will succeed. Physical operation requires its own approved setup and supervision; this session does not issue hardware commands.
 
-## 5. Connect actuator validation, LEAP and reBot evidence
+## Connect actuator validation, LEAP and reBot evidence
 
 The course’s experiments address different system boundaries. A result at one boundary supports later work only when the relevant conditions still match.
 
@@ -265,26 +265,17 @@ A useful project therefore links measurements across levels: parameter/property 
 
 **Scope:** This demonstration uses simulation replay and supplied simulated policy-rollout records. It does not execute a learned policy on physical hardware. Missing evidence for a physical deployment claim includes the exact checkpoint/processors, calibrated hardware interface, measured timing and actuation response, and logged supervised physical task trials.
 
-#### Prepare and run the reproducible checks
+#### Interpret the retained replay checks
 
-Clone or update the [student repository](https://github.com/asEmbodiedAISyst/2026Autumn), then run from its root. Use Python 3.12; the pinned environment was tested on macOS.
+Read the supplied replay, reset contrast and outcome summary as three different checks. The replay reports sixty steps, two seconds, finite state values and zero maximum difference under the restored state and scripted commands. The reset contrast reports zero full-restore cube xy discrepancy and about 0.00493 m for the incomplete reset. The separate policy record contains 32 successes in fifty trials, with the descriptive interval near [0.5014, 0.7586].
 
-```sh
-cd 2026-autumn/resources/class11
-python3.12 -m venv .venv
-.venv/bin/python -m pip install -r requirements-tested-macos.txt
-.venv/bin/python code/lesson_lab.py replay
-.venv/bin/python code/compare_reset.py
-.venv/bin/python code/lesson_lab.py results --out results/recorded-policy-summary.json
-```
-
-The first check should report sixty steps, two seconds, finite state values and zero maximum difference. The reset contrast should report zero full-restore cube xy discrepancy and about 0.00493 m for the incomplete reset. The final command should recover 32/50 successes and the descriptive interval near `[0.5014, 0.7586]`. These commands need neither a phone nor a checkpoint. Stored outputs under `results/` provide a fallback.
+Explain why replay equality does not reproduce the policy's decisions and why the reset contrast does not measure physical deployment accuracy. Neither check replaces the missing original checkpoint or a calibrated physical experiment.
 
 #### Audit the interface and replay boundary
 
 Write down the pusher’s nine-value pose feature, image key, episode frame and absolute-target convention. Contrast them with seven motor channels. Work the normalization example and identify the saved statistics/processor artifact needed before policy inference. An absent processor is an unresolved dependency, not an invitation to guess its statistics.
 
-Open the replay and reset-comparison scripts. Identify the model, state specification, initial cube velocity and scripted commands. Predict why the two reset procedures differ, then compare their JSON/CSV outputs. Ask what would have to change for this to be a physical model-validation experiment.
+Trace the replay and reset-comparison definitions: model, state specification, initial cube velocity and scripted commands. Predict why the two reset procedures differ, then compare their retained results. Ask what would have to change for this to be a physical model-validation experiment.
 
 #### Inspect both outcomes and diagnose the failure
 
@@ -296,14 +287,14 @@ Finish with a shadow-check plan: supply real observations to the frozen policy w
 
 ### Student activity
 
-Use the retained failure case and locally recomputed summary. No new training or hardware is required.
+Use the retained failure case and reported summary. No new training or hardware is required.
 
 1. Record episode ID, seed, success flag, step count, final distance and IK field. Explain how valid IK can coexist with task failure.
 2. Identify one directly visible observation with a frame range, and two competing explanations. Mark what the video cannot establish.
 3. Propose one experiment: changed factor, fixed conditions, measured prediction and a result that would weaken your explanation. State which missing artifact or physical observation it needs.
 4. Draft a two-sentence claim naming system, conditions, metric, evidence source and limits. Separate the supplied policy record from a test you executed yourself.
 
-Save the diagnosis, claim, experiment and assessed source/commit in the team repository. For example: “The supplied pusher evaluation records 32 successes in 50 nominal simulated attempts. Our local replay verifies state/command reproducibility under the supplied model; physical policy transfer and a rerun of the original checkpoint remain unestablished.”
+Save the diagnosis, claim, experiment and assessed source/commit in the team repository. For example: “The supplied pusher evaluation records 32 successes in 50 nominal simulated attempts. The retained replay check verifies state/command reproducibility under the supplied model; physical policy transfer and a rerun of the original checkpoint remain unestablished.”
 
 ### Project handoff
 

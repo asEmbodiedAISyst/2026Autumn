@@ -324,13 +324,13 @@ Keep the contract version with the accepted episode list and audit decisions. If
 
 Show the pilot-camera examples and feature schema. Locate an episode's task, image, measured pose and next-pose action. Identify the privileged object coordinates used for auditing and explain why they are not automatically policy input.
 
-### Run the numeric audit
+### Inspect the numeric audit
 
 Inspect counts and shapes, then compare episodes 4 and 6. Calculate the last-frame geometry and implied pose-speed decisions against the declared thresholds. Give separate verdicts for geometry, speed and unresolved visibility. Locate the stored timestamp grid and explain what acquisition evidence it does not contain.
 
 ### Inspect the target-frame model check
 
-Run the prepared canonical IK/physics check, or use its saved report. Compare episodes 2 and 7 and identify the start frame, model, limits and solver. Keep the source fault-reference file separate from the current result. State a candidate explanation and what additional observation would distinguish it.
+Inspect the retained canonical IK/physics report. Compare episodes 2 and 7 and identify the start frame, model, limits and solver. Keep the source fault-reference file separate from the current result. State a candidate explanation and what additional observation would distinguish it.
 
 ### Interpret the training recipe and recorded result
 
@@ -338,35 +338,7 @@ Open the separate ACT baseline recipe, result JSON and selected successful/faile
 
 ### Draft the contract together
 
-Fill the feature, action-alignment, timing, outcome and split rows. Turn one warning into a justified next action. Use the saved outputs and figures if a local command cannot run; they support the same audit reasoning.
-
-## Setup and reproducible commands
-
-Clone the course repository or obtain its `2026-autumn/resources/class10` folder and enter that folder. It includes the pilot's original data/video and a CSV/JSON export, saved audits, contract template, model and optional IK dependencies. All required teaching explanations are on this page.
-
-### Audit without simulation dependencies
-
-The contract and numeric audit use the Python standard library. These commands verify the distributed files and write fresh reports under `results/`:
-
-```sh
-python3.12 -m venv .venv
-.venv/bin/python lesson_lab.py verify
-.venv/bin/python lesson_lab.py contract --out results/contract.json
-.venv/bin/python lesson_lab.py audit --out results/numeric-audit.json
-```
-
-Warnings are expected teaching evidence; the audit does not train a policy or access hardware. Original saved reports remain available for comparison.
-
-### Run the optional prepared model and IK check
-
-```sh
-.venv/bin/python -m pip install -r requirements-ik.txt
-.venv/bin/python check_ik.py --out results/canonical-ik.json
-```
-
-The headless check reconstructs the 638 observed poses in the declared canonical frame and advances the bundled simulation briefly. It does not load a policy checkpoint, render a viewer or operate a physical arm. The optional dependency set is checked on the stated Python 3.12 macOS environment; other platforms require their own setup check.
-
-Read the [resource instructions](../resources/class10/README.md), [saved numeric audit](../resources/class10/saved/numeric-audit.json) and [saved canonical IK result](../resources/class10/saved/canonical-ik.json) when using the prepared-output route. Inspect the original numeric report and target-frame terminal report as separately identified source records.
+Fill the feature, action-alignment, timing, outcome and split rows. Turn one warning into a justified next action. Use the supplied outputs and figures to support the audit reasoning.
 
 ## Student activity
 
@@ -402,7 +374,6 @@ Save the contract and audit with the team's experiment files. A useful response 
 
 ## Resources and continuation
 
-- [Class 10 data, code, model, saved reports and provenance](../resources/class10/README.md).
 - [Dataset-contract template](../resources/class10/dataset-contract-template.md).
 - [Separate recorded ACT baseline evidence](../resources/class10/recorded-policy/README.md).
 - [Figure code, retained inputs and editable artwork](../media/class10/FIGURE-CODE.md).

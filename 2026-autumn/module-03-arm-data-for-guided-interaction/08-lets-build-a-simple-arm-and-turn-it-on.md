@@ -294,7 +294,7 @@ Convert joint2 and joint3 limits into a common unit. Calculate joint4's positive
 
 ### Run bounded joint and gripper motion
 
-Run the prepared headless example or a rehearsed viewer. Follow the selected joint's target, then explain the gripper target in metres. A viewer is useful for motion inspection; its appearance does not replace the logged conventions and limits.
+Show the prepared joint and gripper motion recording or a rehearsed demonstration. Follow the selected joint's target, then explain the gripper target in metres. A viewer is useful for motion inspection; its appearance does not replace the logged conventions and limits.
 
 ### Read target and response
 
@@ -302,58 +302,13 @@ Display the joint2 trace and select a rising segment. Identify the target, the p
 
 ### Inspect a tool-space request and decide readiness
 
-Run the prepared ROB trajectory or inspect its saved result. Identify the TCP definition, path and reported position error. Ask what additional object interaction and outcome rule would be needed to call it a manipulation experiment.
+Inspect the prepared ROB trajectory and its saved result. Identify the TCP definition, path and reported position error. Ask what additional object interaction and outcome rule would be needed to call it a manipulation experiment.
 
-Finish with one supported next simulated operation and one physical check still open. If launching or rendering fails, use the supplied inspection JSON, trace and figures. Students can complete the same reasoning from saved outputs; hardware is not a fallback for a failed viewer.
-
-## Setup and reproducible commands
-
-Download the repository's `2026-autumn/resources/class08` folder, or clone the course repository and enter that folder. It contains the scripts, model source and notices, dependency specification and saved results. Prepare the environment before the demonstration or activity.
-
-```sh
-python3.12 -m venv .venv
-.venv/bin/python -m pip install -r requirements-tested-macos.txt
-```
-
-The exported headless workflow is checked with Python 3.12 on Apple silicon. A graphical viewer and other classroom platforms require their own launch check. No physical hardware is accessed by these scripts.
-
-### Inspect and generate a fresh trace
-
-Use separate output paths so supplied records remain available:
-
-```sh
-.venv/bin/python code/lesson_lab.py inspect --out runs/inspection.json
-.venv/bin/python code/lesson_lab.py trace --out runs/joint2-trace.csv
-```
-
-### Run the bounded demonstrations
-
-```sh
-.venv/bin/python code/controlled_motion.py --mode joints --no-viewer
-.venv/bin/python code/controlled_motion.py --mode letters --no-viewer
-```
-
-An optional macOS scene viewer uses:
-
-```sh
-.venv/bin/mjpython code/view_arm_scene.py
-```
-
-Its Z and H keys reset the simulated zero and home configurations. This is a state reset in a viewer, separate from physically moving an arm through a calibrated trajectory.
-
-### Inspect saved outputs without simulation dependencies
-
-The supplied analysis command uses the Python standard library and does not load MuJoCo or command an arm:
-
-```sh
-python3 code/analyze_saved.py
-```
-
-Read [inspection.json](../resources/class08/results/inspection.json) and [joint2-trace.csv](../resources/class08/results/joint2-trace.csv) directly if needed. They supply the counts, ranges, reference coordinates, stepping configuration and recorded target/response values used below.
+Finish with one supported next simulated operation and one physical check still open. The supplied inspection result, trace and figures provide the evidence for the same reasoning without operating hardware.
 
 ## Student activity
 
-Use the supplied inspection result, trace and figures, or the equivalent outputs from your prepared simulation. Correct saved-output analysis receives the same credit as correct analysis of your own run. Installation or viewer availability is not part of the evidence of understanding.
+Use the supplied inspection result, trace and figures. The task is to interpret the declared mechanism, limits and response; software installation is not part of the evidence of understanding.
 
 ### Inspect the mechanism
 
@@ -387,7 +342,6 @@ Keep the record with the team's experiment files. The evidence should allow anot
 
 ## Resources and source attribution
 
-- [Class 08 code, models, saved results and dependency files](../resources/class08/README.md).
 - [Model source notice](../resources/class08/model/rebot_b601_rs_mjcf/NOTICE.md) and [source license](../resources/class08/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W).
 - [Figure code, inputs and editable artwork](../media/class08/FIGURE-CODE.md).
 - [Pinned Seeed RS mechanical description](https://github.com/Seeed-Projects/reBot-DevArm/tree/c247ea9cb0da29cd52c31953659cc8c47e6d1a6e/Rebot_Arm_description/RS).
