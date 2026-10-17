@@ -18,7 +18,7 @@ By the end of this class, you should be able to trace operator input through map
 
 ### Lecture
 
-## 1. Teleoperation command and response paths
+## Teleoperation command and response paths
 
 A usable recording must connect the operator input to the actual command and response. We will inspect that connection at each conversion boundary. The same approach applies whether the input comes from a physical phone or the deterministic local publisher.
 
@@ -36,7 +36,7 @@ Suppose the operator asks for a point outside the workspace. The controller may 
 
 **Predict:** Which signals would you inspect when the phone moves but the robot holds? Check the received pose, its age, the mapped target, clipping, IK acceptance and the issued joint target before assuming a communication fault.
 
-## 2. Mapping, units, bounds and calibration
+## Mapping, units, bounds and calibration
 
 ### The same vector can have several meanings
 
@@ -136,7 +136,7 @@ The Jacobian maps small joint changes into small tool-pose changes. The solver b
 
 Keep the distinction between an IK success flag and task success. Reaching a gripper pose does not establish that a cube moved into its goal. It also does not establish contact-force suitability or physical collision clearance.
 
-## 3. Original asMagic streams and Python reception
+## Original asMagic streams and Python reception
 
 The original [asMagic app](https://apps.apple.com/us/app/asmagic/id6661033548) supports AR/device-pose, camera, IMU and joystick functionality. A stream’s availability does not establish how a particular bridge uses it. This lesson uses the original interface and Python `asmagic==0.1.4`; it does not require asMagicPro. The local publisher exercises the same pose reception path without a phone.
 
@@ -157,7 +157,7 @@ The local fake phone publishes Protocol Buffers messages over a loopback ZeroMQ 
 
 The seven-value form is `[tx, ty, tz, qx, qy, qz, qw]`. Quaternion element order matters. A vector with scalar-first order passed as scalar-last may still contain four numbers but represents a different rotation. The sixteen-value form also needs its row/column layout interpreted correctly. The supplied parser includes handling for the declared layouts; this does not certify every arbitrary 4×4 input as a valid rigid transform.
 
-## 4. Record robot actions, states and observations
+## Record robot actions, states and observations
 
 The bridge observes joint state, renders the two cameras, appends the row and images, then advances physics under the command. The saved state therefore precedes the simulated transition caused by that row's action.
 
@@ -195,7 +195,7 @@ Read the panels in order. First notice the raw sign difference. Next apply the d
 
 Our deliberate matrix-input interruption test received the matrix form, detected stream loss, and kept the last ten saved actions unchanged to floating-point precision. That supports the stated stale-input target-hold behaviour in this simulation. It does not establish physical tracking, real Wi-Fi reliability or correct behaviour under every malformed packet.
 
-## 5. Timestamps, missing data and a reproducible episode
+## Timestamps, missing data and a reproducible episode
 
 There are at least three clocks: phone capture, control-loop wall time and simulation time. The bridge's `phone_age` measures elapsed receiver-side monotonic time since the latest accepted pose. It is not automatically capture-to-actuation latency. A delayed packet can have a recent receive time while containing an older sensor measurement.
 

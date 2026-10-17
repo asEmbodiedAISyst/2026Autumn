@@ -26,7 +26,7 @@ By the end, you should be able to:
 
 The figures, animation, equations and saved results provide a complete reading route on this page. All policy, model, texture and evidence files needed for the practical are in the student repository. Prepare the Python environment before the session; a saved-record route is included if local simulation or graphics is unavailable.
 
-## 1. Start with the held cube and the goal cube
+## Start with the held cube and the goal cube
 
 ### Matching the upward letter is not enough
 
@@ -46,7 +46,7 @@ Keep three questions separate: did the fingers move, did the cube reach its targ
 
 **Predict:** If M remains upward but the side faces differ by 45°, would a face-up rule and a full-orientation rule give the same answer?
 
-## 2. Measure full orientation and define success
+## Measure full orientation and define success
 
 Let unit quaternions $$Q$$ and $$Q_g$$ represent the cube and target orientations in the same convention. Their shortest angular separation is
 
@@ -73,7 +73,7 @@ The task scores uncorrupted pose-sensor information even when the actor's observ
 
 **Checkpoint:** Why can a screenshot show a large orientation mismatch immediately after a logged success? State which goal and which measurement phase you would inspect.
 
-## 3. Follow actuation through contact to cube motion
+## Follow actuation through contact to cube motion
 
 ### A joint command is not a cube torque
 
@@ -109,7 +109,7 @@ For scale, a uniform cube with mass 0.108 kg and side 0.070 m has principal iner
 
 **Predict:** Name one change that could increase turning moment while also making the cube more likely to slip or lose support.
 
-## 4. Trace observations, policy, targets and simulation
+## Trace observations, policy, targets and simulation
 
 ### Preserve the learned interface
 
@@ -153,7 +153,7 @@ The model's coordinate count is also not its observation count. Sixteen hinge co
 
 **Checkpoint:** What changes if a programmer treats the action as an absolute joint angle, or supplies a newly computed action in a history slot expected to contain an older one?
 
-## 5. Separate learning from native playback
+## Separate learning from native playback
 
 During reinforcement learning, a policy samples actions, receives reward and has its weights updated. Orientation progress, cube retention and other costs shape that training signal. A critic may support training by estimating return. The exported actor used here performs inference from fixed weights; loading the ONNX file does not run training or improve those weights.
 
@@ -181,7 +181,7 @@ Use `orientation_error_rad` for the task error. The runner also saves `render_po
 
 The event counter measures successful control steps, not necessarily distinct target commands. A repeated-target reliability study would need a declared goal-identity and acceptance rule. Two events in one chosen episode are not two independent successful trials.
 
-## 6. Compare cubes under matched conditions
+## Compare cubes under matched conditions
 
 ### Change appearance while preserving the physical model
 

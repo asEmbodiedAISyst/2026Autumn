@@ -26,7 +26,7 @@ By the end, you should be able to:
 
 You can complete the reading and model-inspection activity using the figures, XML excerpts, tables and recorded measurements on this page and in this repository. The Python examples reproduce the numerical checks. Handling a physical actuator, opening CAD and inspecting a printer are extensions when those facilities are available; identify source-record comparisons separately from measurements you make yourself.
 
-## 1. Geometry alone does not establish behavioral correspondence
+## Geometry alone does not establish behavioral correspondence
 
 ### Start with what moves
 
@@ -62,7 +62,7 @@ The stronger claim requires stronger evidence. Calling a CAD assembly a twin doe
 
 **Predict:** From Figure 1, what could you inspect visually? What would require a ruler, a scale or a recorded motion experiment?
 
-## 2. Sim2Real differences enter throughout the physical and digital chain
+## Sim2Real differences enter throughout the physical and digital chain
 
 A requested command and reported response can differ because of delivery delays, controller behaviour and sensing. For digitization, record the controller mode, input units, limits and clock definitions as an interface contract, then inspect how the model and physical construction implement it.
 
@@ -82,7 +82,7 @@ A useful diagnostic order is to establish units and topology, check input/output
 
 **Checkpoint:** Which of the following are different problems: a reversed joint axis, an incorrect payload mass, a delayed command, and an omitted flexible connection? What evidence would distinguish them?
 
-## 3. CAD physical properties are estimates with limited validation
+## CAD physical properties are estimates with limited validation
 
 ### Mass, centre of mass and inertia answer different questions
 
@@ -143,7 +143,7 @@ Scaling a CAD inertia by a mass ratio approximates a density change while retain
 
 **Checkpoint:** A scale confirms the assembled moving mass. Which entries in the ledger remain estimates or assumptions?
 
-## 4. Define the single-actuator experiment before claiming validation
+## Define the single-actuator experiment before claiming validation
 
 ### Make the comparison specific
 
@@ -188,7 +188,7 @@ Class 03 prepares a structurally inspectable representation and specifies this t
 
 **Checkpoint:** A model compiles and displays the expected assembly. What additional evidence would you need before using it to predict a new physical position trajectory?
 
-## 5. Follow CAD through robot description into MuJoCo
+## Follow CAD through robot description into MuJoCo
 
 ### Separate three representation layers
 
@@ -326,7 +326,7 @@ Here 0.30 is a position reference, not a torque. Reading `qfrc_actuator` reports
 
 **Checkpoint:** Which input would you write to request 0.05 N m in the XC330 core? Why can the same number mean something different in the RS06 model? Which physical controller and fixture would a response-validation experiment have to match?
 
-## 6. Relate printing and assembly to uncertainty
+## Relate printing and assembly to uncertainty
 
 Printing turns nominal geometry into a part with an actual material structure and interfaces. Wall count, infill and orientation influence mass and stiffness; shrinkage, support removal and fastening can affect fit and alignment. A rigid-body model abstracts those details, so inspect whether that abstraction remains appropriate.
 
