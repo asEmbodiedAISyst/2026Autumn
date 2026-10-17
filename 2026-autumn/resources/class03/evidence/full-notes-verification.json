@@ -1,0 +1,150 @@
+{
+  "version": "0.11",
+  "outline": "User-approved Q1\u2013Q8 detailed outline",
+  "page_words": 4020,
+  "one_page": true,
+  "time_labels": false,
+  "images_loaded": 10,
+  "rendered_equations": 5,
+  "math_errors": 0,
+  "broken_core_anchors": 0,
+  "horizontal_page_overflow": false,
+  "new_schematic_functions": [
+    "body_tree",
+    "evidence_chain",
+    "geometry_roles",
+    "printed_interface"
+  ],
+  "font_check": {
+    "fonts": {
+      "normal": {
+        "filename": "MiSans-Regular.ttf",
+        "family": "MiSans",
+        "sha256": "9c120f0a849bc0aa5048daae2a3c0f6eecd828b5b33fce682a9622833f5feea6"
+      },
+      "semibold": {
+        "filename": "MiSans-Bold.ttf",
+        "family": "MiSans",
+        "sha256": "d0c1d327952ed935e86fb78a97a6c182b44f2c2b08777326786b1f8b26d1fe1e"
+      }
+    },
+    "matplotlib": "3.10.3",
+    "schematic": true,
+    "seed": "not applicable; deterministic geometry"
+  },
+  "math_check": {
+    "expressions": 5,
+    "failed": [],
+    "katex": "0.18.7"
+  },
+  "export_check": {
+    "body-tree-paper.pdf": {
+      "embedded_truetype": true,
+      "svg_editable_text": true,
+      "svg_MiSans": true
+    },
+    "body-tree-classroom.pdf": {
+      "embedded_truetype": true,
+      "svg_editable_text": true,
+      "svg_MiSans": true
+    },
+    "geometry-roles-paper.pdf": {
+      "embedded_truetype": true,
+      "svg_editable_text": true,
+      "svg_MiSans": true
+    },
+    "geometry-roles-classroom.pdf": {
+      "embedded_truetype": true,
+      "svg_editable_text": true,
+      "svg_MiSans": true
+    },
+    "validation-chain-paper.pdf": {
+      "embedded_truetype": true,
+      "svg_editable_text": true,
+      "svg_MiSans": true
+    },
+    "validation-chain-classroom.pdf": {
+      "embedded_truetype": true,
+      "svg_editable_text": true,
+      "svg_MiSans": true
+    },
+    "printed-interface-paper.pdf": {
+      "embedded_truetype": true,
+      "svg_editable_text": true,
+      "svg_MiSans": true
+    },
+    "printed-interface-classroom.pdf": {
+      "embedded_truetype": true,
+      "svg_editable_text": true,
+      "svg_MiSans": true
+    }
+  },
+  "numerical_check": {
+    "live_inspection": {
+      "mujoco_version": "3.3.7",
+      "base": {
+        "model_file": "consolidation/additional_material/models/1DOF-B2.xml",
+        "case": "B2",
+        "radius_override_mm": null,
+        "nq": 1,
+        "nv": 1,
+        "nu": 1,
+        "external_moving_mass_kg": 0.11,
+        "joint_axis_local": [
+          0.0,
+          1.0,
+          1.0963452368173417e-15
+        ],
+        "joint_range_rad": [
+          -1.5707963267948966,
+          1.5707963267948966
+        ],
+        "timestep_s": 0.002,
+        "collision_enabled_geom_count": 0,
+        "gravity_probe_q_rad": 0.4,
+        "joint_inertia_kg_m2": 0.0009813575499256696,
+        "gravity_bias_Nm": 2.755757573497759e-14,
+        "zero_control_qacc_rad_s2": -2.808107578839625e-11,
+        "scope": "declared structural model, not a hardware motion prediction"
+      },
+      "modified": {
+        "model_file": "consolidation/additional_material/models/1DOF-B2.xml",
+        "case": "B2",
+        "radius_override_mm": 80.0,
+        "nq": 1,
+        "nv": 1,
+        "nu": 1,
+        "external_moving_mass_kg": 0.11,
+        "joint_axis_local": [
+          0.0,
+          1.0,
+          1.0963452368173417e-15
+        ],
+        "joint_range_rad": [
+          -1.5707963267948966,
+          1.5707963267948966
+        ],
+        "timestep_s": 0.002,
+        "collision_enabled_geom_count": 0,
+        "gravity_probe_q_rad": 0.4,
+        "joint_inertia_kg_m2": 0.0006645575499256693,
+        "gravity_bias_Nm": 2.7536759053265868e-14,
+        "zero_control_qacc_rad_s2": -4.143622934739941e-11,
+        "scope": "declared structural model, not a hardware motion prediction"
+      },
+      "inertia_change_kg_m2": -0.00031680000000000033,
+      "point_mass_expected_change_kg_m2": -0.0003168000000000001
+    },
+    "B0_B2_delta_kg_m2": 0.0005632000000000001,
+    "coordinate_transform_result_m": [
+      0.1,
+      0.1,
+      0
+    ]
+  },
+  "remaining_limits": [
+    "No fresh physical validation or complete RS06 CAD reconstruction performed",
+    "Exact hosted GitBook rendering and classroom projection not verified"
+  ],
+  "tool_note": "pdffonts unavailable; embedded TrueType verified using PDF FontFile2 descriptors; SVG retains text"
+}
