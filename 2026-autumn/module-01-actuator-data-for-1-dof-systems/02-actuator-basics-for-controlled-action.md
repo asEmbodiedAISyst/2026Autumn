@@ -186,6 +186,24 @@ A command states what the system should do. A measurement is evidence of what a 
 
 In that record, row 400 reports goal 2330 counts, trajectory 2337 counts and position 2347 counts. Relative to the declared 2048-count reference, these are approximately 24.785, 25.400 and 26.279 degrees. The goal curve is readback of the device's goal register, not an independent timestamp of host transmission. “Trajectory” identifies the device's internal reference; “Present Position” identifies returned state information. Neither becomes interchangeable with the host goal simply because all three use position units.
 
+The retained CSV makes the connection to the mathematical symbols explicit:
+
+| Exported field and signal in Figure 1 | Row 400 (counts) |
+|---|---:|
+| `goal_position_raw`: goal register readback | 2330 |
+| `position_trajectory_raw`: internal reference, corresponding to $$q_r$$ | 2337 |
+| `present_position_raw`: reported position, $$y_q$$ | 2347 |
+
+For this display, convert an already signed count $$p$$ to radians by
+
+$$
+q=(p-2048)\frac{2\pi}{4096}.
+$$
+
+The chosen zero is a plotting reference; it does not calibrate the output to the room. At this row, measured-minus-internal-reference is 10 counts, approximately 0.879°. Measured-minus-goal-readback is 17 counts, approximately 1.494°. These are two different tracking comparisons, not two estimates of a simulation error. The controller's position-error convention $$q_r-y_q$$ reverses the first sign.
+
+The same row reports negative velocity while the angle is still positive: the output is returning from its positive peak. A positive angle therefore does not imply positive motion. This observation identifies signals and signs; it does not identify which physical effect caused their separation. The record is XC330-M288-T, ID 5, firmware 53, Mode 5, M0 motor-only configuration, at about 2.001918 s on the host receive-end clock. The [retained sample](../resources/class02/results/hardware-demo/sample-400.json) identifies its raw and converted values.
+
 Several mechanisms can explain a discrepancy:
 
 | Cause | What happens | How to investigate or manage it |
@@ -207,7 +225,7 @@ The XC330 and XL330 are complete small actuation modules. Their integrated elect
 
 ![XC330 physical device and matched model](../.gitbook/assets/class02/01-actuator-and-geometry.png)
 
-*Figure 2. The course XC330 device and its matched geometric representation. Identify the output, fixed housing, mounting and connectors. Geometry helps locate the component in a robot model; it does not establish the internal control law or dynamic parameters. Original course photographs and MiSans-labelled preparation code are recorded in [FIGURE-CODE.md](../resources/class02/media/FIGURE-CODE.md).*
+*Figure 2. The course XC330 device and its matched geometric representation. Identify the output, fixed housing, mounting and connectors. Geometry helps locate the component in a robot model; it does not establish the internal control law or dynamic parameters. This mounting illustration is not the M0 experiment configuration: Figure 1’s M0 record has no external moving link or payload. Original course photographs and MiSans-labelled preparation code are recorded in [FIGURE-CODE.md](../resources/class02/media/FIGURE-CODE.md).*
 
 As you inspect the unpowered XC330 and XL330 passed around the room, relate the visible parts to the functions introduced earlier. The output and mounting are accessible; the internal motor, gear train, sensor and electronics are enclosed. Two bus connectors allow modules to share a daisy-chain arrangement. Their presence does not make the power source or host communication interface unnecessary.
 
@@ -230,7 +248,7 @@ The following extract concerns **XC330-M288-T** and **XL330-M288-T**. Other rati
 | Position resolution | 4,096 counts/revolution | 4,096 counts/revolution |
 | Interface | TTL multidrop; Protocol 2.0 | TTL multidrop; Protocol 2.0 |
 
-*Source: ROBOTIS, [XC330-M288](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/) and [XL330-M288](https://docs.robotis.com/docs/dxl/model_reference/x_series/xl_series/xl330-m288/), specifications checked 17 October 2026.*
+*Sources: ROBOTIS n.d.-c, [XC330-M288](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/), and ROBOTIS n.d.-d, [XL330-M288](https://docs.robotis.com/docs/dxl/model_reference/x_series/xl_series/xl330-m288/), specifications checked 17 October 2026.*
 
 The shared envelope can simplify a mechanical comparison, but swapping modules can still change moving mass, available effort, speed and transmission behaviour. Coreless construction does not mean brushless construction. Likewise, “metal gears” and “plastic gears” identify materials; neither phrase alone is a measurement of backlash, efficiency or service life.
 
@@ -247,13 +265,17 @@ The two quoted torque/speed values also describe different conditions. Stall tor
 
 ![Official XC330 performance curve](../.gitbook/assets/class02/source-performance-curve.png)
 
-*Figure 3. ROBOTIS performance data retained with its original axes and typography. Locate speed, torque and electrical quantities before interpreting a curve. State the voltage and test conditions. The source and unchanged-image provenance are recorded in [FIGURE-CODE.md](../resources/class02/media/FIGURE-CODE.md).*
+*Figure 3. ROBOTIS performance data retained with its original axes and typography. Speed uses the black left scale, efficiency the green left scale, and current the magenta right scale. Follow one torque value vertically to read a corresponding operating point. The crop does not print the supply/test conditions; consult the model documentation and retain any unspecified conditions. It does not establish a continuous rating. Source provenance is recorded in [FIGURE-CODE.md](../resources/class02/media/FIGURE-CODE.md).*
 
 **Comparison question.** For a finger-mounted mechanism, why might the XL330's lower mass matter? For a loaded joint, why might the XC330's higher quoted stall torque matter? What further information would you need before selecting either for continuous operation?
 
 ### Commands, control modes and available feedback
 
 Both exact models offer position, extended-position, velocity, current, current-based-position and PWM-related operating modes. Their meaning comes from the model's control documentation. Do not infer that two differently named modes implement the same signal path merely because both make the shaft move.
+
+The mode changes what a command field means. In XC330's Mode 0, `Goal Current` requests current; in Mode 5 it bounds the current-related position controller. Thus the retained Mode-5 value of 300, with 1 mA units, specifies a 0.300 A bound rather than a measured current or torque. The returned current at row 400 is a separate value. Read the mode together with the field, units and limits (ROBOTIS n.d.-c).
+
+Limits are also mode-dependent: the documented single-turn Min/Max Position Limit registers apply to Mode 3, not Mode 5. A bounded demonstration must therefore use the prepared station's actual mode and command bounds; the existence of limit registers is insufficient evidence that they constrain every mode.
 
 ![ROBOTIS position-controller diagram](../.gitbook/assets/class02/robotis-position-controller.png)
 
@@ -268,6 +290,8 @@ The conceptual position-PD equation earlier is useful for reasoning about error 
 In the supplied XC330 record, `Present Current` is documented as current at the input supply, in 1 mA units. It should not be substituted directly into a motor winding-current equation or treated as calibrated output torque. Its variation remains useful evidence about operation when interpreted with voltage, PWM, motion and configuration.
 
 The host rate, bus transmission rate and internal control rate are also distinct. A bus specification in Mbit/s describes communication capacity. A host log at approximately 200 samples/s describes the returned record. Neither number establishes the firmware's internal servo update rate. See ROBOTIS's [Protocol 2.0 documentation](https://docs.robotis.com/docs/dxl/protocol/protocol2/) for the packet layer.
+
+In Figure 4, follow goal → profile → error/control terms → limited drive output → mechanical part, then trace the returned state. In Figure 5, locate the current-related bound and controller. Use the drawings to ask which loop is closed and where a limit acts, rather than treating every drawn signal as an independently measured physical quantity.
 
 ### From a module to a research system
 
@@ -334,7 +358,7 @@ RobStride's supplied manuals call these products integrated QDD motor modules. T
 | Peak torque | 36 N m | 14 N m |
 | CAN bitrate | 1 Mbit/s | 1 Mbit/s |
 
-*Source: RobStride RS06 and RS00 user manuals, revision 260713. Original-brand manuals, specification material and STEP files are available through [RobStride Product Information](https://github.com/RobStride/Product_Information).*
+*Sources: RobStride 2026a and 2026b, RS00 and RS06 user manuals, revision 260713. Original-brand manuals, specification material and STEP files are available through [RobStride Product Information](https://github.com/RobStride/Product_Information).*
 
 The reported electrical, mechanical and thermal conditions are part of the rating. These RS values are not a matched continuous-performance experiment against the XC330's stall value. The different motor sizes, voltages, masses and duty conditions prevent a simple claim that one architecture is intrinsically superior.
 
@@ -349,7 +373,7 @@ $$
 =K_p(q_d-y_q)+K_d(v_d-\hat v)+\tau_{\mathrm{ff}}.
 $$
 
-The host must use the model's protocol encoding, allowed ranges and units. The resulting torque-related reference still passes through the module's drive and physical limitations. Returned effort information must be interpreted according to the manufacturer's sensing/estimation description. CAN's 1 Mbit/s is a bus bitrate, not proof of a 1 MHz feedback loop.
+Here $$q_d$$ and $$v_d$$ are host position and velocity targets, expressed at the declared actuator output in rad and rad/s; $$y_q$$ and $$\hat v$$ are the returned position and velocity used by the controller. This law states an interpretation of the operation-control fields, not an identification of the module's internal drive dynamics. The host must use the model's protocol encoding, allowed ranges and units. The resulting torque-related reference still passes through the module's drive and physical limitations. Returned effort information must be interpreted according to the manufacturer's sensing/estimation description. CAN's 1 Mbit/s is a bus bitrate, not proof of a 1 MHz feedback loop.
 
 The **Seeed reBot Arm B601-RS** connects these modules to later course work on teleoperation, data collection, learning and deployment. The published developer bill of materials lists four RS00 and three RS06 modules across the arm and gripper. This is a six-axis arm with an additional powered gripper, not seven independently oriented arm joints. Check the actual unit and shipping revision against that developer list; the RS version is distinct from the Damiao-based version. See the [developer hardware record](https://github.com/Seeed-Projects/reBot-DevArm/blob/main/hardware/reBot_B601_RS/README.md).
 
@@ -479,11 +503,21 @@ MuJoCo Developers. n.d. “XML Reference: Actuator / Position.” [Official docu
 
 Occupational Safety and Health Administration. n.d. “Hazard Communication Standard: Safety Data Sheets.” [SDS format information](https://www.osha.gov/sites/default/files/publications/OSHA3514.pdf).
 
-Oriental Motor. n.d. “Stepper Motor Basics” and “AlphaStep Closed Loop Stepper Motors.” [Fundamentals](https://www.orientalmotor.com/stepper-motors/technology/stepper-motor-basics.html); [closed-loop systems](https://www.orientalmotor.com/stepper-motors/alphastep-closed-loop-stepper-motors.html).
+Oriental Motor. n.d.-a. “AlphaStep Closed Loop Stepper Motors.” Accessed October 17, 2026. [Closed-loop systems](https://www.orientalmotor.com/stepper-motors/alphastep-closed-loop-stepper-motors.html).
 
-ROBOTIS. n.d. “XC330-M288,” “XL330-M288,” “DYNAMIXEL Protocol 2.0,” and “OpenMANIPULATOR.” Accessed October 17, 2026. [XC330](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/); [XL330](https://docs.robotis.com/docs/dxl/model_reference/x_series/xl_series/xl330-m288/); [protocol](https://docs.robotis.com/docs/dxl/protocol/protocol2/); [platform](https://emanual.robotis.com/docs/en/platform/openmanipulator_main).
+Oriental Motor. n.d.-b. “Stepper Motor Basics.” Accessed October 17, 2026. [Fundamentals](https://www.orientalmotor.com/stepper-motors/technology/stepper-motor-basics.html).
 
-RobStride. 2026. *RS06 User Manual* and *RS00 User Manual*. Revision 260713. [Original-brand product information](https://github.com/RobStride/Product_Information).
+ROBOTIS. n.d.-a. “DYNAMIXEL Protocol 2.0.” Accessed October 17, 2026. [Protocol documentation](https://docs.robotis.com/docs/dxl/protocol/protocol2/).
+
+ROBOTIS. n.d.-b. “OpenMANIPULATOR.” Accessed October 17, 2026. [Platform documentation](https://emanual.robotis.com/docs/en/platform/openmanipulator_main).
+
+ROBOTIS. n.d.-c. “XC330-M288-T.” Accessed October 17, 2026. [Specifications and control table](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/).
+
+ROBOTIS. n.d.-d. “XL330-M288-T.” Accessed October 17, 2026. [Specifications and control table](https://docs.robotis.com/docs/dxl/model_reference/x_series/xl_series/xl330-m288/).
+
+RobStride. 2026a. *RS00 User Manual*. Revision 260713. [Retained original manual](../.gitbook/assets/class02/RobStride_RS00_User_Manual_260713.pdf); [original-brand product information](https://github.com/RobStride/Product_Information).
+
+RobStride. 2026b. *RS06 User Manual*. Revision 260713. [Retained original manual](../.gitbook/assets/class02/RobStride_RS06_User_Manual_260713.pdf); [original-brand product information](https://github.com/RobStride/Product_Information).
 
 Seeed Studio. n.d. “reBot B601 RS.” *reBot-DevArm*, developer hardware documentation. Accessed October 17, 2026. [Bill of materials and hardware](https://github.com/Seeed-Projects/reBot-DevArm/blob/main/hardware/reBot_B601_RS/README.md).
 
