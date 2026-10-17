@@ -6,7 +6,7 @@
   "scope": "Executable scripted simulation checks and retained policy records; no policy inference or physical deployment",
   "files_sha256": {
     "2026-autumn/resources/class11/.gitignore": "9e0ca3065216ec119f48364b1431cf0a661fbde960e3f0a232ced9d56f327a65",
-    "2026-autumn/resources/class11/README.md": "2c77784d6f71c92174f282218642dfe39bf6a4825556a406dd90340eab34c2dc",
+    "2026-autumn/resources/class11/README.md": "afa42f6adb426cdd5630df7fb0f6cd229f089118336e4f3d242f42e178bd09b8",
     "2026-autumn/resources/class11/requirements-tested-macos.txt": "219b21cece5c02b905e8a1240923c873058104bb99d225f6330ce9f82c246bdc",
     "2026-autumn/resources/class11/evidence/figure-fonts.json": "104de7166213e4911e9f9dd93d82f32d00bd20fc54309782f45ba437eb2c7c2f",
     "2026-autumn/resources/class11/evidence/image-inputs.json": "59f525b151b56070f915e2ff213808e4b61536611385dd1b575fbda581d45a8d",
