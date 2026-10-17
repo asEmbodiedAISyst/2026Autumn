@@ -1,0 +1,8 @@
+{
+  "returncode": 0,
+  "matrix_pose_received": true,
+  "stream_loss_reported": true,
+  "recorded_frames": 169,
+  "final_ten_action_max_range": 1.7236104037088307e-15,
+  "passed": true
+}

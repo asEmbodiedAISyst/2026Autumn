@@ -1,0 +1,12 @@
+{
+  "normal": {
+    "filename": "MiSans-Regular.ttf",
+    "family": "MiSans",
+    "sha256": "9c120f0a849bc0aa5048daae2a3c0f6eecd828b5b33fce682a9622833f5feea6"
+  },
+  "semibold": {
+    "filename": "MiSans-Bold.ttf",
+    "family": "MiSans",
+    "sha256": "d0c1d327952ed935e86fb78a97a6c182b44f2c2b08777326786b1f8b26d1fe1e"
+  }
+}
