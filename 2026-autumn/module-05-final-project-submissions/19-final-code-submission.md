@@ -18,7 +18,7 @@ For this course, keep your project implementation in `code/`, with `code/README.
 
 Commit and push the code and README to the `main` branch of your assigned team repository before the deadline. Check the uploaded files on GitHub.
 
-At the deadline, the teaching team records the remote `main` commit and collection time and clones that revision. We retain the complete repository, including referenced shared folders, and name its collected archive `TeamNN-code.zip`, for example `Team01-code.zip`. **Students do not create this ZIP.** Later pushes do not replace the collected submission. No separate submission form or record is required.
+At the deadline, the teaching team records and collects the remote `main` revision. We retain the complete repository, including referenced shared folders, and name its archive `TeamNN-code-YYMMDD-HHMMSS.zip`. The suffix is the GitHub-recorded push time of that submitted revision, in Abu Dhabi time (UTC+4), used to check the deadline. We record collection time separately. **Students do not create this ZIP.** Later pushes do not replace the collected submission. No separate submission form or record is required.
 
 ## Example and preparation guidance
 

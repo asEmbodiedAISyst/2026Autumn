@@ -20,7 +20,7 @@ Use the [RSS 2026 video specifications](https://roboticsconference.org/2026/info
 
 Commit and push the video to the `main` branch of your assigned team repository before the deadline. Open the uploaded copy on GitHub and check playback. For upload help, use [GitHub’s large-file guidance](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
 
-At the deadline, the teaching team records the remote `main` commit and collection time, clones that revision and collects your named MP4. Later pushes do not replace the collected submission. No separate submission form or record is required.
+At the deadline, the teaching team records and collects the remote `main` revision. We rename the collected file `TeamNN-video-YYMMDD-HHMMSS.mp4`. The suffix is the GitHub-recorded push time of the submitted file version, in Abu Dhabi time (UTC+4), used to check the deadline. We record collection time separately. Later pushes do not replace the collected submission. No separate submission form or record is required.
 
 ## Example and preparation guidance
 
