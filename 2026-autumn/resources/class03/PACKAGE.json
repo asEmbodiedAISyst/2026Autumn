@@ -1,6 +1,6 @@
 {
   "class": 3,
-  "source_version": "0.14",
+  "source_version": "0.15",
   "scope": "Complete single-page notes, class-scoped media and required supporting resources",
   "files_sha256": {
     "2026-autumn/resources/class03/requirements-core.txt": "206e9eda290a4f06a66aeb098f52b04fc0a5ce13114cb67a384b39e8a785120d",
@@ -105,6 +105,7 @@
   "notes": [
     "Student lesson has no figure-source links or private repository dependencies.",
     "Required models, scripts, meshes, CAD and mass record are included.",
-    "Frame coordinates are model-derived and verified; no new physical measurements."
+    "Frame coordinates are model-derived and verified; no new physical measurements.",
+    "Preserved the Class03 figure/standalone-workflow review at 1dd9ae3; normalized GitBook mathematics and added the Class02 actuation/document-reading cross-reference."
   ]
 }

@@ -8,7 +8,7 @@ description: Basic digitization of physical embodiment · ROB7103/8103
 
 What does a digital representation preserve, and which parts can we validate?
 
-An actuator receives a command, applies effort and produces motion that can be measured. Here we ask how to represent the mechanism receiving that effort. A digital model must specify what moves, where motion occurs, how mass is distributed and how effort enters the system. Its usefulness depends on preserving the properties needed for a stated task and checking those properties against appropriate evidence.
+An actuator receives a command, applies effort and produces motion that can be measured. Here we ask how to represent the mechanism receiving that effort. A digital model must specify what moves, where motion occurs, how mass is distributed and how effort enters the system. Its usefulness depends on preserving the properties needed for a stated task and checking those properties against appropriate evidence. For the actuator functions, control objectives and TDS/UDS document reading that precede this model, see [Class 02](02-actuator-basics-for-controlled-action.md).
 
 Our running example is an XC330 actuator carrying a link and two payload assemblies. We follow it from the physical mechanism through CAD, robot description and MuJoCo. The RS06 demonstration applies the same inspection method to another actuator. The student activity returns to XC330 and changes one declared payload parameter.
 
@@ -165,18 +165,18 @@ A successful compilation supports the first level. A mass measurement or axis-di
 
 ### Connect the model to mechanics
 
-Keep the Class 02 notation: $q$ is the joint angle, $y_q$ is reported position on hardware, $\tau_a$ is applied joint effort and $\tau_{\mathrm{ext}}$ is an externally applied torque. Use $q$ for the physical coordinate in the balance and the corresponding model coordinate when evaluating the XML; validation compares the predicted trajectory with $y_q$ after aligning frames and clocks. Specialize the balance to one fixed-axis rigid assembly, for which $H(q)=J$ is constant and the velocity-dependent rigid-body bias vanishes:
+Keep the Class 02 notation: $$q$$ is the joint angle, $$y_q$$ is reported position on hardware, $$\tau_a$$ is applied joint effort and $$\tau_{\mathrm{ext}}$$ is an externally applied torque. Use $$q$$ for the physical coordinate in the balance and the corresponding model coordinate when evaluating the XML; validation compares the predicted trajectory with $$y_q$$ after aligning frames and clocks. Specialize the balance to one fixed-axis rigid assembly, for which $$H(q)=J$$ is constant and the velocity-dependent rigid-body bias vanishes:
 
 $$
 J\ddot q+\tau_f(\dot q)+\tau_g(q)
 =\tau_a+\tau_{\mathrm{ext}}.
 $$
 
-Here q is in radians, angular acceleration is in rad/s², J is in kg m² and torques are in N m. The payload-placement calculation estimates a contribution to $J$. Gravity contributes $\tau_g(q)$ on the left; friction is represented separately by $\tau_f$. The initial free-motion comparison has no applied external contact torque, so $\tau_{\mathrm{ext}}=0$. This does not set friction or gravity to zero on the real device. The equation organizes physical contributions without identifying their unknown values (Featherstone 2008).
+Here q is in radians, angular acceleration is in rad/s², J is in kg m² and torques are in N m. The payload-placement calculation estimates a contribution to $$J$$. Gravity contributes $$\tau_g(q)$$ on the left; friction is represented separately by $$\tau_f$$. The initial free-motion comparison has no applied external contact torque, so $$\tau_{\mathrm{ext}}=0$$. This does not set friction or gravity to zero on the real device. The equation organizes physical contributions without identifying their unknown values (Featherstone 2008).
 
-The core XC330 XML has no added joint `armature`; its compiled inertia here comes from the moving rigid bodies. If reflected motor inertia is later introduced through `armature` or a fitted total $J$, avoid counting it twice. The RS06 prepared model has an armature term and separate passive terms, so its numerical inertia/effort description is a different contract.
+The core XC330 XML has no added joint `armature`; its compiled inertia here comes from the moving rigid bodies. If reflected motor inertia is later introduced through `armature` or a fitted total $$J$$, avoid counting it twice. The RS06 prepared model has an armature term and separate passive terms, so its numerical inertia/effort description is a different contract.
 
-Position, velocity and current-related control laws were introduced in Class 02. Here we inspect how a particular XML exposes an input and generates $\tau_a$. The XC330 core uses a unit-gear torque channel; the RS06 prepared model uses a position actuator. The executable-input example below makes their distinction explicit.
+Position, velocity and current-related control laws were introduced in Class 02. Here we inspect how a particular XML exposes an input and generates $$\tau_a$$. The XC330 core uses a unit-gear torque channel; the RS06 prepared model uses a position actuator. The executable-input example below makes their distinction explicit.
 
 ### Prepare the behavioral test
 
@@ -299,7 +299,7 @@ For the XC330 B2 file, the decisive declaration is
        forcelimited="true" forcerange="-0.1551 0.1551" />
 ```
 
-With this unit transmission and an in-range request, the model maps $\tau_{\mathrm{req}}$ directly to $\tau_a$. From the Class 03 resource folder, this small check uses the actual file:
+With this unit transmission and an in-range request, the model maps $$\tau_{\mathrm{req}}$$ directly to $$\tau_a$$. From the Class 03 resource folder, this small check uses the actual file:
 
 ```python
 import mujoco
@@ -311,7 +311,7 @@ mujoco.mj_forward(model, data)
 print(float(data.qfrc_actuator[0]))  # 0.05 N m
 ```
 
-The prepared RS06 position actuator instead uses $K_p=50$ and $K_d=3.38$. With reference $q_r=0.30$ rad, $q=0.20$ rad and $\dot q=0.40$ rad/s, its unsaturated model effort is
+The prepared RS06 position actuator instead uses $$K_p=50$$ and $$K_d=3.38$$. With reference $$q_r=0.30$$ rad, $$q=0.20$$ rad and $$\dot q=0.40$$ rad/s, its unsaturated model effort is
 
 $$
 \tau_a=50(0.30-0.20)-3.38(0.40)=3.648\ \mathrm{N\,m}.

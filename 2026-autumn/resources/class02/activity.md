@@ -26,4 +26,4 @@ Submit one short team comparison with labelled inspection notes and source evide
 
 ## Optional document search
 
-Choose one actuator. Find its original-brand technical data, mechanical/material information and safety documentation. Record actual titles, revisions, URLs and scope. Define “MDS” from that source if the supplier uses it. Do not relabel an operating warning as an SDS or invent a missing file. State one operating condition and one unresolved question.
+Choose one actuator. Find its original-brand TDS information, UDS/user-manual information and relevant safety documentation. Record actual titles, revisions, URLs and scope. Identify one TDS rating and the UDS instruction or condition governing its use. Do not relabel an operating warning as an SDS or invent a missing file. State one operating condition and one unresolved question.
