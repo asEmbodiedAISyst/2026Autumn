@@ -3,7 +3,6 @@
   "source_version": "0.8",
   "scope": "Complete single-page notes,98g campaign evidence,optional replay and portable figure code",
   "files_sha256": {
-    "2026-autumn/media/class04/FIGURE-CODE.md": "48cf63932ec85c6a4bb2f69d96404da35c0512d892e2f6952136c3ba00dbc7cb",
     "2026-autumn/media/class04/README.md": "c3aff8a4054b85cbdf0d92da89e12d25cd596f3c833cd990b10a4669f9d1ea97",
     "2026-autumn/media/class04/comparison-boundary.pdf": "a002270d4fcedbd87ccb00d34f4f4b774cd9055fb05089920496120079f696f6",
     "2026-autumn/media/class04/comparison-boundary.png": "1086126ebd8cab1b13423b16de1b967d75ae70623fc416e8c236794e15970a87",
@@ -20,7 +19,7 @@
     "2026-autumn/media/class04/xc330-matched-P06.pdf": "961934b4ecfe6eb3513f444154f5d1c353ec0efb063a71c0946301bc2e612386",
     "2026-autumn/media/class04/xc330-matched-P06.png": "665c68132d275da41c55634b94f28cab660111a700a37f4cc15156b2915bbf23",
     "2026-autumn/media/class04/xc330-matched-P06.svg": "49a737d1d5be0c234ecb51580a5567c5ccbfc4451f183bb122fb67e50aa4e499",
-    "2026-autumn/resources/class04/README.md": "a6f12326e96375f780d131653debbdd05dd18f1f559de3789a550d56157a140c",
+    "2026-autumn/resources/class04/README.md": "9e25b3eaa34bbe714b59b97517ba7211cc7f610430ac2b1a37b26155ce6bd54a",
     "2026-autumn/resources/class04/code/analyze_episode.py": "eafe506407c21ad50dcf7fd7c4be57788a6dbb46fa1bda8574e0767b1353be49",
     "2026-autumn/resources/class04/code/draw_boundary.py": "587afcfde0f259f25a862c698261d0db51bcb1565203963a06f5547287ac48b1",
     "2026-autumn/resources/class04/code/figure_plots.py": "1ab5a97bfd56ce2e2903805e4dbbf90914405a002751f0f45a8ad10cd71a44d5",

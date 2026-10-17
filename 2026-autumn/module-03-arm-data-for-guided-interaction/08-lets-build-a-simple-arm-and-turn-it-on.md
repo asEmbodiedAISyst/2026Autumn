@@ -347,7 +347,6 @@ The bounded joint and gripper interface becomes the robot side of the next class
 ## Resources and source attribution
 
 - [Model source notice](../resources/class08/model/rebot_b601_rs_mjcf/NOTICE.md) and [source license](../resources/class08/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W).
-- [Figure code, inputs and editable artwork](../media/class08/FIGURE-CODE.md).
 - [Pinned Seeed RS mechanical description](https://github.com/Seeed-Projects/reBot-DevArm/tree/c247ea9cb0da29cd52c31953659cc8c47e6d1a6e/Rebot_Arm_description/RS).
 - [Seeed B601 LeRobot driver source](https://github.com/Seeed-Projects/lerobot-robot-seeed-b601), a separate interface reference whose revision must be recorded when used.
 

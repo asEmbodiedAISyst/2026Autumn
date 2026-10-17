@@ -14,7 +14,7 @@ A motor converts electrical energy into mechanical motion. An integrated servo a
 
 ![Electrical energy flow from supply to joint](media/energy-path-classroom.png)
 
-*Figure 1. Conceptual energy path; no device constants are inferred. [Generating code](media/FIGURE-CODE.md#visual-lessons).*
+*Figure 1. Conceptual energy path; no device constants are inferred.*
 
 **Read the diagram:** identify the energy source, where current becomes motor torque, and where transmission changes speed and effort. The host position request belongs to the information path in the next section; it supplies no mechanical energy by itself.
 
@@ -46,7 +46,7 @@ Efficiency $$\eta$$ is a modelling approximation, not a measured constant here. 
 
 ![Command, internal reference, actuator and mechanism](media/actuator-chain-classroom.png)
 
-*Figure 2. Conceptual signal path, not a measured circuit diagram. The internal reference is distinct from the host command. [Generating code and reproduction](media/FIGURE-CODE.md#actuator-chain).*
+*Figure 2. Conceptual signal path, not a measured circuit diagram. The internal reference is distinct from the host command.*
 
 ---
 
@@ -60,7 +60,7 @@ The measured position $$y(t)$$ is an observation of $$q(t)$$ with finite resolut
 
 ![Illustrative goal, internal reference and physical response](media/three-signals-classroom.png)
 
-*Figure 3. Constructed curves show why u, r and q can differ; they are not fitted or measured XC330 trajectories. [Generating code](media/FIGURE-CODE.md#visual-lessons).*
+*Figure 3. Constructed curves show why u, r and q can differ; they are not fitted or measured XC330 trajectories.*
 
 **Predict, then explain:** which curve changes discontinuously? Which one could be shaped by firmware? Which belongs to the moving mechanism? Compare this illustration with the recorded campaign figures later; do not transfer its time constants to the hardware.
 
@@ -119,7 +119,7 @@ The logged `load_pct` field does not establish output torque. Preserve its origi
 
 ![Recorded step response and sample intervals](media/recorded-step-classroom.png)
 
-*Figure 4. Entire 30-degree-amplitude block for each assembly, including positive and negative requests. Position is measured relative to 180 degrees. The right panel shows actual consecutive sample intervals within that block. These are two assemblies, not repeated trials of one motor. [Code](media/FIGURE-CODE.md#recorded-step).*
+*Figure 4. Entire 30-degree-amplitude block for each assembly, including positive and negative requests. Position is measured relative to 180 degrees. The right panel shows actual consecutive sample intervals within that block. These are two assemblies, not repeated trials of one motor.*
 
 ---
 
@@ -129,7 +129,7 @@ The response has finite rise time. A rise-time definition usually specifies two 
 
 ![Constructed response with discrete samples](media/sampling-resolution-classroom.png)
 
-*Figure 5. Illustrative 30-degree response with a 22 ms exponential time constant and 16 ms observations; the continuous curve is known by construction. [Generating code](media/FIGURE-CODE.md#visual-lessons).*
+*Figure 5. Illustrative 30-degree response with a 22 ms exponential time constant and 16 ms observations; the continuous curve is known by construction.*
 
 **Count the evidence:** count intervals spanning the visible rise. The smooth curve between samples is an assumption in this constructed example. For the hardware recording, only the timestamped samples are observed. The offline sampling explorer uses a separate stated 30 ms time constant; compare the principle rather than treating either illustration as a hardware fit.
 
@@ -148,7 +148,7 @@ $$
 
 ![Signed errors cancel while squared errors remain](media/error-cancellation-classroom.png)
 
-*Figure 6. Constructed errors [0, 2, −2, 0] degrees; the zero signed mean conceals nonzero tracking error. [Generating code](media/FIGURE-CODE.md#visual-lessons).*
+*Figure 6. Constructed errors [0, 2, −2, 0] degrees; the zero signed mean conceals nonzero tracking error.*
 
 **Work before revealing:** calculate the signed mean, then square each error and calculate RMSE. Explain why the sign cancellation disappears after squaring.
 
@@ -162,7 +162,7 @@ An RMSE between command and hardware measures tracking. In Class 04, an RMSE bet
 
 ![Annotated measured step transition](media/step-transition-classroom.png)
 
-*Figure 7. First positive 30-degree command transition for weighted ID 1 in the earlier Mode3 recording. Thresholds use local measured starting and ending levels. The ±2% band is illustrative; it is not a certified hardware tolerance. Markers show actual samples. [Generating code](media/FIGURE-CODE.md#teaching-figures).*
+*Figure 7. First positive 30-degree command transition for weighted ID 1 in the earlier Mode3 recording. Thresholds use local measured starting and ending levels. The ±2% band is illustrative; it is not a certified hardware tolerance. Markers show actual samples.*
 
 ---
 
@@ -172,7 +172,7 @@ Read the horizontal axis before interpreting the threshold crossings. Locate the
 
 ![Recorded amplitude gain](media/frequency-gain-classroom.png)
 
-*Figure 8. Recorded harmonic gain estimates at seven frequencies; first cycle excluded from each block. The horizontal −3 dB line is a reference, not an observed bandwidth crossing. [Generating code](media/FIGURE-CODE.md#visual-lessons).*
+*Figure 8. Recorded harmonic gain estimates at seven frequencies; first cycle excluded from each block. The horizontal −3 dB line is a reference, not an observed bandwidth crossing.*
 
 **Read:** locate 5 Hz. Both assemblies remain above −3 dB in this tested range. A bound on bandwidth is justified; its exact crossing frequency is not.
 
@@ -180,7 +180,7 @@ Read the horizontal axis before interpreting the threshold crossings. Locate the
 
 ![Recorded phase lag](media/frequency-phase-classroom.png)
 
-*Figure 9. Phase-lag estimates from the same recordings and selection. Linear frequency ticks make values directly readable; connected points do not add experiments. [Generating code](media/FIGURE-CODE.md#visual-lessons).*
+*Figure 9. Phase-lag estimates from the same recordings and selection. Linear frequency ticks make values directly readable; connected points do not add experiments.*
 
 **Read:** compare 1 Hz and 5 Hz. A small gain loss can coexist with a substantial phase lag. Explain why reaching the correct amplitude does not imply following the reference at the correct time.
 
@@ -213,7 +213,7 @@ Motor identity and load changed together.
 
 ![Proposed motor and load crossover experiment](media/load-crossover-classroom.png)
 
-*Figure 10. Proposed future design; these crossed conditions are not supplied measurements. [Generating code](media/FIGURE-CODE.md#visual-lessons).*
+*Figure 10. Proposed future design; these crossed conditions are not supplied measurements.*
 
 **Compare designs:** the existing recording couples motor identity and load. This table would let each device experience both loads. Which comparisons isolate load within a device? Repetition still needs recorded settings and controlled conditions.
 
@@ -259,13 +259,13 @@ M0 means no external moving load. B0/B1/B2 identify balanced fixtures; G1 identi
 
 ![XC330 external goal and internal reference](media/boundary-xc330-classroom.png)
 
-*Figure 11. XC330 H1/B1/P03: distinguish external goal, internal reference and measured motion. [Generating code](media/FIGURE-CODE.md#teaching-figures).*
+*Figure 11. XC330 H1/B1/P03: distinguish external goal, internal reference and measured motion.*
 
 ---
 
 ![RS06 applied command and response](media/boundary-rs06-classroom.png)
 
-*Figure 12. First recorded H1/B1/P03 repeat in each campaign. The XC330 exposes an external goal and an internal position trajectory; the RS06 dataset exposes the applied command. These signals are not assumed interchangeable. [Generating code](media/FIGURE-CODE.md#teaching-figures).*
+*Figure 12. First recorded H1/B1/P03 repeat in each campaign. The XC330 exposes an external goal and an internal position trajectory; the RS06 dataset exposes the applied command. These signals are not assumed interchangeable.*
 
 ---
 
@@ -283,7 +283,7 @@ The source uses a fixed engineering conversion from register units: H1 has $$\di
 
 ![XC330 H1 model demanded and limited effort](media/effort-limit-classroom.png)
 
-*Figure 13. Engineering-map calculation at velocity-reference error 0.20 rad/s; points mark position errors 0.05 and 0.10 rad. Not a torque measurement. [Generating code](media/FIGURE-CODE.md#visual-lessons).*
+*Figure 13. Engineering-map calculation at velocity-reference error 0.20 rad/s; points mark position errors 0.05 and 0.10 rad. Not a torque measurement.*
 
 **Predict:** follow the orange demand and blue limited effort. Increasing error beyond the bound no longer increases applied model effort. Open the [offline actuator explorer](media/interactive/actuator-explorer.html) and test both points; if the app shows the file source, open the supplied HTML in a browser as described in RUN.md.
 
@@ -309,7 +309,7 @@ M0 has no external moving load. Balanced fixtures change inertia while keeping t
 
 ![Complete episode counts in the two primary studies](media/campaign-splits-classroom.png)
 
-*Figure 14. Counts of complete primary episodes after the declared analysis adapters. Diagnostic XC330 records are outside these bars. A sample is not an independent trial. [Code](media/FIGURE-CODE.md#campaign-splits).*
+*Figure 14. Counts of complete primary episodes after the declared analysis adapters. Diagnostic XC330 records are outside these bars. A sample is not an independent trial.*
 
 ---
 

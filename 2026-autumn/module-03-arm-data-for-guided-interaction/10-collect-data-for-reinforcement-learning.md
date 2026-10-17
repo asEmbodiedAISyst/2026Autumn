@@ -376,7 +376,6 @@ Save the contract and audit with the team's experiment files. A useful response 
 
 - [Dataset-contract template](../resources/class10/dataset-contract-template.md).
 - [Separate recorded ACT baseline evidence](../resources/class10/recorded-policy/README.md).
-- [Figure code, retained inputs and editable artwork](../media/class10/FIGURE-CODE.md).
 - [DAgger](https://proceedings.mlr.press/v15/ross11a.html), [ACT](https://tonyzhaozh.github.io/aloha/) and [UMI](https://umi-gripper.github.io/) primary research sources.
 
 Full ACT or RL training can continue as a project when the matching dataset, environment, executor, checkpoints and compute are arranged. The course supplies examples and repositories rather than guaranteed GPU capacity. Preserve the task and interface contract, reserve evaluation conditions before tuning, and test the resulting policy in closed loop.

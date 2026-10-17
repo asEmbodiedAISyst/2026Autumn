@@ -15,4 +15,4 @@ The script audits4000paired prediction rows/125events, reaggregates the480held-o
 
 For native scene inspection, use the lesson's isolated Python3.12 environment and pinned `requirements-model.txt`. Both B2/H1 and B2/H2 scenes and meshes are included. `code/inspect_scene.py` checks the actual gain/bias input contract, mechanics and bounded effort values. A compiled/stepped scene does not reproduce the population's hardware-data replay.
 
-[Figure source instructions](../../media/class05/FIGURE-CODE.md) document every illustration. Figure regeneration requires licensed local MiSans faces and the pinned authoring packages. No fonts or third-party packages are installed globally; no network, camera or hardware access occurs during the analysis.
+Run the analysis in its isolated environment. No network, camera or hardware access occurs during the analysis.

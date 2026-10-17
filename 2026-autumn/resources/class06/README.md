@@ -8,4 +8,4 @@ For native simulation, enter `code/`, prepare Python 3.12 with `requirements-dem
 
 `saved-runs/` contains the newly verified seed 9204 practice and selected-episode records. `code/results/` contains retained 100-episode evaluations. Their scopes differ. `evidence/` records the new contract, replay and publication checks.
 
-Figure inputs and generators are in `media/data/` and `media/source/`. Student images, animation and editable masters are in `../../media/class06`. Regeneration requires locally licensed MiSans fonts; no font software is redistributed. Retain upstream licences and notices. No new training, hardware deployment, optical calibration or manufactured-cube qualification is claimed.
+Student images, animation and editable masters are in `../../media/class06`. No font software is redistributed. Retain upstream licences and notices. No new training, hardware deployment, optical calibration or manufactured-cube qualification is claimed.

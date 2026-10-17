@@ -1,7 +1,6 @@
 {
   "algorithm": "SHA-256",
   "sha256": {
-    "FIGURE-CODE.md": "c85751986bd914b95aa7ac6eb51bb320612975e67c093c6293587eb4d5854713",
     "course-video-storyboard-classroom.pdf": "58ba4b4a9950c119ce3ef971818e06d687c024e62d56b85cf8e5e7807e1db371",
     "course-video-storyboard-classroom.png": "d648706bf58252bae413379da01d29caa5005054b9d2bec234b2ab978462e06e",
     "course-video-storyboard-classroom.svg": "d864e444b1a7fc50a1bd5cd5d9b8d28784392e5665d6d969a8eb2e2d1a305608",

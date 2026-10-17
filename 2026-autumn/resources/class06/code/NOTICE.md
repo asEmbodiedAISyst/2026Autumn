@@ -10,4 +10,4 @@ MuJoCo physics uses CPU JAX task math and random numbers. The included audit_pol
 these adaptations. Upstream Warp training uses the pinned checkout directly.
 The course does not claim to have trained the supplied policy or of identical cross-backend dynamics.
 
-The six course cube-face PNG textures use MiSans Fonts. They are generated artwork; no font software is redistributed in this student package. Figure reproduction requires locally licensed MiSans Regular/Semibold. Source and font requirements are documented in the class media folder; official font licence: https://hyperos.mi.com/font/en/download/.
+The six course cube-face PNG textures use MiSans Fonts. They are generated artwork; no font software is redistributed in this student package. Official font licence: https://hyperos.mi.com/font/en/download/.

@@ -1,4 +1,4 @@
-"""Recreate paper and classroom figures. Inputs and selection in FIGURE-CODE.md."""
+"""Recreate paper and classroom figures from the retained inputs."""
 import json,sys
 from pathlib import Path
 import numpy as np
