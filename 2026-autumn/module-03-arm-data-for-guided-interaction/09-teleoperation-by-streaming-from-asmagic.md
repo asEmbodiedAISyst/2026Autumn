@@ -14,9 +14,7 @@ This class uses a supplied reBot B601-RS simulation with an arm, gripper, table 
 
 By the end of this class, you should be able to trace operator input through mapping and control to robot response; check frames, units and limits; distinguish phone streams from robot observations; and audit an episode’s identity, ordering and timestamps.
 
-[Lecture](#lecture) · [Instructor/TA demonstration](#instructor-ta-demonstration) · [Student activity](#student-activity) · [Completion checks](#completion-checks)
-
-### Lecture
+[Lecture](#teleoperation-command-and-response-paths) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Completion checks](#completion-checks)
 
 ## Teleoperation command and response paths
 
@@ -233,13 +231,13 @@ A valid transition can reuse principles—identity, timing, frames and evidence�
 
 The important result of this class is an inspectable command/response episode with a narrow scope. It is the basis for deciding what data a learner can legitimately consume.
 
-### Instructor/TA demonstration
+## Instructor and TA demonstration
 
-#### Inspect the mapping and retained recording
+### Inspect the mapping and retained recording
 
 Use the declared identity-orientation example to check the target [0.27, 0.01, 0.10] m. Then inspect the retained circular-motion episode: 170 frames, seven state/action channels, increasing timestamps and an effective rate near 28.84 Hz. These are properties of this recorded simulation, rather than guaranteed streaming specifications.
 
-#### Trace action, observation and transition
+### Trace action, observation and transition
 
 Select a row and its matching front/side image pair. Check channel order, convert the elbow action into motor-target coordinates and interpret the residual. Locate when the state and images are recorded relative to the issued action and the subsequent physics step. Explain why using the following state as the same-step observation would change the learning example.
 
@@ -247,24 +245,35 @@ Select a row and its matching front/side image pair. Check channel order, conver
 
 > Figure 7. Front and side views from frame 0 of the retained circle episode. Both are rendered simulation images, associated with the same CSV row. Neither is a phone camera image. The two views make the scene and camera keys concrete; they do not establish physical camera calibration.
 
+The first two retained rows make the action/state comparison explicit. Figure 7 shows the images for row 0; each original front/side image is 640 × 480 pixels. The next row gives a nonzero residual to calculate.
+
+| Frame | Time (s) | Elbow action (°) | Elbow state (°) | Receiver-side pose age (s) | Blocked |
+|---|---:|---:|---:|---:|---:|
+| 0 | 0.1202 | -68.583048 | 68.583048 | 0.0162 | 0 |
+| 1 | 0.1535 | -67.846369 | 68.583048 | 0.0075 | 0 |
+
+The elbow direction factor is −1. Row 1 therefore requests a motor target of +67.846369°, giving a state-minus-target residual of approximately +0.736679°. Using the raw action directly would compare different coordinate conventions. Row 0 has zero residual under this conversion; equality at that row does not establish zero error throughout the episode.
+
+The complete record runs from frame 0 at 0.1202 s to frame 169 at 5.9806 s. Its elapsed interval is 5.8604 s, so 169 inter-frame intervals give approximately 28.84 Hz. Keep the reported largest interval of 42.8 ms separate from this mean-rate calculation. The two-row excerpt alone cannot establish the maximum over all 170 frames.
+
 A local protocol-compatible publisher supplies the retained operator pose. The two images are rendered simulation views; neither is a phone-camera observation. Compare clock intervals and recording provenance rather than assuming that the nominal update rate describes every acquisition.
 
-#### Interpret one timing fault
+### Interpret one timing fault
 
 Inspect the retained interruption trace. Predict what should hold when the latest input becomes stale: the target stays fixed, while the simulated mechanism can continue converging. Observe receiver-side age, the timeout rule and the last ten action rows. A flat action trace supports a held command; it does not prove zero measured velocity. Contrast stale input with a rejected IK candidate marked by `blocked=1`.
 
-#### Compare with the original app interface
+### Compare with the original app interface
 
 When an already prepared asMagic interface is available, identify its AR/device-pose, camera and IMU streams. Test the meaning of one translation and rotation axis. Explain which streams the bridge actually uses and which observations the recorder retains. A protocol-compatible pose source can test the mapping without establishing physical camera calibration or wireless reliability.
 
 Pause and re-engagement provide a final comparison: re-engagement establishes new references from the current commanded TCP pose, while actual motion may still lag that command. Name the additional calibration and timing evidence needed before interpreting a physical phone-to-arm experiment.
 
-### Student activity
+## Student activity
 
 Work from the retained circle/dropout episodes or a fresh simulation run. No phone is required.
 
-1. **Check the interface.** Identify the seven channel names in order and both image keys. Select a row and open its matching front and side images. Record episode identity, frame index, image dimensions and timestamp. Explain why the two images do not make this a phone-camera dataset.
-2. **Convert before comparing.** Copy the selected elbow action and state, apply the direction vector and calculate state-minus-motor-target in degrees. Explain why a raw sign difference is insufficient evidence of an inverted motor.
+1. **Check the interface.** Identify the seven channel names in order and both image keys. Use row 0 above and its front/side images in Figure 7. Record episode identity, frame index and timestamp; use the declared image dimensions from the observation record. Explain why the two images do not make this a phone-camera dataset.
+2. **Convert before comparing.** Use row 1 above: copy the elbow action and state, apply the direction vector and calculate state-minus-motor-target in degrees. Explain why a raw sign difference is insufficient evidence of an inverted motor.
 3. **Audit time and missing input.** Report frame count, elapsed timestamp interval, effective frequency and largest inter-frame gap from the retained timestamp record and the reported checks. Inspect the dropout tail and distinguish receiver age from sensor-to-actuator latency. Name another possible cause of a flat trace.
 4. **Define one repeatable task.** Complete the contract below. Separate a mapping diagnostic from an attempted manipulation and define how a reset reproduces the start.
 
@@ -283,7 +292,7 @@ For an interface diagnostic, “a circle command was received and recorded” ca
 
 Submit one short audit record containing your episode/row references, converted residual, timing results, interpretation of the interruption and completed task contract. Include one limitation of the evidence.
 
-### Completion checks
+## Completion checks
 
 You should be able to trace the received phone pose, relative TCP request, bounded/accepted joint target and observed response; explain each frame and unit conversion; find a row’s two simulation images; and distinguish a timestamp gap, stale-input hold and controller rejection. A reusable record also needs the task/reset definition and explicit acquisition provenance.
 

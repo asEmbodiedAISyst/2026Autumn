@@ -8,7 +8,7 @@ description: 27 October 2026 · 09:00–10:20 · CR6
 
 How do we estimate a MuJoCo model, quantify its discrepancy from physical actuator responses, and judge its usefulness for a specified task?
 
-## Introduction
+## From apparent agreement to a defined comparison
 
 A simulated trajectory can look close to a physical trajectory while missing a repeatable offset, a reversal or a response under a different load. Conversely, an actuator can follow its requested motion poorly while a model predicts that imperfect response closely. To interpret agreement, we need to name the two quantities being compared, make their conditions compatible and report a numerical discrepancy together with its context.
 
@@ -32,7 +32,7 @@ By the end, you should be able to specify a fair comparison, explain the two ide
 
 **Predict:** If hardware and simulation both lag their reference by the same amount, is their model-to-hardware gap necessarily large?
 
-## Claim2Design
+## Specify the comparison
 
 ### Specify the comparison before inspecting the score
 
@@ -112,7 +112,7 @@ Our **comparison record** binds the fixture, controller, input/output meaning, u
 
 **Checkpoint:** Which claim would become stronger if the model predicted directly from $$q_d$$, and which missing part of the system would it then need to represent?
 
-## Design2Data
+## Design informative measurements
 
 ### Give the unknown parameters something distinguishable to explain
 
@@ -151,7 +151,7 @@ A timing shift can create a structured residual. Increasing inertia to imitate t
 
 **Predict:** Which motion change would help separate inertia from viscous resistance? What must remain fixed for that comparison to be interpretable?
 
-## Data2Model
+## Estimate the actuator model
 
 ### State the model and its fixed controller approximation
 
@@ -279,7 +279,7 @@ The values belong to this controller/model/data context. A small output discrepa
 
 **Checkpoint:** Why can two methods return different parameters even when both execute correctly? Which comparison would help judge their usefulness?
 
-## Model2Prototype
+## Test against physical records
 
 ### Replace constructed observations with physical records
 
@@ -297,7 +297,7 @@ The archived evaluation is **retrospective**: the trajectory adapter and control
 
 If a residual motivates a new timing rule, gravity sign or model term, preserve the original result and record the revision. The revised candidate needs fresh evaluation. Moving a validation trace until it overlays neatly would change the comparison after seeing the answer.
 
-## Sim2Real
+## Interpret the Sim2Real discrepancy
 
 ### Calculate the discrepancy and keep its meaning
 
@@ -431,6 +431,10 @@ Submit a compact response with five items:
 A useful response distinguishes the external goal, internal reference and measured output; reports approximately 0.02191 rad rather than a group mean; and treats its explanation as testable. It does not assert that residual shape proves a root cause. There is no requirement to operate hardware, install software during class, implement an optimizer, change the payload or refit the model.
 
 Assessment concerns the comparison, metric, observation, test and bounded decision. Base the response on the identified evidence rather than whether a program was executed.
+
+## Extend the comparison to multiple actuators
+
+The same comparison record must identify the system, input, output and evaluation conditions when more actuators are added. Class 05 applies that reasoning to a separate sixteen-motor campaign, where shared infrastructure, motor identity and connected mechanics require different evidence.
 
 ## Terminology and sources
 

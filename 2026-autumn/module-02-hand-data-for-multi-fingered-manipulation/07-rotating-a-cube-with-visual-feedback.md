@@ -280,3 +280,7 @@ Submit a compact record:
 | Conclusion | One supported observation and one untested claim |
 
 Identify the supplied tables and traces used as saved evidence. A qualitative camera observation can reveal viewpoint or occlusion changes, but does not replace a calibrated cube-pose experiment. No phone or hardware hand is required.
+
+## Carry the measurement contract to another embodiment
+
+The next module changes from a hand and cube to a reBot arm. The requirements to define coordinates, commands and observations carry forward, but the mechanism, interfaces and calibration records must be established for that arm.

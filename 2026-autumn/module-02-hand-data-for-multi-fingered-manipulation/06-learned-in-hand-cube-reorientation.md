@@ -276,3 +276,7 @@ Submit a compact record:
 | Boundary | Why display equivalence does not qualify a physical cube or camera tracker |
 
 Also calculate the requested target for 0.20 rad plus action 0.40, and the contact moment for the 1 N/35 mm example. In one final sentence, distinguish an actuator model from this task policy.
+
+## From simulated pose to visual measurement
+
+The reference policy already uses cube-pose information. Class 07 examines what is required to replace the relevant observation with a visual estimate while preserving its frame, timestamp and meaning; changing the cube artwork alone does not supply that measurement pipeline.
