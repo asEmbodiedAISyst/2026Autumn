@@ -8,7 +8,7 @@ description: 21 October 2026 · CR6
 
 The class develops three abilities: distinguish a motor from an integrated actuator; distinguish a command, an internal reference and a measured response; and read the exact model's specifications, interfaces and operating limits. The teaching-team demonstration connects application software to physical action and returning telemetry. The final activity is an unpowered XC330 inspection and an XC330/XL330 comparison.
 
-[Inspection and comparison activity](#7-student-activity-unpowered-inspection-and-comparison) · [Detailed technical reading](../resources/class02/reading-notes.md) · [Optional telemetry calculations](../resources/class02/telemetry-worked-example.md)
+The inspection and comparison activity is in Section 7. [Detailed technical reading](../resources/class02/reading-notes.md) · [Optional telemetry calculations](../resources/class02/telemetry-worked-example.md)
 
 ## 1. Controlled action as a physical feedback process
 
