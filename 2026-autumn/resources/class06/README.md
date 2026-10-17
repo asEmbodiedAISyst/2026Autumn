@@ -1,11 +1,9 @@
 # Class 06 resources
 
-The complete lecture, demonstration and student activity are on the single Class 06 student page. Schedule: 30 October 2026 · 09:00–10:50 · L12.
+The [Class 06 course page](../../module-02-hand-data-for-multi-fingered-manipulation/06-learned-in-hand-cube-reorientation.md) contains the explanation, illustrations, worked examples, demonstration observations and activity. It is complete without installing software.
 
-From this folder, `python3 code/lesson_lab.py` inspects the supplied evaluations and selected trace events without extra packages. It does not create new evaluation trials.
+This legacy bundle contains native playback code, the supplied ONNX actor, pinned task/model sources, textures and required licences. `saved-runs/` preserves the selected seed 9204 episode and matched 200-step artwork comparison. `code/results/` preserves separate 100-episode first-goal evaluations. `evidence/` contains earlier contract/replay checks; their recorded scopes and runtimes should be read with each result.
 
-For native simulation, enter `code/`, prepare Python 3.12 with `requirements-demo.txt`, then run `verify_package.py`, `validate_lettered.py` and `audit_policy_contract.py` as described on the student page. The policy, models, textures, pinned sources and licences are bundled. Use fresh run output folders. Numerical playback is verified on Apple-silicon macOS; graphics support is separate.
+The playback requirements and environment versions are in `code/requirements-demo.txt`; platform preparation and execution belong to a separate example package. No commands are required to interpret the course page. Apple-silicon native playback was checked in the retained receipts; this content review audits saved evidence and does not claim a new cross-platform evaluation.
 
-`saved-runs/` contains the newly verified seed 9204 practice and selected-episode records. `code/results/` contains retained 100-episode evaluations. Their scopes differ. `evidence/` records the new contract, replay and publication checks.
-
-Student images, animation and editable masters are in `../../media/class06`. No font software is redistributed. Retain upstream licences and notices. No new training, hardware deployment, optical calibration or manufactured-cube qualification is claimed.
+Images, animation and editable delivery masters are in `../../media/class06`. Retain upstream licences and notices. No new training, hardware deployment, optical calibration or manufactured-cube qualification is claimed.

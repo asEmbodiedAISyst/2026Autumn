@@ -12,7 +12,7 @@ How does a learned controller turn a cube through finger contacts while preservi
 
 Turning a cube in your hand requires more than moving fingers. Some contacts support the object while others produce rotation; as the cube turns, those roles change. A useful controller must make progress toward its target while keeping the object within the grasp.
 
-We study a simulated LEAP Hand using a supplied pretrained policy. The held cube is the physical object in the simulation. A separate goal cube displays the desired orientation. M/B/Z/U/A/I artwork makes the faces easy to follow, but the policy receives joint and cube-pose features—not letters or images. The practical runs the controller in native MuJoCo; it does not train a policy or move hardware.
+We study a simulated LEAP Hand using a supplied pretrained policy. The hand provides a concrete robot-learning platform (Shaw, Agarwal, and Pathak 2023); the policy and reorientation task used here come from MuJoCo Playground (Google DeepMind 2026). The held cube is the physical object in the simulation. A separate goal cube displays the desired orientation. M/B/Z/U/A/I artwork makes the faces easy to follow, but the policy receives joint and cube-pose features—not letters or images. The practical runs the controller in native MuJoCo; it does not train a policy or move hardware.
 
 By the end, you should be able to:
 
@@ -40,7 +40,7 @@ Identify the held cube and the separate goal in the recording below. The goal is
 
 ### Make the claim precise
 
-Class 05 distinguished an actuator model from a policy. Here the **policy chooses finger commands** for a manipulation task; actuators and contact dynamics determine how those commands affect the cube. The claim we test is whether this policy reaches the task's orientation criterion while retaining the cube under declared simulation conditions.
+Classes 02–04 established the difference between a requested quantity, an actuator response and evidence for a simulated model. Class 05 added population variation and the distinction between independent fixtures and connected mechanics. Here we use those ideas in a coupled hand whose contacts change as it manipulates an object. Here the **policy chooses finger commands** for a manipulation task; actuators and contact dynamics determine how those commands affect the cube. The claim we test is whether this policy reaches the task's orientation criterion while retaining the cube under declared simulation conditions.
 
 Keep three questions separate: did the fingers move, did the cube reach its target, and did the controller do so reliably across episodes? A compelling animation can answer part of the second question for one episode. It cannot supply the denominator needed for the third.
 
@@ -48,7 +48,7 @@ Keep three questions separate: did the fingers move, did the cube reach its targ
 
 ## Measure full orientation and define success
 
-Let unit quaternions $$Q$$ and $$Q_g$$ represent the cube and target orientations in the same convention. Their shortest angular separation is
+Let unit quaternions $$Q$$ and $$Q_g$$ represent the cube and target orientations in the same convention. The supplied model records these orientations in the world frame, with quaternion components ordered scalar-first (`wxyz`). A quaternion describes orientation; it is not a vector of four rotation angles. Their shortest angular separation is
 
 $$
 e_R=2\arccos\!\left(\min\{1,|Q^\mathsf{T}Q_g|\}\right).
@@ -66,6 +66,8 @@ The success criterion is **orientation error below 0.1 rad**, approximately 5.73
 | Stall | A descriptive behavior requiring a declared diagnostic rule |
 | Fall or drop | Loss condition detected by the task's termination rule |
 | Timeout | The allowed evaluation horizon or requested runner step limit is reached |
+
+The pinned task detects a fall when its cube-position sensor reports world-frame height below −0.05 m; it also terminates on NaN state values. The first-goal evaluator accepts an angular success only when that step is not a termination. These rules are an operational test, not a direct measurement that every finger remains in contact or that the object can be held indefinitely.
 
 A goal event does not end the supplied continuous demonstration. Its event counter increments on successful control steps; it should not automatically be read as a count of distinct rotations. A stall is not inferred merely because a run timed out.
 
@@ -97,7 +99,19 @@ $$
 \mathcal F_O=\begin{bmatrix}\mathbf n_O\\\mathbf f_L\end{bmatrix}.
 $$
 
-The top three components are moments and the lower three are forces. Both use the same stated frame and origin. Moving the reference origin changes the moment part; raw force arrays must not be relabeled as a wrench without checking ordering and frame. See the [MuJoCo dynamics formulation](https://mujoco.readthedocs.io/en/3.6.0/computation/index.html) for how generalized and contact forces enter the simulation. Spatial notation here follows Roy Featherstone, *Rigid Body Dynamics Algorithms* (2008).
+The top three components are moments and the lower three are forces. Both use the same stated frame and origin. Moving the reference origin changes the moment part; raw force arrays must not be relabeled as a wrench without checking ordering and frame. See the [MuJoCo dynamics formulation](https://mujoco.readthedocs.io/en/3.6.0/computation/index.html) for how generalized and contact forces enter the simulation. Spatial notation here follows Featherstone (2008).
+
+### The joint target still needs an actuator model
+
+The target-to-effort distinction from Class 02 remains essential. In this hand model, each hinge has one position actuator with unit transmission. Its proportional gain is 3 N m/rad, and the joint's total actuator effort is limited to ±0.2196 N m. With target $$u_j$$ and simulated joint angle $$q_j$$, the corresponding scalar actuator contribution is
+
+$$
+\tau_{a,j}=\operatorname{clip}\!\left(3(u_j-q_j),-0.2196,0.2196\right)\quad\mathrm{N\,m}.
+$$
+
+For example, a 0.10 rad position error requests 0.30 N m before this limit, so the actuator contribution is 0.2196 N m. That is still not the net joint torque or a fingertip force. The model separately includes joint damping of 0.2 N m s/rad, armature of 0.00149376 kg m², friction-loss magnitude of 0.02 N m, gravity and contact constraints. Joint damping contributes a velocity-dependent resistance; dry-friction constraints also act near rest. They must not be counted again as an invented derivative term inside this position actuator.
+
+These are parameters of the pinned LEAP simulation, not a new calibration of the physical hand or the fixtures in Classes 03–05. The XML's `kp`, `actuatorfrcrange`, `damping`, `armature` and `frictionloss` fields identify where each assumption enters (MuJoCo developers n.d.-a, n.d.-b). Keeping the actor fixed while changing these fields changes the physical feedback process it experiences.
 
 ### Rotation and retention must coexist
 
@@ -122,12 +136,12 @@ The deployed actor receives **57 numbers**:
 | Actor block | Count | Meaning |
 |---|---:|---|
 | Joint positions | 16 | Finger configuration features |
-| Joint-position errors | 16 | Target-versus-measured joint features |
-| Cube-position error | 3 | Estimated cube location relative to the palm |
-| Cube-orientation error features | 6 | Target-relative rotation features |
+| Joint-position errors | 16 | Noisy measured angle minus motor target, in radians |
+| Cube-position error | 3 | Palm position minus noisy cube position, in metres |
+| Cube-orientation error features | 6 | Last two rows of the task-defined relative rotation matrix |
 | Action history | 16 | Earlier action under the pinned task's ordering |
 
-The 6 orientation values are rotation features, not six independent rotation angles. Joint and object features use the task's conventions, transforms and optional noise. A vector with the same length but different ordering or units is a different observation contract.
+The 6 orientation values are rotation features, not six independent rotation angles. The task multiplies the cube quaternion by the inverse goal quaternion, converts that product to a 3 × 3 matrix, flattens it by rows and retains entries 3–8. Its `_get_obs` function specifies that order and the error signs. For a measured angle of 0.30 rad and target 0.40 rad, the joint-error feature is −0.10 rad before any observation noise. Reversing the sign to use a familiar target-minus-measurement convention would change a trained input, even though either sign could be used when designing a different controller. Joint and object features use the task's conventions, transforms and optional noise. A vector with the same length but different ordering or units is a different observation contract.
 
 The action has **16 values**, one for each actuated joint. It changes the target vector according to
 
@@ -135,7 +149,7 @@ $$
 u_{k+1}=\operatorname{clip}\!\left(u_k+0.5a_k,u_{\min},u_{\max}\right).
 $$
 
-Here $$u$$ denotes joint-position targets, $$a$$ is the network output, and limits are joint-specific. The scale maps actions into target increments. The action does not directly set measured angles or apply an object-space torque.
+Here $$u$$ denotes joint-position targets, $$a$$ is the dimensionless network output, and limits are joint-specific actuator control ranges. The multiplier is 0.5 rad per unit action. This expression uses the pinned task's smoothing factor of one; no additional smoothing is applied. The scale maps actions into target increments. The action does not directly set measured angles or apply an object-space torque.
 
 For a target of 0.20 rad and action 0.40, the requested target becomes 0.40 rad before clipping. An illustrative upper bound of 0.35 rad would clip it to 0.35 rad; this example bound is not a declaration of every hand joint's limit. The actuators still need time to respond, and contact can constrain motion.
 
@@ -177,7 +191,7 @@ The recording uses **seed 9204 with ideal actor observations**. Follow the held 
 
 *Figure 6. The saved sensor-phase error trace has events at steps 356 and 761, corresponding to 17.80 s and 38.05 s. A target update can increase subsequent error. Both events belong to one continuous episode.*
 
-Use `orientation_error_rad` for the task error. The runner also saves `render_pose_error_rad` as a separate diagnostic. `goal_quat_wxyz` identifies the goal used for the action and `next_goal_quat_wxyz` the following target. Do not mix a later target with an earlier success measurement.
+The [selected trace](../resources/class06/saved-runs/selected-demo/trace.jsonl) and [run summary](../resources/class06/saved-runs/selected-demo/summary.json) retain the numerical record behind Figures 5 and 6. Use `orientation_error_rad` for the task error. The runner also saves `render_pose_error_rad` as a separate diagnostic. `goal_quat_wxyz` identifies the goal used for the action and `next_goal_quat_wxyz` the following target. Do not mix a later target with an earlier success measurement.
 
 The event counter measures successful control steps, not necessarily distinct target commands. A repeated-target reliability study would need a declared goal-identity and acceptance rule. Two events in one chosen episode are not two independent successful trials.
 
@@ -195,11 +209,11 @@ The reference-to-lettered intervention replaces only the noncontact, zero-densit
 
 Equality in the first comparison does not qualify the other two. Labels applied to a physical cube can also change contact; the simulation's display-only guarantee is not a guarantee about stickers on hardware.
 
-For the student comparison, run reference and lettered variants for **200 control steps**, with seed 9204, ideal observations and the same supplied policy. Under the tested runtime, all saved step fields match and no engine warnings occur. Both runs end at the requested 10 simulated seconds, before the selected episode's first event. Zero events are therefore compatible with a successful controlled comparison.
+For the student comparison, run reference and lettered variants for **200 control steps**, with seed 9204, ideal observations and the same supplied policy. The [retained comparison](../resources/class06/evidence/practice-comparison.json) reports that, under the tested runtime, all saved step fields match and no engine warnings occur. The [model comparison](../resources/class06/evidence/physics-contract.json) separately checks the physical fields and a short state/observation rollout. Both runs end at the requested 10 simulated seconds, before the selected episode's first event. Zero events are therefore compatible with a successful controlled comparison.
 
 ### Evaluate performance with a denominator
 
-The retained first-goal evaluations use seeds **20000–20099**, a **50 s limit**, the fixed angular threshold and all 100 outcomes per condition. These records are supplied evidence, separately from the selected continuous recording.
+The retained first-goal evaluations use seeds **20000–20099**, a **50 s limit**, the fixed angular threshold and all 100 outcomes per condition. These records are supplied evidence, separately from the selected continuous recording. The [native/noisy receipt](../resources/class06/code/results/native-task-10ms-noisy-heldout/summary.json), [GPU/noisy receipt](../resources/class06/code/results/playground-noise-1/summary.json) and [GPU/ideal receipt](../resources/class06/code/results/playground-noise-0/summary.json) record the conditions and outcome totals; their sibling episode lists preserve all seeds. All three identify the same supplied ONNX actor by its SHA-256 digest. The source revision, actor, adapter, observation setting, timestep and scoring rule together identify a result—an engine name alone does not.
 
 | Retained condition | First-goal successes | Falls | Timeouts |
 |---|---:|---:|---:|
@@ -224,6 +238,8 @@ Removing actor-observation noise did not improve the retained GPU result. The sa
 *Figure 8. Among the same 100 GPU seeds, 54 succeeded with both conditions, 35 only with noise, four only without noise and seven with neither. The matrix establishes the paired outcomes, not their mechanism.*
 
 A possible explanation concerns how this policy responds to its input distribution. That hypothesis needs further investigation; this table alone does not establish the policy's training exposure or the cause of failures. Keep unsuccessful episodes in the denominator and avoid selecting only successful demonstrations to characterize performance.
+
+Consider a specific retained failure: **native/noisy seed 20001** ran for 1000 steps, reported no fall and did not reach the first target. Its minimum recorded error was 0.1925 rad (about 11.03°), and its final error was 0.2618 rad. Those values explain its timeout under the unchanged 0.1 rad criterion. They do not establish that the cube wedged, identify a defective actuator or reveal the contact sequence; those claims need a trajectory or additional measurements. This unsuccessful episode remains one of the twelve native timeouts.
 
 In the first-goal evaluator, a timeout means the first target was not reached within the limit. It does not by itself identify wedging, slip or a poor target update. A useful next experiment changes one factor—such as observation delay—while preserving task success, seed protocol, physics and scoring. Tune on development seeds and evaluate the selected change on a fresh declared set.
 
@@ -253,7 +269,7 @@ Read the evaluated goal before its next update. An increased rendered mismatch a
 
 ### Demonstrate the controlled intervention
 
-Predict what changing only artwork should do, then compare the reference and lettered 200-step runs. Show the model equality check and paired trace result. Contrast this single-seed comparison with the 100-episode first-goal table. Finish by naming one additional measurement needed for a manufactured cube or a camera-based pose input.
+Predict what changing only artwork should do, then compare the reference and lettered 200-step runs. Show the model equality check and paired trace result. Contrast this single-seed comparison with the 100-episode first-goal table and the seed 20001 timeout. Distinguish what the failed-outcome record proves from what would need a failure trajectory. Finish by naming one additional measurement needed for a manufactured cube or a camera-based pose input.
 
 ## Student activity
 
@@ -280,3 +296,16 @@ Also calculate the requested target for 0.20 rad plus action 0.40, and the conta
 ## From simulated pose to visual measurement
 
 The reference policy already uses cube-pose information. Class 07 examines what is required to replace the relevant observation with a visual estimate while preserving its frame, timestamp and meaning; changing the cube artwork alone does not supply that measurement pipeline.
+
+
+## References
+
+Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. [Spatial-vector resources](https://royfeatherstone.org/spatial/v2/index.html).
+
+Google DeepMind. 2026. “LEAP Cube Reorientation.” *MuJoCo Playground*, source snapshot at commit `ef4fefc13033c0468af4ef651847f5348af0c7d7`. [Task definition](https://github.com/google-deepmind/mujoco_playground/blob/ef4fefc13033c0468af4ef651847f5348af0c7d7/mujoco_playground/_src/manipulation/leap_hand/reorient.py), [native player](https://github.com/google-deepmind/mujoco_playground/blob/ef4fefc13033c0468af4ef651847f5348af0c7d7/mujoco_playground/experimental/sim2sim/play_leap_reorient.py), and [supplied actor](https://github.com/google-deepmind/mujoco_playground/blob/ef4fefc13033c0468af4ef651847f5348af0c7d7/mujoco_playground/experimental/sim2sim/onnx/leap_reorient_policy.onnx). The course native-task adapter preserves the pinned task's feature/history ordering; it is distinct from the supplied native player's callback.
+
+MuJoCo developers. n.d.-a. “Computation.” *MuJoCo Documentation*, version 3.6.0. Accessed October 17, 2026. [Actuation and constrained dynamics](https://mujoco.readthedocs.io/en/3.6.0/computation/index.html).
+
+MuJoCo developers. n.d.-b. “XML Reference.” *MuJoCo Documentation*, version 3.6.0. Accessed October 17, 2026. [Position actuator](https://mujoco.readthedocs.io/en/3.6.0/XMLreference.html#actuator-position).
+
+Shaw, Kenneth, Ananye Agarwal, and Deepak Pathak. 2023. “LEAP Hand: Low-Cost, Efficient, and Anthropomorphic Hand for Robot Learning.” arXiv:2309.06440. [Paper](https://arxiv.org/abs/2309.06440). This paper introduces the hand; the specific supplied actor and task above are attributed separately.
