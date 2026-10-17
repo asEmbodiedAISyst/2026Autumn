@@ -1,5 +1,5 @@
 ---
-description: Basic digitization of physical embodiment · ROB7103/8103
+description: 23 October 2026 · 09:00–10:50 · L12
 layout:
   width: wide
 ---

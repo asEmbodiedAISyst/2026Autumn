@@ -1,3 +1,7 @@
+---
+description: 21 October 2026 · 10:30–11:50 · CR6
+---
+
 # Controlled action as a physical feedback process
 
 A motor turns electrical energy into mechanical action. A robot, however, needs more than a shaft that can turn. It needs to move a specified amount, follow a changing motion, maintain a configuration under a load, or regulate its interaction with an object. These tasks require us to connect a request to what the mechanism actually does.
