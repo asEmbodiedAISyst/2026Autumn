@@ -12,7 +12,7 @@ The [NeurIPS code guidelines](https://neurips.cc/public/guides/CodeSubmissionPol
 
 > Your code submission ideally should be self-contained and executable. If this is not the case, you must explain why.
 
-For this course, keep your project implementation in `code/`, with `code/README.md` as its entry point. Include the dependencies, required data or model access, and commands needed to reproduce your project results. Explain any execution limits. Use the authors’ README example or the linked template below for guidance.
+For this course, keep your project implementation in `code/`, with `code/README.md` as its entry point. Explain the project boundary, tested environment, dependencies, required data/models, commands to reproduce an important result, expected output and known limits. Cite reused work. Use the authors’ README example or the linked template below for guidance.
 
 ## How to submit and how we collect
 
@@ -22,5 +22,6 @@ At the deadline, the teaching team records and collects the remote `main` revisi
 
 ## Example and preparation guidance
 
-- **Research example:** [LEAP Hand simulation code and README](https://github.com/leap-hand/LEAP_Hand_Sim#readme), accompanying Kenneth Shaw, Ananye Agarwal and Deepak Pathak’s [RSS 2023 paper](https://www.roboticsproceedings.org/rss19/p089.html). The README documents installation, pretrained-policy execution, deployment and training.
-- **Optional guidance and template:** [Papers with Code research-code guidance](https://github.com/paperswithcode/releasing-research-code) and its [README template](https://github.com/paperswithcode/releasing-research-code/blob/master/templates/README.md), linked from NeurIPS. Adapt the relevant sections to your project.
+Use the authors’ [asRoBallet MuJoCo repository and README](https://github.com/asRoBallet/asRoBallet_mujoco#readme), accompanying [Fang Wan et al.’s RSS 2026 paper](https://arxiv.org/abs/2604.24916). It documents the tasks, installation, training, evaluation and playback. Follow its approach to explaining the code; write instructions for your own project and available assets.
+
+Optional guidance: [Papers with Code research-code tips](https://github.com/paperswithcode/releasing-research-code) and its [README template](https://github.com/paperswithcode/releasing-research-code/blob/master/templates/README.md), linked from NeurIPS. Adapt the relevant sections to your project.

@@ -12,7 +12,7 @@ The [RSS 2026 poster instructions](https://roboticsconference.org/2026/informati
 
 > A0 (841 wide x 1189mm high) and portrait orientation.
 
-For this course, submit one **PDF**. Name it `TeamNN-poster.pdf`, replacing `NN` with your two-digit team number: `01`–`08`. Team 01 submits `poster/Team01-poster.pdf`.
+For this course, submit one **PDF**. Name it `TeamNN-poster.pdf`, replacing `NN` with your two-digit team number: `01`–`08`. Team 01 submits `poster/Team01-poster.pdf`. The teaching team prints posters submitted by the deadline; teams arrange printing for late submissions.
 
 ## How to submit and how we collect
 
@@ -22,5 +22,10 @@ At the deadline, the teaching team records and collects the remote `main` revisi
 
 ## Example and preparation guidance
 
-- **Research example:** [LEAP Hand poster PDF](https://v1.leaphand.com/static/leap_hand_poster.pdf), by Kenneth Shaw, Ananye Agarwal and Deepak Pathak, RSS 2023. The [authors’ project page](https://v1.leaphand.com/) links the paper and original artifacts. Use this as a content example; follow the course size and orientation above.
-- **Optional tips:** Thomas C. Erren and Philip E. Bourne, [“Ten Simple Rules for a Good Poster Presentation”](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0030102), PLOS Computational Biology (2007).
+Use the original **asRoBallet poster from RSS 2026** as a reference for connecting the contribution, system illustrations and results. Its design, interaction and learning panels show how one project can be explained visually.
+
+![Original asRoBallet RSS 2026 poster with design, interaction, learning and results panels.](../media/class18/asroballet-poster-original.png)
+
+*Figure 1. Original asRoBallet poster preview, Fang Wan et al. (2026), retained from the earlier course notes. [Open the full-size image](../media/class18/asroballet-poster-original.png) · [Paper and research source](https://bionicdl.ancorasir.com/?p=2238). Use it as an example; prepare your own A0 PDF.*
+
+Optional tips: Thomas C. Erren and Philip E. Bourne, [“Ten Simple Rules for a Good Poster Presentation”](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0030102), PLOS Computational Biology (2007).

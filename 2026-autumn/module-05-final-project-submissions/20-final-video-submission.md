@@ -24,5 +24,10 @@ At the deadline, the teaching team records and collects the remote `main` revisi
 
 ## Example and preparation guidance
 
-- **Research example:** [LEAP Hand author video](https://youtu.be/VKAlJPypQFI), by Kenneth Shaw, Ananye Agarwal and Deepak Pathak, RSS 2023; see the [authors’ project page and paper](https://v1.leaphand.com/). This is a presentation example; use the course specifications above.
-- **Optional export help:** [HandBrake’s official preview guide](https://handbrake.fr/docs/en/latest/workflow/preview-settings.html). RSS also links HandBrake for video encoding.
+Use the original **asRoBallet RSS 2026 narration transcript** as a reference for explaining the problem, method, evidence and conclusion. Rehearse your explanation before fixing the slideshow or edit timing. The example below is a presentation script.
+
+![Original asRoBallet RSS 2026 narration transcript with twenty numbered spoken points.](../media/class20/asroballet-narration-original.png)
+
+*Figure 1. Original asRoBallet narration transcript, retained from the earlier course notes. [Open the full-size script](../media/class20/asroballet-narration-original.png) · [Paper and research source](https://bionicdl.ancorasir.com/?p=2238). Prepare one video with narration or explanatory captions for this submission.*
+
+Optional export help: [HandBrake’s official preview guide](https://handbrake.fr/docs/en/latest/workflow/preview-settings.html), following the encoder linked by RSS.
