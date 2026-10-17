@@ -1,0 +1,44 @@
+<mujoco model="XC330withWeightedLever">
+    <compiler angle="radian" eulerseq="XYZ" />
+    <option timestep="0.002" integrator="implicitfast" gravity="0 0 -9.81" />
+
+    <!-- Effective single-XC330 dynamics; preserve the CAD-derived body inertias below. -->
+    <default>
+        <joint damping="0.001" frictionloss="0.001" armature="0.0001"
+               limited="true" range="0 6.28318" />
+        <geom contype="0" conaffinity="0" />
+    </default>
+
+    <asset>
+        <mesh name="XC330_partdesign" file="meshes/XC330_partdesign.stl" scale="0.001 0.001 0.001" />
+        <mesh name="XLXC-330---Lever" file="meshes/XLXC-330---Lever.stl" scale="0.001 0.001 0.001" />
+        <mesh name="XLXC-330---weight" file="meshes/XLXC-330---weight.stl" scale="0.001 0.001 0.001" />
+    </asset>
+    <worldbody>
+        <light directional="true" pos="-0.5 0.5 3" dir="0 0 -1" />
+        <geom pos="0 0 0" size="1 1 1" type="plane" rgba="1 0.83 0.61 0.5" />
+        <body name="XC330_partdesign" pos="0.006294010142662386 0.0003160346502324365 -0.004436113933902051" euler="-2.2204460492503146e-16 1.4051260155412118e-16 -3.053113317719178e-16">
+            <geom name="XC330_partdesign_geom" type="mesh" mesh="XC330_partdesign" pos="0 0 0" euler="0 0 0" />
+            <inertial mass="0.054738313273830275" pos="0.0001353594860969499 -0.006628363370699088 -0.008238988917994669" fullinertia="9.828243186001103e-06 6.403420685867887e-06 6.6623302277621384e-06 2.2150263176438744e-08 2.2223729781504477e-08 -4.913824472675173e-08" />
+            <body name="XLXC-330---Lever" pos="-2.6645352591003756e-17 -3.5388358909926865e-18 5.551115123125783e-18" euler="2.640557497309387e-16 -5.263613562705166e-16 1.3675181499807991">
+                <joint name="Revolute-4" type="hinge" axis="-2.805218039138417e-16 -3.568485957315372e-16 -1.0" pos="-3.598439724431832e-08 2.938598685936348e-09 0.006500113933902046" />
+                <geom name="XLXC-330---Lever_geom" type="mesh" mesh="XLXC-330---Lever" pos="0 0 0" euler="0 0 0" />
+                <inertial mass="0.014891063330010302" pos="6.396693825762414e-07 5.5968865222349566e-08 0.0270109983948468" fullinertia="3.879296197865925e-06 3.879306973629869e-06 1.5847989571528636e-07 -2.5748178433645257e-12 3.9105208183271266e-10 4.767081549783518e-10" />
+                <body name="XLXC-330---weight" pos="0.0002499999999999286 -5.551115123125783e-18 0.025859999999999998" euler="-2.0946785990224647e-16 -9.992007221626399e-16 -3.885780586188051e-16">
+                    <geom name="XLXC-330---weight_geom" type="mesh" mesh="XLXC-330---weight" pos="0 0 0" euler="0 0 0" />
+                    <inertial mass="0.08343779381512274" pos="-2.742379772730149e-05 -1.7156871478859494e-14 -4.055640285507398e-06" fullinertia="9.303968000897628e-06 9.304477264755009e-06 5.365466086435945e-06 -2.9985186406610925e-19 -1.4932332061959283e-08 1.6380902586564547e-17" />
+                </body>
+            </body>
+        </body>
+    </worldbody>
+    <actuator>
+        <!-- Parametric baseline used by sim_sysid.py. -->
+        <position name="position_baseline_0" joint="Revolute-4"
+                  kp="3" kv="0.03"
+                  ctrllimited="true" ctrlrange="0 6.28318"
+                  forcelimited="true" forcerange="-0.93 0.93" />
+        <!-- Direct torque channel retained for custom rollouts. -->
+        <motor name="custom_servo_motor_0" joint="Revolute-4"
+               ctrllimited="true" ctrlrange="-1 1" />
+    </actuator>
+</mujoco>

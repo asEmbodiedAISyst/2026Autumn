@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="515.905512pt" height="149.612598pt" viewBox="0 0 515.905512 149.612598" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-08T11:53:03.663715</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 149.612598 
+L 515.905512 149.612598 
+L 515.905512 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 12.705055 88.227559 
+L 117.811213 88.227559 
+L 117.811213 34.54252 
+L 12.705055 34.54252 
+L 12.705055 88.227559 
+z
+" clip-path="url(#p0cfceca589)" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 140.333961 88.227559 
+L 245.440118 88.227559 
+L 245.440118 34.54252 
+L 140.333961 34.54252 
+L 140.333961 88.227559 
+z
+" clip-path="url(#p0cfceca589)" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 267.962866 88.227559 
+L 373.069024 88.227559 
+L 373.069024 34.54252 
+L 267.962866 34.54252 
+L 267.962866 88.227559 
+z
+" clip-path="url(#p0cfceca589)" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 395.591772 88.227559 
+L 500.697929 88.227559 
+L 500.697929 34.54252 
+L 395.591772 34.54252 
+L 395.591772 88.227559 
+z
+" clip-path="url(#p0cfceca589)" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 448.14485 88.227559 
+L 448.14485 109.701575 
+L 318.013417 109.701575 
+" clip-path="url(#p0cfceca589)" style="fill: none; stroke: #333333; stroke-width: 0.8; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(48.674696 59.397039)">Command</text>
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(63.228134 67.083039)">u</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(164.295321 59.397039)">Internal reference</text>
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(191.574539 67.083039)">r</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(290.710164 59.397039)">Controller + motor</text>
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(297.219617 67.083039)">actuator effort</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(429.766022 59.397039)">Mechanism</text>
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(429.152975 67.083039)">measured q</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 119.809997 61.385039 
+Q 129.071085 61.385039 137.214139 61.385039 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+    <path d="M 134.414139 59.985039 
+L 137.214139 61.385039 
+L 134.414139 62.785039 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 247.438902 61.385039 
+Q 256.69999 61.385039 264.843044 61.385039 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+    <path d="M 262.043044 59.985039 
+L 264.843044 61.385039 
+L 262.043044 62.785039 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 375.067808 61.385039 
+Q 384.328896 61.385039 392.47195 61.385039 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+    <path d="M 389.67195 59.985039 
+L 392.47195 61.385039 
+L 389.67195 62.785039 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 318.013417 107.701493 
+Q 318.013417 98.965322 318.013417 91.347186 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+    <path d="M 316.613417 94.147186 
+L 318.013417 91.347186 
+L 319.413417 94.147186 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7px; font-family: 'MiSans'; text-anchor: middle" x="378.074079" y="125.136024" transform="rotate(-0 378.074079 125.136024)">Feedback path</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p0cfceca589">
+   <rect x="7.7" y="7.7" width="500.505512" height="134.212598"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,456 @@
+{
+  "actuator": "xc330",
+  "controller": "H1",
+  "method": "integral",
+  "parameters": {
+    "armature": 0.01070688676534984,
+    "damping": 0.03647832779506292,
+    "frictionloss": 0.010226937934344626
+  },
+  "diagnostics": {
+    "solver_success": true,
+    "weighted_design_rank": 3,
+    "scaled_design_condition_number": 22.311177841488348,
+    "qualified_window_count": 3367,
+    "parameter_lower_bounds": [
+      1e-05,
+      0.0001,
+      0.0001
+    ],
+    "parameter_upper_bounds": [
+      0.02,
+      0.1,
+      0.1
+    ],
+    "active_bound_mask": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "integrated_balance_rmse_Nm_s": 0.0032321004962429915,
+    "windows_by_episode": {
+      "B0__H1__P01_slow_triangle__R01": 113,
+      "B0__H1__P01_slow_triangle__R02": 113,
+      "B0__H1__P01_slow_triangle__R03": 113,
+      "B0__H1__P02_multisine__R01": 113,
+      "B0__H1__P02_multisine__R02": 113,
+      "B0__H1__P02_multisine__R03": 113,
+      "B0__H1__P03_smooth_levels__R01": 54,
+      "B0__H1__P03_smooth_levels__R02": 56,
+      "B0__H1__P03_smooth_levels__R03": 56,
+      "B1__H1__P01_slow_triangle__R01": 113,
+      "B1__H1__P01_slow_triangle__R02": 113,
+      "B1__H1__P01_slow_triangle__R03": 113,
+      "B1__H1__P02_multisine__R01": 113,
+      "B1__H1__P02_multisine__R02": 113,
+      "B1__H1__P02_multisine__R03": 113,
+      "B1__H1__P03_smooth_levels__R01": 56,
+      "B1__H1__P03_smooth_levels__R02": 56,
+      "B1__H1__P03_smooth_levels__R03": 53,
+      "B2__H1__P01_slow_triangle__R01": 113,
+      "B2__H1__P01_slow_triangle__R02": 113,
+      "B2__H1__P01_slow_triangle__R03": 113,
+      "B2__H1__P02_multisine__R01": 113,
+      "B2__H1__P02_multisine__R02": 113,
+      "B2__H1__P02_multisine__R03": 113,
+      "B2__H1__P03_smooth_levels__R01": 53,
+      "B2__H1__P03_smooth_levels__R02": 54,
+      "B2__H1__P03_smooth_levels__R03": 53,
+      "M0__H1__P01_slow_triangle__R01": 113,
+      "M0__H1__P01_slow_triangle__R02": 113,
+      "M0__H1__P01_slow_triangle__R03": 113,
+      "M0__H1__P02_multisine__R01": 113,
+      "M0__H1__P02_multisine__R02": 113,
+      "M0__H1__P02_multisine__R03": 113,
+      "M0__H1__P03_smooth_levels__R01": 54,
+      "M0__H1__P03_smooth_levels__R02": 56,
+      "M0__H1__P03_smooth_levels__R03": 54
+    }
+  },
+  "frozen_evaluation": [
+    {
+      "episode_id": "B0__H1__P01_slow_triangle__R01",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.0029791307226669696
+    },
+    {
+      "episode_id": "B0__H1__P01_slow_triangle__R02",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.0054585909103406945
+    },
+    {
+      "episode_id": "B0__H1__P01_slow_triangle__R03",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.00505252927899581
+    },
+    {
+      "episode_id": "B0__H1__P02_multisine__R01",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.005155245092902048
+    },
+    {
+      "episode_id": "B0__H1__P02_multisine__R02",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.005346377001246527
+    },
+    {
+      "episode_id": "B0__H1__P02_multisine__R03",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.005223805989559068
+    },
+    {
+      "episode_id": "B0__H1__P03_smooth_levels__R01",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.026365879967307007
+    },
+    {
+      "episode_id": "B0__H1__P03_smooth_levels__R02",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.026240374880247337
+    },
+    {
+      "episode_id": "B0__H1__P03_smooth_levels__R03",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.02564269436940023
+    },
+    {
+      "episode_id": "B0__H1__P04_chirp__R01",
+      "fixture": "B0",
+      "split": "model_selection",
+      "rmse_rad": 0.015286376151472584
+    },
+    {
+      "episode_id": "B0__H1__P04_chirp__R02",
+      "fixture": "B0",
+      "split": "model_selection",
+      "rmse_rad": 0.015151122755785753
+    },
+    {
+      "episode_id": "B0__H1__P04_chirp__R03",
+      "fixture": "B0",
+      "split": "model_selection",
+      "rmse_rad": 0.01498516415101785
+    },
+    {
+      "episode_id": "B0__H1__P05_wide_sine__R01",
+      "fixture": "B0",
+      "split": "model_selection",
+      "rmse_rad": 0.007587465048691044
+    },
+    {
+      "episode_id": "B0__H1__P05_wide_sine__R02",
+      "fixture": "B0",
+      "split": "model_selection",
+      "rmse_rad": 0.007919232443199578
+    },
+    {
+      "episode_id": "B0__H1__P05_wide_sine__R03",
+      "fixture": "B0",
+      "split": "model_selection",
+      "rmse_rad": 0.007756456060442311
+    },
+    {
+      "episode_id": "B1__H1__P01_slow_triangle__R01",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.002293388236409351
+    },
+    {
+      "episode_id": "B1__H1__P01_slow_triangle__R02",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.0032315111626537783
+    },
+    {
+      "episode_id": "B1__H1__P01_slow_triangle__R03",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.003743291144823116
+    },
+    {
+      "episode_id": "B1__H1__P02_multisine__R01",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.004948783550544725
+    },
+    {
+      "episode_id": "B1__H1__P02_multisine__R02",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.004955612108547642
+    },
+    {
+      "episode_id": "B1__H1__P02_multisine__R03",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.004991801976241861
+    },
+    {
+      "episode_id": "B1__H1__P03_smooth_levels__R01",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.027547545235696233
+    },
+    {
+      "episode_id": "B1__H1__P03_smooth_levels__R02",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.028039427573632956
+    },
+    {
+      "episode_id": "B1__H1__P03_smooth_levels__R03",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.028148513294541034
+    },
+    {
+      "episode_id": "B1__H1__P06_heldout_composite__R01",
+      "fixture": "B1",
+      "split": "held_out",
+      "rmse_rad": 0.007975651040747279
+    },
+    {
+      "episode_id": "B1__H1__P06_heldout_composite__R02",
+      "fixture": "B1",
+      "split": "held_out",
+      "rmse_rad": 0.008492903856722387
+    },
+    {
+      "episode_id": "B1__H1__P06_heldout_composite__R03",
+      "fixture": "B1",
+      "split": "held_out",
+      "rmse_rad": 0.00904996348545965
+    },
+    {
+      "episode_id": "B1__H1__P06_heldout_composite__R04",
+      "fixture": "B1",
+      "split": "held_out",
+      "rmse_rad": 0.00894804951430231
+    },
+    {
+      "episode_id": "B1__H1__P06_heldout_composite__R05",
+      "fixture": "B1",
+      "split": "held_out",
+      "rmse_rad": 0.00900016388167706
+    },
+    {
+      "episode_id": "B2__H1__P01_slow_triangle__R01",
+      "fixture": "B2",
+      "split": "calibration",
+      "rmse_rad": 0.0027107032866672902
+    },
+    {
+      "episode_id": "B2__H1__P01_slow_triangle__R02",
+      "fixture": "B2",
+      "split": "calibration",
+      "rmse_rad": 0.0043604086017152615
+    },
+    {
+      "episode_id": "B2__H1__P01_slow_triangle__R03",
+      "fixture": "B2",
+      "split": "calibration",
+      "rmse_rad": 0.003674957626484778
+    },
+    {
+      "episode_id": "B2__H1__P02_multisine__R01",
+      "fixture": "B2",
+      "split": "calibration",
+      "rmse_rad": 0.005665281815613288
+    },
+    {
+      "episode_id": "B2__H1__P02_multisine__R02",
+      "fixture": "B2",
+      "split": "calibration",
+      "rmse_rad": 0.005279926102699918
+    },
+    {
+      "episode_id": "B2__H1__P02_multisine__R03",
+      "fixture": "B2",
+      "split": "calibration",
+      "rmse_rad": 0.005132158816319872
+    },
+    {
+      "episode_id": "B2__H1__P03_smooth_levels__R01",
+      "fixture": "B2",
+      "split": "calibration",
+      "rmse_rad": 0.03111779472636623
+    },
+    {
+      "episode_id": "B2__H1__P03_smooth_levels__R02",
+      "fixture": "B2",
+      "split": "calibration",
+      "rmse_rad": 0.03156505449089217
+    },
+    {
+      "episode_id": "B2__H1__P03_smooth_levels__R03",
+      "fixture": "B2",
+      "split": "calibration",
+      "rmse_rad": 0.03134730682154173
+    },
+    {
+      "episode_id": "B2__H1__P04_chirp__R01",
+      "fixture": "B2",
+      "split": "model_selection",
+      "rmse_rad": 0.017524371369
+    },
+    {
+      "episode_id": "B2__H1__P04_chirp__R02",
+      "fixture": "B2",
+      "split": "model_selection",
+      "rmse_rad": 0.01794059367363488
+    },
+    {
+      "episode_id": "B2__H1__P04_chirp__R03",
+      "fixture": "B2",
+      "split": "model_selection",
+      "rmse_rad": 0.017887255738664565
+    },
+    {
+      "episode_id": "B2__H1__P05_wide_sine__R01",
+      "fixture": "B2",
+      "split": "model_selection",
+      "rmse_rad": 0.007821006558956444
+    },
+    {
+      "episode_id": "B2__H1__P05_wide_sine__R02",
+      "fixture": "B2",
+      "split": "model_selection",
+      "rmse_rad": 0.007739473891737867
+    },
+    {
+      "episode_id": "B2__H1__P05_wide_sine__R03",
+      "fixture": "B2",
+      "split": "model_selection",
+      "rmse_rad": 0.007518075589419229
+    },
+    {
+      "episode_id": "G1__H1__P06_heldout_composite__R01",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.02234452547130061
+    },
+    {
+      "episode_id": "G1__H1__P06_heldout_composite__R02",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.019450625048244588
+    },
+    {
+      "episode_id": "G1__H1__P06_heldout_composite__R03",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.018968257323112987
+    },
+    {
+      "episode_id": "G1__H1__P06_heldout_composite__R04",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.01864170899567813
+    },
+    {
+      "episode_id": "G1__H1__P06_heldout_composite__R05",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.01861635569714176
+    },
+    {
+      "episode_id": "G1__H1__P07_heldout_sine_hold__R01",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.04222960957919586
+    },
+    {
+      "episode_id": "G1__H1__P07_heldout_sine_hold__R02",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.04154415428776881
+    },
+    {
+      "episode_id": "G1__H1__P07_heldout_sine_hold__R03",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.04141135411446244
+    },
+    {
+      "episode_id": "G1__H1__P07_heldout_sine_hold__R04",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.04166402127634825
+    },
+    {
+      "episode_id": "G1__H1__P07_heldout_sine_hold__R05",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.04180865926406994
+    },
+    {
+      "episode_id": "M0__H1__P01_slow_triangle__R01",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.002365481696565356
+    },
+    {
+      "episode_id": "M0__H1__P01_slow_triangle__R02",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.004605642735581705
+    },
+    {
+      "episode_id": "M0__H1__P01_slow_triangle__R03",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.0041584743263665055
+    },
+    {
+      "episode_id": "M0__H1__P02_multisine__R01",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.004876658408281153
+    },
+    {
+      "episode_id": "M0__H1__P02_multisine__R02",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.004644872530484272
+    },
+    {
+      "episode_id": "M0__H1__P02_multisine__R03",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.004644936842087255
+    },
+    {
+      "episode_id": "M0__H1__P03_smooth_levels__R01",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.023099164700445582
+    },
+    {
+      "episode_id": "M0__H1__P03_smooth_levels__R02",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.02288118766225509
+    },
+    {
+      "episode_id": "M0__H1__P03_smooth_levels__R03",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.02254192441161818
+    }
+  ],
+  "equal_episode_rmse_rad": {
+    "calibration": 0.011945456613826169,
+    "model_selection": 0.012093049452668508,
+    "held_out": 0.023343066855748808
+  },
+  "fit_scope": "calibration only; no validation refitting"
+}

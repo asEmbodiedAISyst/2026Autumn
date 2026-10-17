@@ -1,0 +1,174 @@
+{
+  "model": "baseline MuJoCo response * exp(-s*delay) / (1 + s*tau)",
+  "dc_gain": 1.0,
+  "fit_domain": "complex sine frequency response, 0.1 to 5 Hz",
+  "fits": {
+    "weighted": {
+      "command_filter_tau_s": 0.02614500279618673,
+      "command_delay_s": 0.007412212693933643,
+      "baseline_complex_rmse": 0.4113647019217977,
+      "corrected_complex_rmse": 0.02690563948936101,
+      "complex_rmse_reduction_pct": 93.4594194971848,
+      "predicted_response": [
+        {
+          "frequency_hz": 0.1,
+          "predicted_gain_ratio": 0.9998520350417279,
+          "predicted_phase_lag_deg": 1.9216074251689514
+        },
+        {
+          "frequency_hz": 0.25,
+          "predicted_gain_ratio": 0.9991434448318224,
+          "predicted_phase_lag_deg": 4.718024370185017
+        },
+        {
+          "frequency_hz": 0.5,
+          "predicted_gain_ratio": 0.9966146363798607,
+          "predicted_phase_lag_deg": 9.398377510845231
+        },
+        {
+          "frequency_hz": 1.0,
+          "predicted_gain_ratio": 0.9866025962854502,
+          "predicted_phase_lag_deg": 18.715732646255223
+        },
+        {
+          "frequency_hz": 2.0,
+          "predicted_gain_ratio": 0.9491701981935308,
+          "predicted_phase_lag_deg": 36.95611558825767
+        },
+        {
+          "frequency_hz": 3.0,
+          "predicted_gain_ratio": 0.8948081679191627,
+          "predicted_phase_lag_deg": 54.39989542191624
+        },
+        {
+          "frequency_hz": 5.0,
+          "predicted_gain_ratio": 0.7668159305324961,
+          "predicted_phase_lag_deg": 86.3857341308749
+        }
+      ]
+    },
+    "light": {
+      "command_filter_tau_s": 0.02655380020394557,
+      "command_delay_s": 0.007689863256137903,
+      "baseline_complex_rmse": 0.41742039797922614,
+      "corrected_complex_rmse": 0.02906744202311037,
+      "complex_rmse_reduction_pct": 93.0364107351177,
+      "predicted_response": [
+        {
+          "frequency_hz": 0.1,
+          "predicted_gain_ratio": 0.9998488044391399,
+          "predicted_phase_lag_deg": 1.9449701010591625
+        },
+        {
+          "frequency_hz": 0.25,
+          "predicted_gain_ratio": 0.9991129884477576,
+          "predicted_phase_lag_deg": 4.77965764730776
+        },
+        {
+          "frequency_hz": 0.5,
+          "predicted_gain_ratio": 0.9964963864213412,
+          "predicted_phase_lag_deg": 9.52379778670717
+        },
+        {
+          "frequency_hz": 1.0,
+          "predicted_gain_ratio": 0.9861339696627588,
+          "predicted_phase_lag_deg": 18.96849631537752
+        },
+        {
+          "frequency_hz": 2.0,
+          "predicted_gain_ratio": 0.9474934868613268,
+          "predicted_phase_lag_deg": 37.44415987179318
+        },
+        {
+          "frequency_hz": 3.0,
+          "predicted_gain_ratio": 0.8916569116400915,
+          "predicted_phase_lag_deg": 55.08636812458004
+        },
+        {
+          "frequency_hz": 5.0,
+          "predicted_gain_ratio": 0.7610335015112519,
+          "predicted_phase_lag_deg": 87.35122632718183
+        }
+      ]
+    },
+    "shared": {
+      "command_filter_tau_s": 0.02635252329132279,
+      "command_delay_s": 0.007547465910410669,
+      "baseline_complex_rmse": 0.414403611613331,
+      "corrected_complex_rmse": 0.02824698276078661,
+      "complex_rmse_reduction_pct": 93.18370256214294,
+      "predicted_response": [
+        {
+          "frequency_hz": 0.1,
+          "predicted_gain_ratio": 0.9998498854958149,
+          "predicted_phase_lag_deg": 1.9339452472485
+        },
+        {
+          "frequency_hz": 0.25,
+          "predicted_gain_ratio": 0.9991300389057077,
+          "predicted_phase_lag_deg": 4.748842306694624
+        },
+        {
+          "frequency_hz": 0.5,
+          "predicted_gain_ratio": 0.9965614204152599,
+          "predicted_phase_lag_deg": 9.459824483233733
+        },
+        {
+          "frequency_hz": 1.0,
+          "predicted_gain_ratio": 0.9863960720803313,
+          "predicted_phase_lag_deg": 18.83715290293956
+        },
+        {
+          "frequency_hz": 2.0,
+          "predicted_gain_ratio": 0.9484341426612524,
+          "predicted_phase_lag_deg": 37.188251171226966
+        },
+        {
+          "frequency_hz": 3.0,
+          "predicted_gain_ratio": 0.8934180161691502,
+          "predicted_phase_lag_deg": 54.72601486401837
+        },
+        {
+          "frequency_hz": 5.0,
+          "predicted_gain_ratio": 0.7643660098678131,
+          "predicted_phase_lag_deg": 86.8515318333526
+        },
+        {
+          "frequency_hz": 0.1,
+          "predicted_gain_ratio": 0.9998509055361842,
+          "predicted_phase_lag_deg": 1.9325998289724402
+        },
+        {
+          "frequency_hz": 0.25,
+          "predicted_gain_ratio": 0.9991260917130452,
+          "predicted_phase_lag_deg": 4.748758187749102
+        },
+        {
+          "frequency_hz": 0.5,
+          "predicted_gain_ratio": 0.9965483943060275,
+          "predicted_phase_lag_deg": 9.462184924721713
+        },
+        {
+          "frequency_hz": 1.0,
+          "predicted_gain_ratio": 0.9863357024365446,
+          "predicted_phase_lag_deg": 18.846721534113566
+        },
+        {
+          "frequency_hz": 2.0,
+          "predicted_gain_ratio": 0.9482111350095402,
+          "predicted_phase_lag_deg": 37.21113498412009
+        },
+        {
+          "frequency_hz": 3.0,
+          "predicted_gain_ratio": 0.8930088757286352,
+          "predicted_phase_lag_deg": 54.75848527622446
+        },
+        {
+          "frequency_hz": 5.0,
+          "predicted_gain_ratio": 0.7634026734629855,
+          "predicted_phase_lag_deg": 86.88061485757335
+        }
+      ]
+    }
+  }
+}

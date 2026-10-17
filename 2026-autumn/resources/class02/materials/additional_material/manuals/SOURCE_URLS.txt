@@ -1,0 +1,23 @@
+Files and sources
+
+ROBOTIS_XC330-M288-T_eManual.pdf
+Source: https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/
+Type: Offline PDF rendered from the official web e-Manual on 2026-10-07.
+SHA-256: b7a82f9ee756d1c1816d9f216c9bf950df18fa24da2788bb5a2b4f7d0a7e7a88
+
+XC330-M288-T_eManual.html
+Source: https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/
+Type: Downloaded official HTML page on 2026-10-07.
+SHA-256: c70b353ef9ee9091b290b14c307210dad3075e281818975e999278e145fc644d
+
+RobStride_RS00_User_Manual_260713.pdf
+Source: https://github.com/RobStride/Product_Information/blob/main/Product%20Literature/RS00/RS00User%20Manual260713.pdf
+Type: Original PDF from the manufacturer product-information repository.
+Revision shown in filename: 260713.
+SHA-256: 47d0ae5c909df2d989b0485c870d36900b9e17c72e608efeb3e13b6e98953832
+
+RobStride_RS06_User_Manual_260713.pdf
+Source: https://github.com/RobStride/Product_Information/blob/main/Product%20Literature/RS06/RS06User%20Manual260713.pdf
+Type: Original PDF from the manufacturer product-information repository.
+Revision shown in filename: 260713.
+SHA-256: f2790b989d7aa3f1ecee321b0ca773db18f07a7b1da647b38cb714d361d32b2f

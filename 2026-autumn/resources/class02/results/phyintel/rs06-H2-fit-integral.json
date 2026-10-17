@@ -1,0 +1,384 @@
+{
+  "actuator": "rs06",
+  "controller": "H2",
+  "method": "integral",
+  "parameters": {
+    "armature": 0.04599954125963504,
+    "damping": 1.2722060777038249,
+    "frictionloss": 0.2595369972557893
+  },
+  "diagnostics": {
+    "success": true,
+    "message": "The unconstrained solution is optimal.",
+    "window_samples": 10,
+    "window_s": 0.2,
+    "step_samples": 2,
+    "row_count": 5766,
+    "episode_count": 27,
+    "rows_by_episode": {
+      "calibration__H2__B0__P01_slow_triangle__b0_h2_p01_p05_20260825T171956Z": 296,
+      "calibration__H2__B0__P02_multisine__b0_h2_p01_p05_20260825T171956Z": 264,
+      "calibration__H2__B0__P03_smooth_levels__b0_h2_p01_p05_20260825T171956Z": 85,
+      "calibration__H2__B0__P01_slow_triangle__b0_h2_p01_p05_20260825T172143Z": 296,
+      "calibration__H2__B0__P02_multisine__b0_h2_p01_p05_20260825T172143Z": 257,
+      "calibration__H2__B0__P03_smooth_levels__b0_h2_p01_p05_20260825T172143Z": 75,
+      "calibration__H2__B0__P01_slow_triangle__b0_h2_p01_p05_20260825T172354Z": 296,
+      "calibration__H2__B0__P02_multisine__b0_h2_p01_p05_20260825T172354Z": 270,
+      "calibration__H2__B0__P03_smooth_levels__b0_h2_p01_p05_20260825T172354Z": 80,
+      "calibration__H2__B1__P01_slow_triangle__b1_h2_p01_p06_20260825T161416Z": 296,
+      "calibration__H2__B1__P02_multisine__b1_h2_p01_p06_20260825T161416Z": 258,
+      "calibration__H2__B1__P03_smooth_levels__b1_h2_p01_p06_20260825T161416Z": 82,
+      "calibration__H2__B1__P01_slow_triangle__b1_h2_p01_p06_20260825T161638Z": 296,
+      "calibration__H2__B1__P02_multisine__b1_h2_p01_p06_20260825T161638Z": 256,
+      "calibration__H2__B1__P03_smooth_levels__b1_h2_p01_p06_20260825T161638Z": 87,
+      "calibration__H2__B1__P01_slow_triangle__b1_h2_p01_p06_20260825T162550Z": 296,
+      "calibration__H2__B1__P02_multisine__b1_h2_p01_p06_20260825T162550Z": 271,
+      "calibration__H2__B1__P03_smooth_levels__b1_h2_p01_p06_20260825T162550Z": 85,
+      "calibration__H2__M0__P01_slow_triangle__m0_h2_p01_p03_20260825T174355Z": 296,
+      "calibration__H2__M0__P02_multisine__m0_h2_p01_p03_20260825T174355Z": 262,
+      "calibration__H2__M0__P03_smooth_levels__m0_h2_p01_p03_20260825T174355Z": 85,
+      "calibration__H2__M0__P01_slow_triangle__m0_h2_p01_p03_20260825T174705Z": 296,
+      "calibration__H2__M0__P02_multisine__m0_h2_p01_p03_20260825T174705Z": 262,
+      "calibration__H2__M0__P03_smooth_levels__m0_h2_p01_p03_20260825T174705Z": 78,
+      "calibration__H2__M0__P01_slow_triangle__m0_h2_p01_p03_20260825T174915Z": 296,
+      "calibration__H2__M0__P02_multisine__m0_h2_p01_p03_20260825T174915Z": 264,
+      "calibration__H2__M0__P03_smooth_levels__m0_h2_p01_p03_20260825T174915Z": 81
+    },
+    "weighted_residual_rmse": 0.002296481706912237,
+    "normalized_condition_number": 2.5010049322725254,
+    "active_lower_bounds": [],
+    "active_upper_bounds": []
+  },
+  "frozen_evaluation": [
+    {
+      "episode_id": "calibration__H2__B0__P01_slow_triangle__b0_h2_p01_p05_20260825T171956Z",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.005651864366569848
+    },
+    {
+      "episode_id": "calibration__H2__B0__P02_multisine__b0_h2_p01_p05_20260825T171956Z",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.006114905254104009
+    },
+    {
+      "episode_id": "calibration__H2__B0__P03_smooth_levels__b0_h2_p01_p05_20260825T171956Z",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.01438981790885636
+    },
+    {
+      "episode_id": "model_selection__H2__B0__P04_chirp__b0_h2_p01_p05_20260825T171956Z",
+      "fixture": "B0",
+      "split": "model_selection",
+      "rmse_rad": 0.013071484096053061
+    },
+    {
+      "episode_id": "model_selection__H2__B0__P05_wide_sine__b0_h2_p01_p05_20260825T171956Z",
+      "fixture": "B0",
+      "split": "model_selection",
+      "rmse_rad": 0.010983159262043074
+    },
+    {
+      "episode_id": "calibration__H2__B0__P01_slow_triangle__b0_h2_p01_p05_20260825T172143Z",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.0056260948126881484
+    },
+    {
+      "episode_id": "calibration__H2__B0__P02_multisine__b0_h2_p01_p05_20260825T172143Z",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.006045570203396021
+    },
+    {
+      "episode_id": "calibration__H2__B0__P03_smooth_levels__b0_h2_p01_p05_20260825T172143Z",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.014201279832722189
+    },
+    {
+      "episode_id": "model_selection__H2__B0__P04_chirp__b0_h2_p01_p05_20260825T172143Z",
+      "fixture": "B0",
+      "split": "model_selection",
+      "rmse_rad": 0.013076033619500946
+    },
+    {
+      "episode_id": "model_selection__H2__B0__P05_wide_sine__b0_h2_p01_p05_20260825T172143Z",
+      "fixture": "B0",
+      "split": "model_selection",
+      "rmse_rad": 0.010983557502307445
+    },
+    {
+      "episode_id": "calibration__H2__B0__P01_slow_triangle__b0_h2_p01_p05_20260825T172354Z",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.0056308225600943665
+    },
+    {
+      "episode_id": "calibration__H2__B0__P02_multisine__b0_h2_p01_p05_20260825T172354Z",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.006044651403516949
+    },
+    {
+      "episode_id": "calibration__H2__B0__P03_smooth_levels__b0_h2_p01_p05_20260825T172354Z",
+      "fixture": "B0",
+      "split": "calibration",
+      "rmse_rad": 0.014169766143331848
+    },
+    {
+      "episode_id": "model_selection__H2__B0__P04_chirp__b0_h2_p01_p05_20260825T172354Z",
+      "fixture": "B0",
+      "split": "model_selection",
+      "rmse_rad": 0.012986877909832146
+    },
+    {
+      "episode_id": "model_selection__H2__B0__P05_wide_sine__b0_h2_p01_p05_20260825T172354Z",
+      "fixture": "B0",
+      "split": "model_selection",
+      "rmse_rad": 0.011004140641016985
+    },
+    {
+      "episode_id": "calibration__H2__B1__P01_slow_triangle__b1_h2_p01_p06_20260825T161416Z",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.005565700154965017
+    },
+    {
+      "episode_id": "calibration__H2__B1__P02_multisine__b1_h2_p01_p06_20260825T161416Z",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.006322274652981988
+    },
+    {
+      "episode_id": "calibration__H2__B1__P03_smooth_levels__b1_h2_p01_p06_20260825T161416Z",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.014774435448554089
+    },
+    {
+      "episode_id": "held_out__H2__B1__P06_heldout_composite__b1_h2_p01_p06_20260825T161416Z",
+      "fixture": "B1",
+      "split": "held_out",
+      "rmse_rad": 0.00924208813696716
+    },
+    {
+      "episode_id": "model_selection__H2__B1__P04_chirp__b1_h2_p01_p06_20260825T161416Z",
+      "fixture": "B1",
+      "split": "model_selection",
+      "rmse_rad": 0.013089174448478335
+    },
+    {
+      "episode_id": "model_selection__H2__B1__P05_wide_sine__b1_h2_p01_p06_20260825T161416Z",
+      "fixture": "B1",
+      "split": "model_selection",
+      "rmse_rad": 0.011013251233252386
+    },
+    {
+      "episode_id": "calibration__H2__B1__P01_slow_triangle__b1_h2_p01_p06_20260825T161638Z",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.005512718567699973
+    },
+    {
+      "episode_id": "calibration__H2__B1__P02_multisine__b1_h2_p01_p06_20260825T161638Z",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.006240272266495777
+    },
+    {
+      "episode_id": "calibration__H2__B1__P03_smooth_levels__b1_h2_p01_p06_20260825T161638Z",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.01458842572455731
+    },
+    {
+      "episode_id": "held_out__H2__B1__P06_heldout_composite__b1_h2_p01_p06_20260825T161638Z",
+      "fixture": "B1",
+      "split": "held_out",
+      "rmse_rad": 0.009175019903112853
+    },
+    {
+      "episode_id": "model_selection__H2__B1__P04_chirp__b1_h2_p01_p06_20260825T161638Z",
+      "fixture": "B1",
+      "split": "model_selection",
+      "rmse_rad": 0.012959794320220356
+    },
+    {
+      "episode_id": "model_selection__H2__B1__P05_wide_sine__b1_h2_p01_p06_20260825T161638Z",
+      "fixture": "B1",
+      "split": "model_selection",
+      "rmse_rad": 0.010979254385314724
+    },
+    {
+      "episode_id": "calibration__H2__B1__P01_slow_triangle__b1_h2_p01_p06_20260825T162550Z",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.0055337316318842256
+    },
+    {
+      "episode_id": "calibration__H2__B1__P02_multisine__b1_h2_p01_p06_20260825T162550Z",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.006286949762998904
+    },
+    {
+      "episode_id": "calibration__H2__B1__P03_smooth_levels__b1_h2_p01_p06_20260825T162550Z",
+      "fixture": "B1",
+      "split": "calibration",
+      "rmse_rad": 0.014800399794083255
+    },
+    {
+      "episode_id": "held_out__H2__B1__P06_heldout_composite__b1_h2_p01_p06_20260825T162550Z",
+      "fixture": "B1",
+      "split": "held_out",
+      "rmse_rad": 0.009144688589454528
+    },
+    {
+      "episode_id": "model_selection__H2__B1__P04_chirp__b1_h2_p01_p06_20260825T162550Z",
+      "fixture": "B1",
+      "split": "model_selection",
+      "rmse_rad": 0.012905312682179496
+    },
+    {
+      "episode_id": "model_selection__H2__B1__P05_wide_sine__b1_h2_p01_p06_20260825T162550Z",
+      "fixture": "B1",
+      "split": "model_selection",
+      "rmse_rad": 0.011088388753406783
+    },
+    {
+      "episode_id": "held_out__H2__B1__P06_heldout_composite__b1_h2_p06_p06_20260825T163132Z",
+      "fixture": "B1",
+      "split": "held_out",
+      "rmse_rad": 0.009197444986643594
+    },
+    {
+      "episode_id": "held_out__H2__B1__P06_heldout_composite__b1_h2_p06_p06_20260825T163227Z",
+      "fixture": "B1",
+      "split": "held_out",
+      "rmse_rad": 0.00921111193653875
+    },
+    {
+      "episode_id": "held_out__H2__G1__P06_heldout_composite__g1_h2_p06_p07_20260825T164903Z",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.008711878304383499
+    },
+    {
+      "episode_id": "held_out__H2__G1__P07_heldout_sine_hold__g1_h2_p06_p07_20260825T164903Z",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.009248665523857395
+    },
+    {
+      "episode_id": "held_out__H2__G1__P06_heldout_composite__g1_h2_p06_p07_20260825T165001Z",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.008673661897200043
+    },
+    {
+      "episode_id": "held_out__H2__G1__P07_heldout_sine_hold__g1_h2_p06_p07_20260825T165001Z",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.00918749019408163
+    },
+    {
+      "episode_id": "held_out__H2__G1__P06_heldout_composite__g1_h2_p06_p07_20260825T165103Z",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.008725048371589413
+    },
+    {
+      "episode_id": "held_out__H2__G1__P07_heldout_sine_hold__g1_h2_p06_p07_20260825T165103Z",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.009065809820265986
+    },
+    {
+      "episode_id": "held_out__H2__G1__P06_heldout_composite__g1_h2_p06_p07_20260825T165201Z",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.008846256307881287
+    },
+    {
+      "episode_id": "held_out__H2__G1__P07_heldout_sine_hold__g1_h2_p06_p07_20260825T165201Z",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.009125148107450388
+    },
+    {
+      "episode_id": "held_out__H2__G1__P06_heldout_composite__g1_h2_p06_p07_20260825T165257Z",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.008783459337373345
+    },
+    {
+      "episode_id": "held_out__H2__G1__P07_heldout_sine_hold__g1_h2_p06_p07_20260825T165257Z",
+      "fixture": "G1",
+      "split": "held_out",
+      "rmse_rad": 0.009215078749834012
+    },
+    {
+      "episode_id": "calibration__H2__M0__P01_slow_triangle__m0_h2_p01_p03_20260825T174355Z",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.005337969684679895
+    },
+    {
+      "episode_id": "calibration__H2__M0__P02_multisine__m0_h2_p01_p03_20260825T174355Z",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.005754951698736486
+    },
+    {
+      "episode_id": "calibration__H2__M0__P03_smooth_levels__m0_h2_p01_p03_20260825T174355Z",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.014500266107519104
+    },
+    {
+      "episode_id": "calibration__H2__M0__P01_slow_triangle__m0_h2_p01_p03_20260825T174705Z",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.005350016850000812
+    },
+    {
+      "episode_id": "calibration__H2__M0__P02_multisine__m0_h2_p01_p03_20260825T174705Z",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.005781297059345018
+    },
+    {
+      "episode_id": "calibration__H2__M0__P03_smooth_levels__m0_h2_p01_p03_20260825T174705Z",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.01413069683357066
+    },
+    {
+      "episode_id": "calibration__H2__M0__P01_slow_triangle__m0_h2_p01_p03_20260825T174915Z",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.005347697950784131
+    },
+    {
+      "episode_id": "calibration__H2__M0__P02_multisine__m0_h2_p01_p03_20260825T174915Z",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.005760116297044525
+    },
+    {
+      "episode_id": "calibration__H2__M0__P03_smooth_levels__m0_h2_p01_p03_20260825T174915Z",
+      "fixture": "M0",
+      "split": "calibration",
+      "rmse_rad": 0.014139568936913465
+    }
+  ],
+  "equal_episode_rmse_rad": {
+    "calibration": 0.008651935626225717,
+    "model_selection": 0.012011702404467145,
+    "held_out": 0.009036856677775592
+  },
+  "fit_scope": "calibration only; no validation refitting"
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "moving_mass_scale": 1.0,
+    "armature_scale": 1.0,
+    "chirp_rmse_deg": 7.0796863456307735
+  },
+  {
+    "moving_mass_scale": 2.0,
+    "armature_scale": 1.0,
+    "chirp_rmse_deg": 7.086145638265618
+  },
+  {
+    "moving_mass_scale": 1.0,
+    "armature_scale": 2.0,
+    "chirp_rmse_deg": 7.164635971149621
+  },
+  {
+    "moving_mass_scale": 1.0,
+    "armature_scale": 0.5,
+    "chirp_rmse_deg": 6.994075532767094
+  }
+]
