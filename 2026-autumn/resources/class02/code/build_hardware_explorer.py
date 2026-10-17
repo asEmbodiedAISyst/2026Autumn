@@ -40,7 +40,7 @@ table{border-collapse:collapse;width:100%;font-size:14px}th,td{text-align:left;p
 <h2 id="channelHeading">Present Velocity</h2><canvas id="secondary" role="img" aria-label="Selected recorded telemetry channel"></canvas>
 <h2>Decode the selected sample</h2><table><thead><tr><th>Field</th><th>Raw value</th><th>Engineering interpretation</th></tr></thead><tbody id="sampleTable"></tbody></table>
 <p class="note">Position uses count 2,048 as the declared zero. Values are already signed. Present Current is reported input-supply current; it is not calibrated output torque. Host receive-end time is not an independent physical sampling timestamp. Curves connect original samples; no smoothing or simulated motion is added.</p>
-<footer>Source: M0__H2__P01_slow_triangle__R01, 1 September 2026. Figure/data generation is documented in media/FIGURE-CODE.md. Classroom static figures provide the same required evidence.</footer></main>
+<footer>Source: M0__H2__P01_slow_triangle__R01, 1 September 2026. Classroom static figures provide the same required evidence.</footer></main>
 <script id="record" type="application/json">__RECORD__</script>
 <script>
 'use strict';

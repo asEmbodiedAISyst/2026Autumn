@@ -10,10 +10,6 @@
   },
   "files": [
     {
-      "path": "FIGURE-CODE.md",
-      "sha256": "af7444937b0fc760afd6ea3c75a49a869f49012550943e01f60f3623efa76599"
-    },
-    {
       "path": "action-chunks-classroom.pdf",
       "sha256": "00e5f93f710293d006809360b0af6e99a504deeee3db4b3540f1ed34f7a5915e"
     },
@@ -36,10 +32,6 @@
     {
       "path": "episode-splits-classroom.svg",
       "sha256": "b5694a160e46131a0947a55aa0c5b0f0d74a88617dd2aa6bc264f9bfa802aaa0"
-    },
-    {
-      "path": "figure-source/README.md",
-      "sha256": "4c2b8050f4cf7dc0c756db7abbf272f1ebf81011935b07b96da8043a81de273e"
     },
     {
       "path": "figure-source/data/pilot-nominal.png",

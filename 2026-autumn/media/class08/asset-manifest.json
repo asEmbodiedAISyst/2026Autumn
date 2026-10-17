@@ -5,10 +5,6 @@
   "published_figure_files_unchanged": true,
   "files": [
     {
-      "path": "FIGURE-CODE.md",
-      "sha256": "f54cf99fee6e064e59b4775dcfa2950530b5c4d3751b734fec7349979e9ab647"
-    },
-    {
       "path": "arm-poses-classroom.pdf",
       "sha256": "25538db96190a7358d112587d5d6d085f922d4aaf471d63844c27acf6210846c"
     },
@@ -43,10 +39,6 @@
     {
       "path": "control-loop-classroom.svg",
       "sha256": "0e158bd9b4e5c60823474dbb8650370ca8b654e56ffe3f77a6eb1ba3d556b5cf"
-    },
-    {
-      "path": "figure-source/README.md",
-      "sha256": "f1153d43cc4a686c860a89c8d80fcec622fd8bfe1b6521c62403e65d4ad5be6e"
     },
     {
       "path": "figure-source/data/arm-home.png",

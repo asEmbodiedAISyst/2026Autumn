@@ -1,4 +1,4 @@
-"""Eight paper and classroom figure sets. See ../FIGURE-CODE.md for reproduction."""
+"""Eight paper and classroom figure sets."""
 import argparse, hashlib, json, os, tempfile
 from pathlib import Path
 os.environ.setdefault('MPLCONFIGDIR',str(Path(tempfile.gettempdir())/'class06-matplotlib'))

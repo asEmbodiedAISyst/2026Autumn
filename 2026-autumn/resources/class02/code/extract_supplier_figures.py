@@ -1,5 +1,5 @@
 """Reproduce source illustrations without changing source labels.
-Requires pypdf, Pillow and pdftoppm; uses source URLs/hashes documented in media/SUPPLIER-SOURCES.md.
+Requires pypdf, Pillow and pdftoppm; reads the supplied original images and PDFs.
 Run in a Python environment with source/requirements-source-extraction.txt. This extracts source material, not new authored figures.
 """
 from pathlib import Path
@@ -8,7 +8,7 @@ from PIL import Image
 import subprocess, hashlib, json, os
 import argparse
 parser=argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--sources',type=Path,required=True,help='Directory containing the original source files listed in SUPPLIER-SOURCES.md')
+parser.add_argument('--sources',type=Path,required=True,help='Directory containing the original ROBOTIS controller images and LEAP/ALOHA paper PDFs')
 parser.add_argument('--output',type=Path,required=True,help='Destination for extracted PNGs and receipt')
 parser.add_argument('--fontconfig',type=Path,required=True,help='A valid writable-cache fontconfig configuration for pdftoppm')
 args=parser.parse_args()

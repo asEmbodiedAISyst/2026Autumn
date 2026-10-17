@@ -182,7 +182,7 @@ A command states what the system should do. A measurement is evidence of what a 
 
 ![Measured goal, trajectory and position during an XC330 reversal](../.gitbook/assets/class02/02-command-reference-response.png)
 
-*Figure 1. A saved XC330 episode separates the host goal, device trajectory and reported position. The plotted signals belong to one recorded motor-only run. The reversal makes their distinct meanings visible; it does not isolate the effect of changing controller mode. Reproduction code and source files are documented in [FIGURE-CODE.md](../resources/class02/media/FIGURE-CODE.md).*
+*Figure 1. A saved XC330 episode separates the host goal, device trajectory and reported position. The plotted signals belong to one recorded motor-only run. The reversal makes their distinct meanings visible; it does not isolate the effect of changing controller mode.*
 
 In that record, row 400 reports goal 2330 counts, trajectory 2337 counts and position 2347 counts. Relative to the declared 2048-count reference, these are approximately 24.785, 25.400 and 26.279 degrees. The goal curve is readback of the device's goal register, not an independent timestamp of host transmission. “Trajectory” identifies the device's internal reference; “Present Position” identifies returned state information. Neither becomes interchangeable with the host goal simply because all three use position units.
 
@@ -225,7 +225,7 @@ The XC330 and XL330 are complete small actuation modules. Their integrated elect
 
 ![XC330 physical device and matched model](../.gitbook/assets/class02/01-actuator-and-geometry.png)
 
-*Figure 2. The course XC330 device and its matched geometric representation. Identify the output, fixed housing, mounting and connectors. Geometry helps locate the component in a robot model; it does not establish the internal control law or dynamic parameters. This mounting illustration is not the M0 experiment configuration: Figure 1’s M0 record has no external moving link or payload. Original course photographs and MiSans-labelled preparation code are recorded in [FIGURE-CODE.md](../resources/class02/media/FIGURE-CODE.md).*
+*Figure 2. The course XC330 device and its matched geometric representation. Identify the output, fixed housing, mounting and connectors. Geometry helps locate the component in a robot model; it does not establish the internal control law or dynamic parameters. This mounting illustration is not the M0 experiment configuration: Figure 1’s M0 record has no external moving link or payload. The photograph and CAD view are supplied course materials.*
 
 As you inspect the unpowered XC330 and XL330 passed around the room, relate the visible parts to the functions introduced earlier. The output and mounting are accessible; the internal motor, gear train, sensor and electronics are enclosed. Two bus connectors allow modules to share a daisy-chain arrangement. Their presence does not make the power source or host communication interface unnecessary.
 
@@ -265,7 +265,7 @@ The two quoted torque/speed values also describe different conditions. Stall tor
 
 ![Official XC330 performance curve](../.gitbook/assets/class02/source-performance-curve.png)
 
-*Figure 3. ROBOTIS performance data retained with its original axes and typography. Speed uses the black left scale, efficiency the green left scale, and current the magenta right scale. Follow one torque value vertically to read a corresponding operating point. The crop does not print the supply/test conditions; consult the model documentation and retain any unspecified conditions. It does not establish a continuous rating. Source provenance is recorded in [FIGURE-CODE.md](../resources/class02/media/FIGURE-CODE.md).*
+*Figure 3. ROBOTIS performance data retained with its original axes and typography. Speed uses the black left scale, efficiency the green left scale, and current the magenta right scale. Follow one torque value vertically to read a corresponding operating point. The crop does not print the supply/test conditions; consult the model documentation and retain any unspecified conditions. It does not establish a continuous rating. Source: [ROBOTIS XC330-M288-T model documentation](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/).*
 
 **Comparison question.** For a finger-mounted mechanism, why might the XL330's lower mass matter? For a loaded joint, why might the XC330's higher quoted stall torque matter? What further information would you need before selecting either for continuous operation?
 

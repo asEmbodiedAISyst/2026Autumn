@@ -13,7 +13,7 @@ The supplied record contains **2,601 telemetry rows** and **1,301 command rows**
 
 ![Measured goal, internal reference and position over the episode and first reversal](media/telemetry-motion-v08-classroom.png)
 
-*Supplement Figure S1. All 2,601 readings in the supplied episode, with a fixed 1.1–2.1 s first-reversal window on the right. Goal Position is a register readback; the internal reference is Position Trajectory; the measured output is Present Position. All positions use raw count 2,048 as the declared zero. The dot marks original row 400. Lines connect observed samples; no filtering or new samples are added. [Figure source and reproduction](media/FIGURE-CODE.md#telemetry-motion).*
+*Supplement Figure S1. All 2,601 readings in the supplied episode, with a fixed 1.1–2.1 s first-reversal window on the right. Goal Position is a register readback; the internal reference is Position Trajectory; the measured output is Present Position. All positions use raw count 2,048 as the declared zero. The dot marks original row 400. Lines connect observed samples; no filtering or new samples are added.*
 
 **Read before calculating:** find the direction reversal, then compare the three curves around it. Which register describes what was requested? Which describes the internal trajectory? Which reports the moving output? Their separation during a reversal is more informative than only checking the final angle.
 
@@ -55,7 +55,7 @@ To express angular velocity in SI units, multiply r/min by $$\frac{2\pi}{60}$$. 
 
 ![Input-current and PWM telemetry from the supplied episode](media/telemetry-electrical-v08-classroom.png)
 
-*Supplement Figure S2. Reported input current and PWM from all rows of the same record. The signs and documented unit conversions are preserved. No torque conversion is applied. [Figure source and reproduction](media/FIGURE-CODE.md#telemetry-electrical).*
+*Supplement Figure S2. Reported input current and PWM from all rows of the same record. The signs and documented unit conversions are preserved. No torque conversion is applied.*
 
 ---
 
@@ -67,7 +67,7 @@ This distinction matters when interpreting a stalled or slow response. Several c
 
 ![Input voltage and internal temperature through the same episode](media/telemetry-environment-v08-classroom.png)
 
-*Supplement Figure S3. Reported supply voltage and internal temperature, with explicit expanded vertical scales. All readings are retained and displayed as quantized values. A short record provides operating context, not long-duration thermal qualification. [Figure source and reproduction](media/FIGURE-CODE.md#telemetry-environment).*
+*Supplement Figure S3. Reported supply voltage and internal temperature, with explicit expanded vertical scales. All readings are retained and displayed as quantized values. A short record provides operating context, not long-duration thermal qualification.*
 
 The voltage readings range from 5.0 to 5.1 V, while reported temperature spans 22–24 °C in this record. The axis limits are visible: the figure is intended to show small reported changes. It does not establish how the device would behave under a longer, heavier or different experiment.
 

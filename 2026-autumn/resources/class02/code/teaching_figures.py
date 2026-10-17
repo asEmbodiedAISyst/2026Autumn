@@ -1,6 +1,6 @@
 """Teaching figures: declared schematics and exact recorded-data selections.
 Run from a class package: python code/teaching_figures.py classroom (or paper).
-Source data selection and interpretation are documented in media/FIGURE-CODE.md.
+Uses the retained source data and explicit selections below.
 """
 from pathlib import Path
 import sys,json

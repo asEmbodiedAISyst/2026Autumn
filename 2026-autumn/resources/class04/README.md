@@ -29,4 +29,4 @@ python3.12 -m venv .venv-analysis
 python -m pip install -r code/requirements-analysis.txt
 ```
 
-Windows: use `py -3.12 -m venv .venv-analysis` and `.venv-analysis\Scripts\python.exe` instead of `python`. The metric-only `--no-plot` route has no third-party dependencies. Native replay has its own requirements and environment described in its guide. [Figure sources and regeneration](../../media/class04/FIGURE-CODE.md) are supplied for all figures.
+Windows: use `py -3.12 -m venv .venv-analysis` and `.venv-analysis\Scripts\python.exe` instead of `python`. The metric-only `--no-plot` route has no third-party dependencies. Native replay has its own requirements and environment described in its guide.

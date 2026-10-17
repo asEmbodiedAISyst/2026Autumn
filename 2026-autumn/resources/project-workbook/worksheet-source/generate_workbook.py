@@ -1,7 +1,6 @@
 """Generate six course canvases and two schematic figures using genuine MiSans.
 
 All diagrams are schematic: this program runs no robot, simulation or training.
-See ../FIGURE-CODE.md for input/output mapping and isolated-environment commands.
 """
 import argparse, hashlib, json, subprocess, textwrap
 from pathlib import Path
