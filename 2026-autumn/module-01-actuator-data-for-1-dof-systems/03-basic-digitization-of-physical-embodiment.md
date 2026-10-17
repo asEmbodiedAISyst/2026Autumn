@@ -50,7 +50,7 @@ A photograph records appearance from a viewpoint. CAD describes designed dimensi
 
 Two models can produce almost identical pictures while having different joint axes or inertias. Camera zoom can conceal an incorrect length scale. Conversely, a simple link and two primitive payload shapes may preserve the properties needed for an isolated joint experiment better than a visually detailed model with incorrect physical parameters.
 
-Use these working distinctions throughout the course:
+Use these working distinctions throughout the course. They describe the correspondence claim we will test; terminology varies across the literature, so these are course definitions rather than a universal classification:
 
 | Representation | Claim being made |
 |---|---|
@@ -110,7 +110,7 @@ The source XML also retains approximately 0.11859 kg on its fixed `XC330-M288-T`
 
 *Figure 3. B0, B1 and B2 place equal 44 g assemblies at symmetric radii. G1 places them on one side. Each complete assembly includes its pin. These are declared positions in the 110 g teaching family.*
 
-The fixture names identify model configurations: M0 has no external link/payload load; B0, B1 and B2 use symmetric payload positions; G1 places both assemblies on the same side.
+The fixture names identify model configurations: M0 has no external link/payload load; B0, B1 and B2 use symmetric payload positions; G1 places both assemblies on the same side. The executable XC330 M0 retains a tiny dummy moving body ($$10^{-6}$$ kg and approximately $$10^{-12}$$ kg m² joint inertia). It keeps the unloaded structural model executable; it is not a measured rotor/gearbox inertia. The physical actuator still has rotating internal parts, so use M0 here to inspect structure rather than predict unloaded acceleration.
 
 Compare B0 at ±60 mm with B2 at ±100 mm. Convert to SI units before calculating:
 
@@ -198,7 +198,7 @@ Class 03 prepares a structurally inspectable representation and specifies this t
 
 CAD contains parts, dimensions, assembly relationships and material assumptions. Geometry assets contain exported surfaces and their scale. A robot description contains mechanical structure and parameter declarations. These layers remain conceptually distinct even when an exporter writes them together.
 
-URDF describes robot links and joints; MJCF is MuJoCo's native model description. We use MJCF for the executable example. In MJCF, nested body elements establish the body tree, and joints introduce relative degrees of freedom. A child without joints remains fixed to its parent. See the official [MuJoCo modeling guide](https://mujoco.readthedocs.io/en/3.3.7/modeling.html).
+Robot description formats carry selected design information into simulation; the design-to-learning connection is developed by Qiu, Wan, and Song (2023). URDF describes robot links and joints; MJCF is MuJoCo's native model description. We use MJCF for the executable example. In MJCF, nested body elements establish the body tree, and joints introduce relative degrees of freedom. A child without joints remains fixed to its parent (MuJoCo developers n.d.-a). See the official [MuJoCo modeling guide](https://mujoco.readthedocs.io/en/3.3.7/modeling.html).
 
 For our assembly, anchor the housing, introduce the link's hinge, and attach the payload bodies rigidly. Inspect the zero pose and axis. A visually convincing export with an unintended joint represents a different mechanism.
 
@@ -226,7 +226,15 @@ This is an explanatory excerpt: the ellipses omit attributes, so load the comple
 
 *Figure 6. The same B2 attachment point at zero and +30° joint positions. The plot shows displacement from the joint in the world x–z plane; the table reports absolute world coordinates. The 7 mm axial offset is outside this projection. These are declared model coordinates, verified against MuJoCo, rather than hardware measurements.*
 
-**Calculate and check the world coordinates.** Subtract the joint's Link-frame position before rotating; then add the joint's world position. For this model, that gives
+**Calculate and check the world coordinates.** First state the point transformation used throughout rigid-body modeling:
+
+$$
+{}^A p_P={}^A R_B\,{}^B p_P+{}^A p_{O_B}.
+$$
+
+Here the superscript names the frame expressing the coordinates. The matrix $${}^A R_B$$ rotates coordinate components from frame B to frame A, and $${}^A p_{O_B}$$ is the position of B's origin expressed in A. A point needs both rotation and translation. An axis direction uses rotation alone: shifting the origin does not change a direction. This is a three-dimensional point transformation; it is not a six-dimensional spatial-motion transform (Featherstone 2008).
+
+In the B2 example, rotate the displacement from J to P, not the displacement from the Link origin to P. Subtract the joint's Link-frame position before rotating; then add the joint's world position. The Link axes align with the world at zero, so this gives
 
 $$
 {}^W p_P(q)=
@@ -247,7 +255,16 @@ The y value includes the −0.007 m offset from J to P: 0.0035 − 0.007 = −0.
 
 **Convert units at the correct boundary.** The CAD distance 100 mm becomes 0.100 m in the body position. `scale="0.001 0.001 0.001"` scales the mesh vertices; it does **not** scale `body pos`, `joint pos` or inertial positions for you. Writing `pos="100 0 0"` would put the attachment 100 m away. Convert display degrees to radians before assigning `data.qpos`; `compiler angle="radian"` governs angle-valued XML attributes, not a viewer's preferred display units. The joint axis [0, 1, 0] is a direction and has no length unit.
 
-Compare the coordinate calculation with the supplied result above. The important check is the frame transformation and its agreement with the declared model.
+The same quantities have explicit locations in the model and simulation data:
+
+| Geometric quantity | MuJoCo field | Frame and meaning |
+|---|---|---|
+| P relative to the Link origin | `model.body_pos[pin_id]` | Parent Link frame; declared Pin_1 body origin |
+| J relative to the Link origin | `model.jnt_pos[joint_id]` | Link frame; declared hinge location |
+| J in the world | `data.xanchor[joint_id]` | World frame; computed joint anchor |
+| P in the world | `data.xpos[pin_id]` | World frame; computed Pin_1 body origin |
+
+Here `pin_id` identifies `Pin_1`, and `joint_id` identifies `actuator_joint`. The computed fields are read after forward kinematics at the stated joint angle. Compare them with the coordinate calculation above; agreement checks the transformation implemented by this model, while physical correspondence still requires checking the built assembly.
 
 **Checkpoint:** Why can P keep the same coordinates in `Link` while moving in the world? If the mesh looks correct but the payload is far away, which position and unit declarations should you check?
 
@@ -312,13 +329,13 @@ mujoco.mj_forward(model, data)
 print(float(data.qfrc_actuator[0]))  # 0.05 N m
 ```
 
-The prepared RS06 position actuator instead uses $$K_p=50$$ and $$K_d=3.38$$. With reference $$q_r=0.30$$ rad, $$q=0.20$$ rad and $$\dot q=0.40$$ rad/s, its unsaturated model effort is
+The prepared RS06 position actuator instead uses $$K_p=50$$ N m/rad and $$K_d=3.38$$ N m s/rad. These are physical gains in the simulation, separate from hardware gain-register values. Its `kv` term damps joint velocity; this single position actuator has no independently commanded velocity reference. With reference $$q_r=0.30$$ rad, $$q=0.20$$ rad and $$\dot q=0.40$$ rad/s, its unsaturated model effort is
 
 $$
 \tau_a=50(0.30-0.20)-3.38(0.40)=3.648\ \mathrm{N\,m}.
 $$
 
-Here 0.30 is a position reference, not a torque. Reading `qfrc_actuator` reports the simulation's resulting generalized effort. The motor and position-actuator semantics are documented in MuJoCo's [XML reference](https://mujoco.readthedocs.io/en/3.3.7/XMLreference.html#actuator-motor). An outer position controller can be added around the XC330 torque channel later; until then, writing an angle into it does not reproduce a position servo.
+Here 0.30 is a position reference, not a torque. Reading `qfrc_actuator` reports the simulation's resulting generalized effort. The [motor](https://mujoco.readthedocs.io/en/3.3.7/XMLreference.html#actuator-motor) and [position-actuator](https://mujoco.readthedocs.io/en/3.3.7/XMLreference.html#actuator-position) semantics are documented separately in MuJoCo's XML reference (MuJoCo developers n.d.-b). An outer position controller can be added around the XC330 torque channel later; until then, writing an angle into it does not reproduce a position servo.
 
 **Checkpoint:** Which input would you write to request 0.05 N m in the XC330 core? Why can the same number mean something different in the RS06 model? Which physical controller and fixture would a response-validation experiment have to match?
 
@@ -346,7 +363,7 @@ Open the [RS06 motor STEP](../resources/class03/preparation/demonstration/rs06/R
 
 ![RS06 mechanical reference](../media/class03/RS06_outline_and_mounting_dimensions.png)
 
-*Figure 9a. Use the shaft centreline and mounting interfaces to orient the RS06 motor reference. Drawing values are manufacturer nominal values, not measurements of the available unit.*
+*Figure 9a. Use the shaft centreline and mounting interfaces to orient the RS06 motor reference. Drawing values are manufacturer nominal values, not measurements of the available unit. Source: RobStride RS06 documentation; see the supplied [user manual](../resources/class03/preparation/demonstration/rs06/RS06_User_Manual_260713.pdf) and [original-brand product files](https://github.com/RobStride/Product_Information).*
 
 Keep manufacturer values, CAD estimates and actual measurements in separate ledger entries. The motor STEP is a component reference rather than a complete editable fixture assembly. Use the prepared fixture/export records to inspect the assembled mechanism.
 
@@ -414,14 +431,21 @@ Load the [prepared RS06 B1 model](../resources/class03/preparation/rs06_fixtures
 
 *Figure 11. Compare the loaded RS06 configurations with Figure 9b: check the link, end-payload arrangement and one-hinge structure. A changed camera view does not establish a changed mechanism.*
 
-Use the RS06 figure and inspection table to identify the local joint axis, range and moving mass. Compare gravity bias with gravity enabled and disabled at the same pose. Explain which contribution changes and which physical properties stay fixed.
+For both prepared models below, `rs06_joint` has local axis [−1, 0, 0] and range [−1.1, 1.1] rad. Trace the parent rotations before assigning a world direction. The position-reference range [−0.9, 0.9] rad limits commands; it is distinct from the joint range. The moving masses below sum the declared moving rigid bodies, excluding the fixed base. They are model properties, not new weighing results or the actuator module's catalogue mass.
 
-Inspect a small positive displacement in a viewer when available and check its direction. Compare gravity enabled and disabled at the same pose and control settings. A position actuator may resist gravity, so distinguish generalized gravity bias from net acceleration or observed movement. The saved records below use zero velocity and a 0.4 rad joint position in MuJoCo 3.3.7. Each model has one position coordinate, one velocity and one actuator input (q / v / inputs). The last two columns report gravity bias:
+| Fixture | Moving rigid-body mass (kg) | q / v / inputs |
+|---|---:|---:|
+| B1 | 2.4072134493 | 1 / 1 / 1 |
+| G1 | 1.5472134493 | 1 / 1 / 1 |
 
-| Fixture | q / v / inputs | Gravity on (N m) | Gravity off (N m) |
-|---|---:|---:|---:|
-| B1 | 1 / 1 / 1 | 0.0003684003 | 0 |
-| G1 | 1 / 1 / 1 | 1.165962 | 0 |
+Both models have one position coordinate, one velocity and one actuator input. Compare these structural properties with the XC330 example before examining gravity: the inspection questions transfer, while the numbers and local axes differ.
+
+Inspect a small positive displacement in a viewer when available and check its direction. Compare gravity enabled and disabled at the same pose and control settings. A position actuator may resist gravity, so distinguish generalized gravity bias from net acceleration or observed movement. The saved records below use zero velocity and a 0.4 rad joint position in MuJoCo 3.3.7. The columns report gravity bias:
+
+| Fixture | Gravity on (N m) | Gravity off (N m) |
+|---|---:|---:|
+| B1 | 0.0003684003 | 0 |
+| G1 | 1.165962 | 0 |
 
 A zero position command is not a torque-off command: at this 0.4 rad pose the prepared position actuator requests −20 N m to return toward zero, separately from the gravity-bias entries. The inspection script reports that actuator effort so it cannot be mistaken for gravity torque.
 
@@ -455,7 +479,7 @@ The [raw inspection output](../resources/class03/results/class03-core/inspection
 
 ### Compare with the actual or printed component
 
-Check one dimension or mass against the available assembly or printed part. Record its value, unit and method. For a document-based submission, compare the B2 model’s 0.110 kg moving mass with the B2 row of the included mass record. Identify that comparison as a source-record check and propose one dimensional or clearance measurement you would make on the built assembly. Inspect the printer when feasible.
+Check one dimension or mass against the available assembly or printed part. Keep the actuator unpowered while handling or measuring it; powered motion belongs to the supervised demonstration. Record its value, unit and method. For a document-based submission, compare the B2 model’s 0.110 kg moving mass with the B2 row of the [included mass record](../resources/class03/records/fixture-masses.txt). Identify that comparison as a source-record check and propose one dimensional or clearance measurement you would make on the built assembly. Inspect the printer when feasible.
 
 ### Submit a compact inspection record
 
@@ -472,8 +496,16 @@ Conclude with two sentences: what the representation is ready to support, and wh
 
 ## Carry the model into a response test
 
-A structurally inspectable model states how its parts, frames, mass and inputs are represented. Class 04 asks whether a model predicts a recorded response under declared conditions; its retained 98 g campaign is a separate source family from this 110 g CAD example.
+A structurally inspectable model states how its parts, frames, mass and inputs are represented. [Class 04](04-basic-quantification-of-sim2real-gap.md) asks whether a model predicts a recorded response under declared conditions; its retained 98 g campaign is a separate source family from this 110 g CAD example. Carry forward the inspection record, coordinate convention and input contract; establish that campaign's own fixture and data identity before comparing responses.
 
 ## References
 
-Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. The scalar balance above specializes the generalized-coordinate dynamics introduced in Class 02; a full spatial-algebra development is outside this structural inspection exercise.
+Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer.
+
+MuJoCo developers. n.d.-a. “Modeling.” *MuJoCo Documentation*, version 3.3.7. Accessed October 17, 2026. [Official documentation](https://mujoco.readthedocs.io/en/3.3.7/modeling.html).
+
+MuJoCo developers. n.d.-b. “XML Reference.” *MuJoCo Documentation*, version 3.3.7. Accessed October 17, 2026. [Official documentation](https://mujoco.readthedocs.io/en/3.3.7/XMLreference.html).
+
+Qiu, Nuofan, Fang Wan, and Chaoyang Song. 2023. “Describing Robots from Design to Learning: Towards an Interactive Lifecycle Representation of Robots.” arXiv:2312.12295. [Original preprint](https://arxiv.org/abs/2312.12295).
+
+RobStride. 2026. *RS06 User Manual*. Revision 260713. [Supplied original-brand manual](../resources/class03/preparation/demonstration/rs06/RS06_User_Manual_260713.pdf); [manufacturer product information](https://github.com/RobStride/Product_Information).
