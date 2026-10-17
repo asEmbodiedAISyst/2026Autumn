@@ -1,451 +1,492 @@
----
-description: 21 October 2026 · CR6
----
+# Controlled action as a physical feedback process
 
-# 02 Actuator Basics for Controlled Action
+A motor turns electrical energy into mechanical action. A robot, however, needs more than a shaft that can turn. It needs to move a specified amount, follow a changing motion, maintain a configuration under a load, or regulate its interaction with an object. These tasks require us to connect a request to what the mechanism actually does.
 
-**What turns a motor into an actuator capable of controlled action?** A motor produces torque, but a useful robotic joint must also accept a meaningful command, transfer effort to a mechanism, observe its state and respond within operating limits. We follow that process through the ROBOTIS XC330/XL330 and RobStride RS06/RS00 families.
+Consider a motor attached to a small lever. A program requests a rotation of 30 degrees. The lever may reach that angle, stop short, overshoot, or fail to move. The outcome depends on the motor, transmission, supply, mounting, load and controller. The number in the program describes an intention; the mechanism must realize that intention through physical forces and motion.
 
-![AsBrainBox actuator and manipulation platform](../.gitbook/assets/class02/05-asbrain-platform.png)
+**Controlled action** means influencing a physical system so that a specified property of its behaviour follows a reference, despite disturbances and imperfect knowledge. **Feedback** means using information about the resulting behaviour to change the next control effort. A **physical feedback process** connects that information to an energy-transmitting mechanism and to measurements of the mechanism or its interaction with the world.
 
-*Figure 1. An AsBrainBox platform concept brings a host, a mounting structure and actuator-based mechanisms into one experimental setting. Identify the host and physical mechanisms before tracing their communication and power paths. This CAD view identifies an arrangement; it is not evidence that a particular experiment ran. [Source image](../resources/class02/media/FIGURE-CODE.md#asbrain-platform).*
+Control can also be open loop: a predetermined input is applied without correcting from the resulting output. Here we focus on feedback because changing loads and disturbances make the achieved action uncertain. A dynamic simulation can represent that loop, but its state is model output rather than evidence of a hardware measurement.
 
-The class develops three abilities: distinguish a motor from an integrated actuator; distinguish a command, an internal reference and a measured response; and read the exact model's specifications, interfaces and operating limits. The teaching-team demonstration connects application software to physical action and returning telemetry. The final activity is an unpowered XC330 inspection and an XC330/XL330 comparison.
+This class develops that connection through four devices: ROBOTIS XC330-M288-T and XL330-M288-T, followed by RobStride RS06 and RS00. The same questions apply throughout: What is requested? What produces effort? What moves? What is sensed? What do the reported numbers mean?
 
-The inspection and comparison activity is in Section 7. [Detailed technical reading](../resources/class02/reading-notes.md) · [Optional telemetry calculations](../resources/class02/telemetry-worked-example.md)
+## From a motor to an actuator
 
-## 1. Controlled action as a physical feedback process
+### Action, energy and a measurable outcome
 
-### Begin with the object
-
-Look at the actuator before opening a program. Find the model label, output, mounting features and connectors. Identify which parts move relative to the housing. A mounted actuator is already part of a mechanical system: its mounting provides a reaction to the torque applied at its output.
-
-![Physical XC330 and geometric representation](../.gitbook/assets/class02/01-actuator-and-geometry.png)
-
-*Figure 2. A physical XC330 beside its geometric representation. Identify the output and fixed mounting. Similar geometry helps locate interfaces, but does not establish similar behavior. [Figure source and code](../resources/class02/media/FIGURE-CODE.md#hardware-identity).*
-
-**Predict:** a host requests a change of thirty degrees. Does the output jump, move gradually, oscillate or remain still? Name a physical condition and a controller setting that could change your prediction.
-
----
-
-### Motor, transmission and integrated actuator
-
-A motor converts electrical energy into mechanical work. An integrated actuator adds a transmission, output support, sensing, drive electronics, embedded control and a communication interface. Together, these parts turn a request into controlled action. A host application can be simple because substantial control already takes place inside the device.
-
-The host supplies information; the electrical supply provides energy. A correct communication packet cannot move an unpowered mechanism. Conversely, connecting power does not specify the movement. The controller must interpret a command in the selected mode, and the drive must produce suitable motor effort.
-
-The transmission connects the motor to the output. With reduction ratio $$N=\omega_m/\dot q$$, the motor rotates faster than the output. A simple steady transmission relationship is
+In a software interface, an action can mean changing a variable or issuing a message. In a physical system, an action must also have a mechanical consequence. A rotary actuator can exert torque, rotate a load, or resist a disturbance. Its instantaneous mechanical power at the output is
 
 $$
-\tau_{\mathrm{out}}\approx\eta N\tau_m.
+P_{\mathrm{out}}=\tau_a\dot q,
 $$
 
-Here $$q$$ is output angle, $$\omega_m$$ is motor angular velocity and $$\eta$$ represents efficiency. A 100:1 reduction gives an ideal output speed of 10 r/min from a motor speed of 1,000 r/min. Reduction trades speed for effort; it does not remove losses, backlash, compliance or thermal limits. Detailed motor and reflected-inertia derivations remain in the technical reading.
+where $$q$$ is output angle in radians, $$\dot q$$ is output angular velocity in radians per second, and $$\tau_a$$ is applied output torque in newton metres. Torque and velocity must refer to the same shaft and sign convention.
 
----
+An output delivering 0.20 N m at 2 rad/s transfers 0.40 W of mechanical power. A motor holding a stationary load can have zero output mechanical power while drawing current and producing heat. Motion alone therefore does not describe an actuator's effort, and electrical power consumption is not identical to useful mechanical power.
 
-### Compare components at the correct level
+A motor is an energy conversion device. Electromagnetic interaction produces torque between its moving rotor and its stationary structure. The housing and mounting carry the reaction torque. Without a suitable mounting, a motor cannot establish the intended relationship between the output and the robot's body. The circuit must also provide a current path and a source of electrical energy; a command message supplies neither.
 
-“Brushless motor”, “harmonic drive”, “QDD actuator” and “smart servo” describe different levels of a system. A brushless motor is an electromagnetic machine: its stator windings, permanent-magnet rotor, shaft and bearings need a drive to produce controlled motion. A strain-wave transmission, often called a harmonic drive, is a reduction mechanism using a wave generator, flexspline and circular spline. It does not by itself supply the motor, sensing or controller.
+### What must be added?
 
-A QDD actuator combines a motor and comparatively low reduction with sensing and drive control. A smart servo such as XC330 combines a different motor/transmission design with an embedded controller and a digital interface. Therefore, an integrated joint can contain both a brushless motor and a reduction mechanism; these are not four mutually exclusive motor species.
+A usable actuation system combines several functions. They may be separate components or integrated in one housing.
 
-| Construction or component | What it contributes | What still needs to be identified |
+| Function | Physical or computational role | Question to ask of the device |
 |---|---|---|
-| Coreless DC motor in XC330 | Converts electrical input into rotor effort | Drive, reduction, sensing and output support |
-| Brushless motor | Uses electronically commutated windings and a magnetic rotor | Commutation/control, sensing and the connected mechanism |
-| Strain-wave reduction | Transforms speed and effort through a reduction mechanism | Motor, bearings, sensing, elasticity, losses and control |
-| QDD integrated actuator | Combines a motor, low-ratio transmission and drive/control | Exact ratio, motor properties, sensing and demonstrated operating limits |
-| Smart servo such as XC330 | Packages gearing, sensing, firmware and a bus interface | Exact model, configuration, load and what each feedback channel measures |
+| Motor | Converts electrical energy into mechanical effort | Which motor construction and electrical limits apply? |
+| Drive or power electronics | Switches and regulates electrical power | What current, voltage and protection functions are available? |
+| Transmission, where required | Changes speed, effort and mechanical arrangement | What ratio, friction, compliance and lost motion are introduced? |
+| Sensor and estimator | Measures or estimates a relevant state | Is the reported angle at the rotor or output? How is velocity obtained? |
+| Controller | Uses references and feedback to determine effort | Which loop is closed, and at what level? |
+| Housing, bearings and mounting | Supports forces and locates the output | What carries the load and reaction torque? |
+| Communication and configuration | Connects the actuator to the rest of the system | Which command, units, mode and device identity are used? |
 
-**Inspect and explain:** a housing photograph can reveal connectors and mounting, but not all internal components or calibrated parameters. Use a section drawing or manufacturer's specification to identify construction; use measurements to establish behavior. A low gear ratio alone does not establish accurate force control, and high reduction alone does not establish poor positioning.
+A reduction gear is useful when the motor's speed and torque do not suit the load, but it is not a requirement for every actuator. An encoder is useful for position feedback, but some systems use other sensors or estimates. Integration changes packaging and accessibility; it does not remove these functions.
 
-### Sensing makes correction possible
+To close a position loop, the system needs a position reference, a measurement or estimate of the relevant position, a comparison between them, and an effort-producing path that can reduce the difference. A drive that regulates current has already closed one loop, but that does not establish that output position is controlled. We must name the quantity whose loop is being discussed.
 
-Let $$q(t)$$ describe physical output position and $$y(t)$$ its reported position measurement. A controller uses the measurement to compare what the mechanism is doing with what it should do. The encoder, controller and drive therefore belong to the actuator system even when they are hidden inside one housing.
+### What does the word physical require us to check?
 
-Mechanical power at the output is
+A feedback loop can be mathematically correct while connected to the wrong evidence. An interface may display the last command as if it were the current position. An encoder may report motor rotation while a loose coupling leaves the load stationary. A simulation may update a joint coordinate directly, bypassing effort limits. A camera may report the object's motion while the controller assumes it is the actuator's output angle.
+
+The practical question is whether the feedback is causally connected to the physical quantity that matters. We check the sensor location, calibration, timestamp, transmission and mechanism. We also check whether the actuator can supply the necessary effort within its electrical and thermal limits. Feedback cannot compensate for unlimited load, missing power, or an incorrect mechanical connection.
+
+**Prediction question.** If the command display reads 30 degrees, what additional evidence would establish that the lever is actually at 30 degrees? Identify the reference frame and the point at which the measurement is made.
+
+### Stepper motors, brushless motors and servo systems
+
+A stepper motor is commonly driven through a sequence of commanded electrical states. In a position-open-loop arrangement, the controller counts commanded steps and assumes that the rotor follows. For an ideal 200-full-step-per-revolution arrangement, ten full-step commands represent an expected motion of
 
 $$
-P_{\mathrm{out}}=\tau_{\mathrm{out}}\dot q.
+10\frac{360^\circ}{200}=18^\circ.
 $$
 
-An illustrative 0.10 N m at 2 rad/s gives 0.20 W. A stationary output has zero instantaneous mechanical power even while applying torque. Electrical losses can still produce heat. Holding a load and moving a load are consequently different operating conditions.
+This is a commanded displacement, not a measurement. If the load or acceleration demand causes missed steps, the counter does not reveal the error. A stepper drive may regulate winding current even while position remains open loop. Closed-loop stepper systems add position feedback and can detect or correct tracking errors. Microstepping changes the electrical command subdivision; it does not by itself establish an equivalent improvement in loaded positioning accuracy. See Oriental Motor's [stepper fundamentals](https://www.orientalmotor.com/stepper-motors/technology/stepper-motor-basics.html) and [closed-loop systems](https://www.orientalmotor.com/stepper-motors/alphastep-closed-loop-stepper-motors.html).
 
-The mounting matters as much as the moving output. An unsecured housing can turn instead of providing the intended joint action. A useful experiment identifies what is fixed, what moves, what is measured and which reference direction is positive. These choices carry directly into the digital model in Class 03.
+A brushless motor requires a drive to coordinate currents with rotor position. Rotor position may be sensed or estimated for commutation. Successful commutation means that the motor can produce useful torque; it does not automatically mean that a robot joint follows an output-position command. A brushless motor can be part of a speed controller, a torque-related controller, or a position servo.
 
-**Check:** identify the component that supplies energy, the component that estimates position and the component that decides how the drive responds. Which of those roles can be inferred merely from a CAD image?
+A **servo system** uses feedback to regulate a specified variable. The term describes an arrangement and function, rather than one electromagnetic motor construction. In automation, the motor, encoder, drive, controller and reducer may be separate products. The controller supplies motion references, the drive closes fast electrical and motion loops, and a gearbox adapts the motor to the load.
 
-## 2. Position, velocity and current-related control
+Robotics often places these functions close together to reduce joint size, wiring and assembly effort. A joint may contain a brushless motor, compact drive, encoder, bearings and a strain-wave reducer. A strain-wave transmission uses a wave generator, flexspline and circular spline to obtain reduction in a compact arrangement; it remains a transmission, not a motor or controller. See the manufacturer's [operating principles](https://legacy.harmonicdrive.net/reference/operatingprinciples/).
 
-### A request has meaning only through its interface
+DYNAMIXEL modules integrate motor, reduction, sensing, electronics and a digital interface in a small addressable package. Low-reduction integrated modules such as RS06 and RS00 make another design choice: use a motor and transmission arrangement intended to retain more of the motor's direct mechanical interaction with the load.
 
-A position request specifies a target angle. A velocity request specifies how fast the output should move. A current request specifies a current-related quantity in the device's control interface. These commands answer different questions, even if they share the same communication cable.
+These are overlapping alternatives. Stepper systems, industrial servos, smart modules and QDD joints continue to serve different requirements. Lower reduction is not a universal replacement for a high-ratio joint; compact integration is not a guarantee of sensing accuracy.
 
-| Mode or interface | Requested quantity | What the controller must still manage |
+## Position, velocity and current/torque-related control
+
+### Start with the physical variable
+
+The requested variable determines what the actuator is being asked to maintain. Holding a camera at a particular orientation is different from rotating a wheel at a given speed. Both differ from applying a limited effort while touching an object.
+
+We use distinct symbols because these quantities have different units and physical meanings.
+
+| Symbol | Meaning | Unit |
 |---|---|---|
-| Position | Desired angle | Trajectory, effort, feedback and position limits |
-| Velocity | Desired angular speed | Acceleration, effort and accumulated travel |
-| Current | Current-related target | Current regulation, electrical limits and mechanical response |
-| Current-based position | Position with current-related control/limiting | Position/profile behavior and current-related limits |
-| PWM | Drive modulation | Actual voltage, current, speed and load |
+| $$q_d$$ | Position target sent by the host | rad |
+| $$q_r$$ | Position reference used internally after any profiling | rad |
+| $$y_q$$ | Reported position measurement | rad |
+| $$v_r$$, $$\hat v$$ | Velocity reference and estimated/reported velocity | rad/s |
+| $$\tau_{\mathrm{req}}$$ | Torque or generalized-effort reference | N m |
+| $$\tau_a$$ | Torque actually applied at the chosen output | N m |
 
-For a velocity request, position continues to change. Requesting zero velocity and requesting a particular position are therefore different instructions. For a current request, speed depends on the mechanism and load; the request does not prescribe one angle or one speed.
+The distinction between reference and response follows directly from dynamics. For a single rotational degree of freedom, a scalar form consistent with Featherstone's generalized-coordinate formulation is
 
----
+$$
+H(q)\ddot q+C(q,\dot q)+\tau_f(\dot q)
+=\tau_a+\tau_{\mathrm{ext}}.
+$$
 
-### Command, internal reference and measured response
+Here $$H(q)$$ is generalized inertia; $$C(q,\dot q)$$ contains gravity and velocity-dependent bias terms; $$\tau_f$$ is a separately represented friction term; and $$\tau_{\mathrm{ext}}$$ is environmental torque acting on the mechanism. The positive direction is the direction of increasing $$q$$. Friction must not also be counted inside $$C$$ if it is included explicitly. The controller influences $$\tau_a$$; the resulting acceleration also depends on the load and external interaction (Featherstone 2008).
 
-![Command and feedback architecture](../.gitbook/assets/class02/06-command-and-feedback.png)
+### Position control: where should the output be?
 
-*Figure 3. A functional command path from host through Protocol 2.0 and embedded control to physical action, with telemetry returning to the host. The embedded servo uses local feedback; the return arrow is host-visible information, not a diagram of all sensor locations. Supply current, PWM, voltage and temperature are not measured by the transmission. [Source and generation code](../resources/class02/media/FIGURE-CODE.md#command-architecture).*
+A position controller corrects a position error. One illustrative effort-producing law is
 
-Distinguish four quantities:
+$$
+\tau_{\mathrm{req}}
+=K_p(q_r-y_q)+K_d(v_r-\hat v)+\tau_{\mathrm{ff}}.
+$$
 
-- $$u(t)$$: the host request, or an explicitly named goal-register readback;
-- $$r(t)$$: the internal desired trajectory;
-- $$q(t)$$: physical output position;
-- $$y(t)$$: the reported position measurement.
+The proportional term responds to angle error. The derivative or velocity-error term provides damping relative to the requested motion. Feedforward $$\tau_{\mathrm{ff}}$$ can compensate for a predicted load or desired acceleration. With radians retained explicitly, $$K_p$$ has units N m/rad and $$K_d$$ has units N m s/rad.
 
-Firmware can turn a sudden target into a gradual reference. Finite effort, inertia, resistance and load then affect the response. The signals have different identities even when their numerical values coincide. They can agree at a settled target; they need not be unequal at all times.
+Suppose $$K_p=2$$ N m/rad, $$K_d=0.10$$ N m s/rad, position error is 0.10 rad and velocity error is −0.20 rad/s. With zero feedforward,
 
-On XC330, Goal Position at address 116 holds the goal, Position Trajectory at 140 exposes an internal desired position, and Present Position at 132 reports encoder position. A later goal-register readback is also distinct from the host's original write and its timestamp.
+$$
+\tau_{\mathrm{req}}=2(0.10)+0.10(-0.20)=0.18\ \mathrm{N\,m}.
+$$
 
-![Measured goal, internal reference and position](../.gitbook/assets/class02/02-command-reference-response.png)
+The position term requests 0.20 N m; the damping term reduces it by 0.02 N m. This is an effort reference before actuator limits and dynamics. It is not an output-torque measurement or a set of hardware gain-register values.
 
-*Figure 4. Three reported position signals from one physical XC330 episode. Left: the complete 13-second record. Right: a fixed first-reversal window, with original row 400 marked. Positions use count 2,048 as their declared zero; the horizontal axis is host receive-end time. [Data and interpretation](../resources/class02/data/xc330-hardware-demo/README.md) · [Figure code](../resources/class02/media/FIGURE-CODE.md#telemetry-motion).*
+A host can request an abrupt target while the device generates a bounded velocity/acceleration profile. Then $$q_d$$ and $$q_r$$ describe different stages. Increasing position gain cannot make the supply, current capability or transmission infinitely strong. It can also increase oscillation or contact force. Position control is useful for tracking configurations, but a joint prevented from moving may keep requesting effort until a limit or protective condition acts.
 
-Read the reversal before doing arithmetic. The goal, internal reference and output separate while the movement changes direction. At the marked sample their relative angles are approximately 24.785°, 25.400° and 26.279°. Those observations help distinguish a requested target from the device's internal trajectory and the moving mechanism.
+### Velocity control: how fast should it move?
 
----
+A velocity controller regulates rotation rate. A common illustrative law includes proportional and integral action:
 
-### Position holding, speed regulation and effort
+$$
+\begin{aligned}
+e_v&=v_r-\hat v,\\
+\tau_{\mathrm{req}}&=K_{pv}e_v+K_{iv}\int e_v\,dt+\tau_{\mathrm{ff}}.
+\end{aligned}
+$$
 
-Imagine three instructions applied to the same suitably configured joint. “Hold this angle” asks for position regulation. “Turn at a small constant speed” asks for velocity regulation. “Apply this current-related target” asks the drive to regulate an electrical quantity whose mechanical effect depends on the motor, transmission and load.
+The proportional term responds to the current velocity error; the integral term accumulates a persistent error and can help reject a steady load. Saturation requires appropriate integral handling because accumulated error can otherwise continue growing while the requested effort cannot be delivered.
 
-A slow response can have several explanations. The profile may deliberately move slowly; an effort limit may restrict acceleration; or the load may resist motion. Comparing $$u$$, $$r$$ and $$y$$ helps distinguish these cases. If $$r$$ is slow, the output may be correctly following a shaped reference. If $$r$$ changes while $$y$$ barely moves, inspect limits, configuration, faults and the mechanical system.
+Velocity control suits wheels, rollers and other tasks specified by sustained motion. A zero-velocity command requests no rotation; it does not by itself specify which angle should be retained. Position depends on the accumulated motion:
 
-Current is useful telemetry, but its meaning is model-specific. XC330 reports input-supply current. That channel is not an independent measurement of output torque or motor winding phase current. A requested torque, an estimated torque and a calibrated torque measurement must be named separately. A simulator's torque command does not become a verified physical torque merely because its units are N m.
+$$
+q(t)=q(0)+\int_0^t\dot q(s)\,ds.
+$$
 
-**Check:** can an actuator use electrical power while maintaining almost constant position? Can a velocity command run out of mechanical travel? Explain both using the requested quantity and the physical system.
+An error of 0.01 rad/s sustained for ten seconds produces 0.10 rad of angle drift. This matters when a task requires a particular configuration rather than simply a motion rate.
 
-## 3. XC330 and XL330: what smart actuation means
+### Current and torque-related control: how much effort should it produce?
 
-### Read the exact model name
+For a simple electromagnetic model,
 
-The XC330-M288-T integrates a coreless DC motor, metal reduction gears, output bearings, a contactless absolute encoder, electronics and firmware. Its TTL interface carries digital instructions and status information. This integration is what makes the device convenient to use as a smart actuator; it does not guarantee a particular application accuracy or calibrated force sensing.
+$$
+\tau_m=k_t i_t,
+$$
 
-XC330 and XL330 are not interchangeable names for the same internal mechanism. The following exact-model values come from the ROBOTIS documents (ROBOTIS n.d.a; ROBOTIS n.d.b).
+where $$\tau_m$$ is motor electromagnetic torque and $$i_t$$ is the appropriate torque-producing current. In a brushed DC motor this is related to armature current; in a field-oriented brushless drive the relevant current component and convention must be specified. Supply current, phase-current RMS, phase-current peak and torque-producing current are not interchangeable numerical quantities.
 
-| Attribute | XC330-M288-T | XL330-M288-T |
+For an ideal rigid reduction with ratio $$N=\omega_m/\dot q$$,
+
+$$
+\omega_m=N\dot q,\qquad \tau_a=N\tau_m.
+$$
+
+A simple steady operating approximation can instead include transmission efficiency, $$\tau_a\approx\eta N\tau_m$$. Real friction, acceleration, compliance and temperature complicate this relation. An approximate efficiency factor should not be combined indiscriminately with a separate loss model that counts the same losses again.
+
+Current regulation is valuable because electromagnetic torque is linked to current. Torque-related operation supports effort limiting, compliant behaviour and physical interaction. It still needs joint limits and an appropriate higher-level task controller: a constant torque request can accelerate a free joint rather than hold an angle.
+
+**Current-based position control** combines objectives: follow a position reference while using a current-related bound or inner loop. Its exact meaning depends on the device. A firmware's “torque control” label does not establish that it contains an independent output-torque sensor.
+
+### What changes when control enters the model and implementation?
+
+In theory, we must specify state variables, references, feedback laws, units, disturbances and limits. In mechatronics, we must implement sensors, sample timing, power electronics, communication and protection. In simulation, we must specify how a control input creates force rather than assuming that writing an angle makes the mechanism instantaneously occupy it.
+
+The existing MuJoCo model `models/XC330withLever.xml` provides a concrete distinction. Its illustrative position actuator is named `position_baseline_0`, with $$k_p=3$$ and $$k_v=0.03$$. For this model's zero reference velocity, the unsaturated actuator law is
+
+$$
+\tau_{\mathrm{sim}}=3(\mathrm{ctrl}[0]-q)-0.03\dot q.
+$$
+
+If `ctrl[0] = 0.30`, $$q=0.20$$ and $$\dot q=0.40$$, the requested model effort is 0.288 N m. The model then applies its configured limits. Its `ctrl[0]` is an angle reference, not 0.30 N m; `qfrc_actuator` is a simulated generalized force, not a hardware sensor. The model's ±0.93 N m force range is a teaching bound based on a quoted stall value, not a validated continuous-duty actuator model. See MuJoCo's [position-actuator reference](https://mujoco.readthedocs.io/en/stable/XMLreference.html#actuator-position).
+
+This example explains the implementation contract. It does not identify the XC330's internal gains or prove that MuJoCo reproduces its firmware. A simulation also needs the correct load inertia, joint axis, damping, friction and timestep. The physical zero and sign convention must be aligned with the model rather than inferred from a register value alone. Later classes use measurements to investigate these differences.
+
+### Requested quantities are not automatically measured quantities
+
+A command states what the system should do. A measurement is evidence of what a sensor reported. The two can agree, but agreement must be established rather than built into their names.
+
+![Measured goal, trajectory and position during an XC330 reversal](../.gitbook/assets/class02/02-command-reference-response.png)
+
+*Figure 1. A saved XC330 episode separates the host goal, device trajectory and reported position. The plotted signals belong to one recorded motor-only run. The reversal makes their distinct meanings visible; it does not isolate the effect of changing controller mode. Reproduction code and source files are documented in [FIGURE-CODE.md](../resources/class02/media/FIGURE-CODE.md).*
+
+In that record, row 400 reports goal 2330 counts, trajectory 2337 counts and position 2347 counts. Relative to the declared 2048-count reference, these are approximately 24.785, 25.400 and 26.279 degrees. The goal curve is readback of the device's goal register, not an independent timestamp of host transmission. “Trajectory” identifies the device's internal reference; “Present Position” identifies returned state information. Neither becomes interchangeable with the host goal simply because all three use position units.
+
+Several mechanisms can explain a discrepancy:
+
+| Cause | What happens | How to investigate or manage it |
 |---|---|---|
-| Motor and gears | Coreless DC; metal gears | Cored motor; engineering-plastic gears |
+| Profiling | The internal reference approaches the target gradually | Log goal, profile settings and exposed trajectory separately |
+| Physical dynamics and load | Inertia, friction, gravity and contact affect motion | Identify the assembly and load; compare like conditions |
+| Limits and protection | Current, PWM, voltage, temperature or travel limits restrict effort | Log configuration and status; distinguish clipping from poor tuning |
+| Sensing and estimation | Quantization, bias, filtering or sensor location alters the reported state | Check resolution, calibration, mounting and measurement location |
+| Communication and timing | Commands and measurements refer to different times | Preserve timestamps and distinguish host time, receive time and device time |
+| Representation | Wrong units, signed decoding, zero or direction creates apparent motion/error | Retain raw data, conversion rules and coordinate definitions |
+
+These causes require different responses. A conversion error should be corrected before fitting a physical model. A real current limit should be represented, not removed from a plot. A tracking error under load is useful experimental evidence, not necessarily a fault in the data. Reporting the requested action, configuration and measured response together makes the result interpretable and repeatable.
+
+## Smart actuators: XC330 and XL330
+
+### What is smart about them?
+
+The XC330 and XL330 are complete small actuation modules. Their integrated electronics expose named commands, configuration and feedback through a digital bus. “Smart” describes this integration and the ability to configure and monitor the device. It does not mean that the module has learned a task or independently understands what a robot should do.
+
+![XC330 physical device and matched model](../.gitbook/assets/class02/01-actuator-and-geometry.png)
+
+*Figure 2. The course XC330 device and its matched geometric representation. Identify the output, fixed housing, mounting and connectors. Geometry helps locate the component in a robot model; it does not establish the internal control law or dynamic parameters. Original course photographs and MiSans-labelled preparation code are recorded in [FIGURE-CODE.md](../resources/class02/media/FIGURE-CODE.md).*
+
+As you inspect the unpowered XC330 and XL330 passed around the room, relate the visible parts to the functions introduced earlier. The output and mounting are accessible; the internal motor, gear train, sensor and electronics are enclosed. Two bus connectors allow modules to share a daisy-chain arrangement. Their presence does not make the power source or host communication interface unnecessary.
+
+The device's control table provides the software counterpart of the physical module: identity and mode settings, commands, limits, and reported state. A host addresses a device and reads or writes particular fields through the protocol. A successful write establishes that a command was accepted at that interface; the subsequent physical response still has to be observed.
+
+### Compare exact models, not family names
+
+The following extract concerns **XC330-M288-T** and **XL330-M288-T**. Other ratios and voltage variants must be checked separately.
+
+| Property | XC330-M288-T | XL330-M288-T |
+|---|---|---|
+| Motor | Coreless DC | Cored |
+| Gear material | Full metal; two bearings | Engineering plastic |
 | Mass | 23 g | 18 g |
 | Dimensions | 20 × 34 × 26 mm | 20 × 34 × 26 mm |
-| Stall torque at 5.0 V | 0.93 N m | 0.52 N m |
-| No-load speed at 5.0 V | 81 r/min | 103 r/min |
-| Encoder resolution | 4,096 counts/revolution | 4,096 counts/revolution |
+| Reduction | 288.35:1 | 288.4:1 |
+| Stall torque at 5 V | 0.93 N m | 0.52 N m |
+| No-load speed at 5 V | 81 r/min | 103 r/min |
+| Supply | 3.7–6.0 V; 5 V recommended | 3.7–6.0 V; 5 V recommended |
+| Position resolution | 4,096 counts/revolution | 4,096 counts/revolution |
+| Interface | TTL multidrop; Protocol 2.0 | TTL multidrop; Protocol 2.0 |
 
-Both documents specify a 3.7–6.0 V input range with 5.0 V recommended, and a TTL multidrop interface. Similar external dimensions make this a useful comparison: matching shape does not imply identical materials, mass, effort or speed.
+*Source: ROBOTIS, [XC330-M288](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/) and [XL330-M288](https://docs.robotis.com/docs/dxl/model_reference/x_series/xl_series/xl330-m288/), specifications checked 17 October 2026.*
 
----
+The shared envelope can simplify a mechanical comparison, but swapping modules can still change moving mass, available effort, speed and transmission behaviour. Coreless construction does not mean brushless construction. Likewise, “metal gears” and “plastic gears” identify materials; neither phrase alone is a measurement of backlash, efficiency or service life.
 
-### Interpret the ratings
-
-**Worked comparison:** at 5 V, XC330 has the greater specified stall torque, while XL330 has the greater no-load speed. Which is preferable depends on the intended task. Holding or accelerating a mechanism, achieving speed, reducing moving mass and choosing cost or durability can lead to different decisions.
-
-Stall torque and no-load speed describe different test conditions. Stall means zero speed; no-load speed concerns very small external mechanical load. Multiplying the two extremes does not give an achievable continuous power. Sustained behavior additionally depends on heat transfer and operating limits.
-
-A 12-bit encoder represents one revolution using 4,096 counts:
+A simple resolution calculation is
 
 $$
-\Delta q=\frac{360}{4096}\approx0.08789\text{ degrees per count}.
+\Delta q=\frac{2\pi}{4096}\approx0.001534\ \mathrm{rad}
+\approx0.08789^\circ.
 $$
 
-This is resolution. Accuracy concerns agreement with the actual physical angle under stated conditions. Backlash, compliance, zero choice, assembly and calibration can affect accuracy even when the count increment is small. More digits in a log do not remove those effects.
+This describes the size of one encoder count over a revolution. Accuracy asks how close the reported angle is to an independent reference. Repeatability asks how consistently a motion returns under specified conditions. Quantization, alignment, load, compliance and backlash can affect those properties differently. A 12-bit readout does not establish a corresponding absolute accuracy.
 
-### Read a performance curve, not just its endpoints
+The two quoted torque/speed values also describe different conditions. Stall torque occurs at zero speed; no-load speed occurs near zero external load. They cannot be multiplied as if the actuator delivered both simultaneously. A loaded operating point lies elsewhere on its performance characteristic, and sustained operation also depends on heating.
 
-![Manufacturer performance-curve extract](../.gitbook/assets/class02/07-manufacturer-performance-curve.png)
+![Official XC330 performance curve](../.gitbook/assets/class02/source-performance-curve.png)
 
-*Figure 5. Performance-curve extract supplied with the XC330 material and cross-checked against the XC330-M288-T documentation. Black uses the left speed axis, green the separate left efficiency axis and magenta the right current axis. Preserve the manufacturer's graphic as a source image. The crop does not state all test conditions; check its surrounding documentation before assigning a supply voltage or a sustained operating limit. [Image provenance](../resources/class02/media/FIGURE-CODE.md#manufacturer-performance-curve).*
+*Figure 3. ROBOTIS performance data retained with its original axes and typography. Locate speed, torque and electrical quantities before interpreting a curve. State the voltage and test conditions. The source and unchanged-image provenance are recorded in [FIGURE-CODE.md](../resources/class02/media/FIGURE-CODE.md).*
 
-Choose one horizontal torque coordinate, then read each curve on its own vertical scale. For example, around 0.36 N m the curves indicate a speed in the low-forties r/min, input current close to 1 A and efficiency around thirty percent. These are approximate readings from the graphic, not newly measured samples or a claim that its test condition matches our recorded episode.
+**Comparison question.** For a finger-mounted mechanism, why might the XL330's lower mass matter? For a loaded joint, why might the XC330's higher quoted stall torque matter? What further information would you need before selecting either for continuous operation?
 
-The black curve decreases as load torque increases, while current increases. Efficiency rises from the low-load region and then falls. The high-efficiency operating region is not the stall point. ROBOTIS also distinguishes gradually loaded performance-curve testing from a momentary stall rating. This explains why the plotted curve can end before the quoted stall-torque extreme.
+### Commands, control modes and available feedback
 
-**Check the axes:** does the green value 40 mean 40 r/min, 40 A or 40%? Which conditions would you need before using the curve to select a supply or predict temperature? Do not calculate an efficiency for the physical episode from this picture and an uncalibrated torque estimate.
+Both exact models offer position, extended-position, velocity, current, current-based-position and PWM-related operating modes. Their meaning comes from the model's control documentation. Do not infer that two differently named modes implement the same signal path merely because both make the shaft move.
 
-### Firmware is part of the system
+![ROBOTIS position-controller diagram](../.gitbook/assets/class02/robotis-position-controller.png)
 
-XC330 supports current, velocity, single-turn position, extended-position, current-based position and PWM modes. Extended position changes the supported position representation; it does not remove mechanical travel constraints. The configured mode, gains, profiles and limits affect action. Changing Operating Mode can reset related fields; read configuration back after a change. A gain register value such as 800 is not automatically a physical stiffness of 800 N m/rad. An ID identifies a device, while a control-table address identifies a field within it.
+*Figure 4. ROBOTIS's published DYNAMIXEL position-controller illustration. A goal enters a profile; feedback and control terms determine a limited drive output. This is a manufacturer's diagram, retaining its original typography. Read it with the exact model's control-table descriptions; the generic drawing includes interface alternatives and is not a claim that XC330 provides RS-485.*
 
-In the recorded example, ID 5 uses baud selection 6, corresponding to 4 Mbit/s. That is communication speed. A logger receiving approximately 200 readings each second has an approximately 5 ms polling interval; neither number establishes the internal servo-loop frequency.
+The conceptual position-PD equation earlier is useful for reasoning about error and effort. The published device diagram gives more implementation detail, including profiling, feedforward and limits. It should not be replaced by an assumed textbook cascade. In particular, a gain-register value is not automatically a gain expressed in N m/rad.
 
-**Check:** find one property that XC330 and XL330 share and one that differs. Include the exact model, unit and condition. Explain why “both are 12-bit” is insufficient evidence that they will have identical positioning accuracy.
+![ROBOTIS current-based position-controller diagram](../.gitbook/assets/class02/robotis-current-position-controller.png)
 
-## 4. RS06 and RS00: proprioceptive and quasi-direct-drive actuation
+*Figure 5. ROBOTIS's current-based position-controller illustration. Compare the additional current-related stage and limits with Figure 4. A current-related control path is not evidence of an independent torque transducer at the output.*
 
-### A different balance of motor and transmission
+In the supplied XC330 record, `Present Current` is documented as current at the input supply, in 1 mA units. It should not be substituted directly into a motor winding-current equation or treated as calibrated output torque. Its variation remains useful evidence about operation when interpreted with voltage, PWM, motion and configuration.
 
-A quasi-direct-drive actuator combines a motor with a comparatively low reduction ratio. RS06 and RS00 use ratios of 9:1 and 10:1, respectively, rather than XC330-M288-T's approximately 288:1. Low reduction changes the trade between motor effort, speed, reflected inertia, friction and backdrivability. It is a design choice, not a universal performance ranking.
+The host rate, bus transmission rate and internal control rate are also distinct. A bus specification in Mbit/s describes communication capacity. A host log at approximately 200 samples/s describes the returned record. Neither number establishes the firmware's internal servo update rate. See ROBOTIS's [Protocol 2.0 documentation](https://docs.robotis.com/docs/dxl/protocol/protocol2/) for the packet layer.
 
-For an ideal transmission, $$\omega_m=N\dot q$$. A 1 rad/s output therefore corresponds to approximately 9 rad/s at the RS06 motor and approximately 288 rad/s at the XC330 motor. This comparison concerns the transmission relationship; it does not establish that both devices can deliver the same output effort under those conditions.
+### From a module to a research system
 
-Motor inertia reflected to the output scales with $$N^2J_m$$ in the simple rigid-transmission model. Holding the same motor inertia fixed, increasing reduction increases that reflected term. Real devices have different motors, gear losses, elasticity and controls, so comparing gear ratios alone is insufficient to compare measured joint behavior. Class 03 will connect these physical properties to a mechanical model.
+The original **LEAP Hand** makes the connection especially concrete. Its version-1 parts list specifies sixteen XC330-M288-T units; its Lite alternative specifies XL330-M288-T replacements. The hand combines these modules with finger mechanisms, mounting, software and sensing to support robot learning. Our later in-hand manipulation material uses this family of systems. The original version and Lite specification should not be confused with later LEAP hardware revisions (Shaw, Agarwal, and Pathak 2023; [original parts list](https://v1.leaphand.com/parts)).
 
----
+![Original LEAP Hand and manipulation examples](../.gitbook/assets/class02/leap-hand-figure1.png)
 
-### What proprioception provides
+*Figure 6. Original LEAP Hand and examples of object grasping, extracted from Figure 1 of Shaw, Agarwal, and Pathak (2023). Source labels are retained. Identify how multiple integrated actuator modules become a dexterous mechanism; the image does not by itself establish sensing or policy performance. The [project](https://v1.leaphand.com/) provides demonstrations and hardware/code links.*
 
-In this context, proprioception means sensing variables associated with the actuator's own state: position, velocity, electrical current, temperature and status. These signals help regulate and interpret action. Their usefulness depends on where and how each quantity is measured or estimated.
+**ALOHA** is another important example. It combines bimanual teleoperation with learned manipulation using Action Chunking with Transformers. Its commercial arms use other DYNAMIXEL models, rather than the XC330 used here. The [six-degree-of-freedom ViperX 300S specification](https://docs.trossenrobotics.com/interbotix_xsarms_docs/specifications/vx300s.html) identifies XM540 and XM430 families. The learned policy chooses actions; the actuator system still turns those actions into physical motion through its existing control loops (Zhao et al. 2023).
 
-The RS06/RS00 manuals describe three-phase motors, field-oriented control, position sensing and CAN communication. Current-related control and reported joint state can support compliant or effort-sensitive behavior. A current-based torque estimate still depends on the device model, calibration and transmission. It is not automatically an independent external force/torque measurement.
+![ALOHA bimanual teleoperation and manipulation](../.gitbook/assets/class02/aloha-figure1.png)
 
-An actuator does not acquire whole-body intelligence merely by reporting its own state. That state becomes useful when the application connects it to a task, mechanism, environment and action policy. This is the same distinction we made between receiving a valid position packet and accomplishing a physical movement.
+*Figure 7. ALOHA's teleoperation arrangement and task examples, extracted from Figure 1 of Zhao et al. (2023), with original labels. Compare the high-level task with the lower-level joint actions. Videos are available on the [authors' project page](https://tonyzhaozh.github.io/aloha/).*
 
-### Compare the two exact models
+ROBOTIS's [OpenMANIPULATOR-X](https://emanual.robotis.com/docs/en/platform/openmanipulator_main) offers a smaller arm example using XM430-series modules. These examples share an integration strategy, not an identical actuator model. A research paper's robot name is therefore insufficient evidence for a particular motor, gear ratio or control capability; check its bill of materials and hardware revision.
 
-The following values refer to the supplied revision 260713 manuals, not to every device sold under a similar name (RobStride Dynamics Co., Ltd. 2026a, 2026b).
+## Proprioceptive and quasi-direct-drive actuation: RS06 and RS00
 
-| Attribute | RS06 | RS00 |
+### Why reduce the reduction ratio?
+
+A gearbox can increase available output torque for a given motor torque, but its effect on interaction is more complicated than that single benefit. Under an ideal rigid transmission, motor angular velocity is $$N\dot q$$. The motor rotor's kinetic energy is
+
+$$
+T_m=\frac12J_m(N\dot q)^2
+=\frac12(N^2J_m)\dot q^2.
+$$
+
+The rotor therefore contributes **reflected inertia** $$N^2J_m$$ when expressed at the output. This is an energy argument: it explains why a motor's inertia can become important at the joint even if the rotor itself is small.
+
+For a hypothetical fixed $$J_m=10^{-5}$$ kg m², a ratio of 10 gives 0.001 kg m² of reflected rotor inertia; a ratio of 100 gives 0.10 kg m². This compares the same hypothetical rotor to isolate the ratio effect. It is not a numerical comparison of an XC330 and an RS06, whose motors and transmissions differ.
+
+Reducing ratio can reduce this reflected contribution and some transmission losses, while requiring a motor capable of producing more torque directly. Gear geometry, bearing loads, cogging, friction, thermal design and control still matter. “Low ratio” alone is not a measurement of backdrivability or force-control quality.
+
+### Why the names proprioceptive and QDD?
+
+In robotics, **proprioception** concerns information about the robot's own state, such as joint position, velocity or internally sensed effort-related signals. It contrasts with sensing the surrounding world. A proprioceptive actuator uses internal sensing and actuation characteristics to support control of physical interaction; the term should not be interpreted as a guarantee of a dedicated output-force sensor.
+
+Wensing et al. (2017) describe the MIT Cheetah approach through motor/transmission/control co-design for rapid physical interaction. Low transmission ratio, low reflected inertia and an interpretable relation between motor effort and output interaction are central considerations. This paper is a useful historical research reference, rather than a claim that its authors originated every use of proprioception or low-reduction actuation.
+
+**Quasi-direct drive**, or QDD, retains a modest reduction instead of connecting the motor directly to the load. The word “quasi” matters: gears, friction and transmission dynamics remain. There is no universal numerical ratio boundary that makes every product above or below it a different physical category. Stanford Doggo provides another open research example of the approach in a quadruped (Kau et al. 2019).
+
+These concepts matter for locomotion, teleoperation and contact-rich learning because the actuator must respond to unpredictable contact as well as track trajectories. Lower mechanical impedance and useful internal effort information can make some interaction tasks easier to implement. They do not eliminate the need to calibrate current/torque relationships, identify friction, or respect joint and thermal limits.
+
+### Inspect the RS06 and RS00 documentation
+
+RobStride's supplied manuals call these products integrated QDD motor modules. They combine a brushless motor, reduction, sensing and drive electronics, with CAN communication. “Smart integration” and “QDD” describe different dimensions of design; an integrated QDD module can also have configurable commands and returned state.
+
+![RS06 manufacturer drawing and service conditions](../.gitbook/assets/class02/rs06-manual-page09.png)
+
+*Figure 8. RS06 manual, revision 260713, PDF page 9 / printed page 8. Read the mechanical views alongside the service conditions. This original supplier page retains its own typography; the full manual is provided in the [RS06 source file](../.gitbook/assets/class02/RobStride_RS06_User_Manual_260713.pdf).*
+
+![RS00 manufacturer drawing and service conditions](../.gitbook/assets/class02/rs00-manual-page08.png)
+
+*Figure 9. RS00 manual, revision 260713, PDF page 8 / printed page 7. Compare the mounting envelope, voltage range and cooling conditions with RS06. See the [RS00 source file](../.gitbook/assets/class02/RobStride_RS00_User_Manual_260713.pdf).*
+
+| Property in the supplied manuals | RS06 | RS00 |
 |---|---|---|
-| Rated voltage | 48 V DC | 48 V DC |
-| Operating voltage range | 15–60 V DC | 24–60 V DC |
+| Rated voltage | 48 V | 48 V |
+| Operating voltage | 15–60 V | 24–60 V |
 | Reduction | 9:1 | 10:1 |
 | Mass | 621 ± 3 g | 310 ± 3 g |
-| Rated load in the manual | 11 N m at 100 r/min, with specified cooling | 5 N m at 100 r/min, with specified cooling |
-| Peak load in the manual | 36 N m | 14 N m |
-| Communication | CAN, specified 1 Mbit/s | CAN, specified 1 Mbit/s |
+| Rated torque | 11 N m at 100 r/min, with specified cooling | 5 N m at 100 r/min, with specified cooling |
+| Peak torque | 36 N m | 14 N m |
+| CAN bitrate | 1 Mbit/s | 1 Mbit/s |
 
-Read the associated thermal test and mounting conditions before using the load figures. These are not directly equivalent to the XC330 stall rating. A larger numerical value does not by itself answer whether the actuator is appropriate for a particular mechanism or task.
+*Source: RobStride RS06 and RS00 user manuals, revision 260713. Original-brand manuals, specification material and STEP files are available through [RobStride Product Information](https://github.com/RobStride/Product_Information).*
 
----
+The reported electrical, mechanical and thermal conditions are part of the rating. These RS values are not a matched continuous-performance experiment against the XC330's stall value. The different motor sizes, voltages, masses and duty conditions prevent a simple claim that one architecture is intrinsically superior.
 
-### Put XC330 and RS06 beside one another
+The RS06 manual also contains a useful documentation discrepancy. Its Section 1.2 specifies a 130 × 160 mm heat sink, while an electrical/thermal test caption gives 130 × 155 mm. We retain both statements, identify their locations and seek clarification before claiming a matching sustained operating condition. RS00 specifies its own cooling arrangement; it should not inherit the RS06 condition by analogy.
 
-| Attribute | XC330-M288-T | RS06, manual revision 260713 |
-|---|---|---|
-| Supply | 3.7–6.0 V; 5.0 V recommended | 15–60 V operating; 48 V rated |
-| Communication | TTL multidrop, DYNAMIXEL Protocol 2.0 | CAN, model-specific messages |
-| Reduction | 288.35:1 | 9:1 |
-| Mass | 23 g | 621 ± 3 g |
-| Quoted output condition | 0.93 N m **stall** at 5 V | 11 N m **rated** at 100 r/min with specified cooling; 36 N m **peak** |
+### Control and use in an embodied system
 
-The last row deliberately names different rating conditions. It is not a matched test of continuous joint capability. The same host-side idea—send a target and observe feedback—therefore spans devices with very different power, mechanical and communication requirements.
-
-### Connect the interface to a control law
-
-The RS06 manual's operation-control interface expresses a torque reference using desired position, desired velocity, proportional and damping terms, and a feedforward contribution. A corresponding joint-level expression is
+The RS operation-control interface exposes position, velocity, gain and feedforward-effort quantities. Its proportional/damping interpretation relates to the earlier example,
 
 $$
-\tau_{\mathrm{ref}}
-=K_p(q_d-y)+K_d(\dot q_d-\hat v)+\tau_{\mathrm{ff}}.
+\tau_{\mathrm{req}}
+=K_p(q_d-y_q)+K_d(v_d-\hat v)+\tau_{\mathrm{ff}}.
 $$
 
-Here $$q_d$$ and $$\dot q_d$$ are desired position and velocity, $$y$$ is position feedback, and $$\hat v$$ is the device's velocity estimate. Keeping feedback distinct from physical $$q$$ preserves the signal definitions of Section 2. The equation describes requested controller effort; it does not establish that physical output torque equals that reference at every instant. Limits, transmission effects and estimation remain relevant.
+The host must use the model's protocol encoding, allowed ranges and units. The resulting torque-related reference still passes through the module's drive and physical limitations. Returned effort information must be interpreted according to the manufacturer's sensing/estimation description. CAN's 1 Mbit/s is a bus bitrate, not proof of a 1 MHz feedback loop.
 
-**Worked example:** assume a hypothetical $$K_p=2$$ N m/rad, a position error of 0.10 rad, zero velocity error and zero feedforward. The proportional contribution is 0.20 N m. If velocity error is −0.20 rad/s and hypothetical $$K_d=0.10$$ N m s/rad, damping contributes −0.02 N m, giving a 0.18 N m reference. These numbers explain the equation; they are not station settings or a measured output-torque result.
+The **Seeed reBot Arm B601-RS** connects these modules to later course work on teleoperation, data collection, learning and deployment. The published developer bill of materials lists four RS00 and three RS06 modules across the arm and gripper. This is a six-axis arm with an additional powered gripper, not seven independently oriented arm joints. Check the actual unit and shipping revision against that developer list; the RS version is distinct from the Damiao-based version. See the [developer hardware record](https://github.com/Seeed-Projects/reBot-DevArm/blob/main/hardware/reBot_B601_RS/README.md).
 
-An XC330 gain register cannot be substituted for this $$K_p$$ without a defined mapping. Likewise, DYNAMIXEL packets, IDs and register addresses cannot be sent unchanged to a RobStride CAN interface. The host software must respect each device's protocol, units, supported modes and status feedback.
+MIT Cheetah, Stanford Doggo and reBot illustrate different uses of low-reduction actuation. Cheetah and Doggo are historical research examples of the principle; they are not evidence that those robots used RS06 or RS00. ReBot provides the direct product connection. Together they show why motor selection, physical interaction and the software action interface have to be understood as one system.
 
-Brushless motors, strain-wave transmissions and other actuator constructions extend these design choices. A motor, a reduction mechanism and an integrated joint remain different objects. Our two families are enough to examine that distinction without surveying every commercial product.
+High-ratio industrial servo joints remain appropriate when the application values compact load capacity, stiffness, precise motion and an established industrial integration. Some include dedicated torque sensing and sophisticated interaction control. QDD designs offer useful alternatives for particular contact, transparency and learning requirements; they do not make all strain-wave or other high-ratio designs obsolete.
 
-**Check:** which parts of the RS06 control equation describe a target, feedback, a gain and an effort reference? Which extra evidence would you need to call the reported quantity a calibrated physical output torque?
+Other families include direct-drive torque motors, belt/cable transmissions, series-elastic actuators and fluid-powered actuators. Each changes how effort, sensing and compliance are implemented. The questions developed here still apply, but their detailed design is outside this class's four-device comparison.
 
-## 5. Read documents, interfaces and operating limits
+## Read the documents before connecting the device
 
-### Find what each document can tell you
+### What do TDS, MDS and SDS mean?
 
-Use the **user manual** for installation, wiring, modes, registers, protocol behavior and operating restrictions. Use a **technical data sheet** for ratings, dimensions, interfaces and test conditions. Read the manufacturer's safety instructions with both. Document names vary, so inspect what the source actually contains rather than relying on an invented universal abbreviation.
+A product document translates a component name into an engineering specification. It should tell us what a number describes, under which conditions, and how to connect or operate the device. In practice, that information is often distributed across several files.
 
-| Document | Questions to answer before using the device |
-|---|---|
-| User manual / operating instructions | How is it installed, wired, configured, operated and maintained? What modes and faults exist? |
-| Technical data sheet (TDS) | What exact model, dimensions, ratings, units and test conditions are specified? |
-| Safety instructions in the manual | Which electrical, mechanical, thermal and handling restrictions apply? |
-| Safety Data Sheet (SDS), when relevant to a supplied substance or material | What substance or mixture is covered, and what handling information does its supplier provide? |
+**TDS** commonly means **Technical Data Sheet**. It summarizes technical characteristics such as voltage, dimensions, mass, speed and torque ratings. A technical manual or model-specific web page may contain the equivalent information without using “TDS” in its filename.
 
-Labels differ between suppliers. If a source uses “UDS”, read its own definition; do not assume a standardized document type or confuse it with a communication protocol. The required information matters more than the abbreviation.
+**MDS is ambiguous.** Depending on the supplier and context, it can refer to mechanical data, material data, or a manufacturer's data sheet. We should not assign one expansion universally. Read the document title and declared scope. If we need mounting dimensions, search for a mechanical drawing or CAD file; if we need material information, search for the relevant material declaration. Record the supplier's actual name for the document.
 
-A Safety Data Sheet normally concerns hazards of a substance or mixture. An actuator manual's safety section is not automatically an SDS. A lubricant, adhesive or battery used with the station can have its own relevant documentation.
+**SDS** means **Safety Data Sheet**. It communicates hazards and handling information for a substance or mixture. It is not a synonym for a motor's operating manual. The [OSHA SDS-format description](https://www.osha.gov/sites/default/files/publications/OSHA3514.pdf) illustrates sections such as identification, hazards, handling and exposure information. Whether a separate SDS is relevant depends on what material or product is being supplied. A finished actuator may instead be accompanied by operating warnings, electrical instructions and conformity/material declarations. A safety section in a user manual should be recorded as that section, rather than relabelled as an SDS.
 
-For an actuator, a useful specification states the quantity, unit, condition and interpretation. “Torque: 0.93” is incomplete. “0.93 N m stall torque at 5 V” describes a particular rating, while a sustained joint task needs further thermal and operating information.
+The objective is to find the information required for a defensible engineering decision. It is not to force every supplier into three filenames or interpret an absent acronym as an absent specification.
 
----
+### What these documents look like for our four devices
 
-### Follow the command path through real components
+| Device | Technical information | Mechanical/material information | Safety information and unresolved items |
+|---|---|---|---|
+| XC330-M288-T | ROBOTIS model page: specifications, curves, mode/register descriptions | Dimension/drawing and downloadable model resources linked by ROBOTIS; verify the exact variant | Operating warnings are on the model page; a separate model-specific SDS has not been established here |
+| XL330-M288-T | Its own model page, rather than an assumed copy of XC330 | Check dimensions, mounting and declared gear/motor differences | Read its own warnings and voltage limits; do not infer a separate SDS |
+| RS06 | Revision-260713 user manual and manufacturer specification files | Mechanical views in Figure 8; STEP files in the brand repository | Manual safety/installation sections; record the cooling discrepancy |
+| RS00 | Revision-260713 user manual and its own specification files | Mechanical views in Figure 9; model-specific STEP files | Manual safety/installation sections; record its own voltage and cooling conditions |
 
-The demonstration follows **application → asBrain/interface → actuator → telemetry**. At each boundary identify what is sent, what carries it, which device interprets it and what returns. If the station uses another supported interface, name it explicitly and follow the same boundaries.
+Open a model page and identify three different kinds of content: a rated value, an interface instruction, and an operating warning. Then open a mechanical drawing and find the units, mounting dimensions and output reference. These documents answer different questions even when they appear on the same website.
 
-![Physical actuator, cable, interface and hub](../.gitbook/assets/class02/03-interface-components.png)
+For ROBOTIS, begin at the [XC330-M288](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/) or [XL330-M288](https://docs.robotis.com/docs/dxl/model_reference/x_series/xl_series/xl330-m288/) model page and follow its official drawing/download links. For RS06/RS00, begin at [RobStride's Product Information repository](https://github.com/RobStride/Product_Information), select the exact model and English manual, and compare the linked revision with the supplied files. Search the original brand first; distributor summaries are useful leads but should not silently replace model-specific source evidence.
 
-*Figure 6. Actuator ports, three-conductor cable, U2D2 and power hub. The USB-to-bus interface carries host data; the hub provides a connection for external actuator power. [Figure source and code](../resources/class02/media/FIGURE-CODE.md#communication-parts).*
+### Units, limits and operating conditions
 
-The two XC330 bus ports are equivalent connections to shared data, supply and ground. Daisy chaining extends the bus; cable order does not assign a device ID. An ID identifies the actuator, an address identifies one field inside it, and baud defines communication speed. A USB interface is not a substitute for the actuator's required external supply.
+A useful specification includes a quantity, unit, condition and source. “Torque: 11” is incomplete. “RS06 rated torque: 11 N m at 100 r/min under the manual's specified cooling condition” identifies a much more meaningful operating claim. Peak, rated, continuous and stall values must retain their different meanings.
 
----
+Before using a document value, ask:
 
-![Unpowered component arrangement](../.gitbook/assets/class02/04-connection-inspection.png)
+1. **Which physical location?** Motor shaft or actuator output; supply current or motor current; housing temperature or winding temperature?
+2. **Which units and conventions?** Degrees or radians; r/min or rad/s; current in A or mA; signed values; peak or RMS?
+3. **Which operating conditions?** Supply, load, ambient temperature, cooling, duty duration and firmware/configuration?
+4. **Which limits?** Electrical, mechanical, software, profile, thermal and protective limits can act at different stages.
+5. **Which evidence is missing?** Accuracy, friction, latency, continuous capability or torque-sensing method may require clarification or measurement.
 
-*Figure 7. The supplied component arrangement does not show the USB lead or external power source attached. Use it to identify components and missing connections. Consult the exact wiring source before energizing a station. [Figure source and code](../resources/class02/media/FIGURE-CODE.md#connection-inspection).*
+For example, 81 r/min converts to approximately 8.48 rad/s. That unit conversion does not turn a no-load speed into a loaded speed rating. Similarly, converting a raw position count to radians does not calibrate the mechanical zero. Correct arithmetic is necessary, but the physical meaning must survive the conversion.
 
-For RS06/RS00, identify the CAN adapter, bus wiring, supply and model-specific protocol instead. Verify the selected interface/protocol and reported device identity. Similar host software does not make TTL and CAN connectors, supply voltages or message formats interchangeable.
+When information conflicts, keep the conflicting statements and their document locations. Request clarification, examine the actual unit, or design a bounded measurement to answer the question. For research, declare what was measured, assumed and left unresolved. For an application, establish that the intended operating condition is supported before relying on it. An attractive specification should not substitute for this work.
 
-### ID, field address and baud rate answer different questions
+### Teaching demonstration: follow the request and returning evidence
 
-An actuator **ID** selects a device on the shared DYNAMIXEL bus. A **control-table address** selects a field within that device. **Baud rate** determines the compatible serial communication rate used by the host interface and actuator. None of these specifies the mechanical angle by itself. Protocol 2.0 also defines the instruction and packet integrity check; a correctly formed packet still needs the correct destination, field, data representation and operating context.
+The teaching team demonstrates the path from an application through the asBrain/interface arrangement to the actuator and back through telemetry. Identify the actual interface in use: the saved data do not establish that a newly configured asBrain station has been tested.
 
-**Worked packet interpretation:** “ID 5, address 116, value 2330” identifies an actuator and its Goal Position field. The value 2330 is a register count, not 2330 degrees. With the recorded episode's declared reference of count 2048, it corresponds to approximately 24.785°. Reading address 132 returns Present Position instead. Sending the same number to another field does not preserve its meaning.
+![Communication and power components for the XC330 station](../.gitbook/assets/class02/03-interface-components.png)
 
-The Baud Rate register is address 8. Its stored value is a selection code: 6 means 4 Mbit/s for this model, rather than 6 bit/s. ID is stored at address 7. If two actuators share one ID, their replies can collide; moving a cable to a different position in the chain does not repair the duplicate identity. If the host and device use incompatible baud settings, an otherwise correct ID is insufficient for communication (ROBOTIS n.d.a, n.d.c).
+*Figure 10. Course hardware components used to discuss the communication and power paths. A USB interface and a power connection perform different functions. The associated connection photograph in the package does not show a complete energized setup.*
 
-For teaching-team commissioning, establish one device's identity before extending the chain:
+During the demonstration, follow these questions in order:
 
-1. With actuator power disconnected, check mounting, connectors and the approved supply. For communication setup, keep torque disabled and follow the station procedure.
-2. Connect one unambiguous device; ping at its known communication rate and read its model, firmware, ID and baud selection.
-3. If an ID or baud change is needed, follow the exact-model procedure, including torque-off requirements for protected fields. Change one device at a time and keep the host's settings consistent.
-4. Reconnect or reboot only where the documented procedure requires it; ping again and save the configuration readback before allowing motion.
+1. Which device, firmware, mode and mechanical assembly are present? Where is electrical power supplied, and where is the mechanical output constrained?
+2. What quantity does the application send? Does the interface encode a target position, speed, current-related reference or another command?
+3. What bounded motion/reference does the prepared station execute? Which internal reference or profile is available to inspect?
+4. Which quantities return? Identify reported position, velocity, current-related information and status without renaming them as independent output torque.
+5. How do goal and response differ during motion or reversal? What evidence would distinguish a physical load effect from a unit or timing error?
+6. How does the teaching team close the operation and return the station to its prepared state?
 
-These steps explain configuration; they are not a powered student activity. A mode change can reset gains, profile or limit-related values, so read them back rather than assuming the earlier configuration survived.
+Students observe powered operation on the established teaching station. The unpowered inspection activity does not require students to connect or configure a drive. Mode comparisons use qualified operations or clearly identified records; they should not suggest that different devices and loads form a controlled causal comparison.
 
-### Daisy chaining shares both communication and power
+If a live station is unavailable, use Figure 1 and the supplied record: XC330-M288-T, ID 5, firmware 53, Mode 5, motor-only M0 assembly. Its goal, trajectory, position and electrical/status signals support the same interpretation questions. Reading RS06/RS00 protocol examples from manuals is a documentation demonstration, not a recorded or live RS motion test.
 
-The two three-pin ports extend the same data, supply and ground conductors. Each device needs a unique ID and compatible bus settings regardless of where it sits in the chain. A supported broadcast instruction has protocol-defined behavior; it is not a substitute for recording individual device identities.
+## Class activities and possible follow-up
 
-Adding motors also adds power demand. Wiring and the supply carry the combined current; voltage drop can become important at distant devices. A communication symptom can therefore originate in the physical supply path as well as in an ID, baud or packet problem. For Class 02, identify that dependency; Class 05 develops multi-actuator operation.
+### Activities during the explanation and demonstration
 
-**Diagnose before guessing:** two devices answer when connected separately, but the combined setup is unreliable. Check duplicate IDs, compatible rates, wiring/polarity and the supply path before changing controller gains. Disconnect actuator power before changing cables. DYNAMIXEL TTL settings cannot be substituted for the CAN identifier and bit-rate settings of RS06/RS00.
-
-### Read limits before interpreting a response
-
-Connect limits to the intended action: position travel, speed, acceleration/profile settings, current or drive limits, temperature, mounting and cooling. A command may be syntactically valid yet inconsistent with the mechanism's travel or the station's operating conditions. A fault or protection response can also explain why the output stops following a request.
-
-Keep a concise record: exact model and firmware, interface and units, operating mode, gains/profile/limits, mechanical mounting/load, and the reported signals. Distinguish a documented rating from a station readback and from a measured response. Those are three different sources of knowledge.
-
-**Before the break:** choose one entry from the XC330 document and one from an RS06/RS00 manual. State what the entry tells you and what it leaves unresolved for a particular task. Next, the teaching team will show how those definitions meet an actual or recorded station.
-
-## Break
-
-Prepare the demonstration view and the unpowered XC330 units for the final inspection. The next part follows the command and returning telemetry; students operate no powered station.
-
-## 6. Teaching-team demonstration
-
-### Identify the station and trace the path
-
-Start at the application. Identify the connected device, the asBrain or other configured interface, the actuator's model/firmware and its mode. Trace the physical communication and power connections. Point to the output, mounting and available feedback. Ask the class to distinguish the target shown in the application from the returning state.
-
-Read the station's actual configuration rather than assuming defaults. Show the selected travel, profile and effort bounds and the available stop action. The teaching team performs powered operation using its prepared station procedure. The supplied photographs and frozen configuration provide the corresponding recorded fallback.
-
-### Show a bounded position request and its response
-
-Use a small request already qualified for the mounted station. Ask for a prediction, then show the requested target, internal reference where exposed, measured position and status. Explain a shaped reference, a lagging physical response and a settled target using the signal identities from Section 2. Return to the prepared state through the station procedure.
-
-For the recorded route, Figure 4 provides the same observation questions. The supplied Mode 5 episode contains 2,601 readings from a motor-only XC330. Read the three position values at the marked reversal; a full conversion exercise is optional rather than a required part of this demonstration.
-
-### Read the complete hardware state
-
-Position alone does not describe the actuator's operating context. The same episode also reports velocity, input current, PWM, input voltage and internal temperature. Read these channels alongside the command and internal reference; distinguish a raw control-table number from its decoded engineering quantity.
-
-| Channel | Model-specific conversion in this saved record | Original row 400 |
+| Activity | What to do | What the response should establish |
 |---|---|---|
-| Present Position | Subtract the declared reference 2048, then multiply by 360/4096 degrees | 2347 → 26.279° |
-| Present Velocity | Multiply signed raw value by 0.229 r/min | −19 → −4.351 r/min |
-| Present Current | Multiply signed raw value by 1 mA | −32 → −32 mA input-supply telemetry |
-| Present PWM | Multiply signed raw value by 0.113% | −8 → −0.904% |
-| Present Input Voltage | Multiply raw value by 0.1 V | 51 → 5.1 V |
-| Present Temperature | Already degrees Celsius | 22 → 22 °C |
+| Establish physical feedback | Explain what evidence is needed beyond a 30-degree command display | Separate reference, physical output and measurement location |
+| Read the stepper example | Interpret ten full-step commands for an ideal 200-step/revolution arrangement | 18 degrees is a commanded expectation; feedback is needed to establish actual displacement |
+| Compare control objectives | Predict behaviour when requesting angle, speed or effort | Name the regulated variable and what remains unspecified |
+| Work the effort example | Evaluate the proportional and damping contributions | 0.18 N m is a hypothetical reference before limits, not measured torque |
+| Read a recorded reversal | Locate goal, trajectory and reported position in Figure 1 | Identify signal identity and timing before explaining tracking differences |
+| Read the product curves | Locate the stall and no-load conditions | Explain why their maxima cannot occur together |
+| Identify research hardware | Find the original LEAP/Lite actuator models and one ALOHA actuator family | Distinguish a platform name from a verified model/revision |
+| Follow the teaching station | Trace application, interface, power, output and returning telemetry | Connect software action to physical evidence |
 
-These CSV raw columns are already signed where appropriate. Do not apply a second sign decode. The host's receive-end time, a device clock and the internal servo period are different timing quantities. The approximately 200 Hz record rate does not change that distinction.
+### Unpowered inspection and short team comparison
 
-![Input-current and PWM telemetry](../.gitbook/assets/class02/08-current-and-pwm.png)
+Each student inspects **one unpowered XC330**, identifies its model label, output, housing/mounting and connectors, then returns it. The teaching team also circulates an unpowered XL330 for comparison. Keep power disconnected; do not disassemble either unit or force the output.
 
-*Figure 8. Input current and PWM from every row of the same physical episode. Current is input-supply telemetry; PWM is drive modulation. Neither curve independently measures output torque. [Generation code](../resources/class02/media/FIGURE-CODE.md#telemetry-electrical).*
+Identify which properties can be observed directly and which require documentation. For example, the connector is visible, whereas the interpretation of a current register comes from the exact model's documentation.
 
-![Voltage and temperature telemetry](../.gitbook/assets/class02/09-voltage-and-temperature.png)
+Teams then prepare a short XC330-M288-T/XL330-M288-T comparison using official sources. Record:
 
-*Figure 9. Supply voltage and internal temperature over the same episode, with explicit expanded axes. The recorded voltage spans 5.0–5.1 V and temperature 22–24 °C. This short movement is not a sustained-load thermal test. [Generation code](../resources/class02/media/FIGURE-CODE.md#telemetry-environment).*
+- one shared property;
+- one construction or mass difference;
+- one torque or speed difference, including units, supply and rating condition;
+- one consequence for an intended mechanism;
+- one property that remains unknown from the available evidence.
 
-The [complete raw/engineering-unit matrix](../.gitbook/assets/class02/Class02-raw-and-engineering-telemetry.png) preserves the assistant's six-channel overview. The separate figures above give each relationship more reading space. Use the [offline measured-record explorer](../resources/class02/RUN.md#measured-record-explorer) to inspect individual samples without connecting hardware.
+Explain why encoder resolution is not the same as positioning accuracy and why stall torque and no-load speed are not simultaneous capabilities. Return all units before submitting the short comparison. The [activity sheet](../resources/class02/activity.md) provides the response format; equivalent labelled notes are acceptable.
 
-**Interpret the evidence:** which signals vary during a reversal? Which describe electrical or thermal context? Explain why negative reported current cannot simply be multiplied by a nominal constant and labelled calibrated output torque. The recorded-data route supports the same observation questions as the physical demonstration; numerical conversion remains optional practice.
+### Optional activities after class
 
-### Compare supported modes and device interfaces
+1. **Find the documents yourself.** Select XC330, XL330, RS06, RS00 or a robot's other actuator. Find original-brand technical, mechanical/material and safety information. Record actual document titles, revisions, URLs, units and operating conditions. Explain what the supplier means by “MDS”, if it uses the term. Mark a separate SDS as not found or not established where appropriate; do not invent one.
+2. **Verify a robot's actuator choice.** Choose a research system. Record exact actuator models, number and role, hardware revision, control interface and evidence source. Explain what the paper's action representation asks the low-level actuator system to do. Mark an unverified model as unresolved.
+3. **Prepare a defensible selection.** Compare two actuators for a finger, arm joint or mobile mechanism. Separate requirements from advertised maxima. Identify one missing measurement that could change the decision.
+4. **Interpret one real discrepancy.** Use the supplied XC330 recording or the RS06 cooling statements to explain how a researcher should preserve and investigate inconsistent information. Do not replace an unresolved condition with an assumed value.
 
-Show the meaning of a second supported mode through a qualified station operation or a clearly identified existing recording. Position mode and current-based position mode are useful examples: both accept a position request, while their configured effort/control behavior differs. Velocity or current operation can be shown only when that station's prepared procedure covers it. A mode-selection menu alone does not demonstrate physical behavior.
+These activities extend the same question that opened the class: how does a numerical request become controlled physical action, and what evidence lets us establish that it did?
 
-For the recorded alternative, the retained Mode 3 step and Mode 5 records show two actual configurations. They come from different devices/assemblies and are **not a controlled comparison of mode performance**. Use them to identify requests and feedback. Use the RS06/RS00 manual and the actual station readback to compare CAN interface and operation-control quantities with the XC330 control table.
+## References
 
-### Interpret the response and close the station
+Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer.
 
-Choose a position, current-related, temperature or fault field and explain what it reports. Name one quantity the field does not independently measure. Ask the class to identify the complete application-to-telemetry path again, then close or disable the station using the teaching team's procedure.
+Harmonic Drive. n.d. “Operating Principles.” [Manufacturer reference](https://legacy.harmonicdrive.net/reference/operatingprinciples/).
 
-A recorded demonstration preserves the same questions when powered equipment is unavailable. The [supporting resource guide](../resources/class02/README.md) identifies the offline files. The teaching team prepares and qualifies the powered station. No package installation, full campaign audit or parameter fitting belongs during the demonstration.
+Kau, Nathan, Aaron Schultz, Natalie Ferrante, and Patrick Slade. 2019. “Stanford Doggo: An Open-Source, Quasi-Direct-Drive Quadruped.” [arXiv:1905.04254](https://arxiv.org/abs/1905.04254).
 
-## 7. Student activity: unpowered inspection and comparison
+MuJoCo Developers. n.d. “XML Reference: Actuator / Position.” [Official documentation](https://mujoco.readthedocs.io/en/stable/XMLreference.html#actuator-position).
 
-Each student inspects an **unpowered XC330** and returns it. Teams then compare XC330-M288-T and XL330-M288-T using official documentation and the lesson's specification extract. Keep power disconnected; do not disassemble the device or force the output.
+Occupational Safety and Health Administration. n.d. “Hazard Communication Standard: Safety Data Sheets.” [SDS format information](https://www.osha.gov/sites/default/files/publications/OSHA3514.pdf).
 
-### Inspect and identify
+Oriental Motor. n.d. “Stepper Motor Basics” and “AlphaStep Closed Loop Stepper Motors.” [Fundamentals](https://www.orientalmotor.com/stepper-motors/technology/stepper-motor-basics.html); [closed-loop systems](https://www.orientalmotor.com/stepper-motors/alphastep-closed-loop-stepper-motors.html).
 
-Find the exact model label, output, mounting features and connectors. Identify what moves relative to the fixed housing. Record the available feedback quantities from the documentation, distinguishing them from visible physical features.
+ROBOTIS. n.d. “XC330-M288,” “XL330-M288,” “DYNAMIXEL Protocol 2.0,” and “OpenMANIPULATOR.” Accessed October 17, 2026. [XC330](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/); [XL330](https://docs.robotis.com/docs/dxl/model_reference/x_series/xl_series/xl330-m288/); [protocol](https://docs.robotis.com/docs/dxl/protocol/protocol2/); [platform](https://emanual.robotis.com/docs/en/platform/openmanipulator_main).
 
-Each student returns the unit after inspection. If units are limited, rotate them within the team; the supplied photographs support identification while waiting.
+RobStride. 2026. *RS06 User Manual* and *RS00 User Manual*. Revision 260713. [Original-brand product information](https://github.com/RobStride/Product_Information).
 
-### Compare the exact models
+Seeed Studio. n.d. “reBot B601 RS.” *reBot-DevArm*, developer hardware documentation. Accessed October 17, 2026. [Bill of materials and hardware](https://github.com/Seeed-Projects/reBot-DevArm/blob/main/hardware/reBot_B601_RS/README.md).
 
-Use the [XC330 source](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/) and [XL330 source](https://docs.robotis.com/docs/dxl/model_reference/x_series/xl_series/xl330-m288/) or the lesson's attributed extract.
+Shaw, Kenneth, Ananye Agarwal, and Deepak Pathak. 2023. “LEAP Hand: Low-Cost, Efficient, and Anthropomorphic Hand for Robot Learning.” [arXiv:2309.06440](https://arxiv.org/abs/2309.06440). Hardware variant evidence: [original parts list](https://v1.leaphand.com/parts).
 
-| Comparison | Your response |
-|---|---|
-| One shared property | Name it; include units where relevant |
-| Construction or mass difference | State the exact models and values/materials |
-| Torque or speed difference | Include the unit, supply voltage and rating condition |
-| Implication for an intended use | Explain which property matters and why |
+Trossen Robotics. n.d. “ViperX 300S.” [Manufacturer specifications](https://docs.trossenrobotics.com/interbotix_xsarms_docs/specifications/vx300s.html).
 
-Can the quoted stall torque and no-load speed be obtained simultaneously? Does 4,096 counts/revolution establish positioning accuracy? Use the definitions in the lesson.
+Wensing, Patrick M., Albert Wang, Sangok Seok, David Otten, Jeffrey Lang, and Sangbae Kim. 2017. “Proprioceptive Actuator Design in the MIT Cheetah: Impact Mitigation and High-Bandwidth Physical Interaction for Dynamic Legged Robots.” *IEEE Transactions on Robotics* 33 (3): 509–522. [https://doi.org/10.1109/TRO.2016.2640183](https://doi.org/10.1109/TRO.2016.2640183).
 
-### Record and return
-
-Check that all units have been returned. Submit one short team comparison with labelled inspection notes, model-specific evidence and the interpretation. Use the [printable record](../.gitbook/assets/class02/Class02-Activity.pdf) or equivalent notes.
-
-No software installation, powered operation, raw-data conversion or parameter fitting is required. Optional follow-up: locate three research examples using XC330/XL330; record the exact model and role, or state that the exact model could not be verified.
-
-## 8. Optional follow-up and the next class
-
-Find three research examples using XC330/XL330. Record the exact model, the role it plays, the source and what the source actually establishes. If an exact model cannot be verified, record that uncertainty rather than inferring it from a photograph.
-
-For further study, [telemetry calculations](../resources/class02/telemetry-worked-example.md) develop raw-to-engineering conversions and the distinction between tracking error and a Sim2Real comparison. The [technical reading](../resources/class02/reading-notes.md) develops motor equations, step/frequency responses and the retained XC330/RS06 studies. These are supporting resources, not replacements for the planned Class 02 activity.
-
-Class 03 asks what a digital representation of this physical system must preserve. Geometry, frames, joints, moving mass, inertia and the actuator interface follow from the boundaries identified here. A visually similar model is a starting point; behavior must be investigated as well.
-
-## Quick reference: XC330 control-table fields
-
-Use this table to locate information in the exact XC330-M288-T documentation, not as an instruction to write arbitrary registers. A field's address, byte width, sign, unit, access permission and mode-dependent meaning all matter. In particular, profile fields can have different meanings under velocity-based and time-based profiles. Check firmware and readback before changing a configuration.
-
-| Purpose | Field and address | Interpretation |
-|---|---|---|
-| Identity and interface | Model Number (0), Firmware Version (6), ID (7), Baud Rate (8) | Device identity, unique bus address and rate-selection code |
-| Control context | Drive Mode (10), Operating Mode (11), Torque Enable (64) | Profile interpretation, selected mode and drive-enable state |
-| Configured bounds | PWM Limit (36), Current Limit (38), Velocity Limit (44), Max/Min Position Limits (48/52) | Limits must be interpreted in the supported mode and unit |
-| Effort-related requests | Goal PWM (100), Goal Current (102) | PWM/current targets or mode-specific bounds; not measured output torque |
-| Motion requests | Goal Velocity (104), Goal Position (116) | Requested speed or position in the selected mode |
-| Internal profile | Profile Acceleration (108), Profile Velocity (112), Velocity Trajectory (136), Position Trajectory (140) | Profile settings and internally generated desired motion |
-| Reported motion/drive | Present PWM (124), Present Current (126), Present Velocity (128), Present Position (132) | Drive-related telemetry and reported motion state |
-| Timing and context | Realtime Tick (120), Present Input Voltage (144), Present Temperature (146) | Device tick, input supply and internal temperature; not a common synchronized clock |
-
-The device tick has a documented range and wraps; it must not be substituted directly for an unbounded host timestamp. The two position channels at 116 and 132 also answer different questions even if their values happen to agree. Revisit this table when Class 03 defines the digital system boundary and Class 04 compares predicted and measured outputs.
-
-## References and documents
-
-ROBOTIS. n.d.a. “XC330-M288-T.” *ROBOTIS Documentation*. Accessed October 17, 2026. [Exact-model documentation](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/).
-
-ROBOTIS. n.d.b. “XL330-M288-T.” *ROBOTIS Documentation*. Accessed October 17, 2026. [Exact-model documentation](https://docs.robotis.com/docs/dxl/model_reference/x_series/xl_series/xl330-m288/).
-
-ROBOTIS. n.d.c. “DYNAMIXEL Protocol 2.0.” *ROBOTIS Documentation*. Accessed October 17, 2026. [Protocol specification](https://docs.robotis.com/docs/dxl/protocol/protocol2/).
-
-RobStride Dynamics Co., Ltd. 2026a. *RS06 User Manual*. Revision 260713. [Supplied source](../.gitbook/assets/class02/RobStride_RS06_User_Manual_260713.pdf), Sections 1, 2 and 4.3.
-
-RobStride Dynamics Co., Ltd. 2026b. *RS00 User Manual*. Revision 260713. [Supplied source](../.gitbook/assets/class02/RobStride_RS00_User_Manual_260713.pdf), Sections 1 and 2.
-
-Photographs and the matched CAD view were supplied by Mohamad Halwani. [Figure inputs and generation code](../resources/class02/media/FIGURE-CODE.md) · [Record identity](../resources/class02/data/xc330-hardware-demo/README.md).
+Zhao, Tony Z., Vikash Kumar, Sergey Levine, and Chelsea Finn. 2023. “Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.” [arXiv:2304.13705](https://arxiv.org/abs/2304.13705); [paper, code and videos](https://tonyzhaozh.github.io/aloha/).

@@ -67,3 +67,8 @@ Website Figure 5 preserves `media/hardware-source/XC330_preformance_graph.png`. 
 The download `Class02-raw-and-engineering-telemetry.png` preserves the original six-by-two source image. Original function: `generate_hardware_telemetry_matrix()` in `source/assistant/generate_specification_plots.py`. It plots all 2,601 rows of the supplied Parquet record, with raw values left and engineering values right; no filtering or fitting.
 
 Portable adaptation: `code/assistant_figures.py`, function `telemetry`. Run `python code/assistant_figures.py --figure telemetry`. It reads the audited, complete CSV instead of requiring Pandas, states the host receive-end clock explicitly and registers MiSans for tick labels as well as axis labels. Regenerated files are separate from the original source image. Use Figures 4, 8 and 9 in the lesson for larger panels; the matrix retains the original raw/decoded comparison.
+
+
+## Current lecture revision 0.11
+
+The current lesson has ten illustrations. See [SUPPLIER-SOURCES.md](SUPPLIER-SOURCES.md) for the numbering, original URLs, source hashes and reproducible extraction commands. Figures 4–9 retain original supplier/paper typography. Course-authored physical/telemetry figures use MiSans. The older figure numbers elsewhere in this historical record describe earlier revisions.
