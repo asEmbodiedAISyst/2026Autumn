@@ -1,5 +1,5 @@
 ---
-description: Basic quantification of Sim2Real gap · ROB7103/8103
+description: 27 October 2026 · 09:00–10:20 · CR6
 ---
 
 # 04 Basic Quantification of Sim2Real Gap
