@@ -1,5 +1,5 @@
 ---
-description: 11 November 2026 · 10:30–11:50 · CR6 | SONG Chaoyang
+description: 11 November 2026 · 10:30–11:50 · CR6 | WEI Jinqi & SONG Chaoyang
 layout:
   width: wide
 ---
