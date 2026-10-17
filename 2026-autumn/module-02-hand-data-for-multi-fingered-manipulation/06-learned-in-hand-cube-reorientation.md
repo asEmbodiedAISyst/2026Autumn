@@ -1,5 +1,5 @@
 ---
-description: 30 October 2026 · 09:00–10:50 · L12
+description: 30 October 2026 · 09:00–10:50 · L12 | Mohamed HALWANI & SONG Chaoyang
 layout:
   width: wide
 ---
@@ -8,7 +8,7 @@ layout:
 
 ## Central question
 
-How does a learned controller turn a cube through finger contacts while preserving a grasp, and what evidence establishes its performance?
+> How does a learned controller turn a cube through finger contacts while preserving a grasp, and what evidence establishes its performance?
 
 Turning a cube in your hand requires more than moving fingers. Some contacts support the object while others produce rotation; as the cube turns, those roles change. A useful controller must make progress toward its target while keeping the object within the grasp.
 

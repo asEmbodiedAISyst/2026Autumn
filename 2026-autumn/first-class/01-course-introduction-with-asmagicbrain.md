@@ -1,5 +1,5 @@
 ---
-description: 20 October 2026 · 09:00–10:20 · CR6
+description: 20 October 2026 · 09:00–10:20 · CR6 | SONG Chaoyang
 ---
 
 # 01 Course Introduction with asMagicBrain

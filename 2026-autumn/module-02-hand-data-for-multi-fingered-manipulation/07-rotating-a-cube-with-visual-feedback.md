@@ -1,5 +1,5 @@
 ---
-description: 03 November 2026 · 09:00–10:20 · CR6
+description: 03 November 2026 · 09:00–10:20 · CR6 | Mohamed HALWANI & SONG Chaoyang
 layout:
   width: wide
 ---
@@ -8,7 +8,7 @@ layout:
 
 ## Central question
 
-How does visual observation change the robot's feedback loop?
+> How does visual observation change the robot's feedback loop?
 
 Move a camera around a stationary cube, then rotate the cube while keeping the camera still. The image changes in both cases. A robot must distinguish those motions in the frame where it controls its hand. It also needs to know when an estimate was captured and whether enough of the object was visible to support it.
 

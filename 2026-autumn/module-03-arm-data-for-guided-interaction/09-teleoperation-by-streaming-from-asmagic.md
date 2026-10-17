@@ -1,5 +1,5 @@
 ---
-description: 06 November 2026 · 09:00–10:50 · L12
+description: 06 November 2026 · 09:00–10:50 · L12 | WEI Jinqi & SONG Chaoyang
 layout:
   width: wide
 ---
@@ -8,7 +8,7 @@ layout:
 
 ## Central question
 
-What must align for a teleoperated demonstration to become usable robot data?
+> What must align for a teleoperated demonstration to become usable robot data?
 
 Move a phone, and an arm moves. That observation is only the beginning. To use the movement as data, we must know what the phone measured, how its coordinates became a robot request, which request reached the simulated actuator, and which robot state and image belong beside it.
 

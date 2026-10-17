@@ -1,5 +1,5 @@
 ---
-description: 04 November 2026 · 10:30–11:50 · CR6
+description: 04 November 2026 · 10:30–11:50 · CR6 | WEI Jinqi & SONG Chaoyang
 layout:
   width: wide
 ---
@@ -8,7 +8,7 @@ layout:
 
 ## Central question
 
-What evidence shows that an arm or its simulation is ready for a controlled experiment?
+> What evidence shows that an arm or its simulation is ready for a controlled experiment?
 
 A robot that moves can still have the wrong joint order, an incorrect sign, an unsuitable limit or a misinterpreted gripper command. A rendered arm can look convincing while its control interface is inconsistent. Commissioning means establishing the configuration and evidence needed for a specified next operation.
 

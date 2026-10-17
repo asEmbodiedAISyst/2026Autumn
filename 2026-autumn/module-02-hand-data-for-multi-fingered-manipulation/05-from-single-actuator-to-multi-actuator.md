@@ -1,5 +1,5 @@
 ---
-description: 28 October 2026 · 10:30–11:50 · CR6
+description: 28 October 2026 · 10:30–11:50 · CR6 | Mohamed HALWANI & SONG Chaoyang
 layout:
   width: wide
 ---
@@ -8,7 +8,7 @@ layout:
 
 ## Central question
 
-Why does matching one actuator not establish the behavior of a multi-actuator system?
+> Why does matching one actuator not establish the behavior of a multi-actuator system?
 
 A good prediction for one actuator is evidence about a particular device, fixture, controller and task. A robot adds more devices, shared infrastructure and, when joints are mechanically connected, new interactions. Our task is to decide which conclusions survive each change and what additional experiment is needed.
 

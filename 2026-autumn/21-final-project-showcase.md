@@ -1,5 +1,5 @@
 ---
-description: 04 December 2026 · 09:00–10:50 · L12
+description: 04 December 2026 · 09:00–10:50 · L12 | SONG Chaoyang
 ---
 
 # 21 Final Project Showcase

@@ -1,5 +1,5 @@
 ---
-description: 02 December 2026 · Deadline 11:50 · No class meeting
+description: 02 December 2026 · Deadline 11:50 · No class meeting | SONG Chaoyang
 layout:
   width: wide
 ---

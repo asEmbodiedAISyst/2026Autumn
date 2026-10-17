@@ -1,12 +1,12 @@
 ---
-description: 27 October 2026 · 09:00–10:20 · CR6
+description: 27 October 2026 · 09:00–10:20 · CR6 | Mohamed HALWANI & SONG Chaoyang
 ---
 
 # 04 Basic Quantification of Sim2Real Gap
 
 ## Central question
 
-How do we estimate a MuJoCo model, quantify its discrepancy from physical actuator responses, and judge its usefulness for a specified task?
+> How do we estimate a MuJoCo model, quantify its discrepancy from physical actuator responses, and judge its usefulness for a specified task?
 
 A simulated trajectory can look close to a physical trajectory while missing a repeatable offset, a reversal or a response under a different load. Conversely, an actuator can follow its requested motion poorly while a model predicts that imperfect response closely. To interpret agreement, we need to name the two quantities being compared, make their conditions compatible and report a numerical discrepancy together with its context.
 

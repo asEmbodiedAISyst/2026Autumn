@@ -1,5 +1,5 @@
 ---
-description: 10 November 2026 · 09:00–10:20 · CR6
+description: 10 November 2026 · 09:00–10:20 · CR6 | WEI Jinqi & SONG Chaoyang
 layout:
   width: wide
 ---
@@ -8,7 +8,7 @@ layout:
 
 ## Central question
 
-What must a dataset establish before it is suitable for the intended learner and executor?
+> What must a dataset establish before it is suitable for the intended learner and executor?
 
 Robot data acquire meaning through their task, observations, actions and collection procedure. A large folder can contain correctly shaped arrays that are poorly aligned, visually uninformative or impossible for the target robot to execute. Collecting more of those records preserves the problem.
 

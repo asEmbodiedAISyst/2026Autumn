@@ -1,5 +1,5 @@
 ---
-description: 11 November 2026 · 10:30–11:50 · CR6
+description: 11 November 2026 · 10:30–11:50 · CR6 | SONG Chaoyang
 layout:
   width: wide
 ---
@@ -8,7 +8,7 @@ layout:
 
 ## Central question
 
-What evidence supports a claim that a learned behavior transfers and remains useful?
+> What evidence supports a claim that a learned behavior transfers and remains useful?
 
 A policy can perform well in one simulator and fail when the camera, timing or executor changes. It can also fail because an interface was interpreted incorrectly rather than because learning itself was ineffective. Our task is to distinguish these explanations and state what a result actually supports.
 

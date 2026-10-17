@@ -1,12 +1,12 @@
 ---
-description: 21 October 2026 · 10:30–11:50 · CR6
+description: 21 October 2026 · 10:30–11:50 · CR6 | Mohamed HALWANI & SONG Chaoyang
 ---
 
 # Controlled action as a physical feedback process
 
 ## Central question
 
-What turns a motor into an actuator capable of controlled action?
+> What turns a motor into an actuator capable of controlled action?
 
 A motor turns electrical energy into mechanical action. A robot, however, needs more than a shaft that can turn. It needs to move a specified amount, follow a changing motion, maintain a configuration under a load, or regulate its interaction with an object. These tasks require us to connect a request to what the mechanism actually does.
 

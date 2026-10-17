@@ -1,5 +1,5 @@
 ---
-description: 23 October 2026 · 09:00–10:50 · L12
+description: 23 October 2026 · 09:00–10:50 · L12 | Mohamed HALWANI & SONG Chaoyang
 layout:
   width: wide
 ---
@@ -8,7 +8,7 @@ layout:
 
 ## Central question
 
-What does a digital representation preserve, and which parts can we validate?
+> What does a digital representation preserve, and which parts can we validate?
 
 An actuator receives a command, applies effort and produces motion that can be measured. Here we ask how to represent the mechanism receiving that effort. A digital model must specify what moves, where motion occurs, how mass is distributed and how effort enters the system. Its usefulness depends on preserving the properties needed for a stated task and checking those properties against appropriate evidence. For the actuator functions, control objectives and TDS/UDS document reading that precede this model, see [Class 02](02-actuator-basics-for-controlled-action.md).
 
