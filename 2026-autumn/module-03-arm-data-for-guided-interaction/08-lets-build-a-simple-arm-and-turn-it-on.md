@@ -23,7 +23,13 @@ By the end, you should be able to:
 - Compare targets and responses using a declared sampling rule.
 - State which next experiment the evidence supports and which checks remain open.
 
+[Lecture](#from-individual-joints-to-a-serial-arm) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+
+The explanation, figures, worked examples and saved records provide a complete reading and activity route without operating an arm or launching a simulator.
+
 ## From individual joints to a serial arm
+
+Classes 02–04 separated a command from an actuator response and a simulated model from a physical calibration. Class 05 distinguished independent fixtures from connected mechanics. Classes 06–07 added task and observation contracts. Here we apply those ideas to a different embodiment; the arm needs its own joint, tool and gripper conventions.
 
 In a serial arm, moving a proximal joint changes the positions and orientations of the links that follow it. Their weight and inertia contribute to the effort at that joint. Extending the elbow can change shoulder effort even when the shoulder angle and total mass remain unchanged: the downstream centres of mass move relative to the shoulder axis.
 
@@ -41,7 +47,7 @@ A URDF describes links, joint origins and axes, geometry, inertial properties an
 
 The retained mechanical source is Seeed's RS arm description. The course model includes its URDF and meshes, a converted MJCF arm, and a scene with a table, lights and cameras. Its position actuators and gravity-compensation settings are simulation choices. They do not by themselves identify the physical drive's embedded controller. The [model notice](../resources/class08/model/rebot_b601_rs_mjcf/NOTICE.md) identifies the source and the retained [CERN-OHL-W-2.0 license](../resources/class08/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W).
 
-Inspect both the files and the compiled model. The files show the intended names, axes, transmissions and ranges. The compiled model shows the coordinate addresses, constraints and actuator configuration that MuJoCo will execute. Keep that compiled configuration with the results of an experiment. MuJoCo's [XML reference](https://mujoco.readthedocs.io/en/3.14.0/XMLreference.html) documents these model elements.
+Inspect both the files and the compiled model. The files show the intended names, axes, transmissions and ranges. The compiled model shows the coordinate addresses, constraints and actuator configuration that MuJoCo will execute. Keep that compiled configuration with the results of an experiment. The [retained inspection](../resources/class08/results/inspection.json), [source record](../resources/class08/SOURCE.md) and [package manifest](../resources/class08/MANIFEST.json) identify the supplied model and records. The tested native runtime is MuJoCo 3.14.0 with Python 3.12 and NumPy 2.5.4; it is separate from the Class 06–07 native runtime. MuJoCo's [XML reference](https://mujoco.readthedocs.io/en/3.14.0/XMLreference.html) documents these model elements.
 
 ### Count coordinates and actuators separately
 
@@ -54,6 +60,14 @@ The supplied compiled scene has:
 | `nu` | 7 | Six arm actuators and one gripper actuator |
 
 The finger coordinates are coupled by an equality, and a tendon-based actuator drives the gripper. Thus the number of position coordinates, independent motion directions and actuators need not be identical. Read the constraints and transmissions as well as the counts. Seven control entries do not mean seven unconstrained rotary joints.
+
+For finger coordinates $$s_L$$ and $$s_R$$, the fixed tendon uses
+
+$$
+\ell_g=0.5s_L+0.5s_R.
+$$
+
+The equality couples the two sliding coordinates, while the actuator requests tendon length. With equal finger strokes, this average equals one finger's stroke. It is not the sum of both strokes or a direct measurement of total jaw aperture. The compiled coordinate count still includes both fingers; a constraint does not remove an entry from `qpos`.
 
 ## Frames, reference configurations and calibration
 
@@ -116,9 +130,9 @@ $$
 \qquad \boldsymbol\theta_{\mathrm{motor}}=\mathbf d\odot\mathbf a.
 $$
 
-The symbol $$\odot$$ denotes elementwise multiplication. Under this convention, an elbow action of −30 degrees maps to a motor target of +30 degrees. This action mapping is separate from the model joint axis.
+The symbol $$\odot$$ denotes elementwise multiplication. Under this convention, an elbow action of −30 degrees maps to a motor target of +30 degrees. This action mapping is separate from the model joint axis. The declarations are in the bundled `view_arm_scene.py`; `controlled_motion.py` instead accepts model-coordinate targets directly and does not apply this direction vector. Do not add another sign conversion while reproducing that example.
 
-The supplied source declares that each arm model coordinate in radians corresponds to the motor angle in radians; its software bounds are declared in **motor degrees**. Therefore, convert those bounds to the model's units before intersecting them, and do not apply the action direction vector a second time. This is the source package's interface contract. Physical sign and zero calibration must still be checked against the exact hardware and driver revision.
+The supplied source declares that each arm model coordinate in radians corresponds to the motor angle in radians; its software bounds are declared in **motor degrees**. Therefore, convert those bounds to the model's units before intersecting them, and do not apply the action direction vector a second time. This is the source package's interface contract. Physical sign and zero calibration must still be checked against the exact hardware and driver revision. The external B601 driver repository is a separate source, not an executable dependency of this bundle. Its reviewed [snapshot](https://github.com/Seeed-Projects/lerobot-robot-seeed-b601/tree/0da1a1a5575905d77823227003ffee7672059780) distinguishes DM support from an RS path still being refined. A source comment about matching a vendor driver does not establish physical compatibility with every version (Seeed Studio n.d.-b).
 
 ### The gripper has a separate schema
 
@@ -171,7 +185,7 @@ $$
 
 The positive excursion lies inside the declared intersection. The negative excursion is below the −80-degree software bound and is skipped by the supplied joint-by-joint demonstration. A skipped request is useful evidence that the declared test is respecting its gate.
 
-The joint-by-joint script checks its soft bounds for these particular small excursions. The IK implementation intersects model and software ranges explicitly. Neither turns an arbitrary new trajectory into a qualified plan. Inspect the limits and scene for each proposed operation.
+The joint-by-joint script checks its soft bounds for these particular small excursions. The IK implementation intersects model and software ranges explicitly. Neither turns an arbitrary new trajectory into a qualified plan. Inspect the limits and scene for each proposed operation. In particular, a valid endpoint does not establish clearance for the intervening links or a feasible torque throughout the path.
 
 ## Targets, feedback and bounded motion
 
@@ -193,6 +207,24 @@ $$
 This expression identifies target error, damping, compensation and effort bounds. The actual MJCF uses position actuation and body gravity compensation through MuJoCo's mechanisms; it need not implement every term inside the single clipping operation shown here. Read the actual actuator and compensation settings before making an implementation claim.
 
 A stationary arm could be supported by feedback effort, configured gravity compensation, a constraint or a configuration with little gravity moment. Observing that it holds still does not identify the cause. Inspect the configuration and choose a test that distinguishes the explanations relevant to your experiment.
+
+### Connect a joint request to the model's applied effort
+
+For joint2, the XML declares a position gain of 50 N m/rad, velocity gain of 5 N m s/rad, unit transmission and actuator-force limits of ±36 N m. For an in-range target $$u_2$$, its servo contribution is
+
+$$
+f_{a,2}=\operatorname{clip}\!\left(50(u_2-q_2)-5\dot q_2,-36,36\right)\quad\mathrm{N\,m}.
+$$
+
+The derivative term damps measured joint velocity; this actuator does not receive a separately commanded target velocity. Joint damping and friction-loss settings remain separate model terms. A 0.10 rad position error at zero velocity gives a 5 N m servo contribution before any force limit becomes active.
+
+The moving bodies also declare `gravcomp="1"`, and the arm hinges use `actuatorgravcomp="true"`. MuJoCo supplies model-based gravity compensation and places that contribution in the generalized actuator-effort array, `qfrc_actuator`. Thus `actuator_force` for a position servo and the total effort at its joint need not agree (MuJoCo developers n.d.-a, n.d.-b).
+
+At the declared stationary home, the compiled joint2 gravity-compensation contribution is approximately **−5.081 N m**. Adding the illustrative +5 N m servo contribution gives about **−0.081 N m** in that joint's generalized actuator-effort entry. The sign follows the model joint axis. This is a simulation calculation, not a measured motor torque. The servo's ±36 N m limit does not by itself cap a separately added compensation term; no joint-total actuator-force clamp is declared here.
+
+This extends the rigid-body balance used in Classes 03–05: gravity remains in the body dynamics, while compensation is an additional applied effort (Featherstone 2008). It must not be interpreted as removing mass or proving physical holding performance. The same shoulder coordinate with a different elbow configuration can require a different gravity effort. The compensated simulation can hide the uncompensated sag a physical installation might show.
+
+### Shape a bounded request
 
 For an initial movement, the supplied script interpolates joint targets with a half-cosine profile:
 
@@ -220,7 +252,7 @@ $$
 
 The [supplied trace](../resources/class08/results/joint2-trace.csv) has maximum absolute pre-step error approximately **1.326 degrees**. That value describes this trajectory, model, control rule and sampling boundary.
 
-The full joint-motion script compares each selected joint after stepping with that iteration's target. Its corrected run reports approximately **1.00 degree** maximum joint error. A smaller post-step error does not contradict the pre-step trace: the state has had an additional response interval.
+The full joint-motion script compares each selected joint after stepping with that iteration's target. Its corrected run reports approximately **1.00 degree** maximum joint error. A smaller post-step error does not contradict the pre-step trace: it uses a later response sample from that iteration. The runner reads the task data after `mj_step`; derived site positions have their own computation phase. Keep this recorded API boundary rather than silently substituting a fresh forward-pass measurement.
 
 **Worked reading:** a target of 90 degrees paired with a pre-step state of 89 degrees has state-minus-target residual −1 degree. If the subsequent state is 89.4 degrees, the post-step residual is −0.6 degree. Both calculations can be correct. The comparison rule determines which one a plot reports.
 
@@ -247,14 +279,25 @@ The independent scene viewer may still step the scene's declared timestep; it is
 
 Forward kinematics computes the TCP pose from the joint coordinates. Inverse kinematics, or **IK**, seeks joint coordinates for a desired TCP pose. A numerical solver starts from a guess, computes a pose error and uses a local Jacobian to update the joints.
 
-The supplied drawing example uses a damped least-squares form:
+The supplied drawing example uses a damped least-squares form. It stacks world-frame translational Jacobian rows above weighted world-frame angular rows:
+
+$$
+J=\begin{bmatrix}J_p\\w_RJ_\omega\end{bmatrix},\qquad
+\mathbf e=\begin{bmatrix}\mathbf e_p\\w_R\mathbf e_R\end{bmatrix},\qquad w_R=0.3.
+$$
+
+Here $$\mathbf e_p$$ is target TCP position minus current position. The local orientation residual is computed from corresponding axes of the current and target rotation matrices; it is useful near the requested orientation, not a globally valid three-angle parameterization. The coefficient weights orientation relative to position in this numerical objective; it is a declared modeling choice, not a universal conversion between metres and radians.
+
+The resulting position update is
 
 $$
 \Delta\mathbf q=J^T\left(JJ^T+\lambda I\right)^{-1}\mathbf e,
 \qquad \lambda>0.
 $$
 
-Damping reduces sensitivity near poorly conditioned configurations. The implementation also weights orientation error, limits iteration steps, biases the posture toward home and clips coordinates to the applicable ranges. Its stopping condition and residual must be inspected; ending an iteration loop is not itself evidence that a requested pose was reached. The [Modern Robotics numerical IK explanation](https://modernrobotics.northwestern.edu/nu-gm-book-resource/6-2-numerical-inverse-kinematics-part-1-of-2/) develops the underlying local Jacobian and root-finding idea.
+This solver uses translation-first rows. Featherstone's angular-first spatial-motion ordering remains the course convention for spatial vectors; either Jacobian row order can be used if the residual and operations use that same order. MuJoCo's `mj_jacSite` supplies separate `jacp` and `jacr` arrays; `controlled_motion.py` stacks them as shown. The regularization coefficient is 0.001, added directly as the displayed $$\lambda$$ rather than squared.
+
+Damping reduces sensitivity near poorly conditioned configurations. The complete implementation adds a damped posture-bias term with gain 0.05 toward home, bounds the update norm to 0.2 rad per iteration and clips coordinates to the model/software intersection. A damped inverse does not make that posture term an exact null-space projection. The loop permits at most 30 iterations and tests position and local orientation residuals; the lesson's displayed equation describes its main error-reduction term, not every addition. Its stopping condition and residual must be inspected; ending an iteration loop is not itself evidence that a requested pose was reached. The [Modern Robotics numerical IK explanation](https://modernrobotics.northwestern.edu/nu-gm-book-resource/6-2-numerical-inverse-kinematics-part-1-of-2/) develops the underlying local Jacobian and root-finding idea.
 
 The example traces **ROB** with the TCP above the table, using a separate lift between strokes. It is a free-space trajectory, with no contact-writing or object-manipulation outcome. The corrected headless example reports approximately **6.4 mm** maximum TCP position error against its requested path.
 
@@ -280,7 +323,7 @@ When physical arms are available, teaching staff preassemble and inspect them. S
 
 Use the exact RS kit, supply, communication configuration, motor identities and software revision. With power off, check mounting, parts, fasteners and cable routing. Teaching staff then verify communication and feedback conventions, the defined zero/calibration procedure, configured limits, stop behavior and a bounded first movement. Record results for the actual arm. A properly operating arm is the intended physical-session outcome, after those checks have passed.
 
-The [vendor B601-RS quick start](https://wiki.seeedstudio.com/rebot_b601_rs_getting_started/) provides revision-specific assembly and calibration instructions; the [B601-RS LeRobot tutorial](https://wiki.seeedstudio.com/rebot_arm_b601_rs_lerobot/) describes that software integration. These are source references for the physical route, not evidence that the course simulation has qualified a particular physical installation. The commands below operate the simulation only. This class does not assume interchangeability with a different arm or software branch.
+The [vendor B601-RS quick start](https://wiki.seeedstudio.com/rebot_b601_rs_getting_started/) provides revision-specific assembly and calibration instructions; the [B601-RS LeRobot tutorial](https://wiki.seeedstudio.com/rebot_arm_b601_rs_lerobot/) describes that software integration. These are source references for the physical route, not evidence that the course simulation has qualified a particular physical installation. The supplied course scripts operate the simulation only. This class does not assume interchangeability with a different arm or software branch.
 
 ## Instructor and TA demonstration
 
@@ -344,10 +387,27 @@ Keep the record with the team's experiment files. The evidence should allow anot
 
 The bounded joint and gripper interface becomes the robot side of the next class’s teleoperation system. A phone pose must still be mapped through named frames, units, limits and timing before its motion can be interpreted as a robot command.
 
-## Resources and source attribution
+## References
 
 - [Model source notice](../resources/class08/model/rebot_b601_rs_mjcf/NOTICE.md) and [source license](../resources/class08/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W).
 - [Pinned Seeed RS mechanical description](https://github.com/Seeed-Projects/reBot-DevArm/tree/c247ea9cb0da29cd52c31953659cc8c47e6d1a6e/Rebot_Arm_description/RS).
-- [Seeed B601 LeRobot driver source](https://github.com/Seeed-Projects/lerobot-robot-seeed-b601), a separate interface reference whose revision must be recorded when used.
+- [Seeed B601 LeRobot driver reference](https://github.com/Seeed-Projects/lerobot-robot-seeed-b601/tree/0da1a1a5575905d77823227003ffee7672059780), separate from the course simulation interface.
 
 The course adaptation retains the reBot RS mechanical source and its notices, adds the MuJoCo actuation/environment and controlled examples, and records their limits. The six illustrations distinguish conceptual diagrams, compiled declarations and simulated responses. They support this class's readiness decision without implying a completed hardware deployment.
+
+
+Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. [Spatial-vector and dynamics resources](https://royfeatherstone.org/spatial/v2/index.html).
+
+Lynch, Kevin M., and Frank C. Park. 2017. *Modern Robotics: Mechanics, Planning, and Control*. Cambridge University Press. [Numerical inverse-kinematics explanation](https://modernrobotics.northwestern.edu/nu-gm-book-resource/6-2-numerical-inverse-kinematics-part-1-of-2/).
+
+MuJoCo developers. n.d.-a. “XML Reference.” *MuJoCo Documentation*, version 3.14.0. Accessed October 17, 2026. [Position actuators](https://mujoco.readthedocs.io/en/3.14.0/XMLreference.html#actuator-position) and [joint gravity-compensation routing](https://mujoco.readthedocs.io/en/3.14.0/XMLreference.html#body-joint-actuatorgravcomp).
+
+MuJoCo developers. n.d.-b. “Computation.” *MuJoCo Documentation*, version 3.14.0. Accessed October 17, 2026. [Actuation and dynamics](https://mujoco.readthedocs.io/en/3.14.0/computation/index.html).
+
+Seeed Studio. n.d.-a. “reBot RS Mechanical Description.” *reBot-DevArm*, commit `c247ea9cb0da29cd52c31953659cc8c47e6d1a6e`. [RS source](https://github.com/Seeed-Projects/reBot-DevArm/tree/c247ea9cb0da29cd52c31953659cc8c47e6d1a6e/Rebot_Arm_description/RS). Source geometry, inertial declarations and licences are identified by the bundled model notice; course actuation and environment are additional simulation choices.
+
+Seeed Studio. n.d.-b. “Seeed reBot Arm B601 Follower Integration with LeRobot.” Commit `0da1a1a5575905d77823227003ffee7672059780`. [Reviewed driver reference](https://github.com/Seeed-Projects/lerobot-robot-seeed-b601/tree/0da1a1a5575905d77823227003ffee7672059780). This separate documentary reference does not qualify a hardware driver for the supplied simulation.
+
+Seeed Studio. n.d.-c. “B601-RS Quick Start.” *Seeed Studio Wiki*. Accessed October 17, 2026. [Assembly and calibration reference](https://wiki.seeedstudio.com/rebot_b601_rs_getting_started/).
+
+Seeed Studio. n.d.-d. “B601-RS LeRobot Tutorial.” *Seeed Studio Wiki*. Accessed October 17, 2026. [Physical software-integration reference](https://wiki.seeedstudio.com/rebot_arm_b601_rs_lerobot/).
