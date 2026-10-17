@@ -1,6 +1,6 @@
 # Class 02 supporting resources
 
-The [full lecture](../../module-01-actuator-data-for-1-dof-systems/02-actuator-basics-for-controlled-action.md) starts with controlled action as a physical feedback process and develops motor/actuator functions, position/velocity/current-related control, XC330/XL330, RS06/RS00 and technical documentation. It includes the demonstration and collected activities.
+The [full lecture](../../module-01-actuator-data-for-1-dof-systems/02-actuator-basics-for-controlled-action.md) starts with controlled action as a physical feedback process and develops motor/actuator functions, position/velocity/current-related control, XC330/XL330, RS06/RS00 and TDS/UDS/user-manual documentation. It includes the demonstration and collected activities.
 
 Use [activity.md](activity.md) for the current unpowered inspection and model comparison, including an unresolved property. The earlier printable activity PDF is preserved as a historical response format; equivalent labelled notes using the current prompts are sufficient.
 

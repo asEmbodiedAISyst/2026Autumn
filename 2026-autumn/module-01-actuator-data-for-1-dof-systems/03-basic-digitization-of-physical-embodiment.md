@@ -8,9 +8,11 @@ description: Basic digitization of physical embodiment · ROB7103/8103
 
 What does a digital representation preserve, and which parts can we validate?
 
-Class 02 connected actuator commands with physical feedback. We now ask how to represent the mechanism receiving those commands. A digital model must specify what moves, where motion occurs, how mass is distributed and how effort enters the system. Its usefulness depends on preserving the properties needed for a stated task and checking those properties against appropriate evidence.
+[Class 02](02-actuator-basics-for-controlled-action.md) established how an actuator turns a request into physical action, what position/velocity/current-related control asks for, and how TDS and UDS/user-manual information describes its use. We now ask how to represent the mechanism receiving those commands. A digital model must specify what moves, where motion occurs, how mass is distributed and how effort enters the system. Its usefulness depends on preserving the properties needed for a stated task and checking those properties against appropriate evidence.
 
 Our running example is an XC330 actuator carrying a link and two payload assemblies. We follow it from the physical mechanism through CAD, robot description and MuJoCo. The RS06 demonstration applies the same inspection method to another actuator. The student activity returns to XC330 and changes one declared payload parameter.
+
+The new task is to make and inspect an executable representation. Actuator-family history, product selection and control-law introductions remain in Class 02. Here, geometry, coordinate frames, rigid connections and mass distribution determine what the simulated mechanism does. Class 04 will test and identify its response quantitatively.
 
 By the end, you should be able to:
 
@@ -18,7 +20,7 @@ By the end, you should be able to:
 - Inspect geometry, frames, joints, mass, inertia and collision assumptions.
 - Define validation for a physical actuator with a specified link/payload experiment.
 
-[Lecture](#1-geometry-alone-does-not-establish-behavioral-correspondence) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](#start-with-what-moves) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
 ## 1. Geometry alone does not establish behavioral correspondence
 
@@ -58,15 +60,14 @@ The stronger claim requires stronger evidence. Calling a CAD assembly a twin doe
 
 ## 2. Sim2Real differences enter throughout the physical and digital chain
 
-The digital system begins with declared geometry and parameters; the physical system contains manufactured and assembled parts, electronics and embedded control. Their differences have several origins.
+Class 02 explained why a request and reported response can differ. For digitization, the next question is which differences enter the representation and which conditions must accompany its tests. Treat the controller, units and clocks as an interface contract inherited from that discussion, then inspect how the model declarations and physical construction implement it.
 
 | Stage | Concrete example | What to inspect or record |
 |---|---|---|
 | Design | A cable or compliant connection is omitted | Whether that feature matters for the intended motion |
 | Manufacturing | A printed link uses infill rather than solid material | Actual dimensions, mass and process settings |
 | Assembly | Clearance permits play or a shaft is misaligned | Fit, mounting, fasteners and reference pose |
-| Communication | A command reaches hardware after its recorded request time | Command delivery and observation clocks |
-| Controller | The device generates an internal trajectory rather than an instantaneous step | Command mode, gains, limits and available internal signals |
+| Input and observation interface | A target/reference or timestamp is interpreted differently in the model | Preserve the mode, units, limits and clock definitions established in Class 02 |
 | Simulation | Contact is disabled or a passive effect is omitted | Explicit model settings and their intended scope |
 
 Suppose simulated motion begins earlier than physical motion. Increasing inertia may make the simulated response look slower, but this can compensate for a timing error without explaining it. First inspect what the timestamp means, when the command is applied, and whether the physical and simulated inputs have the same interpretation.
@@ -81,7 +82,7 @@ A useful diagnostic order is to establish units and topology, check input/output
 
 ### Mass, centre of mass and inertia answer different questions
 
-Mass describes how much matter moves. The centre of mass describes its mean location. Rotational inertia describes resistance to angular acceleration about a specified axis. Equal masses can have different inertia when placed at different distances from that axis.
+Mass quantifies a body's translational inertia. The centre of mass describes the mass-weighted mean position. Rotational inertia describes resistance to angular acceleration about a specified axis. Equal masses can have different inertia when placed at different distances from that axis.
 
 CAD computes physical-property estimates from geometry and material assignments. A solid-material density may be a poor description of a printed component with infill and voids. Fasteners or attachments absent from CAD can also change the moving assembly. Weighing the complete assembly provides evidence for its mass, but does not independently measure its centre of mass or inertia tensor.
 
@@ -97,7 +98,9 @@ $$
 
 The first term is the component's inertia about an axis through its centre of mass parallel to the joint axis. The distance r is perpendicular to those axes. Add the contributions of all components moving with the joint. The term involving squared distance explains why placing a payload farther out increases joint inertia.
 
-Our declared XC330 teaching family uses a 22 g link and two complete 44 g pin–payload assemblies. The included [fixture mass record](../resources/class03/records/fixture-masses.txt) reports these masses. The model's component inertias are CAD-derived estimates scaled to the recorded masses. Their status remains different from an independently measured inertia.
+Our declared XC330 teaching family uses a 22 g link and two complete 44 g pin–payload assemblies. The included [fixture mass record](../resources/class03/records/fixture-masses.txt) reports these masses. The model's component inertias are CAD-derived estimates scaled to the recorded masses. Their status remains different from an independently measured inertia. The 110 g is **external moving fixture mass**; it excludes the fixed housing and is not the 23 g nominal XC330 module mass quoted in Class 02. The Class 02 M0 recording has no external moving fixture. A response measured in M0 does not validate the dynamics of B2.
+
+The source XML also retains approximately 0.11859 kg on its fixed `XC330-M288-T` body, an unverified CAD/export property rather than the catalogue module mass. That fixed body does not contribute to the isolated hinge's moving inertia. Its mass record would need correction or verification before reusing the assembly in a floating-base or whole-system mass calculation.
 
 ![Declared XC330 fixture configurations](../media/class03/configuration_mass_positions.png)
 
@@ -156,16 +159,18 @@ A successful compilation supports the first level. A mass measurement or axis-di
 
 ### Connect the model to mechanics
 
-For the isolated hinge, a useful scalar description is
+Keep the Class 02 notation: $$q$$ is the joint angle, $$y_q$$ is reported position on hardware, $$\tau_a$$ is applied joint effort and $$\tau_{\mathrm{ext}}$$ is an externally applied torque. Use $$q$$ for the physical coordinate in the balance and the corresponding model coordinate when evaluating the XML; validation compares the predicted trajectory with $$y_q$$ after aligning frames and clocks. Specialize the balance to one fixed-axis rigid assembly, for which $$H(q)=J$$ is constant and the velocity-dependent rigid-body bias vanishes:
 
 $$
-J\ddot q+\tau_{\mathrm{resistance}}+\tau_g(q)
-=\tau_{\mathrm{actuator}}.
+J\ddot q+\tau_f(\dot q)+\tau_g(q)
+=\tau_a+\tau_{\mathrm{ext}}.
 $$
 
-The inertia term relates mass distribution to angular acceleration. Resistance collects the passive effects represented by the chosen model. The gravity term depends on configuration. The actuator term depends on how control effort is generated and limited. The equation is a way to organize the physical contributions; it does not determine their unknown values.
+The payload-placement calculation estimates a contribution to $$J$$. Gravity contributes $$\tau_g(q)$$ on the left; friction is represented separately by $$\tau_f$$. The initial free-motion comparison has no applied external contact torque, so $$\tau_{\mathrm{ext}}=0$$. This does not set friction or gravity to zero on the real device. The equation organizes physical contributions without identifying their unknown values (Featherstone 2008).
 
-The XC330 teaching MJCF uses a torque channel. That channel does not recreate the device's embedded position controller. The prepared RS06 model has a position actuator. Its command and effort path therefore differ. Carry the Class 02 distinction between requested quantities and measured physical responses into both models.
+The core XC330 XML has no added joint `armature`; its compiled inertia here comes from the moving rigid bodies. If reflected motor inertia is later introduced through `armature` or a fitted total $$J$$, avoid counting it twice. The RS06 prepared model has an armature term and separate passive terms, so its numerical inertia/effort description is a different contract.
+
+Position, velocity and current-related control laws were introduced in Class 02. Here we inspect how a particular XML exposes an input and generates $$\tau_a$$. The XC330 core uses a unit-gear torque channel; the RS06 prepared model uses a position actuator. The executable-input example below makes their distinction explicit.
 
 ### Prepare the behavioral test
 
@@ -267,6 +272,47 @@ The exporter helps transfer geometry and assembly information, but it does not m
 
 **Checkpoint:** Which declaration would you inspect to explain an incorrect motion direction? Which would you inspect for an incorrect mass or a missing collision?
 
+### Trace the actuator input contract
+
+`data.ctrl[0]` names an input slot, not a universal physical quantity. Inspect the actuator element and transmission before assigning units. The two prepared examples deliberately expose different interfaces:
+
+| Prepared model | Input meaning | Declared effort bound | What remains to establish |
+|---|---|---|---|
+| XC330 B2, `xc330_motor`, hinge `actuator_joint`, `gear="1"` | Generalized torque request in N m | ±0.1551 N m | The model does not contain XC330's embedded position/current controller |
+| RS06 B1, `rs06_position` | Position reference in rad, limited to ±0.9 rad | ±36 N m | The selected model gains and passive terms do not prove exact firmware or continuous hardware behaviour |
+
+These are model settings, not interchangeable manufacturer ratings. In particular, ±0.1551 N m is not XC330's 0.93 N m stall specification. Both model outputs are simulated generalized forces, not hardware torque measurements. The source models also have different joint axes, zeros and fixtures; matching actuator names does not align them.
+
+For the XC330 B2 file, the decisive declaration is
+
+```xml
+<motor name="xc330_motor" joint="actuator_joint" gear="1"
+       ctrllimited="true" ctrlrange="-0.1551 0.1551"
+       forcelimited="true" forcerange="-0.1551 0.1551" />
+```
+
+With this unit transmission and an in-range request, the model maps $$\tau_{\mathrm{req}}$$ directly to $$\tau_a$$. From the Class 03 resource folder, this small check uses the actual file:
+
+```python
+import mujoco
+model = mujoco.MjModel.from_xml_path(
+    "consolidation/additional_material/models/1DOF-B2.xml")
+data = mujoco.MjData(model)
+data.ctrl[0] = 0.05  # N m for this unit-gear hinge motor
+mujoco.mj_forward(model, data)
+print(float(data.qfrc_actuator[0]))  # 0.05 N m
+```
+
+The prepared RS06 position actuator instead uses $$K_p=50$$ and $$K_d=3.38$$. With reference $$q_r=0.30$$ rad, $$q=0.20$$ rad and $$\dot q=0.40$$ rad/s, its unsaturated model effort is
+
+$$
+\tau_a=50(0.30-0.20)-3.38(0.40)=3.648\ \mathrm{N\,m}.
+$$
+
+Here 0.30 is a position reference, not a torque. Reading `qfrc_actuator` reports the simulation's resulting generalized effort. The motor and position-actuator semantics are documented in MuJoCo's [XML reference](https://mujoco.readthedocs.io/en/3.3.7/XMLreference.html#actuator-motor). An outer position controller can be added around the XC330 torque channel later; until then, writing an angle into it does not reproduce a position servo.
+
+**Checkpoint:** Which input would you write to request 0.05 N m in the XC330 core? Why can the same number mean something different in the RS06 model? Which physical controller and fixture would a response-validation experiment have to match?
+
 ## 6. Relate printing and assembly to uncertainty
 
 Printing turns nominal geometry into a part with an actual material structure and interfaces. Wall count, infill and orientation influence mass and stiffness; shrinkage, support removal and fastening can affect fit and alignment. A rigid-body model abstracts those details, so inspect whether that abstraction remains appropriate.
@@ -287,7 +333,7 @@ The H2D preparation connects these decisions to fabrication. Inspect the supplie
 
 ### Inspect the RS06 mechanical reference
 
-Open the [RS06 motor STEP](../resources/class03/preparation/demonstration/rs06/RS06_vendor_motor.step) and compare its output axis and mounting interfaces with the engineering drawing. Identify the component origin, a nominal dimension and the properties reported by CAD.
+Use the RS06 document introduced in Class 02 to identify its output axis and mounting interfaces. Open the [RS06 motor STEP](../resources/class03/preparation/demonstration/rs06/RS06_vendor_motor.step) and compare its output axis and mounting interfaces with the engineering drawing. Identify the component origin, a nominal dimension and the properties reported by CAD.
 
 ![RS06 mechanical reference](../media/class03/RS06_outline_and_mounting_dimensions.png)
 
@@ -356,7 +402,7 @@ Inspect a small positive displacement and check its direction. Compare gravity e
 | B1 | 1 / 1 / 1 | 0.0003684003 | 0 |
 | G1 | 1 / 1 / 1 | 1.165962 | 0 |
 
-These are numerical checks of the declared models, not new physical measurements. [Raw RS06 records](../resources/class03/results/class03-core/rs06-inspection.json) provide the complete saved fallback.
+These are numerical checks of the declared models, not new physical measurements. At zero velocity, `qfrc_bias` contains the gravity term on the left of the dynamics equation: the unconstrained applied gravitational torque has the opposite sign. It is not the servo effort needed after adding passive terms or the net acceleration of the controlled joint. [Raw RS06 records](../resources/class03/results/class03-core/rs06-inspection.json) provide the complete saved fallback.
 
 ### Compare the printed part and H2D preparation
 
@@ -368,7 +414,7 @@ Finish by naming one implementation check, one physical check and one behavioral
 
 ### Inspect the supplied XC330 model
 
-Use the B2 model with the 22 g link and two complete 44 g assemblies at ±100 mm. Locate the housing, moving assembly and hinge. Record the joint axis, zero convention, declared range, geometry scale and complete moving mass. Identify one modeling choice such as disabled contact.
+Use the B2 model with the 22 g link and two complete 44 g assemblies at ±100 mm. Locate the housing, moving assembly and hinge. Record the joint axis, zero convention, declared range, geometry scale and complete moving mass. Identify the input as torque in N m for `xc330_motor`, rather than assuming a position command because the physical device is a servo. Identify one modeling choice such as disabled contact.
 
 ### Predict, calculate and inspect one change
 
@@ -399,7 +445,7 @@ Check one dimension or mass against the available assembly or printed part. Reco
 | Field | Required entry |
 |---|---|
 | Model identity and task | Actuator, fixture and intended use |
-| Mechanical structure | Moving assembly, joint, axis and zero convention |
+| Mechanical structure and input | Moving assembly, joint, axis, zero convention and control-input meaning |
 | Physical property check | Dimension or mass, evidence source and comparison |
 | Controlled change | Prediction, inertia calculation and inspected result |
 | Assumptions | One chosen parameter or excluded mechanism |
@@ -420,3 +466,7 @@ python3.12 -m venv .venv-class03-core
 ```
 
 The activity command assumes this environment is selected. The XML excerpts, coordinate tables, interface screenshots and saved model results provide the complete reading path without installing software during class. CAD, model, engineering drawing and printing files are linked as supporting downloads; the teaching sequence remains on this page.
+
+## Reference
+
+Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. The scalar balance above specializes the generalized-coordinate dynamics introduced in Class 02; a full spatial-algebra development is outside this structural inspection exercise.

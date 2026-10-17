@@ -166,15 +166,9 @@ Current regulation is valuable because electromagnetic torque is linked to curre
 
 In theory, we must specify state variables, references, feedback laws, units, disturbances and limits. In mechatronics, we must implement sensors, sample timing, power electronics, communication and protection. In simulation, we must specify how a control input creates force rather than assuming that writing an angle makes the mechanism instantaneously occupy it.
 
-The existing MuJoCo model `models/XC330withLever.xml` provides a concrete distinction. Its illustrative position actuator is named `position_baseline_0`, with $$k_p=3$$ and $$k_v=0.03$$. For this model's zero reference velocity, the unsaturated actuator law is
+In MuJoCo, the same array name, `data.ctrl`, can carry different physical quantities because the actuator definition determines its meaning. A position actuator interprets its input as a reference position; a unit-gear hinge motor can interpret its input as generalized torque. Neither directly assigns the physical joint position. The model also needs a load, joint axis, inertia, losses, limits and numerical integration settings.
 
-$$
-\tau_{\mathrm{sim}}=3(\mathrm{ctrl}[0]-q)-0.03\dot q.
-$$
-
-If `ctrl[0] = 0.30`, $$q=0.20$$ and $$\dot q=0.40$$, the requested model effort is 0.288 N m. The model then applies its configured limits. Its `ctrl[0]` is an angle reference, not 0.30 N m; `qfrc_actuator` is a simulated generalized force, not a hardware sensor. The model's ±0.93 N m force range is a teaching bound based on a quoted stall value, not a validated continuous-duty actuator model. See MuJoCo's [position-actuator reference](https://mujoco.readthedocs.io/en/stable/XMLreference.html#actuator-position).
-
-This example explains the implementation contract. It does not identify the XC330's internal gains or prove that MuJoCo reproduces its firmware. A simulation also needs the correct load inertia, joint axis, damping, friction and timestep. The physical zero and sign convention must be aligned with the model rather than inferred from a register value alone. Later classes use measurements to investigate these differences.
+[Class 03](03-basic-digitization-of-physical-embodiment.md) develops this executable representation and works through the actual XC330 and RS06 model interfaces. Here, the essential point is to identify the control objective and distinguish reference, effort and resulting motion before comparing them with hardware. A digital command becomes physically interpretable only through that stated interface.
 
 ### Requested quantities are not automatically measured quantities
 
@@ -296,7 +290,7 @@ T_m=\frac12J_m(N\dot q)^2
 =\frac12(N^2J_m)\dot q^2.
 $$
 
-The rotor therefore contributes **reflected inertia** $$N^2J_m$$ when expressed at the output. This is an energy argument: it explains why a motor's inertia can become important at the joint even if the rotor itself is small.
+The rotor therefore contributes **reflected inertia** $$N^2J_m$$ when expressed at the output. This is an energy argument: it explains why a motor's inertia can become important at the joint even if the rotor itself is small. Class 03 examines a different contribution: the distribution of the external link and payload masses. When constructing a joint model, each contribution must be included once; a fitted total inertia must not receive the same reflected term a second time.
 
 For a hypothetical fixed $$J_m=10^{-5}$$ kg m², a ratio of 10 gives 0.001 kg m² of reflected rotor inertia; a ratio of 100 gives 0.10 kg m². This compares the same hypothetical rotor to isolate the ratio effect. It is not a numerical comparison of an XC330 and an RS06, whose motors and transmissions differ.
 
@@ -361,26 +355,26 @@ Other families include direct-drive torque motors, belt/cable transmissions, ser
 
 ## Read the documents before connecting the device
 
-### What do TDS, MDS and SDS mean?
+### What do TDS, UDS and SDS mean?
 
 A product document translates a component name into an engineering specification. It should tell us what a number describes, under which conditions, and how to connect or operate the device. In practice, that information is often distributed across several files.
 
 **TDS** commonly means **Technical Data Sheet**. It summarizes technical characteristics such as voltage, dimensions, mass, speed and torque ratings. A technical manual or model-specific web page may contain the equivalent information without using “TDS” in its filename.
 
-**MDS is ambiguous.** Depending on the supplier and context, it can refer to mechanical data, material data, or a manufacturer's data sheet. We should not assign one expansion universally. Read the document title and declared scope. If we need mounting dimensions, search for a mechanical drawing or CAD file; if we need material information, search for the relevant material declaration. Record the supplier's actual name for the document.
+**UDS** means **User Data Sheet** in this course: information explaining how to use the product, comparable to a user manual or operating instructions. It covers installation, wiring, configuration, control modes, communication, feedback interpretation, faults and operating precautions. The supplier may call this document a user manual, eManual or operating guide. Record that actual title and revision. A UDS explains how to use the capabilities summarized in the TDS; the two may be combined in one source.
 
 **SDS** means **Safety Data Sheet**. It communicates hazards and handling information for a substance or mixture. It is not a synonym for a motor's operating manual. The [OSHA SDS-format description](https://www.osha.gov/sites/default/files/publications/OSHA3514.pdf) illustrates sections such as identification, hazards, handling and exposure information. Whether a separate SDS is relevant depends on what material or product is being supplied. A finished actuator may instead be accompanied by operating warnings, electrical instructions and conformity/material declarations. A safety section in a user manual should be recorded as that section, rather than relabelled as an SDS.
 
-The objective is to find the information required for a defensible engineering decision. It is not to force every supplier into three filenames or interpret an absent acronym as an absent specification.
+The three document questions are: **what is specified** in the TDS, **how the product is used** in the UDS, and **which material hazards apply** where an SDS is relevant. The information may be distributed across files; the supplier need not use these exact acronyms or provide three separately named documents.
 
 ### What these documents look like for our four devices
 
-| Device | Technical information | Mechanical/material information | Safety information and unresolved items |
+| Device | TDS information: what is specified? | UDS / user-manual information: how is it used? | Drawings, safety and unresolved items |
 |---|---|---|---|
-| XC330-M288-T | ROBOTIS model page: specifications, curves, mode/register descriptions | Dimension/drawing and downloadable model resources linked by ROBOTIS; verify the exact variant | Operating warnings are on the model page; a separate model-specific SDS has not been established here |
-| XL330-M288-T | Its own model page, rather than an assumed copy of XC330 | Check dimensions, mounting and declared gear/motor differences | Read its own warnings and voltage limits; do not infer a separate SDS |
-| RS06 | Revision-260713 user manual and manufacturer specification files | Mechanical views in Figure 8; STEP files in the brand repository | Manual safety/installation sections; record the cooling discrepancy |
-| RS00 | Revision-260713 user manual and its own specification files | Mechanical views in Figure 9; model-specific STEP files | Manual safety/installation sections; record its own voltage and cooling conditions |
+| XC330-M288-T | Model-specific dimensions, ratings and performance curves | ROBOTIS model page: wiring, modes, control table, commands and feedback | Official drawing/download links and operating warnings; a separate model-specific SDS has not been established here |
+| XL330-M288-T | Its own mass, construction and conditioned torque/speed ratings | Its own model page, configuration and feedback descriptions | Check exact-variant drawings and warnings; do not infer a separate SDS |
+| RS06 | Manufacturer specifications and service conditions | Revision-260713 user manual: installation, CAN messages, modes and status | Figure 8 and original STEP files; manual safety sections and the cooling discrepancy |
+| RS00 | Its own specifications, voltage and cooling conditions | Revision-260713 user manual and model-specific operating instructions | Figure 9 and original STEP files; manual safety information |
 
 Open a model page and identify three different kinds of content: a rated value, an interface instruction, and an operating warning. Then open a mechanical drawing and find the units, mounting dimensions and output reference. These documents answer different questions even when they appear on the same website.
 
@@ -456,7 +450,7 @@ Explain why encoder resolution is not the same as positioning accuracy and why s
 
 ### Optional activities after class
 
-1. **Find the documents yourself.** Select XC330, XL330, RS06, RS00 or a robot's other actuator. Find original-brand technical, mechanical/material and safety information. Record actual document titles, revisions, URLs, units and operating conditions. Explain what the supplier means by “MDS”, if it uses the term. Mark a separate SDS as not found or not established where appropriate; do not invent one.
+1. **Find the documents yourself.** Select XC330, XL330, RS06, RS00 or a robot's other actuator. Find original-brand TDS information, UDS/user-manual information and relevant safety documentation. Record actual document titles, revisions, URLs, units and operating conditions. Identify one rating in the TDS and one instruction in the UDS that governs its use. Mark a separate SDS as not found or not established where appropriate; do not invent one.
 2. **Verify a robot's actuator choice.** Choose a research system. Record exact actuator models, number and role, hardware revision, control interface and evidence source. Explain what the paper's action representation asks the low-level actuator system to do. Mark an unverified model as unresolved.
 3. **Prepare a defensible selection.** Compare two actuators for a finger, arm joint or mobile mechanism. Separate requirements from advertised maxima. Identify one missing measurement that could change the decision.
 4. **Interpret one real discrepancy.** Use the supplied XC330 recording or the RS06 cooling statements to explain how a researcher should preserve and investigate inconsistent information. Do not replace an unresolved condition with an assumed value.

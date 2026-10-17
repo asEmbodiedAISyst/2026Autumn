@@ -1,6 +1,6 @@
 {
   "class": 3,
-  "source_version": "0.12",
+  "source_version": "0.13",
   "scope": "Complete single-page notes, class-scoped media and required supporting resources",
   "files_sha256": {
     "2026-autumn/media/class03/body-tree-paper.svg": "9cc9e0cc02234e5b72d8132aaecdce4bef03fde8300c95c668afd245beaa4505",
@@ -100,6 +100,7 @@
   "notes": [
     "Student lesson has no figure-source links or private repository dependencies.",
     "Required models, scripts, meshes, CAD and mass record are included.",
-    "Frame coordinates are model-derived and verified; no new physical measurements."
+    "Frame coordinates are model-derived and verified; no new physical measurements.",
+    "Class02\u201303 reconciliation: consistent dynamics notation, explicit torque/position model input contracts, fixture-mass distinctions and a progression from actuator inspection to assembly/model inspection. No model, figure or data bytes changed."
   ]
 }
