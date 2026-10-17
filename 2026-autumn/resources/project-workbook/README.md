@@ -31,3 +31,7 @@ At each deadline the TA collects the named PDF from each team's remote main bran
 No email, separate upload, physical hand-in, release, tag or collection form is required. Later pushes do not replace the collected submission. Keep the initial PDF and place dated, signed later revisions under that class folder's revisions/ directory.
 
 The [editable project record](project-record.md) supports your work; it is not an additional submission. Cite supporting evidence by its existing path in the same private repository. State missing evidence honestly. Keep student IDs and signatures private. Full reading guidance and worked examples remain on the six class pages.
+
+## Filled paper examples
+
+The Class 12–17 pages each link eight separate, yellow-highlighted example PDFs and their source papers. Files are grouped under `examples/class12/` through `examples/class17/`. Each PDF contains only the corresponding worksheet and its review page; these examples do not replace the blank team submission worksheets.

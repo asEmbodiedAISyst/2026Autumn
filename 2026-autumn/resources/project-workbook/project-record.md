@@ -8,7 +8,7 @@ Assessment mode: [Project development / explicitly identified Source analysis]
 Evidence freeze / source version: [enter]
 Access limits: [enter]
 
-Artifacts resolve through evidence-index.csv. E/A/D means evidence, assumption and decision. An evidence entry states its origin and claim-specific interpretation; a plan is not an observed outcome. Use the [assessment rules](https://x.ancorasir.com/rob7103-8103/module-04-worksheets-guided-final-project-preparation/17-final-project-vi-decision#separate-evidence-origin-context-and-support). Keep configuration details in one configuration.md rather than six conflicting copies.
+Artifacts resolve through evidence-index.csv. E/A/D means evidence, assumption and decision. An evidence entry states its origin and claim-specific interpretation; a plan is not an observed outcome. Use the [assessment rules](https://x.ancorasir.com/rob7103-8103/module-04-worksheets-guided-final-project-preparation/17-final-project-vi-decision#reading-and-project-guidance). Keep configuration details in one configuration.md rather than six conflicting copies.
 
 ## Milestones
 
