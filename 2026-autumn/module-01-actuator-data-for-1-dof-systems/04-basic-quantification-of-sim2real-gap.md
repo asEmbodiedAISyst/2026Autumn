@@ -399,7 +399,7 @@ The resource folder in the student repository is `2026-autumn/resources/class04`
 Open the H1 parameter table. Identify which quantities are fixed and which three fields were estimated. From this class resource folder, in the prepared native environment, the following commands audit the campaign, inspect the models, replay frozen candidates and optionally reproduce the short integral fit:
 
 ```bash
-cd native
+cd 2026-autumn/resources/class04/native
 python code/phyintel_lab.py audit --actuator xc330
 python code/phyintel_lab.py inspect --actuator xc330
 python code/phyintel_lab.py replay --actuator xc330
@@ -410,13 +410,14 @@ Use the saved outputs if runtime execution is unavailable. The replay command do
 
 ### Quantify and interpret the reserved response
 
-Return to the class resource folder and run the prepared selected-case analysis:
+From the repository root, run the prepared selected-case analysis:
 
 ```bash
-python code/analyze_episode.py
+cd 2026-autumn/resources/class04
+python3 code/analyze_episode.py --no-plot
 ```
 
-Read the overlay, signed residual and RMSE. Confirm that the selected Method 2 G1 score is about 0.02191 rad. Compare Figure 3's B1 response before looking at the group means. Name one observed discrepancy and one discriminating check. Do not refit, change zero or shift the held-out trace to improve its score.
+The standard-library path reports the metric from the saved predictions. Omit `--no-plot` in the prepared plotting environment to regenerate the overlay and residual; the supplied figure is available either way. Read the overlay, signed residual and RMSE. Confirm that the selected Method 2 G1 score is about 0.02191 rad. Compare Figure 3's B1 response before looking at the group means. Name one observed discrepancy and one discriminating check. Do not refit, change zero or shift the held-out trace to improve its score.
 
 ### Compare the RS06 boundary briefly
 
@@ -433,7 +434,7 @@ Finish the demonstration by stating the candidate, observable, condition, measur
 
 ## Student activity
 
-Analyse the supplied **H1/G1/P06 first held-out XC330 episode** using the configuration card, Figure 1 and the saved analysis output. Running `python code/analyze_episode.py` in the prepared environment is optional. The same saved figures, metric and paired samples are supplied for interpretation.
+Analyse the supplied **H1/G1/P06 first held-out XC330 episode** using the configuration card, Figure 1 and the saved analysis output. Running `python3 code/analyze_episode.py --no-plot` from `2026-autumn/resources/class04` is optional. The same saved figures, metric and paired samples are supplied for interpretation.
 
 Submit a compact response with five items:
 
