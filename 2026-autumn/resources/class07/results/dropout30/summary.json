@@ -1,0 +1,22 @@
+{
+  "scope": "Single-seed simulated pose-error packet diagnostic; no image estimator, training, hardware or reliability qualification",
+  "seed": 9204,
+  "steps": 384,
+  "delay_steps": 0,
+  "dropout_probability": 0.3,
+  "dropout_rng_seed": 79204,
+  "noise_level": 0.0,
+  "first_goal_time_s": 18.6,
+  "goal_events": 1,
+  "dropped_packets": 126,
+  "max_feature_age_s": 0.30000000000000004,
+  "fall": true,
+  "engine_warnings": 0,
+  "pose_channels": "obs[32:41]; position and orientation error at capture, including capture-time goal",
+  "drop_policy": "hold last delivered packet; first packet always valid; delayed startup uses first packet",
+  "versions": {
+    "mujoco": "3.6.0",
+    "onnxruntime": "1.30.0"
+  },
+  "policy_sha256": "1893e4a0f3b95f1657ce5e11745db0ac8749c8780d83013859082c414cb5f97f"
+}

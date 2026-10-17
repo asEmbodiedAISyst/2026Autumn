@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="918pt" height="410.4pt" viewBox="0 0 918 410.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-15T00:04:56.600112</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 410.4
+L 918 410.4
+L 918 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 18.2 216.2
+L 265.666667 216.2
+L 265.666667 128.2
+L 18.2 128.2
+z
+" clip-path="url(#p00359d6a06)" style="fill: #0072b2"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 265.666667 216.2
+L 513.133333 216.2
+L 513.133333 128.2
+L 265.666667 128.2
+z
+" clip-path="url(#p00359d6a06)" style="fill: #007c78"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 513.133333 216.2
+L 652.333333 216.2
+L 652.333333 128.2
+L 513.133333 128.2
+z
+" clip-path="url(#p00359d6a06)" style="fill: #d55e00"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 652.333333 216.2
+L 899.8 216.2
+L 899.8 128.2
+L 652.333333 128.2
+z
+" clip-path="url(#p00359d6a06)" style="fill: #627786"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle; fill: #ffffff" x="141.933333" y="177.66" transform="rotate(-0 141.933333 177.66)">16</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="141.933333" y="261.66" transform="rotate(-0 141.933333 261.66)">Joint positions</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle; fill: #ffffff" x="389.4" y="177.66" transform="rotate(-0 389.4 177.66)">16</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="389.4" y="261.66" transform="rotate(-0 389.4 261.66)">Joint-target error</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle; fill: #ffffff" x="582.733333" y="177.66" transform="rotate(-0 582.733333 177.66)">9</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="582.733333" y="261.66" transform="rotate(-0 582.733333 261.66)">Pose-error packet</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle; fill: #ffffff" x="776.066667" y="177.66" transform="rotate(-0 776.066667 177.66)">16</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="776.066667" y="261.66" transform="rotate(-0 776.066667 261.66)">Action history</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="459" y="62.2" transform="rotate(-0 459 62.2)">Only indices32–40 are delayed or held</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p00359d6a06">
+   <rect x="18.2" y="18.2" width="881.6" height="374"/>
+  </clipPath>
+ </defs>
+</svg>

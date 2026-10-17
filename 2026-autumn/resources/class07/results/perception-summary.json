@@ -1,0 +1,1057 @@
+{
+  "scope": "Synthetic known-corner projection/PnP and timing exercises; no camera recordings or learned vision",
+  "seed": 7,
+  "opencv": "5.0.0",
+  "K": [
+    [
+      700.0,
+      0.0,
+      320.0
+    ],
+    [
+      0.0,
+      700.0,
+      240.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "distortion": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "object_corners_m": [
+    [
+      -0.035,
+      -0.035,
+      0.0
+    ],
+    [
+      0.035,
+      -0.035,
+      0.0
+    ],
+    [
+      0.035,
+      0.035,
+      0.0
+    ],
+    [
+      -0.035,
+      0.035,
+      0.0
+    ]
+  ],
+  "rvec_object_to_camera": [
+    0.2,
+    -0.15,
+    0.1
+  ],
+  "tvec_object_to_camera_m": [
+    0.02,
+    -0.01,
+    0.45
+  ],
+  "projected_pixels": [
+    [
+      303.2838949416923,
+      164.74733118120614
+    ],
+    [
+      411.0935521332041,
+      175.76015521407214
+    ],
+    [
+      396.41559897556294,
+      280.9927313820919
+    ],
+    [
+      291.4265405015134,
+      272.88696943401584
+    ]
+  ],
+  "trials": [
+    {
+      "pixel_sigma": 0,
+      "trials": 100,
+      "median_translation_mm": 2.1765279423868185e-06,
+      "median_rotation_deg": 2.4148365394514667e-06,
+      "p90_rotation_deg": 2.4148365394514667e-06
+    },
+    {
+      "pixel_sigma": 0.25,
+      "trials": 100,
+      "median_translation_mm": 0.5571673926687586,
+      "median_rotation_deg": 0.7952601579825069,
+      "p90_rotation_deg": 1.2660143677418516
+    },
+    {
+      "pixel_sigma": 0.5,
+      "trials": 100,
+      "median_translation_mm": 1.2670312580762713,
+      "median_rotation_deg": 1.5224954729115199,
+      "p90_rotation_deg": 2.5081199862630412
+    },
+    {
+      "pixel_sigma": 1.0,
+      "trials": 100,
+      "median_translation_mm": 2.1342995747155893,
+      "median_rotation_deg": 2.971263412065851,
+      "p90_rotation_deg": 5.503911929440758
+    },
+    {
+      "pixel_sigma": 2.0,
+      "trials": 100,
+      "median_translation_mm": 5.3840590682071525,
+      "median_rotation_deg": 6.388706980762839,
+      "p90_rotation_deg": 23.95868940506457
+    }
+  ],
+  "frame_example": {
+    "p_HC_m": [
+      0.1,
+      0.0,
+      0.0
+    ],
+    "R_HC": [
+      [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "p_CO_m": [
+      0.2,
+      0.03,
+      0.4
+    ],
+    "p_HO_m": [
+      0.07,
+      0.2,
+      0.4
+    ]
+  },
+  "occlusion_example": {
+    "valid": false,
+    "reason": "fewer than4correspondences; this lab gate"
+  },
+  "occlusion_rule": "Require all4correspondences in this lab; three available => missing, not a new pose",
+  "packets": [
+    {
+      "time_s": 0.0,
+      "true_yaw_rad": 0.0,
+      "delivered_yaw_rad": 0.0,
+      "capture_time_s": 0.0,
+      "age_s": 0.0,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.05,
+      "true_yaw_rad": 0.06257378601609236,
+      "delivered_yaw_rad": 0.0,
+      "capture_time_s": 0.0,
+      "age_s": 0.05,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.1,
+      "true_yaw_rad": 0.12360679774997896,
+      "delivered_yaw_rad": 0.0,
+      "capture_time_s": 0.0,
+      "age_s": 0.1,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.15000000000000002,
+      "true_yaw_rad": 0.18159619989581874,
+      "delivered_yaw_rad": 0.0,
+      "capture_time_s": 0.0,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.2,
+      "true_yaw_rad": 0.23511410091698925,
+      "delivered_yaw_rad": 0.06257378601609236,
+      "capture_time_s": 0.05,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.25,
+      "true_yaw_rad": 0.282842712474619,
+      "delivered_yaw_rad": 0.12360679774997896,
+      "capture_time_s": 0.1,
+      "age_s": 0.15,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.30000000000000004,
+      "true_yaw_rad": 0.323606797749979,
+      "delivered_yaw_rad": 0.18159619989581874,
+      "capture_time_s": 0.15000000000000002,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.35000000000000003,
+      "true_yaw_rad": 0.3564026096753472,
+      "delivered_yaw_rad": 0.23511410091698925,
+      "capture_time_s": 0.2,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.4,
+      "true_yaw_rad": 0.3804226065180614,
+      "delivered_yaw_rad": 0.282842712474619,
+      "capture_time_s": 0.25,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.45,
+      "true_yaw_rad": 0.39507533623805513,
+      "delivered_yaw_rad": 0.323606797749979,
+      "capture_time_s": 0.30000000000000004,
+      "age_s": 0.14999999999999997,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.5,
+      "true_yaw_rad": 0.4,
+      "delivered_yaw_rad": 0.3564026096753472,
+      "capture_time_s": 0.35000000000000003,
+      "age_s": 0.14999999999999997,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.55,
+      "true_yaw_rad": 0.3950753362380551,
+      "delivered_yaw_rad": 0.3804226065180614,
+      "capture_time_s": 0.4,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.6000000000000001,
+      "true_yaw_rad": 0.3804226065180614,
+      "delivered_yaw_rad": 0.39507533623805513,
+      "capture_time_s": 0.45,
+      "age_s": 0.15000000000000008,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.65,
+      "true_yaw_rad": 0.3564026096753472,
+      "delivered_yaw_rad": 0.4,
+      "capture_time_s": 0.5,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.7000000000000001,
+      "true_yaw_rad": 0.323606797749979,
+      "delivered_yaw_rad": 0.3950753362380551,
+      "capture_time_s": 0.55,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.75,
+      "true_yaw_rad": 0.28284271247461906,
+      "delivered_yaw_rad": 0.3804226065180614,
+      "capture_time_s": 0.6000000000000001,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.8,
+      "true_yaw_rad": 0.2351141009169893,
+      "delivered_yaw_rad": 0.3564026096753472,
+      "capture_time_s": 0.65,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.8500000000000001,
+      "true_yaw_rad": 0.1815961998958186,
+      "delivered_yaw_rad": 0.323606797749979,
+      "capture_time_s": 0.7000000000000001,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.9,
+      "true_yaw_rad": 0.12360679774997901,
+      "delivered_yaw_rad": 0.28284271247461906,
+      "capture_time_s": 0.75,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 0.9500000000000001,
+      "true_yaw_rad": 0.0625737860160924,
+      "delivered_yaw_rad": 0.2351141009169893,
+      "capture_time_s": 0.8,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.0,
+      "true_yaw_rad": 4.898587196589413e-17,
+      "delivered_yaw_rad": 0.1815961998958186,
+      "capture_time_s": 0.8500000000000001,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.05,
+      "true_yaw_rad": -0.0625737860160923,
+      "delivered_yaw_rad": 0.12360679774997901,
+      "capture_time_s": 0.9,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.1,
+      "true_yaw_rad": -0.1236067977499791,
+      "delivered_yaw_rad": 0.0625737860160924,
+      "capture_time_s": 0.9500000000000001,
+      "age_s": 0.15000000000000002,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.1500000000000001,
+      "true_yaw_rad": -0.18159619989581885,
+      "delivered_yaw_rad": 4.898587196589413e-17,
+      "capture_time_s": 1.0,
+      "age_s": 0.15000000000000013,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.2000000000000002,
+      "true_yaw_rad": -0.23511410091698937,
+      "delivered_yaw_rad": -0.0625737860160923,
+      "capture_time_s": 1.05,
+      "age_s": 0.15000000000000013,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.25,
+      "true_yaw_rad": -0.282842712474619,
+      "delivered_yaw_rad": -0.1236067977499791,
+      "capture_time_s": 1.1,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.3,
+      "true_yaw_rad": -0.32360679774997897,
+      "delivered_yaw_rad": -0.18159619989581885,
+      "capture_time_s": 1.1500000000000001,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.35,
+      "true_yaw_rad": -0.35640260967534715,
+      "delivered_yaw_rad": -0.23511410091698937,
+      "capture_time_s": 1.2000000000000002,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.4000000000000001,
+      "true_yaw_rad": -0.3804226065180614,
+      "delivered_yaw_rad": -0.282842712474619,
+      "capture_time_s": 1.25,
+      "age_s": 0.15000000000000013,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.4500000000000002,
+      "true_yaw_rad": -0.3950753362380552,
+      "delivered_yaw_rad": -0.32360679774997897,
+      "capture_time_s": 1.3,
+      "age_s": 0.15000000000000013,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.5,
+      "true_yaw_rad": -0.4,
+      "delivered_yaw_rad": -0.35640260967534715,
+      "capture_time_s": 1.35,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.55,
+      "true_yaw_rad": -0.39507533623805513,
+      "delivered_yaw_rad": -0.3804226065180614,
+      "capture_time_s": 1.4000000000000001,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.6,
+      "true_yaw_rad": -0.3804226065180615,
+      "delivered_yaw_rad": -0.3950753362380552,
+      "capture_time_s": 1.4500000000000002,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.6500000000000001,
+      "true_yaw_rad": -0.3564026096753472,
+      "delivered_yaw_rad": -0.4,
+      "capture_time_s": 1.5,
+      "age_s": 0.15000000000000013,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.7000000000000002,
+      "true_yaw_rad": -0.3236067977499788,
+      "delivered_yaw_rad": -0.39507533623805513,
+      "capture_time_s": 1.55,
+      "age_s": 0.15000000000000013,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 1.75,
+      "true_yaw_rad": -0.28284271247461906,
+      "delivered_yaw_rad": -0.39507533623805513,
+      "capture_time_s": 1.55,
+      "age_s": 0.19999999999999996,
+      "valid_detection": false,
+      "stale": false
+    },
+    {
+      "time_s": 1.8,
+      "true_yaw_rad": -0.23511410091698937,
+      "delivered_yaw_rad": -0.39507533623805513,
+      "capture_time_s": 1.55,
+      "age_s": 0.25,
+      "valid_detection": false,
+      "stale": true
+    },
+    {
+      "time_s": 1.85,
+      "true_yaw_rad": -0.1815961998958188,
+      "delivered_yaw_rad": -0.39507533623805513,
+      "capture_time_s": 1.55,
+      "age_s": 0.30000000000000004,
+      "valid_detection": false,
+      "stale": true
+    },
+    {
+      "time_s": 1.9000000000000001,
+      "true_yaw_rad": -0.12360679774997907,
+      "delivered_yaw_rad": -0.39507533623805513,
+      "capture_time_s": 1.55,
+      "age_s": 0.3500000000000001,
+      "valid_detection": false,
+      "stale": true
+    },
+    {
+      "time_s": 1.9500000000000002,
+      "true_yaw_rad": -0.06257378601609209,
+      "delivered_yaw_rad": -0.39507533623805513,
+      "capture_time_s": 1.55,
+      "age_s": 0.40000000000000013,
+      "valid_detection": false,
+      "stale": true
+    },
+    {
+      "time_s": 2.0,
+      "true_yaw_rad": -9.797174393178826e-17,
+      "delivered_yaw_rad": -0.39507533623805513,
+      "capture_time_s": 1.55,
+      "age_s": 0.44999999999999996,
+      "valid_detection": false,
+      "stale": true
+    },
+    {
+      "time_s": 2.0500000000000003,
+      "true_yaw_rad": 0.0625737860160926,
+      "delivered_yaw_rad": -0.39507533623805513,
+      "capture_time_s": 1.55,
+      "age_s": 0.5000000000000002,
+      "valid_detection": false,
+      "stale": true
+    },
+    {
+      "time_s": 2.1,
+      "true_yaw_rad": 0.12360679774997888,
+      "delivered_yaw_rad": -0.39507533623805513,
+      "capture_time_s": 1.55,
+      "age_s": 0.55,
+      "valid_detection": false,
+      "stale": true
+    },
+    {
+      "time_s": 2.15,
+      "true_yaw_rad": 0.18159619989581866,
+      "delivered_yaw_rad": -0.39507533623805513,
+      "capture_time_s": 1.55,
+      "age_s": 0.5999999999999999,
+      "valid_detection": false,
+      "stale": true
+    },
+    {
+      "time_s": 2.2,
+      "true_yaw_rad": 0.23511410091698945,
+      "delivered_yaw_rad": -0.39507533623805513,
+      "capture_time_s": 1.55,
+      "age_s": 0.6500000000000001,
+      "valid_detection": false,
+      "stale": true
+    },
+    {
+      "time_s": 2.25,
+      "true_yaw_rad": 0.28284271247461895,
+      "delivered_yaw_rad": 0.12360679774997888,
+      "capture_time_s": 2.1,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.3000000000000003,
+      "true_yaw_rad": 0.32360679774997914,
+      "delivered_yaw_rad": 0.18159619989581866,
+      "capture_time_s": 2.15,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.35,
+      "true_yaw_rad": 0.35640260967534715,
+      "delivered_yaw_rad": 0.23511410091698945,
+      "capture_time_s": 2.2,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.4000000000000004,
+      "true_yaw_rad": 0.38042260651806153,
+      "delivered_yaw_rad": 0.28284271247461895,
+      "capture_time_s": 2.25,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.45,
+      "true_yaw_rad": 0.39507533623805513,
+      "delivered_yaw_rad": 0.32360679774997914,
+      "capture_time_s": 2.3000000000000003,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.5,
+      "true_yaw_rad": 0.4,
+      "delivered_yaw_rad": 0.35640260967534715,
+      "capture_time_s": 2.35,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.5500000000000003,
+      "true_yaw_rad": 0.3950753362380551,
+      "delivered_yaw_rad": 0.38042260651806153,
+      "capture_time_s": 2.4000000000000004,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.6,
+      "true_yaw_rad": 0.3804226065180615,
+      "delivered_yaw_rad": 0.39507533623805513,
+      "capture_time_s": 2.45,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.6500000000000004,
+      "true_yaw_rad": 0.35640260967534704,
+      "delivered_yaw_rad": 0.4,
+      "capture_time_s": 2.5,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.7,
+      "true_yaw_rad": 0.3236067977499791,
+      "delivered_yaw_rad": 0.3950753362380551,
+      "capture_time_s": 2.5500000000000003,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.75,
+      "true_yaw_rad": 0.2828427124746194,
+      "delivered_yaw_rad": 0.3804226065180615,
+      "capture_time_s": 2.6,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.8000000000000003,
+      "true_yaw_rad": 0.23511410091698937,
+      "delivered_yaw_rad": 0.35640260967534704,
+      "capture_time_s": 2.6500000000000004,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.85,
+      "true_yaw_rad": 0.18159619989581854,
+      "delivered_yaw_rad": 0.3236067977499791,
+      "capture_time_s": 2.7,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.9000000000000004,
+      "true_yaw_rad": 0.12360679774997843,
+      "delivered_yaw_rad": 0.2828427124746194,
+      "capture_time_s": 2.75,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 2.95,
+      "true_yaw_rad": 0.06257378601609213,
+      "delivered_yaw_rad": 0.23511410091698937,
+      "capture_time_s": 2.8000000000000003,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.0,
+      "true_yaw_rad": 1.4695761589768238e-16,
+      "delivered_yaw_rad": 0.18159619989581854,
+      "capture_time_s": 2.85,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.0500000000000003,
+      "true_yaw_rad": -0.06257378601609255,
+      "delivered_yaw_rad": 0.12360679774997843,
+      "capture_time_s": 2.9000000000000004,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.1,
+      "true_yaw_rad": -0.12360679774997883,
+      "delivered_yaw_rad": 0.06257378601609213,
+      "capture_time_s": 2.95,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.1500000000000004,
+      "true_yaw_rad": -0.1815961998958189,
+      "delivered_yaw_rad": 1.4695761589768238e-16,
+      "capture_time_s": 3.0,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.2,
+      "true_yaw_rad": -0.23511410091698914,
+      "delivered_yaw_rad": -0.06257378601609255,
+      "capture_time_s": 3.0500000000000003,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.25,
+      "true_yaw_rad": -0.2828427124746192,
+      "delivered_yaw_rad": -0.12360679774997883,
+      "capture_time_s": 3.1,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.3000000000000003,
+      "true_yaw_rad": -0.3236067977499789,
+      "delivered_yaw_rad": -0.1815961998958189,
+      "capture_time_s": 3.1500000000000004,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.35,
+      "true_yaw_rad": -0.35640260967534726,
+      "delivered_yaw_rad": -0.23511410091698914,
+      "capture_time_s": 3.2,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.4000000000000004,
+      "true_yaw_rad": -0.3804226065180616,
+      "delivered_yaw_rad": -0.2828427124746192,
+      "capture_time_s": 3.25,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.45,
+      "true_yaw_rad": -0.39507533623805513,
+      "delivered_yaw_rad": -0.3236067977499789,
+      "capture_time_s": 3.3000000000000003,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.5,
+      "true_yaw_rad": -0.4,
+      "delivered_yaw_rad": -0.35640260967534726,
+      "capture_time_s": 3.35,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.5500000000000003,
+      "true_yaw_rad": -0.3950753362380551,
+      "delivered_yaw_rad": -0.3804226065180616,
+      "capture_time_s": 3.4000000000000004,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.6,
+      "true_yaw_rad": -0.38042260651806153,
+      "delivered_yaw_rad": -0.39507533623805513,
+      "capture_time_s": 3.45,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.6500000000000004,
+      "true_yaw_rad": -0.3564026096753471,
+      "delivered_yaw_rad": -0.4,
+      "capture_time_s": 3.5,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.7,
+      "true_yaw_rad": -0.3236067977499791,
+      "delivered_yaw_rad": -0.3950753362380551,
+      "capture_time_s": 3.5500000000000003,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.75,
+      "true_yaw_rad": -0.2828427124746194,
+      "delivered_yaw_rad": -0.38042260651806153,
+      "capture_time_s": 3.6,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.8000000000000003,
+      "true_yaw_rad": -0.2351141009169894,
+      "delivered_yaw_rad": -0.3564026096753471,
+      "capture_time_s": 3.6500000000000004,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.85,
+      "true_yaw_rad": -0.18159619989581857,
+      "delivered_yaw_rad": -0.3236067977499791,
+      "capture_time_s": 3.7,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.9000000000000004,
+      "true_yaw_rad": -0.12360679774997847,
+      "delivered_yaw_rad": -0.2828427124746194,
+      "capture_time_s": 3.75,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 3.95,
+      "true_yaw_rad": -0.06257378601609219,
+      "delivered_yaw_rad": -0.2351141009169894,
+      "capture_time_s": 3.8000000000000003,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.0,
+      "true_yaw_rad": -1.9594348786357652e-16,
+      "delivered_yaw_rad": -0.18159619989581857,
+      "capture_time_s": 3.85,
+      "age_s": 0.1499999999999999,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.05,
+      "true_yaw_rad": 0.0625737860160918,
+      "delivered_yaw_rad": -0.12360679774997847,
+      "capture_time_s": 3.9000000000000004,
+      "age_s": 0.14999999999999947,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.1000000000000005,
+      "true_yaw_rad": 0.12360679774997946,
+      "delivered_yaw_rad": -0.06257378601609219,
+      "capture_time_s": 3.95,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.15,
+      "true_yaw_rad": 0.18159619989581888,
+      "delivered_yaw_rad": -1.9594348786357652e-16,
+      "capture_time_s": 4.0,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.2,
+      "true_yaw_rad": 0.2351141009169891,
+      "delivered_yaw_rad": 0.0625737860160918,
+      "capture_time_s": 4.05,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.25,
+      "true_yaw_rad": 0.2828427124746191,
+      "delivered_yaw_rad": 0.12360679774997946,
+      "capture_time_s": 4.1000000000000005,
+      "age_s": 0.14999999999999947,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.3,
+      "true_yaw_rad": 0.32360679774997886,
+      "delivered_yaw_rad": 0.18159619989581888,
+      "capture_time_s": 4.15,
+      "age_s": 0.14999999999999947,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.3500000000000005,
+      "true_yaw_rad": 0.3564026096753472,
+      "delivered_yaw_rad": 0.2351141009169891,
+      "capture_time_s": 4.2,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.4,
+      "true_yaw_rad": 0.3804226065180616,
+      "delivered_yaw_rad": 0.2828427124746191,
+      "capture_time_s": 4.25,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.45,
+      "true_yaw_rad": 0.39507533623805513,
+      "delivered_yaw_rad": 0.32360679774997886,
+      "capture_time_s": 4.3,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.5,
+      "true_yaw_rad": 0.4,
+      "delivered_yaw_rad": 0.3564026096753472,
+      "capture_time_s": 4.3500000000000005,
+      "age_s": 0.14999999999999947,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.55,
+      "true_yaw_rad": 0.39507533623805524,
+      "delivered_yaw_rad": 0.3804226065180616,
+      "capture_time_s": 4.4,
+      "age_s": 0.14999999999999947,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.6000000000000005,
+      "true_yaw_rad": 0.3804226065180613,
+      "delivered_yaw_rad": 0.39507533623805513,
+      "capture_time_s": 4.45,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.65,
+      "true_yaw_rad": 0.3564026096753471,
+      "delivered_yaw_rad": 0.4,
+      "capture_time_s": 4.5,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.7,
+      "true_yaw_rad": 0.32360679774997914,
+      "delivered_yaw_rad": 0.39507533623805524,
+      "capture_time_s": 4.55,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.75,
+      "true_yaw_rad": 0.28284271247461945,
+      "delivered_yaw_rad": 0.3804226065180613,
+      "capture_time_s": 4.6000000000000005,
+      "age_s": 0.14999999999999947,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.800000000000001,
+      "true_yaw_rad": 0.23511410091698887,
+      "delivered_yaw_rad": 0.3564026096753471,
+      "capture_time_s": 4.65,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.8500000000000005,
+      "true_yaw_rad": 0.18159619989581863,
+      "delivered_yaw_rad": 0.32360679774997914,
+      "capture_time_s": 4.7,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.9,
+      "true_yaw_rad": 0.12360679774997851,
+      "delivered_yaw_rad": 0.28284271247461945,
+      "capture_time_s": 4.75,
+      "age_s": 0.15000000000000036,
+      "valid_detection": true,
+      "stale": false
+    },
+    {
+      "time_s": 4.95,
+      "true_yaw_rad": 0.06257378601609224,
+      "delivered_yaw_rad": 0.23511410091698887,
+      "capture_time_s": 4.800000000000001,
+      "age_s": 0.14999999999999947,
+      "valid_detection": true,
+      "stale": false
+    }
+  ]
+}
