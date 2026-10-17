@@ -1,0 +1,72 @@
+{
+  "pages": [
+    {
+      "class": 12,
+      "words": 1723,
+      "figures": 2,
+      "math": 3,
+      "links": true,
+      "pdf_fonts": "MiSans embedded",
+      "no_elapsed_marks": true,
+      "worksheet_fields": 4
+    },
+    {
+      "class": 13,
+      "words": 1743,
+      "figures": 2,
+      "math": 5,
+      "links": true,
+      "pdf_fonts": "MiSans embedded",
+      "no_elapsed_marks": true,
+      "worksheet_fields": 4
+    },
+    {
+      "class": 14,
+      "words": 1635,
+      "figures": 2,
+      "math": 4,
+      "links": true,
+      "pdf_fonts": "MiSans embedded",
+      "no_elapsed_marks": true,
+      "worksheet_fields": 4
+    },
+    {
+      "class": 15,
+      "words": 1626,
+      "figures": 2,
+      "math": 2,
+      "links": true,
+      "pdf_fonts": "MiSans embedded",
+      "no_elapsed_marks": true,
+      "worksheet_fields": 4
+    },
+    {
+      "class": 16,
+      "words": 1654,
+      "figures": 2,
+      "math": 2,
+      "links": true,
+      "pdf_fonts": "MiSans embedded",
+      "no_elapsed_marks": true,
+      "worksheet_fields": 4
+    },
+    {
+      "class": 17,
+      "words": 2347,
+      "figures": 2,
+      "math": 0,
+      "links": true,
+      "pdf_fonts": "MiSans embedded",
+      "no_elapsed_marks": true,
+      "worksheet_fields": 4
+    }
+  ],
+  "all27questions_preserved": true,
+  "fixture_arithmetic_checked": true,
+  "submission_pack_pages": 13,
+  "class17_A3_pages": [
+    11,
+    12
+  ],
+  "class17_review_A4_page": 13
+}

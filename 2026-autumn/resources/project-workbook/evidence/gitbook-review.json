@@ -1,0 +1,188 @@
+{
+  "date": "2026-10-17",
+  "content_commit": "d43c12d",
+  "pages": [
+    {
+      "class": 12,
+      "figures_loaded": 2,
+      "figure_widths_px": [
+        865,
+        865
+      ],
+      "katex_expressions": 3,
+      "katex_errors": 0,
+      "table_widths_px": [
+        865,
+        865
+      ],
+      "table_scroll_widths_px": [
+        865,
+        865
+      ],
+      "horizontal_page_overflow": false,
+      "jump_targets_verified": [
+        "by-the-end-of-this-class",
+        "apply-this-to-your-own-project",
+        "submit-before-leaving-class"
+      ],
+      "signed_submission_visible": true,
+      "single_reading_page": true
+    },
+    {
+      "class": 13,
+      "figures_loaded": 2,
+      "figure_widths_px": [
+        865,
+        865
+      ],
+      "katex_expressions": 5,
+      "katex_errors": 0,
+      "table_widths_px": [
+        865,
+        865
+      ],
+      "table_scroll_widths_px": [
+        865,
+        865
+      ],
+      "horizontal_page_overflow": false,
+      "jump_targets_verified": [
+        "by-the-end-of-this-class",
+        "apply-this-to-your-own-project",
+        "submit-before-leaving-class"
+      ],
+      "signed_submission_visible": true,
+      "single_reading_page": true
+    },
+    {
+      "class": 14,
+      "figures_loaded": 2,
+      "figure_widths_px": [
+        865,
+        865
+      ],
+      "katex_expressions": 4,
+      "katex_errors": 0,
+      "table_widths_px": [
+        865,
+        865
+      ],
+      "table_scroll_widths_px": [
+        865,
+        865
+      ],
+      "horizontal_page_overflow": false,
+      "jump_targets_verified": [
+        "by-the-end-of-this-class",
+        "apply-this-to-your-own-project",
+        "submit-before-leaving-class"
+      ],
+      "signed_submission_visible": true,
+      "single_reading_page": true
+    },
+    {
+      "class": 15,
+      "figures_loaded": 2,
+      "figure_widths_px": [
+        865,
+        865
+      ],
+      "katex_expressions": 2,
+      "katex_errors": 0,
+      "table_widths_px": [
+        865,
+        865
+      ],
+      "table_scroll_widths_px": [
+        865,
+        865
+      ],
+      "horizontal_page_overflow": false,
+      "jump_targets_verified": [
+        "by-the-end-of-this-class",
+        "apply-this-to-your-own-project",
+        "submit-before-leaving-class"
+      ],
+      "signed_submission_visible": true,
+      "single_reading_page": true
+    },
+    {
+      "class": 16,
+      "figures_loaded": 2,
+      "figure_widths_px": [
+        865,
+        865
+      ],
+      "katex_expressions": 2,
+      "katex_errors": 0,
+      "table_widths_px": [
+        865,
+        865
+      ],
+      "table_scroll_widths_px": [
+        865,
+        865
+      ],
+      "horizontal_page_overflow": false,
+      "jump_targets_verified": [
+        "by-the-end-of-this-class",
+        "apply-this-to-your-own-project",
+        "submit-before-leaving-class"
+      ],
+      "signed_submission_visible": true,
+      "single_reading_page": true
+    },
+    {
+      "class": 17,
+      "figures_loaded": 2,
+      "figure_widths_px": [
+        865,
+        865
+      ],
+      "katex_expressions": 0,
+      "katex_errors": 0,
+      "table_widths_px": [
+        865,
+        865,
+        865,
+        865,
+        865,
+        865
+      ],
+      "table_scroll_widths_px": [
+        865,
+        865,
+        865,
+        865,
+        865,
+        865
+      ],
+      "horizontal_page_overflow": false,
+      "jump_targets_verified": [
+        "by-the-end-of-this-class",
+        "apply-this-to-your-own-project",
+        "submit-before-leaving-class"
+      ],
+      "signed_submission_visible": true,
+      "single_reading_page": true
+    }
+  ],
+  "all27DecisionChecksVisible": true,
+  "total_figures_loaded": 12,
+  "total_math_expressions": 16,
+  "total_tables": 16,
+  "worksheet_download": "Current public student repository, resources/project-workbook/Submission-Worksheets.pdf",
+  "worksheet_pack_verified": "13pages; Class17 hasA3pages11/12 andA4page13; originalblankpack preserved",
+  "visual_review": [
+    "Class13 submission block and deadline",
+    "Class14 conversion figure and surrounding reasoning",
+    "Class15 uncertainty equation and example",
+    "Class16 paired-outcome figure and interpretation",
+    "Class17 full Decision question table"
+  ],
+  "fixes_before_publication": [
+    "MiSans missing Unicode subscript glyphs replaced by readable ASCII indexing",
+    "System diagram record taps explicitly show observations and admitted actions"
+  ],
+  "scope": "Reading pages and illustrative fixtures; no new empirical project results or classroom rehearsal claimed"
+}
