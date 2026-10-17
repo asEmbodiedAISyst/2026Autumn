@@ -1,0 +1,36 @@
+{
+  "playground_commit": "ef4fefc13033c0468af4ef651847f5348af0c7d7",
+  "files": {
+    "cube_reorient.ipynb": {
+      "source": "mujoco_playground/experimental/learning/cube_reorient.ipynb",
+      "sha256": "83b61644644704cdaf903f9fa94c9d0fbfaa897312b022212d546cdb0effd1b3",
+      "url": "https://github.com/google-deepmind/mujoco_playground/blob/ef4fefc13033c0468af4ef651847f5348af0c7d7/mujoco_playground/experimental/learning/cube_reorient.ipynb"
+    },
+    "manipulation.ipynb": {
+      "source": "learning/notebooks/manipulation.ipynb",
+      "sha256": "568a958df155d7c71baa69483c347458aaaed9dd116a7f4ede61b9cd462ca1be",
+      "url": "https://github.com/google-deepmind/mujoco_playground/blob/ef4fefc13033c0468af4ef651847f5348af0c7d7/learning/notebooks/manipulation.ipynb"
+    },
+    "manipulation_params.py": {
+      "source": "mujoco_playground/config/manipulation_params.py",
+      "sha256": "5cd71caecdaf4dbfeea674df1ca3170337c527fbc23bee4590b15966d0e6c12d",
+      "url": "https://github.com/google-deepmind/mujoco_playground/blob/ef4fefc13033c0468af4ef651847f5348af0c7d7/mujoco_playground/config/manipulation_params.py"
+    },
+    "play_leap_reorient.py": {
+      "source": "mujoco_playground/experimental/sim2sim/play_leap_reorient.py",
+      "sha256": "ee3c7cda359d334a29ae014f60d1c20a56cfef46dbbb70931ee606327cd1b076",
+      "url": "https://github.com/google-deepmind/mujoco_playground/blob/ef4fefc13033c0468af4ef651847f5348af0c7d7/mujoco_playground/experimental/sim2sim/play_leap_reorient.py"
+    },
+    "leap_reorient_policy.onnx": {
+      "source": "mujoco_playground/experimental/sim2sim/onnx/leap_reorient_policy.onnx",
+      "sha256": "1893e4a0f3b95f1657ce5e11745db0ac8749c8780d83013859082c414cb5f97f",
+      "url": "https://github.com/google-deepmind/mujoco_playground/blob/ef4fefc13033c0468af4ef651847f5348af0c7d7/mujoco_playground/experimental/sim2sim/onnx/leap_reorient_policy.onnx"
+    },
+    "LEARNING-README.md": {
+      "source": "learning/README.md",
+      "sha256": "bd3e2acabd36829b38e783b7cf1cbf4fc179a35d39a42d4edbce8e7bd86af373",
+      "url": "https://github.com/google-deepmind/mujoco_playground/blob/ef4fefc13033c0468af4ef651847f5348af0c7d7/learning/README.md"
+    }
+  },
+  "scope": "Unmodified reference snapshots; bundled ONNX inference not tested or task-qualified"
+}

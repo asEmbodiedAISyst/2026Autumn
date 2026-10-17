@@ -1,0 +1,21 @@
+{
+  "backend": "native-player",
+  "seed": 20000,
+  "episodes": 100,
+  "steps": 1000,
+  "sim_dt": 0.002,
+  "control_dt": 0.05,
+  "noise_level": 0.0,
+  "success_threshold_rad": 0.1,
+  "policy_sha256": "1893e4a0f3b95f1657ce5e11745db0ac8749c8780d83013859082c414cb5f97f",
+  "playground_commit": "ef4fefc13033c0468af4ef651847f5348af0c7d7",
+  "metric": "first target reached within episode; stops at first success, upstream task fall or time limit",
+  "versions": {
+    "mujoco": "3.6.0",
+    "mujoco-mjx": "3.6.0",
+    "jax": "0.11.2",
+    "onnxruntime": "1.30.0"
+  },
+  "native_adaptation": "native-task and native-player use identical original task random reset distribution; player observations/control callback are supplied upstream",
+  "scope": "evaluation only; no training, model randomization, hardware or success-threshold relaxation"
+}

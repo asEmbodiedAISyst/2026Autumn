@@ -1,0 +1,71 @@
+{
+  "backend": "playground",
+  "seed": 20000,
+  "episodes": 100,
+  "steps": 1000,
+  "sim_dt": 0.01,
+  "control_dt": 0.05,
+  "noise_level": 0.0,
+  "success_threshold_rad": 0.1,
+  "policy_sha256": "1893e4a0f3b95f1657ce5e11745db0ac8749c8780d83013859082c414cb5f97f",
+  "runner_sha256": "60fcfd6aae12b652aa5d06adae6d911fd48f0c7637add12724cb4a16e6c1ad6a",
+  "playground_commit": "ef4fefc13033c0468af4ef651847f5348af0c7d7",
+  "metric": "first target reached within episode; stops at first success, upstream task fall or time limit",
+  "versions": {
+    "mujoco": "3.14.0",
+    "mujoco-mjx": "3.14.0",
+    "jax": "0.11.2",
+    "onnxruntime": "1.30.0"
+  },
+  "native_adaptation": "native-task and native-player use identical original task random reset distribution; player observations/control callback are supplied upstream",
+  "scope": "evaluation only; no training, model randomization, hardware or success-threshold relaxation",
+  "compiled_physical_model_contract": {
+    "passed": true,
+    "array_fields": [
+      "body_mass",
+      "body_inertia",
+      "body_ipos",
+      "body_iquat",
+      "body_pos",
+      "body_quat",
+      "dof_armature",
+      "dof_damping",
+      "dof_frictionloss",
+      "jnt_type",
+      "jnt_pos",
+      "jnt_axis",
+      "jnt_range",
+      "actuator_gainprm",
+      "actuator_biasprm",
+      "actuator_ctrlrange",
+      "actuator_forcerange",
+      "actuator_forcelimited",
+      "jnt_actfrcrange",
+      "jnt_actfrclimited",
+      "qpos0",
+      "geom_type",
+      "geom_size",
+      "geom_pos",
+      "geom_quat",
+      "geom_bodyid",
+      "geom_contype",
+      "geom_conaffinity",
+      "geom_friction",
+      "geom_solref",
+      "geom_solimp",
+      "sensor_type",
+      "sensor_objid",
+      "sensor_objtype",
+      "sensor_adr",
+      "sensor_dim"
+    ]
+  },
+  "jax_devices": [
+    "cuda:0"
+  ],
+  "gpu_buffer_allocation": {
+    "njmax": 512,
+    "naconmax": 16384,
+    "worlds": 1
+  }
+}

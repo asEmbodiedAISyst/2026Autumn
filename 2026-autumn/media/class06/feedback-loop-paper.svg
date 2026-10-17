@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="515.905512pt" height="164.409449pt" viewBox="0 0 515.905512 164.409449" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-14T23:53:26.361186</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 164.409449
+L 515.905512 164.409449
+L 515.905512 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 15.270803 80.56063
+L 106.276535 80.56063
+L 106.276535 34.197165
+L 15.270803 34.197165
+z
+" clip-path="url(#pfa0a23e9e0)" style="fill: #edf3f5; stroke: #245c8a; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 146.723528 80.56063
+L 237.72926 80.56063
+L 237.72926 34.197165
+L 146.723528 34.197165
+z
+" clip-path="url(#pfa0a23e9e0)" style="fill: #edf3f5; stroke: #245c8a; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 278.176252 80.56063
+L 369.181984 80.56063
+L 369.181984 34.197165
+L 278.176252 34.197165
+z
+" clip-path="url(#pfa0a23e9e0)" style="fill: #edf3f5; stroke: #245c8a; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 409.628976 80.56063
+L 500.634709 80.56063
+L 500.634709 34.197165
+L 409.628976 34.197165
+z
+" clip-path="url(#pfa0a23e9e0)" style="fill: #edf3f5; stroke: #245c8a; stroke-width: 0.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'MiSans'; text-anchor: middle" x="60.773669" y="48.106205" transform="rotate(-0 60.773669 48.106205)">Observe</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(44.05406 64.341372)">Joint state</text>
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(29.851169 73.623372)">Cube pose + target</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'MiSans'; text-anchor: middle" x="192.226394" y="48.106205" transform="rotate(-0 192.226394 48.106205)">Policy</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(177.481003 64.390591)">57 inputs</text>
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(176.252175 74.372591)">16 actions</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'MiSans'; text-anchor: middle" x="323.679118" y="48.106205" transform="rotate(-0 323.679118 48.106205)">Joint targets</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(297.663727 64.390591)">Increment + clip</text>
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(314.337399 74.372591)">20 Hz</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 7px; font-family: 'MiSans'; text-anchor: middle" x="455.131843" y="48.106205" transform="rotate(-0 455.131843 48.106205)">MuJoCo</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(439.644343 64.390591)">Actuators</text>
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(426.326296 73.672591)">Contact dynamics</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 108.276173 57.378898
+Q 126.497835 57.378898 143.82507 57.378898
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 141.02507 55.978898
+L 143.82507 57.378898
+L 141.02507 58.778898
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 239.728898 57.378898
+Q 257.950559 57.378898 275.277794 57.378898
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 272.477794 55.978898
+L 275.277794 57.378898
+L 272.477794 58.778898
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 371.181622 57.378898
+Q 389.403284 57.378898 406.730518 57.378898
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 403.930518 55.978898
+L 406.730518 57.378898
+L 403.930518 58.778898
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 455.131843 82.557809
+Q 455.131843 104.514681 455.131843 125.577126
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 456.531843 122.777126
+L 455.131843 125.577126
+L 453.731843 122.777126
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 453.131048 128.469543
+Q 257.953667 128.469543 63.670714 128.469543
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 66.470714 129.869543
+L 63.670714 128.469543
+L 66.470714 127.069543
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 60.773669 126.472364
+Q 60.773669 104.515492 60.773669 83.453047
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 59.373669 86.253047
+L 60.773669 83.453047
+L 62.173669 86.253047
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 7px; font-family: 'MiSans'; text-anchor: middle" x="257.952756" y="117.651402" transform="rotate(-0 257.952756 117.651402)">Finger and cube motion → next measurement</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 7px; font-family: 'MiSans'; text-anchor: middle" x="60.773669" y="9.469984" transform="rotate(-0 60.773669 9.469984)">Target</text>
+   </g>
+   <g id="patch_12">
+    <path d="M 60.773669 19.193559
+Q 60.773669 25.693534 60.773669 31.299083
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+    <path d="M 62.173669 28.499083
+L 60.773669 31.299083
+L 59.373669 28.499083
+" style="fill: none; stroke: #245c8a; stroke-width: 0.8; stroke-linecap: round"/>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pfa0a23e9e0">
+   <rect x="5.159055" y="3.288189" width="505.587402" height="154.544882"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,31 @@
+{
+  "figures": 8,
+  "animation": 1,
+  "math_expressions": 14,
+  "table_outcomes": [
+    [
+      88,
+      0,
+      12
+    ],
+    [
+      89,
+      1,
+      10
+    ],
+    [
+      58,
+      2,
+      40
+    ]
+  ],
+  "links_and_anchors": "All local targets present",
+  "vector_fonts": "16 PDFs embed fonts;16SVGs contain editable MiSans text",
+  "runtime": "See runtime-verification.json;isolated student-onlycopy;9commands passed",
+  "scope_limits": [
+    "Retained100-episode statistics audited,not newly evaluated",
+    "No new hardware,training,tracker or physical cube qualification",
+    "Native numerical replay checked on Apple-silicon macOS;Windows instructions not executed",
+    "Existing animation/frame source retained;graphics not newly rendered"
+  ]
+}

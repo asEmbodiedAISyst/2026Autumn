@@ -1,0 +1,18 @@
+{
+  "generator": "source/generate_cube_artwork.py",
+  "font_file": "MiSans-Regular.ttf",
+  "font_sha256": "9c120f0a849bc0aa5048daae2a3c0f6eecd828b5b33fce682a9622833f5feea6",
+  "size": [
+    256,
+    256
+  ],
+  "font_size_px": 164,
+  "outputs": {
+    "A.png": "eef2b2967292f6cad1a9577a90781415d128fa281437487dd463925bd247ef2e",
+    "B.png": "3bb462a385b9393797fb42eb6bc9693cdeabf3469aa5b4d7362c59119df264fe",
+    "I.png": "066cf15e0a29419cf1ed36d98cc2c05a607ae9ec9c0768ea6fd79fa5767c4a54",
+    "M.png": "8673ff9390254f4c1eb17f79bc0281797473884e70ebfa939f67220e7853e1e6",
+    "U.png": "44206379b933610fe4ecde6e040cfa5a7a6d034f1269022254d346650c6d5550",
+    "Z.png": "5b0b2b19db8af069e20a034692b58b5eb20f26c3320cfb92e72f7ce04b817a16"
+  }
+}

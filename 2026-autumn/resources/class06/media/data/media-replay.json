@@ -1,0 +1,35 @@
+{
+  "seed": 9204,
+  "noise_level": 0,
+  "steps": 1000,
+  "control_dt": 0.05,
+  "mujoco": "3.6.0",
+  "policy_sha256": "1893e4a0f3b95f1657ce5e11745db0ac8749c8780d83013859082c414cb5f97f",
+  "matched_retained_error_trace": true,
+  "max_error_difference_rad": 0.0,
+  "event_steps": [
+    356,
+    761
+  ],
+  "native_frame_size": [
+    1920,
+    1080
+  ],
+  "frame_steps": [
+    1,
+    356,
+    761,
+    1000
+  ],
+  "gif_size": [
+    960,
+    572
+  ],
+  "gif_sample_steps": 10,
+  "gif_frame_duration_ms": 500,
+  "font": {
+    "filename": "MiSans-Regular.ttf",
+    "sha256": "9c120f0a849bc0aa5048daae2a3c0f6eecd828b5b33fce682a9622833f5feea6"
+  },
+  "scope": "New rendering of an existing selected episode; no training or new reliability estimate."
+}

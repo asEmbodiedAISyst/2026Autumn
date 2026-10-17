@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "actor_shape": 57,
+  "action_shape": 16,
+  "observation_blocks": [
+    16,
+    16,
+    3,
+    6,
+    16
+  ],
+  "observation_geometry_agrees_after_forward_and_equal_history": true,
+  "incremental_control_scaling_and_clipping_agree": true,
+  "actor_previous_action_difference": {
+    "task": "returned observation includes action from one control step before the action just executed",
+    "player": "next control observation includes action just executed",
+    "max_abs_difference_in_probe": 0.5559995770454407
+  },
+  "physics_timing": {
+    "task": {
+      "dt": 0.01,
+      "substeps": 5
+    },
+    "native_player": {
+      "dt": 0.002,
+      "substeps": 25
+    },
+    "control_dt": 0.05
+  },
+  "reset": {
+    "task": "random joints, random cube pose and target; make_data has no forward call",
+    "player": "home keyframe reset; callback observes sensors during stepping",
+    "reset_cube_orientation_sensor_norm_native": 0.0
+  },
+  "normalization": "both pass raw57-input observation to same ONNX; no external normalization; exact ONNX training configuration unavailable",
+  "interpretation": "Verified interface differences, not proven causes; preserve original task history for task-to-task comparison."
+}

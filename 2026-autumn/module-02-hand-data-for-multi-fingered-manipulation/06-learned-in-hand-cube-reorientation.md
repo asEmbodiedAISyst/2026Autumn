@@ -1,36 +1,329 @@
 ---
 description: 30 October 2026 · 09:00–10:50 · L12
+layout:
+  width: wide
 ---
 
 # 06 Learned In-Hand Cube Reorientation
 
-#### Central question
+## Central question
 
-How does a learned controller rotate a cube through finger contacts while maintaining a grasp, and what evidence supports its performance?
+How does a learned controller turn a cube through finger contacts while preserving a grasp, and what evidence establishes its performance?
 
-#### Learning objectives
+Turning a cube in your hand requires more than moving fingers. Some contacts support the object while others produce rotation; as the cube turns, those roles change. A useful controller must make progress toward its target while keeping the object within the grasp.
 
-* Distinguish a full orientation target from a face-up target.
-* Connect joint targets, actuator torque, and contact wrench to object motion.
-* Explain the policy’s joint and cube-pose observations, 57-input/16-output interface and 20 Hz update.
-* Run a supplied policy in native MuJoCo and interpret its trace.
-* Compare reference and M/B/Z/U/A/I cubes under matched physics and conditions.
+We study a simulated LEAP Hand using a supplied pretrained policy. The held cube is the physical object in the simulation. A separate goal cube displays the desired orientation. M/B/Z/U/A/I artwork makes the faces easy to follow, but the policy receives joint and cube-pose features—not letters or images. The practical runs the controller in native MuJoCo; it does not train a policy or move hardware.
 
-#### Lecture — 50 minutes
+By the end, you should be able to:
 
-1. Begin with the grasped cube and separate goal cube; ask whether matching the upward letter is sufficient.
-2. Explain full orientation error and the 0.1 rad success threshold (approximately 5.73 degrees).
-3. Apply Featherstone’s angular-first spatial dynamics language to the contact wrench; work through a 1 N force at a perpendicular 35 mm lever arm.
-4. Trace observations → policy → joint targets → actuator response → contacts → next observation. Cube pose is explicitly observed; this is not a proprioception-only policy.
-5. Distinguish native MuJoCo playback from MuJoCo Playground’s task/training pipeline. ONNX inference does not train the controller.
-6. Predict the effect of visual-only labels and define a controlled comparison. Introduce first-goal success, goal events, stalls, and drops as distinct quantities.
+- Distinguish a complete orientation target from a face pointing upward.
+- Connect joint targets, actuator response and contact wrench to object motion.
+- Explain the policy's 57-input/16-output interface and its two simulation clocks.
+- Read a native rollout and distinguish first-goal success, successful steps, stalls and drops.
+- Test a display-only cube change while preserving the policy and physical conditions.
 
-#### Break — 10 minutes
+[Lecture](#matching-the-upward-letter-is-not-enough) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Run-the-repository examples](#run-the-repository-examples)
 
-#### Instructor/TA demonstration — 35 minutes
+The figures, animation, equations and saved results provide a complete reading route on this page. All policy, model, texture and evidence files needed for the practical are in the student repository. Prepare the Python environment before the session; a saved-record route is included if local simulation or graphics is unavailable.
 
-Show the prepared animation and identify physical and target cubes. Run or replay the upstream-policy native implementation; inspect summary and trace records, including the goal evaluated before a target update. Demonstrate the matched reference/lettered comparison and explain failures without changing the experiment conditions. Use the selected seed 9204 with ideal observations for the prepared example; it records events at steps 356 and 761. Identify it as a selected demonstration, not a reliability estimate. Have the verified recording available if live rendering fails.
+## 1. Start with the held cube and the goal cube
 
-#### Student activity — 15 minutes
+### Matching the upward letter is not enough
 
-Use an isolated environment, verify the supplied package, and run matched reference/lettered 200-step episodes with the same policy, seed 9204 and observation-noise setting. Compare saved channels and write a short explanation of the controlled intervention. The first event in the longer selected episode is at 17.80 seconds, beyond this ten-second exercise; successful task completion is the comparison and interpretation, not a required goal event.
+Suppose M faces upward on both cubes. They can still differ by a rotation about the vertical axis: their side faces point in different directions. The task asks for a **full three-dimensional orientation**, not merely an upward face.
+
+![Same upward face with two different complete orientations](../media/class06/full-orientation-classroom.png)
+
+*Figure 1. Both illustrated cubes have M upward. A further 45° yaw changes the complete orientation while preserving that upward face. These synthetic poses explain the task and do not prescribe the runner's initial state.*
+
+Identify the held cube and the separate goal in the recording below. The goal is a visual target, not a second object the fingers must grasp. Initial hand configuration, cube pose and target follow the pinned task's reset procedure; there is no required M-up start. The continuous task can update its goal after success, so it is not a single fixed-letter placement exercise.
+
+### Make the claim precise
+
+Class 05 distinguished an actuator model from a policy. Here the **policy chooses finger commands** for a manipulation task; actuators and contact dynamics determine how those commands affect the cube. The claim we test is whether this policy reaches the task's orientation criterion while retaining the cube under declared simulation conditions.
+
+Keep three questions separate: did the fingers move, did the cube reach its target, and did the controller do so reliably across episodes? A compelling animation can answer part of the second question for one episode. It cannot supply the denominator needed for the third.
+
+**Predict:** If M remains upward but the side faces differ by 45°, would a face-up rule and a full-orientation rule give the same answer?
+
+## 2. Measure full orientation and define success
+
+Let unit quaternions $$Q$$ and $$Q_g$$ represent the cube and target orientations in the same convention. Their shortest angular separation is
+
+$$
+e_R=2\arccos\!\left(\min\{1,|Q^\mathsf{T}Q_g|\}\right).
+$$
+
+The absolute value accounts for the fact that $$Q$$ and $$-Q$$ represent the same rotation. The clipping protects against small numerical overshoot when normalized quaternions are used. The pinned task computes an equivalent shortest angle from a normalized relative quaternion.
+
+The success criterion is **orientation error below 0.1 rad**, approximately 5.73°. A pure 45° yaw difference is 0.7854 rad and fails; a pure 5° difference is about 0.0873 rad and passes the angular test. A 10° difference is too large. Passing the angle test does not replace the task's retention and termination rules.
+
+| Quantity | Meaning |
+|---|---|
+| Orientation error | Angular mismatch with the goal, in radians |
+| First-goal success | At least the first target is reached before the evaluation ends |
+| Successful-step event | A control step satisfies the upstream success criterion |
+| Stall | A descriptive behavior requiring a declared diagnostic rule |
+| Fall or drop | Loss condition detected by the task's termination rule |
+| Timeout | The allowed evaluation horizon or requested runner step limit is reached |
+
+A goal event does not end the supplied continuous demonstration. Its event counter increments on successful control steps; it should not automatically be read as a count of distinct rotations. A stall is not inferred merely because a run timed out.
+
+The task scores uncorrupted pose-sensor information even when the actor's observations are noisy. Keep that evaluation measurement separate from the noisy features presented to the policy. Also keep the task's sensor-phase error separate from a post-step rendering diagnostic: they can refer to different phases of the goal-update sequence.
+
+**Checkpoint:** Why can a screenshot show a large orientation mismatch immediately after a logged success? State which goal and which measurement phase you would inspect.
+
+## 3. Follow actuation through contact to cube motion
+
+### A joint command is not a cube torque
+
+The LEAP Hand has four fingers and sixteen actuated joints. The reference cube is 70 mm wide with a declared mass of 108 g. A network action changes finger joint targets. Actuators respond, the fingers move, and contacts transmit forces to the cube. Contact geometry, gravity, inertia and friction all matter to the resulting motion.
+
+![Contact force and moment about a declared origin](../media/class06/contact-wrench-classroom.png)
+
+*Figure 2. A synthetic planar contact illustrates displacement, force and moment. The arrows explain geometry; they are not measured fingertip forces. The worked calculation below declares its own cube-centered axes and SI values.*
+
+For a force $$\mathbf f_L$$ applied at displacement $$\mathbf r$$ from origin O, the moment about O is
+
+$$
+\mathbf n_O=\mathbf r\times\mathbf f_L.
+$$
+
+Use a cube-centered frame with $$\mathbf r=(0,0,0.035)$$ m and $$\mathbf f_L=(1,0,0)$$ N. The moment is (0, 0.035, 0) N m. The 35 mm perpendicular lever arm and 1 N force give a magnitude of **0.035 N m**. Reversing the force reverses the moment. A force through the center, or parallel to the lever arm, produces no moment about that center despite retaining its magnitude.
+
+Following Featherstone's angular-first spatial notation, collect moment and force into a wrench:
+
+$$
+\mathcal F_O=\begin{bmatrix}\mathbf n_O\\\mathbf f_L\end{bmatrix}.
+$$
+
+The top three components are moments and the lower three are forces. Both use the same stated frame and origin. Moving the reference origin changes the moment part; raw force arrays must not be relabeled as a wrench without checking ordering and frame. See the [MuJoCo dynamics formulation](https://mujoco.readthedocs.io/en/3.6.0/computation/index.html) for how generalized and contact forces enter the simulation. Spatial notation here follows Roy Featherstone, *Rigid Body Dynamics Algorithms* (2008).
+
+### Rotation and retention must coexist
+
+Contacts push; a separated finger cannot pull the cube back through empty space. Available tangential support depends on normal force and friction. In a simple illustrative Coulomb model, 1 N normal force with coefficient 0.5 permits up to 0.5 N tangential force before idealized sliding. This is not a measured coefficient for the supplied hand or a complete description of MuJoCo's contact settings.
+
+As the cube turns, contact positions and normals change. A push that creates a useful moment may reduce support elsewhere or conflict with another finger. More force is therefore not automatically better rotation. The simulator must solve the interacting system; one isolated force calculation cannot specify a successful finger sequence.
+
+For scale, a uniform cube with mass 0.108 kg and side 0.070 m has principal inertia **8.82 × 10⁻⁵ kg m²**. A free-body calculation using only a 0.035 N m moment would give about 397 rad/s². The grasped cube has several contacts, so this value is not a prediction of its acceleration. It exposes why a local moment example and a complete contact simulation answer different questions.
+
+**Predict:** Name one change that could increase turning moment while also making the cube more likely to slip or lose support.
+
+## 4. Trace observations, policy, targets and simulation
+
+### Preserve the learned interface
+
+![Closed feedback loop from observations through contact dynamics](../media/class06/feedback-loop-classroom.png)
+
+*Figure 3. The policy receives a target-relative state, chooses joint-target increments and observes the next simulated state. MuJoCo supplies actuator and contact dynamics. The loop explicitly includes cube pose; it is not a proprioception-only controller.*
+
+The deployed actor receives **57 numbers**:
+
+| Actor block | Count | Meaning |
+|---|---:|---|
+| Joint positions | 16 | Finger configuration features |
+| Joint-position errors | 16 | Target-versus-measured joint features |
+| Cube-position error | 3 | Estimated cube location relative to the palm |
+| Cube-orientation error features | 6 | Target-relative rotation features |
+| Action history | 16 | Earlier action under the pinned task's ordering |
+
+The 6 orientation values are rotation features, not six independent rotation angles. Joint and object features use the task's conventions, transforms and optional noise. A vector with the same length but different ordering or units is a different observation contract.
+
+The action has **16 values**, one for each actuated joint. It changes the target vector according to
+
+$$
+u_{k+1}=\operatorname{clip}\!\left(u_k+0.5a_k,u_{\min},u_{\max}\right).
+$$
+
+Here $$u$$ denotes joint-position targets, $$a$$ is the network output, and limits are joint-specific. The scale maps actions into target increments. The action does not directly set measured angles or apply an object-space torque.
+
+For a target of 0.20 rad and action 0.40, the requested target becomes 0.40 rad before clipping. An illustrative upper bound of 0.35 rad would clip it to 0.35 rad; this example bound is not a declaration of every hand joint's limit. The actuators still need time to respond, and contact can constrain motion.
+
+The exact history timing also matters. In the pinned task, a returned observation is constructed before the just-executed action is inserted into the stored history. A playback loop that substitutes the newest action for the expected history changes the policy's input. The supplied adapter preserves the task ordering, and its audit reports this distinction rather than assuming all native players are interchangeable.
+
+### Distinguish the policy clock from the physics clock
+
+![Observation dimensions and policy versus physics clocks](../media/class06/policy-and-clock-classroom.png)
+
+*Figure 4. The 57-value actor interface and the native task clocks. One 50 ms control interval contains five 10 ms physics steps. These are simulation rates, not measured wall-clock throughput.*
+
+The policy updates at **20 Hz**. Native physics advances at **100 Hz**, with five physics steps per action. Thus 200 actions span 10 simulated seconds, while 1000 actions span 50 simulated seconds if the episode does not terminate early. Initialization, inference and rendering add wall-clock cost; a run's simulated duration is not its execution-time guarantee.
+
+The model's coordinate count is also not its observation count. Sixteen hinge coordinates plus a free cube's position and quaternion give 23 position coordinates. The generalized velocity has 22 components because cube angular velocity uses three components while its unit quaternion uses four constrained coordinates. The actor's 57 values instead combine state-derived features and history.
+
+**Checkpoint:** What changes if a programmer treats the action as an absolute joint angle, or supplies a newly computed action in a history slot expected to contain an older one?
+
+## 5. Separate learning from native playback
+
+During reinforcement learning, a policy samples actions, receives reward and has its weights updated. Orientation progress, cube retention and other costs shape that training signal. A critic may support training by estimating return. The exported actor used here performs inference from fixed weights; loading the ONNX file does not run training or improve those weights.
+
+A reward and a success rule serve different purposes. A policy may earn useful reward while still missing the first target. Raising a reward coefficient in a playback file does not improve a fixed actor. Relaxing the 0.1 rad threshold changes the evaluation task rather than improving performance on the same task.
+
+**MuJoCo** computes physics. **MuJoCo Playground** supplies task definitions and accelerated training/evaluation workflows around MuJoCo. Our package retains a [pinned Playground task and upstream policy](https://github.com/google-deepmind/mujoco_playground/tree/ef4fefc13033c0468af4ef651847f5348af0c7d7), with a course adapter for native CPU physics and JAX task arithmetic. It is a playback implementation of that task, not a new training result or a hardware controller.
+
+Domain randomization can vary selected properties during training to encourage robustness. It does not establish that this actor will handle every new object, observation stream or contact setting. The exact training configuration of this particular exported policy is not fully reconstructed here. Preserve the supplied interface, preprocessing and tested evaluation conditions instead of adding a second external normalization step.
+
+### Watch the selected changing-goal example
+
+![Selected native cube reorientation recording](../media/class06/cube-reorientation.gif)
+
+The recording uses **seed 9204 with ideal actor observations**. Follow the held cube and separate target. Look at side faces as well as the top face, and identify fingers that appear to retain support while another contact changes. The animation illustrates one selected episode; it does not estimate reliability.
+
+![Four retained states from the selected episode](../media/class06/demo-storyboard-classroom.png)
+
+*Figure 5. Four native rendered states with a consistent camera. Interior samples were selected at successful control steps. Frames show rendering-phase poses, while the success test uses task sensor-phase information.*
+
+![Orientation error and successful-step counter](../media/class06/continuous-trace-classroom.png)
+
+*Figure 6. The saved sensor-phase error trace has events at steps 356 and 761, corresponding to 17.80 s and 38.05 s. A target update can increase subsequent error. Both events belong to one continuous episode.*
+
+Use `orientation_error_rad` for the task error. The runner also saves `render_pose_error_rad` as a separate diagnostic. `goal_quat_wxyz` identifies the goal used for the action and `next_goal_quat_wxyz` the following target. Do not mix a later target with an earlier success measurement.
+
+The event counter measures successful control steps, not necessarily distinct target commands. A repeated-target reliability study would need a declared goal-identity and acceptance rule. Two events in one chosen episode are not two independent successful trials.
+
+## 6. Compare cubes under matched conditions
+
+### Change appearance while preserving the physical model
+
+The reference-to-lettered intervention replaces only the noncontact, zero-density display geometry and artwork on the held and goal cubes. Mass, inertia, collision geometry, friction, actuators, sensors and solver settings are checked for equality. The network observes pose features rather than pixels, so the artwork should not alter its actions when the task, seed and settings match.
+
+| Change | What would need to be checked? |
+|---|---|
+| Display-only M/B/Z/U/A/I artwork | Model equality and matched action/state traces |
+| A manufactured replacement cube | Dimensions, mass, inertia, surface/contact and physical correspondence |
+| Camera-derived cube pose | Calibration, frame, latency, noise, dropout and actor-feature construction |
+
+Equality in the first comparison does not qualify the other two. Labels applied to a physical cube can also change contact; the simulation's display-only guarantee is not a guarantee about stickers on hardware.
+
+For the student comparison, run reference and lettered variants for **200 control steps**, with seed 9204, ideal observations and the same supplied policy. Under the tested runtime, all saved step fields match and no engine warnings occur. Both runs end at the requested 10 simulated seconds, before the selected episode's first event. Zero events are therefore compatible with a successful controlled comparison.
+
+### Evaluate performance with a denominator
+
+The retained first-goal evaluations use seeds **20000–20099**, a **50 s limit**, the fixed angular threshold and all 100 outcomes per condition. These records are supplied evidence, separately from the selected continuous recording.
+
+| Retained condition | First-goal successes | Falls | Timeouts |
+|---|---:|---:|---:|
+| Native Mac, original noise | 88 | 0 | 12 |
+| Playground GPU, original noise | 89 | 1 | 10 |
+| Playground GPU, ideal observations | 58 | 2 | 40 |
+
+The ideal-observation condition's counts should be read with its own receipt; they do not change the selected ideal-observation demonstration's identity.
+
+![Retained first-goal evaluation outcomes and intervals](../media/class06/qualification-results-classroom.png)
+
+*Figure 7. First-goal rates and 95% Wilson intervals, with all outcomes retained. Native playback used MuJoCo 3.6; the GPU records used 3.14. The comparison does not isolate a backend-only effect. These evaluations were retained and audited, not newly rerun for publication.*
+
+The native and original-noise GPU results meet the course's existing **80% observed teaching baseline**. This is enough to teach a working but imperfect example. It is not a promise that every seed succeeds, a lower confidence bound of 80%, or hardware qualification. A one-percentage-point difference between these records does not establish backend superiority.
+
+### Explain an unexpected observation cautiously
+
+Removing actor-observation noise did not improve the retained GPU result. The same seeds can be paired to inspect that observation:
+
+![Matched-seed outcomes with noisy and ideal observations](../media/class06/paired-noise-classroom.png)
+
+*Figure 8. Among the same 100 GPU seeds, 54 succeeded with both conditions, 35 only with noise, four only without noise and seven with neither. The matrix establishes the paired outcomes, not their mechanism.*
+
+A possible explanation concerns how this policy responds to its input distribution. That hypothesis needs further investigation; this table alone does not establish the policy's training exposure or the cause of failures. Keep unsuccessful episodes in the denominator and avoid selecting only successful demonstrations to characterize performance.
+
+A timeout means the first target was not reached within the limit. It does not by itself identify wedging, slip or a poor target update. A useful next experiment changes one factor—such as observation delay—while preserving task success, seed protocol, physics and scoring. Tune on development seeds and evaluate the selected change on a fresh declared set.
+
+**Checkpoint:** What can the artwork comparison establish that the noisy-versus-ideal success table cannot? What additional evidence would support a physical replacement cube?
+
+## Instructor and TA demonstration
+
+### Establish the task and interface
+
+Use Figure 1 to test whether matching the top face is enough, then watch the prepared animation. Identify the held cube, target cube and supporting contacts. Work through the 1 N force at a 35 mm perpendicular lever arm. Connect the result to Figure 3: policy action, bounded joint target, actuator response, finger contact, cube motion and next observation.
+
+Use the actor table and Figure 4 to count 57 inputs, sixteen outputs and five physics steps per action. Explain why this is a cube-pose-observing policy and why loading ONNX is inference.
+
+### Inspect the prepared native run
+
+With the environment prepared as below, run the package, physics and interface checks. Run or replay the selected seed 9204 episode and inspect its trace. Use the recording and saved data when a live viewer is unavailable; the numerical run does not require graphics.
+
+```sh
+python lettered_demo.py --variant letters --noise-level 0 --seed 9204 --episodes 1 --output runs/letters-demo-01
+python inspect_trace.py runs/letters-demo-01
+```
+
+These commands run from the resource package's `code` directory. The runner preserves prior evidence by refusing an existing output folder; use a fresh suffix when repeating a run.
+
+| Retained selected-event check | Value |
+|---|---:|
+| First recorded successful step | 356 |
+| First event time (s) | 17.80 |
+| Second recorded successful step | 761 |
+| Second event time (s) | 38.05 |
+| Episodes represented | 1 |
+
+Read the evaluated goal before its next update. An increased rendered mismatch after a goal change does not retrospectively invalidate an earlier event. Conversely, a visually close pose is not a substitute for the task's recorded error and retention checks.
+
+### Demonstrate the controlled intervention
+
+Predict what changing only artwork should do, then compare the reference and lettered 200-step runs. Show the model equality check and paired trace result. Contrast this single-seed comparison with the 100-episode first-goal table. Finish by naming one additional measurement needed for a manufactured cube or a camera-based pose input.
+
+## Student activity
+
+### Predict, compare and explain
+
+Prepare dependencies before class. From the package's `code` directory, with its environment selected:
+
+```sh
+python lettered_demo.py --variant reference --noise-level 0 --seed 9204 --episodes 1 --steps 200 --output runs/practice-reference-01
+python lettered_demo.py --variant letters --noise-level 0 --seed 9204 --episodes 1 --steps 200 --output runs/practice-letters-01
+python compare_practice.py runs/practice-reference-01 runs/practice-letters-01
+```
+
+Predict the result before revealing the comparison. Inspect the variant, seed, policy identity, noise setting and step count. The expected result is **200 rows per variant, identical saved step fields and zero engine warnings**. The comparison tests a display intervention; it does not require a goal event in this short horizon.
+
+If simulation is unavailable, use the [saved practice result](../resources/class06/evidence/practice-comparison.json), the model/intervention description and the event-time table above. Label the result as supplied evidence and explain what a fresh run would need to preserve. Reading saved evidence is distinct from executing a new experiment.
+
+Submit a compact record:
+
+| Field | Required entry |
+|---|---|
+| Task | Full-orientation criterion and grasp-retention requirement |
+| Intervention | Exactly what changed and what stayed fixed |
+| Evidence | Seed, noise, policy, row count and matched-trace result |
+| Interpretation | Why zero events can be expected in this run |
+| Boundary | Why display equivalence does not qualify a physical cube or camera tracker |
+
+Also calculate the requested target for 0.20 rad plus action 0.40, and the contact moment for the 1 N/35 mm example. In one final sentence, distinguish an actuator model from this task policy.
+
+## Run the repository examples
+
+Download or clone the [student repository](https://github.com/asEmbodiedAISyst/2026Autumn) with its folder structure. The source snapshots, ONNX policy, hand meshes, cube textures, licences and recorded results are included; no second private repository or model download is required.
+
+For a dependency-free inspection of supplied results, use standard Python from the repository root:
+
+```sh
+cd 2026-autumn/resources/class06
+python3 code/lesson_lab.py
+```
+
+In Windows PowerShell, use `py -3 code/lesson_lab.py` from the same folder. This checks outcome records, evaluation seed coverage, policy hash and selected trace events. It does not create new policy-evaluation trials.
+
+For native simulation, use Python 3.12 and the pinned requirements in the package. On macOS/Linux, starting from that resource folder:
+
+```sh
+cd code
+python3.12 -m venv .venv-demo
+. .venv-demo/bin/activate
+python -m pip install -r requirements-demo.txt
+python verify_package.py
+mkdir -p runs
+python validate_lettered.py runs/physics-contract.json
+python audit_policy_contract.py --output runs/policy-contract.json
+```
+
+Continue with the demonstration or activity commands above. Do not change the current directory from `code` between preparation and those commands. On Windows, create the environment using `py -3.12 -m venv .venv-demo` and use `.\.venv-demo\Scripts\python.exe` instead of `python` for installation and commands; create `runs` with `New-Item -ItemType Directory -Force runs`. Native replay has been verified on Apple-silicon macOS; the Windows command form is provided but has not been executed in this review. Optional-backend notices are not a substitute for checking the command's exit status.
+
+A Mac live viewer requires `mjpython` from the prepared environment:
+
+```sh
+.venv-demo/bin/mjpython lettered_demo.py --viewer --variant letters --noise-level 0 --seed 9204 --episodes 1 --output runs/viewer-01
+```
+
+For a new recording, add `--record` to the numerical runner command and use a fresh output folder. Recording requires working native graphics. The page's prepared animation and storyboard remain available without a viewer; closing a viewer or moving the cube interactively changes or ends that run.
+
+Retain the bundled Playground and Menagerie licences and attribution notices with redistributed resources. The student package preserves upstream identities and records the course adapter and artwork changes. Hardware deployment, pose-estimation integration and qualification of a manufactured cube remain later experiments.
