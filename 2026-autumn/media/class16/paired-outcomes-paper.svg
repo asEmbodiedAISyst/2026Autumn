@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="516.24pt" height="161.325pt" viewBox="0 0 516.24 161.325" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T20:31:15.095010</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 161.325
+L 516.24 161.325
+L 516.24 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 45.395063 129.620156
+L 502.11566 129.620156
+L 502.11566 9.410625
+L 45.395063 9.410625
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 45.395063 56.727143
+L 319.427421 56.727143
+L 319.427421 33.708296
+L 45.395063 33.708296
+z
+" clip-path="url(#p78650a157d)" style="fill: #177e89"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 45.395063 107.880135
+L 182.411242 107.880135
+L 182.411242 84.861288
+L 45.395063 84.861288
+z
+" clip-path="url(#p78650a157d)" style="fill: #177e89"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 319.427421 56.727143
+L 319.427421 56.727143
+L 319.427421 33.708296
+L 319.427421 33.708296
+z
+" clip-path="url(#p78650a157d)" style="fill: #d48020"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 182.411242 107.880135
+L 319.427421 107.880135
+L 319.427421 84.861288
+L 182.411242 84.861288
+z
+" clip-path="url(#p78650a157d)" style="fill: #d48020"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 319.427421 56.727143
+L 365.099481 56.727143
+L 365.099481 33.708296
+L 319.427421 33.708296
+z
+" clip-path="url(#p78650a157d)" style="fill: #0072b2"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 319.427421 107.880135
+L 502.11566 107.880135
+L 502.11566 84.861288
+L 319.427421 84.861288
+z
+" clip-path="url(#p78650a157d)" style="fill: #0072b2"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 365.099481 56.727143
+L 502.11566 56.727143
+L 502.11566 33.708296
+L 365.099481 33.708296
+z
+" clip-path="url(#p78650a157d)" style="fill: #7f8992"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 502.11566 107.880135
+L 502.11566 107.880135
+L 502.11566 84.861288
+L 502.11566 84.861288
+z
+" clip-path="url(#p78650a157d)" style="fill: #7f8992"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m85e6c6d27b" d="M 0 0
+L 0 3.5
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m85e6c6d27b" x="45.395063" y="129.620156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="45.395063" y="142.423375" transform="rotate(-0 45.395063 142.423375)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m85e6c6d27b" x="91.067122" y="129.620156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="91.067122" y="142.423375" transform="rotate(-0 91.067122 142.423375)">2</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m85e6c6d27b" x="136.739182" y="129.620156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="136.739182" y="142.423375" transform="rotate(-0 136.739182 142.423375)">4</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m85e6c6d27b" x="182.411242" y="129.620156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="182.411242" y="142.423375" transform="rotate(-0 182.411242 142.423375)">6</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m85e6c6d27b" x="228.083302" y="129.620156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="228.083302" y="142.423375" transform="rotate(-0 228.083302 142.423375)">8</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m85e6c6d27b" x="273.755361" y="129.620156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="273.755361" y="142.423375" transform="rotate(-0 273.755361 142.423375)">10</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m85e6c6d27b" x="319.427421" y="129.620156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="319.427421" y="142.423375" transform="rotate(-0 319.427421 142.423375)">12</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m85e6c6d27b" x="365.099481" y="129.620156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="365.099481" y="142.423375" transform="rotate(-0 365.099481 142.423375)">14</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m85e6c6d27b" x="410.771541" y="129.620156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="410.771541" y="142.423375" transform="rotate(-0 410.771541 142.423375)">16</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m85e6c6d27b" x="456.4436" y="129.620156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="456.4436" y="142.423375" transform="rotate(-0 456.4436 142.423375)">18</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m85e6c6d27b" x="502.11566" y="129.620156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="502.11566" y="142.423375" transform="rotate(-0 502.11566 142.423375)">20</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="273.755361" y="154.657672" transform="rotate(-0 273.755361 154.657672)">Paired evaluation layouts (invented)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_12">
+      <defs>
+       <path id="mefa7c8bc86" d="M 0 0
+L -3.5 0
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mefa7c8bc86" x="45.395063" y="45.217719" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_13">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: end" x="38.395063" y="48.119329" transform="rotate(-0 38.395063 48.119329)">Fixture X</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#mefa7c8bc86" x="45.395063" y="96.370711" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: end" x="38.395063" y="99.272321" transform="rotate(-0 38.395063 99.272321)">Fixture Y</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_11">
+    <path d="M 45.395063 129.620156
+L 45.395063 9.410625
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 45.395063 129.620156
+L 502.11566 129.620156
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle; fill: #ffffff" x="182.411242" y="47.295899" transform="rotate(-0 182.411242 47.295899)">12</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle; fill: #ffffff" x="113.903152" y="98.448891" transform="rotate(-0 113.903152 98.448891)">6</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle; fill: #ffffff" x="250.919331" y="98.448891" transform="rotate(-0 250.919331 98.448891)">6</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle; fill: #ffffff" x="342.263451" y="47.295899" transform="rotate(-0 342.263451 47.295899)">2</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle; fill: #ffffff" x="410.771541" y="98.448891" transform="rotate(-0 410.771541 98.448891)">8</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle; fill: #ffffff" x="433.607571" y="47.295899" transform="rotate(-0 433.607571 47.295899)">6</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; text-anchor: middle" x="273.755361" y="120.412618" transform="rotate(-0 273.755361 120.412618)">Both fixtures: A = 12/20; B = 14/20</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_13">
+     <path d="M 115.00266 34.822219
+L 432.508063 34.822219
+Q 434.908063 34.822219 434.908063 32.422219
+L 434.908063 17.810625
+Q 434.908063 15.410625 432.508063 15.410625
+L 115.00266 15.410625
+Q 112.60266 15.410625 112.60266 17.810625
+L 112.60266 32.422219
+Q 112.60266 34.822219 115.00266 34.822219
+z
+" style="fill: #ffffff; opacity: 0.8; stroke: #cccccc; stroke-linejoin: miter"/>
+    </g>
+    <g id="patch_14">
+     <path d="M 117.40266 28.610625
+L 141.40266 28.610625
+L 141.40266 20.210625
+L 117.40266 20.210625
+z
+" style="fill: #177e89"/>
+    </g>
+    <g id="text_22">
+     <text style="font-size: 6.721875px; font-family: 'MiSans'; text-anchor: start" x="151.00266" y="28.610625" transform="rotate(-0 151.00266 28.610625)">Both succeed</text>
+    </g>
+    <g id="patch_15">
+     <path d="M 217.035385 28.610625
+L 241.035385 28.610625
+L 241.035385 20.210625
+L 217.035385 20.210625
+z
+" style="fill: #d48020"/>
+    </g>
+    <g id="text_23">
+     <text style="font-size: 6.721875px; font-family: 'MiSans'; text-anchor: start" x="250.635385" y="28.610625" transform="rotate(-0 250.635385 28.610625)">A only</text>
+    </g>
+    <g id="patch_16">
+     <path d="M 293.926115 28.610625
+L 317.926115 28.610625
+L 317.926115 20.210625
+L 293.926115 20.210625
+z
+" style="fill: #0072b2"/>
+    </g>
+    <g id="text_24">
+     <text style="font-size: 6.721875px; font-family: 'MiSans'; text-anchor: start" x="327.526115" y="28.610625" transform="rotate(-0 327.526115 28.610625)">B only</text>
+    </g>
+    <g id="patch_17">
+     <path d="M 370.776935 28.610625
+L 394.776935 28.610625
+L 394.776935 20.210625
+L 370.776935 20.210625
+z
+" style="fill: #7f8992"/>
+    </g>
+    <g id="text_25">
+     <text style="font-size: 6.721875px; font-family: 'MiSans'; text-anchor: start" x="404.376935" y="28.610625" transform="rotate(-0 404.376935 28.610625)">Both fail</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p78650a157d">
+   <rect x="45.395063" y="9.410625" width="456.720598" height="120.209531"/>
+  </clipPath>
+ </defs>
+</svg>

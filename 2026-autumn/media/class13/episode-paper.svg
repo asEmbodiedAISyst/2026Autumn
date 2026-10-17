@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="516.24pt" height="177.4575pt" viewBox="0 0 516.24 177.4575" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T20:31:11.891491</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 177.4575
+L 516.24 177.4575
+L 516.24 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 15.37965 74.451487
+L 102.92535 74.451487
+L 102.92535 33.206063
+L 15.37965 33.206063
+z
+" clip-path="url(#p3c002efc70)" style="fill: #0072b2; fill-opacity: 0.062745; stroke: #0072b2; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 104.927655 53.828775
+Q 108.893705 53.828775 111.182705 53.828775
+" clip-path="url(#p3c002efc70)" style="fill: none; stroke: #303740; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 105.182705 50.828775
+L 111.182705 53.828775
+L 105.182705 56.828775
+z
+" clip-path="url(#p3c002efc70)" style="fill: #303740; stroke: #303740; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 114.8634 74.451487
+L 202.4091 74.451487
+L 202.4091 33.206063
+L 114.8634 33.206063
+z
+" clip-path="url(#p3c002efc70)" style="fill: #0072b2; fill-opacity: 0.062745; stroke: #0072b2; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 204.411405 53.828775
+Q 208.377455 53.828775 210.666455 53.828775
+" clip-path="url(#p3c002efc70)" style="fill: none; stroke: #303740; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 204.666455 50.828775
+L 210.666455 53.828775
+L 204.666455 56.828775
+z
+" clip-path="url(#p3c002efc70)" style="fill: #303740; stroke: #303740; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 214.34715 74.451487
+L 301.89285 74.451487
+L 301.89285 33.206063
+L 214.34715 33.206063
+z
+" clip-path="url(#p3c002efc70)" style="fill: #0072b2; fill-opacity: 0.062745; stroke: #0072b2; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 303.895155 53.828775
+Q 307.861205 53.828775 310.150205 53.828775
+" clip-path="url(#p3c002efc70)" style="fill: none; stroke: #303740; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 304.150205 50.828775
+L 310.150205 53.828775
+L 304.150205 56.828775
+z
+" clip-path="url(#p3c002efc70)" style="fill: #303740; stroke: #303740; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 313.8309 74.451487
+L 401.3766 74.451487
+L 401.3766 33.206063
+L 313.8309 33.206063
+z
+" clip-path="url(#p3c002efc70)" style="fill: #b44d45; fill-opacity: 0.062745; stroke: #b44d45; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 403.378905 53.828775
+Q 407.344955 53.828775 409.633955 53.828775
+" clip-path="url(#p3c002efc70)" style="fill: none; stroke: #303740; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 403.633955 50.828775
+L 409.633955 53.828775
+L 403.633955 56.828775
+z
+" clip-path="url(#p3c002efc70)" style="fill: #303740; stroke: #303740; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 413.31465 74.451487
+L 500.86035 74.451487
+L 500.86035 33.206063
+L 413.31465 33.206063
+z
+" clip-path="url(#p3c002efc70)" style="fill: #0072b2; fill-opacity: 0.062745; stroke: #0072b2; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 19.359 101.41965
+L 302.887687 101.41965
+" clip-path="url(#p3c002efc70)" style="fill: none; stroke: #177e89; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 312.836063 101.41965
+L 496.881 101.41965
+" clip-path="url(#p3c002efc70)" style="fill: none; stroke: #b44d45; stroke-width: 2; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; fill: #303740" transform="translate(44.125915 51.760678)">Declared</text>
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; fill: #303740" transform="translate(50.763372 59.756348)">reset</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; fill: #303740" transform="translate(143.588046 51.81188)">Operator</text>
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; fill: #303740" transform="translate(140.284962 59.80755)">commands</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; fill: #303740" transform="translate(239.05587 51.760678)">Robot push</text>
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; fill: #303740" transform="translate(242.751501 59.756348)">then stall</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; fill: #303740" transform="translate(336.103553 51.760678)">Manual cube</text>
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; fill: #303740" transform="translate(341.000719 59.756348)">relocation</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; fill: #303740" transform="translate(438.055798 51.648034)">Final target</text>
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; fill: #303740" transform="translate(446.867055 59.868992)">image</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; text-anchor: middle; fill: #177e89" x="158.63625" y="120.456" transform="rotate(-0 158.63625 120.456)">Pre-intervention segment: preserve for declared analysis</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 6.721875px; font-family: 'MiSans'; fill: #b44d45" transform="translate(352.952002 117.721037)">Final position does not establish</text>
+    <text style="font-size: 6.721875px; font-family: 'MiSans'; fill: #b44d45" transform="translate(367.867738 125.215087)">unassisted completion</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 7.282031px; font-family: 'MiSans'; text-anchor: middle" x="258.12" y="155.355975" transform="rotate(-0 258.12 155.355975)">Record the intervention and termination; retain the original attempt.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3c002efc70">
+   <rect x="9.410625" y="9.410625" width="497.41875" height="158.63625"/>
+  </clipPath>
+ </defs>
+</svg>

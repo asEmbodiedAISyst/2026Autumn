@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="516.24pt" height="173.424375pt" viewBox="0 0 516.24 173.424375" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T20:31:11.514292</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 173.424375
+L 516.24 173.424375
+L 516.24 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 29.032898 142.526156
+L 256.890457 142.526156
+L 256.890457 20.031187
+L 29.032898 20.031187
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 39.39006 142.526156
+L 72.949579 142.526156
+L 72.949579 44.530181
+L 39.39006 44.530181
+z
+" clip-path="url(#p4f87225b44)" style="fill: #0072b2"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 97.251299 142.526156
+L 130.810818 142.526156
+L 130.810818 44.530181
+L 97.251299 44.530181
+z
+" clip-path="url(#p4f87225b44)" style="fill: #0072b2"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 155.112538 142.526156
+L 188.672056 142.526156
+L 188.672056 142.526156
+L 155.112538 142.526156
+z
+" clip-path="url(#p4f87225b44)" style="fill: #0072b2"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 212.973777 142.526156
+L 246.533295 142.526156
+L 246.533295 142.526156
+L 212.973777 142.526156
+z
+" clip-path="url(#p4f87225b44)" style="fill: #0072b2"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="mf817193490" d="M 0 0
+L 0 3.5
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mf817193490" x="56.169819" y="142.526156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="56.169819" y="155.329375" transform="rotate(-0 56.169819 155.329375)">A</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#mf817193490" x="114.031058" y="142.526156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="114.031058" y="155.329375" transform="rotate(-0 114.031058 155.329375)">B</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#mf817193490" x="171.892297" y="142.526156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="171.892297" y="155.329375" transform="rotate(-0 171.892297 155.329375)">C</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mf817193490" x="229.753536" y="142.526156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="229.753536" y="155.329375" transform="rotate(-0 229.753536 155.329375)">D</text>
+     </g>
+    </g>
+    <g id="text_5">
+     <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="142.961678" y="166.889734" transform="rotate(-0 142.961678 166.889734)">Declared start–goal bin</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="m4e0ec9bd25" d="M 0 0
+L -3.5 0
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m4e0ec9bd25" x="29.032898" y="142.526156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: end" x="22.032898" y="145.427766" transform="rotate(-0 22.032898 145.427766)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m4e0ec9bd25" x="29.032898" y="118.027162" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: end" x="22.032898" y="120.928772" transform="rotate(-0 22.032898 120.928772)">1</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m4e0ec9bd25" x="29.032898" y="93.528169" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: end" x="22.032898" y="96.429778" transform="rotate(-0 22.032898 96.429778)">2</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m4e0ec9bd25" x="29.032898" y="69.029175" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: end" x="22.032898" y="71.930784" transform="rotate(-0 22.032898 71.930784)">3</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m4e0ec9bd25" x="29.032898" y="44.530181" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: end" x="22.032898" y="47.431791" transform="rotate(-0 22.032898 47.431791)">4</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m4e0ec9bd25" x="29.032898" y="20.031187" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: end" x="22.032898" y="22.932797" transform="rotate(-0 22.032898 22.932797)">5</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="11.413602" y="81.278672" transform="rotate(-90 11.413602 81.278672)">Usable episodes (invented)</text>
+    </g>
+   </g>
+   <g id="patch_7">
+    <path d="M 29.032898 142.526156
+L 29.032898 20.031187
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 29.032898 142.526156
+L 256.890457 142.526156
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="56.169819" y="41.590302" transform="rotate(-0 56.169819 41.590302)">4</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="114.031058" y="41.590302" transform="rotate(-0 114.031058 41.590302)">4</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="171.892297" y="139.586277" transform="rotate(-0 171.892297 139.586277)">0</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="229.753536" y="139.586277" transform="rotate(-0 229.753536 139.586277)">0</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 9.410625px; font-family: 'MiSans'; text-anchor: middle" x="142.961678" y="14.031187" transform="rotate(-0 142.961678 14.031187)">Convenient resets: 2/4 bins</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_9">
+    <path d="M 278.971816 142.526156
+L 506.829375 142.526156
+L 506.829375 20.031187
+L 278.971816 20.031187
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 289.328978 142.526156
+L 322.888497 142.526156
+L 322.888497 93.528169
+L 289.328978 93.528169
+z
+" clip-path="url(#p5f2aba3d34)" style="fill: #177e89"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 347.190217 142.526156
+L 380.749736 142.526156
+L 380.749736 93.528169
+L 347.190217 93.528169
+z
+" clip-path="url(#p5f2aba3d34)" style="fill: #177e89"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 405.051456 142.526156
+L 438.610974 142.526156
+L 438.610974 93.528169
+L 405.051456 93.528169
+z
+" clip-path="url(#p5f2aba3d34)" style="fill: #177e89"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 462.912695 142.526156
+L 496.472213 142.526156
+L 496.472213 93.528169
+L 462.912695 93.528169
+z
+" clip-path="url(#p5f2aba3d34)" style="fill: #177e89"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_5">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#mf817193490" x="306.108737" y="142.526156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="306.108737" y="155.329375" transform="rotate(-0 306.108737 155.329375)">A</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#mf817193490" x="363.969976" y="142.526156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="363.969976" y="155.329375" transform="rotate(-0 363.969976 155.329375)">B</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#mf817193490" x="421.831215" y="142.526156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="421.831215" y="155.329375" transform="rotate(-0 421.831215 155.329375)">C</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#mf817193490" x="479.692454" y="142.526156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="479.692454" y="155.329375" transform="rotate(-0 479.692454 155.329375)">D</text>
+     </g>
+    </g>
+    <g id="text_22">
+     <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="392.900596" y="166.889734" transform="rotate(-0 392.900596 166.889734)">Declared start–goal bin</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_7">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#m4e0ec9bd25" x="278.971816" y="142.526156" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#m4e0ec9bd25" x="278.971816" y="118.027162" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#m4e0ec9bd25" x="278.971816" y="93.528169" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#m4e0ec9bd25" x="278.971816" y="69.029175" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#m4e0ec9bd25" x="278.971816" y="44.530181" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#m4e0ec9bd25" x="278.971816" y="20.031187" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+    </g>
+    <g id="text_23">
+     <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="269.824957" y="81.278672" transform="rotate(-90 269.824957 81.278672)">Usable episodes (invented)</text>
+    </g>
+   </g>
+   <g id="patch_14">
+    <path d="M 278.971816 142.526156
+L 278.971816 20.031187
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 278.971816 142.526156
+L 506.829375 142.526156
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="306.108737" y="90.588289" transform="rotate(-0 306.108737 90.588289)">2</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="363.969976" y="90.588289" transform="rotate(-0 363.969976 90.588289)">2</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="421.831215" y="90.588289" transform="rotate(-0 421.831215 90.588289)">2</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 7.842187px; font-family: 'MiSans'; text-anchor: middle" x="479.692454" y="90.588289" transform="rotate(-0 479.692454 90.588289)">2</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 9.410625px; font-family: 'MiSans'; text-anchor: middle" x="392.900596" y="14.031187" transform="rotate(-0 392.900596 14.031187)">Stratified resets: 4/4 bins</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4f87225b44">
+   <rect x="29.032898" y="20.031187" width="227.857559" height="122.494969"/>
+  </clipPath>
+  <clipPath id="p5f2aba3d34">
+   <rect x="278.971816" y="20.031187" width="227.857559" height="122.494969"/>
+  </clipPath>
+ </defs>
+</svg>

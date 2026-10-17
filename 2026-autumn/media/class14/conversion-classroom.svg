@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="921.6pt" height="309.6pt" viewBox="0 0 921.6 309.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-17T20:31:13.007946</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 309.6
+L 921.6 309.6
+L 921.6 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 68.66 272.12
+L 456.675 272.12
+L 456.675 37.56
+L 68.66 37.56
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 86.297045 154.84
+L 243.070783 154.84
+L 243.070783 242.8
+L 86.297045 242.8
+z
+" clip-path="url(#ped3f460b79)" style="fill: #d48020"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 282.264217 154.84
+L 439.037955 154.84
+L 439.037955 69.812
+L 282.264217 69.812
+z
+" clip-path="url(#ped3f460b79)" style="fill: #0072b2"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="ma53a858555" d="M 0 0
+L 0 3.5
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#ma53a858555" x="164.683914" y="272.12" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="164.683914" y="289.48" transform="rotate(-0 164.683914 289.48)">Raw action</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#ma53a858555" x="360.651086" y="272.12" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="360.651086" y="289.48" transform="rotate(-0 360.651086 289.48)">Observed motor</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_3">
+      <defs>
+       <path id="mfc2d8a5215" d="M 0 0
+L -3.5 0
+" style="stroke: #000000; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="68.66" y="272.12" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="61.66" y="277.3" transform="rotate(-0 61.66 277.3)">−40</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="68.66" y="242.8" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="61.66" y="247.98" transform="rotate(-0 61.66 247.98)">−30</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="68.66" y="213.48" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="61.66" y="218.66" transform="rotate(-0 61.66 218.66)">−20</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="68.66" y="184.16" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="61.66" y="189.34" transform="rotate(-0 61.66 189.34)">−10</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="68.66" y="154.84" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="61.66" y="160.02" transform="rotate(-0 61.66 160.02)">0</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="68.66" y="125.52" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="61.66" y="130.7" transform="rotate(-0 61.66 130.7)">10</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="68.66" y="96.2" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="61.66" y="101.38" transform="rotate(-0 61.66 101.38)">20</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="68.66" y="66.88" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="61.66" y="72.06" transform="rotate(-0 61.66 72.06)">30</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="68.66" y="37.56" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="61.66" y="42.74" transform="rotate(-0 61.66 42.74)">40</text>
+     </g>
+    </g>
+    <g id="text_12">
+     <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="28.789375" y="154.84" transform="rotate(-90 28.789375 154.84)">Declared channel values (degrees)</text>
+    </g>
+   </g>
+   <g id="line2d_12">
+    <path d="M 68.66 154.84
+L 456.675 154.84
+" clip-path="url(#ped3f460b79)" style="fill: none; stroke: #303740; stroke-width: 0.7; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 68.66 272.12
+L 68.66 37.56
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 68.66 272.12
+L 456.675 272.12
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 16.8px; font-family: 'MiSans'; text-anchor: middle" x="262.6675" y="31.56" transform="rotate(-0 262.6675 31.56)">Different conventions</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_7">
+    <path d="M 516.785 272.12
+L 904.8 272.12
+L 904.8 37.56
+L 516.785 37.56
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 534.422045 272.12
+L 691.195783 272.12
+L 691.195783 96.2
+L 534.422045 96.2
+z
+" clip-path="url(#p9bc7195bc8)" style="fill: #177e89"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 730.389217 272.12
+L 887.162955 272.12
+L 887.162955 102.064
+L 730.389217 102.064
+z
+" clip-path="url(#p9bc7195bc8)" style="fill: #0072b2"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_3">
+     <g id="line2d_13">
+      <g>
+       <use xlink:href="#ma53a858555" x="612.808914" y="272.12" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_14">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="612.808914" y="289.48" transform="rotate(-0 612.808914 289.48)">Motor target</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_14">
+      <g>
+       <use xlink:href="#ma53a858555" x="808.776086" y="272.12" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="808.776086" y="289.48" transform="rotate(-0 808.776086 289.48)">Observed motor</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_10">
+     <g id="line2d_15">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="516.785" y="272.12" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="509.785" y="277.3" transform="rotate(-0 509.785 277.3)">0</text>
+     </g>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_16">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="516.785" y="242.8" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="509.785" y="247.98" transform="rotate(-0 509.785 247.98)">5</text>
+     </g>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_17">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="516.785" y="213.48" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="509.785" y="218.66" transform="rotate(-0 509.785 218.66)">10</text>
+     </g>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_18">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="516.785" y="184.16" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_19">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="509.785" y="189.34" transform="rotate(-0 509.785 189.34)">15</text>
+     </g>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_19">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="516.785" y="154.84" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="509.785" y="160.02" transform="rotate(-0 509.785 160.02)">20</text>
+     </g>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_20">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="516.785" y="125.52" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="509.785" y="130.7" transform="rotate(-0 509.785 130.7)">25</text>
+     </g>
+    </g>
+    <g id="ytick_16">
+     <g id="line2d_21">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="516.785" y="96.2" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="509.785" y="101.38" transform="rotate(-0 509.785 101.38)">30</text>
+     </g>
+    </g>
+    <g id="ytick_17">
+     <g id="line2d_22">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="516.785" y="66.88" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="509.785" y="72.06" transform="rotate(-0 509.785 72.06)">35</text>
+     </g>
+    </g>
+    <g id="ytick_18">
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#mfc2d8a5215" x="516.785" y="37.56" style="stroke: #000000; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: end" x="509.785" y="42.74" transform="rotate(-0 509.785 42.74)">40</text>
+     </g>
+    </g>
+    <g id="text_25">
+     <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle" x="485.482812" y="154.84" transform="rotate(-90 485.482812 154.84)">Motor angle (degrees)</text>
+    </g>
+   </g>
+   <g id="patch_10">
+    <path d="M 516.785 272.12
+L 516.785 37.56
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 516.785 272.12
+L 904.8 272.12
+" style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 14px; font-family: 'MiSans'; text-anchor: middle; fill: #177e89" x="710.7925" y="72.744" transform="rotate(-0 710.7925 72.744)">State − target = −1°</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 16.8px; font-family: 'MiSans'; text-anchor: middle" x="710.7925" y="31.56" transform="rotate(-0 710.7925 31.56)">Convert first: target = (−1) × (−30°)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="ped3f460b79">
+   <rect x="68.66" y="37.56" width="388.015" height="234.56"/>
+  </clipPath>
+  <clipPath id="p9bc7195bc8">
+   <rect x="516.785" y="37.56" width="388.015" height="234.56"/>
+  </clipPath>
+ </defs>
+</svg>

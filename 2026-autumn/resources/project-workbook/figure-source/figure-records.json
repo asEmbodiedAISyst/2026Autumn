@@ -1,0 +1,108 @@
+[
+  {
+    "class": 12,
+    "name": "claim-chain",
+    "kind": "conceptual schema",
+    "inputs": []
+  },
+  {
+    "class": 12,
+    "name": "coverage",
+    "kind": "invented equal-eight-attempt fixture",
+    "inputs": {
+      "convenient": [
+        4,
+        4,
+        0,
+        0
+      ],
+      "stratified": [
+        2,
+        2,
+        2,
+        2
+      ]
+    }
+  },
+  {
+    "class": 13,
+    "name": "episode",
+    "kind": "constructed episode with external intervention",
+    "inputs": []
+  },
+  {
+    "class": 13,
+    "name": "alignment",
+    "kind": "conceptual observation/action convention",
+    "inputs": []
+  },
+  {
+    "class": 14,
+    "name": "system-loop",
+    "kind": "conceptual feedback and record boundaries",
+    "inputs": []
+  },
+  {
+    "class": 14,
+    "name": "conversion",
+    "kind": "invented unit/sign diagnostic",
+    "inputs": {
+      "action_command_deg": -30,
+      "direction": -1,
+      "motor_state_deg": 29
+    }
+  },
+  {
+    "class": 15,
+    "name": "uncertainty",
+    "kind": "invented bounded-uncertainty fixture",
+    "inputs": {
+      "estimate_mm": 14,
+      "bound_mm": 3,
+      "criterion_mm": 15
+    }
+  },
+  {
+    "class": 15,
+    "name": "correspondence",
+    "kind": "comparison boundaries, not evidence ranking",
+    "inputs": []
+  },
+  {
+    "class": 16,
+    "name": "contribution",
+    "kind": "conceptual evidence dependency chain",
+    "inputs": []
+  },
+  {
+    "class": 16,
+    "name": "paired-outcomes",
+    "kind": "invented paired outcomes",
+    "inputs": {
+      "X": [
+        12,
+        0,
+        2,
+        6
+      ],
+      "Y": [
+        6,
+        6,
+        8,
+        0
+      ]
+    }
+  },
+  {
+    "class": 17,
+    "name": "action-boundary",
+    "kind": "hypothetical action-specific dependencies",
+    "inputs": []
+  },
+  {
+    "class": 17,
+    "name": "evidence-dimensions",
+    "kind": "illustrative context/support separation",
+    "inputs": []
+  }
+]
