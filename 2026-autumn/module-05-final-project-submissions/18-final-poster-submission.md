@@ -28,4 +28,21 @@ Use the original **asRoBallet poster from RSS 2026** as a reference for connecti
 
 *Figure 1. Original asRoBallet poster preview, Fang Wan et al. (2026), retained from the earlier course notes. [Open the full-size image](../media/class18/asroballet-poster-original.png) · [Paper and research source](https://bionicdl.ancorasir.com/?p=2238). Use it as an example; prepare your own A0 PDF.*
 
+### Optional examples from the worksheet papers
+
+Use Claim and Decision to select the message, evidence and limitations; Experience, System, Grounding and Learning explain how that evidence was obtained. The [Classes 12–17 filled examples](../module-04-worksheets-guided-final-project-preparation/12-final-project-i-claim.md#filled-worksheet-examples) analyse published work. Identify your team's own evidence separately.
+
+Only the LEAP link below is a verified public poster. No public poster was located in the checked author resources for the other seven works; their links are paper/project references.
+
+| Author resource | What to learn for your poster |
+| --- | --- |
+| [ALOHA / ACT — project](https://tonyzhaozh.github.io/aloha/) | One bimanual capability, task evidence and generalization limits. |
+| [UMI — project](https://umi-gripper.github.io/) | Capture-to-deployment pipeline, latency comparison and operating limits. |
+| [DROID — project](https://droid-dataset.github.io/) | Collection coverage versus held-out task performance. |
+| [BridgeData V2 — project](https://bridgedata-v2.github.io/) | Dataset context, seen/unseen conditions and selected failure cases. |
+| [LEAP Hand v1 — poster PDF](https://v1.leaphand.com/static/leap_hand_poster.pdf) | Mechanism, interfaces and comparison evidence for the original hand. |
+| [NeuralFeels — project](https://suddhu.github.io/neural-feels/) | Sensor inputs and estimated shape/pose; known-shape versus novel-shape conditions. |
+| [Walk These Ways — project](https://gmargo11.github.io/walk-these-ways/) | Tunable behaviors and condition-dependent success and failure. |
+| [DayDreamer — project](https://danijar.com/project/daydreamer/) | Physical learning progression, task results and recovery. |
+
 Optional tips: Thomas C. Erren and Philip E. Bourne, [“Ten Simple Rules for a Good Poster Presentation”](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.0030102), PLOS Computational Biology (2007).

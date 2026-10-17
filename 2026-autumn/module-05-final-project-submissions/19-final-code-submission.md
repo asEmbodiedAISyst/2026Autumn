@@ -24,4 +24,21 @@ At the deadline, the teaching team records and collects the remote `main` revisi
 
 Use the authors’ [asRoBallet MuJoCo repository and README](https://github.com/asRoBallet/asRoBallet_mujoco#readme), accompanying [Fang Wan et al.’s RSS 2026 paper](https://arxiv.org/abs/2604.24916). It documents the tasks, installation, training, evaluation and playback. Follow its approach to explaining the code; write instructions for your own project and available assets.
 
+### Optional examples from the worksheet papers
+
+The [Classes 12–17 filled examples](../module-04-worksheets-guided-final-project-preparation/12-final-project-i-claim.md#filled-worksheet-examples) connect Claim to the result being reproduced; Experience, System and Grounding to data, hardware and configuration; Learning and Decision to training, evaluation and expected outputs. Use these author READMEs as documentation references; distinguish published results from your team's verified outputs.
+
+| Official code and README | What to learn for your code handoff |
+| --- | --- |
+| [ALOHA / ACT](https://github.com/tonyzhaozh/act#readme) | Separate collection, visualization, training and evaluation; identify real-robot dependencies. |
+| [UMI](https://github.com/real-stanford/universal_manipulation_interface#readme) | Trace raw sessions through SLAM, dataset conversion, training and deployment. |
+| [DROID collection](https://github.com/droid-dataset/droid#readme) · [policy learning](https://github.com/droid-dataset/droid_policy_learning#readme) | State each repository's role; pin data/calibration versions and companion dependencies. |
+| [BridgeData V2](https://github.com/rail-berkeley/bridge_data_v2#readme) | Match the data-conversion route, checkpoint, configuration and image resolution. |
+| [LEAP Hand API](https://github.com/leap-hand/LEAP_Hand_API#readme) | Separate hardware/API setup from policy experiments; identify the original v1 resources. |
+| [NeuralFeels](https://github.com/facebookresearch/neuralfeels#readme) | Name dataset/model assets, object/log, sensor modalities and estimation mode. |
+| [Walk These Ways](https://github.com/Improbable-AI/walk-these-ways#readme) | Separate setup tests, training, pretrained-policy evaluation and hardware deployment. |
+| [DayDreamer](https://github.com/danijar/daydreamer#readme) | Explain actor, learner, replay/log paths and robot-specific configuration. |
+
+Linked datasets/checkpoints differ between projects; a README or selected release does not establish access to every original experiment record. Document what your team actually supplies and can reproduce.
+
 Optional guidance: [Papers with Code research-code tips](https://github.com/paperswithcode/releasing-research-code) and its [README template](https://github.com/paperswithcode/releasing-research-code/blob/master/templates/README.md), linked from NeurIPS. Adapt the relevant sections to your project.
