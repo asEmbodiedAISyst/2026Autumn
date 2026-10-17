@@ -1,5 +1,7 @@
 ---
 description: 27 November 2026 · 09:00–10:50 · L12
+layout:
+  width: wide
 ---
 
 # 18 Final Poster Submission

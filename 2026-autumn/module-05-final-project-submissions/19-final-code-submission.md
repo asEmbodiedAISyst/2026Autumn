@@ -1,5 +1,7 @@
 ---
 description: 01 December 2026 · Deadline 10:20 · No class meeting
+layout:
+  width: wide
 ---
 
 # 19 Final Code Submission

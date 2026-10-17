@@ -1,5 +1,7 @@
 ---
 description: 02 December 2026 · Deadline 11:50 · No class meeting
+layout:
+  width: wide
 ---
 
 # 20 Final Video Submission
