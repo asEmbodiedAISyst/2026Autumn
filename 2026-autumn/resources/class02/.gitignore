@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+*.pyc
+.mpl-cache/
+.DS_Store
+media/generated-assistant/

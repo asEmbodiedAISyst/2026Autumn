@@ -1,0 +1,61 @@
+{
+  "episode": "M0__H2__P01_slow_triangle__R01",
+  "date_utc": "2026-09-01T16:08:11.765472+00:00",
+  "fixture": "M0",
+  "external_moving_mass_g": 0,
+  "controller": "H2",
+  "readback": {
+    "id": 5,
+    "model_number": 1240,
+    "firmware_version": 53,
+    "operating_mode": 5,
+    "baud_rate": 6,
+    "position_p_gain": 800,
+    "position_i_gain": 0,
+    "position_d_gain": 150,
+    "goal_current": 300,
+    "current_limit": 300,
+    "pwm_limit": 708,
+    "profile_velocity": 125,
+    "profile_acceleration": 32
+  },
+  "telemetry_rows": 2601,
+  "command_rows": 1301,
+  "duration_s": 12.999293867,
+  "mean_poll_interval_ms": 4.999728410384615,
+  "median_poll_interval_ms": 4.99982400000043,
+  "max_poll_interval_ms": 7.996966000000327,
+  "achieved_poll_rate_hz": 200.0108641747348,
+  "source_conversion_max_abs_error": {
+    "position_meas_rad": 0.0,
+    "velocity_meas_rad_s": 1.1102230246251565e-16,
+    "current_meas_A": 0.0,
+    "pwm_meas_fraction": 0.0,
+    "input_voltage_V": 0.0
+  },
+  "critical_readback_unchanged": true,
+  "position_range_deg_relative_to_2048": [
+    -37.70507812500001,
+    37.265625
+  ],
+  "input_voltage_range_V": [
+    5.0,
+    5.1000000000000005
+  ],
+  "temperature_range_C": [
+    22,
+    24
+  ],
+  "position_tracking_rmse_deg_readback_goal": 1.3255283743457287,
+  "observation_boundary": "t_state_s is host receive-end time, not independently measured physical sample time; goal is register readback.",
+  "current_semantics": "XC330 input-supply telemetry; not calibrated output torque.",
+  "files_sha256": {
+    "command_events.csv": "9fe19d986a8ccb0f4f98552d70007075c18e598a0204fb5241e6ccadc78c8078",
+    "raw/command_events.parquet": "f08c71e6f06edacfc864fa1b9b3bd2c3fe77e18d3900c9fa7c7e45b39b562a34",
+    "raw/control_table_after.json": "ab8c89241eaed4587864e707de3201d3c345432523b7b876b87e399e500ad74b",
+    "raw/control_table_before.json": "ab8c89241eaed4587864e707de3201d3c345432523b7b876b87e399e500ad74b",
+    "raw/episode.json": "b003f1306854733f07cdb4027508f598b2d4c98f9792c1afc4db6bdf71f4d6ac",
+    "raw/telemetry_events.parquet": "075f2139930002c5881ec244e67e33775decd735c6c8c216f7d81c1bad5aedfd",
+    "telemetry_events.csv": "a38207bb0b51fcffdb8e6098a903121104b5fb0a699cb7a17500d5c7631b5ae6"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "row_index": 400,
+  "time_s_host_receive_end": 2.00191766,
+  "episode_id": "M0__H2__P01_slow_triangle__R01",
+  "raw": {
+    "goal_position_raw": 2330,
+    "position_trajectory_raw": 2337,
+    "present_position_raw": 2347,
+    "present_velocity_raw": -19,
+    "present_current_raw": -32,
+    "present_pwm_raw": -8,
+    "input_voltage_raw": 51,
+    "temperature_C": 22
+  },
+  "converted": {
+    "position_deg_relative_to_2048": 26.279296875,
+    "position_rad_relative_to_2048": 0.4586602555778067,
+    "velocity_rpm": -4.351,
+    "velocity_rad_s": -0.4556356545256397,
+    "input_current_mA": -32.0,
+    "PWM_percent": -0.9039999999999999,
+    "input_voltage_V": 5.1000000000000005,
+    "temperature_C": 22
+  },
+  "interpretation": "Encoder/control-table telemetry; no output-torque measurement."
+}

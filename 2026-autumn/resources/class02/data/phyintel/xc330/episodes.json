@@ -1,0 +1,1136 @@
+[
+  {
+    "array_prefix": "e000",
+    "episode_id": "B0__H1__P01_slow_triangle__R01",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e001",
+    "episode_id": "B0__H1__P01_slow_triangle__R02",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e002",
+    "episode_id": "B0__H1__P01_slow_triangle__R03",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e003",
+    "episode_id": "B0__H1__P02_multisine__R01",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e004",
+    "episode_id": "B0__H1__P02_multisine__R02",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e005",
+    "episode_id": "B0__H1__P02_multisine__R03",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e006",
+    "episode_id": "B0__H1__P03_smooth_levels__R01",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e007",
+    "episode_id": "B0__H1__P03_smooth_levels__R02",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e008",
+    "episode_id": "B0__H1__P03_smooth_levels__R03",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e009",
+    "episode_id": "B0__H1__P04_chirp__R01",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P04_chirp",
+    "role": "model_selection",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e010",
+    "episode_id": "B0__H1__P04_chirp__R02",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P04_chirp",
+    "role": "model_selection",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e011",
+    "episode_id": "B0__H1__P04_chirp__R03",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P04_chirp",
+    "role": "model_selection",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e012",
+    "episode_id": "B0__H1__P05_wide_sine__R01",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P05_wide_sine",
+    "role": "model_selection",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e013",
+    "episode_id": "B0__H1__P05_wide_sine__R02",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P05_wide_sine",
+    "role": "model_selection",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e014",
+    "episode_id": "B0__H1__P05_wide_sine__R03",
+    "fixture_id": "B0",
+    "controller_id": "H1",
+    "profile_id": "P05_wide_sine",
+    "role": "model_selection",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e015",
+    "episode_id": "B0__H2__P01_slow_triangle__R01",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e016",
+    "episode_id": "B0__H2__P01_slow_triangle__R02",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e017",
+    "episode_id": "B0__H2__P01_slow_triangle__R03",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e018",
+    "episode_id": "B0__H2__P02_multisine__R01",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e019",
+    "episode_id": "B0__H2__P02_multisine__R02",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e020",
+    "episode_id": "B0__H2__P02_multisine__R03",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e021",
+    "episode_id": "B0__H2__P03_smooth_levels__R01",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e022",
+    "episode_id": "B0__H2__P03_smooth_levels__R02",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e023",
+    "episode_id": "B0__H2__P03_smooth_levels__R03",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e024",
+    "episode_id": "B0__H2__P04_chirp__R01",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P04_chirp",
+    "role": "model_selection",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e025",
+    "episode_id": "B0__H2__P04_chirp__R02",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P04_chirp",
+    "role": "model_selection",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e026",
+    "episode_id": "B0__H2__P04_chirp__R03",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P04_chirp",
+    "role": "model_selection",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e027",
+    "episode_id": "B0__H2__P05_wide_sine__R01",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P05_wide_sine",
+    "role": "model_selection",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e028",
+    "episode_id": "B0__H2__P05_wide_sine__R02",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P05_wide_sine",
+    "role": "model_selection",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e029",
+    "episode_id": "B0__H2__P05_wide_sine__R03",
+    "fixture_id": "B0",
+    "controller_id": "H2",
+    "profile_id": "P05_wide_sine",
+    "role": "model_selection",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e030",
+    "episode_id": "B1__H1__P01_slow_triangle__R01",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e031",
+    "episode_id": "B1__H1__P01_slow_triangle__R02",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e032",
+    "episode_id": "B1__H1__P01_slow_triangle__R03",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e033",
+    "episode_id": "B1__H1__P02_multisine__R01",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e034",
+    "episode_id": "B1__H1__P02_multisine__R02",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e035",
+    "episode_id": "B1__H1__P02_multisine__R03",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e036",
+    "episode_id": "B1__H1__P03_smooth_levels__R01",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e037",
+    "episode_id": "B1__H1__P03_smooth_levels__R02",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e038",
+    "episode_id": "B1__H1__P03_smooth_levels__R03",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e039",
+    "episode_id": "B1__H1__P06_heldout_composite__R01",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e040",
+    "episode_id": "B1__H1__P06_heldout_composite__R02",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e041",
+    "episode_id": "B1__H1__P06_heldout_composite__R03",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e042",
+    "episode_id": "B1__H1__P06_heldout_composite__R04",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R04"
+  },
+  {
+    "array_prefix": "e043",
+    "episode_id": "B1__H1__P06_heldout_composite__R05",
+    "fixture_id": "B1",
+    "controller_id": "H1",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R05"
+  },
+  {
+    "array_prefix": "e044",
+    "episode_id": "B1__H2__P01_slow_triangle__R01",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e045",
+    "episode_id": "B1__H2__P01_slow_triangle__R02",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e046",
+    "episode_id": "B1__H2__P01_slow_triangle__R03",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e047",
+    "episode_id": "B1__H2__P02_multisine__R01",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e048",
+    "episode_id": "B1__H2__P02_multisine__R02",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e049",
+    "episode_id": "B1__H2__P02_multisine__R03",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e050",
+    "episode_id": "B1__H2__P03_smooth_levels__R01",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e051",
+    "episode_id": "B1__H2__P03_smooth_levels__R02",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e052",
+    "episode_id": "B1__H2__P03_smooth_levels__R03",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e053",
+    "episode_id": "B1__H2__P06_heldout_composite__R01",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e054",
+    "episode_id": "B1__H2__P06_heldout_composite__R02",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e055",
+    "episode_id": "B1__H2__P06_heldout_composite__R03",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e056",
+    "episode_id": "B1__H2__P06_heldout_composite__R04",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R04"
+  },
+  {
+    "array_prefix": "e057",
+    "episode_id": "B1__H2__P06_heldout_composite__R05",
+    "fixture_id": "B1",
+    "controller_id": "H2",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R05"
+  },
+  {
+    "array_prefix": "e058",
+    "episode_id": "B2__H1__P01_slow_triangle__R01",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e059",
+    "episode_id": "B2__H1__P01_slow_triangle__R02",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e060",
+    "episode_id": "B2__H1__P01_slow_triangle__R03",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e061",
+    "episode_id": "B2__H1__P02_multisine__R01",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e062",
+    "episode_id": "B2__H1__P02_multisine__R02",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e063",
+    "episode_id": "B2__H1__P02_multisine__R03",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e064",
+    "episode_id": "B2__H1__P03_smooth_levels__R01",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e065",
+    "episode_id": "B2__H1__P03_smooth_levels__R02",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e066",
+    "episode_id": "B2__H1__P03_smooth_levels__R03",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e067",
+    "episode_id": "B2__H1__P04_chirp__R01",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P04_chirp",
+    "role": "model_selection",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e068",
+    "episode_id": "B2__H1__P04_chirp__R02",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P04_chirp",
+    "role": "model_selection",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e069",
+    "episode_id": "B2__H1__P04_chirp__R03",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P04_chirp",
+    "role": "model_selection",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e070",
+    "episode_id": "B2__H1__P05_wide_sine__R01",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P05_wide_sine",
+    "role": "model_selection",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e071",
+    "episode_id": "B2__H1__P05_wide_sine__R02",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P05_wide_sine",
+    "role": "model_selection",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e072",
+    "episode_id": "B2__H1__P05_wide_sine__R03",
+    "fixture_id": "B2",
+    "controller_id": "H1",
+    "profile_id": "P05_wide_sine",
+    "role": "model_selection",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e073",
+    "episode_id": "B2__H2__P01_slow_triangle__R01",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e074",
+    "episode_id": "B2__H2__P01_slow_triangle__R02",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e075",
+    "episode_id": "B2__H2__P01_slow_triangle__R03",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e076",
+    "episode_id": "B2__H2__P02_multisine__R01",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e077",
+    "episode_id": "B2__H2__P02_multisine__R02",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e078",
+    "episode_id": "B2__H2__P02_multisine__R03",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e079",
+    "episode_id": "B2__H2__P03_smooth_levels__R01",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e080",
+    "episode_id": "B2__H2__P03_smooth_levels__R02",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e081",
+    "episode_id": "B2__H2__P03_smooth_levels__R03",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e082",
+    "episode_id": "B2__H2__P04_chirp__R01",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P04_chirp",
+    "role": "model_selection",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e083",
+    "episode_id": "B2__H2__P04_chirp__R02",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P04_chirp",
+    "role": "model_selection",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e084",
+    "episode_id": "B2__H2__P04_chirp__R03",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P04_chirp",
+    "role": "model_selection",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e085",
+    "episode_id": "B2__H2__P05_wide_sine__R01",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P05_wide_sine",
+    "role": "model_selection",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e086",
+    "episode_id": "B2__H2__P05_wide_sine__R02",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P05_wide_sine",
+    "role": "model_selection",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e087",
+    "episode_id": "B2__H2__P05_wide_sine__R03",
+    "fixture_id": "B2",
+    "controller_id": "H2",
+    "profile_id": "P05_wide_sine",
+    "role": "model_selection",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e088",
+    "episode_id": "G1__H1__P06_heldout_composite__R01",
+    "fixture_id": "G1",
+    "controller_id": "H1",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e089",
+    "episode_id": "G1__H1__P06_heldout_composite__R02",
+    "fixture_id": "G1",
+    "controller_id": "H1",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e090",
+    "episode_id": "G1__H1__P06_heldout_composite__R03",
+    "fixture_id": "G1",
+    "controller_id": "H1",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e091",
+    "episode_id": "G1__H1__P06_heldout_composite__R04",
+    "fixture_id": "G1",
+    "controller_id": "H1",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R04"
+  },
+  {
+    "array_prefix": "e092",
+    "episode_id": "G1__H1__P06_heldout_composite__R05",
+    "fixture_id": "G1",
+    "controller_id": "H1",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R05"
+  },
+  {
+    "array_prefix": "e093",
+    "episode_id": "G1__H1__P07_heldout_sine_hold__R01",
+    "fixture_id": "G1",
+    "controller_id": "H1",
+    "profile_id": "P07_heldout_sine_hold",
+    "role": "held_out",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e094",
+    "episode_id": "G1__H1__P07_heldout_sine_hold__R02",
+    "fixture_id": "G1",
+    "controller_id": "H1",
+    "profile_id": "P07_heldout_sine_hold",
+    "role": "held_out",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e095",
+    "episode_id": "G1__H1__P07_heldout_sine_hold__R03",
+    "fixture_id": "G1",
+    "controller_id": "H1",
+    "profile_id": "P07_heldout_sine_hold",
+    "role": "held_out",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e096",
+    "episode_id": "G1__H1__P07_heldout_sine_hold__R04",
+    "fixture_id": "G1",
+    "controller_id": "H1",
+    "profile_id": "P07_heldout_sine_hold",
+    "role": "held_out",
+    "repeat_id": "R04"
+  },
+  {
+    "array_prefix": "e097",
+    "episode_id": "G1__H1__P07_heldout_sine_hold__R05",
+    "fixture_id": "G1",
+    "controller_id": "H1",
+    "profile_id": "P07_heldout_sine_hold",
+    "role": "held_out",
+    "repeat_id": "R05"
+  },
+  {
+    "array_prefix": "e098",
+    "episode_id": "G1__H2__P06_heldout_composite__R01",
+    "fixture_id": "G1",
+    "controller_id": "H2",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e099",
+    "episode_id": "G1__H2__P06_heldout_composite__R02",
+    "fixture_id": "G1",
+    "controller_id": "H2",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e100",
+    "episode_id": "G1__H2__P06_heldout_composite__R03",
+    "fixture_id": "G1",
+    "controller_id": "H2",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e101",
+    "episode_id": "G1__H2__P06_heldout_composite__R04",
+    "fixture_id": "G1",
+    "controller_id": "H2",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R04"
+  },
+  {
+    "array_prefix": "e102",
+    "episode_id": "G1__H2__P06_heldout_composite__R05",
+    "fixture_id": "G1",
+    "controller_id": "H2",
+    "profile_id": "P06_heldout_composite",
+    "role": "held_out",
+    "repeat_id": "R05"
+  },
+  {
+    "array_prefix": "e103",
+    "episode_id": "G1__H2__P07_heldout_sine_hold__R01",
+    "fixture_id": "G1",
+    "controller_id": "H2",
+    "profile_id": "P07_heldout_sine_hold",
+    "role": "held_out",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e104",
+    "episode_id": "G1__H2__P07_heldout_sine_hold__R02",
+    "fixture_id": "G1",
+    "controller_id": "H2",
+    "profile_id": "P07_heldout_sine_hold",
+    "role": "held_out",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e105",
+    "episode_id": "G1__H2__P07_heldout_sine_hold__R03",
+    "fixture_id": "G1",
+    "controller_id": "H2",
+    "profile_id": "P07_heldout_sine_hold",
+    "role": "held_out",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e106",
+    "episode_id": "G1__H2__P07_heldout_sine_hold__R04",
+    "fixture_id": "G1",
+    "controller_id": "H2",
+    "profile_id": "P07_heldout_sine_hold",
+    "role": "held_out",
+    "repeat_id": "R04"
+  },
+  {
+    "array_prefix": "e107",
+    "episode_id": "G1__H2__P07_heldout_sine_hold__R05",
+    "fixture_id": "G1",
+    "controller_id": "H2",
+    "profile_id": "P07_heldout_sine_hold",
+    "role": "held_out",
+    "repeat_id": "R05"
+  },
+  {
+    "array_prefix": "e108",
+    "episode_id": "M0__H1__P01_slow_triangle__R01",
+    "fixture_id": "M0",
+    "controller_id": "H1",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e109",
+    "episode_id": "M0__H1__P01_slow_triangle__R02",
+    "fixture_id": "M0",
+    "controller_id": "H1",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e110",
+    "episode_id": "M0__H1__P01_slow_triangle__R03",
+    "fixture_id": "M0",
+    "controller_id": "H1",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e111",
+    "episode_id": "M0__H1__P02_multisine__R01",
+    "fixture_id": "M0",
+    "controller_id": "H1",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e112",
+    "episode_id": "M0__H1__P02_multisine__R02",
+    "fixture_id": "M0",
+    "controller_id": "H1",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e113",
+    "episode_id": "M0__H1__P02_multisine__R03",
+    "fixture_id": "M0",
+    "controller_id": "H1",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e114",
+    "episode_id": "M0__H1__P03_smooth_levels__R01",
+    "fixture_id": "M0",
+    "controller_id": "H1",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e115",
+    "episode_id": "M0__H1__P03_smooth_levels__R02",
+    "fixture_id": "M0",
+    "controller_id": "H1",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e116",
+    "episode_id": "M0__H1__P03_smooth_levels__R03",
+    "fixture_id": "M0",
+    "controller_id": "H1",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e117",
+    "episode_id": "M0__H2__P01_slow_triangle__R01",
+    "fixture_id": "M0",
+    "controller_id": "H2",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e118",
+    "episode_id": "M0__H2__P01_slow_triangle__R02",
+    "fixture_id": "M0",
+    "controller_id": "H2",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e119",
+    "episode_id": "M0__H2__P01_slow_triangle__R03",
+    "fixture_id": "M0",
+    "controller_id": "H2",
+    "profile_id": "P01_slow_triangle",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e120",
+    "episode_id": "M0__H2__P02_multisine__R01",
+    "fixture_id": "M0",
+    "controller_id": "H2",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e121",
+    "episode_id": "M0__H2__P02_multisine__R02",
+    "fixture_id": "M0",
+    "controller_id": "H2",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e122",
+    "episode_id": "M0__H2__P02_multisine__R03",
+    "fixture_id": "M0",
+    "controller_id": "H2",
+    "profile_id": "P02_multisine",
+    "role": "calibration",
+    "repeat_id": "R03"
+  },
+  {
+    "array_prefix": "e123",
+    "episode_id": "M0__H2__P03_smooth_levels__R01",
+    "fixture_id": "M0",
+    "controller_id": "H2",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R01"
+  },
+  {
+    "array_prefix": "e124",
+    "episode_id": "M0__H2__P03_smooth_levels__R02",
+    "fixture_id": "M0",
+    "controller_id": "H2",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R02"
+  },
+  {
+    "array_prefix": "e125",
+    "episode_id": "M0__H2__P03_smooth_levels__R03",
+    "fixture_id": "M0",
+    "controller_id": "H2",
+    "profile_id": "P03_smooth_levels",
+    "role": "calibration",
+    "repeat_id": "R03"
+  }
+]

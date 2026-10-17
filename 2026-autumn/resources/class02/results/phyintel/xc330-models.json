@@ -1,0 +1,162 @@
+[
+  {
+    "controller": "H1",
+    "fixture": "M0",
+    "nq": 1,
+    "nv": 1,
+    "timestep_s": 0.002,
+    "total_inertia_kg_m2": 0.0063296272968656605,
+    "armature_kg_m2": 0.00632962729586566,
+    "fixture_inertia_kg_m2": 1.0000004296850662e-12,
+    "gravity_bias_at_zero_Nm": 0.0,
+    "parameters": [
+      0.00632962729586566,
+      0.04256643460373195,
+      0.007363036739462707
+    ]
+  },
+  {
+    "controller": "H1",
+    "fixture": "B0",
+    "nq": 1,
+    "nv": 1,
+    "timestep_s": 0.002,
+    "total_inertia_kg_m2": 0.006700681969897207,
+    "armature_kg_m2": 0.00632962729586566,
+    "fixture_inertia_kg_m2": 0.0003710546740315467,
+    "gravity_bias_at_zero_Nm": 0.0,
+    "parameters": [
+      0.00632962729586566,
+      0.04256643460373195,
+      0.007363036739462707
+    ]
+  },
+  {
+    "controller": "H1",
+    "fixture": "B1",
+    "nq": 1,
+    "nv": 1,
+    "timestep_s": 0.002,
+    "total_inertia_kg_m2": 0.006958281969897207,
+    "armature_kg_m2": 0.00632962729586566,
+    "fixture_inertia_kg_m2": 0.0006286546740315469,
+    "gravity_bias_at_zero_Nm": 0.0,
+    "parameters": [
+      0.00632962729586566,
+      0.04256643460373195,
+      0.007363036739462707
+    ]
+  },
+  {
+    "controller": "H1",
+    "fixture": "B2",
+    "nq": 1,
+    "nv": 1,
+    "timestep_s": 0.002,
+    "total_inertia_kg_m2": 0.007289481969897207,
+    "armature_kg_m2": 0.00632962729586566,
+    "fixture_inertia_kg_m2": 0.0009598546740315472,
+    "gravity_bias_at_zero_Nm": 0.0,
+    "parameters": [
+      0.00632962729586566,
+      0.04256643460373195,
+      0.007363036739462707
+    ]
+  },
+  {
+    "controller": "H1",
+    "fixture": "G1",
+    "nq": 1,
+    "nv": 1,
+    "timestep_s": 0.002,
+    "total_inertia_kg_m2": 0.006995081969897207,
+    "armature_kg_m2": 0.00632962729586566,
+    "fixture_inertia_kg_m2": 0.0006654546740315469,
+    "gravity_bias_at_zero_Nm": 0.0722016,
+    "parameters": [
+      0.00632962729586566,
+      0.04256643460373195,
+      0.007363036739462707
+    ]
+  },
+  {
+    "controller": "H2",
+    "fixture": "M0",
+    "nq": 1,
+    "nv": 1,
+    "timestep_s": 0.002,
+    "total_inertia_kg_m2": 0.004922444631792549,
+    "armature_kg_m2": 0.004922444630792548,
+    "fixture_inertia_kg_m2": 1.0000004296850662e-12,
+    "gravity_bias_at_zero_Nm": 0.0,
+    "parameters": [
+      0.004922444630792548,
+      0.04431815643289998,
+      0.0059971849301738225
+    ]
+  },
+  {
+    "controller": "H2",
+    "fixture": "B0",
+    "nq": 1,
+    "nv": 1,
+    "timestep_s": 0.002,
+    "total_inertia_kg_m2": 0.005293499304824095,
+    "armature_kg_m2": 0.004922444630792548,
+    "fixture_inertia_kg_m2": 0.0003710546740315467,
+    "gravity_bias_at_zero_Nm": 0.0,
+    "parameters": [
+      0.004922444630792548,
+      0.04431815643289998,
+      0.0059971849301738225
+    ]
+  },
+  {
+    "controller": "H2",
+    "fixture": "B1",
+    "nq": 1,
+    "nv": 1,
+    "timestep_s": 0.002,
+    "total_inertia_kg_m2": 0.005551099304824095,
+    "armature_kg_m2": 0.004922444630792548,
+    "fixture_inertia_kg_m2": 0.0006286546740315469,
+    "gravity_bias_at_zero_Nm": 0.0,
+    "parameters": [
+      0.004922444630792548,
+      0.04431815643289998,
+      0.0059971849301738225
+    ]
+  },
+  {
+    "controller": "H2",
+    "fixture": "B2",
+    "nq": 1,
+    "nv": 1,
+    "timestep_s": 0.002,
+    "total_inertia_kg_m2": 0.005882299304824095,
+    "armature_kg_m2": 0.004922444630792548,
+    "fixture_inertia_kg_m2": 0.0009598546740315472,
+    "gravity_bias_at_zero_Nm": 0.0,
+    "parameters": [
+      0.004922444630792548,
+      0.04431815643289998,
+      0.0059971849301738225
+    ]
+  },
+  {
+    "controller": "H2",
+    "fixture": "G1",
+    "nq": 1,
+    "nv": 1,
+    "timestep_s": 0.002,
+    "total_inertia_kg_m2": 0.005587899304824095,
+    "armature_kg_m2": 0.004922444630792548,
+    "fixture_inertia_kg_m2": 0.0006654546740315469,
+    "gravity_bias_at_zero_Nm": 0.0722016,
+    "parameters": [
+      0.004922444630792548,
+      0.04431815643289998,
+      0.0059971849301738225
+    ]
+  }
+]

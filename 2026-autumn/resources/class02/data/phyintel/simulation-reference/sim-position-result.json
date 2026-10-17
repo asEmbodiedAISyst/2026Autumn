@@ -1,0 +1,254 @@
+{
+  "dataset_release_id": "chapter02-xc330-sim-data-v1.2",
+  "dataset_sha256": "5b44e4943ce5dc38fb0abe42e973ad9a7a24922e8e14851a27725d060cbccfbd",
+  "evidence_role": "projected simulation evidence",
+  "experiment_contract_sha256": "5455de3eb809ff98cb55ae41adadff3116e4ddcc5594be0eb14b7005965f11ce",
+  "fit_field_allowlist": [
+    "time_s",
+    "applied_position_rad",
+    "observed_position_rad",
+    "observed_velocity_rad_s",
+    "valid",
+    "saturated"
+  ],
+  "fits": [
+    {
+      "calibration_objective": 0.00034837879537905487,
+      "candidate_name": "Sim-Position M1 Candidate",
+      "diagnostics": {
+        "bounded_solver_success": true,
+        "consumed_logical_fields": [
+          "time_s",
+          "applied_position_rad",
+          "observed_position_rad",
+          "observed_velocity_rad_s",
+          "valid",
+          "saturated"
+        ],
+        "delay_candidates": [
+          {
+            "calibration_integrated_balance_rmse_Nm_s": 0.00034837879537905487,
+            "delay_s": 0.0,
+            "model_selection_output_gap_rmse_rad": 0.004958851909920059
+          }
+        ],
+        "evidence_status": "qualified-within-declared-closed-loop-approximation",
+        "filter": {
+          "applied_to": [
+            "observed_position_rad",
+            "observed_velocity_rad_s"
+          ],
+          "savgol_polynomial_order": 3,
+          "savgol_window_samples": 11,
+          "type": "Savitzky-Golay"
+        },
+        "fixture_inertia_kg_m2": {
+          "C1/B0": 0.0002499999912915289,
+          "C1/B1": 0.0007499999777063629,
+          "C1/B2": 0.001499999964888539,
+          "C1/M0": 9.999999960041972e-13,
+          "C2/B0": 0.0002499999912915289,
+          "C2/B1": 0.0007499999777063629,
+          "C2/B2": 0.001499999964888539,
+          "C2/M0": 9.999999960041972e-13
+        },
+        "integrated_balance_rmse_Nm_s": 0.00034837879537905487,
+        "integration_step_samples": 2,
+        "integration_window_samples": 10,
+        "qualified_window_count": 9833,
+        "scaled_design_condition_number": 3.0076336399619623,
+        "weighted_design_rank": 3,
+        "windows_by_episode": {
+          "calibration__C1__B0__P01_slow_triangle": 590,
+          "calibration__C1__B0__P02_multisine": 474,
+          "calibration__C1__B0__P03_smooth_levels": 144,
+          "calibration__C1__B1__P01_slow_triangle": 590,
+          "calibration__C1__B1__P02_multisine": 472,
+          "calibration__C1__B1__P03_smooth_levels": 148,
+          "calibration__C1__B2__P01_slow_triangle": 590,
+          "calibration__C1__B2__P02_multisine": 472,
+          "calibration__C1__B2__P03_smooth_levels": 163,
+          "calibration__C1__M0__P01_slow_triangle": 590,
+          "calibration__C1__M0__P02_multisine": 474,
+          "calibration__C1__M0__P03_smooth_levels": 145,
+          "calibration__C2__B0__P01_slow_triangle": 590,
+          "calibration__C2__B0__P02_multisine": 484,
+          "calibration__C2__B0__P03_smooth_levels": 174,
+          "calibration__C2__B1__P01_slow_triangle": 590,
+          "calibration__C2__B1__P02_multisine": 484,
+          "calibration__C2__B1__P03_smooth_levels": 171,
+          "calibration__C2__B2__P01_slow_triangle": 590,
+          "calibration__C2__B2__P02_multisine": 483,
+          "calibration__C2__B2__P03_smooth_levels": 163,
+          "calibration__C2__M0__P01_slow_triangle": 590,
+          "calibration__C2__M0__P02_multisine": 485,
+          "calibration__C2__M0__P03_smooth_levels": 177
+        }
+      },
+      "equivalent_gains": {
+        "C1": {
+          "kp_Nm_per_rad": 2.5,
+          "kv_Nm_s_per_rad": 0.05
+        },
+        "C2": {
+          "kp_Nm_per_rad": 3.1,
+          "kv_Nm_s_per_rad": 0.15
+        }
+      },
+      "evaluation_only_relative_joint_parameter_distance": 1.0719273770833677,
+      "joint_parameters": {
+        "armature": 0.0017296326461677352,
+        "damping": 0.026750203171079408,
+        "frictionloss": 0.010550651614181767
+      },
+      "method": "method1",
+      "model_selection_score": 0.004958851909920059
+    },
+    {
+      "calibration_objective": 0.00044150841302420014,
+      "candidate_name": "Sim-Position M2 Candidate",
+      "diagnostics": {
+        "candidate_results": [
+          {
+            "calibration_output_gap_rmse_rad": 0.00044150841302420014,
+            "delay_s": 0.0,
+            "model_selection_output_gap_rmse_rad": 0.0004490974863354416,
+            "start_index": 0
+          },
+          {
+            "calibration_output_gap_rmse_rad": 0.0004415084133729492,
+            "delay_s": 0.0,
+            "model_selection_output_gap_rmse_rad": 0.00044909816298246454,
+            "start_index": 1
+          }
+        ],
+        "consumed_logical_fields": [
+          "time_s",
+          "applied_position_rad",
+          "observed_position_rad",
+          "observed_velocity_rad_s",
+          "valid",
+          "saturated"
+        ],
+        "episode_weighting": "equal complete episode",
+        "evidence_status": "qualified",
+        "fixed_controller_conditions": {
+          "C1": {
+            "kp_Nm_per_rad": 2.5,
+            "kv_Nm_s_per_rad": 0.05
+          },
+          "C2": {
+            "kp_Nm_per_rad": 3.1,
+            "kv_Nm_s_per_rad": 0.15
+          }
+        },
+        "function_evaluations": 5,
+        "joint_parameter_bounds": {
+          "armature": [
+            0.0002,
+            0.002
+          ],
+          "damping": [
+            0.003,
+            0.03
+          ],
+          "frictionloss": [
+            0.002,
+            0.025
+          ]
+        },
+        "quick_mode": false,
+        "sample_stride": 2,
+        "selected_start_index": 0,
+        "solver_message": "`gtol` termination condition is satisfied.",
+        "solver_success": true,
+        "starts": [
+          [
+            0.0007,
+            0.009,
+            0.006
+          ],
+          [
+            0.0012,
+            0.018,
+            0.012
+          ]
+        ]
+      },
+      "equivalent_gains": {
+        "C1": {
+          "kp_Nm_per_rad": 2.5,
+          "kv_Nm_s_per_rad": 0.05
+        },
+        "C2": {
+          "kp_Nm_per_rad": 3.1,
+          "kv_Nm_s_per_rad": 0.15
+        }
+      },
+      "evaluation_only_relative_joint_parameter_distance": 0.005357230682017444,
+      "joint_parameters": {
+        "armature": 0.001003984237806736,
+        "damping": 0.015053719226488424,
+        "frictionloss": 0.010000138055421246
+      },
+      "method": "method2",
+      "model_selection_score": 0.0004490974863354416
+    }
+  ],
+  "gap_reduction_equation": "100 * (1 - candidate_equal_episode_RMSE / nominal_model_equal_episode_RMSE)",
+  "hardware_transfer_rule": "same logical position-interface fields, three-parameter candidate, fixed declared controller context, bounds, preprocessing, split discipline, and replay code",
+  "held_out_used_during_fit_or_selection": false,
+  "identification_contract_schema": "phyintel-identification-contract-v3",
+  "methods_executed": [
+    "Method 1 \u2014 integrated closed-loop analytical regression",
+    "Method 2 \u2014 bounded MuJoCo output-error optimization"
+  ],
+  "model_selection_used_for_delay_choice": false,
+  "nominal_model": {
+    "joint_parameters": {
+      "armature": 0.0007,
+      "damping": 0.009,
+      "frictionloss": 0.006
+    }
+  },
+  "optional_context_fields_excluded_from_fit": [
+    "source_qfrc_actuator_Nm",
+    "nominal_qfrc_actuator_Nm"
+  ],
+  "quick_mode": false,
+  "result_schema": "phyintel-sim-position-results-v1.2",
+  "sim_position_output_gap_equation": "candidate_position_meas_rad - observed_position_rad",
+  "sim_torque_fields_admitted_to_fitters": [],
+  "simulation_predictive_selection": {
+    "absolute_acceptance_status": "no absolute pass threshold was preregistered for v1.2",
+    "held_out_role": "report generalization only after candidate selection; do not use held-out data to select a candidate",
+    "metric": "equal_episode_output_gap_rmse_rad",
+    "nominal_comparison_role": "secondary before-versus-after identification context; not an acceptance criterion",
+    "selected_candidate": "sim_position_m2",
+    "selection_rule": "prefer the candidate with the smallest equal-episode output-gap RMSE to Source Model output",
+    "selection_split": "model_selection",
+    "sim_position_m1": {
+      "held_out_gap_reduction_percent": -22.42374946625436,
+      "held_out_gap_to_source_rmse_rad": 0.0036747453072960806,
+      "model_selection_gap_reduction_percent": -31.302589996264672,
+      "model_selection_gap_to_source_rmse_rad": 0.004972409057589035,
+      "selected": false
+    },
+    "sim_position_m2": {
+      "held_out_gap_reduction_percent": 95.42852651814356,
+      "held_out_gap_to_source_rmse_rad": 0.0001372201129120869,
+      "model_selection_gap_reduction_percent": 95.0537651908881,
+      "model_selection_gap_to_source_rmse_rad": 0.00018731315784776113,
+      "selected": true
+    },
+    "target": "Source Model sensor-equivalent position output"
+  },
+  "source_model_evaluation_only": {
+    "joint_parameters": {
+      "armature": 0.001,
+      "damping": 0.015,
+      "frictionloss": 0.01
+    }
+  },
+  "source_parameters_loaded_after_fitting": true
+}

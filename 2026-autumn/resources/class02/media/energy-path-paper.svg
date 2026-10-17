@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="515.905512pt" height="185.725984pt" viewBox="0 0 515.905512 185.725984" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-11T02:15:59.926670</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.3, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 185.725984 
+L 515.905512 185.725984 
+L 515.905512 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 15.207583 121.250656 
+L 125.318795 121.250656 
+L 125.318795 41.765197 
+L 15.207583 41.765197 
+L 15.207583 121.250656 
+z
+" clip-path="url(#pa74ebe2be7)" style="fill: none; stroke: #0072b2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 140.333961 121.250656 
+L 250.445173 121.250656 
+L 250.445173 41.765197 
+L 140.333961 41.765197 
+L 140.333961 121.250656 
+z
+" clip-path="url(#pa74ebe2be7)" style="fill: none; stroke: #0072b2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 265.460339 121.250656 
+L 375.571551 121.250656 
+L 375.571551 41.765197 
+L 265.460339 41.765197 
+L 265.460339 121.250656 
+z
+" clip-path="url(#pa74ebe2be7)" style="fill: none; stroke: #0072b2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 390.586717 121.250656 
+L 500.697929 121.250656 
+L 500.697929 41.765197 
+L 390.586717 41.765197 
+L 390.586717 121.250656 
+z
+" clip-path="url(#pa74ebe2be7)" style="fill: none; stroke: #0072b2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(59.329517 79.519927)">Supply</text>
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(55.139908 87.205927)">voltage V</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 127.316663 81.507927 
+Q 132.825815 81.507927 137.216932 81.507927 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+    <path d="M 134.416932 80.107927 
+L 137.216932 81.507927 
+L 134.416932 82.907927 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(173.122458 79.519927)">Drive + motor</text>
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(181.819958 87.205927)">current i</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 252.443041 81.507927 
+Q 257.952193 81.507927 262.34331 81.507927 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+    <path d="M 259.54331 80.107927 
+L 262.34331 81.507927 
+L 259.54331 82.907927 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(299.417507 79.519927)">Transmission</text>
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(309.638054 87.205927)">ratio N</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 377.569419 81.507927 
+Q 383.07857 81.507927 387.469688 81.507927 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+    <path d="M 384.669688 80.107927 
+L 387.469688 81.507927 
+L 384.669688 82.907927 
+" style="fill: none; stroke: #000000; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(426.847323 79.460864)">Joint + load</text>
+    <text style="font-size: 7px; font-family: 'MiSans'" transform="translate(429.850213 87.264989)">position q</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 5.95px; font-family: 'MiSans'; text-anchor: middle" x="257.952756" y="155.315853" transform="rotate(-0 257.952756 155.315853)">Energy flows through the drive; the position command carries information.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa74ebe2be7">
+   <rect x="7.7" y="7.7" width="500.505512" height="170.325984"/>
+  </clipPath>
+ </defs>
+</svg>
