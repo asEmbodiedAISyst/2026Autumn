@@ -22,9 +22,9 @@ By the end, you should be able to:
 - Read a native rollout and distinguish first-goal success, successful steps, stalls and drops.
 - Test a display-only cube change while preserving the policy and physical conditions.
 
-[Lecture](#matching-the-upward-letter-is-not-enough) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Run the repository examples](#run-the-repository-examples)
+[Lecture](#matching-the-upward-letter-is-not-enough) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The figures, animation, equations and saved results provide a complete reading route on this page. All policy, model, texture and evidence files needed for the practical are in the student repository. Prepare the Python environment before the session; a saved-record route is included if local simulation or graphics is unavailable.
+The figures, animation, equations and saved results provide a complete reading route on this page. The selected recordings, comparison tables and worked calculations support the demonstration and activity without a local simulator.
 
 ## Start with the held cube and the goal cube
 
@@ -239,14 +239,7 @@ Use the actor table and Figure 4 to count 57 inputs, sixteen outputs and five ph
 
 ### Inspect the prepared native run
 
-With the environment prepared as below, run the package, physics and interface checks. Run or replay the selected seed 9204 episode and inspect its trace. Use the recording and saved data when a live viewer is unavailable; the numerical run does not require graphics.
-
-```sh
-python lettered_demo.py --variant letters --noise-level 0 --seed 9204 --episodes 1 --output runs/letters-demo-01
-python inspect_trace.py runs/letters-demo-01
-```
-
-These commands run from the resource package's `code` directory. The runner preserves prior evidence by refusing an existing output folder; use a fresh suffix when repeating a run.
+Inspect the selected seed 9204 recording and its trace. Identify the policy, reference/noise settings and event rule before interpreting the outcome. Use the recorded successful-step times below to distinguish task events from later goal updates.
 
 | Retained selected-event check | Value |
 |---|---:|
@@ -266,17 +259,11 @@ Predict what changing only artwork should do, then compare the reference and let
 
 ### Predict, compare and explain
 
-Prepare dependencies before class. From the package's `code` directory, with its environment selected:
-
-```sh
-python lettered_demo.py --variant reference --noise-level 0 --seed 9204 --episodes 1 --steps 200 --output runs/practice-reference-01
-python lettered_demo.py --variant letters --noise-level 0 --seed 9204 --episodes 1 --steps 200 --output runs/practice-letters-01
-python compare_practice.py runs/practice-reference-01 runs/practice-letters-01
-```
+Compare the retained reference and lettered 200-step traces under seed 9204 with observation noise disabled. Only the displayed artwork changes; the policy and physics stay fixed.
 
 Predict the result before revealing the comparison. Inspect the variant, seed, policy identity, noise setting and step count. The expected result is **200 rows per variant, identical saved step fields and zero engine warnings**. The comparison tests a display intervention; it does not require a goal event in this short horizon.
 
-If simulation is unavailable, use the [saved practice result](../resources/class06/evidence/practice-comparison.json), the model/intervention description and the event-time table above. Label the result as supplied evidence and explain what a fresh run would need to preserve. Reading saved evidence is distinct from executing a new experiment.
+Use the supplied matched-trace result, the model/intervention description and the event-time table above. Label the result as retained evidence and explain what a new experiment would need to preserve. Interpreting that evidence is distinct from executing a new experiment.
 
 Submit a compact record:
 
@@ -289,41 +276,3 @@ Submit a compact record:
 | Boundary | Why display equivalence does not qualify a physical cube or camera tracker |
 
 Also calculate the requested target for 0.20 rad plus action 0.40, and the contact moment for the 1 N/35 mm example. In one final sentence, distinguish an actuator model from this task policy.
-
-## Run the repository examples
-
-Download or clone the [student repository](https://github.com/asEmbodiedAISyst/2026Autumn) with its folder structure. The source snapshots, ONNX policy, hand meshes, cube textures, licences and recorded results are included; no second private repository or model download is required.
-
-For a dependency-free inspection of supplied results, use standard Python from the repository root:
-
-```sh
-cd 2026-autumn/resources/class06
-python3 code/lesson_lab.py
-```
-
-In Windows PowerShell, use `py -3 code/lesson_lab.py` from the same folder. This checks outcome records, evaluation seed coverage, policy hash and selected trace events. It does not create new policy-evaluation trials.
-
-For native simulation, use Python 3.12 and the pinned requirements in the package. On macOS/Linux, starting from that resource folder:
-
-```sh
-cd code
-python3.12 -m venv .venv-demo
-. .venv-demo/bin/activate
-python -m pip install -r requirements-demo.txt
-python verify_package.py
-mkdir -p runs
-python validate_lettered.py runs/physics-contract.json
-python audit_policy_contract.py --output runs/policy-contract.json
-```
-
-Continue with the demonstration or activity commands above. Do not change the current directory from `code` between preparation and those commands. On Windows, create the environment using `py -3.12 -m venv .venv-demo` and use `.\.venv-demo\Scripts\python.exe` instead of `python` for installation and commands; create `runs` with `New-Item -ItemType Directory -Force runs`. Native replay has been verified on Apple-silicon macOS; the Windows command form is provided but has not been executed in this review. Optional-backend notices are not a substitute for checking the command's exit status.
-
-A Mac live viewer requires `mjpython` from the prepared environment:
-
-```sh
-.venv-demo/bin/mjpython lettered_demo.py --viewer --variant letters --noise-level 0 --seed 9204 --episodes 1 --output runs/viewer-01
-```
-
-For a new recording, add `--record` to the numerical runner command and use a fresh output folder. Recording requires working native graphics. The page's prepared animation and storyboard remain available without a viewer; closing a viewer or moving the cube interactively changes or ends that run.
-
-Retain the bundled Playground and Menagerie licences and attribution notices with redistributed resources. The student package preserves upstream identities and records the course adapter and artwork changes. Hardware deployment, pose-estimation integration and qualification of a manufactured cube remain later experiments.

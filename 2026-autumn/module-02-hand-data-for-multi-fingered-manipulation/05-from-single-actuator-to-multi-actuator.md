@@ -22,9 +22,9 @@ By the end, you should be able to:
 - Compare paired held-out predictions while preserving collection-event grouping.
 - State what encoder and camera records establish, and what calibration they still need.
 
-[Lecture](#start-with-a-bounded-single-actuator-claim) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Run the repository examples](#run-the-repository-examples)
+[Lecture](#start-with-a-bounded-single-actuator-claim) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The figures, worked examples and result tables provide a complete reading and activity route on this page. The small numerical activity uses only standard Python and files in the student repository. CAD software, motors, cameras and neural-network training are not required to complete it.
+The figures, worked examples and result tables provide a complete reading and activity route on this page. The activity uses the supplied figures, metric tables and worked calculations. CAD software, motors, cameras and neural-network training are not required to complete it.
 
 ## Review the single-actuator validation task
 
@@ -298,7 +298,7 @@ The selected CSV permits a direct RMSE check, not only inspection of saved summa
 | Motor 0 | 1,101 | 0.0381944624 | 0.0222666324 |
 | Motor 9 | 1,095 | 0.0381650017 | 0.0213814079 |
 
-For motor 0, square each of the 1,101 fitted-minus-encoder differences, average them and take the square root. The bundled command performs that calculation for both models and motors, and checks the results against the corresponding metric rows. Its tolerances allow only the stored table's decimal rounding. This reproduces a score from saved predictions; it is not a new physics simulation.
+For motor 0, square each of the 1,101 fitted-minus-encoder differences, average them and take the square root. The saved calculation performs this check for both models and motors against their corresponding metric rows, allowing only the stored table's decimal rounding. This reproduces a score from saved predictions; it is not a new physics simulation.
 
 The motor 0 result of 0.0222666324 rad belongs to **this episode**. Its H1 cell mean of about 0.019939 rad averages fifteen held-out records. Their difference is expected; substituting the group mean for the plotted episode would mislabel the result.
 
@@ -332,7 +332,7 @@ If optical and encoder readings disagree, do not choose a winner from visual pla
 
 Place Figure 1 beside Figures 2 and 3. Identify one fixed housing, one moving fixture and its motor identity. Contrast the collection rack with a chain of connected joints. State the input and output being compared, and distinguish the campaign's 113 g model construction from the earlier fixture descriptions.
 
-Open the supplied [B2/H1 scene](../resources/class05/models/combined/B2_H1.xml) and [B2/H2 scene](../resources/class05/models/combined/B2_H2.xml) as text. Identify a motor-specific hinge, actuator and passive parameters. With a prepared MuJoCo environment, run the scene inspector below; without it, use the saved checks here:
+Open the supplied [B2/H1 scene](../resources/class05/models/combined/B2_H1.xml) and [B2/H2 scene](../resources/class05/models/combined/B2_H2.xml) as text. Identify a motor-specific hinge, actuator and passive parameters. Use the saved scene checks below to connect the declared model to the worked input calculation:
 
 | Scene check | B2/H1 | B2/H2 |
 |---|---:|---:|
@@ -346,9 +346,9 @@ The inspector checks the initial and worked-example poses, reports the nominal m
 
 ### Reproduce and challenge the comparison
 
-Run `python code/lesson_lab.py` from the Class 05 resource folder. Read the event and record counts before the improvement percentage. Compare the aggregate result with the worked calculation, then compare motors 0 and 9 under H1 and H2.
+Read the event and record counts before the improvement percentage. Compare the aggregate result with the worked calculation, then compare motors 0 and 9 under H1 and H2.
 
-The same command also recomputes the four selected trace RMSEs. Identify motor 0’s episode result before comparing it with the motor/controller mean. Use Figures 6–8 to connect cell means, parameters and trajectories. Ask for one supported observation, then one possible explanation that would require a new measurement. Keep prediction error separate from reference tracking and fitted armature separate from measured rotor inertia.
+The four selected-trace RMSEs can also be checked directly from the saved trajectories. Identify motor 0’s episode result before comparing it with the motor/controller mean. Use Figures 6–8 to connect cell means, parameters and trajectories. Ask for one supported observation, then one possible explanation that would require a new measurement. Keep prediction error separate from reference tracking and fitted armature separate from measured rotor inertia.
 
 ### Inspect the measurement evidence
 
@@ -358,7 +358,7 @@ Use the original marker images in Figure 9 and the measurement chain in Figure 1
 
 ### Compare two motors and make one bounded decision
 
-Before running a command, use the four-row comparison table to predict which motor/context has the smallest fitted error and which has the largest percentage reduction. Then run the bundled analysis, or use its saved values on this page.
+Use the four-row comparison table to predict which motor/context has the smallest fitted error and which has the largest percentage reduction. Check the prediction against the supplied values and explain the difference between the two questions.
 
 1. Record the H1 baseline and fitted mean RMSEs for motors 0 and 9. Calculate one reduction yourself; use the supplied H2 rows for comparison without repeating all calculations.
 2. Explain why 480 held-out motor records represent thirty shared collection events. State how you would keep that grouping in a new split.
@@ -377,30 +377,6 @@ Submit a compact record:
 | Next experiment | Measurement, controlled conditions and claim to be tested |
 
 A defensible conclusion reports improved held-out encoder-position prediction under the declared campaign conditions. It leaves the physical cause of parameter variation, shared-infrastructure effects and transfer to a coupled hand as questions for further evidence.
-
-## Run the repository examples
-
-Download or clone the [student repository](https://github.com/asEmbodiedAISyst/2026Autumn), preserving its folders. For the required numerical comparison, use Python 3.10 or later. From the repository root:
-
-```sh
-cd 2026-autumn/resources/class05
-python3 -m venv .venv-class05-data
-.venv-class05-data/bin/python code/lesson_lab.py
-```
-
-In Windows PowerShell, create the environment with `py -3 -m venv .venv-class05-data`, then run `.\.venv-class05-data\Scripts\python.exe code/lesson_lab.py` after entering the same folder. The activity needs no third-party packages, network access or hardware. It audits the metric pairs and directly recomputes the selected-trace RMSEs; it does not refit parameters or rerun the physical campaign. It writes `results/lesson-summary.json` with the population comparison and four selected-trace checks; a [saved summary](../resources/class05/results/lesson-summary.json) is included. The [selected trace CSV](../resources/class05/data/paired-trace.csv) contains only the plotted shared event for motors 0 and 9. All figures and tables needed for the reasoning are on this page.
-
-For the instructor's executable model inspection, prepare Python 3.12 with the pinned [model requirements](../resources/class05/requirements-model.txt). On macOS/Linux:
-
-```sh
-python3.12 -m venv .venv-class05
-. .venv-class05/bin/activate
-python -m pip install -r requirements-model.txt
-python code/inspect_scene.py --controller H1
-python code/inspect_scene.py --controller H2
-```
-
-In PowerShell, create the environment with `py -3.12 -m venv .venv-class05`, then use `.\.venv-class05\Scripts\python.exe` in place of `python` for installation and both inspection commands. No activation is necessary. The XML and meshes are bundled. The standard-library activity and saved-table route remain complete without this model environment.
 
 ## Carry the evidence into manipulation
 

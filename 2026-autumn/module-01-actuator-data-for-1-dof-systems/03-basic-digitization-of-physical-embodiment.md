@@ -22,9 +22,9 @@ By the end, you should be able to:
 - Inspect geometry, frames, joints, mass, inertia and collision assumptions.
 - Define validation for a physical actuator with a specified link/payload experiment.
 
-[Lecture](#start-with-what-moves) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Run the repository examples](#run-the-repository-examples)
+[Lecture](#start-with-what-moves) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-You can complete the reading and model-inspection activity using the figures, XML excerpts, tables and recorded measurements on this page and in this repository. The Python examples reproduce the numerical checks. Handling a physical actuator, opening CAD and inspecting a printer are extensions when those facilities are available; identify source-record comparisons separately from measurements you make yourself.
+The figures, XML excerpts, tables and recorded measurements on this page support the reading and model-inspection activity. Handling a physical actuator, opening CAD and inspecting a printer are extensions when those facilities are available; identify source-record comparisons separately from measurements you make yourself.
 
 ## Geometry alone does not establish behavioral correspondence
 
@@ -247,7 +247,7 @@ The y value includes the −0.007 m offset from J to P: 0.0035 − 0.007 = −0.
 
 **Convert units at the correct boundary.** The CAD distance 100 mm becomes 0.100 m in the body position. `scale="0.001 0.001 0.001"` scales the mesh vertices; it does **not** scale `body pos`, `joint pos` or inertial positions for you. Writing `pos="100 0 0"` would put the attachment 100 m away. Convert display degrees to radians before assigning `data.qpos`; `compiler angle="radian"` governs angle-valued XML attributes, not a viewer's preferred display units. The joint axis [0, 1, 0] is a direction and has no length unit.
 
-After the [repository setup](#run-the-repository-examples), reproduce this check from `2026-autumn/resources/class03` with `python code/class03_frames.py --q-deg 30`. The calculation and expected results above remain sufficient without running it.
+Compare the coordinate calculation with the supplied result above. The important check is the frame transformation and its agreement with the declared model.
 
 **Checkpoint:** Why can P keep the same coordinates in `Link` while moving in the world? If the mesh looks correct but the payload is far away, which position and unit declarations should you check?
 
@@ -304,13 +304,9 @@ For the XC330 B2 file, the decisive declaration is
        forcelimited="true" forcerange="-0.1551 0.1551" />
 ```
 
-With this unit transmission and an in-range request, the model maps $$\tau_{\mathrm{req}}$$ directly to $$\tau_a$$. From the Class 03 resource folder, this small check uses the actual file:
+With this unit transmission and an in-range request, the model maps $$\tau_{\mathrm{req}}$$ directly to $$\tau_a$$. The following short excerpt illustrates the input-to-effort mapping after the model has been loaded:
 
 ```python
-import mujoco
-model = mujoco.MjModel.from_xml_path(
-    "consolidation/additional_material/models/1DOF-B2.xml")
-data = mujoco.MjData(model)
 data.ctrl[0] = 0.05  # N m for this unit-gear hinge motor
 mujoco.mj_forward(model, data)
 print(float(data.qfrc_actuator[0]))  # 0.05 N m
@@ -418,7 +414,7 @@ Load the [prepared RS06 B1 model](../resources/class03/preparation/rs06_fixtures
 
 *Figure 11. Compare the loaded RS06 configurations with Figure 9b: check the link, end-payload arrangement and one-hinge structure. A changed camera view does not establish a changed mechanism.*
 
-After the repository setup, run `python code/class03_rs06_inspect.py --case all` from `2026-autumn/resources/class03`. It loads the bundled RS06 models, reports the local joint axis/range and moving mass, and compares gravity bias with gravity enabled/disabled at a fixed pose. Use the figure and table if a live viewer is unavailable.
+Use the RS06 figure and inspection table to identify the local joint axis, range and moving mass. Compare gravity bias with gravity enabled and disabled at the same pose. Explain which contribution changes and which physical properties stay fixed.
 
 Inspect a small positive displacement in a viewer when available and check its direction. Compare gravity enabled and disabled at the same pose and control settings. A position actuator may resist gravity, so distinguish generalized gravity bias from net acceleration or observed movement. The saved records below use zero velocity and a 0.4 rad joint position in MuJoCo 3.3.7. Each model has one position coordinate, one velocity and one actuator input (q / v / inputs). The last two columns report gravity bias:
 
@@ -447,13 +443,7 @@ Use the [B2 XML](../resources/class03/consolidation/additional_material/models/1
 
 Move both payload centres inward to ±80 mm, retaining their masses, internal properties and orientations. Before revealing the output, predict whether moving mass, rotational inertia, balance and joint count change. Calculate the placement-dependent inertia difference using SI units.
 
-After the repository setup below, run the supplied [offline inspection script](../resources/class03/code/class03_inspect.py):
-
-```sh
-python code/class03_inspect.py --case B2 --radius-mm 80
-```
-
-The command operates on an in-memory copy and keeps the source XML unchanged. If the runtime is unavailable, use the saved model values after making the prediction:
+Compare your prediction with the supplied model calculation below. It changes the payload locations in a copy of the model, preserving the source definition.
 
 | Quantity | B2 at ±100 mm | Modified B2 at ±80 mm |
 |---|---:|---:|
@@ -465,7 +455,7 @@ The [raw inspection output](../resources/class03/results/class03-core/inspection
 
 ### Compare with the actual or printed component
 
-Check one dimension or mass against the available assembly or printed part. Record its value, unit and method. For a repository-only submission, compare the B2 model’s 0.110 kg moving mass with the B2 row of the included mass record. Identify that comparison as a source-record check and propose one dimensional or clearance measurement you would make on the built assembly. Inspect the printer when feasible.
+Check one dimension or mass against the available assembly or printed part. Record its value, unit and method. For a document-based submission, compare the B2 model’s 0.110 kg moving mass with the B2 row of the included mass record. Identify that comparison as a source-record check and propose one dimensional or clearance measurement you would make on the built assembly. Inspect the printer when feasible.
 
 ### Submit a compact inspection record
 
@@ -479,41 +469,6 @@ Check one dimension or mass against the available assembly or printed part. Reco
 | Validation boundary | What was checked and what requires a physical response experiment |
 
 Conclude with two sentences: what the representation is ready to support, and which claim needs further evidence. A screenshot is not a substitute for the recorded quantities and interpretation.
-
-## Run the repository examples
-
-Download or clone the **student repository**, preserving its folder structure. The required scripts, XML, meshes, CAD, mass records and saved results are all included. Reading the lesson and using its saved tables requires no Python, CAD software or hardware.
-
-For the executable checks, use Python 3.12. From the repository root on macOS/Linux:
-
-```sh
-cd 2026-autumn/resources/class03
-python3.12 -m venv .venv-class03-core
-. .venv-class03-core/bin/activate
-python -m pip install -r requirements-core.txt
-```
-
-In Windows PowerShell, prepare the same folder and use its Python executable directly:
-
-```powershell
-cd 2026-autumn/resources/class03
-py -3.12 -m venv .venv-class03-core
-.\.venv-class03-core\Scripts\python.exe -m pip install -r requirements-core.txt
-```
-
-The examples below use `python` from the activated macOS/Linux environment. In PowerShell, replace that executable with `.\.venv-class03-core\Scripts\python.exe`; activation is unnecessary.
-
-```sh
-python code/class03_inspect.py --case B2 --radius-mm 80
-python code/class03_frames.py --q-deg 30
-python code/class03_rs06_inspect.py --case all
-```
-
-The first command compares original and modified B2 inertia while preserving mass and joint count. The second calculates the payload attachment’s world coordinates and compares them with MuJoCo. The third checks the RS06 models, gravity bias and actuator-effort distinction. All three use only bundled model files, perform no hardware communication and require no graphical display.
-
-The expected values are already shown in the lecture and activity tables. If you cannot run the tools, use those tables to complete the same reasoning and label your evidence as supplied model results.
-
-For the instructor/TA demonstration, prepare Fusion/ACDC4Robot and the slicer separately when available. The CAD, intermediate exports, screenshots and printing file are supplied for inspection. A fresh CAD export, new print or physical measurement is not required to complete the repository-only activity.
 
 ## Reference
 
