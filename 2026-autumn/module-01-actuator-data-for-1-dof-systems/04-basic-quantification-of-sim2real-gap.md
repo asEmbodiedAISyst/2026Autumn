@@ -24,11 +24,11 @@ Our example is one **XC330-M288-T in current-based position operation**, driving
 
 Joint position is an angle; its time derivatives are velocity and acceleration. Fixture inertia describes resistance to angular acceleration, and gravity torque depends on mass distribution and pose. Those concepts carry forward. The numerical dataset here belongs to a separately documented 98 g fixture, whereas Class 03's structural example uses 110 g. We identify that distinction before using any result. Starting from the supplied model, we estimate three uncertain effective parameters and evaluate its predictions.
 
-The lecture follows **Introduction → Claim2Design → Design2Data → Data2Model → Model2Prototype → Sim2Real**. First define the comparison, then design informative observations, estimate a model, introduce physical evidence and evaluate the claim. Model2Prototype means moving from constructed observations to records from a matched physical prototype. It does not mean that students must fabricate another mechanism during this class.
-
-The recurring questions **Claim, Experience, System, Grounding, Learning and Decision** can be asked throughout that process: what is claimed, what tests it, which system is represented, what evidence grounds it, what was learned and what decision follows. They are views across the work rather than alternative names for its stages.
+Begin with a prediction claim and decide which observations can test it. Use informative motions to estimate a model, then compare its frozen predictions with physical records. Constructed examples let us check a calculation against a known answer; the recorded actuator responses test whether that model is useful under the declared conditions. This connects the mechanics to an evidence-based decision about simulation (Ljung 1999).
 
 By the end, you should be able to specify a fair comparison, explain the two identification methods, calculate or interpret position RMSE, read a residual and make a model-use decision limited to the evidence.
+
+[Lecture](#from-apparent-agreement-to-a-defined-comparison) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
 **Predict:** If hardware and simulation both lag their reference by the same amount, is their model-to-hardware gap necessarily large?
 
@@ -48,7 +48,7 @@ By the end, you should be able to specify a fair comparison, explain the two ide
 | Simulated position | $$\hat q$$ | Output of the evolving MuJoCo model |
 | Simulated velocity | $$\dot{\hat q}$$ | Velocity of that simulated state |
 
-Positions use radians and velocities use rad/s. A hat denotes an estimate or model quantity; it does not turn a reported sensor value into an independent calibration. The script columns use explicit names such as `physical_position_rad` and `simulated_M2_position_rad`; the accompanying data guide maps them to these symbols.
+Positions use radians and velocities use rad/s. A hat denotes an estimate or model quantity; it does not turn a reported sensor value into an independent calibration. The [paired CSV](../resources/class04/data/xc330-98g-H1-G1-P06-R01.csv) uses explicit names such as `internal_position_reference_rad`, `physical_position_rad` and `simulated_M2_position_rad`; the [data and units guide](../resources/class04/data/README.md) maps them to these symbols. Use the logged Velocity Trajectory for $$v_r$$ and the logged Present Velocity for $$y_v$$. Differentiating an interpolated position curve would produce another signal and change the declared method. The device register roles follow ROBOTIS (n.d.); their use in this replay follows the preserved campaign implementation (asMagicBrain n.d.).
 
 The **experiment runner** schedules requests and associates them with a record. The **hardware controller** shapes references and produces a limited drive response on the device. The **capture path** preserves commands, observations, timestamps and configuration. In replay, a declared controller approximation computes effort from recorded references and simulated feedback; **MuJoCo** then integrates the mechanics. A torque channel in an XML file supplies a route for effort. It does not, by itself, recreate the embedded position controller.
 
@@ -167,11 +167,11 @@ $$
 H(q)\ddot q+C(q,\dot q)+\tau_f(\dot q)=\tau_a+\tau_{\mathrm{ext}}.
 $$
 
-For the present fixed-axis rigid fixture, $$H=J_f+J_a$$ is constant, the velocity-dependent rigid-body bias vanishes, and the remaining bias is gravity. Contact is absent in this experiment, so $$\tau_{\mathrm{ext}}=0$$; the ideal unit-gear actuator applies the declared controller effort, $$\tau_a=\tau_C$$. Friction is still present. This specialization connects the Featherstone generalized-coordinate balance to the reduced MuJoCo model; it does not introduce a new convention for applied external torque.
+For the present fixed-axis rigid fixture, $$H=J_f+J_a$$ is constant, the velocity-dependent rigid-body bias vanishes, and the remaining bias is gravity. Contact is absent in this experiment, so $$\tau_{\mathrm{ext}}=0$$; the ideal unit-gear actuator applies the declared controller effort, $$\tau_a=\tau_C$$. Friction is still present. This specialization connects the generalized-coordinate balance to the reduced MuJoCo model (Featherstone 2008); it does not introduce a new convention for applied external torque.
 
 The fixture supplies $$J_f$$ and the gravity term $$\tau_g$$. The three estimated fields are additional effective joint inertia $$J_a$$, viscous damping $$b$$ and dry-friction magnitude $$\tau_c$$. They map to MuJoCo `armature`, `damping` and `frictionloss`, with units kg m², N m s/rad and N m respectively. Armature adds to the fixture contribution; it does not replace it.
 
-This restricted equation has no additional contact torque. Constant fixture inertia is appropriate to the declared single-axis rigid assembly. Resistance and gravity are written separately; losses should not also be counted through an extra efficiency correction representing the same effect. MuJoCo handles friction loss through its constraint formulation. The sign-of-velocity expression used in the integral approximation below is not a complete description of sticking. See the [MuJoCo friction-loss discussion](https://mujoco.readthedocs.io/en/3.3.7/computation/index.html#friction-loss).
+This restricted equation has no additional contact torque. Constant fixture inertia is appropriate to the declared single-axis rigid assembly. Resistance and gravity are written separately; losses should not also be counted through an extra efficiency correction representing the same effect. MuJoCo handles friction loss through its constraint formulation. The sign-of-velocity expression used in the integral approximation below is not a complete description of sticking. See the [MuJoCo friction-loss discussion](https://mujoco.readthedocs.io/en/3.3.7/computation/index.html#friction-loss) (MuJoCo developers n.d.-a).
 
 The replay computes limited effort using
 
@@ -190,7 +190,7 @@ Clipping limits the result to the stated interval. $$K_v^C$$ is the velocity-err
 
 Firmware registers are dimensionless settings. The source converts their documented scales using a disclosed engineering map and a fixed 0.517 N m/A static torque/current ratio. A 300-count current-related limit maps to 0.300 A and therefore 0.1551 N m in this approximation. This is not a calibrated measurement of shaft torque or proof that the proprietary embedded loop is reproduced exactly.
 
-In particular, the supplied `Present Current` interpretation is device-input current; it cannot simply be substituted for torque-producing winding current. It is not used as measured shaft torque in the primary fit. The [ROBOTIS model documentation](https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/) supplies register and mode definitions; the conversion into this effective SI controller remains a modelling assumption.
+In particular, the supplied `Present Current` interpretation is device-input current; it cannot simply be substituted for torque-producing winding current. It is not used as measured shaft torque in the primary fit. The [ROBOTIS model documentation](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/) supplies register and mode definitions; the conversion into this effective SI controller remains a modelling assumption.
 
 H1 and H2 have separate fitted joint vectors. Controller gains are fixed within each context and never optimized here. If the mapping is inadequate, the resulting effective parameters can absorb some of its error. Their predictive performance is still testable, but their interpretation as isolated motor constants is not established.
 
@@ -206,6 +206,14 @@ The [native replay engine](../resources/class04/native/code/upstream/run_chapter
 | $$\tau_c$$ | `model.dof_frictionloss[0]` | Estimated dry-friction bound; MuJoCo also handles sticking |
 | $$\tau_g$$ | `data.qfrc_bias[0]` at zero velocity | Left-hand gravity bias, not the applied gravitational force's sign |
 | $$\tau_C$$ | `data.ctrl[0]`, through the motor's unit transmission | Limited simulated output effort in N m |
+
+For the reduced G1 body, let $$\mu$$ be the signed first moment along its zero-pose x axis. Its declared centre of mass rotates about +Y, so the gravity term on the left of the balance is
+
+$$
+\tau_g(q)=-9.81\mu\cos q.
+$$
+
+With $$\mu=-0.00736$$ kg m, the model gives $$\tau_g(0.4)\approx0.0665021$$ N m. This matches `qfrc_bias[0]` at zero velocity; the applied gravitational torque has the opposite sign. The sign follows this installation's coordinate convention, not the positive distances in a payload label. It is a model-consistency check rather than a new measurement.
 
 **Worked control step.** In H1, suppose the simulated state is 0.2 rad and 0.4 rad/s, while the recorded references are 0.3 rad and 0.2 rad/s. Using the unrounded coefficients in the configuration card, let the requested effort before limiting be $$\tau_{\mathrm{req}}$$:
 
@@ -232,6 +240,8 @@ J_a\Delta\dot q+b\Delta q+
 \approx
 \int_{t_0}^{t_1}(\tau_C-\tau_g(q))\,dt-J_f\Delta\dot q.
 $$
+
+In the actual calibration subset, M0/B0/B1/B2 have zero declared first moment, so $$\tau_g=0$$. The implementation therefore forms its target as integrated reconstructed effort minus $$J_f\Delta\dot q$$. G1 is evaluated later by replaying a frozen candidate; it is not used to fit this regression. Extending the regression to an eccentric fixture would require the gravity contribution in the general equation above.
 
 Each window supplies one row of $$A\theta\approx z$$, where $$\theta=[J_a,b,\tau_c]^{\mathsf T}$$. The columns are velocity change, position change and signed moving time. The right-hand side is integrated reconstructed controller effort minus the declared gravity and fixture-inertia contributions.
 
@@ -310,7 +320,21 @@ $$
 
 Zero mean signed error therefore does not establish an exact prediction. RMSE summarizes magnitude; the signed trace reveals where and in which direction discrepancies occur. A large peak can also matter to an intended task even when the average magnitude is modest.
 
-Now inspect one selected real episode under H1. With the frozen candidates and the same analysis rules:
+Now inspect the selected physical record under H1. Keep its identity and scoring rules beside the figure:
+
+| Selected comparison | Declared value |
+|---|---|
+| Record | XC330, H1, G1, P06 composite, R01 |
+| Mechanical/controller context | 98 g fixture; Mode 5; fixed H1 engineering map |
+| Candidate used for the activity | Frozen H1 Method 2 armature, damping and friction-loss vector in the parameter table |
+| Analysis interval | 0.00–10.99 s from the processed active-profile start |
+| Retained observations | 1,100 paired samples at 0.01 s spacing |
+| Initialization | First measured position and velocity; simulation then evolves from its own state |
+| Scoring | All supplied active-profile samples; no added shift, filter, burn-in removal or mask |
+
+The initialized position sample has zero position residual by construction and remains in the declared score. The remaining measurements are comparison targets, not state resets. The sample count is not a count of independent trials. The [configuration and frozen candidates](../resources/class04/data/xc330-98g-model-config.json), [paired observations and predictions](../resources/class04/data/xc330-98g-H1-G1-P06-R01.csv) and [saved activity metrics](../resources/class04/data/xc330-98g-activity-saved-metrics.json) preserve this comparison.
+
+With the frozen candidates and the same analysis rules:
 
 | P06 first held-out repeat | Method 1 episode RMSE | Method 2 episode RMSE |
 |---|---:|---:|
@@ -393,7 +417,7 @@ The demonstration completes one comparison record using the supplied files. Phys
 
 ### Identify the configuration and record
 
-Open the configuration card and Figure 1. Identify XC330, Mode 5, H1, the 98 g G1 fixture and P06 first held-out repeat. Trace the external goal, internal references, measured position and simulated output. Locate the scoring interval, initialization and 10 ms analysis grid. Distinguish the original motor-record capture from a visual illustration. State that these figures use the reduced numerical model rather than the 110 g CAD inspection family.
+Use the selected comparison record above and Figure 1; the linked configuration file supplies the full-precision values. Identify XC330, Mode 5, H1, the 98 g G1 fixture and P06 first held-out repeat. Trace the external goal, internal references, measured position and simulated output. Locate the scoring interval, initialization and 10 ms analysis grid. Distinguish the original motor-record capture from a visual illustration. State that these figures use the reduced numerical model rather than the 110 g CAD inspection family.
 
 ### Show estimation and freezing
 
@@ -418,7 +442,7 @@ Finish the demonstration by stating the candidate, observable, condition, measur
 
 ## Student activity
 
-Analyse the supplied **H1/G1/P06 first held-out XC330 episode** using the configuration card, Figure 1 and the saved analysis output. The saved figures, metric and paired samples supply the evidence for interpretation.
+Analyse the supplied **H1/G1/P06/R01 XC330 episode** using the selected comparison record, Figure 1 and the [saved analysis output](../resources/class04/data/xc330-98g-activity-saved-metrics.json). Its held-out label identifies the retrospective reserved role described above. The saved figures, metric and paired samples supply the evidence for interpretation.
 
 Submit a compact response with five items:
 
@@ -434,10 +458,24 @@ Assessment concerns the comparison, metric, observation, test and bounded decisi
 
 ## Extend the comparison to multiple actuators
 
-The same comparison record must identify the system, input, output and evaluation conditions when more actuators are added. Class 05 applies that reasoning to a separate sixteen-motor campaign, where shared infrastructure, motor identity and connected mechanics require different evidence.
+The same comparison record must identify the system, input, output and evaluation conditions when more actuators are added. [Class 05](../module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator.md) applies that reasoning to a separate sixteen-motor campaign, where shared infrastructure, motor identity and connected mechanics require different evidence.
 
-## Terminology and sources
+## Terminology
 
 For terminology: a **fixture** is the declared link/payload arrangement; an **episode** is one execution; a **residual** is a signed predicted-minus-observed difference; **calibration** estimates the parameters; **held-out** identifies a reserved evaluation role; and **RMSE** summarizes squared discrepancy in the output's units. This archive's retrospective status qualifies how strongly its held-out role can be interpreted.
 
-The primary evidence is the packaged XC330 campaign and its released configuration, parameters and per-episode results. MuJoCo's [actuation documentation](https://mujoco.readthedocs.io/en/3.3.7/modeling.html#actuators) explains simulator conventions; the [ROBOTIS XC330 documentation](https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/) defines device registers and modes. Neither replaces the campaign-specific data and assumptions needed for this comparison.
+## References
+
+asMagicBrain. n.d. *PhyIntel*. GitHub repository, source commit `9821dae9cb14ecfcd9fde3f97f14308a21f5bc00`. [Source snapshot](https://github.com/asMagicBrain/PhyIntel/tree/9821dae9cb14ecfcd9fde3f97f14308a21f5bc00). The [supplied source manifest](../resources/class04/data/xc330-98g-source-manifest.json) identifies the archive, adapter, released results and processed-data export used here.
+
+Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer.
+
+Ljung, Lennart. 1999. *System Identification: Theory for the User*. 2nd ed. Upper Saddle River, NJ: Prentice Hall. [Author's book page](https://www.rt.isy.liu.se/en/books/sysid/).
+
+MuJoCo developers. n.d.-a. “Computation.” *MuJoCo Documentation*, version 3.3.7. Accessed October 17, 2026. [Friction-loss formulation](https://mujoco.readthedocs.io/en/3.3.7/computation/index.html#friction-loss).
+
+MuJoCo developers. n.d.-b. “Modeling.” *MuJoCo Documentation*, version 3.3.7. Accessed October 17, 2026. [Actuator conventions](https://mujoco.readthedocs.io/en/3.3.7/modeling.html#actuators).
+
+ROBOTIS. n.d. “XC330-M288.” *ROBOTIS e-Manual*. Accessed October 17, 2026. [Model-specific register and mode documentation](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/).
+
+The source campaign supplies the numerical evidence; the dynamics and identification references explain its mathematical setting. MuJoCo's actuator conventions (MuJoCo developers n.d.-b) and the device manual do not establish that the campaign's engineering controller map is a calibrated reproduction of the embedded loop.
