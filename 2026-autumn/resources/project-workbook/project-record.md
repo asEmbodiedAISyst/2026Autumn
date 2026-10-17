@@ -274,4 +274,4 @@ Project development: [exact next action; advance / advance with conditions / rev
 | --- | --- | --- | --- | --- |
 | [enter] | [enter] | [enter] | [enter] | [enter] |
 
-Link the exact submitted artifact commits through submissions/poster.md, code.md and video.md. A later record points to an earlier assessed commit; it cannot contain its own final commit hash. Preserve differences between milestones.
+Follow the Class 18–20 submission pages for poster, code and video. Push each submission to the assigned repository’s main branch before its deadline. The teaching team records and collects that revision; no separate student submission record is required.

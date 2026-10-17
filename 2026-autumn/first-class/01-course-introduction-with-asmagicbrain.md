@@ -39,11 +39,13 @@ Open the repository README and locate `poster/`, `code/` and `video/`. These exi
 
 | Milestone | Main artifact | Deadline, Abu Dhabi time (UTC+4) |
 | --- | --- | --- |
-| [Class 18: poster](../module-05-final-project-submissions/18-final-poster-submission.md) | `poster/final-poster.pdf` | 27 November 2026, 10:50 |
+| [Class 18: poster](../module-05-final-project-submissions/18-final-poster-submission.md) | `poster/TeamNN-poster.pdf` | 27 November 2026, 10:50 |
 | [Class 19: code](../module-05-final-project-submissions/19-final-code-submission.md) | `code/README.md` and implementation | 1 December 2026, 10:20 |
-| [Class 20: video](../module-05-final-project-submissions/20-final-video-submission.md) | `video/final-video.mp4` | 2 December 2026, 11:50 |
+| [Class 20: video](../module-05-final-project-submissions/20-final-video-submission.md) | `video/TeamNN-video.mp4` | 2 December 2026, 11:50 |
 
-Commit and push the deliverable and supporting source to `main` before its deadline, then inspect the files on GitHub. A saved local file or unpushed commit is not available for collection. At each deadline the teaching team captures the remote revision, records its commit and collection time, and clones that revision. Later changes remain later work; they do not replace the collected snapshot.
+Use your two-digit team number in place of `NN`, for example `Team01-poster.pdf` and `Team01-video.mp4`. The teaching team names the collected code archive `Team01-code.zip`; students keep code in the existing repository and do not create a duplicate ZIP.
+
+Commit and push the deliverable to `main` before its deadline, then inspect the files on GitHub. A saved local file or unpushed commit is not available for collection. At each deadline the teaching team captures the remote revision, records its commit and collection time, and clones that revision. Later changes remain later work; they do not replace the collected snapshot.
 
 No release, tag, manifest or separate student collection record is required. The folders are the submission route. Classes 18–20 explain preparation of each artifact; these are progressive opportunities to finalize the same project.
 
