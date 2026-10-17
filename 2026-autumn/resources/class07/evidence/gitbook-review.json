@@ -1,0 +1,22 @@
+{
+  "url": "https://x.ancorasir.com/rob7103-8103/module-02-hand-data-for-multi-fingered-manipulation/07-rotating-a-cube-with-visual-feedback",
+  "content_commit": "1423ee5",
+  "single_page": true,
+  "description": "03 November 2026 \u00b7 09:00\u201310:20 \u00b7 CR6",
+  "loaded_figures": 8,
+  "katex_expressions": 9,
+  "display_equations": 7,
+  "katex_errors": 0,
+  "tables": 4,
+  "figure_table_width_px": 865,
+  "display_equation_width_px": 768,
+  "horizontal_page_overflow": false,
+  "navigation": "All four targets exist",
+  "visual_checks": [
+    "New geometric camera-to-hand figure legible at live page size",
+    "Frame matrices and transform composition render correctly",
+    "All eight images loaded",
+    "All four tables and seven display equations fit without horizontal scroll overflow"
+  ],
+  "scope": "Actual desktop GitBook review; no mobile/projector acceptance claimed"
+}

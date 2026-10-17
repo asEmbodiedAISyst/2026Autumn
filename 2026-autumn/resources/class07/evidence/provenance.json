@@ -1,0 +1,16 @@
+{
+  "source": "Retained Class07 synthetic perception and native diagnostic package",
+  "primary_research": "https://arxiv.org/abs/1808.00177",
+  "projection_reference": "https://docs.opencv.org/4.10.0/d5/d1f/calib3d_solvePnP.html",
+  "original_synthetic_data_sha256": "620991aaed0e5251573d363c4f9383ea7ad88dc1b9892dc51f4853004977fe45",
+  "trial_values_preserved": true,
+  "csv_publication_change": "LF line endings only",
+  "native_reuse": "Class06/code within current student repository; no private runtime required",
+  "frame_figure": "New declared 90-degree geometric example; not a physical calibration",
+  "new_execution": "500 synthetic trials and three selected native diagnostics reproduced saved outputs exactly",
+  "excluded_claims": [
+    "No live phone/cube tracker",
+    "No hardware control",
+    "No policy training or population reliability result"
+  ]
+}
