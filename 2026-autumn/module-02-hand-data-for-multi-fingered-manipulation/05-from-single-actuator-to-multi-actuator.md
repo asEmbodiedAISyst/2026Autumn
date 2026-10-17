@@ -383,6 +383,6 @@ A defensible conclusion reports improved held-out encoder-position prediction un
 The next class introduces a multi-fingered manipulation task. Keep today's distinction explicit: actuator predictions describe how commands produce joint motion under a declared model; manipulation also depends on connected-body mechanics, object state, contact, observations and the policy's decisions. A fixture result is a useful component of that argument, and the manipulation experiment must supply the remaining evidence.
 
 
-## Research reference
+## References
 
 Hwangbo, Jemin, Joonho Lee, Alexey Dosovitskiy, Dario Bellicoso, Vassilios Tsounis, Vladlen Koltun, and Marco Hutter. 2019. “Learning Agile and Dynamic Motor Skills for Legged Robots.” *Science Robotics* 4 (26): eaau5872. [https://doi.org/10.1126/scirobotics.aau5872](https://doi.org/10.1126/scirobotics.aau5872). The [open manuscript](https://arxiv.org/abs/1901.08652) supplies the original platform, actuator-learning method and policy-transfer experiments.

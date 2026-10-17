@@ -1,5 +1,5 @@
 ---
-description: Establish that the reBot RS model and its interfaces are ready for a controlled experiment.
+description: 04 November 2026 · 10:30–11:50 · CR6
 layout:
   width: wide
 ---
@@ -339,6 +339,10 @@ Use this compact record for your team:
 | Readiness decision | Supported next operation and one open physical check |
 
 Keep the record with the team's experiment files. The evidence should allow another reader to reconstruct the meaning of the command and the reason for the readiness decision.
+
+## Carry the interface into teleoperation
+
+The bounded joint and gripper interface becomes the robot side of the next class’s teleoperation system. A phone pose must still be mapped through named frames, units, limits and timing before its motion can be interpreted as a robot command.
 
 ## Resources and source attribution
 

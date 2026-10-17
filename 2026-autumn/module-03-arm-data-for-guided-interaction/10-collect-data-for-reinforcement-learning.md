@@ -1,5 +1,5 @@
 ---
-description: Define a learning task, audit a demonstration pilot and write a reproducible dataset contract.
+description: 10 November 2026 · 09:00–10:20 · CR6
 layout:
   width: wide
 ---
@@ -342,7 +342,7 @@ Fill the feature, action-alignment, timing, outcome and split rows. Turn one war
 
 ## Student activity
 
-Use the supplied pilot and partly specified contract. Correct analysis of saved outputs receives the same credit as correct analysis of fresh local outputs. Dependency installation, training capacity and obtaining a successful robot rollout are not assessment criteria.
+Use the supplied pilot and partly specified contract. Base each decision on the identified records, figures and calculations. The task concerns interpreting evidence; it does not require new training or a successful robot rollout.
 
 ### Make separate episode decisions
 

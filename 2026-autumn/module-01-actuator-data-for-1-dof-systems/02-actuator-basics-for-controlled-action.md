@@ -14,6 +14,8 @@ Control can also be open loop: a predetermined input is applied without correcti
 
 This class develops that connection through four devices: ROBOTIS XC330-M288-T and XL330-M288-T, followed by RobStride RS06 and RS00. The same questions apply throughout: What is requested? What produces effort? What moves? What is sensed? What do the reported numbers mean?
 
+[Lecture](#from-a-motor-to-an-actuator) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+
 ## From a motor to an actuator
 
 ### Action, energy and a measurable outcome
@@ -400,7 +402,7 @@ For example, 81 r/min converts to approximately 8.48 rad/s. That unit conversion
 
 When information conflicts, keep the conflicting statements and their document locations. Request clarification, examine the actual unit, or design a bounded measurement to answer the question. For research, declare what was measured, assumed and left unresolved. For an application, establish that the intended operating condition is supported before relying on it. An attractive specification should not substitute for this work.
 
-### Teaching demonstration: follow the request and returning evidence
+## Instructor and TA demonstration
 
 The teaching team demonstrates the path from an application through the asBrain/interface arrangement to the actuator and back through telemetry. Identify the actual interface in use: the saved data do not establish that a newly configured asBrain station has been tested.
 
@@ -421,7 +423,7 @@ Students observe powered operation on the established teaching station. The unpo
 
 If a live station is unavailable, use Figure 1 and the supplied record: XC330-M288-T, ID 5, firmware 53, Mode 5, motor-only M0 assembly. Its goal, trajectory, position and electrical/status signals support the same interpretation questions. Reading RS06/RS00 protocol examples from manuals is a documentation demonstration, not a recorded or live RS motion test.
 
-## Class activities and possible follow-up
+## Student activity
 
 ### Activities during the explanation and demonstration
 
@@ -460,6 +462,10 @@ Explain why encoder resolution is not the same as positioning accuracy and why s
 4. **Interpret one real discrepancy.** Use the supplied XC330 recording or the RS06 cooling statements to explain how a researcher should preserve and investigate inconsistent information. Do not replace an unresolved condition with an assumed value.
 
 These activities extend the same question that opened the class: how does a numerical request become controlled physical action, and what evidence lets us establish that it did?
+
+## Carry the question forward
+
+A command becomes motion through a particular mechanism, transmission and load. Class 03 makes that mechanism explicit in a digital representation, then asks which properties the representation preserves and which require measurement.
 
 ## References
 

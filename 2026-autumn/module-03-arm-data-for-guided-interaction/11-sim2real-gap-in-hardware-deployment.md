@@ -14,9 +14,7 @@ The required session remains simulation-based. We can inspect interfaces, run a 
 
 By the end of this class, you should be able to inspect a deployment interface, separate timing/contact mismatch from an interface error, explain the evidence provided by replay and shadow checks, diagnose a recorded failure, and write a bounded claim with a discriminating next experiment.
 
-[Lecture](#lecture) · [Instructor/TA demonstration](#instructor-ta-demonstration) · [Student activity](#student-activity) · [Project handoff](#project-handoff)
-
-### Lecture
+[Lecture](#observation-action-compatibility-and-calibration) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Project handoff](#project-handoff)
 
 ## Observation/action compatibility and calibration
 
@@ -261,23 +259,23 @@ Actuator validation can reveal a delay, saturation or payload error that later a
 
 A useful project therefore links measurements across levels: parameter/property check → controlled response → task outcome → bounded claim. It does not compress these into one universal “Sim2Real gap” number.
 
-### Instructor/TA demonstration
+## Instructor and TA demonstration
 
 **Scope:** This demonstration uses simulation replay and supplied simulated policy-rollout records. It does not execute a learned policy on physical hardware. Missing evidence for a physical deployment claim includes the exact checkpoint/processors, calibrated hardware interface, measured timing and actuation response, and logged supervised physical task trials.
 
-#### Interpret the retained replay checks
+### Interpret the retained replay checks
 
 Read the supplied replay, reset contrast and outcome summary as three different checks. The replay reports sixty steps, two seconds, finite state values and zero maximum difference under the restored state and scripted commands. The reset contrast reports zero full-restore cube xy discrepancy and about 0.00493 m for the incomplete reset. The separate policy record contains 32 successes in fifty trials, with the descriptive interval near [0.5014, 0.7586].
 
 Explain why replay equality does not reproduce the policy's decisions and why the reset contrast does not measure physical deployment accuracy. Neither check replaces the missing original checkpoint or a calibrated physical experiment.
 
-#### Audit the interface and replay boundary
+### Audit the interface and replay boundary
 
 Write down the pusher’s nine-value pose feature, image key, episode frame and absolute-target convention. Contrast them with seven motor channels. Work the normalization example and identify the saved statistics/processor artifact needed before policy inference. An absent processor is an unresolved dependency, not an invitation to guess its statistics.
 
 Trace the replay and reset-comparison definitions: model, state specification, initial cube velocity and scripted commands. Predict why the two reset procedures differ, then compare their retained results. Ask what would have to change for this to be a physical model-validation experiment.
 
-#### Inspect both outcomes and diagnose the failure
+### Inspect both outcomes and diagnose the failure
 
 Use the [recorded failure, episode 0](../resources/class11/consolidation/package/additional_material/data/videos/class11_rollout_pusher_ep000.mp4), [recorded success, episode 2](../resources/class11/consolidation/package/additional_material/data/videos/class11_rollout_pusher_ep002.mp4), and [complete 50-episode outcome record](../resources/class11/consolidation/package/additional_material/data/videos/results_act_ip17_cube300_handheld_060000_pusher_n100.json). All are included in the current student repository. If playback is unavailable, use the selected failure frames and outcome JSON; leave motion-specific observations unresolved.
 
@@ -285,7 +283,7 @@ Compare episode 0’s 450 steps, 31.07 mm final distance and `ik_ok=1.0` with ep
 
 Finish with a shadow-check plan: supply real observations to the frozen policy without actuating, log raw and limited actions plus age, and inspect them under the declared interface. Exact artifacts are required to execute that plan. A later supervised physical rollout must record commands, response, outcomes and interventions under the approved physical setup.
 
-### Student activity
+## Student activity
 
 Use the retained failure case and reported summary. No new training or hardware is required.
 
@@ -296,7 +294,7 @@ Use the retained failure case and reported summary. No new training or hardware 
 
 Save the diagnosis, claim, experiment and assessed source/commit in the team repository. For example: “The supplied pusher evaluation records 32 successes in 50 nominal simulated attempts. The retained replay check verifies state/command reproducibility under the supplied model; physical policy transfer and a rerun of the original checkpoint remain unestablished.”
 
-### Project handoff
+## Project handoff
 
 Use the six-stage record below in your team’s repository. Keep evidence paths and milestone commits with each revision, and retain earlier versions when a claim changes. The class pages for Classes 12–17 provide the current worksheet checkpoints and deadlines.
 

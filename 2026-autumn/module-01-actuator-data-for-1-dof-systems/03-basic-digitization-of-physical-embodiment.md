@@ -470,6 +470,10 @@ Check one dimension or mass against the available assembly or printed part. Reco
 
 Conclude with two sentences: what the representation is ready to support, and which claim needs further evidence. A screenshot is not a substitute for the recorded quantities and interpretation.
 
-## Reference
+## Carry the model into a response test
+
+A structurally inspectable model states how its parts, frames, mass and inputs are represented. Class 04 asks whether a model predicts a recorded response under declared conditions; its retained 98 g campaign is a separate source family from this 110 g CAD example.
+
+## References
 
 Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. The scalar balance above specializes the generalized-coordinate dynamics introduced in Class 02; a full spatial-algebra development is outside this structural inspection exercise.
