@@ -20,3 +20,13 @@ Use the [configuration and signal guide](data/README.md), [G1 activity samples](
 The [native experiment guide](native/README.md) provides the exact engines, complete primary adapter-array exports and pinned dependencies for XC330 and RS06. Prepare dependencies before class; no hardware is required. The frozen candidates and source results remain separate from newly generated outputs.
 
 The [source manifest](data/xc330-98g-source-manifest.json) records immutable upstream identifiers and hashes. These arrays are exported processed episodes, not raw telemetry archives. The upstream source is [PhyIntel at commit 9821dae9](https://github.com/asMagicBrain/PhyIntel/tree/9821dae9cb14ecfcd9fde3f97f14308a21f5bc00).
+
+## Prepare an isolated plotting environment
+
+```bash
+python3.12 -m venv .venv-analysis
+. .venv-analysis/bin/activate
+python -m pip install -r code/requirements-analysis.txt
+```
+
+Windows: use `py -3.12 -m venv .venv-analysis` and `.venv-analysis\Scripts\python.exe` instead of `python`. The metric-only `--no-plot` route has no third-party dependencies. Native replay has its own requirements and environment described in its guide. [Figure sources and regeneration](../../media/class04/FIGURE-CODE.md) are supplied for all figures.

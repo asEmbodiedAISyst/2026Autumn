@@ -8,7 +8,18 @@ The XC330 example is the 98 g campaign: a 6 g link plus two assemblies of 4 g pi
 
 Use Python 3.12 with [the five pinned dependencies](requirements.txt): NumPy, Matplotlib, MuJoCo, SciPy and PyArrow. PyArrow is imported by the unchanged upstream XC330 engine even though this wrapper loads NPZ arrays. Prepare the environment before class. No virtual environment or downloaded packages are included.
 
-From the repository root:
+Prepare an isolated environment before class. From the repository root:
+
+```bash
+cd 2026-autumn/resources/class04/native
+python3.12 -m venv .venv-native
+. .venv-native/bin/activate
+python -m pip install -r requirements.txt
+```
+
+Windows: use `py -3.12 -m venv .venv-native`, then `.venv-native\Scripts\python.exe -m pip install -r requirements.txt`; substitute that executable for `python`. POSIX `export` commands below only configure the local cache and bytecode output. PowerShell equivalents are `$env:MPLCONFIGDIR="$PWD/.mpl-cache"` and `$env:PYTHONDONTWRITEBYTECODE="1"`.
+
+For the prepared environment, the complete command path from the repository root is:
 
 ```bash
 cd 2026-autumn/resources/class04/native
@@ -51,3 +62,5 @@ The NPZ inputs are lossless exports of adapter output, not raw telemetry. XC330 
 XC330 replay receives recorded internal position and velocity references and computes feedback from its evolving simulated state. Firmware external-goal-to-reference generation lies outside the prediction boundary. The fixed Mode-5 controller engineering map and current-derived ±0.1551 N m effort limit are modelling assumptions, not independently measured shaft torque. H1 and H2 have separately estimated effective joint parameters. RS06 uses its own controller boundary.
 
 Source verification used Python 3.12.14 and MuJoCo 3.3.7. The four representative XC330 episodes, each replayed with two candidates, reproduced released position RMSEs exactly in that environment. The H1 integral-fit parameters and split means also reproduced the saved source result. Report numerical differences on another platform rather than changing the frozen reference values. The [compact activity guide](../data/README.md) defines the exact selected-case scoring contract.
+
+The [recorded verification summary](results/verification/summary.json) preserves the numeric checks for the supplied package. These checks concern implementation reproducibility, not independent hardware calibration.

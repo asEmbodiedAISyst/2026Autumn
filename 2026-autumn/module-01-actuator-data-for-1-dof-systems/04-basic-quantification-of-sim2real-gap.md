@@ -8,8 +8,6 @@ description: 27 October 2026 · 09:00–10:20 · CR6
 
 How do we estimate a MuJoCo model, quantify its discrepancy from physical actuator responses, and judge its usefulness for a specified task?
 
-[Lecture](#1-introduction) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Practical preparation and resources](#practical-preparation-and-resources)
-
 ## 1 Introduction
 
 A simulated trajectory can look close to a physical trajectory while missing a repeatable offset, a reversal or a response under a different load. Conversely, an actuator can follow its requested motion poorly while a model predicts that imperfect response closely. To interpret agreement, we need to name the two quantities being compared, make their conditions compatible and report a numerical discrepancy together with its context.
@@ -22,7 +20,9 @@ The **Sim2Real gap** in this class is the difference between simulated and measu
 
 Our example is one **XC330-M288-T in current-based position operation**, driving a rigid link and payload assembly about one joint. The numerical replay receives recorded internal position and velocity references. It predicts position using its own evolving simulated state. This is a conditional response model: it does not predict how firmware generates those references from an external goal.
 
-Only a small mechanical vocabulary is needed. Joint position is an angle; its time derivatives are velocity and acceleration. Fixture inertia describes the moving assembly's resistance to angular acceleration. Gravity torque depends on the assembly's mass distribution and pose. The supplied model already declares its joint and fixture properties. Our work is to estimate three uncertain effective parameters and test its response; we do not rebuild CAD or survey actuator products.
+[Class 02](02-actuator-basics-for-controlled-action.md) established how an application request becomes controlled physical motion. [Class 03](03-basic-digitization-of-physical-embodiment.md) represented a joint, coordinate frames and moving mass in an executable model. Here we ask a further question: **how well does a declared model predict a recorded physical response, and what should we change or trust on that evidence?**
+
+Joint position is an angle; its time derivatives are velocity and acceleration. Fixture inertia describes resistance to angular acceleration, and gravity torque depends on mass distribution and pose. Those concepts carry forward. The numerical dataset here belongs to a separately documented 98 g fixture, whereas Class 03's structural example uses 110 g. We identify that distinction before using any result. Starting from the supplied model, we estimate three uncertain effective parameters and evaluate its predictions.
 
 The lecture follows **Introduction → Claim2Design → Design2Data → Data2Model → Model2Prototype → Sim2Real**. First define the comparison, then design informative observations, estimate a model, introduce physical evidence and evaluate the claim. Model2Prototype means moving from constructed observations to records from a matched physical prototype. It does not mean that students must fabricate another mechanism during this class.
 
@@ -62,8 +62,8 @@ The numerical results here belong to a **98 g added moving fixture**: a 6 g link
 
 | Source or example | What it represents | What carries into this class |
 |---|---|---|
-| Illustrative position-actuator example | Gains 3 and 0.03; a ±0.93 N m stall-based teaching bound | The distinction between a reference and simulated effort; those numerical settings are not used here |
-| 110 g structural inspection family | A 22 g link and two 44 g assemblies in an exported body tree | Mechanical concepts; its mass and model values are not the source of these scores |
+| Class 02 motor-only telemetry | An external request, internal references and device-reported response with no added moving fixture | Signal meanings and feedback concepts; a motor-only record does not validate a loaded assembly |
+| Class 03: 110 g structural inspection family | A 22 g link and two 44 g assemblies; a unit-gear torque input with no embedded servo model | Body/frame/inertia inspection methods; its mass properties and zero added armature are not this campaign's fitted model |
 | 98 g identification campaign used here | Measured/source-recorded fixture masses, a reduced joint model and a fixed Mode-5 controller map | The configuration, frozen candidates, physical records and results evaluated below |
 
 Shared B0/B1/B2/G1 labels do not establish identical hardware revisions. The available records do not settle whether the 110 g/98 g difference arose from different built parts or revised descriptions. We therefore preserve their identities. Changing a mass in an XML file would create another model; it would not transfer the following validation results to that model.
@@ -161,6 +161,14 @@ $$
 (J_f+J_a)\ddot q+b\dot q+\tau_{\mathrm{dry}}+\tau_g(q)=\tau_C.
 $$
 
+This is the one-coordinate specialization of the rigid-body balance used earlier:
+
+$$
+H(q)\ddot q+C(q,\dot q)+\tau_f(\dot q)=\tau_a+\tau_{\mathrm{ext}}.
+$$
+
+For the present fixed-axis rigid fixture, $$H=J_f+J_a$$ is constant, the velocity-dependent rigid-body bias vanishes, and the remaining bias is gravity. Contact is absent in this experiment, so $$\tau_{\mathrm{ext}}=0$$; the ideal unit-gear actuator applies the declared controller effort, $$\tau_a=\tau_C$$. Friction is still present. This specialization connects the Featherstone generalized-coordinate balance to the reduced MuJoCo model; it does not introduce a new convention for applied external torque.
+
 The fixture supplies $$J_f$$ and the gravity term $$\tau_g$$. The three estimated fields are additional effective joint inertia $$J_a$$, viscous damping $$b$$ and dry-friction magnitude $$\tau_c$$. They map to MuJoCo `armature`, `damping` and `frictionloss`, with units kg m², N m s/rad and N m respectively. Armature adds to the fixture contribution; it does not replace it.
 
 This restricted equation has no additional contact torque. Constant fixture inertia is appropriate to the declared single-axis rigid assembly. Resistance and gravity are written separately; losses should not also be counted through an extra efficiency correction representing the same effect. MuJoCo handles friction loss through its constraint formulation. The sign-of-velocity expression used in the integral approximation below is not a complete description of sticking. See the [MuJoCo friction-loss discussion](https://mujoco.readthedocs.io/en/3.3.7/computation/index.html#friction-loss).
@@ -185,6 +193,31 @@ Firmware registers are dimensionless settings. The source converts their documen
 In particular, the supplied `Present Current` interpretation is device-input current; it cannot simply be substituted for torque-producing winding current. It is not used as measured shaft torque in the primary fit. The [ROBOTIS model documentation](https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/) supplies register and mode definitions; the conversion into this effective SI controller remains a modelling assumption.
 
 H1 and H2 have separate fitted joint vectors. Controller gains are fixed within each context and never optimized here. If the mapping is inadequate, the resulting effective parameters can absorb some of its error. Their predictive performance is still testable, but their interpretation as isolated motor constants is not established.
+
+### Follow the equation into the executable model
+
+The [native replay engine](../resources/class04/native/code/upstream/run_chapter02_real_position_identification_v2.py) creates one hinge and one unit-gear motor named `mode5_controller_torque`. The mechanics are compiled once per fixture/controller context. A candidate then sets three joint fields before replay:
+
+| Equation quantity | Implementation | Interpretation |
+|---|---|---|
+| $$J_f$$ | Declared fixture inertia, recoverable from `mj_fullM` after subtracting armature | Fixed geometry/property estimate |
+| $$J_a$$ | `model.dof_armature[0]` | Estimated extra effective joint inertia |
+| $$b$$ | `model.dof_damping[0]` | Estimated viscous resistance |
+| $$\tau_c$$ | `model.dof_frictionloss[0]` | Estimated dry-friction bound; MuJoCo also handles sticking |
+| $$\tau_g$$ | `data.qfrc_bias[0]` at zero velocity | Left-hand gravity bias, not the applied gravitational force's sign |
+| $$\tau_C$$ | `data.ctrl[0]`, through the motor's unit transmission | Limited simulated output effort in N m |
+
+**Worked control step.** In H1, suppose the simulated state is 0.2 rad and 0.4 rad/s, while the recorded references are 0.3 rad and 0.2 rad/s. Using the unrounded coefficients in the configuration card,
+
+$$
+\tau_C=\operatorname{clip}\bigl(1.5798356271(0.3-0.2)
++0.2021146152(0.2-0.4),-0.1551,0.1551\bigr)
+\approx0.117561\ \mathrm{N\,m}.
+$$
+
+This is a computed model effort, not a measured hardware torque. A position error of 0.2 rad with zero velocity error would request about 0.316 N m before clipping, so only 0.1551 N m is applied in this model. Increasing error beyond that point cannot increase its permitted effort.
+
+Between consecutive 10 ms analysis samples, the engine holds the preceding recorded references and performs five 2 ms MuJoCo steps. It recomputes feedback from the evolving simulated state at **each** substep. The 2 ms integration/controller-update interval is a simulation choice, not a measurement of the firmware loop rate. `ctrl[0]` is torque here because this XML defines a motor; it would mean position in a position-actuator XML such as the separate RS06 example.
 
 ### Method 1 integrates the equation
 
@@ -361,7 +394,9 @@ Open the configuration card and Figure 1. Identify XC330, Mode 5, H1, the 98 g G
 
 ### Show estimation and freezing
 
-Open the H1 parameter table. Identify which quantities are fixed and which three fields were estimated. From the repository root in the prepared native environment, the following commands audit the campaign, inspect the models, replay frozen candidates and optionally reproduce the short integral fit:
+The resource folder in the student repository is `2026-autumn/resources/class04`. The resource README gives the pre-class environment commands.
+
+Open the H1 parameter table. Identify which quantities are fixed and which three fields were estimated. From this class resource folder, in the prepared native environment, the following commands audit the campaign, inspect the models, replay frozen candidates and optionally reproduce the short integral fit:
 
 ```bash
 cd 2026-autumn/resources/class04/native
@@ -382,7 +417,7 @@ cd 2026-autumn/resources/class04
 python3 code/analyze_episode.py --no-plot
 ```
 
-This standard-library command reports the metric without requiring plotting packages. Omit `--no-plot` in the prepared Matplotlib environment to regenerate the overlay and residual. Read the supplied overlay, signed residual and RMSE. Confirm that the selected Method 2 G1 score is about 0.02191 rad. Compare Figure 3's B1 response before looking at the group means. Name one observed discrepancy and one discriminating check. Do not refit, change zero or shift the held-out trace to improve its score.
+The standard-library path reports the metric from the saved predictions. Omit `--no-plot` in the prepared plotting environment to regenerate the overlay and residual; the supplied figure is available either way. Read the overlay, signed residual and RMSE. Confirm that the selected Method 2 G1 score is about 0.02191 rad. Compare Figure 3's B1 response before looking at the group means. Name one observed discrepancy and one discriminating check. Do not refit, change zero or shift the held-out trace to improve its score.
 
 ### Compare the RS06 boundary briefly
 
@@ -399,7 +434,7 @@ Finish the demonstration by stating the candidate, observable, condition, measur
 
 ## Student activity
 
-Analyse the supplied **H1/G1/P06 first held-out XC330 episode** using the configuration card, Figure 1 and the saved analysis output. Running `python3 code/analyze_episode.py --no-plot` from `2026-autumn/resources/class04` in the prepared environment is optional. The same saved figures, metric and paired samples are supplied for interpretation.
+Analyse the supplied **H1/G1/P06 first held-out XC330 episode** using the configuration card, Figure 1 and the saved analysis output. Running `python3 code/analyze_episode.py --no-plot` from `2026-autumn/resources/class04` is optional. The same saved figures, metric and paired samples are supplied for interpretation.
 
 Submit a compact response with five items:
 
@@ -415,9 +450,9 @@ A useful response distinguishes the external goal, internal reference and measur
 
 ## Practical preparation and resources
 
-All required explanations, equations, figures, demonstration steps and activity instructions are on this page. The accompanying [configuration and data guide](../resources/class04/data/README.md), [selected episode CSV](../resources/class04/data/xc330-98g-H1-G1-P06-R01.csv), [saved metrics](../resources/class04/data/xc330-98g-selected-episode-metrics.json) and [analysis script](../resources/class04/code/analyze_episode.py) support the same reading path. They do not require physical actuator access.
+All required explanations, equations, figures, demonstration steps and activity instructions are on this page. [Run guide](../resources/class04/README.md) distinguishes the saved-prediction analysis from fresh MuJoCo simulation. [Figure generation record](../media/class04/FIGURE-CODE.md) documents each illustration and its source data. The accompanying [configuration and data guide](../resources/class04/data/README.md), [selected episode CSV](../resources/class04/data/xc330-98g-H1-G1-P06-R01.csv), [saved metrics](../resources/class04/data/xc330-98g-selected-episode-metrics.json) and [analysis script](../resources/class04/code/analyze_episode.py) support the same reading path. They do not require physical actuator access.
 
-For a prepared numerical environment, use a local virtual environment with NumPy and Matplotlib for the compact analysis. The [native replay package](../resources/class04/native/README.md) separately includes the exact engine, complete primary arrays and pinned dependencies for MuJoCo replay and identification. Installation belongs before class. Saved outputs remain sufficient if the environment is unavailable.
+Metrics alone use Python’s standard library: `python code/analyze_episode.py --no-plot`. Optional plotting uses NumPy and Matplotlib in a local virtual environment. The [native replay package](../resources/class04/native/README.md) separately includes the exact engine, complete primary arrays and pinned dependencies for MuJoCo replay and identification. Installation belongs before class. Saved outputs remain sufficient if the environment is unavailable.
 
 For terminology: a **fixture** is the declared link/payload arrangement; an **episode** is one execution; a **residual** is a signed predicted-minus-observed difference; **calibration** estimates the parameters; **held-out** identifies a reserved evaluation role; and **RMSE** summarizes squared discrepancy in the output's units. This archive's retrospective status qualifies how strongly its held-out role can be interpreted.
 

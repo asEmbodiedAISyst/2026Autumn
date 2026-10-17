@@ -2,7 +2,7 @@
 
 These files contain the **98 g XC330 Real-Position v2 campaign**. They support the Class 04 demonstration and saved-output activity. The supplied analysis reads frozen predictions: it does not fit parameters, run MuJoCo, or operate hardware.
 
-From `2026-autumn/resources/class04` in the cloned repository, run:
+From the Class04 resource directory (`developed-98g` locally or `2026-autumn/resources/class04` in the student repository), run:
 
 ```bash
 python3 code/analyze_episode.py
@@ -20,7 +20,7 @@ To analyse the balanced comparison episode:
 python3 code/analyze_episode.py --episode data/xc330-98g-H1-B1-P06-R01.csv --output-dir activity-output-B1
 ```
 
-The plotting environment used here is recorded in [`requirements-analysis.txt`](../code/requirements-analysis.txt). Correct analysis of the saved figures and metrics receives the same activity credit as running the command.
+The plotting environment used here is recorded in `code/requirements-analysis.txt`. Correct analysis of the saved figures and metrics receives the same activity credit as running the command.
 
 ## Episodes and scoring contract
 
@@ -69,6 +69,8 @@ MuJoCo uses `implicitfast`, a 0.002 s step and gravity of 9.81 m/s². Every epis
 | Armature | kg m² | 0.010706886765349692 | 0.00632962729586566 |
 | Damping | N m s/rad | 0.03647832779506367 | 0.04256643460373195 |
 | Friction loss | N m | 0.010226937934345186 | 0.007363036739462707 |
+
+Tracking errors use reference minus physical response, consistent with the lesson; RMSE is unchanged by reversing all residual signs, but a signed interpretation is not.
 
 These effective parameters belong to the declared model and controller context. They are not measurements of three isolated motor constants. No fitting occurred during this export or student analysis.
 

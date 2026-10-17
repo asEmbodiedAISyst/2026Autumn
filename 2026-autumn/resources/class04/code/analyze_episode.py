@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Analyse a saved Class 04 XC330 frozen prediction; no MuJoCo is needed.
 
-From 2026-autumn/resources/class04 in the cloned repository:
+From the Class04 resource directory:
   python code/analyze_episode.py
   python code/analyze_episode.py --no-plot
   python code/analyze_episode.py --episode data/xc330-98g-H1-B1-P06-R01.csv
@@ -51,10 +51,11 @@ def main():
     score={
         'episode_file':args.episode.name,'sample_count':len(rows),'first_time_s':t[0],'last_time_s':t[-1],
         'residual_definition':'simulated position minus measured physical position',
+        'tracking_error_definition':'reference minus measured physical position; external and internal scored separately',
         'scoring':'All supplied processed active-episode samples; no extra filtering, shifting, alignment, burn-in removal or masking.',
         'methods':methods,
-        'physical_external_tracking_rmse_rad':summarize([y-g for y,g in zip(d['physical_position_rad'],d['external_goal_rad'])])['rmse_rad'],
-        'physical_internal_tracking_rmse_rad':summarize([y-r for y,r in zip(d['physical_position_rad'],d['internal_position_reference_rad'])])['rmse_rad'],
+        'physical_external_tracking_rmse_rad':summarize([g-y for y,g in zip(d['physical_position_rad'],d['external_goal_rad'])])['rmse_rad'],
+        'physical_internal_tracking_rmse_rad':summarize([r-y for y,r in zip(d['physical_position_rad'],d['internal_position_reference_rad'])])['rmse_rad'],
     }
     args.output_dir.mkdir(parents=True,exist_ok=True)
     out=args.output_dir/'metrics.json'
