@@ -26,7 +26,7 @@ By the end, you should be able to:
 
 The figures, calculations and saved results support a complete reading and activity route on this page. The perception exercise requires no phone, physical hand or GPU. Native diagnostics reuse the Class 06 policy/model resources already included in the same student repository. Prepare dependencies before class; a saved-record route is provided.
 
-## 1. Object reorientation and visual feedback
+## Object reorientation and visual feedback
 
 ### Learn from the original example without changing its claim
 
@@ -44,7 +44,7 @@ Retain the Class 06 task definition: complete orientation error below 0.1 rad, w
 
 **Predict:** A camera reports a four-value quaternion. Can it be copied directly into the actor's six orientation-error features? Explain what must be established before constructing the input.
 
-## 2. Replace a simulated pose with a measurement contract
+## Replace a simulated pose with a measurement contract
 
 ### What must travel with an estimate?
 
@@ -90,7 +90,7 @@ Holding a pose estimate is also different from holding an actuator command. A co
 
 **Checkpoint:** A new packet arrives containing the last valid pose. Which timestamp should stay unchanged, and what should happen to its reported age?
 
-## 3. Separate device, marker and object pose in the hand frame
+## Separate device, marker and object pose in the hand frame
 
 ### Name the coordinate maps
 
@@ -185,7 +185,7 @@ The visible face's geometry, point ordering and scale remain essential. A letter
 
 **Checkpoint:** Which errors are excluded by this synthetic experiment, and why would a low reprojection residual not resolve all of them?
 
-## 4. Formulate and test the visual-feedback learning problem
+## Formulate and test the visual-feedback learning problem
 
 ### Choose the interface before choosing a learned model
 
@@ -225,7 +225,7 @@ A successful delayed run does not establish delay robustness, and one loss-assoc
 
 **Checkpoint:** Why can the loss run count as a first-goal success while still demonstrating a continuous-manipulation failure?
 
-## 5. Preview retargeting and embodiment differences
+## Preview retargeting and embodiment differences
 
 Human-hand retargeting maps hand measurements to a robot with different link lengths, joint axes, limits and contact capabilities. Phone-pose teleoperation instead uses device motion to specify a target. A joystick or phone-orientation stream is not a measurement of human finger configuration.
 

@@ -26,7 +26,7 @@ By the end, you should be able to:
 
 The figures, worked examples and result tables provide a complete reading and activity route on this page. The small numerical activity uses only standard Python and files in the student repository. CAD software, motors, cameras and neural-network training are not required to complete it.
 
-## 1. Review the single-actuator validation task
+## Review the single-actuator validation task
 
 ### Start with a bounded single-actuator claim
 
@@ -56,7 +56,7 @@ Preserve the dataset-to-model mapping instead of changing a mass until totals ag
 
 **Checkpoint:** Which conclusion follows from a smaller held-out prediction error: better prediction for the tested records, better physical tracking, or verified component inertia? Explain the evidence needed for each.
 
-## 2. Distinguish independent fixtures from connected joints
+## Distinguish independent fixtures from connected joints
 
 ### More actuators introduce several different changes
 
@@ -91,7 +91,7 @@ For independent fixed-axis fixtures, each diagonal entry is its own fixture iner
 
 **Predict:** Hold a connected arm's distal joint fixed and change its angle before moving the proximal joint. Why might the proximal effort change? Which of those mechanisms is absent from sixteen fixtures fixed separately to a rack?
 
-## 3. Inspect shared infrastructure and the replay boundary
+## Inspect shared infrastructure and the replay boundary
 
 ### Independent motion can still share disturbances
 
@@ -186,7 +186,7 @@ Effective armature, damping and friction-loss parameters are selected for each m
 
 **Checkpoint:** If an internal reference arrives late, could adjusting damping reduce prediction error? Why would that improvement leave the timing explanation unresolved?
 
-## 4. Explain neural actuator models in their research context
+## Explain neural actuator models in their research context
 
 A useful actuator model may need recent history. The same current reference error and velocity can follow different preceding commands, filters or friction transitions. A learned mapping can use a short signal history to predict an actuator contribution.
 
@@ -208,7 +208,7 @@ The present teaching activity evaluates the supplied parametric baseline and fit
 
 **Checkpoint:** A neural predictor has low next-step error when given measured history. What additional result would justify using it as an actuator component inside a long simulation rollout?
 
-## 5. Read the sixteen-motor campaign and compare individuals
+## Read the sixteen-motor campaign and compare individuals
 
 ### Count events, records and prediction rows separately
 
@@ -306,7 +306,7 @@ Each motor retains its own recorded time vector. The two series have different s
 
 Read the time series before interpreting the mean. Locate a reversal or region of larger discrepancy, compare prediction with encoder at the same recorded time, and ask whether the difference appears in one motor or both. A visually closer curve is useful evidence for that trace; selecting one favorable event does not replace the full held-out comparison.
 
-## 6. Compare internal encoders with external optical evidence
+## Compare internal encoders with external optical evidence
 
 The campaign scores **encoder position**. Camera views and ArUco detections help inspect fixture identity, visible motion, occlusion and recording conditions. A marker detection is not automatically an independent joint-angle measurement.
 
