@@ -29,7 +29,7 @@ def main():
   assert np.isfinite(reference).all() and np.isfinite(partial).all();assert ef.max()<1e-12;assert ep.max()>1e-6
   a.out.parent.mkdir(parents=True,exist_ok=True);a.out.write_text(json.dumps(report,indent=2)+'\n')
   with a.out.with_suffix('.csv').open('w',newline='') as f:
-   out=csv.writer(f);out.writerow(['time_s','full_restore_cube_xy_error_mm','qpos_only_cube_xy_error_mm']);out.writerows(zip(np.arange(1,61)*sim.control_dt,ef*1000,ep*1000))
+   out=csv.writer(f,lineterminator="\n");out.writerow(['time_s','full_restore_cube_xy_error_mm','qpos_only_cube_xy_error_mm']);out.writerows(zip(np.arange(1,61)*sim.control_dt,ef*1000,ep*1000))
   print(json.dumps(report,indent=2))
  finally:sim.close()
 if __name__=='__main__':main()
