@@ -188,13 +188,19 @@ In that record, row 400 reports goal 2330 counts, trajectory 2337 counts and pos
 
 The retained CSV makes the connection to the mathematical symbols explicit:
 
-| Signal in Figure 1 | Exported field | Row 400 (counts) |
-|---|---|---:|
-| Goal register readback | `goal_position_raw` | 2330 |
-| Internal reference, corresponding to $$q_r$$ | `position_trajectory_raw` | 2337 |
-| Reported position, $$y_q$$ | `present_position_raw` | 2347 |
+| Exported field and signal in Figure 1 | Row 400 (counts) |
+|---|---:|
+| `goal_position_raw`: goal register readback | 2330 |
+| `position_trajectory_raw`: internal reference, corresponding to $$q_r$$ | 2337 |
+| `present_position_raw`: reported position, $$y_q$$ | 2347 |
 
-For this display, convert an already signed count $$p$$ by $$q=(p-2048)2\pi/4096$$. The chosen zero is a plotting reference; it does not calibrate the output to the room. At this row, measured-minus-internal-reference is 10 counts, approximately 0.879°. Measured-minus-goal-readback is 17 counts, approximately 1.494°. These are two different tracking comparisons, not two estimates of a simulation error. The controller's position-error convention $$q_r-y_q$$ reverses the first sign.
+For this display, convert an already signed count $$p$$ to radians by
+
+$$
+q=(p-2048)\frac{2\pi}{4096}.
+$$
+
+The chosen zero is a plotting reference; it does not calibrate the output to the room. At this row, measured-minus-internal-reference is 10 counts, approximately 0.879°. Measured-minus-goal-readback is 17 counts, approximately 1.494°. These are two different tracking comparisons, not two estimates of a simulation error. The controller's position-error convention $$q_r-y_q$$ reverses the first sign.
 
 The same row reports negative velocity while the angle is still positive: the output is returning from its positive peak. A positive angle therefore does not imply positive motion. This observation identifies signals and signs; it does not identify which physical effect caused their separation. The record is XC330-M288-T, ID 5, firmware 53, Mode 5, M0 motor-only configuration, at about 2.001918 s on the host receive-end clock. The [retained sample](../resources/class02/results/hardware-demo/sample-400.json) identifies its raw and converted values.
 
