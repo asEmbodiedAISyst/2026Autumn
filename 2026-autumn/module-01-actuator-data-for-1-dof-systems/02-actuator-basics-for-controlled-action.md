@@ -4,6 +4,10 @@ description: 21 October 2026 · 10:30–11:50 · CR6
 
 # Controlled action as a physical feedback process
 
+## Central question
+
+What turns a motor into an actuator capable of controlled action?
+
 A motor turns electrical energy into mechanical action. A robot, however, needs more than a shaft that can turn. It needs to move a specified amount, follow a changing motion, maintain a configuration under a load, or regulate its interaction with an object. These tasks require us to connect a request to what the mechanism actually does.
 
 Consider a motor attached to a small lever. A program requests a rotation of 30 degrees. The lever may reach that angle, stop short, overshoot, or fail to move. The outcome depends on the motor, transmission, supply, mounting, load and controller. The number in the program describes an intention; the mechanism must realize that intention through physical forces and motion.
