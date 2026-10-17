@@ -1,0 +1,190 @@
+{
+  "codebase_version": "v3.0",
+  "fps": 30,
+  "features": {
+    "action": {
+      "dtype": "float32",
+      "shape": [
+        9
+      ],
+      "names": [
+        "x",
+        "y",
+        "z",
+        "r11",
+        "r21",
+        "r31",
+        "r12",
+        "r22",
+        "r32"
+      ]
+    },
+    "observation.state": {
+      "dtype": "float32",
+      "shape": [
+        9
+      ],
+      "names": [
+        "x",
+        "y",
+        "z",
+        "r11",
+        "r21",
+        "r31",
+        "r12",
+        "r22",
+        "r32"
+      ]
+    },
+    "observation.images.phone": {
+      "dtype": "video",
+      "shape": [
+        480,
+        640,
+        3
+      ],
+      "names": [
+        "height",
+        "width",
+        "channels"
+      ],
+      "info": {
+        "is_depth_map": false,
+        "video.height": 480,
+        "video.width": 640,
+        "video.codec": "av1",
+        "video.pix_fmt": "yuv420p",
+        "video.fps": 30,
+        "video.channels": 3,
+        "has_audio": false,
+        "video.g": 2,
+        "video.crf": 30,
+        "video.preset": 12,
+        "video.fast_decode": 0,
+        "video.video_backend": "pyav",
+        "video.extra_options": {}
+      }
+    },
+    "observation.environment_state": {
+      "dtype": "float32",
+      "shape": [
+        5
+      ],
+      "names": [
+        "env_0",
+        "env_1",
+        "env_2",
+        "env_3",
+        "env_4"
+      ]
+    },
+    "timestamp": {
+      "dtype": "float32",
+      "shape": [
+        1
+      ],
+      "names": null
+    },
+    "frame_index": {
+      "dtype": "int64",
+      "shape": [
+        1
+      ],
+      "names": null
+    },
+    "episode_index": {
+      "dtype": "int64",
+      "shape": [
+        1
+      ],
+      "names": null
+    },
+    "index": {
+      "dtype": "int64",
+      "shape": [
+        1
+      ],
+      "names": null
+    },
+    "task_index": {
+      "dtype": "int64",
+      "shape": [
+        1
+      ],
+      "names": null
+    }
+  },
+  "total_episodes": 10,
+  "total_frames": 638,
+  "total_tasks": 1,
+  "chunks_size": 1000,
+  "data_files_size_in_mb": 100,
+  "video_files_size_in_mb": 200,
+  "data_path": "data/chunk-{chunk_index:03d}/file-{file_index:03d}.parquet",
+  "video_path": "videos/{video_key}/chunk-{chunk_index:03d}/file-{file_index:03d}.mp4",
+  "robot_type": "rebot_pusher_tool_handheld",
+  "splits": {
+    "train": "0:10"
+  },
+  "task_records": [
+    {
+      "task_index": 0,
+      "task": "Push the red cube into the green target area."
+    }
+  ],
+  "representation_note": "episode-relative position in metres + first two rotation-matrix columns (dimensionless); nine values are not nine joint angles",
+  "split_note": "Source metadata declares train 0:10; no held-out split has been executed. Design a split before training.",
+  "audit_config": {
+    "dataset": "data/pilot_push_cube_handheld",
+    "numeric": {
+      "timestamp_tolerance_s": 0.0001,
+      "geometric_threshold_m": 0.015,
+      "max_command_speed_m_s": 0.25,
+      "speed_warning_multiplier": 1.05,
+      "minimum_episode_frames": 30
+    },
+    "canonical_ik": {
+      "scene": "pusher_table",
+      "start_position_m": [
+        0.33,
+        0.0,
+        0.12
+      ],
+      "start_rotation": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "start_joint_rad": [
+        0.0,
+        0.349,
+        0.5,
+        -0.677,
+        0.0,
+        0.0
+      ],
+      "max_iters": 30,
+      "retry_max_iters": 300,
+      "minimum_reachable_fraction": 0.98,
+      "max_tilt_deg": 30,
+      "max_yaw_deg": 60,
+      "success_position_error_m": 0.005,
+      "success_rotation_error": 0.05,
+      "damping": 0.001,
+      "posture_gain": 0.05,
+      "rotation_weight": 0.3
+    }
+  }
+}

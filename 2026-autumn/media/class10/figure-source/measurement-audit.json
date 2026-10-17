@@ -1,0 +1,188 @@
+{
+  "scope": "Saved pilot numeric audit and recorded target-frame IK output; no training, policy inference or hardware verification.",
+  "numeric_audit": {
+    "dataset": "pilot_push_cube_handheld",
+    "episodes": 10,
+    "frames": 638,
+    "final_frame_threshold_mm": 15,
+    "configured_speed_limit_m_s": 0.25,
+    "episode_4_final_distance_mm": 32.03172609210014,
+    "episode_6_peak_command_speed_m_s": 0.6000002026557922,
+    "visibility_and_reachability": "not assessed by numeric audit"
+  },
+  "ik_plot": {
+    "input": "data/target-frame-reachability.txt",
+    "reach_percentages_source": "rounded terminal report",
+    "reach_percentages": [
+      100,
+      100,
+      46,
+      100,
+      100,
+      100,
+      91,
+      31,
+      100,
+      72
+    ],
+    "thresholds": {
+      "reach_percent": 98,
+      "absolute_yaw_degrees": 60
+    },
+    "scope": "Conditional on the recorded canonical frame, robot model, numerical solver and limits. Not a global impossibility proof or an executability certificate."
+  },
+  "image_inputs": {
+    "frames": [
+      0,
+      116
+    ],
+    "episodes": [
+      0,
+      2
+    ],
+    "scope": "Two selected simulation video frames; not physical trials or a visibility score."
+  },
+  "visual_review": {
+    "method": "Direct inspection of each of the seven classroom PNGs",
+    "all_seven_reviewed": true,
+    "readable_labels_axes_and_panels": true,
+    "clipped_labels_observed": false,
+    "remaining_minor_text_issue": null,
+    "source_correction": "Action-chunks singular legend corrected to Execute 1 step before replan; all plotted values, timing arithmetic and geometry unchanged. Corrected PNG inspected directly."
+  },
+  "source_script_sha256": "dd58458e332fcd4636e1615ecdb07ea5c067bb55c92129037c3912a791e18b18",
+  "retained_drawing_functions": [
+    "j",
+    "fig",
+    "blank",
+    "box",
+    "arrow",
+    "learning_records",
+    "tool_schema",
+    "pilot_views",
+    "pilot_audit",
+    "pilot_reach",
+    "split_episodes",
+    "action_chunks"
+  ],
+  "copied_classroom_outputs": [
+    {
+      "path": "learning-records-classroom.png",
+      "sha256": "7bfe22a013551dbfcc334b6b8adb5c6a9f3a120077ef7cb58101ade3a0a68ef7",
+      "identical_to_source": true
+    },
+    {
+      "path": "learning-records-classroom.svg",
+      "sha256": "600a10177bb6e29d1efce9001e7471883157d1d75c2ee137b660c4014f5703cd",
+      "identical_to_source": true
+    },
+    {
+      "path": "learning-records-classroom.pdf",
+      "sha256": "015bae7a0cc0b06737d9d1de6009bdb1601adc6c3bb6d0e1cb57c3dd3be6c506",
+      "identical_to_source": true
+    },
+    {
+      "path": "tool-schema-classroom.png",
+      "sha256": "5df3f26d7b1fba0a0008e9dbd053f0448be8e413e2e96ac8369b11a2b48fb930",
+      "identical_to_source": true
+    },
+    {
+      "path": "tool-schema-classroom.svg",
+      "sha256": "57fc2b55401b8f2505bdc64dfc98bdb43c1dc69907459c5daa858e5ab8923164",
+      "identical_to_source": true
+    },
+    {
+      "path": "tool-schema-classroom.pdf",
+      "sha256": "45329d906d6fbbc846535080368fe6870edb613f1eb2cdddeeeb71eb55d7d4cd",
+      "identical_to_source": true
+    },
+    {
+      "path": "pilot-views-classroom.png",
+      "sha256": "b0ad7ede3c95f77d2cf385a8cb1edf155f3e7c5c9cb9899e1e77cad965da2d5c",
+      "identical_to_source": true
+    },
+    {
+      "path": "pilot-views-classroom.svg",
+      "sha256": "daafbdab8c59fdd28a43a8b098d7d4db2e4841620fcc3a79887f546b5c154de5",
+      "identical_to_source": true
+    },
+    {
+      "path": "pilot-views-classroom.pdf",
+      "sha256": "ed125e3a96915ad2b98df7106e6fe962a1ba26b3c5fd95dc53d333ef74023048",
+      "identical_to_source": true
+    },
+    {
+      "path": "pilot-audit-classroom.png",
+      "sha256": "b72f6ceeda468fbc8eb82f7f4a5dd5152d5608bd936e89010295864f0c250c8e",
+      "identical_to_source": true
+    },
+    {
+      "path": "pilot-audit-classroom.svg",
+      "sha256": "3ce85db09b26f6e40b99bf8f5b84c5c118b3c6527e32713f40583ccdca3eb718",
+      "identical_to_source": true
+    },
+    {
+      "path": "pilot-audit-classroom.pdf",
+      "sha256": "18376143d1daacf6115eaa8245b50dcb8ca0f8d0b684f800234b93988523f390",
+      "identical_to_source": true
+    },
+    {
+      "path": "pilot-reach-classroom.png",
+      "sha256": "5ff39fb7499db1f4d7863c7415d995e83fe4f21e81dd2c19d5d22f54dd2efd5a",
+      "identical_to_source": true
+    },
+    {
+      "path": "pilot-reach-classroom.svg",
+      "sha256": "3ebff4a9ce046262d63359c1c310350fa3fcdee2f6b00018494f56a0761d6e8a",
+      "identical_to_source": true
+    },
+    {
+      "path": "pilot-reach-classroom.pdf",
+      "sha256": "92e283733be40e6b905d1b94e6c9003b4c70e8fbd1f3c353d3edb6a296cf6d24",
+      "identical_to_source": true
+    },
+    {
+      "path": "episode-splits-classroom.png",
+      "sha256": "98a2c5841b9fc156527082032bf4e9289329111a4604c32243456075452acccd",
+      "identical_to_source": true
+    },
+    {
+      "path": "episode-splits-classroom.svg",
+      "sha256": "b5694a160e46131a0947a55aa0c5b0f0d74a88617dd2aa6bc264f9bfa802aaa0",
+      "identical_to_source": true
+    },
+    {
+      "path": "episode-splits-classroom.pdf",
+      "sha256": "9c400981551f88b999779844d2023e02c790a92571965cf62a59c8c9e68a230d",
+      "identical_to_source": true
+    },
+    {
+      "path": "action-chunks-classroom.png",
+      "identical_to_source": false,
+      "source_sha256": "ae2658caea8b239129a122262d24fec24a84e63a73257f521e28f6e0845d2dc7",
+      "sha256": "b0b27373675c01fa0809f1eae11492dc1d75feacdc48df2d52aede11f216dd25",
+      "change": "singular legend grammar correction only"
+    },
+    {
+      "path": "action-chunks-classroom.svg",
+      "identical_to_source": false,
+      "source_sha256": "1c160038e010e520302a13cf0800f19faac784cffb4c1fe7295722cf83fb8cdf",
+      "sha256": "c321c5832b9e6c1ea9e74cbc12ef2e142e875dd88c3c64aae6a4a2c3978f50f2",
+      "change": "singular legend grammar correction only"
+    },
+    {
+      "path": "action-chunks-classroom.pdf",
+      "identical_to_source": false,
+      "source_sha256": "0e4c49c76a20c07efdf9375ec04bfa2d3cad54e3a06399c3848959ad01f2484b",
+      "sha256": "00e5f93f710293d006809360b0af6e99a504deeee3db4b3540f1ed34f7a5915e",
+      "change": "singular legend grammar correction only"
+    }
+  ],
+  "portable_replot_validation": {
+    "syntax": "pass",
+    "runtime": "pass: all seven functions rendered PNG, SVG and PDF",
+    "unchanged_six_pngs": "pixel-identical to their source classroom PNGs",
+    "font_resolution": "matches retained source receipt: MiSans Regular and MiSans Bold",
+    "published_assets": "18 copied assets byte-identical to source; 3 action-chunks formats regenerated for singular grammar correction"
+  }
+}

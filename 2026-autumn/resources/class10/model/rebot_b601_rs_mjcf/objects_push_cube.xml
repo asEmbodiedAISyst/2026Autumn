@@ -1,0 +1,25 @@
+<!--
+  Push Cube task objects: push the black cube into the green target area.
+  The cube matches the real print (hardware/push_objects/cube_40mm.stl): matte black PLA, printed hollow (~15 g).
+  The target area is a mocap body (no collisions) placed randomly from Python at every episode.
+-->
+<mujoco>
+  <asset>
+    <material name="cube_mat" rgba="0.06 0.06 0.065 1" specular="0.05" shininess="0.1"/>
+    <material name="goal_mat" rgba="0.15 0.75 0.25 0.45"/>
+  </asset>
+
+  <worldbody>
+    <body name="cube" pos="0.25 0.08 0.02">
+      <freejoint name="cube_joint"/>
+      <geom name="cube_geom" type="box" size="0.02 0.02 0.02" mass="0.015" material="cube_mat"
+            friction="0.4 0.005 0.0001" solref="0.004 1"/>
+    </body>
+
+    <!-- Target area: 6 cm square lying on the table -->
+    <body name="goal" mocap="true" pos="0.30 -0.08 0">
+      <geom name="goal_geom" type="box" size="0.03 0.03 0.0005" pos="0 0 0.0006" material="goal_mat"
+            contype="0" conaffinity="0"/>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,161 @@
+{
+  "scope": "Seven Class 10 classroom figures and portable plotting inputs; simulation frames, saved numeric audit and recorded canonical-frame IK only.",
+  "hash_algorithm": "SHA-256",
+  "paths_relative_to": "public-media",
+  "source_unchanged_assets": 18,
+  "regenerated_assets": {
+    "count": 3,
+    "family": "action-chunks",
+    "change": "Singular legend grammar only; data and arithmetic unchanged."
+  },
+  "files": [
+    {
+      "path": "FIGURE-CODE.md",
+      "sha256": "af7444937b0fc760afd6ea3c75a49a869f49012550943e01f60f3623efa76599"
+    },
+    {
+      "path": "action-chunks-classroom.pdf",
+      "sha256": "00e5f93f710293d006809360b0af6e99a504deeee3db4b3540f1ed34f7a5915e"
+    },
+    {
+      "path": "action-chunks-classroom.png",
+      "sha256": "b0b27373675c01fa0809f1eae11492dc1d75feacdc48df2d52aede11f216dd25"
+    },
+    {
+      "path": "action-chunks-classroom.svg",
+      "sha256": "c321c5832b9e6c1ea9e74cbc12ef2e142e875dd88c3c64aae6a4a2c3978f50f2"
+    },
+    {
+      "path": "episode-splits-classroom.pdf",
+      "sha256": "9c400981551f88b999779844d2023e02c790a92571965cf62a59c8c9e68a230d"
+    },
+    {
+      "path": "episode-splits-classroom.png",
+      "sha256": "98a2c5841b9fc156527082032bf4e9289329111a4604c32243456075452acccd"
+    },
+    {
+      "path": "episode-splits-classroom.svg",
+      "sha256": "b5694a160e46131a0947a55aa0c5b0f0d74a88617dd2aa6bc264f9bfa802aaa0"
+    },
+    {
+      "path": "figure-source/README.md",
+      "sha256": "4c2b8050f4cf7dc0c756db7abbf272f1ebf81011935b07b96da8043a81de273e"
+    },
+    {
+      "path": "figure-source/data/pilot-nominal.png",
+      "sha256": "1807d9fdc6cb073af0665b2d7b43878651140f5e17b74b871785baae89f3283f"
+    },
+    {
+      "path": "figure-source/data/pilot-turned.png",
+      "sha256": "2c8cb76e38c61c976396bd044ced1b7ebae550b00bb65b2fd7f29c2caace0c4e"
+    },
+    {
+      "path": "figure-source/data/target-frame-reachability.txt",
+      "sha256": "b075b96e4dd566fb2a038b4a684a2d6f77a19627cf4d726bf6703baed7066385"
+    },
+    {
+      "path": "figure-source/evidence/corrected-figure-fonts.json",
+      "sha256": "805a9e6d334abe5044cdfa25e071537046ebe694fab061857f452be4fd751f36"
+    },
+    {
+      "path": "figure-source/evidence/figure-fonts.json",
+      "sha256": "104de7166213e4911e9f9dd93d82f32d00bd20fc54309782f45ba437eb2c7c2f"
+    },
+    {
+      "path": "figure-source/evidence/image-inputs.json",
+      "sha256": "9f2d731ed74b417ce40ac08cda94184a84f3ac49c7d8cd53c9a5954da5cb79c8"
+    },
+    {
+      "path": "figure-source/evidence/portable-replot-check.json",
+      "sha256": "09d6f04c5e5e442932d792f2dbdd0c5a14fc52a55b626c50a21d911df8199406"
+    },
+    {
+      "path": "figure-source/measurement-audit.json",
+      "sha256": "c1a4bac5dd5d52f5ea068984a2ff9b7263d82273131f019ad329f02890be123c"
+    },
+    {
+      "path": "figure-source/render_class10.py",
+      "sha256": "a60676cdaaa53966da24c78ae6b59cca5cc1289a9ff1c9b99b51eb1962452b67"
+    },
+    {
+      "path": "figure-source/requirements-plotting.txt",
+      "sha256": "af9daa127f5489fe518c076c8f4e4778ebbeca2f77e5835fd8dae6106c1814c4"
+    },
+    {
+      "path": "figure-source/results/pilot-audit.json",
+      "sha256": "fada9084c8be23d5fd83e9320b172a6a6da9b72ded28af6a6de4e75eb8aff9e2"
+    },
+    {
+      "path": "figure-source/source/figure_typography.py",
+      "sha256": "837ee6e140396f198d8c9e7067d9e0a0f10a2a3a23b829dd58981a764f4441dd"
+    },
+    {
+      "path": "figure-source/source/lecture_figures.py",
+      "sha256": "89281e4f034e36f17eb406d0b26422ae0d224df6d23dcdacaf571dd45c417904"
+    },
+    {
+      "path": "figure-source/source/publication.mplstyle",
+      "sha256": "c36746fa610ae67a8ecfbc8bf640a6bf558426169fcf712f06c184a49a656b96"
+    },
+    {
+      "path": "learning-records-classroom.pdf",
+      "sha256": "015bae7a0cc0b06737d9d1de6009bdb1601adc6c3bb6d0e1cb57c3dd3be6c506"
+    },
+    {
+      "path": "learning-records-classroom.png",
+      "sha256": "7bfe22a013551dbfcc334b6b8adb5c6a9f3a120077ef7cb58101ade3a0a68ef7"
+    },
+    {
+      "path": "learning-records-classroom.svg",
+      "sha256": "600a10177bb6e29d1efce9001e7471883157d1d75c2ee137b660c4014f5703cd"
+    },
+    {
+      "path": "pilot-audit-classroom.pdf",
+      "sha256": "18376143d1daacf6115eaa8245b50dcb8ca0f8d0b684f800234b93988523f390"
+    },
+    {
+      "path": "pilot-audit-classroom.png",
+      "sha256": "b72f6ceeda468fbc8eb82f7f4a5dd5152d5608bd936e89010295864f0c250c8e"
+    },
+    {
+      "path": "pilot-audit-classroom.svg",
+      "sha256": "3ce85db09b26f6e40b99bf8f5b84c5c118b3c6527e32713f40583ccdca3eb718"
+    },
+    {
+      "path": "pilot-reach-classroom.pdf",
+      "sha256": "92e283733be40e6b905d1b94e6c9003b4c70e8fbd1f3c353d3edb6a296cf6d24"
+    },
+    {
+      "path": "pilot-reach-classroom.png",
+      "sha256": "5ff39fb7499db1f4d7863c7415d995e83fe4f21e81dd2c19d5d22f54dd2efd5a"
+    },
+    {
+      "path": "pilot-reach-classroom.svg",
+      "sha256": "3ebff4a9ce046262d63359c1c310350fa3fcdee2f6b00018494f56a0761d6e8a"
+    },
+    {
+      "path": "pilot-views-classroom.pdf",
+      "sha256": "ed125e3a96915ad2b98df7106e6fe962a1ba26b3c5fd95dc53d333ef74023048"
+    },
+    {
+      "path": "pilot-views-classroom.png",
+      "sha256": "b0ad7ede3c95f77d2cf385a8cb1edf155f3e7c5c9cb9899e1e77cad965da2d5c"
+    },
+    {
+      "path": "pilot-views-classroom.svg",
+      "sha256": "daafbdab8c59fdd28a43a8b098d7d4db2e4841620fcc3a79887f546b5c154de5"
+    },
+    {
+      "path": "tool-schema-classroom.pdf",
+      "sha256": "45329d906d6fbbc846535080368fe6870edb613f1eb2cdddeeeb71eb55d7d4cd"
+    },
+    {
+      "path": "tool-schema-classroom.png",
+      "sha256": "5df3f26d7b1fba0a0008e9dbd053f0448be8e413e2e96ac8369b11a2b48fb930"
+    },
+    {
+      "path": "tool-schema-classroom.svg",
+      "sha256": "57fc2b55401b8f2505bdc64dfc98bdb43c1dc69907459c5daa858e5ab8923164"
+    }
+  ]
+}
