@@ -1,0 +1,35 @@
+{
+  "class": 9,
+  "source_commit": "bfb3665",
+  "figures": [
+    {
+      "file": "media/class09/command-state-classroom.png",
+      "sha256": "76fb8e9cb08dc38a0232c86468b1c5e844396dbaf071fd618732b95261508a98"
+    },
+    {
+      "file": "media/class09/episode-views-classroom.png",
+      "sha256": "153b56cf05aa816f104c76dfa3aca11cdfa374289c4eb230cdc93548965a79a6"
+    },
+    {
+      "file": "media/class09/motion-limit-classroom.png",
+      "sha256": "f41046a43b7ff3e31d3d906a6bd06e258f7d2f46c57b25681d088fe6ca2f5c69"
+    },
+    {
+      "file": "media/class09/phone-axes-classroom.png",
+      "sha256": "cad2cf38e8a03f14dc95dd72fd76bc703eefe5caebcf2adaf3b276ffc634b845"
+    },
+    {
+      "file": "media/class09/recording-order-classroom.png",
+      "sha256": "29b52f3cb2c2bd870e8a5739ede783e75da94b4b079c047811d0f764bc42fd12"
+    },
+    {
+      "file": "media/class09/stream-record-classroom.png",
+      "sha256": "55b08ee0c916c5e30c1708c80620918f7f655f840c9fdb110955d0d7bd2fe34c"
+    },
+    {
+      "file": "media/class09/teleop-path-classroom.png",
+      "sha256": "1b5cd0f8b682066769a38536149b296544c83f1e2e30ad5b00a8d5f2f634da34"
+    }
+  ],
+  "scope": "Seven lesson illustrations; first two redrawn and seventh composed from retained frame0. New generation function source/draw_lesson.py supersedes corresponding branches of retained generator."
+}

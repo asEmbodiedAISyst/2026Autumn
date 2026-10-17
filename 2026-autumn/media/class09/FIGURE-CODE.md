@@ -4,7 +4,7 @@ Seven figure families; classroom PNGs are displayed on the single lesson page. P
 
 ## Reproduction
 
-Use a separate authoring environment with resources/class09/source/requirements-figures-macos.txt and locally licensed MiSans Regular/Semibold. Run in a working copy of resources/class09 with the fonts in source/fonts. The retained source/lecture_figures.py produces the original six families from the two bundled recording CSVs. Its teleop-path and phone-axes branches are superseded by source/draw_lesson.py, which also creates episode-views:
+Use a separate authoring environment with resources/class09/source/requirements-figures-macos.txt and locally licensed MiSans Regular/Semibold. Run in a working copy of resources/class09 with the fonts in source/fonts. The retained source/lecture_figures.py produces the original six families from the two bundled recording CSVs. Its teleop-path, phone-axes and recording-order branches are superseded by source/draw_lesson.py, which also creates episode-views:
 
 ```sh
 python source/lecture_figures.py --class-root .

@@ -35,6 +35,12 @@ a.plot([.875,.875,.74],[.61,.21,.21],color=K,lw=1.4);arrow(a,(.80,.21),(.74,.21)
 a.text(.945,.41,'response\nrecord',ha='center',color=K)
 a.text(.05,.12,'A request can\nbe changed\nor rejected',color=G)
 save(f,'teleop-path')
+f,a=plt.subplots(figsize=(12.8,2.6));a.axis('off');a.set(xlim=(0,1),ylim=(0,1))
+for i,label in enumerate(['Choose action k','Observe state k','Render images\nand save row','Apply command\nand step physics']):
+ x=.015+i*.25;box(a,x,.43,.22,.40,label,[B,G,O,K][i])
+ if i<3:arrow(a,(x+.22,.63),(x+.25,.63))
+a.text(.5,.15,'Saved state precedes this action’s transition; row timestamp is sampled after rendering.',ha='center',fontsize=12)
+save(f,'recording-order')
 f,aa=plt.subplots(1,2,figsize=(12.8,5.2),subplot_kw={'projection':'3d'})
 for a,title,labels in [(aa[0],'Phone body P',['+x: top','+y: left','+z: screen normal']),(aa[1],'TCP frame E',['+x: across fingers','+y: opening','+z: approach'])]:
  a.set_title(title,pad=14);a.set(xlim=(-.1,1.3),ylim=(-.1,1.3),zlim=(-.1,1.3));a.set_axis_off();a.view_init(elev=23,azim=35)
@@ -46,4 +52,4 @@ f,aa=plt.subplots(1,2,figsize=(12.8,5.4))
 for a,cam in zip(aa,['front','side']):
  a.imshow(Image.open(root/f'data/recorded/circle/{cam}/000000.jpg'));a.axis('off');a.set_title(f'{cam} / frame 000000',fontsize=14)
 save(f,'episode-views')
-print('Created 3 figure families, 18 files')
+print('Created 4 figure families, 24 files')
