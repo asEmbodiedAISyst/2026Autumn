@@ -22,7 +22,7 @@ By the end, you should be able to:
 - Read a native rollout and distinguish first-goal success, successful steps, stalls and drops.
 - Test a display-only cube change while preserving the policy and physical conditions.
 
-[Lecture](#matching-the-upward-letter-is-not-enough) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Run-the-repository examples](#run-the-repository-examples)
+[Lecture](#matching-the-upward-letter-is-not-enough) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Run the repository examples](#run-the-repository-examples)
 
 The figures, animation, equations and saved results provide a complete reading route on this page. All policy, model, texture and evidence files needed for the practical are in the student repository. Prepare the Python environment before the session; a saved-record route is included if local simulation or graphics is unavailable.
 
@@ -225,7 +225,7 @@ Removing actor-observation noise did not improve the retained GPU result. The sa
 
 A possible explanation concerns how this policy responds to its input distribution. That hypothesis needs further investigation; this table alone does not establish the policy's training exposure or the cause of failures. Keep unsuccessful episodes in the denominator and avoid selecting only successful demonstrations to characterize performance.
 
-A timeout means the first target was not reached within the limit. It does not by itself identify wedging, slip or a poor target update. A useful next experiment changes one factor—such as observation delay—while preserving task success, seed protocol, physics and scoring. Tune on development seeds and evaluate the selected change on a fresh declared set.
+In the first-goal evaluator, a timeout means the first target was not reached within the limit. It does not by itself identify wedging, slip or a poor target update. A useful next experiment changes one factor—such as observation delay—while preserving task success, seed protocol, physics and scoring. Tune on development seeds and evaluate the selected change on a fresh declared set.
 
 **Checkpoint:** What can the artwork comparison establish that the noisy-versus-ideal success table cannot? What additional evidence would support a physical replacement cube?
 

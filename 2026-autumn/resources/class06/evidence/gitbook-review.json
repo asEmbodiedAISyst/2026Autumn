@@ -1,0 +1,23 @@
+{
+  "url": "https://x.ancorasir.com/rob7103-8103/module-02-hand-data-for-multi-fingered-manipulation/06-learned-in-hand-cube-reorientation",
+  "content_commit": "6499c2f",
+  "single_page": true,
+  "description": "30 October 2026 \u00b7 09:00\u201310:50 \u00b7 L12",
+  "figures_loaded": 8,
+  "animation_loaded": true,
+  "katex_expressions": 14,
+  "katex_errors": 0,
+  "display_equations": 4,
+  "tables": 6,
+  "figure_table_width_px": 865,
+  "equation_width_px": 768,
+  "horizontal_page_overflow": false,
+  "navigation_targets": "All four exist",
+  "visual_checks": [
+    "All eight illustrations reviewed",
+    "Live contact moment and angular-first wrench readable",
+    "GIF displayed the selected episode",
+    "No equation/table scroll overflow"
+  ],
+  "scope": "Actual desktop GitBook review; no projector or mobile acceptance claimed"
+}
