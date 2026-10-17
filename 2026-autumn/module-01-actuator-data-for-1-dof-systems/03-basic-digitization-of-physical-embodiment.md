@@ -1,5 +1,7 @@
 ---
 description: Basic digitization of physical embodiment · ROB7103/8103
+layout:
+  width: wide
 ---
 
 # 03 Basic Digitization of Physical Embodiment
@@ -284,10 +286,13 @@ The exporter helps transfer geometry and assembly information, but it does not m
 
 `data.ctrl[0]` names an input slot, not a universal physical quantity. Inspect the actuator element and transmission before assigning units. The two prepared examples deliberately expose different interfaces:
 
-| Prepared model | Input meaning | Declared effort bound | What remains to establish |
-|---|---|---|---|
-| XC330 B2, `xc330_motor`, hinge `actuator_joint`, `gear="1"` | Generalized torque request in N m | ±0.1551 N m | The model does not contain XC330's embedded position/current controller |
-| RS06 B1, `rs06_position` | Position reference in rad, limited to ±0.9 rad | ±36 N m | The selected model gains and passive terms do not prove exact firmware or continuous hardware behaviour |
+| Input property | XC330 B2 | RS06 B1 |
+|---|---|---|
+| Requested quantity | Joint torque (N m) | Position reference (rad) |
+| Input range | ±0.1551 N m | ±0.9 rad |
+| Model effort bound | ±0.1551 N m | ±36 N m |
+
+In XC330 B2, `xc330_motor` drives `actuator_joint` with `gear="1"`. Its torque channel does not contain the embedded position/current controller. In RS06 B1, `rs06_position` uses declared gains and passive terms; these do not establish exact firmware or continuous hardware behaviour.
 
 These are model settings, not interchangeable manufacturer ratings. In particular, ±0.1551 N m is not XC330's 0.93 N m stall specification. Both model outputs are simulated generalized forces, not hardware torque measurements. The source models also have different joint axes, zeros and fixtures; matching actuator names does not align them.
 
@@ -415,9 +420,9 @@ Load the [prepared RS06 B1 model](../resources/class03/preparation/rs06_fixtures
 
 After the repository setup, run `python code/class03_rs06_inspect.py --case all` from `2026-autumn/resources/class03`. It loads the bundled RS06 models, reports the local joint axis/range and moving mass, and compares gravity bias with gravity enabled/disabled at a fixed pose. Use the figure and table if a live viewer is unavailable.
 
-Inspect a small positive displacement in a viewer when available and check its direction. Compare gravity enabled and disabled at the same pose and control settings. A position actuator may resist gravity, so distinguish generalized gravity bias from net acceleration or observed movement. The saved records below use zero velocity and a 0.4 rad joint position in MuJoCo 3.3.7:
+Inspect a small positive displacement in a viewer when available and check its direction. Compare gravity enabled and disabled at the same pose and control settings. A position actuator may resist gravity, so distinguish generalized gravity bias from net acceleration or observed movement. The saved records below use zero velocity and a 0.4 rad joint position in MuJoCo 3.3.7. Each model has one position coordinate, one velocity and one actuator input (q / v / inputs). The last two columns report gravity bias:
 
-| Fixture | Coordinates / velocities / actuators | Gravity-on bias (N m) | Gravity-off bias (N m) |
+| Fixture | q / v / inputs | Gravity on (N m) | Gravity off (N m) |
 |---|---:|---:|---:|
 | B1 | 1 / 1 / 1 | 0.0003684003 | 0 |
 | G1 | 1 / 1 / 1 | 1.165962 | 0 |

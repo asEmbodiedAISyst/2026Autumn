@@ -107,5 +107,6 @@
     "Required models, scripts, meshes, CAD and mass record are included.",
     "Frame coordinates are model-derived and verified; no new physical measurements.",
     "Preserved the Class03 figure/standalone-workflow review at 1dd9ae3; normalized GitBook mathematics and added the Class02 actuation/document-reading cross-reference."
-  ]
+  ],
+  "gitbook_display_review": "Wider page layout; transposed actuator comparison; compact gravity table headings. Single page retained."
 }
