@@ -26,12 +26,16 @@ Classes 12-16: include both A4 pages. Class 17: include both A3 Decision sides a
 
 ## How it is collected
 
-At each deadline the TA collects the named PDF from each team's remote main branch, records the commit and collection time, and retains that version. The repository, team-specific filename and identifier on every page identify the team after collection. Confirm teaching-team access before the deadline.
+At the deadline, the teaching team records the remote `main` commit, collects the required files from that revision and retains the snapshot. We record the GitHub push time for the submitted version and the collection time separately, in Abu Dhabi time (UTC+4). The deadline concerns when the version reached GitHub, not its local commit date. Later pushes do not replace the collected version. Confirm teaching-team access before the deadline; report an access problem promptly.
 
 No email, separate upload, physical hand-in, release, tag or collection form is required. Later pushes do not replace the collected submission. Keep the initial PDF and place dated, signed later revisions under that class folder's revisions/ directory.
 
-The [editable project record](project-record.md) supports your work; it is not an additional submission. Cite supporting evidence by its existing path in the same private repository. State missing evidence honestly. Keep student IDs and signatures private. Full reading guidance and worked examples remain on the six class pages.
+The [editable project record](project-record.md) supports your work; it is not an additional submission. Cite supporting evidence by its existing path in the same private repository. State missing evidence honestly. Keep student IDs and signatures private. Brief guidance and filled examples are on the six class pages.
 
 ## Filled paper examples
 
 The Class 12–17 pages each link eight separate, yellow-highlighted example PDFs and their source papers. Files are grouped under `examples/class12/` through `examples/class17/`. Each PDF contains only the corresponding worksheet and its review page; these examples do not replace the blank team submission worksheets.
+
+## Final updated worksheet collection
+
+The six final signed worksheets satisfy the **10% consolidated and updated project record**. Push them to remote `main` by **2 December 2026 at 11:50, Abu Dhabi time (UTC+4)**, alongside the video. Use the same six basenames listed above under `worksheets/` instead of `submissions/classXX/`; for example, `worksheets/Team01-Class12-Claim.pdf`. Preserve the earlier checkpoint files. The [Class 20 instructions](../../module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets) list all six exact paths and the collection procedure. No combined PDF or additional form is required.

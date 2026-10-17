@@ -1,10 +1,12 @@
 ---
-description: 01 December 2026 · 09:00–10:20 · CR6
+description: 01 December 2026 · Deadline 10:20 · No class meeting
 ---
 
 # 19 Final Code Submission
 
 **Deadline: 1 December 2026, 10:20 — Abu Dhabi time (UTC+4).**
+
+**Public holiday: no class meeting. The submission deadline remains in effect.**
 
 ## Submission requirements
 
@@ -12,13 +14,15 @@ The [NeurIPS code guidelines](https://neurips.cc/public/guides/CodeSubmissionPol
 
 > Your code submission ideally should be self-contained and executable. If this is not the case, you must explain why.
 
-For this course, keep your project implementation in `code/`, with `code/README.md` as its entry point. Explain the project boundary, tested environment, dependencies, required data/models, commands to reproduce an important result, expected output and known limits. Cite reused work. Use the authors’ README example or the linked template below for guidance.
+For this course, keep your project implementation in `code/`, with `code/README.md` as its entry point. Explain the project boundary, tested environment, dependencies, required data/models, commands to reproduce an important result, expected output and known limits. Start the README with your assigned team identifier (**Team01–Team08**) and project title. Cite reused work. Use the authors’ README example or the linked template below for guidance.
 
 ## How to submit and how we collect
 
 Commit and push the code and README to the `main` branch of your assigned team repository before the deadline. Check the uploaded files on GitHub.
 
-At the deadline, the teaching team records and collects the remote `main` revision. We retain the complete repository, including referenced shared folders, and name its archive `TeamNN-code-YYMMDD-HHMMSS.zip`. The suffix is the GitHub-recorded push time of that submitted revision, in Abu Dhabi time (UTC+4), used to check the deadline. We record collection time separately. **Students do not create this ZIP.** Later pushes do not replace the collected submission. No separate submission form or record is required.
+At the deadline, the teaching team records the remote `main` commit, collects the required files from that revision and retains the snapshot. We record the GitHub push time for the submitted version and the collection time separately, in Abu Dhabi time (UTC+4). The deadline concerns when the version reached GitHub, not its local commit date. Later pushes do not replace the collected version. Confirm teaching-team access before the deadline; report an access problem promptly.
+
+For our collected copy, we retain the complete repository, including referenced shared folders, in `TeamNN-code-YYMMDD-HHMMSS.zip`. **Students do not create this ZIP.** The teaching team adds the suffix using the GitHub-recorded submission push time, not the collection time. No separate upload, email, release, tag, manifest or student collection record is required.
 
 ## Example and preparation guidance
 

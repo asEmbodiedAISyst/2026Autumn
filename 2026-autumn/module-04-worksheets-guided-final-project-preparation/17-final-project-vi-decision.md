@@ -14,7 +14,7 @@ layout:
 | --- | --- |
 | Download | [Worksheet 6: Decision](../resources/project-workbook/Class17-Decision.pdf) |
 | Required contents | All three pages: both A3 Decision sides and the signed A4 evidence/team-review page; retain all 27 checks. Include any labelled continuation pages in the same PDF. |
-| Team identifier | Use your assigned **Team01–Team08**, matching your private repository, for example `2026Autumn-Team01`. Write this identifier and the project title on every page. |
+| Team identifier | Write your assigned **Team01–Team08** and project title on every page. Use the matching private repository; for example, **Team01** uses `2026Autumn-Team01`. |
 | Folder | `submissions/class17/` in your assigned private team repository |
 | Filename | `TeamNN-Class17-Decision.pdf` — replace `NN` with your assigned two-digit team number |
 | Example for Team01 | `submissions/class17/Team01-Class17-Decision.pdf` |
@@ -29,9 +29,11 @@ layout:
 
 ### How the teaching team collects it
 
-At the deadline, the TA collects the named PDF from your team's remote `main` branch, records the repository commit and collection time, and retains that version. The repository, filename and identifier on the pages connect the PDF to your team. Confirm teaching-team access before the deadline; report an access problem promptly.
+At the deadline, the teaching team records the remote `main` commit, collects the required files from that revision and retains the snapshot. We record the GitHub push time for the submitted version and the collection time separately, in Abu Dhabi time (UTC+4). The deadline concerns when the version reached GitHub, not its local commit date. Later pushes do not replace the collected version. Confirm teaching-team access before the deadline; report an access problem promptly.
 
 **No separate upload, email, release, tag, manifest or physical hand-in is required.** Later changes do not replace the collected version. Keep the initial PDF; save later dated, signed revisions in `submissions/class17/revisions/`.
+
+For the 10% consolidated and updated project record, place your final signed copy in `worksheets/` by **2 December 2026 at 11:50 (UTC+4)**, following the [Class 20 final worksheet instructions](../module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets). Keep this class's collected checkpoint unchanged.
 
 The file above is the required worksheet submission. The [editable project record](../resources/project-workbook/project-record.md) is a working aid, not a second submission. Use the guidance below while doing your project work.
 

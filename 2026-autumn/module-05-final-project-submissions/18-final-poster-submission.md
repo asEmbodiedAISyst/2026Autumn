@@ -12,13 +12,15 @@ The [RSS 2026 poster instructions](https://roboticsconference.org/2026/informati
 
 > A0 (841 wide x 1189mm high) and portrait orientation.
 
-For this course, submit one **PDF**. Name it `TeamNN-poster.pdf`, replacing `NN` with your two-digit team number: `01`–`08`. Team 01 submits `poster/Team01-poster.pdf`. The teaching team prints posters submitted by the deadline; teams arrange printing for late submissions.
+For this course, submit one **PDF**. Name it `TeamNN-poster.pdf`, replacing `NN` with your two-digit team number: `01`–`08`. Team 01 submits `poster/Team01-poster.pdf`. Include your team identifier (**Team01–Team08**), project title and authors on the poster. The teaching team prints posters submitted by the deadline; teams arrange printing for late submissions.
 
 ## How to submit and how we collect
 
 Commit and push the PDF to the `main` branch of your assigned team repository before the deadline. Open the uploaded PDF on GitHub to confirm it is available.
 
-At the deadline, the teaching team records and collects the remote `main` revision. We rename the collected file `TeamNN-poster-YYMMDD-HHMMSS.pdf`. The suffix is the GitHub-recorded push time of the submitted file version, in Abu Dhabi time (UTC+4), used to check the deadline. We record collection time separately. Later pushes do not replace the collected submission. No separate submission form or record is required.
+At the deadline, the teaching team records the remote `main` commit, collects the required files from that revision and retains the snapshot. We record the GitHub push time for the submitted version and the collection time separately, in Abu Dhabi time (UTC+4). The deadline concerns when the version reached GitHub, not its local commit date. Later pushes do not replace the collected version. Confirm teaching-team access before the deadline; report an access problem promptly.
+
+For our collected copy, we use `TeamNN-poster-YYMMDD-HHMMSS.pdf`. **Keep your submitted filename as `TeamNN-poster.pdf`; do not add a timestamp.** The teaching team adds the suffix using the GitHub-recorded submission push time, not the collection time. No separate upload, email, release, tag, manifest or student collection record is required.
 
 ## Example and preparation guidance
 

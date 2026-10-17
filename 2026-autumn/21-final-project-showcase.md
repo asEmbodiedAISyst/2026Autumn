@@ -12,15 +12,16 @@ Present what your team built, what experience/data it generated, and what the ev
 
 Have your poster, the submitted repository and your video ready to open. Bring the prepared system if it is part of your demonstration, together with the configuration, data or logs needed to explain one result. Keep a recorded or replay fallback available and label what it shows.
 
-**The submission arrangements in Classes 18–20 remain unchanged.** The teaching team collects the specified versions from `main` in each assigned private team repository. Your existing files are:
+**Use the submission arrangements in Classes 18–20.** The teaching team collects the specified versions from `main` in each assigned private team repository. Your existing files are:
 
 | Artifact | Where to find it in your team repository |
 | --- | --- |
 | [Poster](module-05-final-project-submissions/18-final-poster-submission.md) | `poster/TeamNN-poster.pdf` |
 | [Code and reproduction instructions](module-05-final-project-submissions/19-final-code-submission.md) | `code/`, starting with `code/README.md` |
 | [Video](module-05-final-project-submissions/20-final-video-submission.md) | `video/TeamNN-video.mp4` |
+| [Six final updated worksheets](module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets) | `worksheets/TeamNN-Class12-Claim.pdf` through `worksheets/TeamNN-Class17-Decision.pdf`, as individually listed in Class 20 |
 
-Replace `NN` with your assigned team number, `01`–`08`. Class 21 adds **no new upload, worksheet or separate presentation-video file**. If the demonstrated configuration differs from the collected submission, identify the change and its effect on the evidence; it does not replace the collected version.
+Replace `NN` with your assigned team number, `01`–`08`. The video and six final updated worksheets are due **2 December 2026 at 11:50 (UTC+4)**. Class 21 adds **no new upload, worksheet or separate presentation-video file**. If the demonstrated configuration differs from the collected submission, identify the change and its effect on the evidence; it does not replace the collected version.
 
 ## Present the project
 

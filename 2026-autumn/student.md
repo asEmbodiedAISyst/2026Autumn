@@ -100,7 +100,7 @@ Examples of unacceptable practice include inventing or altering measurements, hi
 * Nov 25 @ 1150: Worksheet 6 — Decision
 * Nov 27 @ 1050: Final Poster
 * Dec 01 @ 1020: Final Code
-* Dec 02 @ 1150: Final Video
+* Dec 02 @ 1150: Final Video and six final updated worksheets (consolidated project record)
 * Dec 04 @ 0900: Final Presentation & Final Demonstration
 
 ### How to Prepare
@@ -113,11 +113,11 @@ Using asMagicBrain is optional. You can access course materials and project work
 
 ### Final Project and Worksheets
 
-Develop one team project through six worksheets: **Claim → Experience → System → Grounding → Learning → Decision**. The team guide and worksheet files will be provided before the project phase.
+Develop one team project through six worksheets: **Claim → Experience → System → Grounding → Learning → Decision**. The [worksheet guide and printable files](resources/project-workbook/README.md) provide exact paths, deadlines and submission instructions.
 
 Complete one worksheet for each of Classes 12–17. Submit it handwritten and signed by every team member before the end of the corresponding session. You may revise earlier worksheets as your project develops; keep earlier submissions and explain any material changes.
 
-The final project package includes the worksheet portfolio, reproducible code and environment instructions, relevant data and results, a technical poster and a video with narration or explanatory captions. Present and demonstrate the project at the final showcase. [Class 18](module-05-final-project-submissions/18-final-poster-submission.md), [Class 19](module-05-final-project-submissions/19-final-code-submission.md) and [Class 20](module-05-final-project-submissions/20-final-video-submission.md) state the submission requirements, filenames, deadlines and collection procedure.
+The 10% consolidated and updated project record is submitted as six final signed worksheet PDFs in `worksheets/` by **2 December 2026 at 11:50 (UTC+4)**; [Class 20](module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets) lists their filenames. Preserve the original Class 12–17 checkpoints. No combined portfolio PDF or additional form is required. The final project also includes reproducible code and environment instructions, relevant data and results, a technical poster and a video with narration or explanatory captions. Present and demonstrate the project at the final showcase. [Class 18](module-05-final-project-submissions/18-final-poster-submission.md), [Class 19](module-05-final-project-submissions/19-final-code-submission.md) and [Class 20](module-05-final-project-submissions/20-final-video-submission.md) state the submission requirements, filenames, deadlines and collection procedure.
 
 Use your assigned private team repository for development and final submission. The [Class 01 repository introduction](first-class/01-course-introduction-with-asmagicbrain.md#your-assigned-team-repository) links the eight repositories and explains the folder and deadline-collection workflow.
 

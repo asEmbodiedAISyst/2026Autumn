@@ -42,10 +42,11 @@ Open the repository README and locate `poster/`, `code/` and `video/`. These exi
 | [Class 18: poster](../module-05-final-project-submissions/18-final-poster-submission.md) | `poster/TeamNN-poster.pdf` | 27 November 2026, 10:50 |
 | [Class 19: code](../module-05-final-project-submissions/19-final-code-submission.md) | `code/README.md` and implementation | 1 December 2026, 10:20 |
 | [Class 20: video](../module-05-final-project-submissions/20-final-video-submission.md) | `video/TeamNN-video.mp4` | 2 December 2026, 11:50 |
+| [Class 20: final updated worksheets](../module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets) | Six final signed PDFs in `worksheets/`, using the six filenames listed in Class 20 | 2 December 2026, 11:50 |
 
 Use your two-digit team number in place of `NN`, for example `Team01-poster.pdf` and `Team01-video.mp4`. The teaching team appends `-YYMMDD-HHMMSS` to collected filenames, using the GitHub-recorded submission push time in Abu Dhabi time (UTC+4), for example `Team01-poster-261127-104530.pdf`. Students keep code in the existing repository; instructors create `Team01-code-YYMMDD-HHMMSS.zip`.
 
-Commit and push the deliverable to `main` before its deadline, then inspect the files on GitHub. A saved local file or unpushed commit is not available for collection. At each deadline the teaching team captures the remote revision, records its commit and collection time, and clones that revision. Later changes remain later work; they do not replace the collected snapshot.
+Commit and push the deliverable to `main` before its deadline, then inspect the files on GitHub. A saved local file or unpushed commit is not available for collection. At each deadline the teaching team captures the remote revision, records its commit, GitHub push time and collection time separately, and retains that revision. The deadline concerns when the version reached GitHub, not its local commit date. Later changes remain later work; they do not replace the collected snapshot.
 
 No release, tag, manifest or separate student collection record is required. The folders are the submission route. Classes 18–20 explain preparation of each artifact; these are progressive opportunities to finalize the same project.
 

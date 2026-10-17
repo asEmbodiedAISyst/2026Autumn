@@ -1,6 +1,6 @@
 # Team project record
 
-This is one evolving digital draft. Submit the corresponding worksheet handwritten and signed by every team member before the end of Classes 12–17. Push the complete scan to the exact TeamNN-ClassXX-View.pdf path shown on the corresponding class page in the assigned private team repository; no physical hand-in is required. Preserve later dated, signed revisions separately. See the [advance guide](https://x.ancorasir.com/rob7103-8103/module-04-worksheets-guided-final-project-preparation/12-final-project-i-claim).
+This is one evolving digital draft. Submit the corresponding worksheet handwritten and signed by every team member before the end of Classes 12–17. Push the complete scan to the exact TeamNN-ClassXX-View.pdf path shown on the corresponding class page in the assigned private team repository; no physical hand-in is required. Preserve later dated, signed revisions separately. For the assessed final update, submit six final signed PDFs under `worksheets/` by 2 December 2026 at 11:50 (UTC+4), as specified in [Class 20](../../module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets). This editable draft is a working aid, not a replacement for those PDFs. See the [advance guide](https://x.ancorasir.com/rob7103-8103/module-04-worksheets-guided-final-project-preparation/12-final-project-i-claim).
 
 Team identifier: [Team01–Team08, matching the assigned repository] · Project/claim ID: [enter] · Configuration ID: [enter]
 

@@ -1,10 +1,12 @@
 ---
-description: 02 December 2026 · 10:30–11:50 · CR6
+description: 02 December 2026 · Deadline 11:50 · No class meeting
 ---
 
 # 20 Final Video Submission
 
 **Deadline: 2 December 2026, 11:50 — Abu Dhabi time (UTC+4).**
+
+**Public holiday: no class meeting. The submission deadline remains in effect.**
 
 ## Submission requirements
 
@@ -14,13 +16,35 @@ Use the [RSS 2026 video specifications](https://roboticsconference.org/2026/info
 - **Resolution:** “1920x1080 pixels (1080p)”
 - **Format:** “MPEG-4”
 
-**Course adaptation:** include narration or explanatory captions so the video can be understood without a live presenter. Submit an `.mp4` file named `TeamNN-video.mp4`, replacing `NN` with your two-digit team number: `01`–`08`. Team 01 submits `video/Team01-video.mp4`.
+**Course adaptation:** include narration or explanatory captions so the video can be understood without a live presenter. Submit an `.mp4` file named `TeamNN-video.mp4`, replacing `NN` with your two-digit team number: `01`–`08`. Team 01 submits `video/Team01-video.mp4`. Show your team identifier (**Team01–Team08**), project title and authors in the video.
 
 ## How to submit and how we collect
 
 Commit and push the video to the `main` branch of your assigned team repository before the deadline. Open the uploaded copy on GitHub and check playback. For upload help, use [GitHub’s large-file guidance](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
 
-At the deadline, the teaching team records and collects the remote `main` revision. We rename the collected file `TeamNN-video-YYMMDD-HHMMSS.mp4`. The suffix is the GitHub-recorded push time of the submitted file version, in Abu Dhabi time (UTC+4), used to check the deadline. We record collection time separately. Later pushes do not replace the collected submission. No separate submission form or record is required.
+At the deadline, the teaching team records the remote `main` commit, collects the required files from that revision and retains the snapshot. We record the GitHub push time for the submitted version and the collection time separately, in Abu Dhabi time (UTC+4). The deadline concerns when the version reached GitHub, not its local commit date. Later pushes do not replace the collected version. Confirm teaching-team access before the deadline; report an access problem promptly.
+
+For our collected copy, we use `TeamNN-video-YYMMDD-HHMMSS.mp4`. **Keep your submitted filename as `TeamNN-video.mp4`; do not add a timestamp.** The teaching team adds the suffix using the GitHub-recorded submission push time, not the collection time. No separate upload, email, release, tag, manifest or student collection record is required.
+
+
+## Final updated worksheets
+
+The **10% consolidated and updated project record** consists of six final signed worksheet PDFs. Submit them in your assigned private repository by **2 December 2026 at 11:50, Abu Dhabi time (UTC+4)**, the same deadline as the video.
+
+| Final worksheet | Required path |
+| --- | --- |
+| Claim | `worksheets/TeamNN-Class12-Claim.pdf` |
+| Experience | `worksheets/TeamNN-Class13-Experience.pdf` |
+| System | `worksheets/TeamNN-Class14-System.pdf` |
+| Grounding | `worksheets/TeamNN-Class15-Grounding.pdf` |
+| Learning | `worksheets/TeamNN-Class16-Learning.pdf` |
+| Decision | `worksheets/TeamNN-Class17-Decision.pdf` |
+
+Replace `NN` with your assigned two-digit team number, `01`–`08`. Include every required page and your team identifier/project title: both A4 pages for each of Claim through Learning; both A3 Decision sides and its A4 review page for Decision. Retain all 27 Decision checks.
+
+Bring the six worksheets into agreement with your final claim, configuration, evidence and conclusions. Explain material changes in the existing worksheet/review fields, date the revised versions and obtain every member's signature. If a worksheet is unchanged, reuse its signed scan. Preserve the original Class 12–17 submissions and any intermediate revisions in their existing locations.
+
+Push these six PDFs to remote `main` and open each on GitHub to check completeness and readability. The teaching team collects the six named files from `worksheets/` at the video deadline using the same commit, push-time and collection-time procedure above. **No combined PDF, additional form, separate upload or student-created ZIP is required.**
 
 ## Example and preparation guidance
 
