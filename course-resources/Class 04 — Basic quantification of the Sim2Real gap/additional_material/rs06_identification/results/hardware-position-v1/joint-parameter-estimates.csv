@@ -1,0 +1,13 @@
+method,controller,parameter,value,unit,at_lower_bound,at_upper_bound
+method1,H1,armature,0.0625670066392758,kg m^2,False,False
+method1,H1,damping,0.6530815270251943,N m s/rad,False,False
+method1,H1,frictionloss,0.22620173419256287,N m,False,False
+method1,H2,armature,0.04599954125963461,kg m^2,False,False
+method1,H2,damping,1.2722060777037498,N m s/rad,False,False
+method1,H2,frictionloss,0.25953699725578583,N m,False,False
+method2,H1,armature,0.010857708399476428,kg m^2,False,False
+method2,H1,damping,0.06939534113532167,N m s/rad,False,False
+method2,H1,frictionloss,0.2993065116827139,N m,False,False
+method2,H2,armature,0.012213118655392333,kg m^2,False,False
+method2,H2,damping,0.22973747028845468,N m s/rad,False,False
+method2,H2,frictionloss,0.272210031286206,N m,False,False

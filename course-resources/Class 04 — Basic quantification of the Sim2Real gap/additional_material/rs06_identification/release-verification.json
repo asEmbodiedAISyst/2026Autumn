@@ -1,0 +1,41 @@
+{
+  "checks": {
+    "H1_is_50_3p38": true,
+    "H2_is_100_1p95": true,
+    "all_source_joint_names_are_rs06_joint": true,
+    "g1_free_fall_schema_present": true,
+    "hardware_plan_requires_108_accepted_runs": true,
+    "mujoco_fixture_inertias_match_cad_contract": true,
+    "mujoco_zero_pose_bias_matches_gravity_first_moment": true,
+    "no_physical_evidence_claimed": true,
+    "position_archive_hash_matches": true,
+    "position_has_32_episodes": true,
+    "position_split_counts_are_18_8_6": true,
+    "sim_position_method2_accepted": true,
+    "sim_torque_method2_recovers_source": true,
+    "simulation_and_hardware_unique_matrices_pair_exactly": true,
+    "simulation_generator_verification_passed": true,
+    "torque_archive_hash_matches": true,
+    "torque_has_same_32_episodes": true
+  },
+  "minimum_accepted_hardware_runs": 108,
+  "mujoco_fixture_inertia_kg_m2": {
+    "B0": 0.012909528989139286,
+    "B1": 0.05767903517772384,
+    "G1": 0.03529428208371942,
+    "M0": 9.999999960041972e-13
+  },
+  "mujoco_qfrc_bias_at_zero_Nm": {
+    "B0": 0.0003586060433796006,
+    "B1": 0.0003586060433736186,
+    "G1": 1.2658486060433773,
+    "M0": -6.462348535570529e-27
+  },
+  "passed": true,
+  "position_samples": 34156,
+  "schema_version": "phyintel-chapter02-rs06-release-verification-v1",
+  "sim_position_method1_accepted": false,
+  "sim_position_method2_accepted": true,
+  "sim_torque_method2_max_relative_source_error": 1.536103593179086e-07,
+  "torque_samples": 170652
+}

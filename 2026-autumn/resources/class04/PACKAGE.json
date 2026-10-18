@@ -1,11 +1,11 @@
 {
   "class": 4,
   "source_version": "0.8",
-  "scope": "Comprehensive notes; retained 98 g XC330 case, declared-110 g XC330 fit and RS06 recorded evidence; existing optional scientific replay code retained",
+  "scope": "Current source-led lesson; original author package is linked from README. Earlier assets retained historically.",
   "verification_scope": "Saved metrics arithmetic, source hashes, selected physical trace and figure generation checked; original experiments and fresh identification not rerun",
   "files_sha256": {
-    "2026-autumn/module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md": "f18128c82b822401ca10a1527955beb484b2dbc6322546cc38d0b3be2d4dd796",
-    "2026-autumn/resources/class04/README.md": "2039c29a2c7f0e87cb1f82f9e260e2ea279531f6788cc075a491e5d3667ae637",
+    "2026-autumn/module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md": "8cb8944a1325f64036a200abb8e25bb4dda8f05dcb52d3b455bca6bdc9ec93f5",
+    "2026-autumn/resources/class04/README.md": "4d7eda3d7d311bd266a527b5875a4b9624a18404ce0c4174f75d12e15c9e836f",
     "2026-autumn/resources/class04/code/analyze_episode.py": "cd0295226084b229f7a0e11a43db03de28f5e56ed4364cf4cde4af4367e8dc6d",
     "2026-autumn/resources/class04/code/requirements-analysis.txt": "18ec9ed4f4561b771a676b88fe0cafe04888c7f84e053353a8baffeb411da712",
     "2026-autumn/resources/class04/data/README.md": "6fc7a46039e0a546056492fe61563dbf3d1db81649380d80f8eb35d373aefdcd",

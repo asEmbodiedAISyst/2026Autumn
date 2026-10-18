@@ -1,0 +1,291 @@
+{
+  "controllers": {
+    "H1": {
+      "kd": 3.38,
+      "kp": 50.0,
+      "mode": "position"
+    },
+    "H2": {
+      "kd": 1.95,
+      "kp": 100.0,
+      "mode": "position"
+    }
+  },
+  "episodes": [
+    {
+      "controller_id": "H1",
+      "episode_id": "calibration__H1__M0__P01_slow_triangle",
+      "fixture_id": "M0",
+      "profile_definition_id": "P01_slow_triangle",
+      "profile_id": "P01",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "calibration__H1__M0__P02_multisine",
+      "fixture_id": "M0",
+      "profile_definition_id": "P02_multisine",
+      "profile_id": "P02",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "calibration__H1__M0__P03_smooth_levels",
+      "fixture_id": "M0",
+      "profile_definition_id": "P03_smooth_levels",
+      "profile_id": "P03",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "calibration__H1__B0__P01_slow_triangle",
+      "fixture_id": "B0",
+      "profile_definition_id": "P01_slow_triangle",
+      "profile_id": "P01",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "calibration__H1__B0__P02_multisine",
+      "fixture_id": "B0",
+      "profile_definition_id": "P02_multisine",
+      "profile_id": "P02",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "calibration__H1__B0__P03_smooth_levels",
+      "fixture_id": "B0",
+      "profile_definition_id": "P03_smooth_levels",
+      "profile_id": "P03",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "calibration__H1__B1__P01_slow_triangle",
+      "fixture_id": "B1",
+      "profile_definition_id": "P01_slow_triangle",
+      "profile_id": "P01",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "calibration__H1__B1__P02_multisine",
+      "fixture_id": "B1",
+      "profile_definition_id": "P02_multisine",
+      "profile_id": "P02",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "calibration__H1__B1__P03_smooth_levels",
+      "fixture_id": "B1",
+      "profile_definition_id": "P03_smooth_levels",
+      "profile_id": "P03",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "model_selection__H1__B0__P04_chirp",
+      "fixture_id": "B0",
+      "profile_definition_id": "P04_chirp",
+      "profile_id": "P04",
+      "split": "model_selection"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "model_selection__H1__B0__P05_wide_sine",
+      "fixture_id": "B0",
+      "profile_definition_id": "P05_wide_sine",
+      "profile_id": "P05",
+      "split": "model_selection"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "model_selection__H1__B1__P04_chirp",
+      "fixture_id": "B1",
+      "profile_definition_id": "P04_chirp",
+      "profile_id": "P04",
+      "split": "model_selection"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "model_selection__H1__B1__P05_wide_sine",
+      "fixture_id": "B1",
+      "profile_definition_id": "P05_wide_sine",
+      "profile_id": "P05",
+      "split": "model_selection"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "held_out__H1__G1__P06_heldout_composite",
+      "fixture_id": "G1",
+      "profile_definition_id": "P06_heldout_composite",
+      "profile_id": "P06",
+      "split": "held_out"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "held_out__H1__G1__P07_heldout_sine_hold",
+      "fixture_id": "G1",
+      "profile_definition_id": "P07_heldout_sine_hold",
+      "profile_id": "P07",
+      "split": "held_out"
+    },
+    {
+      "controller_id": "H1",
+      "episode_id": "held_out__H1__B1__P06_heldout_composite",
+      "fixture_id": "B1",
+      "profile_definition_id": "P06_heldout_composite",
+      "profile_id": "P06",
+      "split": "held_out"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "calibration__H2__M0__P01_slow_triangle",
+      "fixture_id": "M0",
+      "profile_definition_id": "P01_slow_triangle",
+      "profile_id": "P01",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "calibration__H2__M0__P02_multisine",
+      "fixture_id": "M0",
+      "profile_definition_id": "P02_multisine",
+      "profile_id": "P02",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "calibration__H2__M0__P03_smooth_levels",
+      "fixture_id": "M0",
+      "profile_definition_id": "P03_smooth_levels",
+      "profile_id": "P03",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "calibration__H2__B0__P01_slow_triangle",
+      "fixture_id": "B0",
+      "profile_definition_id": "P01_slow_triangle",
+      "profile_id": "P01",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "calibration__H2__B0__P02_multisine",
+      "fixture_id": "B0",
+      "profile_definition_id": "P02_multisine",
+      "profile_id": "P02",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "calibration__H2__B0__P03_smooth_levels",
+      "fixture_id": "B0",
+      "profile_definition_id": "P03_smooth_levels",
+      "profile_id": "P03",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "calibration__H2__B1__P01_slow_triangle",
+      "fixture_id": "B1",
+      "profile_definition_id": "P01_slow_triangle",
+      "profile_id": "P01",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "calibration__H2__B1__P02_multisine",
+      "fixture_id": "B1",
+      "profile_definition_id": "P02_multisine",
+      "profile_id": "P02",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "calibration__H2__B1__P03_smooth_levels",
+      "fixture_id": "B1",
+      "profile_definition_id": "P03_smooth_levels",
+      "profile_id": "P03",
+      "split": "calibration"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "model_selection__H2__B0__P04_chirp",
+      "fixture_id": "B0",
+      "profile_definition_id": "P04_chirp",
+      "profile_id": "P04",
+      "split": "model_selection"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "model_selection__H2__B0__P05_wide_sine",
+      "fixture_id": "B0",
+      "profile_definition_id": "P05_wide_sine",
+      "profile_id": "P05",
+      "split": "model_selection"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "model_selection__H2__B1__P04_chirp",
+      "fixture_id": "B1",
+      "profile_definition_id": "P04_chirp",
+      "profile_id": "P04",
+      "split": "model_selection"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "model_selection__H2__B1__P05_wide_sine",
+      "fixture_id": "B1",
+      "profile_definition_id": "P05_wide_sine",
+      "profile_id": "P05",
+      "split": "model_selection"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "held_out__H2__G1__P06_heldout_composite",
+      "fixture_id": "G1",
+      "profile_definition_id": "P06_heldout_composite",
+      "profile_id": "P06",
+      "split": "held_out"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "held_out__H2__G1__P07_heldout_sine_hold",
+      "fixture_id": "G1",
+      "profile_definition_id": "P07_heldout_sine_hold",
+      "profile_id": "P07",
+      "split": "held_out"
+    },
+    {
+      "controller_id": "H2",
+      "episode_id": "held_out__H2__B1__P06_heldout_composite",
+      "fixture_id": "B1",
+      "profile_definition_id": "P06_heldout_composite",
+      "profile_id": "P06",
+      "split": "held_out"
+    }
+  ],
+  "g1_free_fall_note": "Free-fall trials are separate supporting data and are not substitutes for G1/P06 or G1/P07 closed-loop episodes.",
+  "minimum_accepted_physical_run_count": 108,
+  "minimum_accepted_repeats": {
+    "calibration": 3,
+    "held_out": 5,
+    "model_selection": 3
+  },
+  "modification_from_reference_v1_1": [
+    "remove B2 calibration combinations because no B2 fixture is available",
+    "replace B2 by B1 for P04/P05 model selection",
+    "retain the six held-out G1/B1 combinations"
+  ],
+  "schema_version": "phyintel-chapter02-rs06-frozen-episode-matrix-v1",
+  "split_counts": {
+    "calibration": 18,
+    "held_out": 6,
+    "model_selection": 8
+  },
+  "unique_episode_count": 32
+}

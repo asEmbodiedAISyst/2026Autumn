@@ -1,0 +1,238 @@
+{
+  "events": [
+    {
+      "label": "torque_enable_requested",
+      "host_monotonic_ns": 1031527316189208,
+      "host_wall_time_ns": 1789995427582319090
+    },
+    {
+      "label": "profile_start",
+      "host_monotonic_ns": 1031531316544550,
+      "host_wall_time_ns": 1789995431582674742
+    },
+    {
+      "label": "profile_complete",
+      "host_monotonic_ns": 1031546069425215,
+      "host_wall_time_ns": 1789995446335555106
+    },
+    {
+      "label": "torque_off_checked",
+      "host_monotonic_ns": 1031546085853758,
+      "host_wall_time_ns": 1789995446351983619
+    }
+  ],
+  "checked_cycles": 1876,
+  "missing_counts": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 6,
+    "9": 6,
+    "10": 6,
+    "11": 6,
+    "12": 6,
+    "13": 6,
+    "14": 6,
+    "15": 6
+  },
+  "primary_missing_counts": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 6,
+    "9": 6,
+    "10": 6,
+    "11": 6,
+    "12": 6,
+    "13": 6,
+    "14": 6,
+    "15": 6
+  },
+  "setup_zero_acquisition": {
+    "enabled": true,
+    "method": "bounded_logged_integral_goal_bias",
+    "feedback_gain_per_sample": 0.05,
+    "max_abs_goal_bias_ticks": 256,
+    "active_hold_s": 2.0,
+    "first_experimental_goal_raw": 2048,
+    "strict_tolerance_ticks": 5,
+    "alignment_reference_motor_id": 14,
+    "alignment_reference_position_raw": 2048,
+    "alignment_tolerance_ticks": 5,
+    "all_aligned_to_reference": true,
+    "per_motor": {
+      "0": {
+        "final_accumulated_bias_ticks": -4.799999999999997,
+        "final_applied_bias_ticks": -5,
+        "maximum_abs_applied_bias_ticks": 5,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "1": {
+        "final_accumulated_bias_ticks": 0.20000000000000018,
+        "final_applied_bias_ticks": 0,
+        "maximum_abs_applied_bias_ticks": 1,
+        "final_measured_position_raw": 2049,
+        "final_measured_error_ticks": -1,
+        "delta_from_reference_ticks": 1
+      },
+      "2": {
+        "final_accumulated_bias_ticks": 0.9000000000000002,
+        "final_applied_bias_ticks": 1,
+        "maximum_abs_applied_bias_ticks": 1,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "3": {
+        "final_accumulated_bias_ticks": -0.2,
+        "final_applied_bias_ticks": 0,
+        "maximum_abs_applied_bias_ticks": 1,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "4": {
+        "final_accumulated_bias_ticks": -0.8499999999999961,
+        "final_applied_bias_ticks": -1,
+        "maximum_abs_applied_bias_ticks": 4,
+        "final_measured_position_raw": 2047,
+        "final_measured_error_ticks": 1,
+        "delta_from_reference_ticks": -1
+      },
+      "5": {
+        "final_accumulated_bias_ticks": -2.1500000000000012,
+        "final_applied_bias_ticks": -2,
+        "maximum_abs_applied_bias_ticks": 3,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "6": {
+        "final_accumulated_bias_ticks": 3.299999999999998,
+        "final_applied_bias_ticks": 3,
+        "maximum_abs_applied_bias_ticks": 3,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "7": {
+        "final_accumulated_bias_ticks": -0.6500000000000002,
+        "final_applied_bias_ticks": -1,
+        "maximum_abs_applied_bias_ticks": 2,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "8": {
+        "final_accumulated_bias_ticks": 1.8500000000000065,
+        "final_applied_bias_ticks": 2,
+        "maximum_abs_applied_bias_ticks": 4,
+        "final_measured_position_raw": 2047,
+        "final_measured_error_ticks": 1,
+        "delta_from_reference_ticks": -1
+      },
+      "9": {
+        "final_accumulated_bias_ticks": -2.299999999999996,
+        "final_applied_bias_ticks": -2,
+        "maximum_abs_applied_bias_ticks": 4,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "10": {
+        "final_accumulated_bias_ticks": 0.7,
+        "final_applied_bias_ticks": 1,
+        "maximum_abs_applied_bias_ticks": 2,
+        "final_measured_position_raw": 2047,
+        "final_measured_error_ticks": 1,
+        "delta_from_reference_ticks": -1
+      },
+      "11": {
+        "final_accumulated_bias_ticks": 2.9499999999999975,
+        "final_applied_bias_ticks": 3,
+        "maximum_abs_applied_bias_ticks": 3,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "12": {
+        "final_accumulated_bias_ticks": 0.25000000000000033,
+        "final_applied_bias_ticks": 0,
+        "maximum_abs_applied_bias_ticks": 3,
+        "final_measured_position_raw": 2047,
+        "final_measured_error_ticks": 1,
+        "delta_from_reference_ticks": -1
+      },
+      "13": {
+        "final_accumulated_bias_ticks": -1.2000000000000006,
+        "final_applied_bias_ticks": -1,
+        "maximum_abs_applied_bias_ticks": 3,
+        "final_measured_position_raw": 2047,
+        "final_measured_error_ticks": 1,
+        "delta_from_reference_ticks": -1
+      },
+      "14": {
+        "final_accumulated_bias_ticks": 4.9499999999999975,
+        "final_applied_bias_ticks": 5,
+        "maximum_abs_applied_bias_ticks": 5,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "15": {
+        "final_accumulated_bias_ticks": -3.799999999999995,
+        "final_applied_bias_ticks": -4,
+        "maximum_abs_applied_bias_ticks": 4,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      }
+    }
+  },
+  "terminal_state": {
+    "all_torque_disabled": true,
+    "per_bus": {
+      "bus1": {
+        "torque_enable": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "all_torque_disabled": true,
+        "group_stop_errors": []
+      },
+      "bus2": {
+        "torque_enable": {
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 0,
+          "12": 0,
+          "13": 0,
+          "14": 0,
+          "15": 0
+        },
+        "all_torque_disabled": true,
+        "group_stop_errors": []
+      }
+    },
+    "errors": {}
+  }
+}

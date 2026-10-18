@@ -1,0 +1,80 @@
+{
+  "controller": {
+    "controller_id": "H2",
+    "kd": 1.95,
+    "kp": 100.0,
+    "mode": "position",
+    "motor_model": "RS06"
+  },
+  "evidence_role": "physical static-gravity supporting calibration data",
+  "field_contract": {
+    "metadata_fields": [
+      "episode_id",
+      "split",
+      "controller_id",
+      "fixture_id",
+      "fixture_orientation",
+      "target_position_rad",
+      "approach_direction",
+      "run_id",
+      "sequence_id",
+      "host_time_utc"
+    ],
+    "numeric_fields": [
+      "time_s",
+      "t_command_s",
+      "t_state_s",
+      "position_cmd_rad",
+      "position_applied_rad",
+      "position_acknowledged_rad",
+      "position_meas_rad",
+      "velocity_meas_rad_s",
+      "torque_feedback_Nm",
+      "gravity_torque_model_Nm",
+      "tracking_error_rad",
+      "command_saturated",
+      "target_matches_current_command",
+      "echo_delay_steps",
+      "loop_dt_s",
+      "schedule_lateness_s",
+      "feedback_gap_s",
+      "valid"
+    ],
+    "valid": "true only when the full approach/settle trajectory and retained record window are complete, the command is unsaturated, and its target echo is recognized"
+  },
+  "fixture": {
+    "fixture_id": "G1-left-fixed",
+    "fixture_orientation": "left_fixed",
+    "geometry_metadata_complete": false,
+    "gravity_first_moment_kg_m": null,
+    "gravity_m_s2": 9.81,
+    "gravity_phase_rad": null,
+    "gravity_torque_sign": 1.0,
+    "load_reversal_performed": false
+  },
+  "notes": "",
+  "observation_boundary": {
+    "available_signal": "RS06 firmware torque_feedback_Nm",
+    "independent_shaft_torque_available": false,
+    "notice": "torque_feedback_Nm is a firmware estimate. It is not raw motor current and not an independent output-shaft torque measurement.",
+    "present_current_A_available": false,
+    "reference_current_to_torque_fit_supported": false
+  },
+  "reference_alignment": {
+    "adaptations": [
+      "one fixed left-side G1 orientation",
+      "expanded angular span supplies both gravity-torque signs",
+      "50 Hz RS06 hardware sampling",
+      "torque_feedback_Nm replaces unavailable present_current_A"
+    ],
+    "reference_subset": "Sim-Gravity Data",
+    "same": [
+      "closed-loop position hold",
+      "seven poses",
+      "two approach directions",
+      "one-second retained steady window"
+    ]
+  },
+  "release_id": "chapter02-rs06-static-gravity-g1_left_static_gravity_h2_20260825T170106Z",
+  "schema_version": "phyintel-chapter02-rs06-static-gravity-hardware-v1"
+}

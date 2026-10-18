@@ -216,6 +216,8 @@ $$
 
 The chosen zero is a plotting reference; it does not calibrate the output to the room. At this row, measured-minus-internal-reference is 10 counts, approximately 0.879°. Measured-minus-goal-readback is 17 counts, approximately 1.494°. These are two different tracking comparisons, not two estimates of a simulation error. The controller's position-error convention $$q_r-y_q$$ reverses the first sign.
 
+The [original command and telemetry tables](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2002%20%E2%80%94%20Actuator%20basics%20for%20controlled%20action/additional_material/data/hardware/xc330_physical_demo) are included unchanged. Their file hashes match the retained raw files used for this worked example.
+
 The same row reports negative velocity while the angle is still positive: the output is returning from its positive peak. A positive angle therefore does not imply positive motion. This observation identifies signals and signs; it does not identify which physical effect caused their separation. The record is XC330-M288-T, ID 5, firmware 53, Mode 5, M0 motor-only configuration, at about 2.001918 s on the host receive-end clock. The [retained sample](../resources/class02/results/hardware-demo/sample-400.json) identifies its raw and converted values.
 
 Several mechanisms can explain a discrepancy:

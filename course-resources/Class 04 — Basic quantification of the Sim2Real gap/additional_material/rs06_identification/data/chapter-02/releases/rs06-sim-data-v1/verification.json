@@ -1,0 +1,39 @@
+{
+  "checks": {
+    "B1_replaces_B2_in_model_selection": true,
+    "G1_is_excluded_from_calibration": true,
+    "all_four_fixture_sources_present": true,
+    "all_joint_names_are_rs06_joint": true,
+    "all_splits_present": true,
+    "applied_command_boundary_matches_contract": true,
+    "archive_arrays_have_one_length": true,
+    "archive_fields_match_manifest": true,
+    "archive_hash_matches_manifest": true,
+    "baseline_clocks_are_aligned": true,
+    "both_controllers_present": true,
+    "commands_within_ctrlrange": true,
+    "episode_count_matches_contract": true,
+    "episode_hashes_match_summary": true,
+    "held_out_G1_present": true,
+    "m0_uses_declared_numerical_regularization": true,
+    "m0_visual_has_no_collision_or_density": true,
+    "models_load_in_mujoco": true,
+    "modified_matrix_has_32_episodes": true,
+    "modified_matrix_split_counts_are_18_8_6": true,
+    "no_B2_fixture_declared": true,
+    "no_episode_dominated_by_source_saturation": true,
+    "nominal_gap_is_measurable": true,
+    "source_motion_within_joint_range": true
+  },
+  "episode_count": 32,
+  "matrix_split_counts": {
+    "calibration": 18,
+    "held_out": 6,
+    "model_selection": 8
+  },
+  "maximum_source_saturation_fraction": 0.0,
+  "median_nominal_source_output_gap_rmse_rad": 0.0005099837576289647,
+  "passed": true,
+  "sample_count": 34156,
+  "warnings": []
+}

@@ -1,0 +1,19 @@
+{
+ "model": "claude-sonnet-5-5",
+ "mode": "step",
+ "episodes": [
+  {
+   "success": true,
+   "calls": 4,
+   "ended_by": "sim_success",
+   "cost_usd": 0.0187784,
+   "usage": {
+    "input": 4395,
+    "output": 875,
+    "cache_read": 6192,
+    "cache_write": 0
+   },
+   "seconds": 13.631402316997992
+  }
+ ]
+}

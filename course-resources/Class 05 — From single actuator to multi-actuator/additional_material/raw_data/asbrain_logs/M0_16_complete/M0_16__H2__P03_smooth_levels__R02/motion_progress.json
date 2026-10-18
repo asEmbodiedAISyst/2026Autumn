@@ -1,0 +1,95 @@
+{
+  "events": [
+    {
+      "label": "torque_enable_requested",
+      "host_monotonic_ns": 415652760520683,
+      "host_wall_time_ns": 1789379554292291978
+    },
+    {
+      "label": "profile_start",
+      "host_monotonic_ns": 415655761131440,
+      "host_wall_time_ns": 1789379557292900973
+    },
+    {
+      "label": "profile_complete",
+      "host_monotonic_ns": 415664304078218,
+      "host_wall_time_ns": 1789379565835847720
+    },
+    {
+      "label": "torque_off_checked",
+      "host_monotonic_ns": 415664320137059,
+      "host_wall_time_ns": 1789379565851906582
+    }
+  ],
+  "checked_cycles": 1155,
+  "missing_counts": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 6,
+    "9": 6,
+    "10": 6,
+    "11": 6,
+    "12": 6,
+    "13": 6,
+    "14": 6,
+    "15": 6
+  },
+  "primary_missing_counts": {
+    "0": 0,
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 6,
+    "9": 6,
+    "10": 6,
+    "11": 6,
+    "12": 6,
+    "13": 6,
+    "14": 6,
+    "15": 6
+  },
+  "terminal_state": {
+    "all_torque_disabled": true,
+    "per_bus": {
+      "bus1": {
+        "torque_enable": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "all_torque_disabled": true,
+        "group_stop_errors": []
+      },
+      "bus2": {
+        "torque_enable": {
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 0,
+          "12": 0,
+          "13": 0,
+          "14": 0,
+          "15": 0
+        },
+        "all_torque_disabled": true,
+        "group_stop_errors": []
+      }
+    },
+    "errors": {}
+  }
+}

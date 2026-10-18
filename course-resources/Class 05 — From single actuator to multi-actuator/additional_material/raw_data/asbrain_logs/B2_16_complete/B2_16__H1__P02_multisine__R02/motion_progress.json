@@ -1,0 +1,238 @@
+{
+  "checked_cycles": 1876,
+  "events": [
+    {
+      "host_monotonic_ns": 591222783929615,
+      "host_wall_time_ns": 1789555123050059768,
+      "label": "torque_enable_requested"
+    },
+    {
+      "host_monotonic_ns": 591226784426912,
+      "host_wall_time_ns": 1789555127050556784,
+      "label": "profile_start"
+    },
+    {
+      "host_monotonic_ns": 591241537660464,
+      "host_wall_time_ns": 1789555141803790255,
+      "label": "profile_complete"
+    },
+    {
+      "host_monotonic_ns": 591241553479160,
+      "host_wall_time_ns": 1789555141819608981,
+      "label": "torque_off_checked"
+    }
+  ],
+  "missing_counts": {
+    "0": 0,
+    "1": 0,
+    "10": 0,
+    "11": 0,
+    "12": 0,
+    "13": 0,
+    "14": 0,
+    "15": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0,
+    "9": 0
+  },
+  "primary_missing_counts": {
+    "0": 0,
+    "1": 0,
+    "10": 0,
+    "11": 0,
+    "12": 0,
+    "13": 0,
+    "14": 0,
+    "15": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 0,
+    "8": 0,
+    "9": 0
+  },
+  "setup_zero_acquisition": {
+    "active_hold_s": 2.0,
+    "alignment_reference_motor_id": 14,
+    "alignment_reference_position_raw": 2048,
+    "alignment_tolerance_ticks": 5,
+    "all_aligned_to_reference": true,
+    "enabled": true,
+    "feedback_gain_per_sample": 0.05,
+    "first_experimental_goal_raw": 2048,
+    "max_abs_goal_bias_ticks": 256,
+    "method": "bounded_logged_integral_goal_bias",
+    "per_motor": {
+      "0": {
+        "delta_from_reference_ticks": 0,
+        "final_accumulated_bias_ticks": -12.20000000000001,
+        "final_applied_bias_ticks": -12,
+        "final_measured_error_ticks": 0,
+        "final_measured_position_raw": 2048,
+        "maximum_abs_applied_bias_ticks": 12
+      },
+      "1": {
+        "delta_from_reference_ticks": 1,
+        "final_accumulated_bias_ticks": -0.7,
+        "final_applied_bias_ticks": -1,
+        "final_measured_error_ticks": -1,
+        "final_measured_position_raw": 2049,
+        "maximum_abs_applied_bias_ticks": 3
+      },
+      "10": {
+        "delta_from_reference_ticks": 1,
+        "final_accumulated_bias_ticks": -3.9999999999999942,
+        "final_applied_bias_ticks": -4,
+        "final_measured_error_ticks": -1,
+        "final_measured_position_raw": 2049,
+        "maximum_abs_applied_bias_ticks": 4
+      },
+      "11": {
+        "delta_from_reference_ticks": 1,
+        "final_accumulated_bias_ticks": -2.349999999999996,
+        "final_applied_bias_ticks": -2,
+        "final_measured_error_ticks": -1,
+        "final_measured_position_raw": 2049,
+        "maximum_abs_applied_bias_ticks": 5
+      },
+      "12": {
+        "delta_from_reference_ticks": -1,
+        "final_accumulated_bias_ticks": -2.4,
+        "final_applied_bias_ticks": -2,
+        "final_measured_error_ticks": 1,
+        "final_measured_position_raw": 2047,
+        "maximum_abs_applied_bias_ticks": 3
+      },
+      "13": {
+        "delta_from_reference_ticks": 1,
+        "final_accumulated_bias_ticks": -2.100000000000001,
+        "final_applied_bias_ticks": -2,
+        "final_measured_error_ticks": -1,
+        "final_measured_position_raw": 2049,
+        "maximum_abs_applied_bias_ticks": 4
+      },
+      "14": {
+        "delta_from_reference_ticks": 0,
+        "final_accumulated_bias_ticks": 9.100000000000009,
+        "final_applied_bias_ticks": 9,
+        "final_measured_error_ticks": 0,
+        "final_measured_position_raw": 2048,
+        "maximum_abs_applied_bias_ticks": 9
+      },
+      "15": {
+        "delta_from_reference_ticks": 0,
+        "final_accumulated_bias_ticks": -0.1,
+        "final_applied_bias_ticks": 0,
+        "final_measured_error_ticks": 0,
+        "final_measured_position_raw": 2048,
+        "maximum_abs_applied_bias_ticks": 0
+      },
+      "2": {
+        "delta_from_reference_ticks": 1,
+        "final_accumulated_bias_ticks": -3.1499999999999972,
+        "final_applied_bias_ticks": -3,
+        "final_measured_error_ticks": -1,
+        "final_measured_position_raw": 2049,
+        "maximum_abs_applied_bias_ticks": 3
+      },
+      "3": {
+        "delta_from_reference_ticks": 0,
+        "final_accumulated_bias_ticks": 1.0500000000000003,
+        "final_applied_bias_ticks": 1,
+        "final_measured_error_ticks": 0,
+        "final_measured_position_raw": 2048,
+        "maximum_abs_applied_bias_ticks": 1
+      },
+      "4": {
+        "delta_from_reference_ticks": -1,
+        "final_accumulated_bias_ticks": -1.1000000000000045,
+        "final_applied_bias_ticks": -1,
+        "final_measured_error_ticks": 1,
+        "final_measured_position_raw": 2047,
+        "maximum_abs_applied_bias_ticks": 5
+      },
+      "5": {
+        "delta_from_reference_ticks": 0,
+        "final_accumulated_bias_ticks": -0.9999999999999946,
+        "final_applied_bias_ticks": -1,
+        "final_measured_error_ticks": 0,
+        "final_measured_position_raw": 2048,
+        "maximum_abs_applied_bias_ticks": 4
+      },
+      "6": {
+        "delta_from_reference_ticks": 1,
+        "final_accumulated_bias_ticks": -0.44999999999999324,
+        "final_applied_bias_ticks": 0,
+        "final_measured_error_ticks": -1,
+        "final_measured_position_raw": 2049,
+        "maximum_abs_applied_bias_ticks": 6
+      },
+      "7": {
+        "delta_from_reference_ticks": 0,
+        "final_accumulated_bias_ticks": 0.0,
+        "final_applied_bias_ticks": 0,
+        "final_measured_error_ticks": 0,
+        "final_measured_position_raw": 2048,
+        "maximum_abs_applied_bias_ticks": 0
+      },
+      "8": {
+        "delta_from_reference_ticks": -1,
+        "final_accumulated_bias_ticks": -1.9000000000000017,
+        "final_applied_bias_ticks": -2,
+        "final_measured_error_ticks": 1,
+        "final_measured_position_raw": 2047,
+        "maximum_abs_applied_bias_ticks": 4
+      },
+      "9": {
+        "delta_from_reference_ticks": 1,
+        "final_accumulated_bias_ticks": -2.7999999999999936,
+        "final_applied_bias_ticks": -3,
+        "final_measured_error_ticks": -1,
+        "final_measured_position_raw": 2049,
+        "maximum_abs_applied_bias_ticks": 5
+      }
+    },
+    "strict_tolerance_ticks": 5
+  },
+  "terminal_state": {
+    "all_torque_disabled": true,
+    "errors": {},
+    "per_bus": {
+      "bus1": {
+        "all_torque_disabled": true,
+        "group_stop_errors": [],
+        "torque_enable": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        }
+      },
+      "bus2": {
+        "all_torque_disabled": true,
+        "group_stop_errors": [],
+        "torque_enable": {
+          "10": 0,
+          "11": 0,
+          "12": 0,
+          "13": 0,
+          "14": 0,
+          "15": 0,
+          "8": 0,
+          "9": 0
+        }
+      }
+    }
+  }
+}

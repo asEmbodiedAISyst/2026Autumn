@@ -5,7 +5,7 @@
   "description": "03 November 2026 \u00b7 09:00\u201310:20 \u00b7 CR6",
   "simulation_prerequisite": "Prepared native playback resources are under resources/class06; this lesson continues its 57-input pose-observing policy case.",
   "files_sha256": {
-    "2026-autumn/resources/class07/README.md": "5c90f10220b2d3e12cc22e7230c782f23df601f2598dbd6292784b89ab3a98a9",
+    "2026-autumn/resources/class07/README.md": "25f5dc9369770054e711ea1d14ebe5a8c0eab52dc38d31a93b16741ec9992cf6",
     "2026-autumn/resources/class07/code/README.md": "93ae0e6d0f829358960468fa6d6c4f77f0a39ffb36f06df7b343d74299313d45",
     "2026-autumn/resources/class07/code/feedback_experiment.py": "7e4f7940b051158c73c4947e4fd6cc0137711206f577d2ce95c184a7cf389b54",
     "2026-autumn/resources/class07/code/inspect_results.py": "086ce29ddc30df947522ab0d58ac88d0801be1302f6ad06b374ec5c6e810a5b1",
@@ -43,7 +43,7 @@
     "2026-autumn/resources/class07/results/perception-summary.json": "ee8af2c8ad7bbea5a5e8aa419bb46aed5e84352a7e73fed18ee589e292822a1c",
     "2026-autumn/resources/class07/results/pnp-trials.csv": "c5ff34f46ac898aac4e7a47053f700eb5987826887ec2e3e1f7deb51f971a11b"
   },
-  "scope": "Pose-observing baseline interface, synthetic visual geometry and declared timing interventions",
+  "scope": "Current source-led lesson; original author package is linked from README. Earlier assets retained historically.",
   "lesson": "2026-autumn/module-02-hand-data-for-multi-fingered-manipulation/07-rotating-a-cube-with-visual-feedback.md",
   "lesson_sha256": "f7c3760e468c514259e90eb6cb71f89309a9b0ded95284a550c1f33a4d8817ec"
 }

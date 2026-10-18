@@ -1,0 +1,17 @@
+# Bring up the PCAN-USB SocketCAN interface for the reBot B601-RS whenever it appears (boot or re-plug).
+# Install once with: sudo tools/can/setup_can0.sh   (then no more `sudo ip link ...` before every session)
+[Unit]
+Description=reBot: configure can0 (1 Mbit/s) when the USB-CAN adapter appears
+BindsTo=sys-subsystem-net-devices-can0.device
+After=sys-subsystem-net-devices-can0.device
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=-/usr/sbin/ip link set can0 down
+ExecStart=/usr/sbin/ip link set can0 type can bitrate 1000000 restart-ms 100
+ExecStart=/usr/sbin/ip link set can0 up
+ExecStop=-/usr/sbin/ip link set can0 down
+
+[Install]
+WantedBy=sys-subsystem-net-devices-can0.device

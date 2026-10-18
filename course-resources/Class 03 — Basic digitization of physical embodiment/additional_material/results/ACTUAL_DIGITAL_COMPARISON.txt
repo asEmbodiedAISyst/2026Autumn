@@ -1,0 +1,22 @@
+ACTUAL AND DIGITAL COMPARISON
+=============================
+
+Property                         Physical or authoritative record        Digital representation             Status
+XC330 model                      XC330-M288-T                            XC330-M288-T mesh/body             represented
+XC330 envelope                   20 x 34 x 26 mm, manufacturer nominal   visual STL                         nominal only
+External joint count             one                                    one revolute joint                 represented
+Joint axis                       not independently measured             local positive Y                   declared
+Joint range                      fixture hard stop not measured         -pi/2 to +pi/2 rad                 declared
+Link mass                        22 g measured                           22 g                               matched
+Complete payload assembly        44 g measured, including pin            44 g                               matched
+B0 payload centres               -60 mm and +60 mm                       -0.060 m and +0.060 m              matched
+B1 payload centres               -80 mm and +80 mm                       -0.080 m and +0.080 m              matched
+B2 payload centres               -100 mm and +100 mm                     -0.100 m and +0.100 m              matched
+G1 payload centres               +60 mm and +100 mm                      +0.060 m and +0.100 m              matched
+Pin/payload mass split           not separately measured                1.747 g / 42.253 g                 derived
+Component inertia                not independently measured             CAD tensor scaled with mass        assumed
+Platform-to-motor transform      not independently measured             (-0.21, 0.01, 0.37) m             declared
+Collision response               not tested                             disabled                           excluded
+Dynamic correspondence           not evaluated                          not evaluated                      outside this study
+
+The status column distinguishes measurements, nominal product information, model declarations and assumptions.

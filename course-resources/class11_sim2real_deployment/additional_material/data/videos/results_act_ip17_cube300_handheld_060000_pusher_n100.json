@@ -1,0 +1,407 @@
+{
+  "policy": "outputs/train/act_ip17_cube300_handheld/checkpoints/060000/pretrained_model",
+  "task": "push_cube",
+  "success_rate": 0.64,
+  "episodes": [
+    {
+      "episode": 0,
+      "seed": 100000,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.03107410625131502
+    },
+    {
+      "episode": 1,
+      "seed": 100001,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.03864376476129746
+    },
+    {
+      "episode": 2,
+      "seed": 100002,
+      "success": true,
+      "steps": 125,
+      "ik_ok": 1.0,
+      "distance": 0.014532445938037129
+    },
+    {
+      "episode": 3,
+      "seed": 100003,
+      "success": true,
+      "steps": 223,
+      "ik_ok": 1.0,
+      "distance": 0.014727940282635122
+    },
+    {
+      "episode": 4,
+      "seed": 100004,
+      "success": true,
+      "steps": 46,
+      "ik_ok": 1.0,
+      "distance": 0.014609198908580033
+    },
+    {
+      "episode": 5,
+      "seed": 100005,
+      "success": true,
+      "steps": 37,
+      "ik_ok": 1.0,
+      "distance": 0.013023059036174652
+    },
+    {
+      "episode": 6,
+      "seed": 100006,
+      "success": true,
+      "steps": 230,
+      "ik_ok": 1.0,
+      "distance": 0.01484066104408181
+    },
+    {
+      "episode": 7,
+      "seed": 100007,
+      "success": true,
+      "steps": 78,
+      "ik_ok": 1.0,
+      "distance": 0.014164923377420785
+    },
+    {
+      "episode": 8,
+      "seed": 100008,
+      "success": true,
+      "steps": 43,
+      "ik_ok": 1.0,
+      "distance": 0.012150502040078339
+    },
+    {
+      "episode": 9,
+      "seed": 100009,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.03242941310126573
+    },
+    {
+      "episode": 10,
+      "seed": 100010,
+      "success": true,
+      "steps": 132,
+      "ik_ok": 1.0,
+      "distance": 0.01484762055684833
+    },
+    {
+      "episode": 11,
+      "seed": 100011,
+      "success": true,
+      "steps": 225,
+      "ik_ok": 1.0,
+      "distance": 0.013271628458738893
+    },
+    {
+      "episode": 12,
+      "seed": 100012,
+      "success": true,
+      "steps": 74,
+      "ik_ok": 1.0,
+      "distance": 0.014477133066237715
+    },
+    {
+      "episode": 13,
+      "seed": 100013,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.06435744326822068
+    },
+    {
+      "episode": 14,
+      "seed": 100014,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.032149966261349514
+    },
+    {
+      "episode": 15,
+      "seed": 100015,
+      "success": true,
+      "steps": 35,
+      "ik_ok": 1.0,
+      "distance": 0.012903166431172427
+    },
+    {
+      "episode": 16,
+      "seed": 100016,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.02090753781895465
+    },
+    {
+      "episode": 17,
+      "seed": 100017,
+      "success": true,
+      "steps": 45,
+      "ik_ok": 1.0,
+      "distance": 0.010448146782964116
+    },
+    {
+      "episode": 18,
+      "seed": 100018,
+      "success": true,
+      "steps": 125,
+      "ik_ok": 1.0,
+      "distance": 0.013426045953052027
+    },
+    {
+      "episode": 19,
+      "seed": 100019,
+      "success": true,
+      "steps": 125,
+      "ik_ok": 1.0,
+      "distance": 0.013978291018102452
+    },
+    {
+      "episode": 20,
+      "seed": 100020,
+      "success": true,
+      "steps": 37,
+      "ik_ok": 1.0,
+      "distance": 0.014534610553503009
+    },
+    {
+      "episode": 21,
+      "seed": 100021,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.027579878516306385
+    },
+    {
+      "episode": 22,
+      "seed": 100022,
+      "success": true,
+      "steps": 44,
+      "ik_ok": 1.0,
+      "distance": 0.0115548452059811
+    },
+    {
+      "episode": 23,
+      "seed": 100023,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.05441374129615057
+    },
+    {
+      "episode": 24,
+      "seed": 100024,
+      "success": true,
+      "steps": 124,
+      "ik_ok": 1.0,
+      "distance": 0.011034737626017383
+    },
+    {
+      "episode": 25,
+      "seed": 100025,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.022717787054635903
+    },
+    {
+      "episode": 26,
+      "seed": 100026,
+      "success": true,
+      "steps": 126,
+      "ik_ok": 1.0,
+      "distance": 0.009826790322472469
+    },
+    {
+      "episode": 27,
+      "seed": 100027,
+      "success": true,
+      "steps": 45,
+      "ik_ok": 1.0,
+      "distance": 0.01247638625598766
+    },
+    {
+      "episode": 28,
+      "seed": 100028,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.05284952695043267
+    },
+    {
+      "episode": 29,
+      "seed": 100029,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.02662207542059802
+    },
+    {
+      "episode": 30,
+      "seed": 100030,
+      "success": true,
+      "steps": 233,
+      "ik_ok": 1.0,
+      "distance": 0.014628199086539367
+    },
+    {
+      "episode": 31,
+      "seed": 100031,
+      "success": true,
+      "steps": 126,
+      "ik_ok": 1.0,
+      "distance": 0.0128671735242206
+    },
+    {
+      "episode": 32,
+      "seed": 100032,
+      "success": true,
+      "steps": 222,
+      "ik_ok": 1.0,
+      "distance": 0.012876748108361294
+    },
+    {
+      "episode": 33,
+      "seed": 100033,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.07973485066280944
+    },
+    {
+      "episode": 34,
+      "seed": 100034,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.016033585799726652
+    },
+    {
+      "episode": 35,
+      "seed": 100035,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.016328790753584135
+    },
+    {
+      "episode": 36,
+      "seed": 100036,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.01558894180745729
+    },
+    {
+      "episode": 37,
+      "seed": 100037,
+      "success": true,
+      "steps": 52,
+      "ik_ok": 1.0,
+      "distance": 0.014196072601475426
+    },
+    {
+      "episode": 38,
+      "seed": 100038,
+      "success": true,
+      "steps": 127,
+      "ik_ok": 1.0,
+      "distance": 0.014381342367107024
+    },
+    {
+      "episode": 39,
+      "seed": 100039,
+      "success": true,
+      "steps": 48,
+      "ik_ok": 1.0,
+      "distance": 0.013402866547832858
+    },
+    {
+      "episode": 40,
+      "seed": 100040,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.028231844673246714
+    },
+    {
+      "episode": 41,
+      "seed": 100041,
+      "success": true,
+      "steps": 127,
+      "ik_ok": 1.0,
+      "distance": 0.013522831959305821
+    },
+    {
+      "episode": 42,
+      "seed": 100042,
+      "success": true,
+      "steps": 135,
+      "ik_ok": 1.0,
+      "distance": 0.01355719564781091
+    },
+    {
+      "episode": 43,
+      "seed": 100043,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.04116058948923309
+    },
+    {
+      "episode": 44,
+      "seed": 100044,
+      "success": false,
+      "steps": 450,
+      "ik_ok": 1.0,
+      "distance": 0.05037886524448448
+    },
+    {
+      "episode": 45,
+      "seed": 100045,
+      "success": true,
+      "steps": 222,
+      "ik_ok": 1.0,
+      "distance": 0.01440057456323566
+    },
+    {
+      "episode": 46,
+      "seed": 100046,
+      "success": true,
+      "steps": 47,
+      "ik_ok": 1.0,
+      "distance": 0.010025688192046453
+    },
+    {
+      "episode": 47,
+      "seed": 100047,
+      "success": true,
+      "steps": 123,
+      "ik_ok": 1.0,
+      "distance": 0.014452357797871728
+    },
+    {
+      "episode": 48,
+      "seed": 100048,
+      "success": true,
+      "steps": 34,
+      "ik_ok": 1.0,
+      "distance": 0.014271676074159845
+    },
+    {
+      "episode": 49,
+      "seed": 100049,
+      "success": true,
+      "steps": 78,
+      "ik_ok": 1.0,
+      "distance": 0.014258872578663465
+    }
+  ]
+}

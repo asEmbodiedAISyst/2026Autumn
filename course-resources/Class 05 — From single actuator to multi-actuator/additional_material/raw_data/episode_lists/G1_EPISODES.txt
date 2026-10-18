@@ -1,0 +1,25 @@
+G1 16-MOTOR EPISODE LIST (22 EPISODES)
+==================================================
+
+01. G1_16__H1__P06_heldout_composite__R01
+02. G1_16__H1__P06_heldout_composite__R02
+03. G1_16__H1__P06_heldout_composite__R03
+04. G1_16__H1__P06_heldout_composite__R04
+05. G1_16__H1__P06_heldout_composite__R05
+06. G1_16__H1__P07_heldout_sine_hold__R01
+07. G1_16__H1__P07_heldout_sine_hold__R02
+08. G1_16__H1__P07_heldout_sine_hold__R03
+09. G1_16__H1__P07_heldout_sine_hold__R04
+10. G1_16__H1__P07_heldout_sine_hold__R05
+11. G1_16__H1__PILOT_LOW_AMPLITUDE
+12. G1_16__H2__P06_heldout_composite__R01
+13. G1_16__H2__P06_heldout_composite__R02
+14. G1_16__H2__P06_heldout_composite__R03
+15. G1_16__H2__P06_heldout_composite__R04
+16. G1_16__H2__P06_heldout_composite__R05
+17. G1_16__H2__P07_heldout_sine_hold__R01
+18. G1_16__H2__P07_heldout_sine_hold__R02
+19. G1_16__H2__P07_heldout_sine_hold__R03
+20. G1_16__H2__P07_heldout_sine_hold__R04
+21. G1_16__H2__P07_heldout_sine_hold__R05
+22. G1_16__H2__PILOT_LOW_AMPLITUDE

@@ -1,0 +1,8 @@
+# Offline trajectory generation and packaging.
+numpy>=1.24,<3
+
+# Required only when --execute opens the RS06 control-box serial port.
+pyserial>=3.5,<4
+
+# Required only for offline collection plots.
+matplotlib>=3.7,<4

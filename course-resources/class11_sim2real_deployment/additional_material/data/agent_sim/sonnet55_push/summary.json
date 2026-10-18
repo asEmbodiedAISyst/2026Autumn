@@ -1,0 +1,71 @@
+{
+ "model": "claude-sonnet-5-5",
+ "mode": "push",
+ "episodes": [
+  {
+   "success": true,
+   "calls": 3,
+   "ended_by": "sim_success",
+   "cost_usd": 0.0150979,
+   "usage": {
+    "input": 2296,
+    "output": 508,
+    "cache_read": 3742,
+    "cache_write": 1871
+   },
+   "seconds": 11.380030793006881
+  },
+  {
+   "success": true,
+   "calls": 2,
+   "ended_by": "sim_success",
+   "cost_usd": 0.0057263999999999995,
+   "usage": {
+    "input": 1084,
+    "output": 281,
+    "cache_read": 3742,
+    "cache_write": 0
+   },
+   "seconds": 5.821828026004368
+  },
+  {
+   "success": true,
+   "calls": 1,
+   "ended_by": "sim_success",
+   "cost_usd": 0.0022462,
+   "usage": {
+    "input": 386,
+    "output": 110,
+    "cache_read": 1871,
+    "cache_write": 0
+   },
+   "seconds": 2.415847643002053
+  },
+  {
+   "success": true,
+   "calls": 2,
+   "ended_by": "sim_success",
+   "cost_usd": 0.0057523999999999995,
+   "usage": {
+    "input": 1087,
+    "output": 283,
+    "cache_read": 3742,
+    "cache_write": 0
+   },
+   "seconds": 3.5411528229888063
+  },
+  {
+   "success": true,
+   "calls": 3,
+   "ended_by": "sim_success",
+   "cost_usd": 0.0110646,
+   "usage": {
+    "input": 2501,
+    "output": 494,
+    "cache_read": 5613,
+    "cache_write": 0
+   },
+   "seconds": 7.44892779699876
+  }
+ ]
+}

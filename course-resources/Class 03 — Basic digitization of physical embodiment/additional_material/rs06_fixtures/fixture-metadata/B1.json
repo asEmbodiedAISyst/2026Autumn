@@ -1,0 +1,125 @@
+{
+  "assembly_revision": null,
+  "collection_motor_can_id": 2,
+  "coordinates": {
+    "as_built_mechanical_position_max_rad": null,
+    "as_built_mechanical_position_min_rad": null,
+    "collection_configured_position_limits_rad": [
+      -12.57,
+      12.57
+    ],
+    "joint_axis_in_moving_body_frame": [
+      -1.0,
+      0.0,
+      0.0
+    ],
+    "joint_axis_relative_to_gravity": "Source MJCF axis is perpendicular to gravity; physical mounting orientation remains operator-confirmed.",
+    "joint_name": "rs06_joint",
+    "joint_position_in_moving_body_frame_m": [
+      0.0015,
+      0.0,
+      0.0
+    ],
+    "positive_direction": "Increasing q follows the right-hand rule about MJCF axis [-1,0,0]; physical installation sign relative to gravity remains operator-audited.",
+    "source_mjcf_joint_range_rad": [
+      -1.1,
+      1.1
+    ],
+    "zero_definition": "MJCF export q=0 and hardware collection center_position=0 rad; their as-built physical alignment still requires operator confirmation."
+  },
+  "evidence": {
+    "fastener_and_balance_check": null,
+    "notes": "B0/B1 are effectively rather than mathematically perfectly balanced.",
+    "photo_or_drawing_references": [
+      {
+        "applies_to_fixture_id": "B1",
+        "as_built_photograph": false,
+        "description": "CAD-rendered balanced B1 configuration with both large end payloads",
+        "evidence_type": "cad_render",
+        "file": "hardware/fixture-metadata/evidence/photos/B1.jpg",
+        "media_type": "image/jpeg",
+        "qualification_note": "Useful as design-intent drawing evidence only. It does not prove the physical assembly, mounting, zero mark, fasteners, dimensions, motor serial, or as-built condition.",
+        "sha256": "4c4e812d3a7026f6b6183e6e023ea7cb1ebb42de24ce20569288642dfdf89011"
+      }
+    ]
+  },
+  "fixture_description": "RS06 balanced link with both large end payloads",
+  "fixture_id": "B1",
+  "measured_or_cad_properties": {
+    "axis_inertia_definition": "a^T I_com a + m * (norm(r)^2 - (a dot r)^2), where r is COM minus joint position",
+    "external_moving_mass_kg": 2.4072134492929957,
+    "inertia_scope": "External moving fixture about rs06_joint. Excludes RS06 rotor/output inertia and excludes the MuJoCo joint armature parameter.",
+    "joint_axis_inertia_kg_m2": 0.0576790351777237,
+    "maximum_gravity_torque_magnitude_Nm_at_9p81": 0.00035860604337361896,
+    "mujoco_numerical_regularization": null,
+    "signed_gravity_first_moment_kg_m": -3.65551522297267e-05,
+    "source_kind": "CAD",
+    "uncertainty_and_method": "Computed from the supplied Fusion inertial tensor, COM, joint axis, and parallel-axis theorem; no independent as-built uncertainty was supplied.",
+    "uncertainty_value": null
+  },
+  "metadata_status": {
+    "as_built_photograph_recorded": false,
+    "binding_basis": "Captured runs declare this fixture_id; the sidecar binds that declaration to the hash-identified CAD/MJCF revision without rewriting captured evidence.",
+    "cad_render_evidence_recorded": true,
+    "independent_as_built_measurement_completed": false,
+    "mass_properties_classification": "CAD-derived from supplied Fusion MJCF export",
+    "operator_confirmation_required": [
+      "assembly and mounting revision",
+      "motor serial or asset ID",
+      "as-built mass-property uncertainty",
+      "physical zero and positive-direction audit",
+      "as-built mechanical limits",
+      "as-built fixture photographs and motor nameplate evidence",
+      "fastener and balance check"
+    ]
+  },
+  "mjcf_inertial_audit": {
+    "computed_inertia_matches_fixture_contract": true,
+    "computed_joint_axis_inertia_kg_m2": 0.05767903517772375,
+    "moving_body_com_in_body_frame_m": [
+      0.04703585455828181,
+      -1.5185671316543614e-05,
+      -4.143343975803741e-06
+    ],
+    "moving_body_diaginertia_kg_m2": null,
+    "moving_body_fullinertia_kg_m2": [
+      0.057679034581283865,
+      0.003552246411273825,
+      0.05500499937852344,
+      -7.597395061173999e-07,
+      -1.9383997343942937e-07,
+      1.545639811887405e-06
+    ],
+    "moving_body_mjcf_mass_kg": 2.4072134492929957,
+    "moving_body_name": "playload-1"
+  },
+  "motor_serial_or_asset_id": null,
+  "mounting_revision": null,
+  "schema_version": "phyintel-chapter02-rs06-physical-fixture-v2",
+  "source_assets": {
+    "fixture_contract_file": "data/chapter-02/releases/rs06-sim-data-v1/fixture-contract.json",
+    "fixture_contract_sha256": "2fcc2595ccc8f42d8af4de8117fde47c14ae77ee7ec4bba803fd4d8b22fbf811",
+    "fusion_export_report_file": "source-assets/mjcf/test_station_balanced_payload/export_report.txt",
+    "fusion_export_report_sha256": "5a62df39d7e91fbd6b3792295b519990876a135eea8e1d43b50a14885b0788ef",
+    "fusion_mjcf_file": "source-assets/mjcf/test_station_balanced_payload/test_station_balanced_payload.xml",
+    "fusion_mjcf_sha256": "7e7b31d951b79f9f82cdc3969a8c3bbcb66d4aad8373c889c39942634dc5ea41",
+    "matched_release_mjcf_file": "data/chapter-02/releases/rs06-sim-data-v1/model-sources/B1.xml",
+    "matched_release_mjcf_sha256": "9b2999e5efa0cd4981322f0f96a530b54d840726d129effaf40acbf1fc96f048",
+    "meshes": {
+      "base_link": {
+        "file": "source-assets/mjcf/test_station_balanced_payload/meshes/base_link.stl",
+        "sha256": "b7e84aed9a71d11cc1abdaa585459587d38192c33af69c53373d33ff0e860e20"
+      },
+      "playload-1": {
+        "file": "source-assets/mjcf/test_station_balanced_payload/meshes/playload-1.stl",
+        "sha256": "4a53fed28d2dd930ae75deba710909aa792986296107dfd4ef218fee3e7fd628"
+      }
+    }
+  },
+  "warnings": [
+    "CAD-derived values are not independent measurements of the as-built fixture.",
+    "The registered fixture image is a CAD render, not an as-built photograph.",
+    "Do not add external fixture inertia and RS06 rotor/output inertia twice.",
+    "Configured software limits are not evidence of the physical hard-stop limits."
+  ]
+}

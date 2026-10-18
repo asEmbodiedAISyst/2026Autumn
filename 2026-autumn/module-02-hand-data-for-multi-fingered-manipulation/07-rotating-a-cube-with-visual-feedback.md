@@ -10,169 +10,129 @@ layout:
 
 > How does visual observation change the robot's feedback loop?
 
-Move a camera around a stationary cube, then rotate the cube while keeping the camera still. The image changes in both cases. A robot must distinguish those motions in the frame where it controls its hand. It also needs to know when an estimate was captured and whether enough of the object was visible to support it.
+Move a camera around a stationary cube, then rotate the cube while keeping the camera still. The image changes in both cases. A robot must distinguish these motions in the frame in which it acts. It must also establish when an image was captured, whether the object was visible, and what the estimate actually describes.
 
-Classes 02–05 distinguished requested, measured and simulated quantities. The same distinction now applies to object pose: an estimate from an image is neither a direct view of the complete physical state nor a command. The Class 06 pose-observing baseline actor already receives cube-pose features as well as joint information. Today's problem is to supply a usable observation from vision, preserving the policy's required frame, feature convention and timing. We investigate two separate components: a synthetic known-corner pose-estimation exercise, and native MuJoCo diagnostics that delay or hold selected pose-error features. They are reproducible component tests, not a completed image-to-policy system.
+Classes 02–05 separated requested quantities, measured quantities and simulated state. Class 06 added a learned controller whose input is a history of joint angles and previous commands. **That continuous-rotation actor does not receive cube pose or images.** A camera can first help us observe and evaluate its behavior. Making vision part of its feedback loop would require an explicit estimator-to-controller connection and a compatible controller or newly trained policy. We cannot replace a cube-pose channel that this actor does not have.
 
 By the end of this class, you should be able to:
 
-- Distinguish object reorientation from Rubik's Cube solving.
-- Separate device, camera, marker, object and hand poses.
-- Compose a camera-to-hand transform and explain calibrated projection.
-- Interpret uncertainty, visibility, measurement age and missing observations.
-- Design a controlled visual-feedback test and distinguish hand retargeting from phone-pose teleoperation.
+- Distinguish visual evaluation from visual feedback and object reorientation from puzzle solving.
+- Relate device, camera, marker, object and hand frames without treating them as interchangeable.
+- Explain how calibration, projection and object geometry connect an image to a metric estimate.
+- Interpret measurement age, missing detections, noise, bias and occlusion.
+- Specify the observations and evidence needed before adding vision to a learned manipulation system.
 
-[Lecture](#object-reorientation-and-visual-feedback) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](#what-vision-adds-to-the-manipulation-problem) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The figures, calculations and saved results support a complete reading and activity route on this page. The perception exercise requires no phone, physical hand or GPU. The retained native diagnostics use the Class 06 policy and model. Their reported traces and results provide the evidence for the reading and activity.
+## What vision adds to the manipulation problem
 
-## Object reorientation and visual feedback
+### A camera can evaluate a controller without controlling it
 
-### Learn from the original example without changing its claim
+The Class 06 actor maps a 320-value history to 16 joint targets. Its information comes from 16 measured joint positions and 16 previous commands at each of ten history slots. Contact and object motion influence these signals indirectly, but the input contains no measured cube orientation. Recording an iPhone video alongside a run does not change this information boundary.
 
-OpenAI et al. (2018), in [*Learning Dexterous In-Hand Manipulation*](https://arxiv.org/abs/1808.00177), studied learned object reorientation with a physical Shadow Dexterous Hand and a vision-based observation path. Their work used simulation training and randomization to transfer manipulation policies to the physical system. It is a useful reference for separating perception, control and physical evaluation.
+A calibrated visual estimate could answer questions that joint telemetry alone cannot: Did the cube rotate? About which axis? Did it slip relative to the fingers? Was it manually repositioned? A video can support qualitative inspection, but a claim about angular displacement, speed or autonomous success needs a defined measurement and evaluation rule.
 
-Object reorientation changes an object's pose. Solving a Rubik's Cube additionally changes and reasons about its internal face permutations. Our supplied LEAP task changes a rigid cube's complete orientation; it does not solve a puzzle or reproduce the Shadow Hand system.
+**Visual feedback** goes further: information derived from images influences the next action. There must be a computational path from image capture through estimation and observation construction to a controller. A recording that is watched after the run is visual evidence, rather than a closed visual feedback loop.
 
-![Visual estimation within the manipulation feedback loop](../resources/class07/figures/vision-loop-classroom.png)
+![Visual feedback architecture](../resources/class07/figures/source/visual-feedback-loop.png)
 
-*Figure 1. A conceptual visual-feedback architecture. Estimation, frame conversion, validity and age checks sit between images and policy input. The diagram describes the intended chain, not an implemented live phone integration.*
+*Figure 1. The author's conceptual visual-feedback architecture. The estimation and controller connection describe the system to be established; they are not evidence that the Class 06 proprioceptive actor already accepts visual pose.*
 
-A strong pose estimator and a strong controller do not automatically make a strong combined system. Correct object pose in the wrong frame, or accurate pose delivered too late, can produce the wrong action. Conversely, a failed manipulation does not identify perception as its cause without inspecting the rest of the loop.
+OpenAI et al. (2018), in *Learning Dexterous In-Hand Manipulation*, provide a reference system that combined learned dexterous manipulation, simulation randomization and a camera-based observation path on a Shadow Hand. Their robot, observations, training and evaluation must be considered together. The later Rubik's Cube work also involved reasoning about internal face permutations. Rotating a rigid cube and solving a puzzle are different tasks.
 
-Retain the Class 06 task definition: complete orientation error below 0.1 rad, with the task's retention and termination rules. A successful-step event is not automatically an independent completed rotation. Replacing the observation source does not justify silently relaxing those criteria.
+Our Class 06 source instead studies continuous positive-Z rotation of a 58 mm, 85 g cube using joint-history feedback. Neither the hand's appearance nor letters on the cube make its actor interchangeable with OpenAI's policy or a goal-conditioned Playground actor.
 
-**Predict:** A camera reports a four-value quaternion. Can it be copied directly into the actor's six orientation-error features? Explain what must be established before constructing the input.
+### Two possible roles for an object-pose estimate
 
-### Choose the policy case before replacing an observation
-
-Class 06 now contains two distinct cases. This class continues the **57-input Playground-derived, goal-conditioned reorientation actor**: its cube-related observation fields make replacing simulated pose by an estimated pose a meaningful interface question. The separate 320-input proprioceptive continuous-rotation actor receives joint/command history and has no cube-pose field. Appending a camera estimate would change its learned input contract and require a compatible newly trained actor; a camera recording alone does not change that controller.
-
-| Question | Pose-observing reorientation case | Proprioceptive continuous-rotation case |
+| Role | What the estimate influences | What must be established |
 |---|---|---|
-| Does the actor use object-pose information? | Yes, in the declared observation construction | No direct cube-pose input |
-| What can a calibrated camera replace? | The corresponding simulated object-state source, after frame/time/feature conversion | Evaluation or diagnosis initially; no existing actor input is replaced |
-| What stays to be checked? | Feature order/scaling, uncertainty, delay, validity and trained operating conditions | Whether a changed observation design and new policy improve the intended task |
+| Evaluation and diagnosis | Recorded measurements and conclusions after or alongside a run | Object identity, calibration, timestamps, validity and an evaluation rule |
+| Closed-loop visual control | Current or future controller actions | All evaluation requirements, plus a compatible observation/action interface and controller validation |
 
-Both cases can use recorded images to assess object motion. Only a declared estimator-to-actor connection makes those images part of visual feedback. Keep actor identity beside every demonstration: the same hand or cube lettering does not make two policies interchangeable.
+A pose estimate can be useful before it is safe or appropriate to feed it to a controller. Conversely, a visually convincing demonstration does not establish the accuracy of the estimate used during control. Keep the measurement record and the action record distinct.
 
-## Replace a simulated pose with a measurement contract
+**Checkpoint:** A video shows the cube moving while the joint-history actor runs. What evidence would establish that vision caused the actor to change its action?
 
-### What must travel with an estimate?
+## Define what a visual measurement means
 
-An estimate needs more than position and orientation. Its identity, reference frames, units, timestamp and validity determine whether it is usable. A controller should be able to distinguish a new image, a valid detection and a valid metric pose.
+### Pose is always relative to a frame
 
-| Observation field | Why the controller needs it |
-|---|---|
-| Object identity and frame | Establish which object and origin the pose describes |
-| Position, orientation and convention | Establish units, axes, transform direction and quaternion ordering |
-| Capture timestamp and clock relation | Determine how old the observation is when used |
-| Validity and tracking status | Distinguish a current estimate from absence or rejection |
-| Quality or uncertainty description | State the estimator's confidence limits and acceptance conditions |
+A pose contains position and orientation relative to a declared reference. A device-tracking system may report the phone in its tracking world. An image-based marker detector may report a marker relative to the camera. A manipulation controller may require the cube relative to the hand or robot world. These are different physical relationships.
 
-The table is a proposed interface contract, not a claim that the original phone app already supplies these fields. A confidence score also needs a definition; an arbitrary high score does not establish calibrated uncertainty.
+| Quantity | Meaning | Why it is insufficient alone |
+|---|---|---|
+| Device AR pose | Device relative to its tracking world | The cube can move independently of the phone |
+| Marker pose | Marker relative to camera | Marker origin and axes can differ from the cube's |
+| Object pose | Cube relative to a stated frame | The controller still needs compatible frames, timing and conventions |
+| Joint positions | Robot joint configuration | They do not directly measure cube orientation under slip |
 
-### Visibility and uncertainty are different problems
+An estimated pose should travel with its capture timestamp, frame names, units, orientation convention, object identity and validity status. A confidence score needs a definition; a large arbitrary score is not a calibrated uncertainty bound. An image packet can be new while its last valid object estimate is old.
 
-A fingertip may hide a marker while the cube keeps moving. The network can still receive images, yet the chosen estimator may have insufficient correspondences for pose recovery. Sending zeros invents a new pose. Holding a previous estimate preserves an old value but does not make it fresh.
+### Transform coordinates before combining observations
 
-The synthetic lab requires all four ordered corners of one known square. With only three available, its gate returns unavailable rather than calling the selected solver. This is the rule of this exercise, not a universal statement about every pose-estimation method. Additional markers, geometry, temporal tracking or multiple views can support different acceptance rules.
-
-Noise can perturb accepted measurements. Calibration error or an incorrect marker size can bias them systematically. Averaging may reduce some random variation while retaining the bias; smoothing can reduce variation while adding lag. Evaluate the error source that the processing is intended to address.
-
-### Capture-to-use age matters
-
-If capture and use timestamps share a synchronized time base, measurement age is
+Let H denote the hand frame, C the camera, M a marker and O the object. Define a point-coordinate transform by what it maps:
 
 $$
-a=t_u-t_c.
+{}^HT_C=\begin{bmatrix}{}^HR_C&{}^Hp_C\\0&1\end{bmatrix}.
 $$
 
-Here $$t_c$$ is capture time and $$t_u$$ is controller use time. Network arrival time records receipt; it need not equal either. Processing, transport, queuing and scheduling all affect age. Subtracting timestamps from unsynchronized clocks can include a clock offset and should not be reported as measured latency without a clock relationship.
-
-At 20 Hz, three control intervals are **150 ms**. At approximately constant angular speed of 1 rad/s, an exact observation that old can differ from current orientation by about **0.15 rad**, or **8.59°**. That exceeds the unchanged 0.1 rad angular criterion. The calculation is a local constant-speed approximation, not a prediction for every grasp trajectory.
-
-![Synthetic delayed measurements and a missing-detection interval](../resources/class07/figures/packet-age-classroom.png)
-
-*Figure 2. A synthetic yaw signal is delayed by three samples and held during a declared detection gap. The lower plot shows growing age. Gray shading marks the imposed gap; 200 ms is an illustrative staleness rule, not a hardware safety threshold.*
-
-A 60 Hz camera does not guarantee a valid new cube pose at every control step. Nominal frame rate alone does not determine capture-to-use age. A stream can have a good average rate and still contain harmful bursts of stale observations.
-
-Holding a pose estimate is also different from holding an actuator command. A complete design must specify what the estimator reports during rejection and what the controller does with that status. Predicting pose for a limited horizon, pausing an experiment or retaining a command are different choices that require their own conditions and tests.
-
-**Checkpoint:** A new packet arrives containing the last valid pose. Which timestamp should stay unchanged, and what should happen to its reported age?
-
-## Separate device, marker and object pose in the hand frame
-
-### Name the coordinate maps
-
-Use H for the hand frame, C for the camera, O for the object, M for a marker and W for a declared controller-world frame. An AR tracking world is a separate frame until a calibration establishes its relationship to W. Define a transform by what it maps:
+It maps coordinates expressed in C into H. The rotation maps camera-frame directions into hand-frame directions, while the translation is the camera origin expressed in H. If an estimator returns object-to-camera pose, then
 
 $$
-{}^{H}T_C=
-\begin{bmatrix}{}^{H}R_C&{}^{H}p_C\\0&1\end{bmatrix}.
+{}^HT_O={}^HT_C\,{}^CT_O.
 $$
 
-It converts C-frame coordinates into H. Its translation is the camera origin expressed in H; its rotation maps camera directions into hand-frame directions. This is a 4 × 4 homogeneous map for points. Featherstone's 6 × 6 spatial-motion and spatial-force transforms have different roles and ordering; a point map must not be applied directly to the six-component wrench introduced in Class 06 (Featherstone 2008). If a pose estimator returns object-to-camera pose, then
-
-$$
-{}^{H}T_O={}^HT_C\,{}^CT_O.
-$$
-
-Read the multiplication from the coordinate being transformed: first object to camera, then camera to hand. A transform's inverse requires both a transposed rotation and a transformed negative translation:
-
-$$
-{}^CT_H=({}^HT_C)^{-1}
-=\begin{bmatrix}({}^HR_C)^\mathsf{T}&-({}^HR_C)^\mathsf{T}{}^Hp_C\\0&1\end{bmatrix}.
-$$
-
-Negating the translation alone is not a general inverse.
-
-![One object point expressed in the camera and hand frames](../resources/class07/figures/frame-chain-classroom.png)
-
-*Figure 3. The worked camera is translated 0.10 m along hand x and rotated 90° about hand z. Camera +x points along hand +y; camera +y points along hand −x. The same point has camera coordinates (0.20, 0.03, 0.40) m and hand coordinates (0.07, 0.20, 0.40) m. The plot shows the x–y projection.*
-
-### Rotate a translation before adding it
-
-For the declared example,
-
-$$
-{}^HR_C=\begin{bmatrix}0&-1&0\\1&0&0\\0&0&1\end{bmatrix},\qquad
-{}^Hp_C=\begin{bmatrix}0.10\\0\\0\end{bmatrix}\;\mathrm{m}.
-$$
-
-Applying it to the point gives
-
-$$
-{}^Hp_O={}^HR_C\,{}^Cp_O+{}^Hp_C
-=\begin{bmatrix}0.07\\0.20\\0.40\end{bmatrix}\;\mathrm{m}.
-$$
-
-Simply adding the translations would yield (0.30, 0.03, 0.40) m, describing a different geometry. An incorrect implementation can appear to work when rotations happen to align. Test known points and the transform/inverse identity across more than one pose. In `perception_lab.py`, `R_HC @ p_CO + p_HC` performs this calculation. The named arrays correspond to the declared rotation, point and camera origin; changing multiplication order changes the geometry.
-
-### A phone's pose does not identify the cube
-
-Device AR tracking may report the phone relative to W. A cube can move independently, so phone pose is not cube pose. The camera can also have a fixed offset and axis convention relative to the device-tracking frame. Declare those relationships rather than assigning the same label to all of them.
-
-If a marker is fixed to the cube, an estimated marker-to-camera pose also needs a marker-to-object relationship:
+The rightmost map acts first. If the estimator observes a marker fixed to a cube face, include the known marker-to-object relationship:
 
 $$
 {}^HT_O={}^HT_C\,{}^CT_M\,{}^MT_O.
 $$
 
-A marker origin on one face is not the cube center. If the phone moves relative to the hand, camera-to-hand pose must be updated or otherwise known; a fixed calibration applies only while that mounting relationship remains fixed. A hand/world calibration can help relate a tracked camera to H, but it does not remove the need to observe the cube.
+A marker's origin on a face is not the cube center. The marker mounting and physical dimensions belong to the measurement model, just as link geometry belonged to the actuator fixture model in Class 03.
 
-The existing actor's object and palm features are constructed in the simulator's world frame. A hand-frame object estimate therefore needs the hand-to-world map before it can replace that information:
+The inverse transform is
+
+$$
+({}^HT_C)^{-1}=\begin{bmatrix}({}^HR_C)^\mathsf T&-({}^HR_C)^\mathsf T{}^Hp_C\\0&1\end{bmatrix}.
+$$
+
+Negating translation without rotating it is not a general inverse. A moving phone also requires the camera-to-hand relationship at the relevant observation time; a fixed calibration applies only while the mounting relationship stays fixed.
+
+These are 4 × 4 maps for points and rigid-body pose. Featherstone's 6 × 6 spatial transforms act on motion or force vectors with declared ordering. Do not apply a point transform directly to an angular-first spatial wrench, and do not identify an image-based pose vector with a spatial velocity (Featherstone 2008).
+
+### Worked example: rotate before translating
+
+Suppose the camera is rotated 90° about hand z and its origin is 0.10 m along hand x:
+
+$$
+{}^HR_C=\begin{bmatrix}0&-1&0\\1&0&0\\0&0&1\end{bmatrix},\qquad
+{}^Hp_C=\begin{bmatrix}0.10\\0\\0\end{bmatrix}\;\mathrm m.
+$$
+
+For a point whose camera coordinates are (0.20, 0.03, 0.40) m,
+
+$$
+{}^Hp_O={}^HR_C{}^Cp_O+{}^Hp_C
+=\begin{bmatrix}0.07\\0.20\\0.40\end{bmatrix}\;\mathrm m.
+$$
+
+Translation-only addition would give (0.30, 0.03, 0.40) m, a different physical location. This is an analytical coordinate example, not a measured calibration or a new pose-estimation demonstration.
+
+![The same point in camera and hand coordinates](../resources/class07/figures/frame-chain-classroom.png)
+
+*Figure 2. Geometry of the analytical transform example, shown in the x–y plane. Camera +x points along hand +y. The diagram explains coordinates; it reports no camera experiment.*
+
+If a controller instead expects object pose in world W, an additional declared hand-to-world map is required:
 
 $$
 {}^W\widehat T_O={}^WT_H\,{}^H\widehat T_O.
 $$
 
-The hat marks an estimate. Extract the position and scalar-first orientation from this result, then construct the same palm-minus-object position error and relative-rotation features described in [Class 06](06-learned-in-hand-cube-reorientation.md#preserve-the-learned-interface). A camera-frame quaternion is not already that six-value feature. The current goal, joint ordering and task-history convention must also be preserved (Google DeepMind 2026). For a moving camera or hand, the transform chain needs a consistent observation time; composing an old image pose with an unrelated newer camera pose can introduce another error.
+The hat marks an estimate. Quaternion ordering, active/passive rotation meaning and transform direction must agree at the software boundary. A four-value quaternion does not by itself identify those conventions.
 
-For this course, original asMagic integration remains a later step after image or marker access, cube estimation, calibration, timestamps and validity are verified. The core lesson does not substitute asMagicPro or assume that phone pose supplies object pose or human finger landmarks.
+## Connect pixels to physical geometry
 
-### Calibrated projection connects geometry to pixels
+### Projection explains why scale and calibration matter
 
 For an ideal camera point with positive depth,
 
@@ -181,161 +141,121 @@ u=f_x\frac{X_C}{Z_C}+c_x,\qquad
 v=f_y\frac{Y_C}{Z_C}+c_y.
 $$
 
-The focal lengths are in pixels and (c_x, c_y) is the principal point. The synthetic camera uses image u to the right, v downward and positive Z forward. These are the lab's conventions, not assumed phone-app conventions. Distortion is set to zero and recorded as an assumption.
+The focal lengths are in pixels and the principal point is (c_x, c_y). This equation assumes the camera's stated axis convention and an appropriate treatment of lens distortion. A physical camera's intrinsics must match the image resolution and processing used by the estimator.
 
-A 70 mm segment parallel to the image plane, with 700 px focal length, spans about **98 px at 0.50 m** depth and **49 px at 1.00 m**. The object has not shrunk. Known geometry or another scale source is needed for metric recovery.
+A 70 mm segment parallel to the image plane, observed with a 700 px focal length at 0.50 m, spans approximately
 
-![Known synthetic corner correspondences in image coordinates](../resources/class07/figures/pinhole-points-classroom.png)
+$$
+w_{\mathrm{px}}=700\frac{0.070}{0.50}=98\;\mathrm{px}.
+$$
 
-*Figure 4. Four ordered corners projected from a tilted 70 mm planar square. The correspondences are generated from known geometry and pose; no image detector is being evaluated. Image v increases downward.*
+At 1.00 m it spans about 49 px. These are illustrative projection calculations; they do not change the Class 06 cube dimensions or supply an experimentally measured camera calibration. A wrong assumed marker size produces a wrong metric scale even when its image outline looks plausible.
 
-PnP estimates rotation and translation from 3D points, their corresponding image points and camera calibration. OpenCV's [PnP documentation](https://docs.opencv.org/4.10.0/d5/d1f/calib3d_solvePnP.html) defines the returned map into the camera frame (OpenCV developers n.d.). The lab generates projections, adds Gaussian pixel noise and uses `solvePnP` with `SOLVEPNP_ITERATIVE`. Its `rvec` is a Rodrigues axis–angle rotation vector, not three Euler angles or a quaternion; `cv2.Rodrigues` converts it to a rotation matrix. Its `tvec` is the square origin expressed in camera coordinates, in metres because the model points use metres. Point detection, identification and ordering have already been supplied.
+Perspective-n-Point methods estimate pose from known 3D points, corresponding image points and calibration. Detecting the right object, identifying its points and maintaining their correspondence are additional problems. A letter on a face may help a viewer recognize it without supplying sufficient robust geometric correspondences under fingertip occlusion.
 
-The square's origin lies in its plane. If the square represents a marker on a cube face, its origin is not automatically the cube center. The marker-to-object transform above supplies that offset. Using the correct camera pose with an incorrect marker scale or origin still gives the controller an incorrect object pose.
+A low reprojection residual measures agreement with the image observations and model used in fitting. It is not independent proof that marker dimensions, camera calibration or metric pose are correct. Separate reference measurements are needed to evaluate physical accuracy.
 
-### A good image fit is not an independent pose reference
+### Visibility, noise and bias require different responses
 
-Reprojection error measures consistency between image points and projections of the fitted model. Incorrect marker dimensions or calibration can still produce a plausible image fit with an incorrect metric pose. This exercise can compare against its known synthetic pose; a physical tracker needs suitable independent reference measurements.
+Fingers may hide a marker exactly when contact changes the cube motion. The network may still deliver images while the estimator has insufficient evidence. Sending a zero pose invents a measurement. Holding the last pose preserves an old value; it does not make that value current.
 
-The [supplied sensitivity study](../resources/class07/results/perception-summary.json) records OpenCV 5.0.0, seed 7 and 100 trials at each of five corner-noise levels; its [500 trial rows](../resources/class07/results/pnp-trials.csv) retain the individual errors. All trials use the same tilted square, known camera matrix and declared ground-truth pose. They sample corner perturbations, not 500 different camera setups or detected physical objects. It reports median translation/orientation error and a 90th-percentile orientation error. The percentile describes these generated trials; it is not a confidence interval.
+Random noise may vary between observations. A calibration error can bias every estimate in the same direction. Averaging can reduce some random variation while retaining bias, and smoothing can introduce lag. An estimator should report rejection or missing data explicitly so that the controller or experimenter can distinguish lack of evidence from a confident stationary object.
 
-![Synthetic pose-estimation sensitivity to corner noise](../resources/class07/figures/pnp-sensitivity-classroom.png)
+Useful records include raw images, camera calibration, capture times, estimated poses, accepted/rejected detections and the reasons for rejection. Preserve the object and camera setup identity with the record. Without this evidence, a manipulation failure cannot be attributed specifically to perception.
 
-*Figure 5. PnP sensitivity for known correspondences and calibration. The curves exclude detection failures, real occlusion, calibration error and hardware measurements. Noise-free recovery is a numerical check, not a claim that a physical camera is exact.*
+## Measure age rather than assuming a frame rate
 
-| Noise SD (px) | Median position (mm) | Median angle (°) | P90 angle (°) |
-|---|---:|---:|---:|
-| 0 | <0.00001 | <0.00001 | <0.00001 |
-| 0.25 | 0.557 | 0.795 | 1.266 |
-| 0.5 | 1.267 | 1.522 | 2.508 |
-| 1.0 | 2.134 | 2.971 | 5.504 |
-| 2.0 | 5.384 | 6.389 | 23.959 |
+If capture and controller-use timestamps share a synchronized time base, the observation age is
 
-The columns report errors, rather than the pose itself. At 2 px noise, the median angle error is about 6.39°, while its 90th percentile is about 23.96°: the median alone hides substantial upper-tail errors in this setting. These are pose-estimation errors against synthetic ground truth, not the Class 06 cube-to-goal task error. A tracker can accurately report a cube that is far from its goal.
+$$
+a=t_u-t_c.
+$$
 
-The visible face's geometry, point ordering and scale remain essential. A letter may help a person follow the cube while still leaving an estimator's in-plane orientation or correspondence unresolved.
+Capture, network receipt and controller use are distinct events. Transport, processing, queues and scheduling all contribute. Timestamps from unsynchronized clocks can contain an unknown offset; their difference is not automatically a latency measurement.
 
-**Checkpoint:** Which errors are excluded by this synthetic experiment, and why would a low reprojection residual not resolve all of them?
+At 20 Hz, three control intervals equal 150 ms. Under approximately constant angular speed of 1 rad/s, a pose that old differs from the current orientation by roughly
 
-## Formulate and test the visual-feedback learning problem
+$$
+\Delta\theta\approx\omega a=1(0.15)=0.15\;\mathrm{rad}\approx8.59^\circ.
+$$
 
-### Choose the interface before choosing a learned model
+This local approximation explains why age can matter. It is not a measured delay, a Class 06 success threshold, or a prediction that every delayed trajectory has that error. Continuous rotation needs its own evaluation rule.
 
-An estimator can learn image-to-pose mapping while a manipulation policy learns observation-to-action mapping. The supplied PnP estimator is geometric rather than learned: its optimization fits a pose from correspondences, without updating policy weights. An image-based policy is another architecture, requiring compatible training and inference inputs. Raw pixels cannot simply replace the nine pose-error values of a fixed 57-input actor.
+The source notes describe nominal pose streaming around 60 Hz and possible Wi-Fi delays of 50–150 ms. Treat these as setup-dependent expectations to measure on the actual configuration, rather than universal app guarantees. Sixty packets per second do not guarantee sixty valid cube estimates or bounded capture-to-use age.
 
-To learn image-to-pose mapping, pair images with suitable reference poses at their capture times, and test on separately held-out sequences or conditions. For policy learning, specify what observations are available during action selection, preserve bounded joint-target actions and define the task reward and evaluation rule. Simulator ground truth can score an estimate or task without being supplied secretly as the actor's visual observation.
+Holding a pose estimate differs from holding an actuator command. An observation-handling rule must specify what happens during rejection, and a controller-handling rule must specify how action changes. A pause, a last-command hold and a predicted state each need their own operating conditions and validation. They are design choices, not automatic safety properties.
 
-The present 57-input actor has no dedicated age or validity channels. An external observation handler must decide how to accept, reject or hold an estimate and log that decision. Adding age or validity values to the network input changes its architecture and requires compatible weights; it is not an automatic capability of the supplied actor. The current diagnostics deliberately keep that actor fixed.
+**Checkpoint:** If a packet arrives now but contains yesterday's last valid pose, which timestamp determines measurement age? How should the system distinguish that packet from a fresh estimate?
 
-A manageable progression is to verify the existing pose-observing policy, characterize an estimator under declared viewpoints and visibility, then test the combined closed loop with calibrated timing. Observation randomization during training may improve robustness, but its effect must be evaluated. The retained Class 06 noisy results are a teaching reference, not a Class 07 performance result.
+## Inspect the original asMagic stream
 
-Report perception and task outcomes together. For example, an estimator accurate on 70 of 100 required samples has 70% coverage; error reported only on those accepted samples omits what the controller received during the missing intervals. This is illustrative arithmetic, not a measured tracker result. Useful evaluation records include pose errors, valid-pose coverage, age, task success, falls and timeouts.
+![Original asMagic streaming interface](../resources/class07/figures/source/asmagic-app.png)
 
-### Test a bounded intervention in native MuJoCo
+*Figure 3. The author's original asMagic interface reference. Verify the installed version and enabled stream fields before using this setup; a screenshot is not a current packet-schema specification.*
 
-The supplied diagnostic preserves the Class 06 policy, task and clocks. It uses the same bundled ONNX actor and native MuJoCo 3.6.0 runtime identified in that class. It delays or holds only observation indices **32–40**: three position-error and six orientation-error features. Joint-position features, joint-target errors and action history remain current according to the pinned task's ordering. In `feedback_experiment.py`, `obs[32:41]` selects these nine values because Python excludes the upper bound. The script checks that entries before index 32 and from index 41 onward are unchanged; a different slice would change the experiment.
+The author's Class 07 plan uses the original asMagic app to publish device AR pose, color images, depth and intrinsics over a network, with port 8000 stated in the plan. Availability and synchronization of these fields must be checked in the actual receiver. A phone's AR pose tracks the phone relative to its AR world; it does not directly track the cube in the hand.
 
-![The nine pose-error channels under test](../resources/class07/figures/observation-interface-classroom.png)
+The source Class 09 practice provides the next concrete application of the phone stream: mapping device motion to a simulated arm's pusher target. That is phone-pose teleoperation. It is neither cube-pose estimation nor human-finger retargeting. Its supplied receiver and frame conventions must be inspected as implemented; a conceptual frame diagram is not evidence that every software package uses identical axes.
 
-*Figure 6. Only the nine highlighted pose-error values are changed. They include the goal relation when the feature packet was created. The intervention is not raw-camera latency followed by recomputation against the newest goal.*
+For this class, the source materials establish a stream-inspection and visual-feedback design discussion. They do not yet supply a complete calibrated cube estimator connected to the continuous-rotation actor. Keep that boundary visible when planning or presenting the demonstration.
 
-This distinction matters when the task changes its target. Delaying a raw object pose but comparing it with the current target is a different experiment from delaying an already-computed target-relative feature. State which data cross the delay boundary before attributing behavior to camera latency.
+## Formulate a future visual-feedback learning problem
 
-Three selected conditions use seed 9204, ideal task observation noise, 20 Hz control and a maximum of 1000 steps: unchanged input, three-step delay, and independently sampled packet loss with probability 0.3. The first packet is always initialized. Delayed startup reuses the first available packet until enough history exists. On a loss, the last delivered feature packet is held; the loss generator uses the separate seed 79204. The [baseline](../resources/class07/results/baseline/summary.json), [three-step-delay](../resources/class07/results/delay150/summary.json) and [packet-loss](../resources/class07/results/dropout30/summary.json) receipts identify these conditions; their adjacent traces retain every control step.
+A learning formulation begins with the available observations. One possible observation set is measured joint state together with estimated object pose, age and validity. A corresponding actor must be trained or otherwise designed for those fields. Adding them to the fixed Class 06 network changes its input contract and requires compatible weights; camera values cannot simply be appended to its 320 inputs.
 
-Here `feature_age_s` is the additional simulated queue/hold age at policy-input use. Row `time_s` marks the end of the resulting 50 ms control interval. For example, row 4 ends at 0.20 s but uses an input at 0.15 s; under the three-step delay that input carries the initial packet and has 0.15 s extra age. A zero baseline age means no added packet delay, not proof of zero sensing or inference latency. These values are not measured network or camera latency. The orientation-error trace and goal events use the same task sensor-phase convention as Class 06; they are distinct from a new forward-pass/rendered-pose diagnostic.
+Training can randomize measurement delay, noise, visibility and dropout under declared distributions. Ground-truth simulator state can support rewards and evaluation without being secretly supplied as a visual observation. Randomization is a hypothesis about robustness; the resulting controller still needs held-out tests under meaningful conditions.
 
-Once an observation changes the action, later trajectories can diverge. The intervention's consequences belong to a closed loop, rather than a comparison of identical underlying state trajectories.
+Report accepted-pose accuracy and coverage alongside manipulation behavior. A tracker accurate on 70 of 100 required samples has 70% coverage; its error on accepted samples does not describe the 30 missing inputs. This is arithmetic illustrating an evaluation distinction, not a result from our setup.
 
-![Selected native pose-error packet diagnostics](../resources/class07/figures/feedback-diagnostic-classroom.png)
-
-*Figure 7. One native run per condition. The loss run terminates at its fall and has no invented tail. The lower plot reports delivered-feature age. These traces demonstrate a controlled intervention, not population reliability.*
-
-| Selected condition | First goal (s) | Successful steps | End of run |
-|---|---:|---:|---|
-| Unchanged input | 17.80 | 2 | 50 s limit; no fall |
-| Three-step delay | 19.45 | 1 | 50 s limit; no fall |
-| Packet-loss probability 0.3 | 18.60 | 1 | Fall at 19.20 s |
-
-The loss run misses **126 of 384 packets**, approximately 32.8% in this realization, with maximum delivered-feature age of **300 ms**. A configured probability does not guarantee an exact fraction in a finite seeded run. The first-goal event does not erase a later fall.
-
-A successful delayed run does not establish delay robustness, and one loss-associated fall does not prove every loss pattern fails. These examples answer what happened under declared interventions. A robustness claim needs a suitable multi-episode protocol and denominator. Do not relabel a timeout as a particular failure mechanism without inspecting evidence.
-
-**Checkpoint:** Why can the loss run count as a first-goal success while still demonstrating a continuous-manipulation failure?
-
-## Preview retargeting and embodiment differences
-
-Human-hand retargeting maps hand measurements to a robot with different link lengths, joint axes, limits and contact capabilities. Phone-pose teleoperation instead uses device motion to specify a target. A joystick or phone-orientation stream is not a measurement of human finger configuration.
-
-![Human-hand measurements mapped to robot joints](../resources/class07/figures/retargeting-classroom.png)
-
-*Figure 8. Conceptual retargeting: measured landmarks, a task-space objective and constrained robot joints. Finger tracking and retargeting are not implemented by the core visual-feedback practical.*
-
-Published systems such as DexPilot illustrate vision-based human-hand teleoperation with a different robot embodiment (Handa et al. 2019). A fingertip-vector objective can be more meaningful than directly copying joint angles. It still requires correspondence, scale, coordinate frames, joint ordering and robot limits, often with temporal regularization. Copying an angle across joints with different axes can move a fingertip in the wrong direction.
-
-Before a human-hand demonstration, verify that valid landmarks or joint observations are actually available and that the mapping is correct. Original phone tracking may require a separate estimator for fingers. This preview identifies a possible continuation; the required activity remains frame, projection and observation-timing analysis without physical hand control.
+Human-hand retargeting is another problem: mapping observed landmarks to robot joints under different link lengths, joint axes and limits. DexPilot is a reference example on a different hand-arm system (Handa et al. 2019). It requires finger observations and a declared correspondence; an ordinary device-pose stream does not supply those observations automatically. Retargeting remains an optional direction rather than the required Class 07 implementation.
 
 ## Instructor and TA demonstration
 
-### Trace a visual measurement to the policy
+### Identify the observation boundary
 
-Use Figure 1 to identify where estimation replaces simulated pose information. State that the Class 06 pose-observing baseline actor already observes cube pose. Distinguish a camera's motion from the cube's motion and locate the missing calibrations for a live phone implementation.
+Use the Class 06 input definition and Figure 1. Locate where a camera currently records evidence and where an additional connection would be required for closed-loop visual control. State that the existing actor remains proprioceptive. Do not present an old pose-observing policy or a generated latency simulation as the source practical for this class.
 
-Work through Figure 3 on paper: rotate the point, then add the camera origin. Ask why translation-only addition gives the wrong answer. Identify what a cube-mounted marker's pose would still need before it represents the cube center in the hand frame.
+### Inspect a configured stream
 
-For a physical phone-stream inspection, first identify the actor case, device/software revision and actual packet fields. Locate an image, matching intrinsics and capture timestamp; then identify the object estimator and hand-frame calibration. The phone's own AR pose is not a cube measurement. If any part is unavailable, use the prepared synthetic case below and record the missing physical evidence instead of labeling the demonstration a completed visual hand-control deployment.
+When the author's original asMagic receiver setup is available, inspect the actual device pose, image and metadata fields. Record the app/receiver version, coordinate conventions and timestamps. Move the phone around a stationary object, then move the object with the phone fixed. Explain which changes are represented by device tracking and which require an object estimator.
 
-### Recover a declared synthetic pose
+A viewpoint or occlusion comparison may be shown as an object-pose experiment only when the estimator, calibration and validity output are actually present. Otherwise describe what the images show and identify the missing estimator. A stream arriving in Python or MuJoCo is not by itself a successful visual hand-control deployment.
 
-Use the synthetic pose-recovery example and its sensitivity results. Read the declared camera matrix, 70 mm square and generated correspondences. Inspect noise-free recovery and the three-correspondence unavailable gate, then compare the sensitivity table with Figure 5. Explain why this test does not implement a marker detector or calibrate a physical camera. Use the declared correspondences and result table to support the interpretation.
+### Work through the coordinate example
 
-### Compare timing interventions
+Rotate the example point before adding translation. Locate the extra marker-to-cube and hand-to-world relationships that an implementation would need. Explain why a camera origin and a cube center cannot be treated as the same point.
 
-Open Figure 7 and compare the three reported diagnostics. Locate the first delayed feature and a dropped packet in the supplied traces. Compare first-goal time, successful-step count, termination and maximum age. Relate 150 ms to three control intervals and to the 0.15 rad constant-speed estimate. Preserve the capture-time goal distinction.
-
-The saved traces provide the evidence for this comparison. End with one supported observation and a new measurement that would distinguish an alternative explanation.
+No powered hand control is required. If the receiver or calibrated estimator is unavailable, keep the session to the supplied interface figures, geometry and observation-contract analysis; record the missing component rather than claiming a completed live demonstration.
 
 ## Student activity
 
-### Calculate, inspect and bound the conclusion
+Teams complete the following record using the supplied figures, analytical examples and any configured source stream that is actually available.
 
-First name the Class 06 pose-observing baseline actor continued here and explain why replacing its object-state source differs from adding a pose input to the proprioceptive actor.
+1. Explain why Class 06 video recording is not visual feedback to its current actor.
+2. Complete the worked point transform and identify the units and map direction.
+3. Calculate the 150 ms constant-speed discrepancy and state its assumptions.
+4. Identify device pose, camera intrinsics, image timestamp and object pose as separate fields. Mark unavailable fields explicitly.
+5. If a valid object estimator is provided, vary viewpoint or cover part of the marker and record acceptance behavior. Without an estimator, describe image visibility without inventing pose-error measurements.
+6. State one additional component or measurement needed before visual information could influence a compatible hand controller.
 
-Use the page's worked examples, synthetic experiment description and result tables. For the core team response, complete **one geometry calculation** from items 1–2, the **measurement-age calculation** in item 4, and **one observation** from the timing comparison in item 5. State the actor and observation channels being discussed. Items 1–5 remain a complete practice set for further study; the full set is not a separate requirement for the short classroom response.
-
-1. Transform the camera-frame point (0.20, 0.03, 0.40) m into the hand frame using the declared 90° rotation and camera origin. Show the rotation before translation.
-2. Calculate the apparent width of the 70 mm segment at 0.50 m depth with 700 px focal length. Predict the width at twice that depth.
-3. Inspect the synthetic result at 1 px corner-noise SD. Record its median position and angle errors, and name two real-camera errors excluded from the test.
-4. Calculate the approximate orientation discrepancy from 150 ms age at 1 rad/s. Compare it with 0.1 rad without changing the task threshold.
-5. Compare the three native diagnostics. State exactly which channels changed and explain why first-goal success and later retention require separate reporting.
-
-Make each prediction before consulting the corresponding worked example or result table. Show the calculation and explain what its assumptions allow you to conclude.
-
-Submit the geometry and timing calculations with one bounded conclusion. Use the following fields to organize the response; complete Measurement and Intervention in more detail when extending the exercise:
-
-| Field | Required content |
+| Response field | What to record |
 |---|---|
-| Geometry | Named frames, units and the selected transform or projection calculation |
-| Measurement | Generated correspondences, calibration and visibility rule |
-| Timing | Capture/use clock assumption and computed age effect |
-| Intervention | Selected feature channels, delay/loss setting and outputs |
-| Conclusion | One supported observation and one untested claim |
+| Controller | Class 06 proprioceptive input/action contract |
+| Geometry | Frames, transform direction and point calculation |
+| Timing | Clock assumption, age calculation and limitation |
+| Available observations | Actual stream fields or a clearly marked unavailable field |
+| Conclusion | What was observed, and what remains unverified |
 
-Identify the supplied tables and traces used as saved evidence. A qualitative camera observation can reveal viewpoint or occlusion changes, but does not replace a calibrated cube-pose experiment. No phone or hardware hand is required.
+A team can complete the geometry and interface analysis without a phone. Where stream access is provided, students inspect observations rather than commanding a physical hand.
 
-## Carry the measurement contract to another embodiment
+## Carry the observation contract to an arm
 
-The next module changes from a hand and cube to a reBot arm. The requirements to define coordinates, commands and observations carry forward, but the mechanism, interfaces and calibration records must be established for that arm.
-
+Class 08 introduces a different mechanism; Class 09 uses phone motion to command its simulated pusher. The need to distinguish references, sensed quantities, frames and timestamps carries forward. The object-estimation problem does not disappear, but it must not be confused with device-pose teleoperation.
 
 ## References
 
 Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. [Coordinate-transform guidance](https://royfeatherstone.org/spatial/v2/xforms.html).
 
-Google DeepMind. 2026. “LEAP Cube Reorientation.” *MuJoCo Playground*, source snapshot at commit `ef4fefc13033c0468af4ef651847f5348af0c7d7`. [Task and actor-feature definition](https://github.com/google-deepmind/mujoco_playground/blob/ef4fefc13033c0468af4ef651847f5348af0c7d7/mujoco_playground/_src/manipulation/leap_hand/reorient.py). The supplied actor and native adaptation are identified in Class 06.
-
 Handa, Ankur, Karl Van Wyk, Wei Yang, Jacky Liang, Yu-Wei Chao, Qian Wan, Stan Birchfield, Nathan Ratliff, and Dieter Fox. 2019. “DexPilot: Vision Based Teleoperation of Dexterous Robotic Hand-Arm System.” arXiv:1910.03135. [Paper](https://arxiv.org/abs/1910.03135).
 
 OpenAI, Marcin Andrychowicz, Bowen Baker, Maciek Chociej, Rafal Jozefowicz, Bob McGrew, Jakub Pachocki, Arthur Petron, Matthias Plappert, Glenn Powell, Alex Ray, Jonas Schneider, Szymon Sidor, Josh Tobin, Peter Welinder, Lilian Weng, and Wojciech Zaremba. 2018. “Learning Dexterous In-Hand Manipulation.” arXiv:1808.00177. [Paper](https://arxiv.org/abs/1808.00177).
-
-OpenCV developers. n.d. “Perspective-n-Point (PnP) Pose Computation.” *OpenCV Documentation*, version 4.10.0. Accessed October 17, 2026. [Projection, frame conventions and solvers](https://docs.opencv.org/4.10.0/d5/d1f/calib3d_solvePnP.html). The supplied synthetic-study receipt records its runtime separately as OpenCV 5.0.0.

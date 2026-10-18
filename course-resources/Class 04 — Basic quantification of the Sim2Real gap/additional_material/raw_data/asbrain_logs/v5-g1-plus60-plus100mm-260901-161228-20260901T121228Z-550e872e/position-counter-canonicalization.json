@@ -1,0 +1,10 @@
+{
+  "operating_mode_before": 5,
+  "passed": true,
+  "performed": false,
+  "physical_motion_commanded": false,
+  "present_position_after_raw_signed": 985,
+  "present_position_before_raw_signed": 985,
+  "reason": "position counter already canonical",
+  "torque_enabled": false
+}

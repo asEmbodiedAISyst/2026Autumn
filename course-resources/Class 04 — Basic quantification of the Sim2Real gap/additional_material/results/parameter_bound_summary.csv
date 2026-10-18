@@ -1,0 +1,4 @@
+parameter,lower_bound,upper_bound,H1_value,H2_value,H1_at_upper_bound,H2_at_upper_bound
+armature_kg_m2,0.0002,0.01,0.006051240922732641,0.004778798595411223,False,False
+damping_Nm_s_per_rad,0.003,0.15,0.04628936759658051,0.04762964652845072,False,False
+frictionloss_Nm,0.002,0.05,0.0035416263998947497,0.0027734389861644873,False,False

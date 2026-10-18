@@ -1,0 +1,68 @@
+{
+ "result": {
+  "success": true,
+  "calls": 3,
+  "ended_by": "sim_success",
+  "cost_usd": 0.0150979,
+  "usage": {
+   "input": 2296,
+   "output": 508,
+   "cache_read": 3742,
+   "cache_write": 1871
+  }
+ },
+ "transcript": [
+  {
+   "call": 0,
+   "tool": "locate",
+   "input": {
+    "u": 380,
+    "v": 200,
+    "what": "cube"
+   },
+   "report": "cube at x=30.7, y=-9.4 cm; from the tip that is dx=-2.9, dy=-7.6 cm"
+  },
+  {
+   "call": 0,
+   "tool": "locate",
+   "input": {
+    "u": 280,
+    "v": 120,
+    "what": "goal"
+   },
+   "report": "goal at x=38.5, y=-5.8 cm; from the tip that is dx=+5.0, dy=-3.9 cm"
+  },
+  {
+   "call": 1,
+   "tool": "push",
+   "input": {
+    "cube_px": [
+     380,
+     200
+    ],
+    "goal_px": [
+     280,
+     120
+    ],
+    "why": "push cube to goal"
+   },
+   "report": "cube at (30.7, -9.4) cm, goal at (38.5, -5.8) cm. push done (pushed 6 of 9 cm; check the image and push again); tip lifted at (32.0, -8.8, 7.0) cm"
+  },
+  {
+   "call": 2,
+   "tool": "push",
+   "input": {
+    "cube_px": [
+     195,
+     145
+    ],
+    "goal_px": [
+     170,
+     140
+    ],
+    "why": "finish push"
+   },
+   "report": "cube at (36.5, -6.8) cm, goal at (38.0, -5.4) cm. TASK SUCCESS detected by the simulator"
+  }
+ ]
+}

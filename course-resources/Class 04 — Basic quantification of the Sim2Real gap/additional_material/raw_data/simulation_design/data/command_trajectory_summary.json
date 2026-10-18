@@ -1,0 +1,79 @@
+[
+  {
+    "applied_max_rad": 0.6504078540635119,
+    "applied_min_rad": -0.6504078540635119,
+    "duration_s": 12.0,
+    "maximum_abs_applied_velocity_rad_s": 0.46019423636569634,
+    "profile_id": "P01_slow_triangle",
+    "requested_max_rad": 0.65,
+    "requested_min_rad": -0.65,
+    "samples": 1201,
+    "split": "calibration"
+  },
+  {
+    "applied_max_rad": 0.4663301595172349,
+    "applied_min_rad": -0.43718452454740775,
+    "duration_s": 12.0,
+    "maximum_abs_applied_velocity_rad_s": 1.150485590914231,
+    "profile_id": "P02_multisine",
+    "requested_max_rad": 0.4670751232346083,
+    "requested_min_rad": -0.43778929399334576,
+    "samples": 1201,
+    "split": "calibration"
+  },
+  {
+    "applied_max_rad": 0.6994952392758523,
+    "applied_min_rad": -0.6994952392758523,
+    "duration_s": 7.54,
+    "maximum_abs_applied_velocity_rad_s": 4.065049087896949,
+    "profile_id": "P03_smooth_levels",
+    "requested_max_rad": 0.7,
+    "requested_min_rad": -0.7,
+    "samples": 755,
+    "split": "calibration"
+  },
+  {
+    "applied_max_rad": 0.5997864880632857,
+    "applied_min_rad": -0.5997864880632857,
+    "duration_s": 12.0,
+    "maximum_abs_applied_velocity_rad_s": 2.7611654181941545,
+    "profile_id": "P04_chirp",
+    "requested_max_rad": 0.5999997929865194,
+    "requested_min_rad": -0.5999996042747802,
+    "samples": 1201,
+    "split": "model_selection"
+  },
+  {
+    "applied_max_rad": 0.7501166052760785,
+    "applied_min_rad": -0.6902913545485385,
+    "duration_s": 10.0,
+    "maximum_abs_applied_velocity_rad_s": 1.4572817484913596,
+    "profile_id": "P05_wide_sine",
+    "requested_max_rad": 0.749994883603138,
+    "requested_min_rad": -0.6899994315108612,
+    "samples": 1001,
+    "split": "model_selection"
+  },
+  {
+    "applied_max_rad": 0.6534758156392831,
+    "applied_min_rad": -0.5399612373357456,
+    "duration_s": 11.0,
+    "maximum_abs_applied_velocity_rad_s": 7.133010663668231,
+    "profile_id": "P06_heldout_composite",
+    "requested_max_rad": 0.6527843136274819,
+    "requested_min_rad": -0.5401185980834363,
+    "samples": 1101,
+    "split": "held_out"
+  },
+  {
+    "applied_max_rad": 0.6994952392758523,
+    "applied_min_rad": -0.6994952392758523,
+    "duration_s": 10.0,
+    "maximum_abs_applied_velocity_rad_s": 2.9912625363770013,
+    "profile_id": "P07_heldout_sine_hold",
+    "requested_max_rad": 0.6999998618255429,
+    "requested_min_rad": -0.6999977892097778,
+    "samples": 1001,
+    "split": "held_out"
+  }
+]

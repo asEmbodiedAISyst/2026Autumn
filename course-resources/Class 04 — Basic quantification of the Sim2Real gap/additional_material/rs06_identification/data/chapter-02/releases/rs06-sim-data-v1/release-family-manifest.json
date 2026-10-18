@@ -1,0 +1,36 @@
+{
+  "canonical_profile_table_count": 7,
+  "hardware_G1_free_fall": {
+    "part_of_32_closed_loop_episode_matrix": false,
+    "schema_file": "hardware/g1-free-fall-schema.json",
+    "status": "schema-only-user-implements-protocol"
+  },
+  "hardware_position": {
+    "controllers": [
+      "H1",
+      "H2"
+    ],
+    "minimum_accepted_repeat_policy": {
+      "calibration": 3,
+      "held_out": 5,
+      "model_selection": 3
+    },
+    "status": "collection-plan-only-until-physical-runs-exist"
+  },
+  "release_id": "chapter02-rs06-sim-data-v1",
+  "schema_version": "phyintel-chapter02-rs06-release-family-v1",
+  "sim_position": {
+    "episode_count": 32,
+    "manifest_file": "data/chapter-02/releases/rs06-sim-data-v1/sim-position-manifest.json",
+    "manifest_sha256": "92cf5f295e6230173eb501820906e2124090890b95fec8bc3a3ee9d473034f17",
+    "role": "closed-loop fitting, selection, and held-out evaluation"
+  },
+  "sim_torque": {
+    "admitted_to_sim_position_fit": false,
+    "hardware_equivalent_claimed": false,
+    "manifest_file": "data/chapter-02/releases/rs06-sim-data-v1/sim-torque-manifest.json",
+    "manifest_sha256": "52260e52ffe9d5b668ff7c857829d07a461c4af891f38599d5cfcc121aeaa6fe",
+    "release_id": "chapter02-rs06-sim-torque-v1",
+    "role": "simulation-only joint-parameter identifiability and controller-invariance check"
+  }
+}

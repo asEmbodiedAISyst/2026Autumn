@@ -1,0 +1,26 @@
+<!--
+  Push-T task (after Diffusion Policy / gym-pusht): push the T-shaped block onto the target T.
+  T-block local frame: origin at the center of the bar, bar along x, stem along -y. The target T is a mocap body (no collisions).
+  The T block matches the real print (hardware/push_objects/t_block.stl): matte black PLA, printed hollow (~28 g).
+-->
+<mujoco>
+  <asset>
+    <material name="t_mat" rgba="0.06 0.06 0.065 1" specular="0.05" shininess="0.1"/>
+    <material name="t_goal_mat" rgba="0.026 0.417 0.273 1"/>
+  </asset>
+
+  <worldbody>
+    <body name="tblock" pos="0.27 0.10 0.0125">
+      <freejoint name="tblock_joint"/>
+      <geom name="t_bar" type="box" pos="0 0 0" size="0.05 0.0125 0.0125" mass="0.016" material="t_mat"
+            friction="0.4 0.005 0.0001" solref="0.004 1"/>
+      <geom name="t_stem" type="box" pos="0 -0.05 0" size="0.0125 0.0375 0.0125" mass="0.012" material="t_mat"
+            friction="0.4 0.005 0.0001" solref="0.004 1"/>
+    </body>
+
+    <body name="t_goal" mocap="true" pos="0.28 -0.02 0" euler="0 0 0">
+      <geom type="box" pos="0 0 0.0006" size="0.05 0.0125 0.0005" material="t_goal_mat" contype="0" conaffinity="0"/>
+      <geom type="box" pos="0 -0.05 0.0006" size="0.0125 0.0375 0.0005" material="t_goal_mat" contype="0" conaffinity="0"/>
+    </body>
+  </worldbody>
+</mujoco>

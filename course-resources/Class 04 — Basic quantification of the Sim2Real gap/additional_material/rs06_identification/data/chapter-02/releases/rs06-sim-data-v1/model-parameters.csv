@@ -1,0 +1,4 @@
+MuJoCo_parameter,unit,source_value,nominal_value,nominal_difference_percent,source_provenance
+armature,kg*m^2,0.0012484886,0.0005,-59.951576650359485,fixed 9:1 geometry prior from the existing RS06 identification workflow
+damping,N*m*s/rad,0.0004377347686,0.0001,-77.15511602612048,synthetic MuJoCo viscous term seeded from the existing RS06 balanced-load workflow; not a physical claim
+frictionloss,N*m,0.0481937007,0.012,-75.10048029990773,synthetic MuJoCo Coulomb term seeded from the existing RS06 balanced-load workflow; model semantics differ

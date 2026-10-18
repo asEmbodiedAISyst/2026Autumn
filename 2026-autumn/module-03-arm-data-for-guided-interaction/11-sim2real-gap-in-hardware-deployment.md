@@ -8,446 +8,447 @@ layout:
 
 ## Central question
 
-> What evidence supports a claim that a learned behavior transfers and remains useful?
+> What evidence supports a claim that a learned behaviour transfers and stays useful?
 
-A policy can perform well in one simulator and fail when the camera, timing or executor changes. It can also fail because an interface was interpreted incorrectly rather than because learning itself was ineffective. Our task is to distinguish these explanations and state what a result actually supports.
+A policy can predict recorded actions well and still fail when its own actions change the next observation. This class connects the pusher-cube data from Class 10 to a learned controller, a controlled simulation evaluation and the source's separate physical failure reports.
 
-The required work uses simulation replay, recorded policy outcomes and a selected failure. The physical policy trials and tool-using VLM example add reported cases for comparison. Exact learned-policy weights and saved processors are not supplied, so the lesson distinguishes inspection of these records from a fresh policy rerun or physical deployment.
-
-Classes 02–05 established actuator, model and dataset identities. Classes 06–07 connected a manipulation policy to its observation and timing contract. Classes 08–09 established an arm and teleoperation interface; Class 10 asked whether demonstration records suit a learner and executor. Here we test the next link: what changes between that declared system and the system used for evaluation, and which experiment can distinguish the resulting explanations? We reuse the earlier mathematics and interfaces while keeping their different data and fixtures identifiable.
+**ACT is the main method.** Diffusion Policy and SmolVLA illustrate different sequence models and their reported comparisons. The experimental values are supplied course records; reading them is different from carrying out a new execution. The optional VLM page studies a different, slower simulation controller.
 
 By the end of this class, you should be able to:
 
-- Inspect the observation, action and configuration conventions of a deployment interface.
-- Distinguish a possible timing or contact mismatch from an interface error.
-- Explain what replay and shadow checks establish and which claims they leave open.
-- Diagnose a recorded failure without treating a plausible explanation as a demonstrated cause.
-- Write a bounded transfer claim and propose an experiment that can distinguish competing explanations.
+- Explain ACT action chunks, training losses and checkpoint contents.
+- Trace a learned tool-pose action through frame conversion, limits, IK and actuation.
+- Check observation/action compatibility and identify timing, contact and actuation mismatch.
+- Distinguish replay, offline prediction, closed-loop simulation and physical evidence.
+- Write a bounded result and propose a discriminating next experiment.
 
-[Lecture](#observation-action-compatibility-and-calibration) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](#from-collected-data-to-a-policy) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The supplied figures, replay records and selected videos support the demonstration and activity on this page. Use saved results when local execution is unavailable, and distinguish a scripted replay, a recorded policy evaluation and a physical deployment.
+The explanation and supplied records can be read without executing code. The separate [practice page](11-practice.md) retains the source workflow, setup and commands. A reported result is identified as a retained source record; a new execution must save its own configuration and outcome.
 
-## Observation/action compatibility and calibration
+## From collected data to a policy
 
-Evaluate the complete configured system and identify which comparison each test makes. A narrow, repeatable simulation result is useful evidence. Extending it to a new observation domain or physical mechanism requires additional tests rather than a broader label.
+### The pipeline
 
-### A deployment claim names a system, not just a policy file
+```mermaid
+flowchart LR
+    D[dataset, 150 episodes] --> S[split: 130 train, 20 held out] --> T[lerobot-train] --> C[checkpoint]
+    C --> O[open-loop check on the 20 held-out episodes]
+    O --> R[rollout on the arm]
+    R -->|failure record| D
+```
 
-A checkpoint is one component. A running policy system also contains observation production, preprocessing, action interpretation, limits, scheduling, reset logic and an environment. Changing one component can change behaviour even when the checkpoint is identical.
+### What the network learns
 
-Define the claim before selecting a score. For example: “Under these simulated reset conditions, this checkpoint and executor reach the cube goal in this fraction of attempts.” That differs from “The policy transfers to physical hardware” and from “This representation permits handheld-to-robot demonstrations.” Each requires different evidence.
-
-The project can make a useful simulation claim without physical deployment. A missing physical test limits a physical claim; it does not automatically invalidate an honestly scoped simulation result. Likewise, completing a hardware demonstration does not remove the need to inspect failures or generalization.
-
-**Predict:** If a policy produces the right-shaped vector but the robot moves incorrectly, has the policy failed? Possibly, but first inspect semantics, normalization, frames, timing and executor behaviour. Shape compatibility is only the first check.
-
-### Check the complete observation/action contract
-
-For each observation feature, identify its key, shape, type, units, frame, camera geometry and acquisition time. For every action, identify whether it is a joint target, a velocity, an incremental pose or an absolute pose in an episode frame.
-
-| Interface question | A concrete failure |
-| --- | --- |
-| Is the camera key the expected one? | Correct image shape, wrong viewpoint |
-| Is the channel order identical? | Shoulder value interpreted as elbow target |
-| Are units and direction conversions preserved? | Degrees treated as radians, or command sign ignored |
-| Is preprocessing the trained one? | Raw values used with a normalized policy, or normalization applied twice |
-| Does a target mean measured-relative or commanded-relative motion? | Repeated lag changes accumulated movement |
-| Is the tool transform the same? | A pose target refers to the gripper TCP while the executor uses a rod tip |
-| Is the clock convention preserved? | Actions trained on one time interval executed on another |
-
-A checkpoint that loads without an exception has not passed these checks. Even identical feature names can refer to different physical quantities. The pusher's `x` value is meaningful only with its episode frame, start definition and tool geometry.
-
-A normalization transform also belongs to the policy interface:
+The policy is a function $$\pi_\theta$$ from the current phone image $$o_t$$ and rod-tip state $$s_t$$ to a chunk
+of future actions:
 
 $$
-z=\frac{x-\mu}{\sigma}.
+\big(\hat a_{t+1}, \dots, \hat a_{t+k}\big) = \pi_\theta(o_t, s_t)
 $$
 
-Here x is a raw feature and the mean and scale come from the saved training processor. With `μ = 0.30 m`, `σ = 0.05 m` and raw position `x = 0.35 m`, the normalized value is 1. Passing 0.35 where 1 is expected changes the input. Applying the same normalization again gives approximately 14, not 1. Output decoding also matters: if a normalized predicted position is 2 under these illustrative statistics, the raw target is 0.05×2+0.30=0.40 m. This is a decoded target; the executor can still limit it before issuing a joint command. This example is illustrative; the policy's actual statistics must come from its saved processors.
+The actions are poses in the episode frame of Class 10. Before the network sees a state or an action, each value
+is normalised with the statistics of the training set, $$\bar x = (x - \mu)/\sigma$$. The values of $$\mu$$ and
+$$\sigma$$ come from `meta/stats.json` and are stored in the checkpoint.
 
-For the supplied pusher representation, `observation.state` and `action` each have nine values: `[x, y, z, r11, r21, r31, r12, r22, r32]`. The first three are rod-tip position in metres; the remaining six are the first two columns of an orientation matrix. The action is an absolute pose target in an episode frame. In the retained start-relative case, its origin is the initial rod-tip position, its horizontal heading follows the initial tool yaw, and its vertical axis follows gravity. Table-relative data instead anchor the vertical origin at the declared table surface; the dataset and executor must agree on that choice. This representation is different from the seven motor-style action/state channels used with the gripper. A nine-value pose is not nine joint commands. Use this declared nine-feature interface for the worked checks continued from Class 10.
+### Three policies on the same data
 
-The supplied evaluator can select either six-dimensional delta actions or nine-feature episode poses from a saved checkpoint configuration. The outcome JSON omits that configuration, so an exact reproduction must recover it; a pusher name alone does not establish the checkpoint's feature semantics. The ten-episode pilot is also separate from the source's reported 300-demonstration training set.
-
-The policy image key is `observation.images.phone`: a tool-mounted camera view in this simulation. A front or side observer view may be useful to a human but cannot be substituted for the trained policy view without evaluating that change. The actual checkpoint must specify tensor order, scaling, resizing and preprocessing; the dataset’s stored RGB layout is not enough to infer the model’s tensor layout.
-
-**Calibration belongs to the contract.** A correct joint order does not fix an incorrect zero offset. A correct pose encoding does not fix an incorrect camera-to-tip transform. Declare which quantities came from CAD, which were measured, and the load/configuration under which a calibration was checked. A representation match makes a test meaningful; it does not establish equal physical behaviour.
-
-## Timing, latency, actuation and contact mismatch
-
-### Follow the age of an observation to the actuator
-
-An image describes an earlier system state. Capture, transport, preprocessing, inference, scheduling and actuator execution each contribute to the interval before its action takes effect. A nominal control rate alone does not identify that age. Class 09's separately read latest-receiver age is not a timestamp attached to the exact source packet used by a command. Class 10's uniformly stored sample grid likewise does not recover omitted acquisition times. Match clock domains or estimate their relationship before subtracting timestamps from different devices. Log timestamps at the relevant boundaries, clock relationships, missed deadlines and the action actually issued after limits.
-
-**Worked timing example:** Travel during a constant-speed delay is
-
-$$
-d=v\tau.
-$$
-
-At a constant tool speed of 0.10 m/s, an 80 ms observation-to-action delay corresponds to 8 mm of travel. That is more than half the supplied cube task’s 15 mm goal-distance threshold. This arithmetic is illustrative: a real motion is not necessarily constant, and it does not imply an 8 mm task error. It explains why a geometrically small tolerance makes time alignment consequential.
-
-Holding the last command when a frame is late, skipping a policy update and executing a longer action chunk produce different trajectories. The controller’s timeout and the policy’s replan interval therefore belong in the evaluated configuration.
-
-![Observation age and travel during an illustrative delay](../resources/class11/figures/latency-budget-classroom.png)
-
-*Figure 1. Constructed timing example: 20 ms capture/transport, 40 ms preprocessing/inference and 20 ms scheduling/execution sum to 80 ms. The lower-panel travel scale assumes constant 0.10 m/s. These values illustrate a timing budget; they are not measured phone, robot or policy latency.*
-
-### Match actuation and contact under a declared experiment
-
-A target pose is converted to joint commands, then to actuator effort and mechanism motion. Effort saturation, velocity limits, gravity compensation, payload, friction and compliance can change the response. When a tool touches a cube, object mass, contact geometry, friction and tool alignment also affect the outcome.
-
-The same rigid-body balance used earlier helps locate the mismatch (Featherstone 2008):
-
-$$
-M(q)\dot v+c(q,v)=\tau_{act}+\tau_{pass}+\tau_{ext}+J_c^Tf_c.
-$$
-
-Here M is the generalized inertia, c includes Coriolis/centrifugal and gravity terms, and v is generalized velocity. The right-hand terms are actuator, passive and externally applied generalized efforts, plus the force contribution from modeled constraints, including contact. Their frames and transmission maps must be consistent. A pose action is neither an effort nor a direct acceleration request.
-
-In the bundled model, `qpos`, `qvel` and `qacc` correspond to configuration, generalized velocity and acceleration. The bias, actuator, passive and constraint terms appear as `qfrc_bias`, `qfrc_actuator`, `qfrc_passive` and `qfrc_constraint`. The mass matrix can be expanded with `mj_fullM`. Gravity compensation must be counted in its configured route once; it is not an extra unexplained torque to add after inspecting the actuator field.
-
-This pusher scene has 13 configuration values, 12 velocity coordinates and 6 controls: six arm hinges plus a free cube, whose orientation uses four quaternion entries but three rotational velocity coordinates. Thus v is not simply a 13-entry derivative array for q. The camera/pose features used by a learner are a separate representation of selected information.
-
-Use an aligned comparison: the same declared command, initial pose, payload/object, timing and measurement frame. Compare joint tracking during free motion before attributing a pushing failure to contact. Then inspect object response during a controlled contact experiment. Changing both the controller gain and surface material can improve a rollout while leaving the cause unresolved.
-
-### The executor can change a policy's effective dynamics
-
-An incremental action needs a reference. If `Δp` is added to the previous commanded pose, the command can continue advancing while the mechanism lags. If the same `Δp` is added to the measured pose, the next command starts behind it. The two conventions can produce different speeds and contact sequences.
-
-![The reference changes the trajectory](../resources/class11/figures/reference-choice-classroom.png)
-
-*Figure 2. Constructed one-dimensional lag example. Each tick requests a 10 mm increment and the toy mechanism closes half the remaining target error. This is not robot data or a reproduction of a reported policy result.*
-
-**Worked sequence:** Start at 0 mm. Under command-relative updates, successive targets are 10, 20 and 30 mm; the toy measured positions become 5, 12.5 and 21.25 mm. Under measured-relative updates, targets are 10, 15 and 20 mm; measured positions become 5, 10 and 15 mm. The same numerical increment has different closed-loop consequences.
-
-Neither convention is universally correct. It must match the representation, demonstrations and executor under test. The supplied tool system supports absolute episode-frame pose targets as another choice; those do not have the same incremental accumulation rule. However, its `delta_reference="measured"` option resets the controller reference from measured TCP pose before decoding and limiting a target. That reset can affect the limiter even in episode-pose mode. Check where the reference enters the actual code rather than inferring its entire effect from the option name.
-
-There is another implementation difference from Class 09. In this pusher environment, the returned IK joint vector is sent to `set_targets` even when the solver reports failure. The `ik_ok` field is diagnostic; it is not a command-rejection gate. Class 09's bridge instead retains the prior joint command when its candidate fails acceptance. These are different executor contracts. Neither a common arm model nor a shared IK algorithm name makes their failure behavior identical.
-
-If changing this convention improves success, the result shows the complete system is sensitive to that choice. It does not prove the policy was intrinsically correct before or identify a unique physical cause of all previous failures.
-
-### Separate observation, dynamics and task mismatch
-
-An observation mismatch concerns what the policy receives: camera placement, appearance, blur, missing features or preprocessing. A dynamics mismatch concerns what the system does under commands: effort limits, delay, friction, compliance or contact. A task mismatch concerns initial conditions, objectives or reset/outcome rules.
-
-The categories can interact. Camera delay affects which physical state an image describes. A contact model changes the images that follow a command. A new tool changes geometry, observation and actuation together. The point of separating categories is to design a test, not to claim they are independent in every system.
-
-| Candidate mismatch | A useful discriminating check |
-| --- | --- |
-| Action sign/order | Known bounded command and inspected converted target |
-| Recorded timing | Timestamp and sample-age audit |
-| Initial simulated object state | Full-state restoration versus a deliberately incomplete reset |
-| Tool/camera geometry | Known frame/pose check against the configured transform |
-| Contact behaviour | Matched controlled motion with measured object response |
-| Learned recovery | Fixed-policy rollouts from declared near-failure states |
-
-Changing several items at once can repair a system but makes causal explanation harder. Record each change and separate a practical repair from an identified mechanism.
-
-## Replay, shadow checks and supervised physical evaluation
-
-### Use checks that answer different questions
-
-A useful progression is interface inspection, deterministic replay, open-loop prediction, a shadow check and supervised physical evaluation when the project makes a physical claim.
-
-![Checks and their evidence boundaries](../resources/class11/figures/evidence-checks-classroom.png)
-
-*Figure 3. Conceptual progression of checks. The order helps control cost and isolate faults; it is not a universal project grade or proof that every project needs hardware.*
-
-An interface check can detect wrong units before any action is executed. A replay can test whether recorded state and commands suffice to reproduce a transition. Open-loop prediction tests a policy against held-out recorded observations, as motivated by the imitation-learning setting of ACT (Zhao et al. 2023). A shadow check can inspect proposed commands before physical execution. A physical rollout finally observes the real system under a declared protocol.
-
-These checks are complementary, not interchangeable. A perfect replay of recorded actions does not show that a policy will choose those actions. A good open-loop action error does not establish closed-loop task completion. A command that stays within a numerical workspace box may still fail to move the object usefully.
-
-**Checkpoint:** Which check directly supports “the recorded model and state reproduce this simulated sequence”? Replay. Which directly supports “the complete system completes the physical task under these conditions”? A suitably logged physical task evaluation. Neither statement follows solely from loading a checkpoint.
-
-### Why replay needs more than joint angles
-
-A simulator's next state depends on more than the visible arm position. Relevant fields include velocities, object configuration, actuator states where present, controls, integration time and other integration-state components. The model and numerical settings must also match. A compact transition description is
-
-$$
-s_{k+1}=F_{\Delta t}(s_k,u_k;\mathcal M),
-$$
-
-where s is the selected simulation integration state, u is the issued command and the model specification M includes geometry, inertial/contact parameters and numerical settings. Equal arm positions alone do not make these arguments equal. This statement concerns the simulator transition; a complete policy system also has state outside MuJoCo.
-
-Consider replaying a pushing sequence with the cube shifted. The arm's initial joint values can be identical while contact occurs at a different point. A replay difference may therefore arise from incomplete initial state rather than an incorrect integrator or a policy problem.
-
-![The ingredients of an exact repeat](../resources/class11/figures/replay-components-classroom.png)
-
-*Figure 4. Constructed simulation replay with the retained pusher model. The example restores MuJoCo's integration state and issues the same scripted joint targets. The reported zero difference is conditional on this exact repeat.*
-
-The local example runs sixty control steps, covering two seconds, then restores the saved integration state and repeats the commands. The maximum numeric difference across recorded position and velocity entries is zero in the tested run. These entries have different units; a zero-equality diagnostic is meaningful here, but their combined maximum is not a physical error magnitude for comparisons between nonidentical runs. It uses MuJoCo 3.14.0 and the same model/timestep. It is not a replay of the missing trained policy and is not a hardware comparison.
-
-MuJoCo provides state access functions for selected state specifications; the [simulation documentation](https://mujoco.readthedocs.io/en/3.14.0/programming/simulation.html) explains the state/control stepping context. In this example the code uses `mjSTATE_INTEGRATION`. Record that specification rather than call a `qpos` array “the full state.” Restoring state also does not restore a different model file or parameter configuration (MuJoCo developers n.d.-a, n.d.-b). In this compiled scene, `mj_stateSize` returns 154 values for `mjSTATE_INTEGRATION`; those values are not 154 independent physical degrees of freedom.
-
-Policy chunk queues, observation filters, random-generator state, external task logic and application clocks can live outside that selected MuJoCo state. Replaying a complete policy system requires restoring or deliberately resetting those components too. The present example avoids that additional problem by replaying a fixed list of sixty joint targets. Its thirty settling steps precede the saved state and are outside the two-second scored replay interval.
-
-### Deliberately omit a part of the initial state
-
-The bundled reset-comparison experiment gives the cube an initial +0.20 m/s velocity in robot-base x, then runs the same sixty joint commands. Restoring the integration state reproduces the reference cube trajectory. Restoring only initial `qpos` after a reset omits that velocity and other integration-state fields, producing a maximum cube xy separation of about 4.93 mm in the tested run.
-
-![Cube trajectory discrepancy under two reset procedures](../resources/class11/figures/reset-comparison-classroom.png)
-
-*Figure 5. Controlled simulation experiment using the bundled model. Both reset procedures are compared with the same scripted reference. Full integration-state restoration has zero recorded xy discrepancy; the deliberately incomplete reset differs. This diagnoses state completeness in this constructed case, not a learned policy or a physical friction parameter.*
-
-The incomplete reset changes more than cube velocity: it resets other integration-state fields as well. It therefore supports a state-completeness diagnosis, while isolating the effect of velocity alone would need a further comparison that restores the full state and changes only that velocity. The 4.93 mm trajectory discrepancy is also not a cube-to-goal score or a measured hardware error.
-
-### Match the numerical error to the question
-
-For a joint replay, a position residual can be written as
-
-$$
-e_{q,k}=q_{replay,k}-q_{recorded,k}.
-$$
-
-For a tool-position predictor, a Euclidean distance is
-
-$$
-e_{p,k}=\|p_{predicted,k}-p_{reference,k}\|_2.
-$$
-
-These quantities have different units and interpretation. A rotation error needs a rotational metric, not subtraction of arbitrary quaternion entries. For valid rotation matrices in the same reference frame, a global angular difference is
-
-$$
-e_R=\arccos\!\left(\operatorname{clip}\!\left(
-\frac{\operatorname{tr}(R_{reference}^TR_{test})-1}{2},-1,1\right)\right).
-$$
-
-For example, a 180° difference about z has matrix diag(−1,−1,1) relative to the reference, and this metric gives π rad. The small-error cross-product residual examined in Class 10 can instead vanish at that orientation. Validate decoded rotations before applying the metric; a low local solver residual cannot replace a global angular check. A task score may depend on object position rather than tool pose. Do not call every residual “the Sim2Real gap.”
-
-A replay within the same simulator mainly tests recording/state completeness and implementation consistency. A model-versus-hardware comparison adds physical mismatch. A policy-versus-demonstrator action difference adds a learning/reference question. State what is being compared before choosing an explanation.
-
-**Worked distinction:** A 3 mm tool prediction error on a recorded observation and a 31 mm final cube-goal distance are not directly comparable failures. One concerns an action-prediction horizon; the other concerns a closed-loop object outcome. Reducing one need not reduce the other without a demonstrated connection.
-
-### Open-loop prediction has a useful but limited role
-
-An open-loop policy check supplies a recorded observation and asks for future actions or a chunk. It compares those predictions with the declared demonstrated targets, using the saved feature and timing conventions. A hold-still predictor is a useful baseline: some short-horizon motion datasets change slowly enough that doing nothing can have a small error.
-
-At nominal 30 Hz, horizons of one, ten and thirty steps correspond to approximately 0.033, 0.333 and 1 s. A low error at one step does not establish a useful one-second plan. State whether the policy is queried once for a chunk or repeatedly on recorded future observations; those are different procedures.
-
-Even beating the baseline cannot prove a unique correct action. More than one action can solve a task, and a single demonstrated path is not the complete solution set. Conversely, low loss can coexist with closed-loop drift when the policy encounters its own off-demonstration states.
-
-A policy trained on physical camera images can be evaluated in simulation as a separate visual-domain stress test if the observation interface is made explicit. Its score would not automatically measure physical skill or an equivalent training-domain task. The broad claim that such evaluation is always meaningless is too strong. The valid question and interpretation depend on the visual and physical correspondence.
-
-The supplied inference scripts require exact weights and processors. Until those are available, this class can inspect the procedure and source records, but cannot claim to have rerun their learned-policy predictions.
-
-### Compare the recorded physical-data predictors
-
-The arm sources compare three policy families. ACT predicts action chunks with a Transformer-based imitation model (Zhao et al. 2023). Diffusion Policy models a conditional action distribution through denoising and uses receding-horizon execution ([Chi et al. 2023](https://www.roboticsproceedings.org/rss19/p026.html)). SmolVLA combines vision/language representation with an action model ([Shukor et al. 2025](https://arxiv.org/abs/2506.01844)). Their names describe different model constructions, not a ranking of task competence. Each still depends on the observation/action processor, tool frame, execution horizon and evaluation protocol.
-
-The [stored offline comparison](../resources/class11/data/recorded-comparisons/offline-real.csv) reports a one-second future tool-position error on twenty held-out physical handheld episodes, identified in the source as episodes 130–149. It is a recorded comparison against the demonstrator's future pose, without executing the predicted actions on the arm.
-
-![Recorded one-second prediction errors on physical handheld observations](../resources/class11/figures/offline-physical-comparison-classroom.png)
-
-*Figure 6. All eight rows of the stored offline comparison, in their recorded conditions. The dashed reference is the recorded hold-still predictor's 50.6 mm error. Values are aggregate tool-position prediction errors at a one-second horizon; no per-episode uncertainty or new model inference is supplied. Mixed-data rows retain their scene-version and height-reference distinctions in the accompanying CSV.*
-
-| Predictor | Reported training collection | Height reference | Recorded error at 1 s (mm) |
-| --- | --- | --- | ---: |
-| Hold still | None | — | 50.6 |
-| ACT | 130 physical | Start | 34.5 |
-| ACT | 130 physical + 300 simulated, v3 | Start | 29.0 |
-| ACT | 130 physical | Table | 32.0 |
-| ACT | 130 physical + 300 simulated, v4 | Table | 30.3 |
-| Diffusion Policy | 130 physical + 300 simulated, v3 | Start | 30.5 |
-| SmolVLA | 130 physical + 300 simulated, v4 | Table | 29.3 |
-| ACT | 300 simulated only, v3 | Start | 73.5 |
-
-For example, 34.5 mm versus the 50.6 mm hold baseline is a 16.1 mm absolute reduction, approximately 31.8% of the baseline. The simulated-only row is worse than holding still on these physical observations. These facts describe the saved table. They do not isolate image-domain mismatch from training, normalization or scene differences, and do not show that a mixed-data predictor will push successfully in closed loop.
-
-The table changes several factors: policy family, collection composition, height reference and simulated scene revision. Comparing 29.0 with 29.3 mm is therefore not a controlled algorithm comparison. There are no per-episode residuals or repeated-training results here from which to establish a statistically meaningful ranking. No exact ACT, Diffusion Policy or SmolVLA weights, processors and frozen inference configurations are included for these rows. The comparison is inspectable recorded evidence; its predictions have not been reproduced in this lesson.
-
-## Nominal and held-out conditions, failures and bounded claims
-
-### Read the denominator and the exact run
-
-The supplied Class 11 summary contains fifty simulated evaluation episodes with thirty-two successes:
-
-$$
-\hat p=\frac{32}{50}=0.64.
-$$
-
-This result belongs to the specified ACT/pusher evaluation, associated in the source with a 300-demonstration model, 60k training steps and executed chunk setting `n = 100`. The outcome JSON verifies the count. The source command requests 100 actions per inference; at 30 Hz its nominal prefix spans about 3.33 s. This establishes the reported command setting, not a measurement of actual policy-query times or latency matching. UMI provides an example of why observation/action latency is part of a manipulation interface (Chi et al. 2024). The training configuration and missing checkpoint must still establish the exact inference artifacts before a reproduction claim is made.
-
-The outcome JSON fixes the denominator for this run. Aggregate scores with a similar model label can still belong to another scene, dataset, checkpoint, executed prefix or evaluator. Keep those results separate until a matching run manifest identifies each condition. A scene change may explain a score difference; the scene must first be identified.
-
-The complete JSON uses seeds 100000–100049. All eighteen recorded failures end at 450 steps, whereas the included evaluator's default cap is 600; the retained source command does not explain that difference. Preserve the recorded outcomes while requesting the exact evaluator version and arguments. Do not substitute current defaults for a missing run manifest.
-
-![Keep all stored outcomes visible](../resources/class11/figures/stored-outcomes-classroom.png)
-
-*Figure 7. Left: the fifty supplied binary outcomes. Right: the 32/50 fraction with a descriptive 95% Wilson interval, approximately 0.501–0.759. The interval assumes independent comparable Bernoulli trials; it is not a hardware-transfer interval or a training-seed uncertainty estimate.*
-
-Fifty evaluation attempts do not make a score exact. Outcomes can also share training runs, conditions and implementation errors. The interval only describes a particular sampling model. It does not cover uncertainty from a new trained checkpoint, changed camera or hardware. The 95% level refers to the interval procedure under its sampling assumptions, not a 95% task-success requirement (NIST/SEMATECH n.d.).
-
-The Class 10 gripper result of 24/50 is a different system/data configuration. Comparing 48% and 64% does not isolate an improvement due to a single method. Match the task, observation, training data, executor and test protocol before making a causal comparison.
-
-### Test the conditions named by the claim
-
-A nominal score answers a question about the chosen evaluation distribution. A held-out episode split tests unseen attempts from a declared distribution; a held-out condition tests a deliberately excluded factor, such as camera displacement, payload, cube placement or surface friction. New seeds alone do not necessarily create a new condition.
-
-Choose the varied range and acceptance rule before seeing the outcome. Report nominal and shifted-condition results separately, with counts of attempted, successful, failed and excluded episodes. Record interventions and why any attempt was excluded. Keep the checkpoint and executor fixed when testing a deployment condition; changing training and the test environment together prevents a clean comparison.
-
-For example, compare the same frozen system under nominal camera placement and a specified 50 mm displacement, using paired reset layouts where appropriate. This would test that camera perturbation. It would not establish robustness to all camera positions, new contact surfaces or physical deployment. No such held-out-condition experiment is claimed for the supplied 32/50 record.
-
-### Diagnose a failure without inventing its cause
-
-The selected failure is episode 0 of the supplied video set. Its summary reports 450 steps, success false, final cube-goal distance approximately 0.031074 m and `ik_ok = 1.0`. At nominal 30 Hz, 450 control steps correspond to fifteen seconds of simulated control time.
-
-![A selected failed rollout](../resources/class11/figures/failure-frames-classroom.png)
-
-*Figure 8. Selected frames 0, 225 and 449 from the supplied episode-0 failure video. The figure crops the policy-view half of the two-view video, without retouching; the full video retains the observer view. These samples alone do not locate the exact onset of failure.*
-
-The saved `ik_ok=1.0` is not an episode-wide IK success fraction. In the included environment, `ik_ok` describes the current step, and the supplied evaluator copies scalar fields from the final `info` dictionary into its result. It therefore reports the last step's flag under that code. It does not establish that all 450 steps passed IK, that every target was achieved dynamically, or that the cube reached its goal. A per-step log is needed to calculate a fraction. Likewise, the final distance alone does not tell us whether the problem was visibility, action execution, contact or insufficient recovery data.
-
-Keep two selected records side by side:
-
-| Episode | Seed | Steps | Success | Final distance (mm) | Saved `ik_ok` |
-|---|---:|---:|---|---:|---:|
-| 0 | 100000 | 450 | False | 31.0741 | 1.0 |
-| 2 | 100002 | 125 | True | 14.5324 | 1.0 |
-
-**Visible observation:** in failure frames 0 and 449, the learner-view half contains the red cube, green goal marker and rod, with a changed relative arrangement. At the last image the cube and marker visually overlap, but image overlap is not the strict 15 mm centre-distance test. The 31.07 mm value comes from the retained record, not a calibrated pixel measurement. These two images do not establish when progress stopped or why.
-
-The supplied evaluator appends video views after `env.step`. Frame 0 is consequently a post-transition view, rather than the initial image that selected the first action. Nominal video times are frame index/30; they do not identify capture-to-action latency or every policy query. Preserve that distinction when trying to associate a visual event with an action chunk.
-
-Inspect the policy's available image, not only the observer view. Identify when progress stops and what the tool does next. Record a frame/time range and describe the observation before naming a cause. If the supplied video cannot establish a fact, leave that field unresolved instead of supplying a plausible story.
-
-**Worked hypothesis:** “Long action execution before replanning prevents recovery near the goal.” A test can keep the checkpoint, reset seeds and environment fixed while changing executed chunk length. Predict a change in recovery behaviour and success rate, and define what result would weaken the hypothesis. Without the checkpoint this is a proposed experiment, not a completed one.
-
-### Read the reported physical failure as an experiment
-
-The source describes a first physical series on 14 October 2026 using a 0.10 m/s executor limit. ACT trained on the 130 physical handheld episodes reportedly moved toward the cube and pushed off its intended line, with **zero successes out of ten attempts**. A mixed physical/simulated policy reportedly sometimes moved away in a second ten-attempt series, but a complete per-attempt outcome record is not supplied for that series. The explicit 0/10 result belongs to the physical-only series; the other narrative does not establish its own success rate.
-
-The report is useful even though the exact checkpoint, physical trajectories, images, interventions and evaluator manifest are not supplied here. It demonstrates why the 29–35 mm offline errors above cannot be presented as physical skill. Its 0/10 count is a reported result under the named source conditions, not a fresh test or a general estimate for ACT.
-
-Two candidate explanations connect the collection to the executor:
-
-| Observation or source record | Candidate mechanism | Discriminating next comparison |
+| Policy | What it outputs | Chunk |
 | --- | --- | --- |
-| Handheld median start height 0.0941 m; declared robot start 0.120 m | Start-relative actions decode about 25.9 mm higher when the start is shifted by that amount | Match contact geometry and table reference, then compare the frozen policy under a declared reset; record actual tip/object motion |
-| Source reports later rollouts stalling near 200 steps, then lifting or holding | The learner may reproduce a recorder save gesture included at the end of demonstrations | Identify and trim the gesture using an explicit rule; retrain with otherwise matched data/settings and retest the same evaluation conditions |
+| ACT (Zhao et al. 2023) | a chunk regressed with an L1 loss and a KL term (below) | 100 steps |
+| Diffusion Policy (Chi et al. 2023) | a sequence sampled by iterative denoising | configured observation, prediction and execution horizons; inspect the checkpoint |
+| SmolVLA (Shukor et al. 2025) | a chunk from a vision-language-action model that also reads the task string | 50 steps; approximately 150 ms per chunk on the course GPU |
 
-The source attributes an approximately eight-centimetre lift/hold near the end of many handheld recordings to the recorder's save gesture. It reports a 93% prevalence and an approximately three-second terminal phase. The episode-statistics CSV supports durations and heights, but not that temporal segmentation or causal attribution. Those claims need the original trajectories and labeled gesture boundaries. Preserve them as reported observations and a hypothesis, rather than asserting that the policy learned a particular internal intention or was trying to obtain a favorable image.
+The source uses LeRobot training for all three, with declared physical and/or simulated dataset variants. The model configuration, learning schedule, horizon and preprocessing differ; changing only a policy-type name is not a complete matched training protocol. Training uses random brightness and contrast on the images, because the light on the bench changes.
 
-Table-relative height can correct a known reference mismatch, but a successful correction/retest is not recorded. Trimming the gesture, retraining and repeating the physical series are also proposed work. A diagnosis becomes stronger when the corrected system is tested with the original alternatives still measurable. An honest failed-transfer case can therefore be complete teaching evidence while its physical improvement remains open.
+### ACT: action chunking
 
-### Make a bounded next-experiment decision
+ACT (Zhao et al. 2023) is a transformer that predicts a chunk of the next $$k$$ actions (by default 100, or 3.3 s at 30 Hz) from
+the current image and state. It is trained as a conditional variational auto-encoder:
 
-A failure analysis should connect observation, competing explanations and a measurement. “Improve the model” is not a complete experiment. Name the changed factor, fixed conditions, predicted observation and decision rule.
+$$
+\mathcal{L} = \sum_{i=1}^{k} \big\lVert \hat a_{t+i} - a_{t+i} \big\rVert_1
++ \beta\, D_{KL}\!\big(q_\phi(z \mid a_{t+1:t+k}, s_t)\,\big\Vert\,\mathcal N(0, I)\big)
+$$
 
-![Turn a diagnosis into a test](../resources/class11/figures/next-experiment-classroom.png)
+The first term is the L1 error of the predicted actions. The second term keeps the latent style variable $$z$$
+close to a standard normal distribution. LeRobot uses $$\beta = 10$$ (`kl_weight`). At inference $$z = 0$$. A chunk
+changes the planning/execution horizon; it does not guarantee that compounding error disappears. The robot executes $$n$$ actions of a chunk before the policy plans
+again, and $$n$$ is an evaluation setting.
 
-*Figure 9. Conceptual design of a discriminating next experiment.*
+### What the checkpoint contains
 
-For example, keep the controller and target trajectory fixed and compare full-state versus incomplete-state replay. If only the incomplete reset changes the result, the finding supports a state-completeness explanation for that replay discrepancy. It does not identify a hardware friction error.
+| File | Content |
+| --- | --- |
+| `config.json` | the input features (`observation.state` 9, `observation.images.phone` 480 × 640 × 3), the output `action` 9, the chunk size |
+| `model.safetensors` | the weights |
+| preprocessor and postprocessor files | the normalisation statistics and the camera names |
+| `train_config.json` | the dataset, the episodes used for training, the steps, the batch size |
 
-For a camera hypothesis, vary a declared camera factor while keeping the physics and action convention fixed. A successful robustness test under that variation supports only the tested range. It is stronger to specify a five-centimetre camera displacement and an evaluation protocol than to say “the policy is robust.”
+A checkpoint without its statistics is not usable. The robot must give the features of `config.json`, in the
+same units and frame.
 
-A shadow check can inspect a policy's proposed actions in a simulated or non-actuating path before a physical trial. Its role is bounded: acceptable numeric outputs do not establish that the physical task will succeed. Physical operation requires its own approved setup and supervision; this session does not issue hardware commands.
+---
 
-## A tool-using vision-language controller as a comparison
+## Deploying the policy on the arm
 
-The same evidence questions apply when a controller selects structured tools instead of predicting pose actions directly. A pretrained VLM can select high-level motions from the tool-camera image while a geometric executor carries them out. This optional source case uses no new task-specific demonstrations or local policy training for the controller. It is not data-free: pretraining and the hand-designed tool/executor contain prior knowledge.
+### The deployment loop
 
-The source controller receives an image with a projected table grid, the current rod-tip position and feedback from earlier calls. Its response is a structured tool request with named arguments. In `move`, it requests a bounded relative displacement and optional yaw. In `locate`, it marks an image pixel and the calibrated geometric layer returns a table-plane location. In `push`, it marks cube and goal, then a fixed primitive constructs the push. In `done`, it claims completion; the simulator must still apply the task's success test.
+```mermaid
+flowchart LR
+    I[phone image] --> P[policy]
+    Q[motor angles] --> K[forward kinematics] --> E[state in the episode frame] --> P
+    P --> A[action in the episode frame] --> B[target in the base frame] --> L[workspace and speed limits] --> IK[inverse kinematics] --> M[motor targets, 150 Hz]
+```
 
-This separates perception, planning and execution. The VLM chooses a pixel or an intended move; camera projection, workspace checks, inverse kinematics and low-level control supply the geometry and motion. The source executor rejects an invalid candidate and returns a reason before replanning. It does not treat a language-model tool call as proof that a pose is reachable. A successful push primitive also measures the combined system, rather than the VLM alone.
+The loop runs at 30 Hz. The state comes from the motor angles through the forward kinematics of Class 08. The
+action goes back to the motors through the inverse kinematics of Class 09.
 
-The [retained run-outcome table](../resources/class11/data/recorded-comparisons/vlm-tool-outcomes.csv) distinguishes the twenty base records from one follow-up rerun. Run labels below are historical source identifiers; they make no claim about current API model availability.
+### From the episode frame to the base frame
 
-| Historical run setting | Base records | Simulator-checked successes | Other base outcomes |
-| --- | ---: | ---: | --- |
-| `sonnet55_push` | 5 | 5 | None |
-| `sonnet55_step` | 5 | 4 | One `done` claim marked success without a simulator check |
-| `opus55_step` | 5 | 5 | None |
-| `haiku55_step` | 5 | 4 | One call-limit failure |
 
-The raw base record therefore has eighteen simulator-checked successes, one checked failure and one unchecked completion claim. The additional `sonnet55_step_seed2` record is a simulator-checked success on the previously unchecked layout. If that checked rerun replaces the unchecked claim, the declared replacement set contains nineteen successes in twenty simulator-checked evaluation records. There were twenty-one recorded attempts including the follow-up. Keep both the original record and the replacement policy visible; do not silently count the unchecked claim as verified or present the rerun as an additional independent layout.
 
-These few stored layouts do not establish superiority over the fifty-episode ACT run, which has a different controller, attempt budget and run identity. The source's reported physical VLM completion has no trial denominator or accompanying physical logs here. It remains a reported demonstration. Comparing controllers meaningfully would require matched reset layouts, observation domain, success rule, executor, interventions and time/action budget.
+![Zero pose of the arm with the tool](../resources/class11/figures/source/zero-pose-tool.png)
 
-## Connect actuator validation, LEAP and reBot evidence
+*Figure 1. Zero pose of the arm with the tool.*
 
-The course’s experiments address different system boundaries. A result at one boundary supports later work only when the relevant conditions still match.
+![Episode start pose of the arm with the tool](../resources/class11/figures/source/start-pose-tool.png)
 
-| Experiment boundary | What to measure | What that evidence can support |
+*Figure 2. Episode start pose of the arm with the tool. Episode start pose: rod tip 12 cm above the table.*
+
+At the start of each episode the arm moves to its start pose. That pose fixes the episode frame $$e$$. Its origin
+is the rod tip, and its heading is the heading of the tool. For data in the table frame, $$z = 0$$ is at the table. An action
+$$a = ({}^{e}p, {}^{e}R)$$ becomes a target in the base frame $$b$$ of the arm:
+
+$$
+{}^{b}T_{tip} = {}^{b}T_{e}\;{}^{e}T_{tip}(a)
+$$
+
+In the code, `EpisodeFrame` stores $${}^{b}T_{e}$$ at reset, and `decode` applies it:
+
+```python
+origin = pos if self.z_frame == "start" else np.array([pos[0], pos[1], 0.0])   # rebot_sim/real/env.py
+self.frame = EpisodeFrame(origin, rot)
+...
+p_des, R_des = self.frame.decode(action)            # episode frame -> base frame
+p, R = self.ctrl.command(p_des, R_des)              # workspace box, speed limits
+res = self.ik.solve(p, R, self.q_cmd, max_iters=30) # refused if out of reach: the arm holds
+```
+
+### Smooth execution: temporal ensembling
+
+If the arm executes a full chunk and then asks for a new one, the motion jumps at each new chunk. ACT can instead
+run at every step and average all the predictions for the current step (Zhao et al. 2023):
+
+$$
+a_t = \frac{\sum_i w_i\, \hat a_t^{(i)}}{\sum_i w_i}, \qquad w_i = \exp(-m\, i)
+$$
+
+$$\hat a_t^{(i)}$$ is the prediction for step $$t$$ of the $$i$$-th chunk, with $$i = 0$$ for the oldest chunk.
+With $$m = 0.01$$ (`--temporal-ensemble 0.01`) nearby overlapping predictions receive similar weights. Check the implementation's prediction-age indexing before interpreting which prediction is favoured. Averaging can reduce discontinuities but does not establish stability or contact success.
+
+### The options of the deployment script
+
+| Option of `rollout_real.py` | Effect |
+| --- | --- |
+| `--z-frame table` | runs a policy trained on data with a table-anchored height |
+| `--start-z` | starts the arm at the start height of the demonstrations (for data in the start frame) |
+| `--temporal-ensemble 0.01` | ACT only: runs the policy at every step and averages the overlapping chunks |
+| `--max-steps` | the time limit of an episode (600 steps = 20 s) |
+| `--max-speed 0.10` | the tool speed limit for the first runs |
+| `--video-dir` | saves the phone image and the state of each rollout, for comparison with the data |
+
+---
+
+## Interface compatibility
+
+### Features and normalisation
+
+A policy expects the features it was trained on, with the statistics in its checkpoint. A robot with another zero,
+another unit, another image size or another height reference is out of distribution before the policy sees its
+first frame.
+
+### Order, direction and calibration
+
+| Item | What can go wrong |
+| --- | --- |
+| Joint order and direction | the driver multiplies actions by [1, 1, −1, −1, −1, 1, 6]; one wrong sign can request the wrong direction; bounds and executor response must be checked |
+| Motor zeros | the wrist-roll zero changes when the tool is mounted and must be set again |
+| Camera-to-tip transform | a phone mounted 5 mm off moves every recorded pose by 5 mm |
+| Height reference | a policy trained in the table frame and run in the start frame pushes at the wrong height |
+| End effector | a gripper policy cannot run on the tool arm |
+
+The interface checklist of the class makes these items into tick boxes. It is the first rung of the ladder.
+
+---
+
+## Dynamic mismatches
+
+### Timing and latency
+
+The simulator advances a nominal 30 Hz model clock. A local inference process can still have wall-clock delay; a headless evaluator and a real-time deployment loop do not have identical timing semantics. On the bench the phone image goes over Wi-Fi and arrives
+with a reported 50–150 ms delay in the source development case, and the control loop has jitter. A policy that acts on old images pushes where the cube was, not
+where it is. In a rollout the arm stops when the image is older than 0.3 s.
+
+### Actuation and contact
+
+The model uses PD actuators with gravity compensation and estimated friction (Class 08). The physical arm runs the
+motors in MIT mode at 80 % of the vendor gains, filters the targets with 0.1 s, and caps the torque. The hollow
+15 g cube slides on a real table surface whose friction was never measured. Each of these changes how far the cube
+moves for the same command.
+
+### Observation and the action convention
+
+Rendered images have no motion blur and no exposure change. Real images have both. The action convention also
+matters: in simulation, applying each motion step to the measured pose instead of the commanded pose dropped
+success from 12 % to 0 %. The policy was the same. The execution rule changed the dynamics.
+
+---
+
+## Model-based and learning-based control
+
+The arm block uses two kinds of controller. Each uses a different part of the model.
+
+| Controller | Uses the dynamics model | Uses data | In the course |
+| --- | --- | --- | --- |
+| Model-based: joint PD with gravity feed-forward | $$g(q)$$ from RNEA (Class 08) | the motion-test record checks the declared gravity model | every motor command |
+| Model-based: inverse kinematics | the kinematics and the Jacobian (Classes 08, 09) | none | teleoperation and every rollout |
+| Learning-based: imitation policy (ACT, Diffusion Policy, SmolVLA) | no; it learns image-to-motion from data | demonstrations | Push Cube from the phone image |
+
+The learned policy decides where the tip must go. The model-based layers below it decide how the motors get
+there, and refuse what the arm cannot do. Thus a learned policy on the arm is always a combination of both kinds.
+The second controller of this class, [a vision-language model as the controller](11-vlm-controller-optional.md), replaces the
+learned policy by a VLM, with the same model-based layers.
+
+---
+
+## The evidence ladder
+
+### Five rungs
+
+![The evidence ladder](../resources/class11/figures/source/evidence-ladder.png)
+
+*Figure 3. The evidence ladder.*
+
+The rungs are ordered by cost and by what each one can falsify. A claim is bounded by the highest rung it has
+reached and by the conditions of that evidence.
+
+### What each rung can falsify
+
+| Check | Question | What a pass does not establish |
 | --- | --- | --- |
-| Single actuator with a declared link/payload | Command, joint response, load, timing and chosen model residual | A validated actuator/model property within the tested operating range |
-| LEAP hand manipulation | Object outcome, joint/observation interface, reset conditions and disturbances | Task-level performance for that hand, policy and observation setup |
-| reBot arm with pusher | Tool/camera transforms, command execution, contact response and object-goal outcome | Task-level performance for the declared arm/tool/environment configuration |
+| Interface compatibility | Do features, units, frames, statistics and tool identity agree? | Stable execution or task success |
+| Replay | Can a specified state/action record be reconstructed under a declared reset? | Generalisation or physical contact prediction |
+| Offline prediction | Does the policy predict held-out recorded behaviour better than a baseline? | Recovery after its own mistakes |
+| Bounded/shadow checks | Are issued candidates admissible before contact execution? | A successful closed-loop rollout |
+| Closed-loop evaluation | Does this full system meet the task outcome under these conditions? | Transfer to untested hardware, objects or scenes |
 
-Actuator validation can reveal a delay, saturation or payload error that later affects manipulation. It does not determine every friction/contact parameter or guarantee a learned recovery strategy. Conversely, successful cube rotation or pushing can coexist with model errors that become visible outside the tested load and motion range.
+A later rung does not repair a wrong earlier interface. Conversely, a failed rollout can be scientifically useful when its observation, command, intervention and terminal state are recorded. The purpose is to choose the next discriminating experiment rather than collect a succession of unqualified successes.
 
-**Worked connection:** Suppose a single-actuator experiment identifies increased lag under a heavier payload. A plausible manipulation hypothesis is that the same load change delays the tool during contact. The next test should log joint tracking and object motion under matched nominal/heavier-load conditions. If joint tracking stays unchanged while object slip changes, the actuator-lag explanation is weakened and contact becomes a better candidate. This is a proposed causal test, not a result from the supplied videos.
+### Rung 2: offline replay
 
-A useful project therefore links measurements across levels: parameter/property check → controlled response → task outcome → bounded claim. It does not compress these into one universal “Sim2Real gap” number.
+![Offline replay of recorded actions in the model](../resources/class11/figures/source/replay.png)
 
-## Instructor and TA demonstration
+*Figure 4. Offline replay of recorded actions in the model.*
 
-**Scope:** This demonstration uses simulation replay, supplied simulated policy-rollout records, the stored offline comparison and a reported physical failure case. It does not execute a learned policy on physical hardware. Missing evidence for a physical deployment claim includes the exact checkpoint/processors, calibrated hardware interface, measured timing and actuation response, and logged supervised physical task trials.
+Sending the recorded actions of an episode back to the model reproduces the recording exactly (deviation below
+$$10^{-5}$$ degrees) when the logged object pose is restored. Without the object pose, the arm touches the cube
+elsewhere and the replay deviates by 0.42°. On the physical arm the same replay will deviate because of the
+dynamics. That deviation is **not measured yet**.
 
-### Interpret the retained replay checks
+### Rung 3: open-loop prediction
 
-Read the supplied replay, reset contrast and outcome summary as three different checks. The replay reports sixty steps, two seconds, finite state values and zero maximum difference under the restored state and scripted commands. The reset contrast reports zero full-restore cube xy discrepancy and about 0.00493 m for the incomplete reset. The separate policy record contains 32 successes in fifty trials, with the descriptive interval near [0.5014, 0.7586].
+For each held-out frame the policy predicts a chunk, and the predicted pose 1, 10 and 30 frames ahead is compared
+with what the operator did. A policy that only holds still is the baseline.
 
-Explain why replay equality does not reproduce the policy's decisions and why the reset contrast does not measure physical deployment accuracy. Neither check replaces the missing original checkpoint or a calibrated physical experiment.
 
-### Audit the interface and replay boundary
 
-Write down the pusher’s nine-value pose feature, image key, episode frame and absolute-target convention. Contrast them with seven motor channels. Work the normalization example and identify the saved statistics/processor artifact needed before policy inference. An absent processor is an unresolved dependency, not an invitation to guess its statistics.
+![Open-loop prediction error on simulated handheld data](../resources/class11/figures/source/offline-horizon.png)
 
-Trace the replay and reset-comparison definitions: model, state specification, initial cube velocity and scripted commands. Predict why the two reset procedures differ, then compare their retained results. Ask what would have to change for this to be a physical model-validation experiment.
+*Figure 5. Open-loop prediction error on simulated handheld data.*
 
-### Compare offline prediction with the physical report
+![Open-loop error 1 s ahead of policies trained on physical data](../resources/class11/figures/source/offline-real.png)
 
-Read Figure 6 and the corresponding CSV. Compute the ACT physical-data reduction against holding still, then identify the scene/height changes that prevent a clean algorithm ranking. Contrast the prediction metric with the reported physical 0/10 outcome. Build the height-mismatch and save-gesture hypotheses from their actual evidence, and state the correction/retest that is still missing. Optionally inspect the VLM outcome table and distinguish its unchecked `done` claim from a checked success.
+*Figure 6. Open-loop error 1 s ahead of policies trained on physical data. Physical handheld data.*
 
-### Inspect both outcomes and diagnose the failure
+| Policy | Training data | Error 1 s ahead (mm) |
+| --- | --- | --- |
+| Hold still (baseline) | none | 50.6 |
+| ACT | 130 physical | 34.5 |
+| ACT | 130 physical + 300 simulated | 29.0 |
+| ACT, table-anchored $$z$$ | 130 physical | 32.0 |
+| ACT, table-anchored $$z$$ | 130 physical + 300 simulated | 30.3 |
+| Diffusion Policy | 130 physical + 300 simulated | 30.5 |
+| SmolVLA, table-anchored $$z$$ | 130 physical + 300 simulated | 29.3 |
+| ACT | 300 simulated only | 73.5 |
 
-Use the [recorded failure, episode 0](../resources/class11/consolidation/package/additional_material/data/videos/class11_rollout_pusher_ep000.mp4), [recorded success, episode 2](../resources/class11/consolidation/package/additional_material/data/videos/class11_rollout_pusher_ep002.mp4), and [complete 50-episode outcome record](../resources/class11/consolidation/package/additional_material/data/videos/results_act_ip17_cube300_handheld_060000_pusher_n100.json). All are included in the current student repository. If playback is unavailable, use the selected failure frames and outcome JSON; leave motion-specific observations unresolved.
+On the 20 held-out physical episodes (130–149), every policy with physical data is better than holding still. It
+predicts the correct direction of motion in 81–87 % of the time steps. These reported point estimates do not establish a statistically resolved ranking of the
+three model families. The policy trained on simulated data only is worse than holding still: the rendered images are not the
+real ones. Values from the development log of the course lead, 13–15 October 2026.
 
-Compare episode 0’s 450 steps, 31.07 mm final distance and `ik_ok=1.0` with episode 2’s 125 steps, 14.53 mm final distance and success flag. The bundled task code uses a 15 mm centre-distance threshold. Inspect the policy view and observer view separately. Mark a frame range for an observed failure, then propose competing causes without treating the summary as a causal diagnosis.
+### What the open-loop check cannot show
 
-Finish with a shadow-check plan: supply real observations to the frozen policy without actuating, log raw and limited actions plus age, and inspect them under the declared interface. Exact artifacts are required to execute that plan. A later supervised physical rollout must record commands, response, outcomes and interventions under the approved physical setup.
+A low error is cheap and necessary evidence. It does not show that the policy succeeds when its own actions
+change what it sees. It did not establish success in the first physical rollouts discussed below.
 
-## Student activity
+### Rung 5 in simulation: ACT on Push Cube
 
-Use the retained failure case and reported summary. The core response is one failure diagnosis, one discriminating experiment and one bounded claim: complete items 1–3 and 5. Item 4 is an optional physical-evidence comparison. No new training or hardware is required.
+ACT trained on the 300 simulated Push Cube demonstrations of Class 10 (batch 16, 60k steps), evaluated in closed
+loop: 50 episodes per cell, with seeds disjoint from training (a maximum binomial standard error near 7 percentage points, not a 95% confidence interval). $$n$$ is the
+number of actions executed per chunk.
 
-1. Record episode ID, seed, success flag, step count, final distance and IK field. Explain how valid IK can coexist with task failure.
-2. Identify one directly visible observation with a frame range, and two competing explanations. Mark what the video cannot establish.
-3. Propose one experiment: changed factor, fixed conditions, measured prediction and a result that would weaken your explanation. State which missing artifact or physical observation it needs.
-4. **Optional physical comparison.** Compare the recorded one-second physical-data prediction error with the reported 0/10 physical series. Explain why they answer different questions, and specify one matched correction/retest for the height or save-gesture hypothesis.
-5. Draft a two-sentence claim naming system, conditions, metric, evidence source and limits. Separate the supplied policy record from a test you executed yourself.
+| ACT, Push Cube, 60k steps | $$n$$ = 10 | $$n$$ = 100 |
+| --- | --- | --- |
+| on the handheld tool (as in the data) | 70 % | 58 % |
+| on the arm | 62 % | 56 % |
 
-If playback is unavailable, use Figure 8's frames 0/225/449, the selected-record table and the saved summary. Make only the bounded before/after observation supported by those images, and mark the precise onset or contact sequence unresolved. This provides a complete page-only route without inventing motion between still frames.
+**Source result boundary.** These four cells are the source manuscript's reported 60k-step comparison. Its supplied `results_act_ip17_cube300_handheld_060000_pusher_n100.json` instead contains 32 successes among 50 episodes, or 64%. The source transfer figure also uses 64% for that setting. The source has not identified whether the scene, checkpoint or executor changed. Retain the table as a reported comparison, and treat the matching artifact identity as unresolved before calling either score reproduced. The practical page supplies a new-run protocol rather than concealing this discrepancy.
 
-Save the diagnosis, claim, experiment and assessed source/commit in the team repository. For example: “The supplied pusher evaluation records 32 successes in 50 nominal simulated attempts. The retained replay check verifies state/command reproducibility under the supplied model; physical policy transfer and a rerun of the original checkpoint remain unestablished.”
+{% embed url="https://1750588168-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FCq8PJ6eHO7umpiGK34s5%2Fuploads%2Fgit-blob-13c279afe79eecb17f2ff0b2724e276a4206d785%2Fact-push-cube-sim.mp4?alt=media" %}
+Success on the simulated arm: phone image (left) and scene (right), 4 s.
+{% endembed %}
+
+{% embed url="https://1750588168-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FCq8PJ6eHO7umpiGK34s5%2Fuploads%2Fgit-blob-4355e6155cd14d95f2fc74edb8893a17e545ec50%2Fact-push-cube-sim-failure.mp4?alt=media" %}
+Failure of the same policy: the time limit of 450 steps is reached with the cube 2.6 cm from the goal (15 s).
+{% endembed %}
+
+A failure record keeps the final error, the step where the motion stalled and the observation at that moment.
+
+### Training loss and task success answer different questions
+
+A falling training loss establishes improvement against the selected supervised targets. Closed-loop success measures a different property of the policy, executor, observation pipeline and task together. Compare two checkpoints on the same reset protocol before attributing an improvement to more gradient steps. Compare data quantities with a fixed scene and evaluation rule before attributing an improvement to more demonstrations. Source figures that mix earlier scenes or another task are not used as the primary cube benchmark here.
+
+### Optional VLM controller in simulation
+
+A pretrained vision-language model can select checked motion tools without training a task-specific imitation policy. It still relies on pretrained data, perception, an executor and API access. The [optional simulation page](11-vlm-controller-optional.md) retains the source controller, model identifiers, logs and a careful accounting of checked versus self-declared outcomes. This small exploratory sample is not a matched benchmark against ACT and does not authorise hardware operation.
+
+---
+
+## Rung 5 on the physical arm
+
+### The first rollouts
+
+On 14 October 2026 the course lead ran two policies on the arm, 10 episodes each, at 0.10 m/s. ACT trained on the
+130 physical handheld episodes moved toward the cube and pushed it, but always off its line: 0 of 10. ACT trained
+on physical and simulated data sometimes moved away from the cube. Rung 3 had given both policies a small error.
+
+### Diagnosed mismatch: the start height
+
+The poses of the first data were relative to the start pose. Most demonstrations started approximately 9 cm above
+the table, and the arm started at 12 cm. Thus it pushed on the upper half of the cube. The correction is the table
+height reference of Class 10, with `--z-frame table` on the arm.
+
+### Candidate mechanism: the end of the demonstrations
+
+In later rollouts the course lead saw a second problem. The policies often stopped after approximately 200 steps.
+Then they stayed in place, or moved a little without a push. The tip also seemed to look for a view in which the cube
+appeared inside the goal. The data explain this:
+
+| Measured in the 150 handheld episodes | Value |
+| --- | --- |
+| Median episode length | 204 frames (6.8 s) |
+| Episodes that end with a lift of approximately 8 cm and a hold | 93 % |
+| Duration of this end phase | approximately the last 3 s |
+
+The lift and the hold are the save gesture of the recorder (Class 10). The matching timing motivates a hypothesis that the policy learned the save phase as part of the
+task. It does not isolate the cause without an ablation or a new evaluation. The policy also has no success signal. It learned
+which motion follows which image. A view with the cube inside the goal was followed by the lift in the data.
+A policy may associate that view with the lift rather than continue effective contact. This is a candidate explanation, not direct access to what a network intends.
+
+### Separate a diagnostic hypothesis from a causal result
+
+The observed height mismatch has a direct geometric interpretation. The save-gesture explanation is a mechanism to test. Neither a plot nor an appealing story establishes that removing one factor will repair the policy. Hold the task, checkpoint selection protocol, scene, reset seeds and executor fixed when comparing an ablation. Save both success and failure records; choosing only a successful video changes the evidence.
+
+A dataset correction changes the training distribution. A controller correction changes the deployed dynamics. A scene correction changes observations. These interventions can interact, so changing all three at once may improve performance without identifying the cause. State the narrower question the comparison can answer.
+
+### The planned correction
+
+Cut the save gesture from the end of each episode, retrain, and run the same rollout series again. This is a
+planned measurement, not a result. It shows the usual shape of rung 5: a good rung-3 result, a failed rollout, a
+cause found in the data, a new measurement.
+
+### State of the physical evidence
+
+| Item | State (15 October 2026) |
+| --- | --- |
+| Rung 1 on the tool arm (features, zero, camera-to-tip) | done by the scripts; the pivot check is not recorded |
+| Rung 2, physical replay deviation | **missing: no replay recorded** |
+| Rung 3, open loop on physical held-out episodes | done: 29–35 mm against 51 mm |
+| Rung 5, learned policy, first series | 0 of 10, 14 October 2026 |
+| Rung 5, later series | stalls after approximately 200 steps; success rate not recorded |
+
+Every item marked missing or not recorded is a planned measurement, not a result.
+
+---
+
+## Writing a bounded claim
+
+### Nominal and held-out conditions
+
+Nominal conditions are those that the training data covers: the ranges of the contract, the same objects, cameras
+and operator position. Held-out conditions change one factor at a time, for example a larger start distance, a
+heavier cube, a camera moved by 5 cm or another table texture. A claim names which of the two it was tested on.
+
+### Count an outcome and its uncertainty
+
+For $$s$$ successes among $$N$$ declared independent evaluation episodes, $$\hat p=s/N$$. For the source manuscript's reported arm setting $$n=10$$, 62% of 50 is 31/50; this uses the manuscript cell for illustration, not a reconciliation with the supplied64%artifact. The binomial standard-error estimate is
+
+$$
+\mathrm{SE}(\hat p)=\sqrt{\hat p(1-\hat p)/N}\approx0.0686.
+$$
+
+That is about 6.9 percentage points, not a 95% interval. A Wilson 95% interval is approximately 48.2–74.1%. Dependence between layouts, selected videos and repeated tuning can invalidate a simple independent-trial interpretation. Keep seeds, failed outcomes and the exact checkpoint rather than using a rounded score as its identity.
+
+A fresh run must save its checkpoint, scene, execution horizon and seed list. The source-score discrepancy described beside the ACT table prevents treating its reported cell values as a fully reconciled reproduction target.
+
+### An example claim
+
+The following wording illustrates how to bound the manuscript-reported simulation cell. Its checkpoint/result identity remains unresolved; the separate physical0/10series does not validate this simulated cell.
+
+> ACT trained on 300 simulated handheld demonstrations pushes the cube into the target in 62 % of 50 nominal
+> simulated episodes on the arm, executing 10 actions per chunk. This particular result is a nominal simulation evaluation, not evidence of successful hardware transfer or held-out-condition robustness.
+
+Simulation success does not predict physical success unless the simulator was shown to predict that task. Domain
+randomisation (Tobin et al. 2017) makes the nominal set wider. It does not replace the measurement.
+
+---
 
 ## Project handoff
 
-Use the six-stage record below in your team’s repository. Keep evidence paths and milestone commits with each revision, and retain earlier versions when a claim changes. The class pages for Classes 12–17 provide the current worksheet checkpoints and deadlines; begin with [Class 12: Claim](../module-04-worksheets-guided-final-project-preparation/12-final-project-i-claim.md).
+### One idea for the project
 
-| Stage | Record to carry forward |
-| --- | --- |
-| Claim | Capability, system/context, bounded claim, baseline and falsifiable test |
-| Experience | Interaction episode, human/system actions, observable outcome and alternative explanations |
-| System | Embodiment, sensing, actuation, information flow, boundaries and assumptions |
-| Grounding | Measurements supporting representations/claims, calibration, provenance and uncertainty |
-| Learning | Data, adaptation or policy/model changes; splits, baselines and failure evidence |
-| Decision | Supported conclusion, remaining limits, discriminating next experiment and justified action |
+The baseline project continues this class: a learned Push Cube policy, trained on collected data and deployed on
+the arm. Raise its success rate. An optional improvement target is 80% or more on the simulated arm. Physical testing, if authorised for a project, requires
+separate commissioning and complete rollout records; it is not a compulsory continuation of the class simulation. The open hypotheses in the physical case are a good start: the end of
+the demonstrations, the scene, the amount of physical data.
 
-Use the [student course repository](https://github.com/asEmbodiedAISyst/2026Autumn) for supplied resources and your team’s own repository for project code, data references, results and revisions. Include instructions that reproduce the assessed version. No private assistant repository is required for this class.
+The [vision-language model as the controller](11-vlm-controller-optional.md) is the second controller of the arm block. It
+needs no new task-specific demonstrations or policy training, so a project can compare it with a learned policy on the same task.
 
-Unfinished printing, actuator identification, data collection, retargeting or training can continue during project work. A simulation/iPhone project is a viable baseline when additional hardware is unavailable. Choose a claim supported by available evidence, then use the next experiment to decide whether to broaden it.
+### The project record
 
+The six worksheets of Classes 12–17 are Claim, Experience, System, Grounding, Learning and Decision. Without more
+hardware, the baseline project uses simulation and an iPhone, and it reproduces or extends the LEAP example
+(Class 06) or the reBot example (Classes 08–11).
+
+---
+
+## Instructor and TA demonstration
+
+Use [Class 11 practice](11-practice.md) to inspect the source Push Cube generation/training/evaluation route with ACT. Long training is preparation or optional work; demonstrate an existing source checkpoint only if its required files are actually supplied and verified. Otherwise use the retained source result tables and success/failure recordings, and present the training command as a recipe rather than a completed reproduction.
+
+Compare one successful and one failed source rollout. Identify the checkpoint/configuration, embodiment, action-chunk execution length, seed, terminal distance and 450-step limit. Then compare the reported offline physical-data errors with the physical 0/10 rollout report. Ask why a low prediction error need not imply closed-loop success.
+
+Diffusion Policy and SmolVLA provide conceptual and source-result comparisons. The VLM controller is an optional simulation extension with network/API prerequisites, not part of the required ACT demonstration.
+
+## Student activity
+
+Write a bounded ACT claim with the task, training data, checkpoint identity or explicit missing identity, scene, embodiment, execution horizon, episode denominator and success rule. Explain one failure using an observation and a separately labelled hypothesis. Propose one controlled change and the new record required to evaluate it. Do not claim a fresh rollout or hardware transfer from a saved video.
+
+For extended practice, evaluate the supplied or newly trained source policy on the unchanged seed protocol and retain every outcome. Report the exact numerator and denominator and compare matched settings only. The six project worksheets will carry these distinctions into claim, experience, system, grounding, learning and decision.
 
 ## References
-
-The [physical-case source record](../resources/class11/data/consolidation-source.json) identifies the pinned development passages and stored artifacts added to this lesson. Source inspection and arithmetic checks are distinct from a fresh experiment.
-
-
-The [scripted replay result](../resources/class11/results/replay-state.json), [reset-comparison result](../resources/class11/results/reset-comparison.json) and [complete recorded policy summary](../resources/class11/results/recorded-policy-summary.json) concern separate checks. Their scope statements remain attached to the results. The [mechanical source notice](../resources/class11/consolidation/package/additional_material/rebot_pusher/model/rebot_b601_rs_mjcf/NOTICE.md) and [CERN-OHL-W licence](../resources/class11/consolidation/package/additional_material/rebot_pusher/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W) accompany the adapted model. These artifacts support the comparisons described above; exact policy reproduction requires the missing execution artifacts.
 
 Chi, Cheng, Siyuan Feng, Yilun Du, Zhenjia Xu, Eric Cousineau, Benjamin CM Burchfiel, and Shuran Song. 2023. “Diffusion Policy: Visuomotor Policy Learning via Action Diffusion.” In *Proceedings of Robotics: Science and Systems*. [Primary paper](https://www.roboticsproceedings.org/rss19/p026.html).
 
@@ -464,3 +465,5 @@ NIST/SEMATECH. n.d. “Confidence Intervals.” *e-Handbook of Statistical Metho
 Shukor, Mustafa, Dana Aubakirova, Francesco Capuano, Pepijn Kooijmans, Steven Palma, Adil Zouitine, Michel Aractingi, Caroline Pascal, Martino Russi, Andres Marafioti, Simon Alibert, Matthieu Cord, Thomas Wolf, and Remi Cadene. 2025. “SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics.” *arXiv*, 2506.01844. [Primary paper](https://arxiv.org/abs/2506.01844).
 
 Zhao, Tony Z., Vikash Kumar, Sergey Levine, and Chelsea Finn. 2023. “Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.” In *Proceedings of Robotics: Science and Systems*. [ACT primary paper](https://www.roboticsproceedings.org/rss19/p016.html).
+
+Tobin, Josh, Rachel Fong, Alex Ray, Jonas Schneider, Wojciech Zaremba, and Pieter Abbeel. 2017. “Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World.” In *Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems*. [Primary paper](https://arxiv.org/abs/1703.06907).

@@ -1,0 +1,100 @@
+{
+ "result": {
+  "success": true,
+  "calls": 5,
+  "ended_by": "sim_success",
+  "cost_usd": 0.0549064,
+  "usage": {
+   "input": 6592,
+   "output": 978,
+   "cache_read": 6192,
+   "cache_write": 1548
+  }
+ },
+ "transcript": [
+  {
+   "call": 0,
+   "tool": "locate",
+   "input": {
+    "u": 378,
+    "v": 200,
+    "what": "cube"
+   },
+   "report": "cube at x=30.7, y=-9.3 cm; from the tip that is dx=-2.8, dy=-7.5 cm"
+  },
+  {
+   "call": 0,
+   "tool": "locate",
+   "input": {
+    "u": 280,
+    "v": 117,
+    "what": "goal"
+   },
+   "report": "goal at x=38.7, y=-5.8 cm; from the tip that is dx=+5.2, dy=-4.0 cm"
+  },
+  {
+   "call": 1,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": -6.9,
+      "dy_cm": -9.3,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     },
+     {
+      "dx_cm": 0,
+      "dy_cm": 0,
+      "dz_cm": -9.2,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "Go behind the cube (opposite goal) and descend."
+   },
+   "report": "move 1 done: tip at (26.6, -11.1, 10.2) cm\nmove 2 done: tip at (26.6, -11.1, 1.0) cm"
+  },
+  {
+   "call": 2,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": 4.6,
+      "dy_cm": 2.0,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "Push cube toward goal partially."
+   },
+   "report": "move 1 done: tip at (31.2, -9.1, 1.0) cm"
+  },
+  {
+   "call": 3,
+   "tool": "locate",
+   "input": {
+    "u": 205,
+    "v": 125,
+    "what": "cube"
+   },
+   "report": "cube at x=34.2, y=-8.0 cm; from the tip that is dx=+2.9, dy=+1.1 cm"
+  },
+  {
+   "call": 4,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": 4.0,
+      "dy_cm": 2.0,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "Continue pushing toward goal."
+   },
+   "report": "move 1 done: tip at (35.2, -7.1, 1.0) cm\nTASK SUCCESS detected by the simulator"
+  }
+ ]
+}

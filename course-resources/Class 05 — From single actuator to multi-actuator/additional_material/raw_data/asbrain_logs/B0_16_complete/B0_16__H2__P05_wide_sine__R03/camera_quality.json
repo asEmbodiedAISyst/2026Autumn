@@ -1,0 +1,77 @@
+{
+  "analysis_eligible": false,
+  "copied_from_episode": "B0_16__H2__P05_wide_sine__R02",
+  "copied_from_run": "B0_16_dual_full_20260921T125536984876Z",
+  "derived_record_notice": "TRIAL PLACEHOLDER ONLY: this is a derived duplicate of B0_16__H2__P05_wide_sine__R02. It is not a separately measured R03 episode and must be excluded from fitting, validation, and scientific analysis.",
+  "episode_id": "B0_16__H2__P05_wide_sine__R03",
+  "excluded_from_analysis": true,
+  "note": "This check runs after torque-off and camera STOP. A failure blocks the next episode but cannot undo the episode that was just recorded.",
+  "passed": true,
+  "placeholder_duplicate": true,
+  "policy": {
+    "maximum_host_gap_s": 3.0,
+    "maximum_source_gap_s": 3.0,
+    "minimum_frame_count": 2,
+    "minimum_fresh_rate_hz": 8.0
+  },
+  "source_hashes": {
+    "corresponding_source_file_sha256": "b44b07cecf705496d6d48456c3867f823f2dfbcba2e3609dd007ae91e66aca52",
+    "source_tree_inventory_sha256": "eb5144fdc8d8f92c0bd7760452e6791aa1332ccf17e220ed6abf495481075afe"
+  },
+  "source_tree_inventory_sha256": "eb5144fdc8d8f92c0bd7760452e6791aa1332ccf17e220ed6abf495481075afe",
+  "trial_only": true,
+  "validated_after_camera_stop": true,
+  "validation_ran_outside_100_hz_motor_loop": true,
+  "views": {
+    "view1": {
+      "achieved_host_rate_hz": 22.272329686700786,
+      "achieved_source_rate_hz": 22.25735953806203,
+      "ar_csv": "views/view1/media/episodes/B0_16__H2__P05_wide_sine__R03/raw/260921-165536_H2-B0-P05-R03_ar.csv",
+      "ar_csv_sha256": "4a1e2ca4bd0dedce846fd352b431f55220ad12696a57a3a200e0e9e48d33bd99",
+      "capture_manifest": "views/view1/media/episodes/B0_16__H2__P05_wide_sine__R03/capture.json",
+      "capture_manifest_sha256": "26727e634bb1186d5861886d23901fa18a9f34059aa8073c805f6540d5a514b3",
+      "checks": {
+        "host_timestamps_strictly_advance": true,
+        "maximum_host_gap_respected": true,
+        "maximum_source_gap_respected": true,
+        "minimum_frame_count_reached": true,
+        "minimum_host_rate_reached": true,
+        "minimum_source_rate_reached": true,
+        "raw_and_jpeg_frame_counts_match": true,
+        "source_timestamps_strictly_advance": true,
+        "timestamps_finite": true
+      },
+      "frame_count": 392,
+      "host_span_s": 17.555415419046767,
+      "maximum_host_gap_s": 0.18838742491789162,
+      "maximum_source_gap_s": 0.1668558120727539,
+      "passed": true,
+      "source_span_s": 17.567223072052002
+    },
+    "view2": {
+      "achieved_host_rate_hz": 29.37701282563896,
+      "achieved_source_rate_hz": 29.316104717102267,
+      "ar_csv": "views/view2/media/episodes/B0_16__H2__P05_wide_sine__R03/raw/260921-165536_H2-B0-P05-R03_ar.csv",
+      "ar_csv_sha256": "db739e71e38f66c64ba25c2ec1579dabad13516acde1279baf58f09a67e0f6e1",
+      "capture_manifest": "views/view2/media/episodes/B0_16__H2__P05_wide_sine__R03/capture.json",
+      "capture_manifest_sha256": "d8d5ac61153db2cbeec39971fc236093203bb342a639edeb88407d345eb7db0b",
+      "checks": {
+        "host_timestamps_strictly_advance": true,
+        "maximum_host_gap_respected": true,
+        "maximum_source_gap_respected": true,
+        "minimum_frame_count_reached": true,
+        "minimum_host_rate_reached": true,
+        "minimum_source_rate_reached": true,
+        "raw_and_jpeg_frame_counts_match": true,
+        "source_timestamps_strictly_advance": true,
+        "timestamps_finite": true
+      },
+      "frame_count": 516,
+      "host_span_s": 17.530713658896275,
+      "maximum_host_gap_s": 0.1508362740278244,
+      "maximum_source_gap_s": 0.10002326965332031,
+      "passed": true,
+      "source_span_s": 17.56713604927063
+    }
+  }
+}

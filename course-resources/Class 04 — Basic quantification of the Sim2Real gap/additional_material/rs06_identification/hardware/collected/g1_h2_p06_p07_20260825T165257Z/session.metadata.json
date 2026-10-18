@@ -1,0 +1,116 @@
+{
+  "status": "complete",
+  "started_utc": "2026-08-25T16:53:06.813896+00:00",
+  "protocol": {
+    "name": "MagicLimb control box 16-slot protocol",
+    "version": "observed-2026-08-08"
+  },
+  "motor_model": "RS06",
+  "motor_id": 2,
+  "controller_slot": 1,
+  "route": {
+    "board": "FLRL",
+    "bus": "CAN1"
+  },
+  "kp": 100.0,
+  "kd": 1.95,
+  "zeroing_policy": "The operator calibrates zero before the run. The runner never requests a new zero and moves to the explicit center_position with minimum jerk.",
+  "manifest_path": "/home/asmagicforce1/jinqi/mbzuai/code_ws/OverconstrainedROS/course_resources/chapter02-rs06-data/hardware/trajectory-suites/H2/manifest.json",
+  "manifest_sha256": "3c5009ee52bcbe56113f865181d516a74f536837bbaaa01ff2508a271fc9d839",
+  "manifest_schema": "rs06-identification-trajectory-suite/v2",
+  "manifest_control_configuration": {
+    "controller_id": "H2",
+    "kd": 1.95,
+    "kp": 100.0,
+    "mode": "position",
+    "motor_model": "RS06"
+  },
+  "sample_rate_hz": 50.0,
+  "selected_trajectories": [
+    "P06",
+    "P07"
+  ],
+  "trajectory_operating_center_offsets_rad": {
+    "P06": 0.0,
+    "P07": 0.0
+  },
+  "arguments": {
+    "manifest": "/home/asmagicforce1/jinqi/mbzuai/code_ws/OverconstrainedROS/course_resources/chapter02-rs06-data/hardware/trajectory-suites/H2/manifest.json",
+    "trajectory_ids": [
+      "P06",
+      "P07"
+    ],
+    "motor_id": 2,
+    "port": "/dev/ttyACM0",
+    "baudrate": 1000000,
+    "serial_timeout": 0.02,
+    "frame_timeout": 0.5,
+    "max_bad_frames": 3,
+    "online_timeout": 10.0,
+    "allow_shared_port": false,
+    "kp": 100.0,
+    "kd": 1.95,
+    "config_delay": 1.0,
+    "command_echo_timeout": 3.0,
+    "center_position": 0.0,
+    "position_min": -12.57,
+    "position_max": 12.57,
+    "max_position_deviation": 2.0,
+    "max_initial_center_distance": 12.0,
+    "max_operating_center_offset": 0.0,
+    "max_abs_velocity": 25.0,
+    "max_abs_torque": 36.0,
+    "max_tracking_error": 2.0,
+    "max_feedback_gap": 0.1,
+    "max_schedule_lateness": 0.1,
+    "max_echo_history_steps": 8,
+    "max_unrecognized_echoes": 3,
+    "transition_duration": 2.0,
+    "settle_duration": 2.0,
+    "return_settle_duration": 1.0,
+    "output_dir": "/home/asmagicforce1/jinqi/mbzuai/code_ws/OverconstrainedROS/course_resources/chapter02-rs06-data/hardware/collected/g1_h2_p06_p07_20260825T165257Z",
+    "overwrite": false,
+    "execute": true,
+    "verbose": false,
+    "run_id": "g1_h2_p06_p07_20260825T165257Z",
+    "fixture_id": "G1",
+    "fixture_description": "RS06 one-sided gravity G1 configuration",
+    "fixture_metadata_json": null,
+    "operator": null,
+    "temperature_c": null,
+    "supply_voltage_v": null,
+    "notes": "",
+    "chapter_package_name": "chapter02-hardware",
+    "acknowledge_p06_position_steps": true
+  },
+  "raw_csv": "/home/asmagicforce1/jinqi/mbzuai/code_ws/OverconstrainedROS/course_resources/chapter02-rs06-data/hardware/collected/g1_h2_p06_p07_20260825T165257Z/raw_session.csv",
+  "compact_csv": {
+    "P06": "/home/asmagicforce1/jinqi/mbzuai/code_ws/OverconstrainedROS/course_resources/chapter02-rs06-data/hardware/collected/g1_h2_p06_p07_20260825T165257Z/P06_heldout_composite.csv",
+    "P07": "/home/asmagicforce1/jinqi/mbzuai/code_ws/OverconstrainedROS/course_resources/chapter02-rs06-data/hardware/collected/g1_h2_p06_p07_20260825T165257Z/P07_heldout_sine_hold.csv"
+  },
+  "initial_q_rad": -0.01515266651407643,
+  "base_center_q_rad": 0.0,
+  "center_q_rad": 0.0,
+  "completed_trajectories": [
+    "P06",
+    "P07"
+  ],
+  "serial_statistics": {
+    "valid_frames_read": 1857,
+    "invalid_163_byte_candidates": 0
+  },
+  "finished_utc": "2026-08-25T16:53:48.718816+00:00",
+  "error": null,
+  "runtime_statistics": {
+    "recorded_samples": 1852,
+    "position_command_saturations": 0,
+    "echo_delay_steps_histogram": {
+      "0": 98,
+      "1": 1101
+    },
+    "unrecognized_echo_count_at_end": 0,
+    "max_observed_abs_velocity_rad_s": 3.470664530403603,
+    "max_observed_abs_torque_nm": 6.011261158159762,
+    "max_observed_abs_tracking_error_rad": 0.15459555962462623
+  }
+}

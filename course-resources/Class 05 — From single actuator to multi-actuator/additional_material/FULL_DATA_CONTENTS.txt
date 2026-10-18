@@ -1,0 +1,23 @@
+CLASS 05 COMPLETE DATA CONTENTS
+
+The package contains the full numerical record for the 16-XC330 campaign, not only the motors, episodes or plots shown in the paper.
+
+RAW HARDWARE RECORD
+raw_data/asbrain_logs contains the complete curated campaigns and episode-level commands, telemetry, manifests and run metadata:
+M0: 20 episodes
+B0: 32 episodes
+B1: 30 episodes
+B2: 32 episodes
+G1: 22 episodes
+Total: 136 recorded episodes.
+
+The raw record includes the retained pilot/context episodes in addition to the 125 science episodes used by the fitted comparison. raw_data/campaign_indices and raw_data/episode_lists preserve the campaign ordering, source-run links and completeness checks.
+
+COMPLETE PROCESSED RECORD
+data/paired_simulation_hardware_samples.parquet contains 2,128,600 paired samples for all 16 motors. data/EPISODES_USED.csv contains all 125 simultaneous science episodes, which expand to 2,000 motor records. data/episode_metrics.csv contains 4,000 rows covering the baseline and fitted model for every motor record. All 64 optimizer candidates, 32 selected motor/controller fits, frozen selection information, held-out results, poor-agreement cases and generated simulation arrays are included.
+
+NEURAL-ACTUATOR RECORD
+neural_actuator/data contains every trajectory file used by the separate single-motor ID-0 test. The selected and last checkpoints, reports, model and comparison inputs are retained under neural_actuator/results and neural_actuator/model.
+
+MEDIA
+The numerical record is complete. The demonstration folder retains representative compact videos and blurred stills without duplicating the very large raw phone-frame archive.

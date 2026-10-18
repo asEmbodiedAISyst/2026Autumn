@@ -1,0 +1,110 @@
+{
+  "archive_file": "rs06-sim-position-v1.npz",
+  "candidate_model_tree": "models/nominal",
+  "controller_mapping": {
+    "coordinates": {
+      "C1": {
+        "kp_Nm_per_rad": 50.0,
+        "kv_Nm_s_per_rad": 3.38
+      },
+      "C2": {
+        "kp_Nm_per_rad": 100.0,
+        "kv_Nm_s_per_rad": 1.95
+      }
+    },
+    "fixed_command_delay_s": 0.0,
+    "identified": false,
+    "interpretation": "C1/C2 are fixed MuJoCo gains used for this synthetic data. Their pairing to H1/H2 is a commissioning hypothesis, not a claim that RS06 protocol gains have SI units.",
+    "model": "fixed MuJoCo position-actuator gains"
+  },
+  "dataset_revision": "rs06-v1",
+  "datasets": {
+    "sim_position": {
+      "fit_field_allowlist": [
+        "time_s",
+        "applied_position_rad",
+        "observed_position_rad",
+        "observed_velocity_rad_s",
+        "valid",
+        "saturated"
+      ],
+      "hardware_transfer_intended": true,
+      "input": "position_applied_rad"
+    },
+    "sim_torque": {
+      "contract": "sim-torque-contract.json",
+      "hardware_transfer_intended": false,
+      "input": "actuator_effort_input_Nm",
+      "purpose": "simulation-only identifiability and controller-versus-joint-parameter demonstration"
+    }
+  },
+  "evidence_source": "simulation",
+  "field_map": {
+    "applied_position_rad": "position_applied_rad",
+    "observed_position_rad": "source_position_meas_rad",
+    "observed_velocity_rad_s": "source_velocity_meas_rad_s",
+    "saturated": "source_saturated",
+    "time_s": "time_s",
+    "valid": "valid"
+  },
+  "fit_field_allowlist": [
+    "time_s",
+    "applied_position_rad",
+    "observed_position_rad",
+    "observed_velocity_rad_s",
+    "valid",
+    "saturated"
+  ],
+  "hardware_claim_permitted": false,
+  "method1": {
+    "acceleration_required": false,
+    "filter": {
+      "applied_to": [
+        "observed_position_rad",
+        "observed_velocity_rad_s"
+      ],
+      "savgol_polynomial_order": 3,
+      "savgol_window_samples": 11,
+      "type": "Savitzky-Golay"
+    },
+    "fit_parameters": [
+      "armature",
+      "damping",
+      "frictionloss"
+    ],
+    "generalized_actuator_effort_required": false,
+    "integration_step_samples": 2,
+    "integration_window_samples": 10,
+    "known_fixture_terms": "reconstructed from the matched nominal MJCF and measured fixture mass properties",
+    "minimum_moving_fraction": 0.7,
+    "moving_speed_threshold_rad_s": 0.05,
+    "name": "three-parameter integrated closed-loop analytical regression",
+    "source_model_parameters_used_for_fit": false,
+    "status": "qualified-within-declared-closed-loop-approximation"
+  },
+  "method2": {
+    "episode_weighting": "equal complete episode",
+    "fit_parameters": [
+      "armature",
+      "damping",
+      "frictionloss"
+    ],
+    "initial_state_treatment": "first qualified measured position and velocity",
+    "name": "bounded MuJoCo output-error optimization",
+    "source_model_parameters_used_for_fit": false,
+    "status": "qualified"
+  },
+  "method_implementation_revision": "v3-two-dataset",
+  "release_id": "chapter02-rs06-sim-data-v1",
+  "reproduction_command": "python scripts/run_chapter02_rs06_sim_position_identification_v1.py",
+  "result_schema": "phyintel-section-2.3-rs06-sim-position-results-v1",
+  "schema_version": "phyintel-identification-contract-v3",
+  "simulation_evaluation_only": {
+    "source_joint_parameters_source": "experiment-contract.json; loaded only after both Sim-Position fitters return"
+  },
+  "split_discipline": {
+    "calibration": "fit armature, damping, and frictionloss",
+    "held_out": "evaluate only after all choices are frozen",
+    "model_selection": "evaluate the frozen candidate and predeclared model choices; controller gains and delay remain fixed"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "checks": {
+    "all_episode_clocks_are_monotonic": true,
+    "all_episode_sample_counts_match": true,
+    "all_episode_sequences_are_contiguous": true,
+    "all_episodes_complete": true,
+    "all_samples_valid": true,
+    "all_selected_profiles_have_episode_rows": true,
+    "archive_arrays_have_one_length": true,
+    "archive_fields_match_manifest": true,
+    "archive_hash_matches_manifest": true,
+    "episode_hashes_match_manifest": true,
+    "no_command_saturation": true,
+    "source_session_status_complete": true
+  },
+  "episode_checks": [
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "held_out__H2__B1__P06_heldout_composite__b1_h2_p06_p06_20260825T163227Z",
+      "expected_sample_count": true,
+      "expected_samples": 551,
+      "observed_samples": 551,
+      "sequence_ids_contiguous": true
+    }
+  ],
+  "episode_count": 1,
+  "passed": true,
+  "sample_count": 551,
+  "warnings": []
+}

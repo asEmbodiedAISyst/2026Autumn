@@ -1,0 +1,25 @@
+{
+  "camera_service_started": false,
+  "checks": {
+    "configured_latency_timer_is_exactly_1_ms": true,
+    "latency_timer_sysfs_value_is_readable_integer": true,
+    "observed_latency_timer_is_exactly_1_ms": true
+  },
+  "completed_host_monotonic_ns": 4397216927357,
+  "completed_host_wall_time_ns": 1788264748256370438,
+  "configured_latency_timer_ms": 1,
+  "latency_timer_path": "/sys/class/tty/ttyUSB1/device/latency_timer",
+  "motion_executed": false,
+  "motor_device_opened": false,
+  "observed_latency_timer_ms": 1,
+  "operation": "read_only_u2d2_usb_latency_timer_preflight",
+  "passed": true,
+  "raw_sysfs_value": "1",
+  "read_error": null,
+  "required_latency_timer_ms": 1,
+  "resolved_serial_port": "/dev/ttyUSB1",
+  "serial_port": "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FTBIHS37-if00-port0",
+  "started_host_monotonic_ns": 4397216831130,
+  "started_host_wall_time_ns": 1788264748256273840,
+  "tty_name": "ttyUSB1"
+}

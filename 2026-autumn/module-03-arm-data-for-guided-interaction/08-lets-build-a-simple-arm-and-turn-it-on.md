@@ -10,478 +10,514 @@ layout:
 
 > What evidence shows that an arm or its simulation is ready for a controlled experiment?
 
-A robot that moves can still have the wrong joint order, an incorrect sign, an unsuitable limit or a misinterpreted gripper command. A rendered arm can look convincing while its control interface is inconsistent. Commissioning means establishing the configuration and evidence needed for a specified next operation.
+Classes 02–05 connected actuator requests with physical responses; Classes 06–07 studied a hand's task and observation contracts. We now apply the same discipline to the Seeed reBot Arm B601-RS: six arm joints and a parallel gripper. Moving it requires a consistent mechanism description, joint order, frames, controller and record.
 
-This class uses the **reBot Arm B601-RS MuJoCo simulation**. The mechanism has six rotary arm joints and a parallel gripper. We will inspect its description, identify its frames and interfaces, predict which movements are permitted, and examine bounded motion. The physical case adds the kit, shared power/CAN path, assembly and zeroing logic, and a saved single-joint commissioning result. These records connect the model to an apparatus; they do not qualify every joint for a new operation.
+The core class route is **control in simulation**. The kit and physical motion-test record explain the apparatus behind the model. Assembly, power-on and encoder-zero procedures are optional preparation references for the teaching team; students are not asked to assemble or power the arm.
 
 By the end of this class, you should be able to:
 
-- Read the arm's joint and actuator arrangement from the compiled model.
-- Distinguish a coordinate frame, model zero, working home configuration and physical calibration zero.
-- Interpret joint order, signs, units and the separate gripper interface.
-- Intersect model and software limits before requesting a movement.
-- Compare targets and responses using a declared sampling rule.
-- State which next experiment the evidence supports and which checks remain open.
+- Identify the kit, motors, power path and shared CAN bus.
+- Read joint order, units, signs, model ranges and software limits.
+- Relate forward kinematics and joint dynamics to the configured controller.
+- Interpret a bounded simulation and the separate physical motion-test record.
+- State which commissioning checks require the physical apparatus.
 
-[Lecture](#from-individual-joints-to-a-serial-arm) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](#the-arm-and-its-kit) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The explanation, figures, worked examples and saved records provide a complete reading and activity route without operating an arm or launching a simulator.
+The explanation and supplied records can be read without executing code. The separate [practice page](08-practice.md) retains the source workflow, setup and commands. A reported result is identified as a retained source record; a new execution must save its own configuration and outcome.
 
-## From individual joints to a serial arm
+## The arm and its kit
 
-Classes 02–04 separated a command from an actuator response and a simulated model from a physical calibration. Class 05 distinguished independent fixtures from connected mechanics. Classes 06–07 added task and observation contracts. Here we apply those ideas to a different embodiment; the arm needs its own joint, tool and gripper conventions.
+### The reBot Arm B601-RS
 
-In a serial arm, moving a proximal joint changes the positions and orientations of the links that follow it. Their weight and inertia contribute to the effort at that joint. Extending the elbow can change shoulder effort even when the shoulder angle and total mass remain unchanged: the downstream centres of mass move relative to the shoulder axis.
 
-Identify the body tree before reasoning about motion: fixed base, moving links, joint axes and tool. The arm configuration is the vector of its joint coordinates. **Forward kinematics** maps that configuration to tool pose. **Dynamics** relates configuration, velocity and effort to acceleration. A kinematic solution for a desired tool pose does not establish that the available actuators can track it.
 
-**Predict:** If the elbow extends while the shoulder angle stays fixed, must the shoulder's gravity effort stay fixed? Explain your answer using the downstream bodies and their lever arms.
+![The reBot Arm B601-RS](../resources/class08/figures/source/arm-seeed.png)
 
-### What the mechanism description supplies
+*Figure 1. The reBot Arm B601-RS (image: Seeed Studio).*
 
-A URDF describes links, joint origins and axes, geometry, inertial properties and joint limits. A runnable MuJoCo experiment also needs actuation, passive parameters, an environment, initial conditions and a stepping rule. Those additions are modeling decisions with their own provenance.
+{% hint style="info" %}
+**Photo to be added:** the course arm on the bench, clamped to the table, with its supply.
+{% endhint %}
 
-![From mechanical description to a controlled experiment](../resources/class08/figures/model-pipeline-classroom.png)
+The course arm is the Seeed reBot Arm B601-RS. It has six joints and a parallel gripper. It is clamped to the
+bench, with its 48 V supply behind it. Each joint is a RobStride motor of the kind seen in Class 02.
 
-*Figure 1. The description-to-experiment chain. The arrows represent modeling and inspection steps; physical readiness requires evidence from the actual system.*
+### One kit, five boxes
 
-The retained mechanical source is Seeed's RS arm description. The course model includes its URDF and meshes, a converted MJCF arm, and a scene with a table, lights and cameras. Its position actuators and gravity-compensation settings are simulation choices. They do not by themselves identify the physical drive's embedded controller. The [model notice](../resources/class08/model/rebot_b601_rs_mjcf/NOTICE.md) identifies the source and the retained [CERN-OHL-W-2.0 license](../resources/class08/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W).
 
-Inspect both the files and the compiled model. The files show the intended names, axes, transmissions and ranges. The compiled model shows the coordinate addresses, constraints and actuator configuration that MuJoCo will execute. Keep that compiled configuration with the results of an experiment. The [retained inspection](../resources/class08/results/inspection.json), [source record](../resources/class08/SOURCE.md) and [package manifest](../resources/class08/MANIFEST.json) identify the supplied model and records. The tested native runtime is MuJoCo 3.14.0 with Python 3.12 and NumPy 2.5.4; it is separate from the Class 06–07 native runtime. MuJoCo's [XML reference](https://mujoco.readthedocs.io/en/3.14.0/XMLreference.html) documents these model elements.
 
-### Count coordinates and actuators separately
+![The four boxes of the kit: RS-Pn Power Adapter, RS-Sn Structure Kit, RS-Mn Motor Kit and RS-Gn Gripper Kit](../resources/class08/figures/source/kit-boxes.png)
 
-The supplied compiled scene has:
+*Figure 2. The four boxes of the kit: RS-Pn Power Adapter, RS-Sn Structure Kit, RS-Mn Motor Kit and RS-Gn Gripper Kit. Four of the five boxes of the kit.*
 
-| Quantity | Value | Meaning in this scene |
-| --- | ---: | --- |
-| `nq` | 8 | Six rotary coordinates and two sliding finger coordinates |
-| `nv` | 8 | The corresponding velocity coordinates |
-| `nu` | 7 | Six arm actuators and one gripper actuator |
+{% hint style="info" %}
+**Photos to be added:** the parts of each box, laid out.
+{% endhint %}
 
-The finger coordinates are coupled by an equality, and a tendon-based actuator drives the gripper. Thus the number of position coordinates, independent motion directions and actuators need not be identical. Read the constraints and transmissions as well as the counts. Seven control entries do not mean seven unconstrained rotary joints.
+The arm comes in five boxes: the power adapter, the structure kit, the motor kit, the clamp and the gripper kit.
+The [assembly guide](08-assembly-optional.md) lists the content of each box and builds the arm step by step.
 
-For finger coordinates $$s_L$$ and $$s_R$$, the fixed tendon uses
+### Read the motor datasheet
 
-$$
-\ell_g=0.5s_L+0.5s_R.
-$$
+The arm uses seven motors: three RS-06 for the shoulder and the elbow, and four RS-00 for the wrist and the
+gripper. The user manual of each motor gives the values below. Find them in the manual yourself.
 
-The equality couples the two sliding coordinates, while the actuator requests tendon length. With equal finger strokes, this average equals one finger's stroke. It is not the sum of both strokes or a direct measurement of total jaw aperture. The compiled coordinate count still includes both fingers; a constraint does not remove an entry from `qpos`.
-
-### The kit makes the model physical
-
-The B601-RS kit separates five physical roles: a power adapter, a structural kit, a motor kit, a bench clamp and a gripper kit. The structural parts locate the joint axes; the clamp transfers the arm's reaction loads to the bench. Bearings and locating features constrain how parts seat. Cables must follow the moving structure without becoming a joint stop. These details affect the mechanism that the model is intended to describe.
-
-The source assembly record assigns the seven motor identities as follows. A bus address identifies a device; its mechanical location gives that address a joint meaning.
-
-| Bus ID | Actuator family | Mechanical role |
+| Item (manual, Section 1) | RS-06 | RS-00 |
 | --- | --- | --- |
-| 1 | RS-06 | Base yaw |
-| 2 | RS-06 | Shoulder lift |
-| 3 | RS-06 | Elbow |
-| 4 | RS-00 | Forearm/wrist flexion |
-| 5 | RS-00 | Wrist |
-| 6 | RS-00 | Wrist rotation at the tool mount |
-| 7 | RS-00 | Parallel-gripper opening mechanism |
+| Rated torque (at 100 rpm) | 11 N m | 5 N m |
+| Peak torque | 36 N m | 14 N m |
+| No-load speed | 480 rpm | 315 rpm |
+| Gear ratio | 9 : 1 | 10 : 1 |
+| Mass | 621 g | 310 g |
+| Supply | 48 V (15–60 V) | 48 V |
+| Bus | CAN, 1 Mbit/s | CAN, 1 Mbit/s |
 
-The assembly proceeds through base, upper arm, forearm, wrist and gripper subassemblies before these are joined from the base outward. The motor labels, bracket left/right marks, connector direction and locating pins matter together. An incorrectly seated output or a swapped motor may still produce a plausible rendered joint vector. It changes the relationship between that vector and the physical links. The source assembly guide also records a vendor-video label inconsistency at the wrist; the housing IDs and completed mechanism must resolve it, rather than a copied caption.
+The model uses these numbers. The torque limit of each actuator in the MJCF file is the peak torque of its motor:
+`forcerange="-36 36"` for joints 1–3 and `forcerange="-14 14"` for joints 4–6. Rated torque applies under the manufacturer's stated thermal, supply and operating conditions; it is not an unconditional continuous-output guarantee.
 
-### Follow power and information separately
+### How the computer reaches the motors
 
-Trace the command and power paths in Figure 2 separately. Then identify where they share a cable on the arm.
+```mermaid
+flowchart TB
+    subgraph CTRL ["Computer side"]
+        direction LR
+        PC["<b>Computer</b><br/>Linux, Python"]
+        AD["<b>USB-to-CAN adapter</b><br/>PCAN-USB<br/>DIP switch 120R"]
+        SB["<b>Splitter board</b><br/>joins power and CAN"]
+        PSU["<b>48 V supply</b><br/>12.5 A"]
+        SW["<b>Switch</b><br/>emergency stop"]
+        PC -- "USB" --> AD
+        AD -- "2-pin JST<br/>CAN-H, CAN-L" --> SB
+        PSU -- "48 V" --> SW
+        SW -- "XT30" --> SB
+    end
 
-![Physical power path and shared CAN bus of the source arm](../resources/class08/figures/physical-topology-classroom.png)
+    subgraph ARM ["The arm: one CAN bus, chained with XT30 2+2 cables"]
+        direction LR
+        M1["ID1<br/>RS-06"] --- M2["ID2<br/>RS-06"] --- M3["ID3<br/>RS-06"] --- M4["ID4<br/>RS-00"]
+        M4 --- M5["ID5<br/>RS-00"] --- M6["ID6<br/>RS-00"] --- M7["ID7<br/>RS-00"]
+        M7 -.- T2["120 Ω<br/>far end"]
+    end
 
-*Figure 2. Apparatus schematic reconstructed from the pinned assembly and power-on records. The 48 V power path and CAN signal path meet at the splitter. Motor positions follow the source ID allocation. This is a topology drawing, not a photograph or a wiring qualification.*
+    CTRL -- "splitter board to ID1: XT30 2+2 cable (48 V, GND, CAN-H, CAN-L)" --> ARM
 
-The computer communicates through a USB-to-CAN adapter. The adapter connects CAN-H and CAN-L to the splitter; the separate 48 V supply feeds the splitter through the source installation's power switch. An XT30 2+2 cable then carries power, ground and the two CAN signals to ID1. Successive motor cables continue the same four conductors along the arm. The physical chain is therefore one shared CAN bus, rather than seven independent computer links.
+    style PC fill:#e3f2fd,stroke:#1565c0
+    style AD fill:#e3f2fd,stroke:#1565c0
+    style SB fill:#e3f2fd,stroke:#1565c0
+    style PSU fill:#e0f2f1,stroke:#00796b
+    style SW fill:#e0f2f1,stroke:#00796b
+    style M1 fill:#fff3e0,stroke:#e65100
+    style M2 fill:#fff3e0,stroke:#e65100
+    style M3 fill:#fff3e0,stroke:#e65100
+    style M4 fill:#fff3e0,stroke:#e65100
+    style M5 fill:#fff3e0,stroke:#e65100
+    style M6 fill:#fff3e0,stroke:#e65100
+    style M7 fill:#fff3e0,stroke:#e65100
+```
 
-The source installation specifies 1 Mbit/s and a termination resistor at each bus end. Two 120-ohm terminations in parallel would give approximately 60 ohms across the signal pair with the installation unpowered. That resistance is a diagnostic of the declared termination arrangement; it does not establish correct polarity, device identity or successful command exchange.
+**The cables.** Follow the chain from the computer to the gripper:
 
-In this host-led design a control cycle sends a command to each selected motor and collects its feedback. CAN itself permits multiple transmitting nodes and arbitration; “the host polls the motors” describes this implementation, not a universal single-master property of CAN. Feedback fields include position, velocity, firmware-reported torque and temperature. A decoded packet proves a communication event, while its physical meaning still depends on the device schema, sign and zero.
+| Link | Connector and cable | Carries |
+| --- | --- | --- |
+| Computer → adapter | USB | commands and feedback, packed in USB transfers |
+| Adapter → splitter board | 2-pin JST cable: red to CAN-H, black to CAN-L | the CAN signal |
+| Supply → splitter board | XT30 power cable, through the switch | 48 V |
+| Splitter board → ID1 | XT30 2+2 cable, 300 mm, both ends straight | 48 V and the CAN signal in one cable |
+| ID1 → ID2 → … → ID7 | XT30 2+2 cables, 200–300 mm | the same four wires, from motor to motor |
 
-For scale, a hypothetical seven-command/seven-reply cycle at 150 cycles/s contains 2,100 CAN frames/s. If a particular frame budget were 150 bits including overhead, that would consume 315 kbit/s, or 31.5% of a 1 Mbit/s link, before additional traffic. The frame size here is an explicit arithmetic assumption; arbitration, stuffing, USB batching and scheduling must be measured for the actual implementation. A nominal bus bitrate does not prove a sustained feedback rate.
+"2+2" means two power pins (48 V and ground) and two signal pins (CAN-H and CAN-L). One cable chain brings power
+and commands to every motor.
 
-## Frames, reference configurations and calibration
+**The topology.** The chain is one bus: CAN-H and CAN-L pass through every motor, so the adapter and the seven
+motors sit on the same two wires. A 120 Ω resistor at each end of the bus stops signal reflections: the DIP switch
+120R of the adapter is one end, and the other end is after ID7. The bus runs at 1 Mbit/s (ISO 2015).
 
-A **frame** has an origin and axes. A **pose** gives position and orientation relative to a frame. A **reference configuration** gives joint coordinates. A tool centre point, or **TCP**, is the model site used to describe the tool pose. Its definition is part of the experiment.
+The course application coordinates command/reply exchanges on the bus. CAN itself permits arbitration among transmitting nodes; this is an application-level polling design, not a universal single-master property. Each motor has an identifier from 1 to 7. The computer sends a
+command to one identifier, and that motor answers with one feedback frame: angle, velocity, torque and
+temperature. In the course setup a motor sends only when it receives a command. One control cycle is therefore
+seven commands and seven answers, one after the other.
 
-The course base convention is x forward, y left and z up. The all-zero arm vector produces a folded configuration. The working home configuration places the gripper approximately vertically above the table:
+**The software.** A command passes through these layers on its way to a motor:
 
-$$
-\mathbf q_{\mathrm{home}}
-=\begin{bmatrix}0&1.532&1.197&-1.236&0&0\end{bmatrix}^{T}\,\mathrm{rad}.
-$$
-
-The corresponding compiled TCP positions are:
-
-| Configuration | TCP position in the declared base/world frame |
+| Layer | On the course arm |
 | --- | --- |
-| Zero arm vector | Approximately [0.28671, 0, 0.21775] m |
-| Working home | Approximately [0.25003, 0, 0.09986] m |
+| Your script | Python, for example `real_gripper_motion_test.py` |
+| Arm driver | `lerobot-robot-seeed-b601`, the LeRobot driver of the arm |
+| Motor library | `motorbridge`: turns a command into a RobStride CAN frame |
+| Operating system | Linux SocketCAN: the network interface `can0`, driver `peak_usb` |
+| Adapter | PCAN-USB: moves frames between USB and the CAN bus |
+| Motor | RobStride driver: decodes the frame, runs its control loop, answers |
 
-![Zero and working home configurations of the reBot RS model](../resources/class08/figures/arm-poses-classroom.png)
+The section on commanding the motors shows what one frame contains.
 
-*Figure 3. Native simulation renders of the retained model with the same camera. Zero and home are declared joint configurations, not photographs or measurements of physical calibration.*
+### The files of the arm
 
-The names “zero” and “home” do not determine a TCP position. The model and tool definition do. A TCP position alone also does not fully specify a pose: orientation matters, and inverse kinematics can admit different joint configurations for a requested pose.
-
-**Physical calibration zero** is established by a physical procedure. It relates encoder readings and mechanism geometry through the chosen zero, sign, scale and transmission conventions. Setting a simulated `qpos` vector to zero performs a state reset; it does not calibrate an encoder. Likewise, selecting a convenient working home pose does not establish a hardware zero.
-
-Record the joint vector, frame, tool definition and calibration identity together. A different tool can require a different working home even when the arm body is unchanged.
-
-**Check:** What information would be missing if a teammate recorded only “home TCP = [0.25, 0, 0.10] m”? Include orientation, joint configuration and tool definition in your answer.
-
-## Joint order, units and signs
-
-The six arm joints are `joint1` through `joint6`. The supplied viewer declares these channel names, with the gripper last:
-
-| Entry | Model interface | Declared channel |
-| ---: | --- | --- |
-| 1 | joint1 | shoulder_pan |
-| 2 | joint2 | shoulder_lift |
-| 3 | joint3 | elbow_flex |
-| 4 | joint4 | wrist_flex |
-| 5 | joint5 | wrist_yaw |
-| 6 | joint6 | wrist_roll |
-| 7 | Gripper tendon actuator | gripper |
-
-A command vector needs an order and a schema. Here, arm position targets in MuJoCo use radians; the retained course motor-state convention uses degrees. Convert explicitly:
-
-$$
-\theta_{\mathrm{deg}}=q_{\mathrm{rad}}\frac{180}{\pi}.
-$$
-
-For example, the shoulder-lift home coordinate is 1.532 rad, approximately 87.777 degrees. Sending the number 1.532 to a degree-valued interface would request a substantially different angle.
-
-### Action coordinates and motor coordinates
-
-The retained software convention maps action coordinates to motor targets with the direction/scale vector:
-
-$$
-\mathbf d=\begin{bmatrix}1&1&-1&-1&-1&1&6\end{bmatrix}^{T},
-\qquad \boldsymbol\theta_{\mathrm{motor}}=\mathbf d\odot\mathbf a.
-$$
-
-The symbol $$\odot$$ denotes elementwise multiplication. Under this convention, an elbow action of −30 degrees maps to a motor target of +30 degrees. This action mapping is separate from the model joint axis. The declarations are in the bundled `view_arm_scene.py`; `controlled_motion.py` instead accepts model-coordinate targets directly and does not apply this direction vector. Do not add another sign conversion while reproducing that example.
-
-The supplied source declares that each arm model coordinate in radians corresponds to the motor angle in radians; its software bounds are declared in **motor degrees**. Therefore, convert those bounds to the model's units before intersecting them, and do not apply the action direction vector a second time. This is the source package's interface contract. Physical sign and zero calibration must still be checked against the exact hardware and driver revision. The external B601 driver repository is a separate source, not an executable dependency of this bundle. Its reviewed [snapshot](https://github.com/Seeed-Projects/lerobot-robot-seeed-b601/tree/0da1a1a5575905d77823227003ffee7672059780) distinguishes DM support from an RS path still being refined. A source comment about matching a vendor driver does not establish physical compatibility with every version (Seeed Studio n.d.-b).
-
-### The gripper has a separate schema
-
-The last control entry is not another arm angle. Its simulation target represents a **single-finger stroke in metres**, with a declared actuator range of 0–0.05 m. The bounded example opens to 0.03 m. Two finger coordinates, the equality coupling and the tendon transmission implement the modeled opening.
-
-The retained software action range 0–45 maps to a gripper motor range of 0–270 degrees through the scale factor six. That declaration does not supply a measured motor-angle-to-finger-stroke calibration. Do not feed a degree-valued motor number directly into a metre-valued simulation gripper control.
-
-**Check:** Before using a seven-element vector, identify which six entries are arm positions, the units of those positions, the meaning and units of the gripper entry, and whether the vector is expressed in action or motor coordinates.
-
-## Choose motion inside the applicable limits
-
-Model joint ranges, actuator control ranges and software operating bounds describe different constraints. Convert the relevant bounds into the same coordinate convention and units before planning a test.
-
-For one joint, the intersection of model and software intervals is:
-
-$$
-\begin{aligned}
-q_{\min}&=\max\left(q_{\mathrm{model,min}},q_{\mathrm{soft,min}}\right),\\
-q_{\max}&=\min\left(q_{\mathrm{model,max}},q_{\mathrm{soft,max}}\right).
-\end{aligned}
-$$
-
-If the lower bound exceeds the upper bound, the two declarations have no common interval. Even a valid intersection does not guarantee a collision-free or dynamically feasible movement; inspect the actuator bounds and intended scene as well.
-
-![Compiled joint limits, software limits and home positions](../resources/class08/figures/joint-limits-classroom.png)
-
-*Figure 4. Selected joint ranges converted to degrees, their intersections with the supplied software bounds, and working home coordinates. The software declarations are not measured hardware calibration.*
-
-The arm intervals are:
-
-| Joint | Compiled model range in degrees | Model/software intersection in degrees |
+| What | File | Where |
 | --- | --- | --- |
-| joint1 | −160.428 to 160.428 | −145 to 145 |
-| joint2 | 0 to 179.909 | 0 to 170 |
-| joint3 | 0 to 179.909 | 0 to 179.909 |
-| joint4 | −89.954 to 89.954 | −80 to 89.954 |
-| joint5 | −89.954 to 89.954 | −89.954 to 89.954 |
-| joint6 | −179.909 to 179.909 | −130 to 130 |
-
-**Worked comparison:** joint2 has a model range of 0–3.14 rad, approximately 0–179.909 degrees, and a software bound of 0–170 degrees. Software is tighter. Joint3 has the same model range but a declared software bound of 0–200 degrees. Here the compiled model is tighter. There is no general rule that one source of limits is always narrower.
-
-### Predict a rejected excursion
-
-Joint4 home is −1.236 rad, approximately −70.8176 degrees. A nominal pair of ten-degree excursions requests:
-
-$$
-q_{4,+}\approx-60.8176^\circ,\qquad
-q_{4,-}\approx-80.8176^\circ.
-$$
-
-The positive excursion lies inside the declared intersection. The negative excursion is below the −80-degree software bound and is skipped by the supplied joint-by-joint demonstration. A skipped request is useful evidence that the declared test is respecting its gate.
-
-The joint-by-joint script checks its soft bounds for these particular small excursions. The IK implementation intersects model and software ranges explicitly. Neither turns an arbitrary new trajectory into a qualified plan. Inspect the limits and scene for each proposed operation. In particular, a valid endpoint does not establish clearance for the intervening links or a feasible torque throughout the path.
-
-## Targets, feedback and bounded motion
-
-A position target is a request; the measured joint position is a response. Their difference depends on the configured gains, effort limits, gravity, inertia, damping and target trajectory.
-
-![Position target, controller, mechanism and feedback](../resources/class08/figures/control-loop-classroom.png)
-
-*Figure 5. Conceptual feedback path. The supplied simulation and a physical embedded controller can have different internal states, compensation and limits.*
-
-A conceptual feedback expression is:
-
-$$
-\boldsymbol\tau_{\mathrm{cmd}}=
-\operatorname{clip}\left(
-K_p(\mathbf q_d-\mathbf q)-K_d\dot{\mathbf q}+\mathbf g_{\mathrm{ff}},
-\boldsymbol\tau_{\min},\boldsymbol\tau_{\max}\right).
-$$
-
-This expression identifies target error, damping, compensation and effort bounds. The actual MJCF uses position actuation and body gravity compensation through MuJoCo's mechanisms; it need not implement every term inside the single clipping operation shown here. Read the actual actuator and compensation settings before making an implementation claim.
-
-A stationary arm could be supported by feedback effort, configured gravity compensation, a constraint or a configuration with little gravity moment. Observing that it holds still does not identify the cause. Inspect the configuration and choose a test that distinguishes the explanations relevant to your experiment.
-
-### Connect a joint request to the model's applied effort
-
-For joint2, the XML declares a position gain of 50 N m/rad, velocity gain of 5 N m s/rad, unit transmission and actuator-force limits of ±36 N m. For an in-range target $$u_2$$, its servo contribution is
-
-$$
-f_{a,2}=\operatorname{clip}\!\left(50(u_2-q_2)-5\dot q_2,-36,36\right)\quad\mathrm{N\,m}.
-$$
-
-The derivative term damps measured joint velocity; this actuator does not receive a separately commanded target velocity. Joint damping and friction-loss settings remain separate model terms. A 0.10 rad position error at zero velocity gives a 5 N m servo contribution before any force limit becomes active.
-
-The moving bodies also declare `gravcomp="1"`, and the arm hinges use `actuatorgravcomp="true"`. MuJoCo supplies model-based gravity compensation and places that contribution in the generalized actuator-effort array, `qfrc_actuator`. Thus `actuator_force` for a position servo and the total effort at its joint need not agree (MuJoCo developers n.d.-a, n.d.-b).
-
-At the declared stationary home, the compiled joint2 gravity-compensation contribution is approximately **−5.081 N m**. Adding the illustrative +5 N m servo contribution gives about **−0.081 N m** in that joint's generalized actuator-effort entry. The sign follows the model joint axis. This is a simulation calculation, not a measured motor torque. The servo's ±36 N m limit does not by itself cap a separately added compensation term; no joint-total actuator-force clamp is declared here.
-
-This extends the rigid-body balance used in Classes 03–05: gravity remains in the body dynamics, while compensation is an additional applied effort (Featherstone 2008). It must not be interpreted as removing mass or proving physical holding performance. The same shoulder coordinate with a different elbow configuration can require a different gravity effort. The compensated simulation can hide the uncompensated sag a physical installation might show.
-
-### Shape a bounded request
-
-For an initial movement, the supplied script interpolates joint targets with a half-cosine profile:
-
-$$
-q_d(t)=q_a+(q_b-q_a)\frac{1-\cos(\pi t/T)}{2},
-\qquad 0\leq t\leq T.
-$$
-
-The continuous profile starts and ends with zero commanded velocity. Smooth target changes help control the request, while tracking lag and physical constraints remain part of the response. A smooth command alone does not qualify a physical movement.
-
-## Read a tracking result at its sampling boundary
-
-The classroom trace moves joint2 from home to +10 degrees and back, then to −10 degrees and back. Each row pairs the current target with the state recorded **before** the corresponding control update is stepped.
-
-![Joint2 target and pre-step response with signed tracking residual](../resources/class08/figures/joint-response-classroom.png)
-
-*Figure 6. Retained simulation trace with 180 rows. The residual is pre-step measured position minus the paired target. No filtering or alignment shift is applied; the record contains no hardware measurements.*
-
-Define that residual as:
-
-$$
-e_k=q_{\mathrm{pre},k}-q_{d,k},\qquad
-e_{\max}=\max_k\left|e_k\right|.
-$$
-
-The [supplied trace](../resources/class08/results/joint2-trace.csv) has maximum absolute pre-step error approximately **1.326 degrees**. That value describes this trajectory, model, control rule and sampling boundary.
-
-The full joint-motion script compares each selected joint after stepping with that iteration's target. Its corrected run reports approximately **1.00 degree** maximum joint error. A smaller post-step error does not contradict the pre-step trace: it uses a later response sample from that iteration. The runner reads the task data after `mj_step`; derived site positions have their own computation phase. Keep this recorded API boundary rather than silently substituting a fresh forward-pass measurement.
-
-**Worked reading:** a target of 90 degrees paired with a pre-step state of 89 degrees has state-minus-target residual −1 degree. If the subsequent state is 89.4 degrees, the post-step residual is −0.6 degree. Both calculations can be correct. The comparison rule determines which one a plot reports.
-
-Before comparing plots or scores, identify the joint and coordinate convention, target/state pairing, units, retained sample window and aggregation. Moving a trace to reduce its plotted error changes the comparison; it does not establish improved control.
-
-### Read the saved single-joint commissioning case
-
-The [10 October motion-test record](../resources/class08/data/motion-test-single-joint-20261010.json) grounds the commissioning question in physical feedback. Its selected joint is `shoulder_lift` (joint2), with a declared ten-degree excursion and 5 degrees/s request. The saved record contains one entry in its `joints` list:
-
-| Recorded quantity | Value | Interpretation |
-| --- | ---: | --- |
-| Worst absolute tracking error | 1.8724° | Summary of this selected joint test; no full per-sample trace is supplied in this JSON |
-| Peak reported torque | 1.9249 N m | Firmware-reported torque, not an independently calibrated shaft-torque measurement |
-| Recorded MOS temperature | 27°C | The stored end-of-test field, not a thermal endurance test |
-
-This is a different experiment from Figure 6's pre-step simulation trace. Its 1.8724° maximum cannot be compared as a like-for-like accuracy ranking with the simulated 1.3264° maximum without matching the target, gains, load, sampling boundary and calibration. The JSON records gains and test arguments, but a single aggregate error does not reveal transient timing or every limit event.
-
-The same record contains a four-position gravity diagnostic:
-
-| Target (°) | Reported position (°) | Model feed-forward (N m) | Stored model-error field (N m) |
-| ---: | ---: | ---: | ---: |
-| 0 | 1.0107 | 1.5254 | −0.7056 |
-| 10 | 9.9540 | 1.1474 | +0.0321 |
-| 20 | 20.4791 | 0.6676 | −0.3345 |
-| 30 | 29.7739 | 0.2250 | +0.1579 |
-
-The saved sinusoidal shoulder correction has a largest residual of approximately 0.36665 N m on this small sweep. This is a fitted diagnostic under the recorded configuration. Its `model_error_nm` field is retained with the source name; without a calibrated torque measurement and full signal definition it should not be relabeled as true gravity torque. Four poses do not identify every moving mass, friction term or configuration-dependent load.
-
-The evidence supports discussing a physical joint2 response and a candidate gravity correction. It does not show that all six rotary joints and the gripper passed, that the correction generalizes to another tool, or that a seven-joint policy deployment is ready. The useful next decision is narrower: which remaining joint, frame, stop or loaded-motion check is needed for the intended operation?
-
-## Simulation time and wall-clock time
-
-The controlled-motion runner requests a 30 Hz control period. Its copied implementation chooses seventeen physics substeps and sets the physics timestep so that their product matches the period:
-
-$$
-\Delta t_p=\frac{1}{510}\,\mathrm{s},\qquad
-\Delta t_c=17\Delta t_p=\frac{1}{30}\,\mathrm{s}.
-$$
-
-![Rounded and corrected constructions of the control period](../resources/class08/figures/control-clock-classroom.png)
-
-*Figure 7. Arithmetic comparison of the earlier rounded period and the corrected period used by the classroom controlled-motion runner. The diagram describes simulation stepping, not operating-system scheduling.*
-
-The scene originally declares a 2 ms physics step. Seventeen unchanged 2 ms steps would cover 34 ms, approximately 29.412 Hz. The controlled-motion runner overrides that timestep to approximately 1.960784 ms. This numerical-model change is recorded with the example and distinguishes its corrected results from older runs.
-
-The independent scene viewer may still step the scene's declared timestep; it is not the 30 Hz controlled-motion runner. A nominal simulation period also does not ensure equally spaced wall-clock samples. Rendering, computation, communication and file writing can delay actual execution. Record timestamps when an experiment depends on real timing.
-
-## A tool-space request and its limits
-
-Forward kinematics computes the TCP pose from the joint coordinates. Inverse kinematics, or **IK**, seeks joint coordinates for a desired TCP pose. A numerical solver starts from a guess, computes a pose error and uses a local Jacobian to update the joints.
-
-The supplied drawing example uses a damped least-squares form. It stacks world-frame translational Jacobian rows above weighted world-frame angular rows:
-
-$$
-J=\begin{bmatrix}J_p\\w_RJ_\omega\end{bmatrix},\qquad
-\mathbf e=\begin{bmatrix}\mathbf e_p\\w_R\mathbf e_R\end{bmatrix},\qquad w_R=0.3.
-$$
-
-Here $$\mathbf e_p$$ is target TCP position minus current position. The local orientation residual is computed from corresponding axes of the current and target rotation matrices; it is useful near the requested orientation, not a globally valid three-angle parameterization. The coefficient weights orientation relative to position in this numerical objective; it is a declared modeling choice, not a universal conversion between metres and radians.
-
-The resulting position update is
-
-$$
-\Delta\mathbf q=J^T\left(JJ^T+\lambda I\right)^{-1}\mathbf e,
-\qquad \lambda>0.
-$$
-
-This solver uses translation-first rows. Featherstone's angular-first spatial-motion ordering remains the course convention for spatial vectors; either Jacobian row order can be used if the residual and operations use that same order. MuJoCo's `mj_jacSite` supplies separate `jacp` and `jacr` arrays; `controlled_motion.py` stacks them as shown. The regularization coefficient is 0.001, added directly as the displayed $$\lambda$$ rather than squared.
-
-Damping reduces sensitivity near poorly conditioned configurations. The complete implementation adds a damped posture-bias term with gain 0.05 toward home, bounds the update norm to 0.2 rad per iteration and clips coordinates to the model/software intersection. A damped inverse does not make that posture term an exact null-space projection. The loop permits at most 30 iterations and tests position and local orientation residuals; the lesson's displayed equation describes its main error-reduction term, not every addition. Its stopping condition and residual must be inspected; ending an iteration loop is not itself evidence that a requested pose was reached. The [Modern Robotics numerical IK explanation](https://modernrobotics.northwestern.edu/nu-gm-book-resource/6-2-numerical-inverse-kinematics-part-1-of-2/) develops the underlying local Jacobian and root-finding idea.
-
-The example traces **ROB** with the TCP above the table, using a separate lift between strokes. It is a free-space trajectory, with no contact-writing or object-manipulation outcome. The corrected headless example reports approximately **6.4 mm** maximum TCP position error against its requested path.
-
-The drawing-speed constant sets segment duration before half-cosine interpolation; it is not a guaranteed peak-speed ceiling. Treat the drawing as a simulation inspection exercise, not a hardware speed or positioning specification.
-
-## Commissioning is an evidence decision
-
-Separate assembly, communication and motion readiness. A closed check should name its evidence and scope.
-
-| Gate | Questions | Evidence available in this class |
+| CAD of the arm (STEP) | `reBot_B601_RS_v1.0_20260625.step` | [Seeed reBot-DevArm repository, `hardware/reBot_B601_RS/`](https://github.com/Seeed-Projects/reBot-DevArm/tree/main/hardware/reBot_B601_RS) |
+| Vendor URDF and meshes | `Rebot_Arm_description/RS/` | [Seeed reBot-DevArm repository](https://github.com/Seeed-Projects/reBot-DevArm/tree/main/Rebot_Arm_description/RS) |
+| CAD and user manual of the RS-06 | `RS06-new.step`, `RS06User Manual260428.pdf` | [RobStride Product_Information, `RS06/`](https://github.com/RobStride/Product_Information/tree/main/Product%20Literature/RS06) |
+| CAD and user manual of the RS-00 | `RS00.step`, `RS00User Manual260428.pdf` | [RobStride Product_Information, `RS00/`](https://github.com/RobStride/Product_Information/tree/main/Product%20Literature/RS00) |
+| Course model (MJCF) | [`rebot_b601_rs.xml`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class08_build_simple_arm/additional_material/model/rebot_b601_rs_mjcf/rebot_b601_rs.xml) | [course repository, `additional_material/model/rebot_b601_rs_mjcf/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/class08_build_simple_arm/additional_material/model/rebot_b601_rs_mjcf), with the meshes |
+| Motion-test data of the physical arm | [`motion_test_20261010_000129.json`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class08_build_simple_arm/additional_material/results/motion_test_20261010_000129.json) | [course repository, `additional_material/results/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/class08_build_simple_arm/additional_material/results) |
+
+---
+
+## Joint conventions
+
+### Order, limits and directions
+
+| ID | Motor | Type | Soft limit (deg) | Direction |
+| --- | --- | --- | --- | --- |
+| 1 | shoulder_pan | RS-06 | −145 … 145 | +1 |
+| 2 | shoulder_lift | RS-06 | 0 … 170 | +1 |
+| 3 | elbow_flex | RS-06 | 0 … 200 | −1 |
+| 4 | wrist_flex | RS-00 | −80 … 90 | −1 |
+| 5 | wrist_yaw | RS-00 | −90 … 90 | −1 |
+| 6 | wrist_roll | RS-00 | −130 … 130 | +1 |
+| 7 | gripper | RS-00 | 0 … 270 | ×6 |
+
+### Three numbers for one joint
+
+| Quantity | Unit | Relation |
 | --- | --- | --- |
-| Assembly | Is the correct structure mounted, with correct parts, fasteners and cable routing? | Inspect the model and source description. Actual hardware needs physical inspection. |
-| Communication and conventions | Do identity, channel order, units, signs, zero and feedback agree? | Inspect compiled interfaces and declared mappings. A real bus and encoder calibration need their own records. |
-| Motion | Can the configured system execute the chosen bounded operation and report its response? | Inspect the simulation trace and limit decisions, then the separate physical joint2 summary. The latter does not qualify other joints. |
+| MuJoCo joint angle | rad | equals the motor angle in radians |
+| `observation.state` | degrees | the motor angle |
+| `action` | command space | motor target = action × direction |
 
-Keep an unresolved check visible. A model load closes a different question from a correct joint movement; a small simulated tracking error closes a different question from physical readiness. The decision is always readiness for a **specified next operation**.
+The simulated and the physical arm record the same numbers, as in the vendor LeRobot driver. A dataset with one
+sign reversed drives that joint the wrong way. Thus, check the direction vector before you use any data.
 
-For example: “The compiled reBot RS simulation has a declared channel schema, home configuration, checked limits and a recorded bounded joint2 response. This supports a further simulated recording experiment. Physical mounting, communication and calibration remain separate checks.”
+### Coordinates, constraints and the gripper
 
-### Assembly, zero and the first response answer different questions
+A coordinate count is not an actuator count. The model has six arm hinges and two finger slides, but one gripper actuator drives a coupled tendon. Inspect `nq`, `nv`, `nu`, the equality constraint and the actuator transmission together. A free-joint object in a scene adds state coordinates without adding a motor.
 
-The source commissioning progression begins with the unpowered mechanism: correct parts and IDs, mounting, free travel and cable clearance. Communication then establishes which devices answer, whether their settings can be read back, and whether feedback has the intended units and signs. Only after these conventions are established can a bounded motion test compare a request with a response.
+For equal finger strokes $$s_L=s_R$$, the tendon coordinate $$\ell_g=0.5s_L+0.5s_R$$ equals one finger stroke. It is not the total jaw aperture. The gripper's driver-style degree channel is a conversion convention; the simulation's finger stroke is in metres and is not an independently calibrated physical encoder measurement.
 
-Writing an encoder zero changes the relationship between a device reading and the physical mechanism. The source uses a folded, closed-gripper reference. That operation differs from moving to the convenient working home configuration, and its persistence across power cycles is a firmware-specific property to check. A near-zero readback is meaningful only with the physical reference, device identities and calibration revision recorded together.
+**Worked coordinate check:** `action.elbow_flex = −30` maps through direction −1 to a +30° motor target. A state of +29° gives state-minus-target = −1°, not the raw 59° difference. Convert to radians explicitly before sending a radian-valued joint request.
 
-The first response test connects these earlier checks: a known physical joint should move in the declared direction, stay inside the configured range and return interpretable feedback. Stop behavior is part of this contract. The source notes that holding a last target, disabling torque and cutting power have different mechanical consequences on a gravity-loaded arm. Their exact behavior belongs to the verified installation and companion procedure, rather than being inferred from the simulation.
+### Read the positive direction
 
-The [vendor B601-RS quick start](https://wiki.seeedstudio.com/rebot_b601_rs_getting_started/) and [B601-RS LeRobot tutorial](https://wiki.seeedstudio.com/rebot_arm_b601_rs_lerobot/) supply revision-specific background. The saved physical joint2 case and the retained simulation are separate evidence routes. Each leaves the other route's unmeasured checks open.
+
+
+![Joint 1 at +30 degrees from home](../resources/class08/figures/source/joint-sweep-1.png)
+
+*Figure 3. Joint 1 at +30 degrees from home.*
+
+![Joint 2 at +30 degrees from home](../resources/class08/figures/source/joint-sweep-2.png)
+
+*Figure 4. Joint 2 at +30 degrees from home.*
+
+![Joint 3 at +30 degrees from home](../resources/class08/figures/source/joint-sweep-3.png)
+
+*Figure 5. Joint 3 at +30 degrees from home.*
+
+![Joint 4 at +30 degrees from home](../resources/class08/figures/source/joint-sweep-4.png)
+
+*Figure 6. Joint 4 at +30 degrees from home.*
+
+![Joint 5 at +30 degrees from home](../resources/class08/figures/source/joint-sweep-5.png)
+
+*Figure 7. Joint 5 at +30 degrees from home.*
+
+![Joint 6 at +30 degrees from home](../resources/class08/figures/source/joint-sweep-6.png)
+
+*Figure 8. Joint 6 at +30 degrees from home.*
+
+Each image shows one joint at +30° from the home pose (the zero and home configurations below). Read the positive direction of each joint. A
+target outside the declared limits is skipped and reported. It is not clipped without a message.
+
+---
+
+## Frames and reference poses
+
+### World frame and tool centre point
+
+The world origin is the centre of the base on the table surface: $$x$$ points forward, $$y$$ to the left and
+$$z$$ up. The tool centre point (TCP) is a site 15 mm inside the fingertips. A position of the gripper in this
+course always means the TCP in the world frame.
+
+### Forward kinematics
+
+$$
+{}^{w}T_{tcp}(q) = {}^{w}T_{0}\;\prod_{i=1}^{6} {}^{i-1}T_{i}(q_i)\;{}^{6}T_{tcp}, \qquad
+{}^{i-1}T_{i}(q_i) = {}^{i-1}T_{i}(0)\;\mathrm{Rot}(a_i, q_i)
+$$
+
+Each factor is a fixed transform, then a rotation by $$q_i$$ about the joint axis $$a_i$$. In the MJCF file the
+fixed transform is the `pos` and `quat` of a body, and the axis is the `axis` of its joint:
+
+```xml
+<body name="link2" pos="0.020343 0.027237 0.07" quat="0.7071055 -0.7071081 0 0" gravcomp="1">
+  <joint name="joint2" class="arm_joint" axis="0 0 1" range="0 3.14" armature="0.02"/>
+```
+
+The derivative gives the Jacobian, $${}^{w}\dot p_{tcp} = J_p(q)\,\dot q$$. Class 09 uses it for inverse
+kinematics.
+
+### Zero pose and home pose
+
+
+
+![Zero pose of the model](../resources/class08/figures/source/zero-pose.png)
+
+*Figure 9. Zero pose of the model.*
+
+![Home pose of the model](../resources/class08/figures/source/home-pose.png)
+
+*Figure 10. Home pose of the model.*
+
+| Pose | Joints | Use |
+| --- | --- | --- |
+| Zero | all joints at 0: folded, gripper horizontal and forward | calibration; the motors store this zero |
+| Home | `[0, 1.532, 1.197, −1.236, 0, 0]` rad | start of every example; gripper down, TCP at (0.25, 0, 0.10) m |
+
+The zero pose defines the angles. The home pose is a convenient place to work from. Do not confuse them.
+
+---
+
+## Control in the model
+
+### Why moving one joint changes another joint's effort
+
+The serial body tree couples motion through the links. In Featherstone's angular-first convention a link spatial velocity is $$v_i=[\omega_i^T\;u_i^T]^T$$. Motion transforms $$X_{i\lambda(i)}$$ map the parent velocity into the child's coordinates, while a revolute joint contributes $$S_i\dot q_i$$:
+
+$$
+v_i=X_{i\lambda(i)}v_{\lambda(i)}+S_i\dot q_i,\qquad
+f_i=I_i a_i+v_i\times^{*}(I_i v_i)-f_i^{\mathrm{ext}}.
+$$
+
+The inverse-dynamics backward pass carries child forces to a parent through the transpose of the motion transform. The joint effort is $$\tau_i=S_i^T f_i$$ after the child contributions have been accumulated (Featherstone 2008). Extending the elbow changes the downstream mass geometry and the shoulder effort, even if the shoulder coordinate is held fixed. The familiar joint-space summary is
+
+$$
+M(q)\ddot q+C(q,\dot q)\dot q+g(q)=\tau+J_c(q)^T f_c.
+$$
+
+Here $$C\dot q$$ represents velocity-dependent terms, $$g$$ is the effort required to oppose gravity, and $$f_c$$ represents contact forces. Passive joint terms and actuation limits must also be included when present. Forward kinematics predicts pose; inverse dynamics predicts effort for a specified motion. Neither proves that the physical arm was assembled or calibrated correctly.
+
+### The control law
+
+The static gravity effort is the inverse-dynamics result $$g(q)=\operatorname{RNEA}(q,0,0)$$ under the declared gravity convention, with external loads handled separately. MuJoCo's general bias force at nonzero velocity also includes velocity-dependent terms, so it must not be called gravity alone. The body `gravcomp` and joint `actuatorgravcomp` settings determine how this model routes compensation.
+
+
+$$
+\tau_i = \mathrm{clip}\Big(K_{p,i}\,(q_{d,i} - q_i) - K_{d,i}\,\dot q_i + g_i(q),\; \pm\tau_{max,i}\Big)
+$$
+
+Each joint has a position actuator with stiffness $$K_p$$ and damping $$K_d$$. It receives one target $$q_d$$ per
+control period. $$g(q)$$ is the gravity torque: the torque that holds the arm still against gravity at the pose
+$$q$$. MuJoCo computes the compensation from the model mass distribution and gravity. The torque is limited to the peak torque
+of the motor. In the MJCF file, one line gives this law for joint 2:
+
+```xml
+<position name="joint2" joint="joint2" kp="50.0" kv="5.0" ctrlrange="0 3.14" forcerange="-36 36"/>
+```
+
+`actuatorgravcomp="true"` on the joint sends $$g(q)$$ through the actuator, so the torque limit also applies to
+it. On the physical arm, the same target goes to the motor in MIT mode (the CAN command below). The physical gains are lower:
+$$K_p$$ = 40 N m/rad for joint 2 in the motion test. The model gains do not authorise you to copy commands
+directly to hardware.
+
+### Requested rate and implemented period
+
+The examples request 30 Hz. A physics step of 0.002 s does not divide 1/30 s exactly. Thus the script uses 17
+sub-steps and shortens the physics step to 1/510 s (approximately 1.96 ms):
+
+```python
+self.n_sub = round(1.0 / CONTROL_HZ / self.model.opt.timestep)   # 17 physics steps per control period
+self.model.opt.timestep = 1.0 / (CONTROL_HZ * self.n_sub)         # 1/510 s
+```
+
+The implemented control period is then exactly 1/30 s, the LeRobot recording rate. Always record the implemented
+period, not only the nominal rate.
+
+### Intersect limits before making a request
+
+The permitted interval is the intersection of the model range, the software bound and the experimental bound. Joint 3's declared software upper limit of 200° does not enlarge a compiled model range near 180°. Use the tighter limit. Apply a direction conversion to a command only once; a limit already expressed in motor coordinates must not be reversed a second time.
+
+At home, joint 4 is approximately −70.8°. A −10° excursion would request −80.8°, below the declared −80° software lower limit, whereas +10° gives −60.8°. This arithmetic predicts a rejected excursion before a viewer is opened. A skip is an intentional bounded-control outcome, not evidence that the motor failed.
+
+### Does it hold, does it follow
+
+
+
+![Gravity-compensation hold at the home pose](../resources/class08/figures/source/gravcomp-hold.png)
+
+*Figure 11. Gravity-compensation hold at the home pose. Hold at home, with and without g(q).*
+
+![Step response of one joint](../resources/class08/figures/source/step-response.png)
+
+*Figure 12. Step response of one joint. A 10° step on one joint.*
+
+With gravity compensation, the arm stays within a small error at the home pose. Without it, the PD term alone
+must carry the weight: the joint sags until $$K_p\,(q_d - q) = g(q)$$. A 10° step settles to within 1° in
+approximately 0.20 s in the model. This is a property of the model. Measure the physical step response on the arm.
+
+### Read the error at its sampling boundary
+
+Define the residual before comparing scores: $$e_k=q_k-q_{d,k}$$ is a signed state-minus-target residual; $$\max_k|e_k|$$ is a trajectory maximum. A pre-step state and a post-step state answer different questions. A model trace, a firmware torque field and an external torque measurement are also different observations. Preserve their identities when reading the saved physical motion-test JSON below.
+
+A simulation can advance at the correct simulated period while rendering more slowly in wall-clock time. The 30 Hz stepping calculation above describes the model clock; it does not establish physical bus throughput, phone latency or a GUI refresh rate.
+
+### The cameras of the scene
+
+
+
+![Front camera](../resources/class08/figures/source/camera-front.png)
+
+*Figure 13. Front camera.*
+
+![Side camera](../resources/class08/figures/source/camera-side.png)
+
+*Figure 14. Side camera.*
+
+![Top camera](../resources/class08/figures/source/camera-top.png)
+
+*Figure 15. Top camera.*
+
+![Wrist camera](../resources/class08/figures/source/camera-wrist.png)
+
+*Figure 16. Wrist camera.*
+
+The scene has four cameras. `front`, `side` and `top` are fixed; `wrist` moves with the gripper. Each renders
+640 × 480 images, the image size of the course datasets.
+
+---
+
+## Commanding the motors over CAN
+
+### One CAN frame
+
+Every message on the bus is one frame. The motors use the extended format: a 29-bit identifier and up to 8 data
+bytes. The identifier says what the frame is and which motor it is for. The data bytes carry the numbers. For a
+RobStride motor, the identifier holds the message type and the motor ID, and a command uses its spare bits for one
+more 16-bit number.
+
+### How many frames the bus can carry
+
+An extended CAN frame with 8 data bytes has 131 bits, and up to approximately 155 bits with stuffing bits. At
+1 Mbit/s it takes 0.13–0.16 ms. One control cycle of the arm is 7 commands and 7 answers, approximately 2 ms. At
+the 150 Hz command stream of Class 10 the bus load is
+
+$$
+150 \times 14 \times 155\ \text{bit/s} \approx 0.33\ \text{Mbit/s},
+$$
+
+approximately one third of the nominal bus capacity under this frame-budget assumption. Arbitration, USB batching, extra traffic and scheduling still need measurement; this arithmetic does not guarantee a physical update rate.
+
+### The MIT command
+
+Each motor runs its own impedance controller, the operation-control or “MIT mode” interface associated with proprioceptive actuation (Katz, Di Carlo, and Kim 2019):
+
+$$
+\tau_m = K_p\,(p_d - p) + K_d\,(v_d - v) + \tau_{ff}
+$$
+
+One command gives five numbers: the target position $$p_d$$, the target velocity $$v_d$$, the stiffness
+$$K_p$$, the damping $$K_d$$ and the feed-forward torque $$\tau_{ff}$$. The motor closes this loop itself, at a
+rate much higher than the bus. The course code sends the five numbers with one call:
+
+```python
+motor.send_mit(pos, vel, kp, kd, tau)    # rebot_sim/real/gripper_arm.py
+```
+
+With $$v_d = 0$$ and $$\tau_{ff} = g(q)$$, this is the model control law above. With $$K_p = K_d = 0$$, the motor
+gives only $$\tau_{ff}$$: this is the gravity hold of the power-on test.
+
+### The MIT command in one frame
+
+| Part of the frame | RS-06, operation control (manual, Section 4.1.2) |
+| --- | --- |
+| 29-bit identifier | message type 1; the feed-forward torque (16 bit, −36 to 36 N m); the motor ID |
+| Bytes 0–1 | target angle, 16 bit, −4π to 4π rad |
+| Bytes 2–3 | target velocity, 16 bit, −50 to 50 rad/s |
+| Bytes 4–5 | $$K_p$$, 16 bit, 0 to 5000 |
+| Bytes 6–7 | $$K_d$$, 16 bit, 0 to 100 |
+
+Each number is mapped linearly to an unsigned 16-bit integer:
+
+$$
+u = \mathrm{round}\!\left(\frac{x - x_{min}}{x_{max} - x_{min}}\,(2^{16} - 1)\right)
+$$
+
+The angle step is then $$8\pi / 65535 \approx 3.8 \times 10^{-4}$$ rad, or 0.022°. Command quantisation and encoder quantisation are distinct: this conversion step is not a measurement of angular accuracy.
+
+---
+
+## Commissioning and the first data
+
+### Three gates
+
+```mermaid
+flowchart LR
+    A["<b>Gate A — Assembly</b><br/>power off<br/><i>screws, cables, CAN termination,<br/>48 V with a switch, base clamped</i>"]
+    B["<b>Gate B — Communication</b><br/>motors disabled<br/><i>can0 at 1 Mbit/s, IDs 1–7,<br/>zero and parameter template</i>"]
+    C["<b>Gate C — Motion</b><br/>supervised<br/><i>drag check with the digital twin,<br/>gravity hold, ±10° joint test</i>"]
+    A --> B --> C
+
+    style A fill:#e3f2fd,stroke:#1565c0
+    style B fill:#fff3e0,stroke:#e65100
+    style C fill:#e0f2f1,stroke:#00796b
+```
+
+Do not start a gate before the earlier gate is closed.
+
+| Gate | Question | What simulation can establish |
+| --- | --- | --- |
+| A — Assembly | are the mechanical and electrical interfaces assembled correctly? | nothing: wiring, fasteners and assembly are physical |
+| B — Communication | do identifiers, units, signs and feedback agree? | the simulated interface only |
+| C — Motion | can the configured system execute a bounded test? | evidence for this model and controller |
+
+A simulated arm that moves correctly shows that the model, the conventions and the scripts agree. It says nothing
+about a loose screw, a swapped CAN identifier or a motor zero set at the wrong pose. Each physical gate needs its
+own check on the arm. The page [Class 08 — Power-on and zero](08-power-on-and-zero-optional.md) gives the steps of each gate.
+
+### The data of the motion test
+
+The joint test of Gate C writes one JSON file. This is the data contract of that file:
+
+| Field | Content | Unit |
+| --- | --- | --- |
+| `hold.pose_deg` | the 7 motor angles while the arm holds the zero pose | deg |
+| `hold.feedforward_nm` | the model gravity torque $$g(q)$$ of joints 1–6 | N m |
+| `hold.measured_torque_nm` | the torque in the feedback frame of each motor | N m |
+| `hold.model_error_nm` | $$K_p\,(q_d - q)$$: the torque that the model $$g(q)$$ did not give | N m |
+| `gravity_sweep` | joint 2 at 0, 10, 20, 30°: target, measured angle, $$g(q)$$, model error | deg, N m |
+| `gravity_fit` | the fit $$a\cos q_2 + b\sin q_2$$ of the model error, and its largest residual | N m |
+| `joints` | per joint: amplitude, speed, worst tracking error, peak torque, temperature | deg, deg/s, N m, °C |
+| `args`, `kp` | the options of the run and the stiffness of each motor | — |
+
+### What the data say
+
+The file of 10 October 2026 records one run of the test, on joint 2 only.
+
+| Check | Result on the course arm, 10 October 2026 |
+| --- | --- |
+| Folded pose | within 0.62° of zero on all seven motors |
+| Joint 2 (RS-06), ±10° at 5°/s | worst tracking error 1.87° |
+| Joint 2 torque field | peak 1.92 N m reported by firmware; distinct from an independent torque measurement |
+| Motor temperature | 27 °C at the end of the test |
+| Gravity model of joint 2 | error fit $$a = -0.55$$, $$b = 1.18$$ N m, largest residual 0.37 N m, 4 angles from 1° to 30° |
+
+At rest, the motor gives $$\tau_{ff} + K_p\,(q_d - q)$$. The feed-forward is the model $$g(q)$$. Thus the
+position error times $$K_p$$ is a **quasi-static controller residual**, not an independent calibrated torque measurement. It can include gravity-model error, friction, gain mismatch, zero error and external loads. The source fits a gravity-shaped correction from this residual; the four closely spaced angles leave parameter identifiability and generalisation unresolved. A wider, separately tested sweep would improve excitation, but no universal 45° threshold proves identifiability.
+
+---
 
 ## Instructor and TA demonstration
 
-Use the prepared simulation records, figures and physical joint2 JSON to connect a configured command with its response. A rehearsed simulation can supplement the saved record. The physical case is a record to interpret; powered operation is outside this demonstration.
+Use the prepared simulation practice to identify the arm, its joint table and its zero/home poses. Predict the rejected wrist excursion before running the bounded joint test. Show the supplied gain/step figures and compare target, state, units and sampling rule. A lower stiffness changes a closed-loop response, not the mechanism's geometry.
 
-### Identify the model and interface
+Then display the retained physical joint-2 motion-test record from the source package. Identify its tested joint, maximum tracking error, firmware torque field and temperature. A single-joint summary is not an all-joint qualification or an independently calibrated torque measurement. No student powered operation is required.
 
-Open the supplied inspection result and name the model, coordinate counts and seven channels. Identify a joint's compiled range, declared software bound and home value. Ask for a prediction of zero versus home before showing Figure 3. Explain the two finger coordinates and single gripper actuator.
-
-### Trace the physical apparatus and its evidence
-
-Use Figure 2 and the motor-ID table to follow one shoulder command from the computer to ID2 and its feedback back to the record. Then follow the separate power path. Explain why a correct device reply does not prove correct mechanical assembly or zero. Read the single-joint JSON and distinguish its three summary fields from a full time series. Compare the gravity-sweep rows with the fitted residual without calling either an independent torque calibration.
-
-### Predict the limit decision
-
-Convert joint2 and joint3 limits into a common unit. Calculate joint4's positive and negative excursions. State which request should be skipped before inspecting the joint-by-joint result or a rehearsed simulation. Compare the reported skip with the prediction. Keep the original bounds rather than widening them to complete a visual demonstration.
-
-### Run bounded joint and gripper motion
-
-Show the prepared joint and gripper motion recording or a rehearsed demonstration. Follow the selected joint's target, then explain the gripper target in metres. A viewer is useful for motion inspection; its appearance does not replace the logged conventions and limits.
-
-### Read target and response
-
-Display the joint2 trace and select a rising segment. Identify the target, the pre-step measured position and the residual sign. Compare the definition with the full joint-motion script's post-step maximum. Keep their sampling rules attached to the reported values.
-
-### Inspect a tool-space request and decide readiness
-
-Inspect the prepared ROB trajectory and its saved result. Identify the TCP definition, path and reported position error. Ask what additional object interaction and outcome rule would be needed to call it a manipulation experiment.
-
-Finish with one supported next simulated operation and one physical check still open. The supplied inspection result, trace and figures provide the evidence for the same reasoning without operating hardware.
+The complete simulation procedure is on [Class 08 practice](08-practice.md). [Assembly](08-assembly-optional.md) and [power-on and zero](08-power-on-and-zero-optional.md) are optional teaching-team preparation references.
 
 ## Student activity
 
-Use the supplied inspection result, trace and figures. The core response connects a bounded request, a recorded response and a readiness decision.
-
-### Core classroom response
-
-Submit three short entries:
-
-1. Calculate the two ten-degree joint4 endpoints around home. Identify which endpoint violates the declared bound.
-2. Use the worked joint2 target/state pair on this page, or one identified saved trace row. Calculate state minus target, give the unit and state whether the response is sampled before or after the step. Label the worked pair as illustrative if you use it.
-3. Name one next simulated operation supported by the evidence and one physical commissioning check still open. Identify the model or record supporting your decision.
-
-### Further practice
-
-Use the complete inspection below to expand the response when preparing an experiment. It covers the mechanism, interface, limits and physical evidence in full.
-
-
-#### Inspect the mechanism
-
-1. Record `nq`, `nv` and `nu`. Explain the two finger coordinates, their coupling and the single gripper actuator.
-2. List the seven channel names in order. State the units and meaning of the six arm targets and the gripper target.
-3. Describe zero and working home using the joint configuration, TCP frame and orientation. State what a physical calibration record would add.
-
-#### Check a proposed movement
-
-4. Convert the compiled joint2 and joint3 ranges to degrees and compare them with the supplied software bounds. Give each intersection and identify the tighter bound.
-5. Calculate both ten-degree joint4 endpoints around home. Identify the rejected endpoint and the bound it violates.
-6. Explain why an action-coordinate sign conversion must not be applied again to a bound already expressed in motor coordinates. If a viewer is available, describe the positive joint3 motion; keep the model-axis observation separate from the action mapping.
-
-#### Read the evidence and make a decision
-
-7. Choose one joint2 trace row. Report its target, pre-step state, residual and unit. Explain how a post-step comparison would differ.
-8. Use the physical JSON to name the tested joint, error, torque-field meaning and temperature. Explain why this is insufficient evidence for all seven devices.
-9. Write a short readiness decision: name a next simulated operation supported by the evidence and one physical commissioning check still required. Include the model/configuration identity used.
-
-For the expanded exercise, use this record for your team:
-
-| Record | Your answer |
-| --- | --- |
-| Model and output identity | Model files or revision, saved/fresh outputs and sampling rule |
-| Coordinates and channels | Counts, explanation, order and units |
-| Reference configuration | Joint vector, frame, tool and zero/calibration distinction |
-| Limits | Joint2/joint3 intersections and joint4 endpoint decision |
-| Tracking observation | One target/state/residual calculation |
-| Physical case | Tested joint, stored error, firmware torque field and temperature; untested scope |
-| Readiness decision | Supported next operation and one open physical check |
-
-Keep the record with the team's experiment files. The evidence should allow another reader to reconstruct the meaning of the command and the reason for the readiness decision.
-
-## Carry the interface into teleoperation
-
-The bounded joint and gripper interface becomes the robot side of the next class’s teleoperation system. A phone pose must still be mapped through named frames, units, limits and timing before its motion can be interpreted as a robot command.
+Use the source practice record or a fresh bounded simulation. Submit the seven channel names and units, the two joint-4 excursion endpoints, one target/state residual with its sampling rule, and a short readiness decision. Name one next simulated operation supported by the evidence and one physical check still open. Record any changed gain and restore the source value after the comparison. The extended practice page provides the complete inspection checklist.
 
 ## References
-
-The [physical-case source record](../resources/class08/data/consolidation-source.json) identifies the pinned development passages and stored artifacts added to this lesson. Source inspection and arithmetic checks are distinct from a fresh experiment.
-
-
-- [Model source notice](../resources/class08/model/rebot_b601_rs_mjcf/NOTICE.md) and [source license](../resources/class08/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W).
-- [Pinned Seeed RS mechanical description](https://github.com/Seeed-Projects/reBot-DevArm/tree/c247ea9cb0da29cd52c31953659cc8c47e6d1a6e/Rebot_Arm_description/RS).
-- [Seeed B601 LeRobot driver reference](https://github.com/Seeed-Projects/lerobot-robot-seeed-b601/tree/0da1a1a5575905d77823227003ffee7672059780), separate from the course simulation interface.
-
-The course adaptation retains the reBot RS mechanical source and its notices, adds the MuJoCo actuation/environment and controlled examples, and records their limits. The six illustrations distinguish conceptual diagrams, compiled declarations and simulated responses. They support this class's readiness decision without implying a completed hardware deployment.
-
-
-Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. [Spatial-vector and dynamics resources](https://royfeatherstone.org/spatial/v2/index.html).
 
 Lynch, Kevin M., and Frank C. Park. 2017. *Modern Robotics: Mechanics, Planning, and Control*. Cambridge University Press. [Numerical inverse-kinematics explanation](https://modernrobotics.northwestern.edu/nu-gm-book-resource/6-2-numerical-inverse-kinematics-part-1-of-2/).
 
@@ -496,3 +532,7 @@ Seeed Studio. n.d.-b. “Seeed reBot Arm B601 Follower Integration with LeRobot.
 Seeed Studio. n.d.-c. “B601-RS Quick Start.” *Seeed Studio Wiki*. Accessed October 17, 2026. [Assembly and calibration reference](https://wiki.seeedstudio.com/rebot_b601_rs_getting_started/).
 
 Seeed Studio. n.d.-d. “B601-RS LeRobot Tutorial.” *Seeed Studio Wiki*. Accessed October 17, 2026. [Physical software-integration reference](https://wiki.seeedstudio.com/rebot_arm_b601_rs_lerobot/).
+
+ISO. 2015. *ISO 11898-1:2015: Road Vehicles—Controller Area Network (CAN)—Part 1: Data Link Layer and Physical Signalling*. [Standard record](https://www.iso.org/standard/63648.html).
+
+Katz, Benjamin, Jared Di Carlo, and Sangbae Kim. 2019. “Mini Cheetah: A Platform for Pushing the Limits of Dynamic Quadruped Control.” In *Proceedings of the IEEE International Conference on Robotics and Automation*, 6295–6301. [Primary paper](https://doi.org/10.1109/ICRA.2019.8793865).

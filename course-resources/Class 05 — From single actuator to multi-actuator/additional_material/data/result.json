@@ -1,0 +1,335 @@
+{
+  "schema_version": "v5-16motor-sim2real-1",
+  "run_time_asia_dubai": "2026-10-08T23:27:22.154055+04:00",
+  "software": {
+    "python": "3.12.3",
+    "mujoco": "3.14.0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pandas": "3.0.6",
+    "pyarrow": "25.0.1",
+    "matplotlib": "3.11.2"
+  },
+  "fixture_mass_basis": {
+    "link_mass_kg": 0.025,
+    "pin_mass_each_kg": 0.004,
+    "payload_mass_each_kg": 0.04,
+    "loaded_fixture_total_kg": 0.113
+  },
+  "counts": {
+    "simultaneous_science_episodes": 125,
+    "motor_records": 2000,
+    "fits": 32,
+    "candidates": 64,
+    "by_split_and_controller": {
+      "calibration": {
+        "H1": 36,
+        "H2": 36
+      },
+      "model_selection": {
+        "H1": 12,
+        "H2": 11
+      },
+      "held_out": {
+        "H1": 15,
+        "H2": 15
+      }
+    }
+  },
+  "stage_order": [
+    "episode_metadata_indexed",
+    "calibration_numeric_loaded",
+    "calibration_fits_complete",
+    "model_selection_numeric_loaded",
+    "selection_frozen",
+    "held_out_numeric_loaded",
+    "held_out_scored"
+  ],
+  "primary_metric": "equal-weight mean per-motor episode active-profile position RMSE in radians",
+  "synthetic_baseline_parameters": {
+    "armature_kg_m2": 0.0009981975097923773,
+    "damping_Nm_s_per_rad": 0.014961695352121211,
+    "frictionloss_Nm": 0.010089164734069974
+  },
+  "held_out_mean_episode_rmse_rad": {
+    "synthetic_baseline": 0.02402090317445614,
+    "hardware_fitted": 0.016337739731842008
+  },
+  "selected_parameters": {
+    "H1": {
+      "0": {
+        "start_id": "S1_low",
+        "armature_kg_m2": 0.0071879937086365,
+        "damping_Nm_s_per_rad": 0.039311835368396,
+        "frictionloss_Nm": 0.0177706516172757,
+        "calibration_mean_episode_rmse_rad": 0.0076086255689112,
+        "model_selection_mean_episode_rmse_rad": 0.0107442394830707
+      },
+      "1": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0066206512165087,
+        "damping_Nm_s_per_rad": 0.0429593688675923,
+        "frictionloss_Nm": 0.0034607350511569,
+        "calibration_mean_episode_rmse_rad": 0.0046620060019404,
+        "model_selection_mean_episode_rmse_rad": 0.0037402483274699
+      },
+      "2": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0067465355740899,
+        "damping_Nm_s_per_rad": 0.0440312180004374,
+        "frictionloss_Nm": 0.0084588930446888,
+        "calibration_mean_episode_rmse_rad": 0.00567080807113,
+        "model_selection_mean_episode_rmse_rad": 0.0071912755216653
+      },
+      "3": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0064790291233311,
+        "damping_Nm_s_per_rad": 0.0428818102770384,
+        "frictionloss_Nm": 0.0106132105125787,
+        "calibration_mean_episode_rmse_rad": 0.0054543254236854,
+        "model_selection_mean_episode_rmse_rad": 0.007143417021017
+      },
+      "4": {
+        "start_id": "S1_low",
+        "armature_kg_m2": 0.006700355214798,
+        "damping_Nm_s_per_rad": 0.0394681103337128,
+        "frictionloss_Nm": 0.0172881046836413,
+        "calibration_mean_episode_rmse_rad": 0.0059925036922486,
+        "model_selection_mean_episode_rmse_rad": 0.0071552182871142
+      },
+      "5": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0066045419723443,
+        "damping_Nm_s_per_rad": 0.0412795209241591,
+        "frictionloss_Nm": 0.0111707388396544,
+        "calibration_mean_episode_rmse_rad": 0.0054412470898556,
+        "model_selection_mean_episode_rmse_rad": 0.0058727670271165
+      },
+      "6": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0065705771716856,
+        "damping_Nm_s_per_rad": 0.0416439981177418,
+        "frictionloss_Nm": 0.0114004802121096,
+        "calibration_mean_episode_rmse_rad": 0.0054600830180366,
+        "model_selection_mean_episode_rmse_rad": 0.0066891946766068
+      },
+      "7": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0067599694033056,
+        "damping_Nm_s_per_rad": 0.0457525058515109,
+        "frictionloss_Nm": 0.0031300397666212,
+        "calibration_mean_episode_rmse_rad": 0.0050631186742606,
+        "model_selection_mean_episode_rmse_rad": 0.0066887260889683
+      },
+      "8": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0067598065758807,
+        "damping_Nm_s_per_rad": 0.0433808907509072,
+        "frictionloss_Nm": 0.0020000295113771,
+        "calibration_mean_episode_rmse_rad": 0.0042052686669323,
+        "model_selection_mean_episode_rmse_rad": 0.0043469000312061
+      },
+      "9": {
+        "start_id": "S1_low",
+        "armature_kg_m2": 0.0071013506177035,
+        "damping_Nm_s_per_rad": 0.0374734269464068,
+        "frictionloss_Nm": 0.0234029996904327,
+        "calibration_mean_episode_rmse_rad": 0.0070992502384673,
+        "model_selection_mean_episode_rmse_rad": 0.0108694068341145
+      },
+      "10": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0064787195065897,
+        "damping_Nm_s_per_rad": 0.0420431506318575,
+        "frictionloss_Nm": 0.0061142288273756,
+        "calibration_mean_episode_rmse_rad": 0.0044767216428709,
+        "model_selection_mean_episode_rmse_rad": 0.0043158630323592
+      },
+      "11": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0068100151032226,
+        "damping_Nm_s_per_rad": 0.0424407015817084,
+        "frictionloss_Nm": 0.0091067704852017,
+        "calibration_mean_episode_rmse_rad": 0.0054065266806237,
+        "model_selection_mean_episode_rmse_rad": 0.0058340019416113
+      },
+      "12": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0065887978796012,
+        "damping_Nm_s_per_rad": 0.0420965913418379,
+        "frictionloss_Nm": 0.0020001396239085,
+        "calibration_mean_episode_rmse_rad": 0.0042411275512247,
+        "model_selection_mean_episode_rmse_rad": 0.003452661743503
+      },
+      "13": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0067977419676766,
+        "damping_Nm_s_per_rad": 0.0429596793634547,
+        "frictionloss_Nm": 0.0101944502063069,
+        "calibration_mean_episode_rmse_rad": 0.0058302304930978,
+        "model_selection_mean_episode_rmse_rad": 0.0081754027821404
+      },
+      "14": {
+        "start_id": "S1_low",
+        "armature_kg_m2": 0.006599979988839,
+        "damping_Nm_s_per_rad": 0.0410144164592156,
+        "frictionloss_Nm": 0.0114316547801829,
+        "calibration_mean_episode_rmse_rad": 0.0081834701555419,
+        "model_selection_mean_episode_rmse_rad": 0.0105766850758909
+      },
+      "15": {
+        "start_id": "S1_low",
+        "armature_kg_m2": 0.006818241249283,
+        "damping_Nm_s_per_rad": 0.0405288322202471,
+        "frictionloss_Nm": 0.0152757649316886,
+        "calibration_mean_episode_rmse_rad": 0.0060577491877029,
+        "model_selection_mean_episode_rmse_rad": 0.0085821442186918
+      }
+    },
+    "H2": {
+      "0": {
+        "start_id": "S1_low",
+        "armature_kg_m2": 0.0055883662121341,
+        "damping_Nm_s_per_rad": 0.0430294097762115,
+        "frictionloss_Nm": 0.0161289347350302,
+        "calibration_mean_episode_rmse_rad": 0.0057477962772305,
+        "model_selection_mean_episode_rmse_rad": 0.0078920613549388
+      },
+      "1": {
+        "start_id": "S1_low",
+        "armature_kg_m2": 0.0052912104985895,
+        "damping_Nm_s_per_rad": 0.0454801986750325,
+        "frictionloss_Nm": 0.0020278925763547,
+        "calibration_mean_episode_rmse_rad": 0.0035629797176097,
+        "model_selection_mean_episode_rmse_rad": 0.0029388662101558
+      },
+      "2": {
+        "start_id": "S1_low",
+        "armature_kg_m2": 0.0053121656293207,
+        "damping_Nm_s_per_rad": 0.0467273893852324,
+        "frictionloss_Nm": 0.0069998775934929,
+        "calibration_mean_episode_rmse_rad": 0.0041558873355232,
+        "model_selection_mean_episode_rmse_rad": 0.005238961226489
+      },
+      "3": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0050463920058386,
+        "damping_Nm_s_per_rad": 0.045617864125247,
+        "frictionloss_Nm": 0.0094520883844486,
+        "calibration_mean_episode_rmse_rad": 0.0040740889604482,
+        "model_selection_mean_episode_rmse_rad": 0.0050565678090115
+      },
+      "4": {
+        "start_id": "S1_low",
+        "armature_kg_m2": 0.005197021677779,
+        "damping_Nm_s_per_rad": 0.0425999938249285,
+        "frictionloss_Nm": 0.0159372022858352,
+        "calibration_mean_episode_rmse_rad": 0.0043312310965742,
+        "model_selection_mean_episode_rmse_rad": 0.0048937359117665
+      },
+      "5": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0051134314577138,
+        "damping_Nm_s_per_rad": 0.0442806452990066,
+        "frictionloss_Nm": 0.0099073115709188,
+        "calibration_mean_episode_rmse_rad": 0.0039433456191184,
+        "model_selection_mean_episode_rmse_rad": 0.0041288694032898
+      },
+      "6": {
+        "start_id": "S1_low",
+        "armature_kg_m2": 0.0050560110607768,
+        "damping_Nm_s_per_rad": 0.0443691339017596,
+        "frictionloss_Nm": 0.0103800553360506,
+        "calibration_mean_episode_rmse_rad": 0.0039144008899845,
+        "model_selection_mean_episode_rmse_rad": 0.0045041972139837
+      },
+      "7": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0053741370077271,
+        "damping_Nm_s_per_rad": 0.0480628967340865,
+        "frictionloss_Nm": 0.0020114675884435,
+        "calibration_mean_episode_rmse_rad": 0.003897808393978,
+        "model_selection_mean_episode_rmse_rad": 0.0046984145138576
+      },
+      "8": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0053813422955872,
+        "damping_Nm_s_per_rad": 0.0448122974170432,
+        "frictionloss_Nm": 0.0020000134377841,
+        "calibration_mean_episode_rmse_rad": 0.0031659002624176,
+        "model_selection_mean_episode_rmse_rad": 0.0030903968504418
+      },
+      "9": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0053695324488207,
+        "damping_Nm_s_per_rad": 0.0419924682682856,
+        "frictionloss_Nm": 0.0209549772150048,
+        "calibration_mean_episode_rmse_rad": 0.0050797634856287,
+        "model_selection_mean_episode_rmse_rad": 0.0075547101601732
+      },
+      "10": {
+        "start_id": "S1_low",
+        "armature_kg_m2": 0.005133861727718,
+        "damping_Nm_s_per_rad": 0.044677441402649,
+        "frictionloss_Nm": 0.004720069694104,
+        "calibration_mean_episode_rmse_rad": 0.0033572483413805,
+        "model_selection_mean_episode_rmse_rad": 0.0031038660537065
+      },
+      "11": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0054538972318247,
+        "damping_Nm_s_per_rad": 0.0452548933750601,
+        "frictionloss_Nm": 0.0072581636468237,
+        "calibration_mean_episode_rmse_rad": 0.0040124615814878,
+        "model_selection_mean_episode_rmse_rad": 0.0041572780904485
+      },
+      "12": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0052770895707193,
+        "damping_Nm_s_per_rad": 0.0437123230612605,
+        "frictionloss_Nm": 0.002000111953699,
+        "calibration_mean_episode_rmse_rad": 0.0033831116737435,
+        "model_selection_mean_episode_rmse_rad": 0.0026031496582346
+      },
+      "13": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0052682172190008,
+        "damping_Nm_s_per_rad": 0.0458332987387246,
+        "frictionloss_Nm": 0.0088915989082236,
+        "calibration_mean_episode_rmse_rad": 0.0042670183960105,
+        "model_selection_mean_episode_rmse_rad": 0.0057644336396833
+      },
+      "14": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0051584359067922,
+        "damping_Nm_s_per_rad": 0.044122603030881,
+        "frictionloss_Nm": 0.0103116228534347,
+        "calibration_mean_episode_rmse_rad": 0.0058889755288634,
+        "model_selection_mean_episode_rmse_rad": 0.0076691506397951
+      },
+      "15": {
+        "start_id": "S2_middle",
+        "armature_kg_m2": 0.0051832099012478,
+        "damping_Nm_s_per_rad": 0.0439875023959902,
+        "frictionloss_Nm": 0.0140020949753839,
+        "calibration_mean_episode_rmse_rad": 0.0045299826433872,
+        "model_selection_mean_episode_rmse_rad": 0.0058953852825701
+      }
+    }
+  },
+  "validation_passed": true,
+  "parameter_bounds": {
+    "armature_kg_m2": [
+      0.0002,
+      0.01
+    ],
+    "damping_Nm_s_per_rad": [
+      0.003,
+      0.15
+    ],
+    "frictionloss_Nm": [
+      0.002,
+      0.05
+    ]
+  }
+}

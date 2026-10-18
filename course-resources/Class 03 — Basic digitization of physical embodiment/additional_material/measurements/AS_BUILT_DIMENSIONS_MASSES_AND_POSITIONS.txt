@@ -1,0 +1,13 @@
+AS-BUILT MEASUREMENTS
+=====================
+
+The accepted physical measurements are:
+
+Configuration  Link   Complete payload assemblies   Payload centre positions   Total external moving mass
+M0             none   none                          not applicable              0 g
+B0             22 g   2 x 44 g including pins       -60 mm, +60 mm              110 g
+B1             22 g   2 x 44 g including pins       -80 mm, +80 mm              110 g
+B2             22 g   2 x 44 g including pins       -100 mm, +100 mm            110 g
+G1             22 g   2 x 44 g including pins       +60 mm, +100 mm             110 g
+
+The position reference is the XC330 output axis to the centre of each complete payload assembly along the link. Positive and negative signs describe opposite sides of the axis. Both G1 assemblies are on the positive side.

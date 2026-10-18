@@ -1,0 +1,41 @@
+{
+  "run_tag": "neuralactuator_id0_20260720",
+  "timestamp": "2026-07-20T16:10:42.814388",
+  "port": "/dev/ttyUSB0",
+  "baud": 4000000,
+  "motor_ids": [
+    0
+  ],
+  "tests": [
+    "step",
+    "sine",
+    "chirp"
+  ],
+  "center_deg": 180.0,
+  "servo_id_zero_deg": 180.0,
+  "rate_hz": 200.0,
+  "current_unit_mA": 1.0,
+  "telemetry_read_mode": "sync",
+  "step_amplitudes": [
+    5.0,
+    15.0,
+    30.0
+  ],
+  "step_hold_s": 1.0,
+  "sine_amplitude": 20.0,
+  "sine_frequencies": [
+    0.1,
+    0.25,
+    0.5,
+    1.0,
+    2.0,
+    3.0,
+    5.0
+  ],
+  "sine_cycles": 12,
+  "chirp_amplitude": 20.0,
+  "chirp_f_start": 0.1,
+  "chirp_f_end": 5.0,
+  "chirp_duration": 60.0,
+  "dry_run": false
+}

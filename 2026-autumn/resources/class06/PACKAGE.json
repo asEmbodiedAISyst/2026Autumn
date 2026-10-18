@@ -1,11 +1,11 @@
 {
   "class": 6,
   "version": "1.0",
-  "description": "30 October 2026 · 09:00–10:50 · L12",
+  "description": "30 October 2026 \u00b7 09:00\u201310:50 \u00b7 L12",
   "single_page": true,
-  "scope": "Comprehensive lesson resources; native simulation playback and retained evaluation evidence; separate reported custom hardware case",
+  "scope": "Current source-led lesson; original author package is linked from README. Earlier assets retained historically.",
   "files_sha256": {
-    "2026-autumn/resources/class06/README.md": "316c4a40a7357bd7ab2a78b80782da6a9950c47a9200a450308ee5cac109982c",
+    "2026-autumn/resources/class06/README.md": "41ae345e93ae572bb439b4e7709d1ecc9e62cc64cb4b91ef75da9a972c1bb63d",
     "2026-autumn/resources/class06/code/.gitignore": "75a3ecec5800d72fd4d8c8d973fb23bcf418373b8cd60e7ca43b5ea64572c5aa",
     "2026-autumn/resources/class06/code/NOTICE.md": "d0e877c4aa457d5402913f2b0b17234f8e459736e4988de6a178df23df40cc8f",
     "2026-autumn/resources/class06/code/PLAYGROUND-LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",

@@ -1,0 +1,35 @@
+<mujoco model="class02_single_xc330_reference">
+  <compiler angle="radian" inertiafromgeom="false" autolimits="true"/>
+  <option timestep="0.002" integrator="implicitfast" gravity="0 0 -9.81"/>
+  <visual><global offwidth="1000" offheight="800"/></visual>
+  <asset>
+    <mesh name="platform" file="assets/AsBrainBox_Platform.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="xc330" file="assets/XC330-M288-T.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="link" file="assets/Link.stl" scale="0.001 0.001 0.001"/>
+    <material name="platform_material" rgba="0.70 0.74 0.79 1"/>
+    <material name="floor_material" rgba="0.92 0.93 0.95 1"/>
+  </asset>
+  <worldbody>
+    <light directional="true" pos="-1 -1 2" dir="0.4 0.3 -1"/>
+    <light directional="true" pos="1 0.5 1" dir="-0.4 -0.2 -1" diffuse="0.45 0.45 0.45"/>
+    <geom name="floor" type="plane" pos="0 0 -0.2975" size="1.2 1.2 0.01" material="floor_material" contype="0" conaffinity="0"/>
+    <geom name="platform_visual" type="mesh" mesh="platform" euler="1.5707963 -1.5707963 0" material="platform_material" contype="0" conaffinity="0"/>
+    <body name="XC330-M288-T" pos="-0.21 0.01 0.37" euler="1.5707963267948954 0 0">
+      <geom name="xc330_visual" type="mesh" mesh="xc330" rgba="0.20 0.22 0.25 1" contype="0" conaffinity="0"/>
+      <body name="link" pos="0 0 0.0135" euler="-1.5707963267948968 0 0">
+        <joint name="actuator_joint" type="hinge" axis="0 1 0" pos="0 0.007 0" limited="true" range="-1.5707963267948966 1.5707963267948966" damping="0.001" armature="0.0001"/>
+        <geom name="link_visual" type="mesh" mesh="link" rgba="0.18 0.45 0.82 1" contype="0" conaffinity="0"/>
+        <inertial mass="0.022" pos="0 0.000158103225603 0" fullinertia="9.61194454e-7 8.34765285e-5 8.26574187e-5 0 0 0"/>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="reference_effort" joint="actuator_joint" gear="1" ctrllimited="true" ctrlrange="-0.1551 0.1551" forcelimited="true" forcerange="-0.1551 0.1551"/>
+  </actuator>
+  <sensor>
+    <jointpos name="q" joint="actuator_joint"/>
+    <jointvel name="qdot" joint="actuator_joint"/>
+    <actuatorfrc name="effort" actuator="reference_effort"/>
+  </sensor>
+  <keyframe><key name="zero" qpos="0" ctrl="0"/></keyframe>
+</mujoco>

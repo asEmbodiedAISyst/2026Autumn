@@ -3,9 +3,9 @@
   "version": "1.1",
   "description": "28 October 2026 \u00b7 10:30\u201311:50 \u00b7 CR6",
   "single_page": true,
-  "scope": "Population replay evidence and separately identified telemetry-conditioned single-motor model comparison",
+  "scope": "Current source-led lesson; original author package is linked from README. Earlier assets retained historically.",
   "files_sha256": {
-    "2026-autumn/resources/class05/README.md": "425b88a75173b84d9a6f3f2e872dec1f4491e2292d55287a6b9fe8b255bc7aca",
+    "2026-autumn/resources/class05/README.md": "6f2ea800e8b51f033f8ac2369cf8edc1a3f5df2d1822dd6c581523e07c6b21c8",
     "2026-autumn/resources/class05/code/inspect_scene.py": "ec39ed8a57c4d1164150c2573f42cf4a0bee1e1d5c6cc055f4dbad4f11328df4",
     "2026-autumn/resources/class05/code/lesson_lab.py": "ca8c87714ff7bfd3dcaf70e95eb3e5b0d2df5d015e9833e7c3f105505d1d38a5",
     "2026-autumn/resources/class05/data/EPISODES_USED.csv": "4015e4f8900ea18a94b7b897dbca6ce84e95b2d20b8970d758235c5f27bd2ae6",

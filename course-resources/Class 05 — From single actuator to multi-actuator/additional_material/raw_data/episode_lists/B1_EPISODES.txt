@@ -1,0 +1,33 @@
+B1 16-MOTOR EPISODE LIST (30 MEASURED EPISODES)
+================================================
+
+01. B1_16__H1__P01_slow_triangle__R01
+02. B1_16__H1__P01_slow_triangle__R02
+03. B1_16__H1__P01_slow_triangle__R03
+04. B1_16__H1__P02_multisine__R01
+05. B1_16__H1__P02_multisine__R02
+06. B1_16__H1__P02_multisine__R03
+07. B1_16__H1__P03_smooth_levels__R01
+08. B1_16__H1__P03_smooth_levels__R02
+09. B1_16__H1__P03_smooth_levels__R03
+10. B1_16__H1__P06_heldout_composite__R01
+11. B1_16__H1__P06_heldout_composite__R02
+12. B1_16__H1__P06_heldout_composite__R03
+13. B1_16__H1__P06_heldout_composite__R04
+14. B1_16__H1__P06_heldout_composite__R05
+15. B1_16__H1__PILOT_LOW_AMPLITUDE
+16. B1_16__H2__P01_slow_triangle__R01
+17. B1_16__H2__P01_slow_triangle__R02
+18. B1_16__H2__P01_slow_triangle__R03
+19. B1_16__H2__P02_multisine__R01
+20. B1_16__H2__P02_multisine__R02
+21. B1_16__H2__P02_multisine__R03
+22. B1_16__H2__P03_smooth_levels__R01
+23. B1_16__H2__P03_smooth_levels__R02
+24. B1_16__H2__P03_smooth_levels__R03
+25. B1_16__H2__P06_heldout_composite__R01
+26. B1_16__H2__P06_heldout_composite__R02
+27. B1_16__H2__P06_heldout_composite__R03
+28. B1_16__H2__P06_heldout_composite__R04
+29. B1_16__H2__P06_heldout_composite__R05
+30. B1_16__H2__PILOT_LOW_AMPLITUDE

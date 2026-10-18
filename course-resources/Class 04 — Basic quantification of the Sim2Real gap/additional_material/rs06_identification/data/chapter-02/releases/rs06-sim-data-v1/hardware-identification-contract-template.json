@@ -1,0 +1,123 @@
+{
+  "archive_file": "replace-with-derived-analysis-archive.npz",
+  "candidate_model_tree": "models/hardware-start",
+  "candidate_models": {
+    "method1": "Hardware-Position M1 Candidate",
+    "method2": "Hardware-Position M2 Candidate"
+  },
+  "candidate_parameters": [
+    "armature",
+    "damping",
+    "frictionloss"
+  ],
+  "controller_mapping": {
+    "fit_parameters": [],
+    "status": "must be commissioned or declared and frozen before passive-joint fitting",
+    "warning": "RS06 protocol KP/KD coordinates are not automatically numerically equivalent to MuJoCo kp and kv. Do not treat them as SI gains without qualification."
+  },
+  "dataset_name": "Hardware-Position Data",
+  "evidence_source": "physical",
+  "field_map": {
+    "applied_position_rad": "position_applied_rad",
+    "observed_position_rad": "position_meas_rad",
+    "observed_velocity_rad_s": "velocity_meas_rad_s",
+    "saturated": "saturated",
+    "time_s": "time_s",
+    "valid": "valid"
+  },
+  "fit_field_allowlist": [
+    "time_s",
+    "applied_position_rad",
+    "observed_position_rad",
+    "observed_velocity_rad_s",
+    "valid",
+    "saturated"
+  ],
+  "hardware_claim_permitted": false,
+  "hardware_controller_conditions": {
+    "H1": {
+      "kp_protocol_coordinate": 50.0,
+      "kd_protocol_coordinate": 3.38,
+      "mode": "position",
+      "complete_register_and_firmware_snapshot": "required-before-qualified-release"
+    },
+    "H2": {
+      "kp_protocol_coordinate": 100.0,
+      "kd_protocol_coordinate": 1.95,
+      "mode": "position",
+      "complete_register_and_firmware_snapshot": "required-before-qualified-release"
+    }
+  },
+  "method1": {
+    "acceleration_required": false,
+    "filter": {
+      "applied_to": [
+        "observed_position_rad",
+        "observed_velocity_rad_s"
+      ],
+      "savgol_polynomial_order": 3,
+      "savgol_window_samples": 11,
+      "type": "Savitzky-Golay"
+    },
+    "fit_parameters": [
+      "armature",
+      "damping",
+      "frictionloss"
+    ],
+    "generalized_actuator_effort_required": false,
+    "integration_step_samples": 2,
+    "integration_window_samples": 10,
+    "known_fixture_terms": "reconstruct from measured fixture mass properties in the matched MJCF",
+    "minimum_moving_fraction": 0.7,
+    "moving_speed_threshold_rad_s": 0.05,
+    "name": "integrated closed-loop analytical regression",
+    "source_model_parameters_used_for_fit": false,
+    "status": "pending-signal-and-fixture-qualification"
+  },
+  "method2": {
+    "episode_weighting": "equal complete episode",
+    "fit_parameters": [
+      "armature",
+      "damping",
+      "frictionloss"
+    ],
+    "initial_state_treatment": "first qualified measured position and velocity",
+    "name": "bounded MuJoCo output-error optimization",
+    "source_model_parameters_used_for_fit": false,
+    "status": "pending-input-output-timing-and-fixture-qualification"
+  },
+  "mujoco_equivalent_controller_conditions": {
+    "C1": {
+      "kp_Nm_per_rad": 50.0,
+      "kv_Nm_s_per_rad": 3.38,
+      "paired_hardware_controller": "H1",
+      "mapping_status": "simulation-hypothesis-not-hardware-qualified"
+    },
+    "C2": {
+      "kp_Nm_per_rad": 100.0,
+      "kv_Nm_s_per_rad": 1.95,
+      "paired_hardware_controller": "H2",
+      "mapping_status": "simulation-hypothesis-not-hardware-qualified"
+    },
+    "identified_with_joint_parameters": false
+  },
+  "paired_profile_manifest": "data/chapter-02/releases/rs06-sim-data-v1/profile-tables/profile-manifest.json",
+  "paired_sim_position_release_id": "chapter02-rs06-sim-data-v1",
+  "pairing_rule": "Preserve the P01-P07 profile identity and complete-episode split where safe; record the hardware-requested and applied/transmitted boundaries without fabricating unavailable signals.",
+  "release_id": "replace-with-immutable-physical-release-id",
+  "required_raw_provenance": {
+    "clock_relationship_qualified": false,
+    "complete_episode_split_frozen": false,
+    "controller_settings_frozen": false,
+    "fixture_mass_properties_measured_and_mjcf_updated": false,
+    "raw_streams_preserved": false,
+    "unit_and_sign_conversion_audited": false
+  },
+  "schema_version": "phyintel-hardware-position-identification-template-v3",
+  "split_discipline": {
+    "calibration": "fit the three joint parameters",
+    "held_out": "evaluate only after all choices are frozen",
+    "model_selection": "freeze preprocessing and any declared controller commissioning revision"
+  },
+  "status": "template-not-executable-until-qualified"
+}

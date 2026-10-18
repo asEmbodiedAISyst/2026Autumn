@@ -1,7 +1,7 @@
 {
   "class": 3,
   "source_version": "0.16",
-  "scope": "Single-page digitization explanation with CAD/model inspection resources and separately identified property records",
+  "scope": "Current source-led lesson; original author package is linked from README. Earlier assets retained historically.",
   "files_sha256": {
     "2026-autumn/resources/class03/cad/1DOF-B2.step": "5e4d56f11136270788d7fa7e9591fd98174106c9d04c1ed973fd3432c1f74630",
     "2026-autumn/resources/class03/code/class03_frames.py": "b5889a1a2ed80fd5ebc225461c971334831a0e97d5221b905b2a5dbc48149f68",

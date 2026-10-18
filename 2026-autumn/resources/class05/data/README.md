@@ -1,3 +1,7 @@
+# Historical resource data
+
+The current Class05 practical uses the author source package under course-resources. The earlier resource description below is retained historically; it must not identify the current Class04 source case, which declares110g.
+
 # Class 05 data contract
 
 `episode_metrics.csv`: unchanged supplied metric rows for accepted calibration, selection and held-out motor records. `synthetic_baseline` and `hardware_fitted` are paired prediction methods; hardware_fitted is a simulator fitted to hardware records, not a second measured trajectory. Position RMSE uses the original active-profile scoring interval. Averaging per-record RMSE gives each record equal weight.

@@ -1,0 +1,32 @@
+{
+ "result": {
+  "success": true,
+  "calls": 1,
+  "ended_by": "sim_success",
+  "cost_usd": 0.0022462,
+  "usage": {
+   "input": 386,
+   "output": 110,
+   "cache_read": 1871,
+   "cache_write": 0
+  }
+ },
+ "transcript": [
+  {
+   "call": 0,
+   "tool": "push",
+   "input": {
+    "cube_px": [
+     122,
+     122
+    ],
+    "goal_px": [
+     158,
+     72
+    ],
+    "why": "Push cube toward goal"
+   },
+   "report": "cube at (41.2, 5.9) cm, goal at (45.0, 2.4) cm. TASK SUCCESS detected by the simulator"
+  }
+ ]
+}

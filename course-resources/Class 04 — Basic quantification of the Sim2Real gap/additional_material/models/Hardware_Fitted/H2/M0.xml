@@ -1,0 +1,38 @@
+<mujoco model="hardware_fitted-H2-M0">
+  <compiler angle="radian" eulerseq="XYZ" inertiafromgeom="false" autolimits="true" />
+  <option timestep="0.002" integrator="implicitfast" gravity="0 0 -9.81" />
+  <visual>
+    <global offwidth="960" offheight="640" />
+  </visual>
+  <asset>
+    <mesh name="motor_mesh" file="../../assets/XC330-M288-T.stl" scale="0.001 0.001 0.001" />
+    <mesh name="asbrain_platform" file="../../assets/AsBrainBox_Platform.stl" scale="0.001 0.001 0.001" />
+    <material name="platform_material" rgba="0.70 0.74 0.79 1" specular="0.16" shininess="0.22" />
+  </asset>
+  <worldbody>
+    <light directional="true" pos="-0.25 -0.35 1.2" dir="0.15 0.25 -1" />
+    <geom pos="0 0 -0.2975" size="1 1 1" type="plane" rgba="0.82 0.84 0.88 1" name="reference_ground_visual" contype="0" conaffinity="0" />
+    <geom name="platform_visual" type="mesh" mesh="asbrain_platform" euler="1.5707963 0 -1.5707963" material="platform_material" contype="0" conaffinity="0" group="2" />
+    <body name="station" pos="-0.21 0.01 0.37" euler="1.5707963267948954 0 0">
+      <geom name="motor_mesh_1_visual" type="mesh" mesh="motor_mesh" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" rgba="0.20 0.23 0.28 1" />
+      <inertial mass="0.11859055178842125" pos="4.097970962184746e-06 -0.007233144360157453 -0.007246003852890738" fullinertia="1.688439139067236e-05 9.152223120594198e-06 1.5061659016224218e-05 3.5294120711817053e-09 -2.6551424857785145e-09 -3.827986190651519e-07" />
+      <body name="output" pos="0 0 0.008" euler="-1.5707963267948968 0 0">
+        <joint name="actuator_joint" type="hinge" axis="0 -1 0" limited="true" range="-1.1 1.1" armature="0.004778798595411223" damping="0.04762964652845072" frictionloss="0.002773438986164487" />
+        <inertial mass="0.000001" pos="0 0 0" diaginertia="1e-12 1e-12 1e-12" />
+        <geom name="output_marker" type="cylinder" pos="0 0.0015 0" euler="1.5707963267948966 0 0" size="0.008 0.002" contype="0" conaffinity="0" density="0" rgba="0.95 0.55 0.15 1" />
+        <site name="positive_q_marker" type="sphere" pos="0.006 0.0015 0" size="0.0015" rgba="0.90 0.18 0.12 1" />
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <general name="xc330_replay" joint="actuator_joint" gear="1" gainprm="1" biastype="affine" biasprm="0 -2.106448 -0.202115" ctrllimited="false" forcelimited="true" forcerange="-0.1551 0.1551" />
+  </actuator>
+  <sensor>
+    <jointpos name="q" joint="actuator_joint" />
+    <jointvel name="qdot" joint="actuator_joint" />
+    <actuatorfrc name="tau_actuator" actuator="xc330_replay" />
+  </sensor>
+  <keyframe>
+    <key name="home" qpos="0" ctrl="0" />
+  </keyframe>
+</mujoco>

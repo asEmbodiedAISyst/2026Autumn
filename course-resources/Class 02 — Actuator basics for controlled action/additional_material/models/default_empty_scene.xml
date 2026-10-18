@@ -1,0 +1,12 @@
+<mujoco model="class02_empty_platform">
+  <compiler angle="radian" inertiafromgeom="false" autolimits="true"/>
+  <option timestep="0.002" integrator="implicitfast" gravity="0 0 -9.81"/>
+  <asset>
+    <mesh name="platform" file="assets/AsBrainBox_Platform.stl" scale="0.001 0.001 0.001"/>
+    <material name="platform_material" rgba="0.70 0.74 0.79 1"/>
+  </asset>
+  <worldbody>
+    <light directional="true" pos="-1 -1 2" dir="0.4 0.3 -1"/>
+    <geom name="platform_visual" type="mesh" mesh="platform" euler="1.5707963 0 -1.5707963" material="platform_material" contype="0" conaffinity="0"/>
+  </worldbody>
+</mujoco>

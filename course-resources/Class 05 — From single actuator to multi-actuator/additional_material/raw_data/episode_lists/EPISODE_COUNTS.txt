@@ -1,0 +1,11 @@
+16-MOTOR EPISODE COUNTS
+=======================
+
+Config | Archived entries | Pilots
+-------|-----------------:|-------:
+M0     | 20               | 2
+B0     | 32               | 2
+B1     | 30               | 2
+B2     | 32               | 2
+G1     | 22               | 2
+Total  | 136              | 10

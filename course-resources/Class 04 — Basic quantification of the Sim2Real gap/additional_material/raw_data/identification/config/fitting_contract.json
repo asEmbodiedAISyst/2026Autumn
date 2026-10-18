@@ -1,0 +1,100 @@
+{
+  "schema_version": "data2model-1",
+  "dataset": {
+    "archive": "data/simulation_dataset.npz",
+    "episode_list": "data/episode_list.csv",
+    "target_plant": "source",
+    "fit_split": "calibration",
+    "selection_split": "model_selection",
+    "held_out_split": "held_out",
+    "expected_episode_counts": {
+      "calibration": 24,
+      "model_selection": 8,
+      "held_out": 6
+    }
+  },
+  "parameters": {
+    "names": [
+      "armature_kg_m2",
+      "damping_Nm_s_per_rad",
+      "frictionloss_Nm"
+    ],
+    "units": {
+      "armature_kg_m2": "kg*m^2",
+      "damping_Nm_s_per_rad": "N*m*s/rad",
+      "frictionloss_Nm": "N*m"
+    },
+    "bounds": {
+      "armature_kg_m2": [0.0002, 0.002],
+      "damping_Nm_s_per_rad": [0.003, 0.03],
+      "frictionloss_Nm": [0.002, 0.025]
+    },
+    "initial_vectors": [
+      {
+        "id": "S1_nominal",
+        "values": [0.0007, 0.009, 0.006]
+      },
+      {
+        "id": "S2_low",
+        "values": [0.0003, 0.005, 0.003]
+      },
+      {
+        "id": "S3_middle",
+        "values": [0.0011, 0.0165, 0.012]
+      },
+      {
+        "id": "S4_high",
+        "values": [0.0017, 0.026, 0.022]
+      }
+    ]
+  },
+  "primary_method": {
+    "name": "bounded_forward_mujoco_position_output_error",
+    "fit_fields": [
+      "time_s",
+      "position_applied_rad",
+      "source_position_meas_rad",
+      "source_velocity_meas_rad_s",
+      "valid"
+    ],
+    "fit_target": "source_position_meas_rad",
+    "controller_gains": "fixed C1/C2 values in the candidate MJCF",
+    "physics_timestep_s": 0.002,
+    "fit_sample_stride": 5,
+    "equal_episode_weight": true,
+    "optimizer": "scipy.optimize.least_squares",
+    "loss": "linear",
+    "maximum_function_evaluations": 160,
+    "normalized_finite_difference_step": 0.0002,
+    "selection_rule": "smallest mean episode RMSE on model_selection among successful calibration fits",
+    "initial_state": "first measured position and velocity inserted once; no later state injection",
+    "objective_output": "continuous candidate position compared with sensor-equivalent measured position",
+    "reported_prediction_output": "position quantized to the dataset position resolution"
+  },
+  "secondary_method": {
+    "name": "simulator_only_torque_balance_linear_least_squares",
+    "purpose": "Checks idealized recoverability when simulator-only actuator effort and true state derivatives are available; it is not the hardware-transfer method.",
+    "fields": [
+      "source_velocity_true_rad_s",
+      "source_acceleration_true_rad_s2",
+      "source_actuator_torque_Nm",
+      "source_bias_torque_Nm",
+      "source_saturated",
+      "valid"
+    ],
+    "fit_split": "calibration",
+    "controller_scopes": ["C1", "C2", "shared"],
+    "prediction_scope": "shared",
+    "archive_rate_hz": 100.0,
+    "minimum_absolute_velocity_rad_s": 0.05,
+    "exclude_saturated_samples": true,
+    "archive_limitation": "Uses the available 100 Hz archive, not a physics-step torque archive.",
+    "equal_episode_weight": true,
+    "optimizer": "scipy.optimize.lsq_linear"
+  },
+  "reporting": {
+    "unstable_model_selection_ratio_from_best": 2.0,
+    "active_bound_fraction_of_range": 0.00001,
+    "random_seed": 330288
+  }
+}

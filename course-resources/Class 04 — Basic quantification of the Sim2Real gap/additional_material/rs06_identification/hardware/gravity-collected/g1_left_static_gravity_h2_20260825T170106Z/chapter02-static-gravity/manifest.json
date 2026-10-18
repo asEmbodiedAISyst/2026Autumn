@@ -1,0 +1,132 @@
+{
+  "archive_file": "rs06-static-gravity-v1.npz",
+  "archive_sha256": "0e7fdf462b0723b8e62f39821e05290cef40c52cf9c1f2a7e18d696a9f9d9322",
+  "contract_file": "contract.json",
+  "contract_sha256": "2c446a5a52321970910ea4ecd5a11f132311f0b1a5efaffbfc24fbfe75f25f1e",
+  "episode_count": 14,
+  "episodes": [
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qm2p356__approach_positive__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qm2p356__approach_positive__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "f6dca757ca8b86fa2564819c8c64b480aaea965db8a76e69d00a814c2033ebbd",
+      "samples": 50,
+      "start": 0,
+      "stop": 50
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qm2p356__approach_negative__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qm2p356__approach_negative__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "53f3e0cc9e5143605d27d9147c27864d27250fa529445e798a9f45c0da230e17",
+      "samples": 50,
+      "start": 50,
+      "stop": 100
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qm1p571__approach_positive__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qm1p571__approach_positive__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "9895ab504eed1be316e8184bb52df44718df8e61267dfcacddc2cea0cf10f254",
+      "samples": 50,
+      "start": 100,
+      "stop": 150
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qm1p571__approach_negative__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qm1p571__approach_negative__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "e1e6b0f8ec0f2e5564396d3bc0ce8d46f40af2fe445537c1df28ca6056811100",
+      "samples": 50,
+      "start": 150,
+      "stop": 200
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qm0p785__approach_positive__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qm0p785__approach_positive__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "70b419cf7b50c5a1d1ef06a9a1be6ec8e4cc1431f6b50fa425648ae1b848536e",
+      "samples": 50,
+      "start": 200,
+      "stop": 250
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qm0p785__approach_negative__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qm0p785__approach_negative__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "1a72a851a54edfe55222683ef95f9e0154b30058fce07c7d3e01fe99460f6a6c",
+      "samples": 50,
+      "start": 250,
+      "stop": 300
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qp0p000__approach_positive__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qp0p000__approach_positive__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "19a62819ee6518e44011ae93faeeabe613e143b33ac4f44397d42a830035dda2",
+      "samples": 50,
+      "start": 300,
+      "stop": 350
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qp0p000__approach_negative__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qp0p000__approach_negative__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "ab146b95bd41988a0a6c517f1bbef8ef2812d9b5ec8f943fa46ae687efbdb8f8",
+      "samples": 50,
+      "start": 350,
+      "stop": 400
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qp0p785__approach_positive__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qp0p785__approach_positive__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "7bb2e323f28d7f8f146ef72e480132a4e6db161d619b37afd6d9740f9bfc06a9",
+      "samples": 50,
+      "start": 400,
+      "stop": 450
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qp0p785__approach_negative__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qp0p785__approach_negative__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "6f6938042f33317195059477273b963f21be9e7e266ee036872bfdc07d8c2232",
+      "samples": 50,
+      "start": 450,
+      "stop": 500
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qp1p571__approach_positive__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qp1p571__approach_positive__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "4a7f9cc75193b9e4c26109a5185eb24b0a0c1767c7c275227c8679b861d9e206",
+      "samples": 50,
+      "start": 500,
+      "stop": 550
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qp1p571__approach_negative__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qp1p571__approach_negative__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "1883df287609ff3b05911e3056ab44f1e1ee9bf9f50d462e916e55b6416ce1ad",
+      "samples": 50,
+      "start": 550,
+      "stop": 600
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qp2p356__approach_positive__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qp2p356__approach_positive__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "602fd39accf899cf442bd4f914041b286d112449902f7948677c5fd9cc107f87",
+      "samples": 50,
+      "start": 600,
+      "stop": 650
+    },
+    {
+      "episode_file": "episodes/static_gravity__H2__G1-left-fixed__qp2p356__approach_negative__g1_left_static_gravity_h2_20260825T170106Z.csv.gz",
+      "episode_id": "static_gravity__H2__G1-left-fixed__qp2p356__approach_negative__g1_left_static_gravity_h2_20260825T170106Z",
+      "episode_sha256": "2cffb45494101a4f6091e068d21bc6c1019c166d7d2e4b07ecd575450c611336",
+      "samples": 50,
+      "start": 650,
+      "stop": 700
+    }
+  ],
+  "pose_summary_file": "pose-summary.csv",
+  "pose_summary_sha256": "c094fe7f079f63f64294cd8920904b78e53636eea26f47061e585d8c2d651069",
+  "raw_session_file": "../raw_session.csv",
+  "raw_session_sha256": "6675811f03148a42daf08ea312b60899cfac8a13e0cd7df1250660dc33a046df",
+  "release_id": "chapter02-rs06-static-gravity-g1_left_static_gravity_h2_20260825T170106Z",
+  "sample_count": 700,
+  "schema_version": "phyintel-chapter02-rs06-static-gravity-hardware-v1",
+  "session_metadata_file": "../session.metadata.json",
+  "session_metadata_sha256": "fe06b26a11ab2cecad23e2c5d1cb5b5e3eb46e065e496b8d5afc51858a850231",
+  "trajectory_manifest_file": "trajectory-suite/manifest.json",
+  "trajectory_manifest_sha256": "aa6c194de2fc4a1172b57416adfd1c2ae8e00b1b1e22add26748e4ed46f923ef"
+}

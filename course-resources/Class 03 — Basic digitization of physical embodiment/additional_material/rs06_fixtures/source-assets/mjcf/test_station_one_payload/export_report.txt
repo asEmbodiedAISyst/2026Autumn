@@ -1,0 +1,28 @@
+ACDC4Robot developer alpha export report
+=======================================
+
+Exported links (2)
+------------------
+- base_link
+- playload-1
+
+Exported joints (1)
+-------------------
+- playload-1_Revolute_172
+
+Skipped links (0)
+-----------------
+- None
+
+Skipped joints (0)
+------------------
+- None
+
+Warnings (0)
+------------
+- None
+
+Errors (0)
+----------
+- None
+

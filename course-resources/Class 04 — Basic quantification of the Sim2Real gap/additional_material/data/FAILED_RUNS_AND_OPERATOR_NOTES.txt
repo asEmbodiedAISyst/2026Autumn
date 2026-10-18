@@ -1,0 +1,16 @@
+FAILED RUNS AND OPERATOR NOTES
+==============================
+
+Accepted 1 September campaign
+-----------------------------
+No failed episodes were found in the five accepted runs. All 167 motor-side records are marked complete, including the three preparation/recenter records. All 164 planned phone-media sessions finalized successfully. Every episode reports zero hardware-error samples, and every accepted campaign records terminal torque disabled and motor bus closed.
+
+
+Subjective observations
+-----------------------
+Noise or unusual sound: not available.
+Visible oscillation: no.
+Mechanical looseness or payload slip: no.
+Unexpected heating: no.
+Electrical saturation: no.
+Communication problems: no. The iPhone and asBrain Box must be on the same Wi-Fi network.

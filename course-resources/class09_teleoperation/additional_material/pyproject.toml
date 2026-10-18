@@ -1,0 +1,21 @@
+[project]
+name = "class09-teleoperation"
+version = "0.1.0"
+description = "ROB7103/8103 Class 09: teleoperate the reBot Arm B601-RS (simulated or physical) with the asMagic app and record episodes"
+requires-python = ">=3.10"
+dependencies = [
+    "mujoco>=3.3",
+    "numpy>=1.26",
+    "pillow>=10",
+    "asmagic>=0.1.4",
+    "pyzmq>=25",
+    "protobuf>=4",
+    "sharklog>=0.1.2",
+]
+
+[project.optional-dependencies]
+# Physical arm only (RobStride motors on the CAN bus through the motorbridge SDK). Install with: uv sync --extra real
+real = ["motorbridge>=0.5.6"]
+
+[tool.uv]
+package = false

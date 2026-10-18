@@ -1,0 +1,3954 @@
+[
+  {
+    "stage": "initial",
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "initial",
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "initial",
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "initial",
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "initial",
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "initial",
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "initial",
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "initial",
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "initial",
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "initial",
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "initial",
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "initial",
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1029,
+    "present_position_raw_normalized": 1029
+  },
+  {
+    "stage": "initial",
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "initial",
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "initial",
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "initial",
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1029,
+    "present_position_raw_normalized": 1029
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "safe_start",
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1029,
+    "present_position_raw_normalized": 1029
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "fresh_pre_enable_passive_handoff",
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1029,
+    "present_position_raw_normalized": 1029
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "confirmed_pre_enable_passive_handoff",
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1028,
+    "present_position_raw_normalized": 1028
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1029,
+    "present_position_raw_normalized": 1029
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "torque_enabled_before_first_motion_command",
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 0,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 1,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 2,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 3,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 4,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 5,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 6,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 7,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 8,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 9,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 10,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 11,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 12,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 13,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 14,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 15,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 16,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 17,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 18,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 19,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 20,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 21,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 22,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 23,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 24,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 25,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 26,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 27,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 28,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 29,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 0,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 1,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 2,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 3,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 4,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 5,
+    "present_position_raw_original_signed": 1023,
+    "present_position_raw_normalized": 1023
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 6,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 7,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 8,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 9,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 10,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 11,
+    "present_position_raw_original_signed": 1027,
+    "present_position_raw_normalized": 1027
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 12,
+    "present_position_raw_original_signed": 1026,
+    "present_position_raw_normalized": 1026
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 13,
+    "present_position_raw_original_signed": 1024,
+    "present_position_raw_normalized": 1024
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 14,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  },
+  {
+    "stage": "gravity_rest",
+    "sample_index": 30,
+    "motor_id": 15,
+    "present_position_raw_original_signed": 1025,
+    "present_position_raw_normalized": 1025
+  }
+]

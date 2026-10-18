@@ -1,0 +1,17 @@
+TWO-MOTOR COMPARISON
+====================
+
+Use results/two_motor_activity_answer.csv to compare motors 0 and 9.
+
+Question
+--------
+For H1 and H2, compare the held-out fitted RMSE and improvement over the synthetic baseline. Decide what supports individual motor models and what remains unexplained.
+
+Answer
+------
+Motor 0 fitted RMSE is 0.01994 rad under H1 and 0.01665 rad under H2. Motor 9 gives 0.02138 and 0.01758 rad. Their improvements over the baseline range from 28.9 to 39.0 percent, so their held-out trajectory accuracy is similar.
+
+Their selected friction-loss terms differ. Motor 0 uses 0.01777 N m under H1 and 0.01613 N m under H2; motor 9 uses 0.02340 and 0.02096 N m. This supports retaining motor-specific effective models, but it does not prove a physical friction difference. Timing, local voltage, bus order, temperature, parameter tradeoff and unmodelled transmission behavior remain alternative explanations.
+
+The single-motor neural test is a different dataset and question. Its numbers should not be placed in the same ranking table as the V5 16-motor fits.
+

@@ -1,0 +1,19 @@
+{
+  "synthetic_baseline": {
+    "armature_kg_m2": 0.0010025229086850415,
+    "damping_Nm_s_per_rad": 0.01496282173096812,
+    "frictionloss_Nm": 0.010094810119640467
+  },
+  "hardware_fitted": {
+    "H1": {
+      "armature_kg_m2": 0.006051240922732641,
+      "damping_Nm_s_per_rad": 0.04628936759658051,
+      "frictionloss_Nm": 0.0035416263998947497
+    },
+    "H2": {
+      "armature_kg_m2": 0.004778798595411223,
+      "damping_Nm_s_per_rad": 0.04762964652845072,
+      "frictionloss_Nm": 0.0027734389861644873
+    }
+  }
+}

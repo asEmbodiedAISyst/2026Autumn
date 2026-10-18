@@ -1,0 +1,29 @@
+<mujoco model="chapter02-nominal-C2-G1">
+  <compiler angle="radian" eulerseq="XYZ" inertiafromgeom="false" autolimits="true" />
+  <option timestep="0.002" integrator="implicitfast" gravity="0 0 -9.81" />
+  <asset>
+    <mesh name="base_link" file="../../../model-sources/meshes/G1__base_link.stl" scale="0.001 0.001 0.001" />
+    <mesh name="playload-1" file="../../../model-sources/meshes/G1__playload-1.stl" scale="0.001 0.001 0.001" />
+  </asset>
+  <worldbody>
+    <light directional="true" pos="-0.5 0.5 3" dir="0 0 -1" />
+    <geom pos="0 0 0" size="1 1 1" type="plane" rgba="1 0.83 0.61 0.5" contype="0" conaffinity="0" density="0" group="2" />
+    <body name="base_link" pos="0.0 0.0 0.0" euler="-0.0 -1.5707963267948966 0">
+      <geom name="base_link_geom" type="mesh" mesh="base_link" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" density="0" group="2" />
+      <inertial mass="0.5282673471657164" pos="0.0002567991248991187 -3.501861235660721e-06 0.02024774237306398" fullinertia="0.0004119872131781421 0.00041788328293941454 0.0005423929637717687 -4.128769549258102e-08 -1.5536570426683694e-06 1.1135207881972504e-08" />
+      <body name="playload-1" pos="0.0 0.0 0.0" euler="-0.0 1.5707963267948966 0">
+        <joint name="rs06_joint" type="hinge" axis="-1.0 0.0 0.0" pos="0.0015 0.0 0.0" limited="true" range="-1.1 1.1" armature="0.0005" damping="0.0001" frictionloss="0.012" />
+        <geom name="playload-1_visual" type="mesh" mesh="playload-1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" density="0" group="2" />
+        <inertial mass="1.547213449292992" pos="0.04346340638178685 -0.08339932361058139 -6.446371926420853e-06" fullinertia="0.02453272059840035 0.0019635703755938616 0.02330476250019259 0.0012893176464849488 -1.582086849021908e-07 2.3773059779480493e-06" />
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <position name="rs06_position" joint="rs06_joint" kp="100.0" kv="1.95" ctrllimited="true" ctrlrange="-0.9 0.9" forcelimited="true" forcerange="-36.0 36.0" />
+  </actuator>
+  <sensor>
+    <jointpos name="q" joint="rs06_joint" />
+    <jointvel name="qdot" joint="rs06_joint" />
+    <actuatorfrc name="tau_actuator" actuator="rs06_position" />
+  </sensor>
+</mujoco>

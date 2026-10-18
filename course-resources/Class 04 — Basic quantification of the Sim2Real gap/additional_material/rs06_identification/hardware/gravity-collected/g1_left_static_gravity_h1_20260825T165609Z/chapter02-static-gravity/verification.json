@@ -1,0 +1,176 @@
+{
+  "checks": {
+    "all_episodes_complete": true,
+    "all_record_windows_complete": true,
+    "all_samples_valid": true,
+    "archive_hash_matches": true,
+    "episode_hashes_match": true,
+    "no_command_saturation": true,
+    "source_session_complete": true
+  },
+  "episode_checks": [
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qm2p356__approach_positive__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qm2p356__approach_negative__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qm1p571__approach_positive__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qm1p571__approach_negative__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qm0p785__approach_positive__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qm0p785__approach_negative__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qp0p000__approach_positive__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qp0p000__approach_negative__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qp0p785__approach_positive__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qp0p785__approach_negative__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qp1p571__approach_positive__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qp1p571__approach_negative__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qp2p356__approach_positive__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "static_gravity__H1__G1-left-fixed__qp2p356__approach_negative__g1_left_static_gravity_h1_20260825T165609Z",
+      "expected_full_trajectory_samples": 275,
+      "expected_record_samples": 50,
+      "full_trajectory_sequence_complete": true,
+      "observed_full_trajectory_samples": 275,
+      "observed_record_samples": 50,
+      "record_window_complete": true
+    }
+  ],
+  "episode_count": 14,
+  "geometry_metadata_complete": false,
+  "passed": true,
+  "reference_current_calibration_supported": false,
+  "sample_count": 700,
+  "warnings": [
+    "Gravity first moment and/or phase are not declared; raw holding data are preserved, but gravity_torque_model_Nm is NaN until geometry is measured.",
+    "Reference present_current_A is unavailable; this package cannot identify the reference current-to-output-torque coefficient."
+  ]
+}

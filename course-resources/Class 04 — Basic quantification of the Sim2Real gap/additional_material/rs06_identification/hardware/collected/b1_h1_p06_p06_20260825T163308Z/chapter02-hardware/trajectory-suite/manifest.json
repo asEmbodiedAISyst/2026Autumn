@@ -1,0 +1,549 @@
+{
+  "chapter02": {
+    "hardware_resampling": {
+      "amplitude_transform": "q_scaled = declared_center + amplitude_scale * (q_reference - declared_center)",
+      "position_semantics": "center-relative position command in rad",
+      "sample_rate_hz": 50.0,
+      "time_transform": "reference_time_s = speed_scale * time_s"
+    },
+    "profiles": {
+      "P01_slow_triangle": {
+        "amplitude_scale": 1.0,
+        "reference_definition": {
+          "amplitude_rad": 0.65,
+          "center_rad": 0.0,
+          "duration_s": 12.0,
+          "frequency_hz": 0.16666666666666666,
+          "kind": "triangle",
+          "purpose": "slow motion, direction reversals, damping, and dry friction",
+          "split": "calibration"
+        },
+        "speed_scale": 1.0,
+        "statistics": {
+          "duration_s": 12.02,
+          "max_abs_offset_rad": 0.65,
+          "max_abs_target_acceleration_rad_s2": 43.33333333333134,
+          "max_abs_target_velocity_rad_s": 0.4333333333333911,
+          "max_offset_rad": 0.65,
+          "min_offset_rad": -0.65,
+          "sample_count": 601
+        },
+        "trajectory_id": "P01"
+      },
+      "P02_multisine": {
+        "amplitude_scale": 1.0,
+        "reference_definition": {
+          "amplitudes_rad": [
+            0.34,
+            0.18,
+            0.09
+          ],
+          "center_rad": 0.0,
+          "duration_s": 12.0,
+          "frequencies_hz": [
+            0.13,
+            0.37,
+            0.83
+          ],
+          "kind": "multisine",
+          "phases_rad": [
+            0.0,
+            0.8,
+            1.7
+          ],
+          "purpose": "simultaneous low-, medium-, and higher-frequency excitation",
+          "split": "calibration"
+        },
+        "speed_scale": 1.0,
+        "statistics": {
+          "duration_s": 12.02,
+          "max_abs_offset_rad": 0.4670751232346083,
+          "max_abs_target_acceleration_rad_s2": 3.5400966006642056,
+          "max_abs_target_velocity_rad_s": 1.1338074818723884,
+          "max_offset_rad": 0.4670751232346083,
+          "min_offset_rad": -0.43768051257339663,
+          "sample_count": 601
+        },
+        "trajectory_id": "P02"
+      },
+      "P03_smooth_levels": {
+        "amplitude_scale": 1.0,
+        "reference_definition": {
+          "hold_s": 0.55,
+          "kind": "smooth_levels",
+          "levels_rad": [
+            0.0,
+            -0.45,
+            0.45,
+            -0.7,
+            0.2,
+            0.7,
+            -0.3,
+            0.0
+          ],
+          "purpose": "large but smooth position changes, settling, and actuator-effort demand",
+          "split": "calibration",
+          "transition_s": 0.45
+        },
+        "speed_scale": 1.0,
+        "statistics": {
+          "duration_s": 7.56,
+          "max_abs_offset_rad": 0.7,
+          "max_abs_target_acceleration_rad_s2": 27.707009720682187,
+          "max_abs_target_velocity_rad_s": 4.0085538491419435,
+          "max_offset_rad": 0.7,
+          "min_offset_rad": -0.7,
+          "sample_count": 378
+        },
+        "trajectory_id": "P03"
+      },
+      "P04_chirp": {
+        "amplitude_scale": 1.0,
+        "reference_definition": {
+          "amplitude_rad": 0.6,
+          "center_rad": 0.0,
+          "duration_s": 12.0,
+          "end_frequency_hz": 0.75,
+          "kind": "chirp",
+          "purpose": "frequency-response model selection",
+          "split": "model_selection",
+          "start_frequency_hz": 0.08
+        },
+        "speed_scale": 1.0,
+        "statistics": {
+          "duration_s": 12.02,
+          "max_abs_offset_rad": 0.599991896622644,
+          "max_abs_target_acceleration_rad_s2": 12.722188274643942,
+          "max_abs_target_velocity_rad_s": 2.7822460437978958,
+          "max_offset_rad": 0.599991896622644,
+          "min_offset_rad": -0.5999756852722675,
+          "sample_count": 601
+        },
+        "trajectory_id": "P04"
+      },
+      "P05_wide_sine": {
+        "amplitude_scale": 1.0,
+        "reference_definition": {
+          "amplitude_rad": 0.72,
+          "center_rad": 0.03,
+          "duration_s": 10.0,
+          "frequency_hz": 0.31,
+          "kind": "sine",
+          "purpose": "wide application-relevant excursion under a single unseen frequency",
+          "split": "model_selection"
+        },
+        "speed_scale": 1.0,
+        "statistics": {
+          "duration_s": 10.02,
+          "max_abs_offset_rad": 0.749994883603138,
+          "max_abs_target_acceleration_rad_s2": 2.731243087979729,
+          "max_abs_target_velocity_rad_s": 1.402311366119945,
+          "max_offset_rad": 0.749994883603138,
+          "min_offset_rad": -0.6899994315108612,
+          "sample_count": 501
+        },
+        "trajectory_id": "P05"
+      },
+      "P06_heldout_composite": {
+        "amplitude_scale": 1.0,
+        "reference_definition": {
+          "amplitudes_rad": [
+            0.34,
+            0.19,
+            0.09
+          ],
+          "center_offsets_rad": [
+            -0.06,
+            0.08,
+            -0.02
+          ],
+          "duration_s": 11.0,
+          "frequencies_hz": [
+            0.19,
+            0.61,
+            1.07
+          ],
+          "kind": "composite",
+          "phases_rad": [
+            0.2,
+            1.1,
+            2.2
+          ],
+          "purpose": "frozen unseen frequency, phase, and operating-point combination",
+          "split": "held_out",
+          "switch_times_s": [
+            3.5,
+            7.3
+          ]
+        },
+        "speed_scale": 1.0,
+        "statistics": {
+          "duration_s": 11.02,
+          "max_abs_offset_rad": 0.6527101516938736,
+          "max_abs_target_acceleration_rad_s2": 354.4216382433877,
+          "max_abs_target_velocity_rad_s": 7.1416622951031545,
+          "max_offset_rad": 0.6527101516938736,
+          "min_offset_rad": -0.5400358067517202,
+          "sample_count": 551
+        },
+        "trajectory_id": "P06"
+      },
+      "P07_heldout_sine_hold": {
+        "amplitude_scale": 1.0,
+        "reference_definition": {
+          "active_duration_s": 6.5,
+          "amplitude_rad": 0.7,
+          "center_rad": 0.0,
+          "duration_s": 10.0,
+          "frequency_hz": 0.27,
+          "hold_position_rad": 0.25,
+          "kind": "sine_hold",
+          "purpose": "unseen dynamic-to-static transition",
+          "split": "held_out",
+          "transition_s": 0.5
+        },
+        "speed_scale": 1.0,
+        "statistics": {
+          "duration_s": 10.02,
+          "max_abs_offset_rad": 0.6999977892097778,
+          "max_abs_target_acceleration_rad_s2": 18.57315636541318,
+          "max_abs_target_velocity_rad_s": 2.981465261057603,
+          "max_offset_rad": 0.6999646276357362,
+          "min_offset_rad": -0.6999977892097778,
+          "sample_count": 501
+        },
+        "trajectory_id": "P07"
+      }
+    },
+    "source_contract_file": "source-definition/experiment-contract.json",
+    "source_contract_sha256": "d9f53b7ed4c6af2a4f889dd7177babbc8540189a12c313a62400e2ce593e029d",
+    "source_generator_file": "source-definition/generate_chapter02_dataset.py",
+    "source_generator_sha256": "dba0be3d2d43a00a6209ae2dc313b70b6bc04df40e90646f8ced02766b31dc8a",
+    "source_schema_version": "phyintel-chapter02-rs06-sim-position-data-v1"
+  },
+  "control_configuration": {
+    "controller_id": "H1",
+    "kd": 3.38,
+    "kp": 50.0,
+    "mode": "position",
+    "motor_model": "RS06"
+  },
+  "generation_safety_limits": {
+    "max_abs_offset_rad": 1.0,
+    "max_abs_target_acceleration_rad_s2": 500.0,
+    "max_abs_target_velocity_rad_s": 10.0,
+    "max_explicit_excitation_frequency_hz": 1.07
+  },
+  "position_semantics": "q_target = operator_base_center + trajectory.parameters.operating_center_offset_rad + q_offset_rad",
+  "sample_rate_hz": 50.0,
+  "schema": "rs06-identification-trajectory-suite/v2",
+  "seed": 330288,
+  "trajectories": [
+    {
+      "file": "P01_slow_triangle.csv",
+      "id": "P01",
+      "name": "slow_triangle",
+      "parameters": {
+        "amplitude_scale": 1.0,
+        "chapter_profile_id": "P01_slow_triangle",
+        "contains_declared_position_steps": false,
+        "operating_center_offset_rad": 0.0,
+        "reference_definition": {
+          "amplitude_rad": 0.65,
+          "center_rad": 0.0,
+          "duration_s": 12.0,
+          "frequency_hz": 0.16666666666666666,
+          "kind": "triangle",
+          "purpose": "slow motion, direction reversals, damping, and dry friction",
+          "split": "calibration"
+        },
+        "sampling_semantics": "P03 is half-open like the reference generator; all other profiles use an endpoint-inclusive sampled duration",
+        "scaled_max_explicit_frequency_hz": 0.16666666666666666,
+        "speed_scale": 1.0,
+        "time_transform": "reference_time_s = speed_scale * time_s"
+      },
+      "purpose": "slow motion, direction reversals, damping, and dry friction",
+      "sample_rate_hz": 50.0,
+      "sha256": "223a3a37b5f69bb5e4bb7fc0365386df8db7daba92fadb4b58e7d2e7e96b37b3",
+      "split": "calibration",
+      "statistics": {
+        "duration_s": 12.02,
+        "max_abs_offset_rad": 0.65,
+        "max_abs_target_acceleration_rad_s2": 43.33333333333134,
+        "max_abs_target_velocity_rad_s": 0.4333333333333911,
+        "max_offset_rad": 0.65,
+        "min_offset_rad": -0.65,
+        "sample_count": 601
+      }
+    },
+    {
+      "file": "P02_multisine.csv",
+      "id": "P02",
+      "name": "multisine",
+      "parameters": {
+        "amplitude_scale": 1.0,
+        "chapter_profile_id": "P02_multisine",
+        "contains_declared_position_steps": false,
+        "operating_center_offset_rad": 0.0,
+        "reference_definition": {
+          "amplitudes_rad": [
+            0.34,
+            0.18,
+            0.09
+          ],
+          "center_rad": 0.0,
+          "duration_s": 12.0,
+          "frequencies_hz": [
+            0.13,
+            0.37,
+            0.83
+          ],
+          "kind": "multisine",
+          "phases_rad": [
+            0.0,
+            0.8,
+            1.7
+          ],
+          "purpose": "simultaneous low-, medium-, and higher-frequency excitation",
+          "split": "calibration"
+        },
+        "sampling_semantics": "P03 is half-open like the reference generator; all other profiles use an endpoint-inclusive sampled duration",
+        "scaled_max_explicit_frequency_hz": 0.83,
+        "speed_scale": 1.0,
+        "time_transform": "reference_time_s = speed_scale * time_s"
+      },
+      "purpose": "simultaneous low-, medium-, and higher-frequency excitation",
+      "sample_rate_hz": 50.0,
+      "sha256": "52e89bb0859607fdda5694d1f55ab03c56ee04fcb56c1d2303a19ba1c2bc4633",
+      "split": "calibration",
+      "statistics": {
+        "duration_s": 12.02,
+        "max_abs_offset_rad": 0.4670751232346083,
+        "max_abs_target_acceleration_rad_s2": 3.5400966006642056,
+        "max_abs_target_velocity_rad_s": 1.1338074818723884,
+        "max_offset_rad": 0.4670751232346083,
+        "min_offset_rad": -0.43768051257339663,
+        "sample_count": 601
+      }
+    },
+    {
+      "file": "P03_smooth_levels.csv",
+      "id": "P03",
+      "name": "smooth_levels",
+      "parameters": {
+        "amplitude_scale": 1.0,
+        "chapter_profile_id": "P03_smooth_levels",
+        "contains_declared_position_steps": false,
+        "operating_center_offset_rad": 0.0,
+        "reference_definition": {
+          "hold_s": 0.55,
+          "kind": "smooth_levels",
+          "levels_rad": [
+            0.0,
+            -0.45,
+            0.45,
+            -0.7,
+            0.2,
+            0.7,
+            -0.3,
+            0.0
+          ],
+          "purpose": "large but smooth position changes, settling, and actuator-effort demand",
+          "split": "calibration",
+          "transition_s": 0.45
+        },
+        "sampling_semantics": "P03 is half-open like the reference generator; all other profiles use an endpoint-inclusive sampled duration",
+        "scaled_max_explicit_frequency_hz": 0.0,
+        "speed_scale": 1.0,
+        "time_transform": "reference_time_s = speed_scale * time_s"
+      },
+      "purpose": "large but smooth position changes, settling, and actuator-effort demand",
+      "sample_rate_hz": 50.0,
+      "sha256": "d8a6fba0bce668d7a7e7e0927cdb375ac70af685d68f0ced04910e25a7cd0fc1",
+      "split": "calibration",
+      "statistics": {
+        "duration_s": 7.56,
+        "max_abs_offset_rad": 0.7,
+        "max_abs_target_acceleration_rad_s2": 27.707009720682187,
+        "max_abs_target_velocity_rad_s": 4.0085538491419435,
+        "max_offset_rad": 0.7,
+        "min_offset_rad": -0.7,
+        "sample_count": 378
+      }
+    },
+    {
+      "file": "P04_chirp.csv",
+      "id": "P04",
+      "name": "chirp",
+      "parameters": {
+        "amplitude_scale": 1.0,
+        "chapter_profile_id": "P04_chirp",
+        "contains_declared_position_steps": false,
+        "operating_center_offset_rad": 0.0,
+        "reference_definition": {
+          "amplitude_rad": 0.6,
+          "center_rad": 0.0,
+          "duration_s": 12.0,
+          "end_frequency_hz": 0.75,
+          "kind": "chirp",
+          "purpose": "frequency-response model selection",
+          "split": "model_selection",
+          "start_frequency_hz": 0.08
+        },
+        "sampling_semantics": "P03 is half-open like the reference generator; all other profiles use an endpoint-inclusive sampled duration",
+        "scaled_max_explicit_frequency_hz": 0.75,
+        "speed_scale": 1.0,
+        "time_transform": "reference_time_s = speed_scale * time_s"
+      },
+      "purpose": "frequency-response model selection",
+      "sample_rate_hz": 50.0,
+      "sha256": "eb314a47e9c1157d313b2aba2a6f6989cfe9672a78a9671ee3ca69eca7ea2b82",
+      "split": "model_selection",
+      "statistics": {
+        "duration_s": 12.02,
+        "max_abs_offset_rad": 0.599991896622644,
+        "max_abs_target_acceleration_rad_s2": 12.722188274643942,
+        "max_abs_target_velocity_rad_s": 2.7822460437978958,
+        "max_offset_rad": 0.599991896622644,
+        "min_offset_rad": -0.5999756852722675,
+        "sample_count": 601
+      }
+    },
+    {
+      "file": "P05_wide_sine.csv",
+      "id": "P05",
+      "name": "wide_sine",
+      "parameters": {
+        "amplitude_scale": 1.0,
+        "chapter_profile_id": "P05_wide_sine",
+        "contains_declared_position_steps": false,
+        "operating_center_offset_rad": 0.0,
+        "reference_definition": {
+          "amplitude_rad": 0.72,
+          "center_rad": 0.03,
+          "duration_s": 10.0,
+          "frequency_hz": 0.31,
+          "kind": "sine",
+          "purpose": "wide application-relevant excursion under a single unseen frequency",
+          "split": "model_selection"
+        },
+        "sampling_semantics": "P03 is half-open like the reference generator; all other profiles use an endpoint-inclusive sampled duration",
+        "scaled_max_explicit_frequency_hz": 0.31,
+        "speed_scale": 1.0,
+        "time_transform": "reference_time_s = speed_scale * time_s"
+      },
+      "purpose": "wide application-relevant excursion under a single unseen frequency",
+      "sample_rate_hz": 50.0,
+      "sha256": "749b3b26f136cf8b148cc6645e4d5b09a4add2088dec8b634cce31c74a319389",
+      "split": "model_selection",
+      "statistics": {
+        "duration_s": 10.02,
+        "max_abs_offset_rad": 0.749994883603138,
+        "max_abs_target_acceleration_rad_s2": 2.731243087979729,
+        "max_abs_target_velocity_rad_s": 1.402311366119945,
+        "max_offset_rad": 0.749994883603138,
+        "min_offset_rad": -0.6899994315108612,
+        "sample_count": 501
+      }
+    },
+    {
+      "file": "P06_heldout_composite.csv",
+      "id": "P06",
+      "name": "heldout_composite",
+      "parameters": {
+        "amplitude_scale": 1.0,
+        "chapter_profile_id": "P06_heldout_composite",
+        "contains_declared_position_steps": true,
+        "operating_center_offset_rad": 0.0,
+        "reference_definition": {
+          "amplitudes_rad": [
+            0.34,
+            0.19,
+            0.09
+          ],
+          "center_offsets_rad": [
+            -0.06,
+            0.08,
+            -0.02
+          ],
+          "duration_s": 11.0,
+          "frequencies_hz": [
+            0.19,
+            0.61,
+            1.07
+          ],
+          "kind": "composite",
+          "phases_rad": [
+            0.2,
+            1.1,
+            2.2
+          ],
+          "purpose": "frozen unseen frequency, phase, and operating-point combination",
+          "split": "held_out",
+          "switch_times_s": [
+            3.5,
+            7.3
+          ]
+        },
+        "sampling_semantics": "P03 is half-open like the reference generator; all other profiles use an endpoint-inclusive sampled duration",
+        "scaled_max_explicit_frequency_hz": 1.07,
+        "speed_scale": 1.0,
+        "time_transform": "reference_time_s = speed_scale * time_s"
+      },
+      "purpose": "frozen unseen frequency, phase, and operating-point combination",
+      "sample_rate_hz": 50.0,
+      "sha256": "a2a2f3789dec980264147c5be02e3a53580077a9c025c8a7919d07b48bb2c468",
+      "split": "held_out",
+      "statistics": {
+        "duration_s": 11.02,
+        "max_abs_offset_rad": 0.6527101516938736,
+        "max_abs_target_acceleration_rad_s2": 354.4216382433877,
+        "max_abs_target_velocity_rad_s": 7.1416622951031545,
+        "max_offset_rad": 0.6527101516938736,
+        "min_offset_rad": -0.5400358067517202,
+        "sample_count": 551
+      }
+    },
+    {
+      "file": "P07_heldout_sine_hold.csv",
+      "id": "P07",
+      "name": "heldout_sine_hold",
+      "parameters": {
+        "amplitude_scale": 1.0,
+        "chapter_profile_id": "P07_heldout_sine_hold",
+        "contains_declared_position_steps": false,
+        "operating_center_offset_rad": 0.0,
+        "reference_definition": {
+          "active_duration_s": 6.5,
+          "amplitude_rad": 0.7,
+          "center_rad": 0.0,
+          "duration_s": 10.0,
+          "frequency_hz": 0.27,
+          "hold_position_rad": 0.25,
+          "kind": "sine_hold",
+          "purpose": "unseen dynamic-to-static transition",
+          "split": "held_out",
+          "transition_s": 0.5
+        },
+        "sampling_semantics": "P03 is half-open like the reference generator; all other profiles use an endpoint-inclusive sampled duration",
+        "scaled_max_explicit_frequency_hz": 0.27,
+        "speed_scale": 1.0,
+        "time_transform": "reference_time_s = speed_scale * time_s"
+      },
+      "purpose": "unseen dynamic-to-static transition",
+      "sample_rate_hz": 50.0,
+      "sha256": "a3162bcad8d22e3e5ac7c70420f74c4c9a14a094a25efa8c95f27c2eefaed9fb",
+      "split": "held_out",
+      "statistics": {
+        "duration_s": 10.02,
+        "max_abs_offset_rad": 0.6999977892097778,
+        "max_abs_target_acceleration_rad_s2": 18.57315636541318,
+        "max_abs_target_velocity_rad_s": 2.981465261057603,
+        "max_offset_rad": 0.6999646276357362,
+        "min_offset_rad": -0.6999977892097778,
+        "sample_count": 501
+      }
+    }
+  ],
+  "trajectory_count": 7
+}

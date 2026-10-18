@@ -1,0 +1,35 @@
+B0 16-MOTOR EPISODE LIST (32 EPISODES)
+==================================================
+
+01. B0_16__H1__P01_slow_triangle__R01
+02. B0_16__H1__P01_slow_triangle__R02
+03. B0_16__H1__P01_slow_triangle__R03
+04. B0_16__H1__P02_multisine__R01
+05. B0_16__H1__P02_multisine__R02
+06. B0_16__H1__P02_multisine__R03
+07. B0_16__H1__P03_smooth_levels__R01
+08. B0_16__H1__P03_smooth_levels__R02
+09. B0_16__H1__P03_smooth_levels__R03
+10. B0_16__H1__P04_chirp__R01
+11. B0_16__H1__P04_chirp__R02
+12. B0_16__H1__P04_chirp__R03
+13. B0_16__H1__P05_wide_sine__R01
+14. B0_16__H1__P05_wide_sine__R02
+15. B0_16__H1__P05_wide_sine__R03
+16. B0_16__H1__PILOT_LOW_AMPLITUDE
+17. B0_16__H2__P01_slow_triangle__R01
+18. B0_16__H2__P01_slow_triangle__R02
+19. B0_16__H2__P01_slow_triangle__R03
+20. B0_16__H2__P02_multisine__R01
+21. B0_16__H2__P02_multisine__R02
+22. B0_16__H2__P02_multisine__R03
+23. B0_16__H2__P03_smooth_levels__R01
+24. B0_16__H2__P03_smooth_levels__R02
+25. B0_16__H2__P03_smooth_levels__R03
+26. B0_16__H2__P04_chirp__R01
+27. B0_16__H2__P04_chirp__R02
+28. B0_16__H2__P04_chirp__R03
+29. B0_16__H2__P05_wide_sine__R01
+30. B0_16__H2__P05_wide_sine__R02
+31. B0_16__H2__P05_wide_sine__R03
+32. B0_16__H2__PILOT_LOW_AMPLITUDE

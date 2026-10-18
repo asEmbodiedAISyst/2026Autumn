@@ -1,0 +1,177 @@
+{
+  "mujoco_version": "3.14.0",
+  "scope": "structural MJCF checks only; no hardware dynamics claim",
+  "all_passed": true,
+  "models": [
+    {
+      "configuration": "M0",
+      "xml": "/home/oliver/Halwani/Classes/Class_03_Basic_Digitization/additional_material/models/1DOF-M0.xml",
+      "loaded": true,
+      "nq": 1,
+      "nv": 1,
+      "nu": 1,
+      "nbody": 3,
+      "ngeom": 4,
+      "joint_axis": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "joint_range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "moving_mass_kg_including_m0_regularization": 1e-06,
+      "declared_external_mass_kg": 0.0,
+      "gravity_probe_q_rad": 0.4,
+      "gravity_probe_zero_control_qacc_rad_s2": -6.462348535570509e-15,
+      "collision_enabled_geom_count": 0,
+      "checks": {
+        "platform_mesh_declared": true,
+        "platform_visual_present": true,
+        "one_degree_of_freedom": true,
+        "one_actuator": true,
+        "joint_limit_is_plus_minus_90_deg": true,
+        "collision_disabled": true,
+        "external_mass_matches_record": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "B0",
+      "xml": "/home/oliver/Halwani/Classes/Class_03_Basic_Digitization/additional_material/models/1DOF-B0.xml",
+      "loaded": true,
+      "nq": 1,
+      "nv": 1,
+      "nu": 1,
+      "nbody": 7,
+      "ngeom": 8,
+      "joint_axis": [
+        -2.465190328815662e-32,
+        1.0,
+        1.0963452368173417e-15
+      ],
+      "joint_range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "moving_mass_kg_including_m0_regularization": 0.11,
+      "declared_external_mass_kg": 0.11,
+      "gravity_probe_q_rad": 0.4,
+      "gravity_probe_zero_control_qacc_rad_s2": -6.586918722875115e-11,
+      "collision_enabled_geom_count": 0,
+      "checks": {
+        "platform_mesh_declared": true,
+        "platform_visual_present": true,
+        "one_degree_of_freedom": true,
+        "one_actuator": true,
+        "joint_limit_is_plus_minus_90_deg": true,
+        "collision_disabled": true,
+        "external_mass_matches_record": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "B1",
+      "xml": "/home/oliver/Halwani/Classes/Class_03_Basic_Digitization/additional_material/models/1DOF-B1.xml",
+      "loaded": true,
+      "nq": 1,
+      "nv": 1,
+      "nu": 1,
+      "nbody": 7,
+      "ngeom": 8,
+      "joint_axis": [
+        0.0,
+        1.0,
+        1.0963452368173417e-15
+      ],
+      "joint_range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "moving_mass_kg_including_m0_regularization": 0.11,
+      "declared_external_mass_kg": 0.11,
+      "gravity_probe_q_rad": 0.4,
+      "gravity_probe_zero_control_qacc_rad_s2": -4.143622934739941e-11,
+      "collision_enabled_geom_count": 0,
+      "checks": {
+        "platform_mesh_declared": true,
+        "platform_visual_present": true,
+        "one_degree_of_freedom": true,
+        "one_actuator": true,
+        "joint_limit_is_plus_minus_90_deg": true,
+        "collision_disabled": true,
+        "external_mass_matches_record": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "B2",
+      "xml": "/home/oliver/Halwani/Classes/Class_03_Basic_Digitization/additional_material/models/1DOF-B2.xml",
+      "loaded": true,
+      "nq": 1,
+      "nv": 1,
+      "nu": 1,
+      "nbody": 7,
+      "ngeom": 8,
+      "joint_axis": [
+        0.0,
+        1.0,
+        1.0963452368173417e-15
+      ],
+      "joint_range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "moving_mass_kg_including_m0_regularization": 0.11,
+      "declared_external_mass_kg": 0.11,
+      "gravity_probe_q_rad": 0.4,
+      "gravity_probe_zero_control_qacc_rad_s2": -2.808107578839625e-11,
+      "collision_enabled_geom_count": 0,
+      "checks": {
+        "platform_mesh_declared": true,
+        "platform_visual_present": true,
+        "one_degree_of_freedom": true,
+        "one_actuator": true,
+        "joint_limit_is_plus_minus_90_deg": true,
+        "collision_disabled": true,
+        "external_mass_matches_record": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "G1",
+      "xml": "/home/oliver/Halwani/Classes/Class_03_Basic_Digitization/additional_material/models/1DOF-G1.xml",
+      "loaded": true,
+      "nq": 1,
+      "nv": 1,
+      "nu": 1,
+      "nbody": 7,
+      "ngeom": 8,
+      "joint_axis": [
+        0.0,
+        1.0,
+        1.0963452368173417e-15
+      ],
+      "joint_range_rad": [
+        -1.5707963267948966,
+        1.5707963267948966
+      ],
+      "moving_mass_kg_including_m0_regularization": 0.11,
+      "declared_external_mass_kg": 0.11,
+      "gravity_probe_q_rad": 0.4,
+      "gravity_probe_zero_control_qacc_rad_s2": 90.90388920984734,
+      "collision_enabled_geom_count": 0,
+      "checks": {
+        "platform_mesh_declared": true,
+        "platform_visual_present": true,
+        "one_degree_of_freedom": true,
+        "one_actuator": true,
+        "joint_limit_is_plus_minus_90_deg": true,
+        "collision_disabled": true,
+        "external_mass_matches_record": true
+      },
+      "passed": true
+    }
+  ]
+}

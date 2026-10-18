@@ -10,7 +10,9 @@
 
 * [02 Actuator Basics for Controlled Action](module-01-actuator-data-for-1-dof-systems/02-actuator-basics-for-controlled-action.md)
 * [03 Basic Digitization of Physical Embodiment](module-01-actuator-data-for-1-dof-systems/03-basic-digitization-of-physical-embodiment.md)
+  * [RS06 fixture digitization](module-01-actuator-data-for-1-dof-systems/03-rs06-fixture-digitization.md)
 * [04 Basic Quantification of Sim2Real Gap](module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md)
+  * [RS06 hardware identification](module-01-actuator-data-for-1-dof-systems/04-rs06-hardware-identification.md)
 
 ## Module 02: Hand Data for Multi-Fingered Manipulation
 
@@ -21,9 +23,16 @@
 ## Module 03: Arm Data for Guided Interaction
 
 * [08 Let's Build a Simple Arm & Turn it On](module-03-arm-data-for-guided-interaction/08-lets-build-a-simple-arm-and-turn-it-on.md)
+  * [Practice: control the arm in simulation](module-03-arm-data-for-guided-interaction/08-practice.md)
+  * [Optional: assembly guide](module-03-arm-data-for-guided-interaction/08-assembly-optional.md)
+  * [Optional: power-on and zero](module-03-arm-data-for-guided-interaction/08-power-on-and-zero-optional.md)
 * [09 Teleoperation by Streaming from asMagic](module-03-arm-data-for-guided-interaction/09-teleoperation-by-streaming-from-asmagic.md)
+  * [Practice: teleoperate the simulated pusher](module-03-arm-data-for-guided-interaction/09-practice.md)
 * [10 Collect Data for Reinforcement Learning](module-03-arm-data-for-guided-interaction/10-collect-data-for-reinforcement-learning.md)
+  * [Practice: record and audit pusher data](module-03-arm-data-for-guided-interaction/10-practice.md)
 * [11 Sim2Real Gap in Hardware Deployment](module-03-arm-data-for-guided-interaction/11-sim2real-gap-in-hardware-deployment.md)
+  * [Practice: policy evidence and deployment checks](module-03-arm-data-for-guided-interaction/11-practice.md)
+  * [Optional: a VLM as the simulation controller](module-03-arm-data-for-guided-interaction/11-vlm-controller-optional.md)
 
 ## Module 04: Worksheets Guided Final Project Preparation
 

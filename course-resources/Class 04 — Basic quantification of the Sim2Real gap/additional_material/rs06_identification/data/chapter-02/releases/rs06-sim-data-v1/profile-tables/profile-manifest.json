@@ -1,0 +1,72 @@
+{
+  "command_column": "position_cmd_rad",
+  "profiles": [
+    {
+      "command_max_rad": 0.65,
+      "command_min_rad": -0.65,
+      "duration_s": 12.0,
+      "file": "data/chapter-02/releases/rs06-sim-data-v1/profile-tables/P01_slow_triangle.csv",
+      "profile_id": "P01_slow_triangle",
+      "sample_count": 1201,
+      "sha256": "14719040e2b5439d969c9268a61a3ab6cb23f30006b1ddf36d1ac063ec0ce3b7"
+    },
+    {
+      "command_max_rad": 0.4670751232346083,
+      "command_min_rad": -0.43778929399334576,
+      "duration_s": 12.0,
+      "file": "data/chapter-02/releases/rs06-sim-data-v1/profile-tables/P02_multisine.csv",
+      "profile_id": "P02_multisine",
+      "sample_count": 1201,
+      "sha256": "89ba85f9e0a6b10a95d6a68b271dd54e01a99c0eec30efea95a376c825f2e6e0"
+    },
+    {
+      "command_max_rad": 0.7,
+      "command_min_rad": -0.7,
+      "duration_s": 7.54,
+      "file": "data/chapter-02/releases/rs06-sim-data-v1/profile-tables/P03_smooth_levels.csv",
+      "profile_id": "P03_smooth_levels",
+      "sample_count": 755,
+      "sha256": "ef47e257ecc96bba4a99f6bad91380696a3ac2c04bcbb99a261e0d4441482a59"
+    },
+    {
+      "command_max_rad": 0.5999997929865194,
+      "command_min_rad": -0.5999996042747802,
+      "duration_s": 12.0,
+      "file": "data/chapter-02/releases/rs06-sim-data-v1/profile-tables/P04_chirp.csv",
+      "profile_id": "P04_chirp",
+      "sample_count": 1201,
+      "sha256": "56baa15c21f2a941c2b5ba3862d59ba11745a1f94b1209166fc0d960c1e20d63"
+    },
+    {
+      "command_max_rad": 0.749994883603138,
+      "command_min_rad": -0.6899994315108612,
+      "duration_s": 10.0,
+      "file": "data/chapter-02/releases/rs06-sim-data-v1/profile-tables/P05_wide_sine.csv",
+      "profile_id": "P05_wide_sine",
+      "sample_count": 1001,
+      "sha256": "6b929edd6597c7b62b3839722d7724a77837762d336c7455977b57421cbd4b06"
+    },
+    {
+      "command_max_rad": 0.6527843136274819,
+      "command_min_rad": -0.5401185980834363,
+      "duration_s": 11.0,
+      "file": "data/chapter-02/releases/rs06-sim-data-v1/profile-tables/P06_heldout_composite.csv",
+      "profile_id": "P06_heldout_composite",
+      "sample_count": 1101,
+      "sha256": "72f0848f80f0b722c810f93a4d6121e4a4cc1f18645018befc33be3bb4326ad5"
+    },
+    {
+      "command_max_rad": 0.6999998618255429,
+      "command_min_rad": -0.6999977892097778,
+      "duration_s": 10.0,
+      "file": "data/chapter-02/releases/rs06-sim-data-v1/profile-tables/P07_heldout_sine_hold.csv",
+      "profile_id": "P07_heldout_sine_hold",
+      "sample_count": 1001,
+      "sha256": "50c6d59add3f024fa8811534dee5afa776b249c115283f82f531d87712c29375"
+    }
+  ],
+  "sample_rate_hz": 100.0,
+  "schema_version": "phyintel-canonical-rs06-profile-tables-v1",
+  "source_release_id": "chapter02-rs06-sim-data-v1",
+  "time_column": "profile_time_s"
+}

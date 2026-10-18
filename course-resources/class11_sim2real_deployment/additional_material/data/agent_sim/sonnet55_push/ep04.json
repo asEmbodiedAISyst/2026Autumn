@@ -1,0 +1,68 @@
+{
+ "result": {
+  "success": true,
+  "calls": 3,
+  "ended_by": "sim_success",
+  "cost_usd": 0.0110646,
+  "usage": {
+   "input": 2501,
+   "output": 494,
+   "cache_read": 5613,
+   "cache_write": 0
+  }
+ },
+ "transcript": [
+  {
+   "call": 0,
+   "tool": "push",
+   "input": {
+    "cube_px": [
+     266,
+     106
+    ],
+    "goal_px": [
+     202,
+     88
+    ],
+    "why": "Push cube toward goal"
+   },
+   "report": "cube at (41.8, -3.2) cm, goal at (45.5, 1.0) cm. push done; tip lifted at (42.5, -2.3, 7.0) cm"
+  },
+  {
+   "call": 1,
+   "tool": "locate",
+   "input": {
+    "u": 175,
+    "v": 205,
+    "what": "cube"
+   },
+   "report": "cube at x=44.1, y=2.1 cm; from the tip that is dx=+1.5, dy=+4.4 cm"
+  },
+  {
+   "call": 1,
+   "tool": "locate",
+   "input": {
+    "u": 190,
+    "v": 165,
+    "what": "goal"
+   },
+   "report": "goal at x=46.4, y=0.8 cm; from the tip that is dx=+3.8, dy=+3.1 cm"
+  },
+  {
+   "call": 2,
+   "tool": "push",
+   "input": {
+    "cube_px": [
+     175,
+     205
+    ],
+    "goal_px": [
+     190,
+     165
+    ],
+    "why": "Push cube to goal"
+   },
+   "report": "cube at (44.1, 2.1) cm, goal at (46.4, 0.8) cm. TASK SUCCESS detected by the simulator"
+  }
+ ]
+}

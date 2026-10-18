@@ -4,7 +4,7 @@
   "single_page": true,
   "description": "06 November 2026 \u00b7 09:00\u201310:50 \u00b7 L12 | WEI Jinqi & SONG Chaoyang",
   "files_sha256": {
-    "2026-autumn/resources/class09/README.md": "1278608327ab4eb6b00bda4f76f0347e6e445e0c25de276a15c9ca48970c9c50",
+    "2026-autumn/resources/class09/README.md": "b44c247c4cfc95155e1e86c0cedab64f22e646e1adc561c51d9b89fbc9268189",
     "2026-autumn/resources/class09/code/lesson_lab.py": "bb6e01292acfb661530452bbc59178e0d9de4a47c01318dc10e76a3be8d15f08",
     "2026-autumn/resources/class09/consolidation/package/additional_material/code/fake_phone.py": "aab6d7d7df28aa907c896a661c04f23a149c59c660fd00102c5cad9371db22c5",
     "2026-autumn/resources/class09/consolidation/package/additional_material/code/teleop_common.py": "05f296c53035390ec267ea0b70cff8019a5c7c508a48cc7419fc58101158ceb9",
@@ -757,5 +757,6 @@
     "2026-autumn/resources/class09/figures/teleop-path.png": "2484bc7488349c384de5f636aaeb777eeb65991775c4dc5789cbe8a65d7c4e03",
     "2026-autumn/resources/class09/requirements-tested-macos.txt": "99e0aa15e9f38700468361c0267b112da63b5ccf45315bff00eed01180fa4b03"
   },
-  "inventory_scope": "Current class resource regular files, excluding PACKAGE.json; scientific code/data/model assets retained, private authoring sources excluded."
+  "inventory_scope": "Current class resource regular files, excluding PACKAGE.json; scientific code/data/model assets retained, private authoring sources excluded.",
+  "scope": "Current source-led lesson; original author package is linked from README. Earlier assets retained historically."
 }

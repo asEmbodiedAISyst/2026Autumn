@@ -1,0 +1,26 @@
+<!-- reBot B601-RS with the pusher tool (rod + phone, meshes/tool/robot_tool.stl) instead of the gripper, on the
+     table with one black 40 mm cube and a green 6 cm target square. The tool and the arm model are those of the
+     Class 10 package (rebot_pusher); the table, the cameras and the cube are those of scene_cube.xml. -->
+<mujoco model="rebot_table_pusher_cube">
+  <include file="rebot_b601_rs_pusher.xml"/>
+  <include file="table_env.xml"/>
+
+  <asset>
+    <mesh name="cube_40mm" file="objects/cube_40mm.stl" scale="0.001 0.001 0.001"/>
+    <material name="cube_black" rgba="0.08 0.08 0.08 1" specular="0.3" shininess="0.3"/>
+    <material name="goal_green" rgba="0.026 0.417 0.273 1"/>
+  </asset>
+
+  <worldbody>
+    <!-- The STL origin is the centre of the bottom face; the cube stands on the table top (z = 0). -->
+    <body name="cube" pos="0.30 0.06 0">
+      <freejoint name="cube_joint"/>
+      <geom type="mesh" mesh="cube_40mm" material="cube_black" group="2" contype="0" conaffinity="0"/>
+      <geom name="cube_collision" type="box" size="0.02 0.02 0.02" pos="0 0 0.02" mass="0.015" group="3"
+            rgba="0.3 0.3 0.3 0.3" friction="0.4 0.005 0.0001" solref="0.004 1"/>
+    </body>
+    <!-- Target: a 6 cm square on the table, no collisions -->
+    <geom name="goal" type="box" size="0.03 0.03 0.0005" pos="0.36 -0.06 0.0006" material="goal_green"
+          contype="0" conaffinity="0"/>
+  </worldbody>
+</mujoco>

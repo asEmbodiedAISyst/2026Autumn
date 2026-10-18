@@ -1,0 +1,11 @@
+MODEL INVENTORY
+===============
+
+Model         Platform  External mass  Payload centres
+1DOF-M0.xml   yes       0 g            not applicable
+1DOF-B0.xml   yes       110 g          -60 mm, +60 mm
+1DOF-B1.xml   yes       110 g          -80 mm, +80 mm
+1DOF-B2.xml   yes       110 g          -100 mm, +100 mm
+1DOF-G1.xml   yes       110 g          +60 mm, +100 mm
+
+Shared meshes are stored once in models/assets/. All five XML files are the validated, loadable models used in the paper.

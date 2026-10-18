@@ -1,0 +1,126 @@
+{
+ "result": {
+  "success": true,
+  "calls": 6,
+  "ended_by": "done",
+  "cost_usd": 0.037827599999999996,
+  "usage": {
+   "input": 10230,
+   "output": 1551,
+   "cache_read": 9288,
+   "cache_write": 0
+  }
+ },
+ "transcript": [
+  {
+   "call": 0,
+   "tool": "locate",
+   "input": {
+    "u": 122,
+    "v": 122,
+    "what": "cube"
+   },
+   "report": "cube at x=41.2, y=5.9 cm; from the tip that is dx=+9.1, dy=+7.5 cm"
+  },
+  {
+   "call": 0,
+   "tool": "locate",
+   "input": {
+    "u": 157,
+    "v": 70,
+    "what": "goal"
+   },
+   "report": "goal at x=45.2, y=2.4 cm; from the tip that is dx=+13.1, dy=+4.0 cm"
+  },
+  {
+   "call": 1,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": 4,
+      "dy_cm": 11,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     },
+     {
+      "dx_cm": 0,
+      "dy_cm": 0,
+      "dz_cm": -12,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "go behind cube (opposite goal), descend"
+   },
+   "report": "move 1 done: tip at (36.0, 9.4, 13.3) cm\nmove 2 done: tip at (36.0, 9.4, 1.3) cm"
+  },
+  {
+   "call": 2,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": 5,
+      "dy_cm": -4,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "push cube toward goal"
+   },
+   "report": "move 1 done: tip at (41.0, 5.4, 1.3) cm"
+  },
+  {
+   "call": 3,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": 0,
+      "dy_cm": 0,
+      "dz_cm": 5,
+      "dyaw_deg": 0
+     },
+     {
+      "dx_cm": 0,
+      "dy_cm": 6,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     },
+     {
+      "dx_cm": 3,
+      "dy_cm": 0,
+      "dz_cm": -5,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "reposition to left side of cube"
+   },
+   "report": "move 1 done: tip at (41.0, 5.4, 6.3) cm\nmove 2 done: tip at (41.0, 11.4, 6.3) cm\nmove 3 done: tip at (44.0, 11.4, 1.3) cm"
+  },
+  {
+   "call": 4,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": 0,
+      "dy_cm": -6.5,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "push cube sideways onto goal"
+   },
+   "report": "move 1 done: tip at (44.0, 4.9, 1.3) cm"
+  },
+  {
+   "call": 5,
+   "tool": "done",
+   "input": {
+    "success": true,
+    "reason": "Cube appears centred on the goal square."
+   }
+  }
+ ]
+}

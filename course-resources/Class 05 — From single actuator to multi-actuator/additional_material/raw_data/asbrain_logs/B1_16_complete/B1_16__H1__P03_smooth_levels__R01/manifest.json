@@ -1,0 +1,1023 @@
+{
+  "episode_id": "B1_16__H1__P03_smooth_levels__R01",
+  "motor_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "role": "calibration",
+  "controller": "H1",
+  "profile": "P03_smooth_levels",
+  "repeat": "R01",
+  "mechanical_configuration": "B1",
+  "fixture": {
+    "type": "balanced equal-payload branches",
+    "fixture_revision": "B1-16-motors-110g",
+    "external_link_installed": true,
+    "external_pin_installed": true,
+    "external_payload_installed": true,
+    "payload_center_positions_mm": [
+      -80,
+      80
+    ],
+    "absolute_payload_center_distance_mm": 80,
+    "payload_body_mass_each_g": 40,
+    "payload_pin_mass_each_g": 4,
+    "complete_payload_mass_each_g": 44,
+    "complete_payload_includes_pin": true,
+    "payload_count": 2,
+    "link_mass_g": 22,
+    "total_external_moving_mass_g": 110,
+    "gravity_moment_design": "approximately canceled by equal masses at symmetric positions",
+    "mass_property_status": "Measured masses: 22 g link and two 44 g payload assemblies, each made from a 40 g body and 4 g pin. Inertia is not inferred from total mass alone.",
+    "operator_statement": "All 16 motors have the B1 fixture installed, with clearance for centering and the planned movement."
+  },
+  "status": "complete",
+  "media": {
+    "required": true,
+    "views": [
+      {
+        "name": "view1",
+        "iphone_ip": "172.18.12.150",
+        "ar_port": 8000
+      },
+      {
+        "name": "view2",
+        "iphone_ip": "172.18.12.96",
+        "ar_port": 8000
+      }
+    ]
+  },
+  "buses": [
+    {
+      "label": "bus1",
+      "serial_port": "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FTBIHSCG-if00-port0",
+      "motor_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "label": "bus2",
+      "serial_port": "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FTBIHS37-if00-port0",
+      "motor_ids": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    }
+  ],
+  "controller_settings": {
+    "role": "baseline",
+    "position_p_gain_raw": 600,
+    "position_i_gain_raw": 0,
+    "position_d_gain_raw": 150
+  },
+  "controller_readback": {
+    "controller": "H1",
+    "settings": {
+      "role": "baseline",
+      "position_p_gain_raw": 600,
+      "position_i_gain_raw": 0,
+      "position_d_gain_raw": 150
+    },
+    "readback": {
+      "0": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "1": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "2": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "3": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "4": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "5": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "6": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "7": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "8": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "9": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "10": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "11": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "12": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "13": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "14": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      },
+      "15": {
+        "position_p_gain": 600,
+        "position_i_gain": 0,
+        "position_d_gain": 150
+      }
+    }
+  },
+  "media_identity": {
+    "episode_id": "B1_16__H1__P03_smooth_levels__R01",
+    "title": "H1 smooth-level motion, calibration repeat 01 \u2014 all 16 motors, IDs 0\u201315",
+    "directory_name": "B1_16__H1__P03_smooth_levels__R01",
+    "campaign_ordinal": 7,
+    "display_code": "H1-B1-P03-R01",
+    "scene_label": "H1-B1-P03-R01",
+    "experiment_number": "260921-140606",
+    "artifact_prefix": "260921-140606_H1-B1-P03-R01",
+    "mechanical_configuration": "B1",
+    "campaign_total_episodes": 30
+  },
+  "before_motion": {
+    "views": {
+      "view2": {
+        "ok": true,
+        "command": "SNAPSHOT",
+        "session_id": "B1_16__H1__P03_smooth_levels__R01",
+        "snapshot": {
+          "snapshot_index": 1,
+          "label": "before_motion",
+          "requested_utc": "2026-09-21T10:07:55.788Z",
+          "requested_host_monotonic_ns": 1021375522849690,
+          "source_frame_index": 1,
+          "source_iphone_timestamp_unix_s": 1789985275.5327249,
+          "source_host_receive_timestamp_unix_s": 1789985275.7756054,
+          "source_host_receive_monotonic_ns": 1021375509476157,
+          "selection_delta_ms": 13.373533,
+          "source_age_s": 0.013373533,
+          "requested_max_age_s": 1.0,
+          "snapshot_file": "snapshots/260921-140606_H1-B1-P03-R01_snapshot_01_before_motion_frame_00000001.jpg",
+          "source_color_file": "raw/color_frames/260921-140606_H1-B1-P03-R01_frame_00000001_iphone_20260921T100755_532725Z.jpg"
+        },
+        "snapshot_path": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view2/media/episodes/B1_16__H1__P03_smooth_levels__R01/snapshots/260921-140606_H1-B1-P03-R01_snapshot_01_before_motion_frame_00000001.jpg"
+      },
+      "view1": {
+        "ok": true,
+        "command": "SNAPSHOT",
+        "session_id": "B1_16__H1__P03_smooth_levels__R01",
+        "snapshot": {
+          "snapshot_index": 1,
+          "label": "before_motion",
+          "requested_utc": "2026-09-21T10:07:55.790Z",
+          "requested_host_monotonic_ns": 1021375524289601,
+          "source_frame_index": 8,
+          "source_iphone_timestamp_unix_s": 1789985275.4845471,
+          "source_host_receive_timestamp_unix_s": 1789985275.7756994,
+          "source_host_receive_monotonic_ns": 1021375509570081,
+          "selection_delta_ms": 14.71952,
+          "source_age_s": 0.01471952,
+          "requested_max_age_s": 1.0,
+          "snapshot_file": "snapshots/260921-140606_H1-B1-P03-R01_snapshot_01_before_motion_frame_00000008.jpg",
+          "source_color_file": "raw/color_frames/260921-140606_H1-B1-P03-R01_frame_00000008_iphone_20260921T100755_484547Z.jpg"
+        },
+        "snapshot_path": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view1/media/episodes/B1_16__H1__P03_smooth_levels__R01/snapshots/260921-140606_H1-B1-P03-R01_snapshot_01_before_motion_frame_00000008.jpg"
+      }
+    }
+  },
+  "events": [
+    {
+      "label": "torque_enable_requested",
+      "host_monotonic_ns": 1021375625340954,
+      "host_wall_time_ns": 1789985275891470855
+    },
+    {
+      "label": "profile_start",
+      "host_monotonic_ns": 1021379625630155,
+      "host_wall_time_ns": 1789985279891760006
+    },
+    {
+      "label": "profile_complete",
+      "host_monotonic_ns": 1021388168752778,
+      "host_wall_time_ns": 1789985288434882600
+    },
+    {
+      "label": "torque_off_checked",
+      "host_monotonic_ns": 1021388184813838,
+      "host_wall_time_ns": 1789985288450943519
+    },
+    {
+      "label": "torque_disabled",
+      "host_monotonic_ns": 1021388267793541,
+      "host_wall_time_ns": 1789985288533923272
+    }
+  ],
+  "expected_samples_per_motor": 1255,
+  "telemetry_rows": 20080,
+  "telemetry_quality": {
+    "0": {
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0
+    },
+    "1": {
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0
+    },
+    "2": {
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0
+    },
+    "3": {
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0
+    },
+    "4": {
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0
+    },
+    "5": {
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0
+    },
+    "6": {
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0
+    },
+    "7": {
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0
+    },
+    "8": {
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0
+    },
+    "9": {
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0
+    },
+    "10": {
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0
+    },
+    "11": {
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0
+    },
+    "12": {
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0
+    },
+    "13": {
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0
+    },
+    "14": {
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0
+    },
+    "15": {
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0
+    }
+  },
+  "setup_zero_acquisition": {
+    "enabled": true,
+    "method": "bounded_logged_integral_goal_bias",
+    "feedback_gain_per_sample": 0.05,
+    "max_abs_goal_bias_ticks": 256,
+    "active_hold_s": 2.0,
+    "first_experimental_goal_raw": 2048,
+    "strict_tolerance_ticks": 5,
+    "alignment_reference_motor_id": 14,
+    "alignment_reference_position_raw": 2048,
+    "alignment_tolerance_ticks": 5,
+    "all_aligned_to_reference": true,
+    "per_motor": {
+      "0": {
+        "final_accumulated_bias_ticks": -8.350000000000007,
+        "final_applied_bias_ticks": -8,
+        "maximum_abs_applied_bias_ticks": 8,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "1": {
+        "final_accumulated_bias_ticks": 1.0500000000000003,
+        "final_applied_bias_ticks": 1,
+        "maximum_abs_applied_bias_ticks": 2,
+        "final_measured_position_raw": 2047,
+        "final_measured_error_ticks": 1,
+        "delta_from_reference_ticks": -1
+      },
+      "2": {
+        "final_accumulated_bias_ticks": 0.05,
+        "final_applied_bias_ticks": 0,
+        "maximum_abs_applied_bias_ticks": 0,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "3": {
+        "final_accumulated_bias_ticks": -0.10000000000000002,
+        "final_applied_bias_ticks": 0,
+        "maximum_abs_applied_bias_ticks": 1,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "4": {
+        "final_accumulated_bias_ticks": -2.65000000000001,
+        "final_applied_bias_ticks": -3,
+        "maximum_abs_applied_bias_ticks": 5,
+        "final_measured_position_raw": 2047,
+        "final_measured_error_ticks": 1,
+        "delta_from_reference_ticks": -1
+      },
+      "5": {
+        "final_accumulated_bias_ticks": -2.8499999999999943,
+        "final_applied_bias_ticks": -3,
+        "maximum_abs_applied_bias_ticks": 4,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "6": {
+        "final_accumulated_bias_ticks": -1.7499999999999951,
+        "final_applied_bias_ticks": -2,
+        "maximum_abs_applied_bias_ticks": 5,
+        "final_measured_position_raw": 2049,
+        "final_measured_error_ticks": -1,
+        "delta_from_reference_ticks": 1
+      },
+      "7": {
+        "final_accumulated_bias_ticks": -0.20000000000000012,
+        "final_applied_bias_ticks": 0,
+        "maximum_abs_applied_bias_ticks": 2,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "8": {
+        "final_accumulated_bias_ticks": -2.050000000000016,
+        "final_applied_bias_ticks": -2,
+        "maximum_abs_applied_bias_ticks": 4,
+        "final_measured_position_raw": 2047,
+        "final_measured_error_ticks": 1,
+        "delta_from_reference_ticks": -1
+      },
+      "9": {
+        "final_accumulated_bias_ticks": -1.6499999999999932,
+        "final_applied_bias_ticks": -2,
+        "maximum_abs_applied_bias_ticks": 5,
+        "final_measured_position_raw": 2049,
+        "final_measured_error_ticks": -1,
+        "delta_from_reference_ticks": 1
+      },
+      "10": {
+        "final_accumulated_bias_ticks": -2.2500000000000084,
+        "final_applied_bias_ticks": -2,
+        "maximum_abs_applied_bias_ticks": 4,
+        "final_measured_position_raw": 2047,
+        "final_measured_error_ticks": 1,
+        "delta_from_reference_ticks": -1
+      },
+      "11": {
+        "final_accumulated_bias_ticks": -1.8499999999999934,
+        "final_applied_bias_ticks": -2,
+        "maximum_abs_applied_bias_ticks": 5,
+        "final_measured_position_raw": 2049,
+        "final_measured_error_ticks": -1,
+        "delta_from_reference_ticks": 1
+      },
+      "12": {
+        "final_accumulated_bias_ticks": 1.1,
+        "final_applied_bias_ticks": 1,
+        "maximum_abs_applied_bias_ticks": 4,
+        "final_measured_position_raw": 2047,
+        "final_measured_error_ticks": 1,
+        "delta_from_reference_ticks": -1
+      },
+      "13": {
+        "final_accumulated_bias_ticks": -2.699999999999999,
+        "final_applied_bias_ticks": -3,
+        "maximum_abs_applied_bias_ticks": 4,
+        "final_measured_position_raw": 2049,
+        "final_measured_error_ticks": -1,
+        "delta_from_reference_ticks": 1
+      },
+      "14": {
+        "final_accumulated_bias_ticks": 7.749999999999998,
+        "final_applied_bias_ticks": 8,
+        "maximum_abs_applied_bias_ticks": 8,
+        "final_measured_position_raw": 2048,
+        "final_measured_error_ticks": 0,
+        "delta_from_reference_ticks": 0
+      },
+      "15": {
+        "final_accumulated_bias_ticks": -0.6000000000000004,
+        "final_applied_bias_ticks": -1,
+        "maximum_abs_applied_bias_ticks": 5,
+        "final_measured_position_raw": 2049,
+        "final_measured_error_ticks": -1,
+        "delta_from_reference_ticks": 1
+      }
+    }
+  },
+  "terminal_state": {
+    "all_torque_disabled": true,
+    "per_bus": {
+      "bus1": {
+        "torque_enable": {
+          "0": 0,
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0,
+          "7": 0
+        },
+        "all_torque_disabled": true,
+        "group_stop_errors": []
+      },
+      "bus2": {
+        "torque_enable": {
+          "8": 0,
+          "9": 0,
+          "10": 0,
+          "11": 0,
+          "12": 0,
+          "13": 0,
+          "14": 0,
+          "15": 0
+        },
+        "all_torque_disabled": true,
+        "group_stop_errors": []
+      }
+    },
+    "errors": {}
+  },
+  "motor_summary": [
+    {
+      "motor_id": 0,
+      "samples": 1255,
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15940552913677505,
+      "minimum_voltage_V": 4.7,
+      "maximum_temperature_C": 21,
+      "peak_abs_supply_current_A": 0.22,
+      "max_gap_s": 0.011276535,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 1,
+      "samples": 1255,
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15209375979542003,
+      "minimum_voltage_V": 4.6,
+      "maximum_temperature_C": 21,
+      "peak_abs_supply_current_A": 0.186,
+      "max_gap_s": 0.011958836,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 2,
+      "samples": 1255,
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15617955851593518,
+      "minimum_voltage_V": 4.5,
+      "maximum_temperature_C": 20,
+      "peak_abs_supply_current_A": 0.184,
+      "max_gap_s": 0.011207758,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 3,
+      "samples": 1255,
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.155369939425494,
+      "minimum_voltage_V": 4.6,
+      "maximum_temperature_C": 20,
+      "peak_abs_supply_current_A": 0.174,
+      "max_gap_s": 0.011212808,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 4,
+      "samples": 1255,
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15892228448365867,
+      "minimum_voltage_V": 4.4,
+      "maximum_temperature_C": 20,
+      "peak_abs_supply_current_A": 0.193,
+      "max_gap_s": 0.011109226,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 5,
+      "samples": 1255,
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15516773578137757,
+      "minimum_voltage_V": 4.4,
+      "maximum_temperature_C": 21,
+      "peak_abs_supply_current_A": 0.187,
+      "max_gap_s": 0.011117752,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 6,
+      "samples": 1255,
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.1559567529561067,
+      "minimum_voltage_V": 4.4,
+      "maximum_temperature_C": 20,
+      "peak_abs_supply_current_A": 0.196,
+      "max_gap_s": 0.011126137,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 7,
+      "samples": 1255,
+      "expected_samples": 1255,
+      "missing_samples": 0,
+      "missing_fraction": 0.0,
+      "primary_missed_replies": 0,
+      "primary_loss_fraction": 0.0,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15660360193327363,
+      "minimum_voltage_V": 4.4,
+      "maximum_temperature_C": 22,
+      "peak_abs_supply_current_A": 0.195,
+      "max_gap_s": 0.011134202,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 8,
+      "samples": 1254,
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15283621094337138,
+      "minimum_voltage_V": 4.7,
+      "maximum_temperature_C": 20,
+      "peak_abs_supply_current_A": 0.173,
+      "max_gap_s": 0.020002045,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 9,
+      "samples": 1254,
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.1629292393557209,
+      "minimum_voltage_V": 4.6,
+      "maximum_temperature_C": 20,
+      "peak_abs_supply_current_A": 0.211,
+      "max_gap_s": 0.020007285,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 10,
+      "samples": 1254,
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15298276193174318,
+      "minimum_voltage_V": 4.6,
+      "maximum_temperature_C": 20,
+      "peak_abs_supply_current_A": 0.172,
+      "max_gap_s": 0.02001025,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 11,
+      "samples": 1254,
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15711629393072746,
+      "minimum_voltage_V": 4.5,
+      "maximum_temperature_C": 21,
+      "peak_abs_supply_current_A": 0.196,
+      "max_gap_s": 0.020021591,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 12,
+      "samples": 1254,
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15031172293285985,
+      "minimum_voltage_V": 4.5,
+      "maximum_temperature_C": 20,
+      "peak_abs_supply_current_A": 0.17,
+      "max_gap_s": 0.019999991,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 13,
+      "samples": 1254,
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15856866566200034,
+      "minimum_voltage_V": 4.4,
+      "maximum_temperature_C": 20,
+      "peak_abs_supply_current_A": 0.195,
+      "max_gap_s": 0.020109383,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 14,
+      "samples": 1254,
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15700132390603422,
+      "minimum_voltage_V": 4.4,
+      "maximum_temperature_C": 21,
+      "peak_abs_supply_current_A": 0.185,
+      "max_gap_s": 0.020111407,
+      "timing_passed": true
+    },
+    {
+      "motor_id": 15,
+      "samples": 1254,
+      "expected_samples": 1255,
+      "missing_samples": 1,
+      "missing_fraction": 0.0007968127490039841,
+      "primary_missed_replies": 1,
+      "primary_loss_fraction": 0.0007968127490039841,
+      "recovered_samples": 0,
+      "active_tracking_rmse_rad": 0.15951146482143924,
+      "minimum_voltage_V": 4.4,
+      "maximum_temperature_C": 21,
+      "peak_abs_supply_current_A": 0.2,
+      "max_gap_s": 0.020106648,
+      "timing_passed": true
+    }
+  ],
+  "capture": {
+    "status": "captured",
+    "episode_id": "B1_16__H1__P03_smooth_levels__R01",
+    "views": {
+      "view2": {
+        "identity": {
+          "episode_id": "B1_16__H1__P03_smooth_levels__R01",
+          "title": "H1 smooth-level motion, calibration repeat 01 \u2014 all 16 motors, IDs 0\u201315 \u2014 view2 view",
+          "directory_name": "B1_16__H1__P03_smooth_levels__R01",
+          "campaign_ordinal": 7,
+          "display_code": "H1-B1-P03-R01",
+          "scene_label": "H1-B1-P03-R01",
+          "experiment_number": "260921-140606",
+          "artifact_prefix": "260921-140606_H1-B1-P03-R01",
+          "mechanical_configuration": "B1",
+          "campaign_total_episodes": 30
+        },
+        "start_response": {
+          "ok": true,
+          "command": "START",
+          "session_id": "B1_16__H1__P03_smooth_levels__R01",
+          "session_directory": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view2/media/episodes/B1_16__H1__P03_smooth_levels__R01",
+          "capture_manifest": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view2/media/episodes/B1_16__H1__P03_smooth_levels__R01/capture.json",
+          "first_persisted_frame": {
+            "frame_index": 1,
+            "iphone_timestamp_unix_s": 1789985275.5327249,
+            "host_receive_timestamp_unix_s": 1789985275.7756054,
+            "host_receive_monotonic_ns": 1021375509476157,
+            "color_file": "raw/color_frames/260921-140606_H1-B1-P03-R01_frame_00000001_iphone_20260921T100755_532725Z.jpg",
+            "depth_file": ""
+          },
+          "capture_options": {
+            "save_depth": false,
+            "flush_every_frames": 30
+          },
+          "acknowledged_utc": "2026-09-21T10:07:55.781Z",
+          "acknowledged_host_monotonic_ns": 1021375515551117
+        },
+        "stop_response": {
+          "ok": true,
+          "command": "STOP",
+          "session_id": "B1_16__H1__P03_smooth_levels__R01",
+          "session_directory": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view2/media/episodes/B1_16__H1__P03_smooth_levels__R01",
+          "capture_manifest": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view2/media/episodes/B1_16__H1__P03_smooth_levels__R01/capture.json",
+          "state": "stopped",
+          "outcome": "complete",
+          "raw_capture_status": "complete",
+          "error": null,
+          "event_count": 5,
+          "already_stopped": false,
+          "frames": 299,
+          "jpeg_frames": 299,
+          "depth_frames": 0,
+          "video_created": false
+        },
+        "status": "captured"
+      },
+      "view1": {
+        "identity": {
+          "episode_id": "B1_16__H1__P03_smooth_levels__R01",
+          "title": "H1 smooth-level motion, calibration repeat 01 \u2014 all 16 motors, IDs 0\u201315 \u2014 view1 view",
+          "directory_name": "B1_16__H1__P03_smooth_levels__R01",
+          "campaign_ordinal": 7,
+          "display_code": "H1-B1-P03-R01",
+          "scene_label": "H1-B1-P03-R01",
+          "experiment_number": "260921-140606",
+          "artifact_prefix": "260921-140606_H1-B1-P03-R01",
+          "mechanical_configuration": "B1",
+          "campaign_total_episodes": 30
+        },
+        "start_response": {
+          "ok": true,
+          "command": "START",
+          "session_id": "B1_16__H1__P03_smooth_levels__R01",
+          "session_directory": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view1/media/episodes/B1_16__H1__P03_smooth_levels__R01",
+          "capture_manifest": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view1/media/episodes/B1_16__H1__P03_smooth_levels__R01/capture.json",
+          "first_persisted_frame": {
+            "frame_index": 1,
+            "iphone_timestamp_unix_s": 1789985275.2512069,
+            "host_receive_timestamp_unix_s": 1789985275.6598425,
+            "host_receive_monotonic_ns": 1021375393713139,
+            "color_file": "raw/color_frames/260921-140606_H1-B1-P03-R01_frame_00000001_iphone_20260921T100755_251207Z.jpg",
+            "depth_file": ""
+          },
+          "capture_options": {
+            "save_depth": false,
+            "flush_every_frames": 30
+          },
+          "acknowledged_utc": "2026-09-21T10:07:55.663Z",
+          "acknowledged_host_monotonic_ns": 1021375397243776
+        },
+        "stop_response": {
+          "ok": true,
+          "command": "STOP",
+          "session_id": "B1_16__H1__P03_smooth_levels__R01",
+          "session_directory": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view1/media/episodes/B1_16__H1__P03_smooth_levels__R01",
+          "capture_manifest": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view1/media/episodes/B1_16__H1__P03_smooth_levels__R01/capture.json",
+          "state": "stopped",
+          "outcome": "complete",
+          "raw_capture_status": "complete",
+          "error": null,
+          "event_count": 5,
+          "already_stopped": false,
+          "frames": 374,
+          "jpeg_frames": 374,
+          "depth_frames": 0,
+          "video_created": false
+        },
+        "status": "captured"
+      }
+    },
+    "errors": {}
+  },
+  "camera_quality": {
+    "episode_id": "B1_16__H1__P03_smooth_levels__R01",
+    "passed": true,
+    "validated_after_camera_stop": true,
+    "validation_ran_outside_100_hz_motor_loop": true,
+    "policy": {
+      "minimum_fresh_rate_hz": 5.0,
+      "maximum_source_gap_s": 3.0,
+      "maximum_host_gap_s": 3.0,
+      "minimum_frame_count": 2
+    },
+    "views": {
+      "view2": {
+        "passed": true,
+        "checks": {
+          "minimum_frame_count_reached": true,
+          "timestamps_finite": true,
+          "source_timestamps_strictly_advance": true,
+          "host_timestamps_strictly_advance": true,
+          "minimum_source_rate_reached": true,
+          "minimum_host_rate_reached": true,
+          "maximum_source_gap_respected": true,
+          "maximum_host_gap_respected": true,
+          "raw_and_jpeg_frame_counts_match": true
+        },
+        "frame_count": 299,
+        "source_span_s": 13.035969257354736,
+        "host_span_s": 13.257890822947957,
+        "achieved_source_rate_hz": 22.859826846543996,
+        "achieved_host_rate_hz": 22.477180117081268,
+        "maximum_source_gap_s": 0.20016694068908691,
+        "maximum_host_gap_s": 0.2124055140884593,
+        "capture_manifest": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view2/media/episodes/B1_16__H1__P03_smooth_levels__R01/capture.json",
+        "capture_manifest_sha256": "d49a04dbdd06738fd29229accf0b00a9952c5053d8c5c8fa0b3b4a75637ac673",
+        "ar_csv": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view2/media/episodes/B1_16__H1__P03_smooth_levels__R01/raw/260921-140606_H1-B1-P03-R01_ar.csv",
+        "ar_csv_sha256": "49d38a18534aafbca211eb27ce873654fb7fbb198448a57d01a55ffc136d9409"
+      },
+      "view1": {
+        "passed": true,
+        "checks": {
+          "minimum_frame_count_reached": true,
+          "timestamps_finite": true,
+          "source_timestamps_strictly_advance": true,
+          "host_timestamps_strictly_advance": true,
+          "minimum_source_rate_reached": true,
+          "minimum_host_rate_reached": true,
+          "maximum_source_gap_respected": true,
+          "maximum_host_gap_respected": true,
+          "raw_and_jpeg_frame_counts_match": true
+        },
+        "frame_count": 374,
+        "source_span_s": 13.199977159500122,
+        "host_span_s": 13.313472633017227,
+        "achieved_source_rate_hz": 28.257624652899427,
+        "achieved_host_rate_hz": 28.016732394444194,
+        "maximum_source_gap_s": 0.2666051387786865,
+        "maximum_host_gap_s": 0.32921004097443074,
+        "capture_manifest": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view1/media/episodes/B1_16__H1__P03_smooth_levels__R01/capture.json",
+        "capture_manifest_sha256": "51b95e063d866de625d96573743c47f8f49385b770199e3e3fe781d680e49c1b",
+        "ar_csv": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view1/media/episodes/B1_16__H1__P03_smooth_levels__R01/raw/260921-140606_H1-B1-P03-R01_ar.csv",
+        "ar_csv_sha256": "93a528a46edb3f972954a227b21163902b247349f55fee78ddd5fe8aa0d2f886"
+      }
+    },
+    "note": "This check runs after torque-off and camera STOP. A failure blocks the next episode but cannot undo the episode that was just recorded.",
+    "artifact": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/episodes/B1_16__H1__P03_smooth_levels__R01/camera_quality.json",
+    "artifact_sha256": "35c166ba7dcf3d68db73db59bfdf651b20a3d53acb9a32c493c8c4e7b9aaf34a"
+  }
+}

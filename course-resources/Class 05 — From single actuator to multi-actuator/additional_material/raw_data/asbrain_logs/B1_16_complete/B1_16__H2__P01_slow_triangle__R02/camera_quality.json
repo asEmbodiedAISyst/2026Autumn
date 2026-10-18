@@ -1,0 +1,65 @@
+{
+  "episode_id": "B1_16__H2__P01_slow_triangle__R02",
+  "passed": true,
+  "validated_after_camera_stop": true,
+  "validation_ran_outside_100_hz_motor_loop": true,
+  "policy": {
+    "minimum_fresh_rate_hz": 5.0,
+    "maximum_source_gap_s": 3.0,
+    "maximum_host_gap_s": 3.0,
+    "minimum_frame_count": 2
+  },
+  "views": {
+    "view1": {
+      "passed": true,
+      "checks": {
+        "minimum_frame_count_reached": true,
+        "timestamps_finite": true,
+        "source_timestamps_strictly_advance": true,
+        "host_timestamps_strictly_advance": true,
+        "minimum_source_rate_reached": true,
+        "minimum_host_rate_reached": true,
+        "maximum_source_gap_respected": true,
+        "maximum_host_gap_respected": true,
+        "raw_and_jpeg_frame_counts_match": true
+      },
+      "frame_count": 464,
+      "source_span_s": 17.332345962524414,
+      "host_span_s": 17.642723934957758,
+      "achieved_source_rate_hz": 26.713060136295894,
+      "achieved_host_rate_hz": 26.243113121698833,
+      "maximum_source_gap_s": 0.2667059898376465,
+      "maximum_host_gap_s": 0.3311554320389405,
+      "capture_manifest": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view1/media/episodes/B1_16__H2__P01_slow_triangle__R02/capture.json",
+      "capture_manifest_sha256": "0bc315b1d5638e3352752415d6b59b9f2f8471fcc57464f736c566c47ccbc317",
+      "ar_csv": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view1/media/episodes/B1_16__H2__P01_slow_triangle__R02/raw/260921-140606_H2-B1-P01-R02_ar.csv",
+      "ar_csv_sha256": "0f79ab1321f5c3fb6e5d18bb500682fcda497a71d31a80711ca16234a4aea01d"
+    },
+    "view2": {
+      "passed": true,
+      "checks": {
+        "minimum_frame_count_reached": true,
+        "timestamps_finite": true,
+        "source_timestamps_strictly_advance": true,
+        "host_timestamps_strictly_advance": true,
+        "minimum_source_rate_reached": true,
+        "minimum_host_rate_reached": true,
+        "maximum_source_gap_respected": true,
+        "maximum_host_gap_respected": true,
+        "raw_and_jpeg_frame_counts_match": true
+      },
+      "frame_count": 445,
+      "source_span_s": 17.718962907791138,
+      "host_span_s": 17.58697556401603,
+      "achieved_source_rate_hz": 25.05789996347757,
+      "achieved_host_rate_hz": 25.245955359627025,
+      "maximum_source_gap_s": 0.23376703262329102,
+      "maximum_host_gap_s": 0.23304677405394614,
+      "capture_manifest": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view2/media/episodes/B1_16__H2__P01_slow_triangle__R02/capture.json",
+      "capture_manifest_sha256": "3db7c583b0efc24d04310e164fe79874b9bb7ff6ef0f193b86bc7a071a55755b",
+      "ar_csv": "/home/oliver/Halwani/mujoco-journey/dynamixel-sim2real-system-identification/V5/hardware_experiment/b1_16_motors/data/B1_16_dual_full_20260921T100606407445Z/views/view2/media/episodes/B1_16__H2__P01_slow_triangle__R02/raw/260921-140606_H2-B1-P01-R02_ar.csv",
+      "ar_csv_sha256": "9209266169a707711cca79b480e6e70f76819d2af057f839fb9fdecc0d9217df"
+    }
+  },
+  "note": "This check runs after torque-off and camera STOP. A failure blocks the next episode but cannot undo the episode that was just recorded."
+}

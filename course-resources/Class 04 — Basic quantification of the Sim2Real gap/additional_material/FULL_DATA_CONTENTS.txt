@@ -1,0 +1,15 @@
+CLASS 04 COMPLETE DATA CONTENTS
+
+The package contains the full numerical record used for the single-XC330 work, not only the examples shown in the paper.
+
+RAW HARDWARE RECORD
+raw_data/asbrain_logs contains five original M0, B0, B1, B2 and G1 acquisition campaigns with 167 episode directories. The record retains command events, telemetry events, controller tables, episode metadata, run metadata, summaries, zeroing records and verification files.
+
+RAW SIMULATION AND IDENTIFICATION RECORD
+raw_data/simulation_design contains the generated command set, configuration files and all raw simulated episodes. raw_data/identification contains the original identification dataset and fitting contract.
+
+COMPLETE PROCESSED RECORD
+data/paired_simulation_hardware_samples.csv.gz contains 268,192 paired samples from all 126 accepted analysis episodes. data/EPISODES_USED.csv gives every episode and its calibration, model-selection or held-out role. The folder also contains all optimizer candidates, selected parameters, controller settings, physical parameter records, failure notes and the frozen selection record.
+
+MEDIA
+The numerical record is complete. The demonstration folder keeps the compact annotated video selected for the paper; raw phone-frame duplication is not required to reproduce the numerical analysis.

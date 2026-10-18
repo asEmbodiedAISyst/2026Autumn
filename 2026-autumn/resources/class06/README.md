@@ -1,13 +1,7 @@
 # Class 06 resources
 
-The [Class 06 course page](../../module-02-hand-data-for-multi-fingered-manipulation/06-learned-in-hand-cube-reorientation.md) contains the explanation, illustrations, worked examples, demonstration observations and activity. It is complete without installing software.
+The current practical/evidence package is the [teaching authors’ source package](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2006%20%E2%80%94%20Learned%20in-hand%20cube%20reorientation). Start with its availability notes and the linked course practice page.
 
-This legacy bundle contains native playback code, the supplied ONNX actor, pinned task/model sources, textures and required licences. `saved-runs/` preserves the selected seed 9204 episode and matched 200-step artwork comparison. `code/results/` preserves separate 100-episode first-goal evaluations. `evidence/` contains earlier contract/replay checks; their recorded scopes and runtimes should be read with each result.
+This folder supplies course illustrations and retained earlier assets. Earlier code, generated results or model variants here are historical material, not the practical or experimental authority for the current source-led lesson. They must not be substituted for missing checkpoints or source demonstrations.
 
-The playback requirements and environment versions are in `code/requirements-demo.txt`; platform preparation and execution belong to a separate example package. No commands are required to interpret the course page. Apple-silicon native playback was checked in the retained receipts; this content review audits saved evidence and does not claim a new cross-platform evaluation.
-
-Lesson figures are in `figures/`; the selected animation is in `recordings/`. Retain upstream licences and notices. No new training, hardware deployment, optical calibration or manufactured-cube qualification is claimed.
-
-The lesson also includes `figures/leap-anatomy-source.png`, an attributed original-paper illustration, and `figures/hardware-assisted-filmstrip.png`, selected documentary frames retaining manual interventions. These support a separate custom continuous-positive-Z case, with a declared 320-input proprioceptive actor and 58 mm/85 g cube. They do not extend the Playground actor's 57-input, 70 mm/108 g simulation results to hardware. The source custom deployment bundle, checkpoint, bridge and raw NPZ/training logs are not supplied; diagnostic tables are reported-evidence interpretation. Figure attribution and evidence limits appear in the lesson.
-
-`package-manifest.json` retains the native runtime's scientific/source record checks. `PACKAGE.json` indexes the current public resource files, including lesson figures and recordings; private figure-production sources and removed legacy media paths are outside this resource index.
+Static course illustrations are PNG. Worksheets/manuals remain PDF; recordings and original runtime dataset images retain their native formats. Figure-production sources remain in the private Assistants repository.

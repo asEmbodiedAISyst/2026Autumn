@@ -1,0 +1,14 @@
+{
+  "canonical_equivalent_before_raw": 2023,
+  "operating_mode_before": 5,
+  "operating_mode_restored": 5,
+  "passed": true,
+  "performed": true,
+  "physical_motion_commanded": false,
+  "present_position_after_raw_signed": 2023,
+  "present_position_before_raw_signed": -2073,
+  "present_position_in_temporary_position_mode_raw_signed": -2072,
+  "reason": "mode-5 continuous counter represented an equivalent multi-turn tick",
+  "temporary_operating_mode": 3,
+  "torque_enabled": false
+}

@@ -1,0 +1,34 @@
+{
+  "controller_gains_identified": false,
+  "evidence_source": "simulation-only Sim-Torque Data from MuJoCo state and effort",
+  "hardware_equivalent_claimed": false,
+  "identified_parameters": [
+    "armature",
+    "damping",
+    "frictionloss"
+  ],
+  "input_field": "actuator_effort_input_Nm",
+  "input_meaning": "MuJoCo qfrc_actuator recorded from the position-controlled Source Model and replayed as generalized joint effort",
+  "physics_timestep_s": 0.002,
+  "position_command_is_identification_input": false,
+  "purpose": "simulation-only identifiability check and demonstration that C1/C2 change excitation but do not change the underlying joint parameters",
+  "release_id": "chapter02-rs06-sim-torque-v1",
+  "rs06_position_mode_availability": "feedback torque is a controller estimate, not a qualified measured output-joint torque trajectory",
+  "schema_version": "phyintel-sim-torque-data-v1",
+  "source_archive_sha256": "673240ecb8ab5c930302a9b18dd557e0a3ac072520b951ed9ad9bcad200ef4fe",
+  "source_controller_context": {
+    "C1": {
+      "kp_Nm_per_rad": 50.0,
+      "kv_Nm_s_per_rad": 3.38,
+      "label": "RS06 simulation controller paired provisionally with hardware H1",
+      "paired_hardware_controller": "H1"
+    },
+    "C2": {
+      "kp_Nm_per_rad": 100.0,
+      "kv_Nm_s_per_rad": 1.95,
+      "label": "RS06 simulation controller paired provisionally with hardware H2",
+      "paired_hardware_controller": "H2"
+    }
+  },
+  "source_release_id": "chapter02-rs06-sim-data-v1"
+}

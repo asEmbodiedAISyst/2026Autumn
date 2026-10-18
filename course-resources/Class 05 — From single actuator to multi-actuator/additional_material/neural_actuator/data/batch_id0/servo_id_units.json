@@ -1,0 +1,9 @@
+{
+  "position_resolution": 4096,
+  "position_zero_raw": 2048,
+  "velocity_unit_rpm": 0.229,
+  "current_unit_mA": 1.0,
+  "pwm_raw_full_scale": null,
+  "q_offset_rad": 0.0,
+  "direction_sign": 1
+}

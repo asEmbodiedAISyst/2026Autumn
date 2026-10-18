@@ -1,0 +1,30 @@
+COMBINED 16-MOTOR MODEL
+
+Each XML contains all 16 motors in one MuJoCo simulation. Every motor has its own joint, actuator, position sensor, velocity sensor, force sensor, and fitted armature, damping, and friction-loss values. Separate H1 and H2 XMLs preserve their exact fitted values and controller gains.
+
+LAYOUT
+The supplied camera mapping is represented as four columns, two rows, and two opposing faces. Lower pairs from left to right are (0,1), (2,3), (4,5), and (6,7). Upper pairs are (10,8), (12,9), (14,11), and (15,13). Motors on the same face have a 0.270 m pitch. Each opposing-face motor is staggered 0.135 m along the row. Row spacing is 0.500 m. Front-to-back depth was not measured and is used only to separate the two faces visually.
+
+DYNAMICS
+The 16 mechanisms are fixed independently to the world. All contacts are disabled, so one motor cannot mechanically affect another. This matches the physical test, where the fixtures share a rack but do not form a connected mechanism. Turning the opposing face by 180 degrees around the vertical axis changes only its view, not its 1-DOF gravity dynamics.
+
+CONTROL
+H1: kp=1.579836, kv=0.202115.
+H2: kp=2.106448, kv=0.202115.
+For both controllers the effort limit is +/-0.1551 N m. For a recorded reference, set each control input to kp*qref + kv*vref. The actuator then applies clip(kp*(qref-q) + kv*(vref-qdot), -0.1551, +0.1551).
+
+MODEL FILES
+There are ten XMLs: M0, B0, B1, B2, and G1, each with H1 and H2.
+
+VISUAL SUPPORTS
+The bars illustrate the rack beneath the motors. Their dimensions are illustrative; they have no mass or contact interaction.
+
+VALIDATION
+Every XML is stepped for one second and checked for finite state. The full one-second run is also compared with the corresponding independent 1-DOF models to confirm numerical equivalence.
+
+REPRODUCTION
+From the Class 05 folder run:
+../../mujoco-journey/dynamixel-sim2real-system-identification/V5/.venv/bin/python additional_material/code/build_and_validate_combined_16.py
+
+To refresh only the bars and screenshot, without fitting or stepping simulations:
+../../mujoco-journey/dynamixel-sim2real-system-identification/V5/.venv/bin/python additional_material/code/build_and_validate_combined_16.py --visuals-only

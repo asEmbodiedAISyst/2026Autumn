@@ -1,0 +1,22 @@
+PREPARED ANALYSIS
+=================
+
+File:
+data/minimal_heldout_episode_B1_H2_P06_R01.csv.gz
+
+Episode:
+B1__H2__P06_heldout_composite__R01
+
+Task:
+1. Plot hardware_position_rad, synthetic_baseline_position_rad and hardware_fitted_position_rad against time_s.
+2. Compute RMSE between hardware position and each simulation.
+3. State which simulation is closer.
+4. Give one plausible explanation for the remaining error. Separate the observed error from the proposed cause.
+
+No hardware operation is required.
+
+Answer:
+Synthetic baseline RMSE: 0.010119 rad
+Hardware-fitted RMSE:   0.005545 rad
+
+The hardware-fitted replay is closer for this held-out episode. Plausible causes of the remaining error include unmeasured command-to-actuation delay, approximate effort scaling, interpolation of the logged inner reference, omitted compliance, or a friction model that does not include stiction and direction dependence. The episode alone does not identify which cause is dominant.

@@ -1,0 +1,67 @@
+{
+  "checks": {
+    "all_episode_clocks_are_monotonic": true,
+    "all_episode_sample_counts_match": true,
+    "all_episode_sequences_are_contiguous": true,
+    "all_episodes_complete": true,
+    "all_samples_valid": true,
+    "all_selected_profiles_have_episode_rows": true,
+    "archive_arrays_have_one_length": true,
+    "archive_fields_match_manifest": true,
+    "archive_hash_matches_manifest": true,
+    "episode_hashes_match_manifest": true,
+    "no_command_saturation": true,
+    "source_session_status_complete": true
+  },
+  "episode_checks": [
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "calibration__H1__B0__P01_slow_triangle__b0_h1_p01_p05_20260825T171338Z",
+      "expected_sample_count": true,
+      "expected_samples": 601,
+      "observed_samples": 601,
+      "sequence_ids_contiguous": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "calibration__H1__B0__P02_multisine__b0_h1_p01_p05_20260825T171338Z",
+      "expected_sample_count": true,
+      "expected_samples": 601,
+      "observed_samples": 601,
+      "sequence_ids_contiguous": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "calibration__H1__B0__P03_smooth_levels__b0_h1_p01_p05_20260825T171338Z",
+      "expected_sample_count": true,
+      "expected_samples": 378,
+      "observed_samples": 378,
+      "sequence_ids_contiguous": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "model_selection__H1__B0__P04_chirp__b0_h1_p01_p05_20260825T171338Z",
+      "expected_sample_count": true,
+      "expected_samples": 601,
+      "observed_samples": 601,
+      "sequence_ids_contiguous": true
+    },
+    {
+      "clocks_monotonic": true,
+      "episode_complete": true,
+      "episode_id": "model_selection__H1__B0__P05_wide_sine__b0_h1_p01_p05_20260825T171338Z",
+      "expected_sample_count": true,
+      "expected_samples": 501,
+      "observed_samples": 501,
+      "sequence_ids_contiguous": true
+    }
+  ],
+  "episode_count": 5,
+  "passed": true,
+  "sample_count": 2682,
+  "warnings": []
+}

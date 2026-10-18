@@ -1,0 +1,66 @@
+{
+  "schema_version": "phyintel-chapter02-rs06-g1-free-fall-v1",
+  "status": "interface-contract-only-no-collection-script-provided",
+  "purpose": "User-implemented G1 free-fall/supporting calibration protocol",
+  "relationship_to_frozen_matrix": {
+    "part_of_32_closed_loop_episodes": false,
+    "does_not_replace": [
+      "held_out__H1__G1__P06_heldout_composite",
+      "held_out__H1__G1__P07_heldout_sine_hold",
+      "held_out__H2__G1__P06_heldout_composite",
+      "held_out__H2__G1__P07_heldout_sine_hold"
+    ]
+  },
+  "one_trial_files": {
+    "samples": "<run_id>.csv",
+    "metadata": "<run_id>.metadata.json",
+    "integrity": "Record SHA-256 of both files in the eventual dataset manifest. Never overwrite a completed run."
+  },
+  "csv": {
+    "sampling": "One row per received feedback record, in receive order; do not interpolate or silently drop duplicates.",
+    "required_columns": {
+      "sample_index": "monotonic integer",
+      "host_time_utc": "ISO-8601 UTC timestamp",
+      "host_monotonic_s": "monotonic host clock in seconds",
+      "t_receive_s": "receive timestamp on the same monotonic host clock",
+      "phase": "baseline|armed|released|settled|aborted",
+      "release_event": "0 before the declared release boundary, 1 on its first sample, otherwise 0",
+      "motor_enabled": "0|1; describe the exact meaning in metadata",
+      "control_mode": "torque_disabled|drive_enabled_zero_gain|other_declared_mode",
+      "kp_protocol_coordinate": "numeric value actually sent/configured",
+      "kd_protocol_coordinate": "numeric value actually sent/configured",
+      "position_cmd_rad": "requested command when a command is still transmitted; empty only when genuinely unavailable",
+      "position_meas_rad": "decoded output position",
+      "velocity_meas_rad_s": "decoded output velocity",
+      "torque_feedback_Nm": "decoded firmware/controller estimate; not an independent output-torque measurement",
+      "raw_position_u16": "unmodified protocol field",
+      "raw_velocity_u16": "unmodified protocol field",
+      "raw_torque_u16": "unmodified protocol field",
+      "raw_target_u16": "unmodified target/echo field when present",
+      "raw_record_hex": "complete unmodified motor feedback record",
+      "feedback_gap_s": "time since the previous accepted feedback record",
+      "valid": "0|1",
+      "exclusion_code": "empty for accepted samples; otherwise stable documented reason"
+    }
+  },
+  "metadata_required_fields": {
+    "identity": ["run_id", "fixture_id=G1", "repeat_id", "operator", "start_time_utc"],
+    "fixture": ["MJCF SHA-256", "moving mass", "joint-axis inertia", "signed gravity first moment", "mounting revision", "payload revision", "axis orientation relative to gravity"],
+    "coordinates": ["zero definition", "positive direction", "raw-to-radian conversion", "raw-to-velocity conversion", "torque-feedback conversion"],
+    "motor_and_transport": ["motor serial/ID", "controller slot", "firmware/protocol revision", "supply voltage", "temperature", "nominal sample rate"],
+    "release": ["start angle", "release direction", "release detection rule", "release sample index", "release mechanism", "operator contact ended before release"],
+    "controller_state": ["drive enabled state", "mode", "kp", "kd", "feed-forward/current command", "all other fixed register values"],
+    "quality": ["status complete|aborted", "faults", "dropped/duplicate record count", "maximum feedback gap", "manual exclusions and reasons"]
+  },
+  "minimum_design_guidance": {
+    "accepted_repeats_per_start_condition": 5,
+    "start_conditions": "Use multiple safely separated start angles and both directions where mechanically possible; freeze them before final collection.",
+    "failed_trials": "Retain aborted or rejected trials with reason codes; they do not count toward accepted repeats."
+  },
+  "hard_prohibitions": [
+    "Do not label torque_feedback_Nm as measured joint torque.",
+    "Do not mix drive-enabled zero-gain and torque-disabled trials under one condition ID.",
+    "Do not synthesize unavailable timestamps, command acknowledgements, current, voltage, temperature, or fault fields.",
+    "Do not use free-fall trials as calibration rows in the closed-loop passive-joint fit without a separate declared model and contract."
+  ]
+}

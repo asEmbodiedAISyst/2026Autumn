@@ -8,650 +8,357 @@ description: 27 October 2026 · 09:00–10:20 · CR6 | Mohamed HALWANI & SONG Ch
 
 > How do we estimate a MuJoCo model, quantify its discrepancy from physical actuator responses, and judge its usefulness for a specified task?
 
-A simulated trajectory can look close to a physical trajectory while missing a repeatable offset, a reversal or a response under a different load. Conversely, an actuator can follow its requested motion poorly while a model predicts that imperfect response closely. To interpret agreement, we need to name the two quantities being compared, make their conditions compatible and report a numerical discrepancy together with its context.
+[Class 03](03-basic-digitization-of-physical-embodiment.md) established a declared geometry, joint, mass distribution and input interface. We now ask whether the digitized fixture predicts measured motion under a named input and controller condition. A convincing overlay is a starting point; a defensible prediction claim also needs a defined signal pair, time base, fitting decision and reserved evaluation.
 
-Our starting example is one **XC330-M288-T in current-based position operation (Mode 5)**, driving a rigid link and payload assembly about one joint. The numerical replay receives recorded internal position and velocity references. It predicts position using its own evolving simulated state. This is a conditional response model: it does not predict how firmware generates those references from an external goal.
+The main experiment is the source **XC330-M288-T with a declared 110 g external moving fixture**. Its preserved hardware records, controller references and frozen MuJoCo replays supply the demonstration and activity. The [RS06 identification companion](04-rs06-hardware-identification.md) retains the second physical experiment and its two estimation methods. It uses a different command boundary, load family and controller; its numbers must remain with that apparatus.
 
-[Class 03](03-basic-digitization-of-physical-embodiment.md) established how to inspect an executable mechanical representation. Here we estimate uncertain effective parameters and test predictions against recorded physical responses. The derivation and first selected response retain the documented **98 g XC330 case**. A **declared-110 g XC330 fit** and a separate **RS06 hardware-identification case** then test how the same reasoning changes with the model revision and command interface. Their masses, parameters and scores remain attached to their own records.
+By the end, you should be able to identify what enters a replay, explain the three effective fitted terms, distinguish fitting from evaluation, calculate a position-discrepancy metric and bound the resulting model-use claim. The [demonstration](#instructor-and-ta-demonstration) and [activity](#student-activity) follow one identified source held-out episode rather than requiring a new collection or optimizer run.
 
-By the end of this class, you should be able to:
+The course development route connects this question to Introduction → Claim2Design → Design2Data → Data2Model → Model2Prototype → Sim2Real. Here a prediction claim selects the fixture, informative motions and recorded signals; data support parameter estimation; the frozen model is then tested against reserved physical responses. Analytical calculations explain the balance, while optimization estimates a candidate within the chosen model class. Neither replaces evaluation against the physical record.
 
-- Specify the signals, input boundary, fixture and conditions of a model-to-hardware comparison.
-- Explain the roles of the two identification methods and their effective parameters.
-- Calculate or interpret position root mean square error (RMSE) with its units and grouping rule.
-- Read a signed residual while distinguishing tracking error from model prediction error.
-- Make a model-use decision limited to the tested conditions and available evidence.
+## Name the experiment before reading its result
 
-[Lecture](#from-apparent-agreement-to-a-defined-comparison) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+![Notation key for the fixture configurations, controller conditions, episode identifiers, and trace names.](../resources/class04/figures/source/experiment_language.png)
 
-The supplied traces, metric tables and worked calculations support the demonstration and activity on this page. Follow the retained 98 g XC330 record through the complete analysis first. The later XC330 and RS06 cases address two further questions: improvement over a revision's own baseline, and prediction through a different command interface. Running a new identification or operating hardware is not required.
+*Figure 1. Notation key for the fixture configurations, controller conditions, episode identifiers, and trace names.*
 
-## From apparent agreement to a defined comparison
+Figure 1 is the shared vocabulary for the record:
 
-The **Sim2Real gap** in this class is the difference between simulated and measured **joint position** under declared input, controller, fixture and processing conditions. It is not one permanent number belonging to an actuator or simulator. Changing the command boundary, payload, operating range or scoring rule changes the question.
+- **M0** has no external fixture.
+- **B0**, **B1**, and **B2** are balanced 110 g external fixtures. The equal payload assemblies are placed symmetrically, so their ideal static gravity moments cancel while their rotational inertia changes.
+- **G1** carries the same 110 g external mass asymmetrically. Its static gravity moment does not cancel.
+- **H1** and **H2** name the two XC330 controller settings. They are different hardware conditions, not labels for simulation quality.
+- An episode identifier, such as `B1__H2__P06_heldout_composite__R01`, states the fixture, controller, motion profile, and repetition.
+- The recorded inner reference, hardware position, synthetic baseline, and hardware-fitted replay remain separate signals. Their names are not interchangeable.
 
-**Predict:** If hardware and simulation both lag their reference by the same amount, is their model-to-hardware gap necessarily large?
+## The experiment in one view
 
-![Frozen XC330 prediction and physical response for the eccentric held-out case](../resources/class04/figures/xc330-H1-G1-P06.png)
+The physical system is a ROBOTIS XC330-M288-T with one revolute output joint. The loaded cases contain a 22 g link and two 44 g pin-and-payload assemblies:
 
-*Figure 1. One recorded XC330 H1/G1/P06/R01 episode and two frozen MuJoCo candidates. The lower panel retains the signed model-to-measurement residual. These are predictions from the 98 g campaign; no parameter is adjusted to this episode. Method 2's position RMSE is approximately 0.02191 rad. Read the signal labels before deciding what the overlay establishes.*
+$$
+m_{\mathrm{ext}} = 0.022 + 2(0.044) = 0.110\,\mathrm{kg}.
+$$
 
-[Class 02](02-actuator-basics-for-controlled-action.md) established how an application request becomes controlled physical motion. [Class 03](03-basic-digitization-of-physical-embodiment.md) represented a joint, coordinate frames and moving mass in an executable model. Here we ask a further question: **how well does a declared model predict a recorded physical response, and what should we change or trust on that evidence?**
+The payload-centre positions are measured from the XC330 output axis.
 
-Joint position is an angle; its time derivatives are velocity and acceleration. Fixture inertia describes resistance to angular acceleration, and gravity torque depends on mass distribution and pose. Those concepts carry forward. The first numerical dataset belongs to the separately documented 98 g fixture. We establish its identity before developing the two estimation methods, then carry those methods into the newer XC330 and RS06 comparisons.
+| Fixture | Payload-centre positions | Static gravity moment at the reference pose | Primary mechanical change |
+|---|---:|---|---|
+| M0 | none | none from external fixture | unloaded reference |
+| B0 |-60 mm, +60 mm | ideally cancels | balanced inertia |
+| B1 |-80 mm, +80 mm | ideally cancels | larger balanced inertia |
+| B2 |-100 mm, +100 mm | ideally cancels | largest balanced inertia |
+| G1 | +60 mm, +100 mm | remains | asymmetric gravity load |
 
-Begin with a prediction claim and decide which observations can test it. Use informative motions to estimate a model, then compare its frozen predictions with physical records. Constructed examples let us check a calculation against a known answer; the recorded actuator responses test whether that model is useful under the declared conditions. This connects the mechanics to an evidence-based decision about simulation (Ljung 1999).
+Two controller conditions are retained:
 
-## Specify the comparison
+| Condition | Raw P/I/D | $$K_p$$ (N m/rad) | $$K_v$$ (N m s/rad) |
+|---|---:|---:|---:|
+| H1 | 600 / 0 / 150 | 1.579836 | 0.202115 |
+| H2 | 800 / 0 / 150 | 2.106448 | 0.202115 |
 
-### Specify the comparison before inspecting the score
+H2 has higher declared replay position stiffness and the same replay velocity damping. These H1/H2 labels belong to this XC330 campaign.
 
-“The simulator matches the actuator” leaves the input, output and operating conditions unspecified. Here the claim concerns measured joint-position prediction for a particular controller context, fixture and motion profile. A reference-driven replay, an external-goal-driven predictor and a torque-driven model are different experiments even when each produces an angle plot.
+The experiment runner, the embedded XC330 controller, and the MuJoCo replay have distinct roles:
 
-| Quantity | Symbol | Meaning here |
+1. The **experiment runner** defines an episode, writes commands, and preserves timestamps.
+2. The **XC330 controller** converts requested motion into internal position and velocity references, then drives the physical actuator.
+3. The **MuJoCo replay** receives the recorded inner references and predicts the joint motion with an explicit, transparent controller approximation.
+
+The recorded inner reference is therefore the common replay input. An external command records episode context, but it is not substituted for the inner controller reference.
+
+### Preserve the controller record
+
+The [controller condition record](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/controller_conditions.json) supplies the fixed replay mapping. Each hardware episode also retains `control_table_before.json` and `control_table_after.json`; the source hardware runner preserves commands and telemetry. `Position Trajectory` and `Velocity Trajectory` are the recorded inner references used by the replay.
+
+Raw XC330 P/I/D registers are not automatically SI gains. The displayed $$K_p$$ and $$K_v$$ values are fixed engineering mappings, rather than mechanical parameters fitted below. An inadequate effort map can be absorbed partly by fitted losses or inertia, so a low position score does not independently calibrate this controller or output torque.
+
+## Matched hardware motion
+
+The asMagic recording documents physical motion for the held-out B1/H2 composite episode `B1__H2__P06_heldout_composite__R01`. It provides fixture context for the motor-side record and is not used as a joint-angle measurement.
+
+![Physical B1/H2 composite motion recorded by asMagic.](../resources/class04/figures/source/asmagic_b1_h2_p06_motion_grid.png)
+
+*Figure 2. Physical B1/H2 composite motion recorded by asMagic.*
+
+The video, before-motion photograph, command record, telemetry record, and replay trace share the same episode identifier. This maintains the connection between visible hardware motion and the numerical comparison without treating video frames as calibrated motion capture.
+
+The motion profiles have distinct decision roles:
+
+| Profile group | Profiles | Decision role |
 |---|---|---|
-| External goal | $$q_d$$ | Application-facing requested position retained in the episode |
-| Internal position reference | $$q_r$$ | Device-generated trajectory used as replay input |
-| Internal velocity reference | $$v_r$$ | Recorded velocity trajectory used as replay input |
-| Physical position | $$y_q$$ | Returned position converted to the declared joint coordinate |
-| Physical velocity | $$y_v$$ | Qualified reported/processed physical velocity estimate |
-| Simulated position | $$\hat q$$ | Output of the evolving MuJoCo model |
-| Simulated velocity | $$\dot{\hat q}$$ | Velocity of that simulated state |
+| Calibration | P01 slow triangle, P02 multisine, P03 smooth levels | fit bounded parameter candidates |
+| Model selection | P04 chirp, P05 wide sine | select one successful candidate |
+| Held-out validation | P06 composite, P07 sine-hold | test the frozen candidate |
 
-Positions use radians and velocities use rad/s. A hat denotes an estimate or model quantity; it does not turn a reported sensor value into an independent calibration. The [paired CSV](../resources/class04/data/xc330-98g-H1-G1-P06-R01.csv) uses explicit names such as `internal_position_reference_rad`, `physical_position_rad` and `simulated_M2_position_rad`; the [data and units guide](../resources/class04/data/README.md) maps them to these symbols. Use the logged Velocity Trajectory for $$v_r$$ and the logged Present Velocity for $$y_v$$. Differentiating an interpolated position curve would produce another signal and change the declared method. The device register roles follow ROBOTIS (n.d.); their use in this replay follows the preserved campaign implementation (asMagicBrain n.d.).
+The source procedure preserves 72 calibration episodes, 24 model-selection episodes and 30 held-out episodes: 36/12/15 per controller. Calibration establishes candidates, model selection chooses among them, and the frozen-selection record precedes loading numeric P06/P07 held-out data. Complete episodes retain their role; a later replay is another prediction of the same physical record, not another hardware experiment.
 
-The **experiment runner** schedules requests and associates them with a record. The **hardware controller** shapes references and produces a limited drive response on the device. The **capture path** preserves commands, observations, timestamps and configuration. In replay, a declared controller approximation computes effort from recorded references and simulated feedback; **MuJoCo** then integrates the mechanics. A torque channel in an XML file supplies a route for effort. It does not, by itself, recreate the embedded position controller.
+### Fixture and model records
 
-![Physical record and conditional simulation boundary](../resources/class04/figures/comparison-boundary.png)
+The B1 and G1 hardware fixtures, their MuJoCo representations, and the B1/H2 held-out replay document the declared geometry, loading conditions, and position comparison.
 
-*Figure 2. The simulation receives recorded internal references and an initial state, then evolves independently. The physical position is the comparison target, not a state repeatedly injected into replay. The external goal remains visible but firmware reference generation lies outside this prediction boundary.*
+![B1 and G1 hardware fixtures, corresponding MuJoCo models, and the B1/H2 held-out position replay.](../resources/class04/figures/source/physical_and_simulation_configurations.png)
 
-### Keep the model versions distinct
+*Figure 3. B1 and G1 hardware fixtures, corresponding MuJoCo models, and the B1/H2 held-out position replay.*
 
-The first numerical results belong to a **98 g added moving fixture**: a 6 g link, two 4 g pins and two 42 g payloads. Each complete pin/payload assembly is 46 g. Its fixture labels identify placements within this campaign.
+## What is compared
 
-| Record | Mechanism and model | Role in this lesson |
+For every active sample, the paired archive contains six signal roles:
+
+| Signal | Meaning | Role in the comparison |
 |---|---|---|
-| Class 02 motor-only telemetry | External request, internal references and device response; no added moving fixture | Signal and feedback meanings; loaded-assembly validation remains separate |
-| Class 03 structural inspection | 22 g link and two 44 g assemblies; unit-gear torque input, no embedded servo or added armature | Body, frame and inertia inspection |
-| Retained 98 g XC330 case | Source-recorded masses, reduced joint model, fixed Mode-5 controller map | Two-method derivation, frozen predictions and core activity |
-| Declared-110 g XC330 fit | Later result and saved MuJoCo model descriptions (MJCF); 22 g plus two complete 44 g assemblies | Own-baseline comparison: 30 reserved episodes and 28.3% reduction |
-| RS06 identification case | Four CAD fixtures, applied position commands, fixed position-mode gains | Separate 108-episode comparison of prediction, tracking and repeatability |
+| External position command | Goal sent by the experiment runner | episode context only |
+| Recorded inner position reference | Position reference logged from the XC330 control path | replay input |
+| Recorded inner velocity reference | Velocity reference logged from the XC330 control path | replay input |
+| Hardware position | Measured XC330 output position | comparison target |
+| Synthetic-baseline position | MuJoCo output using the synthetic parameter set | reference baseline |
+| Hardware-fitted position | MuJoCo output using the frozen hardware fit | candidate prediction |
 
-Shared B0/B1/B2/G1 labels do not establish identical hardware revisions. Class 03's structural model and its mass properties are not the retained 98 g fitted model. The later XC330 package explicitly declares 110 g and supplies its own fitted models, parameters and scores. That declaration does not independently resolve whether the 110 g/98 g difference arose from different built parts or revised descriptions. Changing a mass in an XML file would create another model; it would not transfer the following validation results to that model.
+The active source telemetry is recorded at about 200 Hz. Position Trajectory is converted with $$2\pi/4096$$ rad per count, and Velocity Trajectory with 0.229 rpm per count. Host command and telemetry timestamps align the active interval; these timestamps do not independently measure command-to-actuation delay.
 
-The primary numerical engine uses one reduced moving body, aggregate fixture inertia and a signed first moment. It does not use the detailed CAD body tree as its executable replay. A picture of that CAD can explain the mechanism, but cannot be labelled as the model producing these scores.
+The replay linearly interpolates both inner references onto a 2 ms MuJoCo physics grid. It starts once from the first measured position and velocity, then advances using its own state. Later hardware samples remain comparison targets; injecting them into every step would answer a different prediction question.
 
-| 98 g fixture | Nominal payload-centre positions | Added fixture inertia about the joint, kg m² |
-|---|---|---:|
-| M0 | Motor only; no added link/payload fixture | 0 |
-| B0 | −60, +60 mm | 0.000371055 |
-| B1 | −80, +80 mm | 0.000628655 |
-| B2 | −100, +100 mm | 0.000959855 |
-| G1 | +60, +100 mm in the source placement description | 0.000665455 |
-
-M0's zero is **added fixture inertia**, not zero actuator inertia. The fitted armature field remains separate. Loaded cases have 0.098 kg of added moving mass. The component central inertias are geometry-derived estimates scaled to the source-recorded masses; they have not been independently measured. For G1, the replay's bench-qualified signed first moment is −0.00736 kg m. Its sign depends on joint zero, positive direction and installation; positive CAD distances alone do not determine it. The maximum declared gravity-torque magnitude is about 0.07220 N m.
-
-The recorded conversion places joint zero at 2048 position counts and converts one count to $$2\pi/4096$$ rad. In the reduced model, increasing angle is a positive rotation about the +Y joint axis and world gravity is [0, 0, −9.81] m/s². The signed G1 first moment is chosen to reproduce the recorded negative-angle resting direction. These conventions belong to this bench/model; they do not inherit another model's world placement. Replay initializes from the first cropped active-profile measurement, not a torque-off or zero-acquisition value from earlier preparation.
-
-### Declare two different errors
-
-Use reference-minus-measurement for the internal tracking error, consistent with the controller's error term:
+Let $$q_r,v_r$$ denote the logged inner references and $$\hat q,\dot{\hat q}$$ the simulated state. The effective controller effort is
 
 $$
-e_{\mathrm{track}}(t)=q_r(t)-y_q(t).
+\tau_C=\operatorname{clip}\!\left(
+K_p(q_r-\hat q)+K_v(v_r-\dot{\hat q}),
+-\tau_{\max},\tau_{\max}\right),
+\qquad \tau_{\max}=0.1551\ \mathrm{N\,m}.
 $$
 
-Use simulation-minus-measurement for the model discrepancy:
+Clipping restricts the effort to the declared interval. The position coefficient has units N m/rad; the velocity coefficient has units N m s/rad. The limit belongs to the replay model. It is not independently measured output torque or a continuous actuator rating.
+
+The source implementation is `HardwareReplayer.simulate` in [the fit/replay program](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/code/full_fit_and_replay.py). It supplies the reference feedforward $$K_pq_r+K_vv_r$$ through the actuator control array, configures state feedback $$-K_p\hat q-K_v\dot{\hat q}$$ through actuator bias fields, and limits the resulting force. Thus `ctrl` in this runtime is not itself the final bounded torque. Read the complete actuator declaration and gain/bias settings before assigning physical meaning to that array. This implements the displayed effective law while preserving feedback from the evolving simulated state.
+
+**Illustrative control step.** With H1, take $$\hat q=0.2\ \mathrm{rad}$$, $$\dot{\hat q}=0.4\ \mathrm{rad/s}$$, $$q_r=0.3\ \mathrm{rad}$$ and $$v_r=0.2\ \mathrm{rad/s}$$. These are constructed values, not a recorded telemetry sample:
 
 $$
-\delta q(t)=\hat q(t)-y_q(t).
+\begin{aligned}
+\tau_{\mathrm{req}}&=1.579836(0.1)+0.202115(-0.2)\\
+&=0.1175606\ \mathrm{N\,m},\\
+\tau_C&=\operatorname{clip}(\tau_{\mathrm{req}},-0.1551,0.1551)\\
+&=0.1175606\ \mathrm{N\,m}.
+\end{aligned}
 $$
 
-Positive discrepancy means the simulated angle is above the recorded physical angle in the declared coordinate. External-goal tracking would compare $$q_d$$ with $$y_q$$ and must be labelled separately.
+A 0.2 rad position error with zero velocity error would request about 0.316 N m, so this model would apply only 0.1551 N m. Beyond that point, increasing the error cannot increase permitted effort. Neither calculation measures the physical shaft torque.
 
-For example, if both hardware and simulation are 0.05 rad below the same internal reference, internal tracking error is 0.05 rad while their instantaneous discrepancy is zero. The model predicts the lag even though the actuator has not followed its reference closely. Validation of a response model and evaluation of actuator tracking answer different questions.
+## Explain what the fitted joint terms do
 
-The primary position metric for episode $$e$$ is
-
-$$
-R_e=\sqrt{\frac{1}{N_e}\sum_{i=1}^{N_e}\delta q_{e,i}^{\,2}}.
-$$
-
-Here $$N_e$$ counts the retained, time-paired samples under the declared processing rules. RMSE measures a typical magnitude in radians, not a signed direction or a causal explanation. We retain the signed residual trace alongside it.
-
-Our **comparison record** binds the fixture, controller, input/output meaning, units, zero, initialization, time alignment, scoring interval, retained samples, frozen parameter candidate, metric and intended use. A numerical acceptance tolerance must come from that intended use. The archive does not provide a universal threshold for “good enough”.
-
-**Checkpoint:** Which claim would become stronger if the model predicted directly from $$q_d$$, and which missing part of the system would it then need to represent?
-
-## Design informative measurements
-
-### Give the unknown parameters something distinguishable to explain
-
-Acceleration changes the inertial contribution to effort. Speed changes viscous resistance. Direction changes alter the sign of moving dry friction. A collection containing only one steady speed can fit a combination of resistance terms without distinguishing them well; it contributes little information about inertia during that steady segment.
-
-Several motion types therefore serve different purposes. The campaign uses a slow triangle, multisine and smooth levels for calibration. Chirp and wide-sine profiles provide model-selection records. A composite motion and a sine-with-hold profile form the reserved evaluation motions. These labels identify records; informative excitation still has to be checked against the actual reference and measured response.
-
-Changing payload distribution also changes inertia and, for an eccentric installation, gravity torque. It tests whether a candidate transfers across declared fixture conditions. It does not isolate a cause if controller settings, motion profiles or processing change simultaneously. Near rest, dry friction is particularly difficult to approximate; at saturation, larger reference error may not produce larger effort. Those regions require their stated treatment rather than silent removal.
-
-An **episode** is one complete declared experiment. A **repeat** is another execution of the same fixture/controller/profile combination. Many samples within one episode are correlated observations of that experiment; they are not independent repeated trials.
-
-### Separate estimation, selection and evaluation
-
-| Role | XC330 primary records | Purpose |
-|---|---|---|
-| Calibration | M0/B0/B1/B2 × P01–P03 × H1/H2 × 3 repeats = 72 episodes | Estimate each controller context's parameters |
-| Model selection | B0/B2 × P04–P05 × H1/H2 × 3 repeats = 24 | Choose among declared candidates or permitted modelling choices |
-| Held-out-labelled evaluation | B1/P06 and G1/P06–P07 × H1/H2 × 5 repeats = 30 | Inspect reserved motion/fixture transfer |
-
-The primary set has 126 episodes. The original archive contains additional controller diagnostics, pilots and preparation records; they are not additional primary fitting data. Split complete episodes and relevant conditions, not neighbouring samples selected at random. A model tested on samples adjacent to its fitting samples has faced a weaker prediction challenge than a model tested on a different complete experiment.
-
-### Establish the clocks and processing rules
-
-| Clock or representation | Meaning in this example |
-|---|---|
-| Original telemetry | Approximately 5 ms average spacing, about 200 samples/s |
-| Analysis arrays | 10 ms grid, about 100 samples/s, after active-profile cropping and alignment |
-| MuJoCo integration | 2 ms steps, five steps per 10 ms reference interval |
-| Embedded firmware loop | Not established by any of those rates |
-
-The adapter converts position and velocity into the bench coordinate, retains the external command with zero-order holding and interpolates sampled telemetry/internal references onto the analysis grid. Scoring excludes preparation, return and post-hold phases. During simulation, sampled references are held between their analysis-grid updates. Interpolating observations and holding commands are different operations, each part of the declared method.
-
-The resulting arrays are reproducible analysis inputs, not raw event streams. A Goal Position register readback must also be distinguished from an independently timestamped host transmission. Time labels should state which event they timestamp.
-
-A timing shift can create a structured residual. Increasing inertia to imitate that delay can make one plot look closer while hiding the incorrect time boundary. Align units, zero and timestamps through a declared rule before estimating parameters. Keep failed or interrupted records with status and exclusion reasons. Fit/scoring eligibility is part of the evidence, not an invitation to keep only attractive trajectories.
-
-**Predict:** Which motion change would help separate inertia from viscous resistance? What must remain fixed for that comparison to be interpretable?
-
-## Estimate the actuator model
-
-### State the model and its fixed controller approximation
-
-For this fixed-axis, rigid-fixture, free-motion example, organize the mechanical balance as
+Why change armature, damping and friction rather than the declared payload mass? The source fixes the fixture geometry and accepted mass record, then asks whether a small effective joint model improves response prediction. For the isolated fixed-axis rigid assembly, write
 
 $$
 (J_f+J_a)\ddot q+b\dot q+\tau_{\mathrm{dry}}+\tau_g(q)=\tau_C.
 $$
 
-This is the one-coordinate specialization of the rigid-body balance used earlier:
+This is a one-coordinate specialization of the rigid-body balance
 
 $$
-H(q)\ddot q+C(q,\dot q)+\tau_f(\dot q)=\tau_a+\tau_{\mathrm{ext}}.
+H(q)\ddot q+C(q,\dot q)+\tau_f=\tau_a+\tau_{\mathrm{ext}}.
 $$
 
-For the present fixed-axis rigid fixture, $$H=J_f+J_a$$ is constant, the velocity-dependent rigid-body bias vanishes, and the remaining bias is gravity. Contact is absent in this experiment, so $$\tau_{\mathrm{ext}}=0$$; the ideal unit-gear actuator applies the declared controller effort, $$\tau_a=\tau_C$$. Friction is still present. This specialization connects the generalized-coordinate balance to the reduced MuJoCo model (Featherstone 2008); it does not introduce a new convention for applied external torque.
+Here $$H=J_f+J_a$$ is constant; the rigid-body velocity bias vanishes for this isolated rigid hinge, and the remaining bias is gravity. There is no contact in the declared free-motion experiment, so $$\tau_{\mathrm{ext}}=0$$. Gravity and resistance are counted separately. Do not add an efficiency correction that subtracts a loss already represented by damping or friction.
 
-The fixture supplies $$J_f$$ and the gravity term $$\tau_g$$. The three estimated fields are additional effective joint inertia $$J_a$$, viscous damping $$b$$ and dry-friction magnitude $$\tau_c$$. They map to MuJoCo `armature`, `damping` and `frictionloss`, with units kg m², N m s/rad and N m respectively. Armature adds to the fixture contribution; it does not replace it.
+The fixture contribution $$J_f$$ and gravity term $$\tau_g$$ come from the fixed geometry and mass distribution. **Armature** $$J_a$$ adds effective inertia about the joint, in kg m²: more effort is needed for the same angular acceleration. It can represent reflected rotating effects missing from the rigid CAD bodies; a fitted value is not a separately measured rotor inertia.
 
-This restricted equation has no additional contact torque. Constant fixture inertia is appropriate to the declared single-axis rigid assembly. Resistance and gravity are written separately; losses should not also be counted through an extra efficiency correction representing the same effect. MuJoCo handles friction loss through its constraint formulation. The sign-of-velocity expression used in the integral approximation below is not a complete description of sticking. See the [MuJoCo friction-loss discussion](https://mujoco.readthedocs.io/en/3.3.7/computation/index.html#friction-loss) (MuJoCo developers n.d.-a).
+**Damping** $$b$$ produces resistance proportional to velocity, with units N m s/rad. **Friction loss** $$\tau_c$$ has units N m and gives the dry-friction magnitude. During motion, a useful approximation is $$\tau_{\mathrm{dry}}\approx\tau_c\operatorname{sgn}(\dot q)$$, opposing the direction of velocity when placed on the left of the balance. Near zero velocity, sticking requires more care; MuJoCo's friction-loss constraint is not fully described by the sign expression.
 
-The replay computes limited effort using
-
-$$
-\tau_C=\operatorname{clip}\!\left(
-K_p^C(q_r-\hat q)+K_v^C(v_r-\dot{\hat q}),
--\tau_{\mathrm{lim}},\tau_{\mathrm{lim}}\right).
-$$
-
-Clipping limits the result to the stated interval. $$K_v^C$$ is the velocity-error coefficient called $$K_d$$ in a common proportional/derivative notation. The superscript identifies a coefficient in the declared simulation controller, not a raw firmware register. H1 and H2 name the two fixed controller settings in this XC330 campaign:
-
-| Context | Recorded firmware P/I/D | Fixed $$K_p^C$$, N m/rad | Fixed $$K_v^C$$, N m s/rad | Effort limit |
-|---|---|---:|---:|---:|
-| H1 | 600/0/150 | 1.579836 | 0.202115 | ±0.1551 N m |
-| H2 | 800/0/150 | 2.106448 | 0.202115 | ±0.1551 N m |
-
-Firmware registers are dimensionless settings. The source converts their documented scales using a disclosed engineering map and a fixed 0.517 N m/A static torque/current ratio. A 300-count current-related limit maps to 0.300 A and therefore 0.1551 N m in this approximation. This is not a calibrated measurement of shaft torque or proof that the proprietary embedded loop is reproduced exactly.
-
-In particular, the supplied `Present Current` interpretation is device-input current; it cannot simply be substituted for torque-producing winding current. It is not used as measured shaft torque in the primary fit. The [ROBOTIS model documentation](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/) supplies register and mode definitions; the conversion into this effective SI controller remains a modelling assumption.
-
-H1 and H2 have separate fitted joint vectors. Controller gains are fixed within each context and never optimized here. If the mapping is inadequate, the resulting effective parameters can absorb some of its error. Their predictive performance is still testable, but their interpretation as isolated motor constants is not established.
-
-### Follow the equation into the executable model
-
-The [native replay engine](../resources/class04/native/code/upstream/run_chapter02_real_position_identification_v2.py) creates one hinge and one unit-gear motor named `mode5_controller_torque`. The mechanics are compiled once per fixture/controller context. A candidate then sets three joint fields before replay:
-
-| Equation quantity | Implementation | Interpretation |
+| Quantity | Source implementation | Interpretation |
 |---|---|---|
-| $$J_f$$ | Declared fixture inertia, recoverable from `mj_fullM` after subtracting armature | Fixed geometry/property estimate |
-| $$J_a$$ | `model.dof_armature[0]` | Estimated extra effective joint inertia |
-| $$b$$ | `model.dof_damping[0]` | Estimated viscous resistance |
-| $$\tau_c$$ | `model.dof_frictionloss[0]` | Estimated dry-friction bound; MuJoCo also handles sticking |
-| $$\tau_g$$ | `data.qfrc_bias[0]` at zero velocity | Left-hand gravity bias, not the applied gravitational force's sign |
-| $$\tau_C$$ | `data.ctrl[0]`, through the motor's unit transmission | Limited simulated output effort in N m |
+| $$J_f$$ and $$\tau_g$$ | Fixed fixture bodies/inertial properties and gravity | Declared mechanism |
+| $$J_a$$ | `model.dof_armature[0]` | Added effective inertia |
+| $$b$$ | `model.dof_damping[0]` | Velocity-dependent resistance |
+| $$\tau_c$$ | `model.dof_frictionloss[0]` | Joint dry-friction bound |
+| $$\tau_C$$ | Reference input, actuator feedback and force bound | Effective controller effort |
 
-For the reduced G1 body, let $$\mu$$ be the signed first moment along its zero-pose x axis. Its declared centre of mass rotates about +Y, so the gravity term on the left of the balance is
+All three terms can alter the same position trace. To distinguish them, the input must excite different accelerations, velocities, directions and settling periods. Symmetric fixture changes probe inertia while reducing ideal gravity loading; G1 adds an eccentric load. A fitted damping increase can also compensate for delay, compliance or effort-map error. Numerical identifiability within a chosen equation is therefore weaker than physical identification of a unique mechanism.
 
-$$
-\tau_g(q)=-9.81\mu\cos q.
-$$
+### Two routes from data to parameters
 
-With $$\mu=-0.00736$$ kg m, the model gives $$\tau_g(0.4)\approx0.0665021$$ N m. This matches `qfrc_bias[0]` at zero velocity; the applied gravitational torque has the opposite sign. The sign follows this installation's coordinate convention, not the positive distances in a payload label. It is a model-consistency check rather than a new measurement.
+The source XC330 result uses **output-error fitting**. An optimizer proposes $$\theta=[J_a,b,\tau_c]^{\mathsf T}$$, replays calibration episodes, compares predicted with measured position, then updates the bounded vector. It needs neither measured shaft torque nor twice-differentiated encoder position. The physical [RS06 companion](04-rs06-hardware-identification.md) also retains a separate integral-regression result; that experiment provides the actual numerical comparison of both methods.
 
-**Worked control step.** In H1, suppose the simulated state is 0.2 rad and 0.4 rad/s, while the recorded references are 0.3 rad and 0.2 rad/s. Using the unrounded coefficients in the configuration card, let the requested effort before limiting be $$\tau_{\mathrm{req}}$$:
+The integral route follows from the same balance. Integrate over a moving window from $$t_0$$ to $$t_1$$:
 
 $$
 \begin{aligned}
-\tau_{\mathrm{req}}&=K_p^C(0.1)+K_v^C(-0.2)\\
-&=0.1175606397\ \mathrm{N\,m},\\
-\tau_C&=\operatorname{clip}(\tau_{\mathrm{req}},-0.1551,0.1551)\\
-&\approx0.117561\ \mathrm{N\,m}.
+J_a\Delta\dot q+b\Delta q
++\tau_c\int_{t_0}^{t_1}\operatorname{sgn}(\dot q)\,dt
+\approx{}&\int_{t_0}^{t_1}(\tau_C-\tau_g(q))\,dt\\
+&-J_f\Delta\dot q.
 \end{aligned}
 $$
 
-This is a computed model effort, not a measured hardware torque. A position error of 0.2 rad with zero velocity error would request about 0.316 N m before clipping, so only 0.1551 N m is applied in this model. Increasing error beyond that point cannot increase its permitted effort.
+Each window supplies one row of $$A\theta\approx z$$. Its columns are velocity change, position change and signed moving time; the target is integrated reconstructed effort minus fixed gravity and fixture-inertia contributions. Reconstructed effort uses measured position and velocity in the fixed controller expression. Output-error replay instead uses the simulated state for feedback. Confusing these operations would change the experiment.
 
-Between consecutive 10 ms analysis samples, the engine holds the preceding recorded references and performs five 2 ms MuJoCo steps. It recomputes feedback from the evolving simulated state at **each** substep. The 2 ms integration/controller-update interval is a simulation choice, not a measurement of the firmware loop rate. `ctrl[0]` is torque here because this XML defines a motor; it would mean position in a position-actuator XML such as the separate RS06 example.
-
-### Method 1 integrates the equation
-
-Computing acceleration by differentiating encoder position twice can amplify measurement noise. Instead, integrate the mechanical equation over a qualified moving window. Approximate moving dry friction by $$\tau_c\operatorname{sgn}(\dot q)$$ and collect the known terms:
-
-$$
-J_a\Delta\dot q+b\Delta q+
-\tau_c\int_{t_0}^{t_1}\operatorname{sgn}(\dot q)\,dt
-\approx
-\int_{t_0}^{t_1}(\tau_C-\tau_g(q))\,dt-J_f\Delta\dot q.
-$$
-
-In the actual calibration subset, M0/B0/B1/B2 have zero declared first moment, so $$\tau_g=0$$. The implementation therefore forms its target as integrated reconstructed effort minus $$J_f\Delta\dot q$$. G1 is evaluated later by replaying a frozen candidate; it is not used to fit this regression. Extending the regression to an eccentric fixture would require the gravity contribution in the general equation above.
-
-Each window supplies one row of $$A\theta\approx z$$, where $$\theta=[J_a,b,\tau_c]^{\mathsf T}$$. The columns are velocity change, position change and signed moving time. The right-hand side is integrated reconstructed controller effort minus the declared gravity and fixture-inertia contributions.
-
-For this method, reconstructed effort uses qualified measured position and velocity in the fixed controller expression. Those measurements are being used to build the regression. In output-error replay, feedback instead uses the simulated state. Confusing those two operations would turn a free-running prediction into a measurement-driven calculation.
-
-**Constructed worked row.** Suppose a 0.2 s window stays in positive motion, with velocity change 0.5 rad/s and position change 0.1 rad. The row is $$[0.5,0.1,0.2]$$. Illustrative parameters $$[0.001,0.04,0.005]$$ give
+**Constructed integral row:** a 0.2 s positive-motion window with $$\Delta\dot q=0.5\ \mathrm{rad/s}$$ and $$\Delta q=0.1\ \mathrm{rad}$$ supplies the row $$[0.5,0.1,0.2]$$. Illustrative parameters $$[0.001,0.04,0.005]$$ give
 
 $$
 0.5(0.001)+0.1(0.04)+0.2(0.005)=0.0055\ \mathrm{N\,m\,s}.
 $$
 
-These numbers demonstrate the calculation; they are not physical measurements or the campaign's parameter vector. One row cannot determine three unknowns. Several independent motion windows are needed, and bounds constrain the estimates. The actual XC330 implementation uses qualified 0.5 s windows, filtering and moving-fraction rules. Numerical rank concerns distinguishable columns; conditioning concerns sensitivity to small errors. Neither proves that reconstructed effort or the friction approximation is physically exact.
+This illustrates the integrated units and arithmetic, not a source XC330 Method 1 result. One row cannot determine three unknowns. Independent motion windows and declared bounds are needed; rank and conditioning concern distinguishability and sensitivity, rather than proving the controller approximation correct. Integration avoids differentiating measured velocity into acceleration but still depends on velocity quality, timing and the friction approximation.
 
-### Method 2 fits the simulated output
-
-Output-error optimization proposes a parameter vector, simulates calibration episodes and compares predicted position with recorded position. It updates the vector within declared bounds and repeats the calculation. It does not require measured shaft torque or numerically differentiated acceleration.
-
-For retained calibration samples, an equal-episode squared-error objective can be written
+For output-error fitting, an equal-episode calibration objective can be written
 
 $$
 L(\theta)=\sum_{e\in\mathcal C}\frac{1}{n_e}
 \sum_{i\in\mathcal I_e}
-\left(\hat q_{e,i}(\theta)-y_{q,e,i}\right)^2.
+\big(\hat q_{e,i}(\theta)-y_{q,e,i}\big)^2.
 $$
 
-Here $$\mathcal C$$ is the calibration set, $$\mathcal I_e$$ is the retained optimization sample set and $$n_e=|\mathcal I_e|$$. The packaged solver uses every fourth point of the 100 Hz arrays and normalizes each episode's residual block by the square root of its sample count. Three numerical starts test convergence within the stated bounds; they are not physical baseline models.
+Here $$\mathcal C$$ is the calibration episode set, $$\mathcal I_e$$ the optimization sample subset and $$n_e=|\mathcal I_e|$$. The source XC330 program uses every fifth active telemetry sample and normalizes each episode residual block by the square root of its sample count; a common scalar factor does not change the minimizing vector. Final full-episode scores are calculated separately. A sum of episode mean squared errors and a mean of episode RMSE values are different summaries.
 
-Replay starts once from the first measured position and velocity. It then uses five 2 ms physics steps per reference interval, computing feedback from its own state. Later measurements supply the comparison target rather than replacing simulated position or velocity.
+## Fitting a bounded effective model
 
-The full-episode validation score is calculated separately from the optimizer's subsampled residual. A sum of episode mean squared errors, its square root and a mean of episode RMSE values are related summaries, but they are not numerically interchangeable. Name the one being reported.
+The fitted joint terms are effective prediction parameters:
 
-Method 2 includes the declared saturation and MuJoCo friction treatment during repeated simulation. It costs more than solving one regression and remains dependent on the model class and fixed controller assumptions. Both methods are parameter estimation, not reinforcement learning.
+| Parameter | Symbol | Fitting interval | Meaning in this replay model |
+|---|---|---:|---|
+| Armature | $$J_a$$ | 0.0002–0.010 kg m² | additional reflected rotational inertia |
+| Damping | $$b$$ | 0.003–0.150 N m s/rad | velocity-dependent loss |
+| Friction loss | $$\tau_c$$ | 0.002–0.050 N m | dry-friction bound |
 
-### Freeze a candidate before evaluating it
+The synthetic baseline was fitted to generated MuJoCo data for this 110 g fixture, without hardware data. It is a specific reference model, not a claim that every possible simulation has this error.
 
-A frozen candidate has its parameters held fixed while evaluation episodes are scored. The released H1 vectors illustrate how methods can disagree:
+Four bounded starts are fitted independently for H1 and H2 on the calibration profiles. The selected candidate is the successful candidate with the lowest mean episode RMSE on the model-selection profiles. That choice is frozen before P06 and P07 are opened.
 
-| Field | Method 1 | Method 2 |
-|---|---:|---:|
-| Armature, kg m² | 0.0107069 | 0.00632963 |
-| Damping, N m s/rad | 0.0364783 | 0.0425664 |
-| Friction loss, N m | 0.0102269 | 0.00736304 |
-
-The values belong to this controller/model/data context. A small output discrepancy does not prove unique rotor inertia, calibrated torque, or accurate behaviour under contact. Compare predictions and parameter plausibility while retaining those limits. Replaying these supplied vectors reproduces a frozen candidate; it is not a fresh fit.
-
-**Checkpoint:** Why can two methods return different parameters even when both execute correctly? Which comparison would help judge their usefulness?
-
-## Test against physical records
-
-### Replace constructed observations with physical records
-
-In a constructed experiment, the generating parameters can be known and later revealed. That lets us distinguish calculation errors from imperfect parameter recovery under a declared observation model. On physical hardware, equivalent MuJoCo parameters are unknown. We evaluate measured-response prediction rather than distance to an unavailable true vector.
-
-The 98 g campaign's evidence chain is a scripted collector, command/telemetry packet records with configuration, an alignment/conversion adapter, complete analysis episodes and a frozen replay. The configuration includes mode, gains, limits, fixture, firmware, coordinate conventions and operating context. The model's geometry-derived inertias and effort mapping remain estimates or assumptions even when their inputs are carefully recorded.
-
-Structured motor records and visual context have different roles. In other supplied historical material, **asBrain** names the command/telemetry capture path and the original **asMagic** supplies phone-based visual context. That material belongs to a separate source family. The 98 g archive's collector records do not establish that those applications acquired this campaign. A video can help explain an installation or event; it does not supply the time-paired joint samples used to calculate this gap. The demonstration therefore follows the verified motor-record path and labels any additional visual illustration by its actual source.
-
-### Preserve the physical comparison contract
-
-The supplied arrays retain the declared fixture, profile, controller, repeat and split identity. The audit checks source hashes, episode identities, monotonic times and finite observations. Such checks support reproducibility and data integrity; they do not independently calibrate a sensor or prove every physical assumption.
-
-The archived evaluation is **retrospective**: the trajectory adapter and controller representation were finalized after the archive existed. Held-out labels preserve a useful reserved-role comparison, but they do not make this an independent prospective confirmation. A prospective campaign would freeze the model class, processing and candidate selection before collecting or revealing new evaluation records.
-
-If a residual motivates a new timing rule, gravity sign or model term, preserve the original result and record the revision. The revised candidate needs fresh evaluation. Moving a validation trace until it overlays neatly would change the comparison after seeing the answer.
-
-## Interpret the Sim2Real discrepancy
-
-### Calculate the discrepancy and keep its meaning
-
-For three constructed residual samples of −0.01, 0 and +0.01 rad, the mean signed error is zero. The positive and negative errors cancel. Their RMSE is
-
-$$
-\sqrt{\frac{(-0.01)^2+0^2+(0.01)^2}{3}}
-\approx0.008165\ \mathrm{rad}.
-$$
-
-Zero mean signed error therefore does not establish an exact prediction. RMSE summarizes magnitude; the signed trace reveals where and in which direction discrepancies occur. A large peak can also matter to an intended task even when the average magnitude is modest.
-
-Now inspect the selected physical record under H1. Keep its identity and scoring rules beside the figure:
-
-| Selected comparison | Declared value |
-|---|---|
-| Record | XC330, H1, G1, P06 composite, R01 |
-| Mechanical/controller context | 98 g fixture; Mode 5; fixed H1 engineering map |
-| Candidate used for the activity | Frozen H1 Method 2 armature, damping and friction-loss vector in the parameter table |
-| Analysis interval | 0.00–10.99 s from the processed active-profile start |
-| Retained observations | 1,100 paired samples at 0.01 s spacing |
-| Initialization | First measured position and velocity; simulation then evolves from its own state |
-| Scoring | All supplied active-profile samples; no added shift, filter, burn-in removal or mask |
-
-The initialized position sample has zero position residual by construction and remains in the declared score. The remaining measurements are comparison targets, not state resets. The sample count is not a count of independent trials. The [configuration and frozen candidates](../resources/class04/data/xc330-98g-model-config.json), [paired observations and predictions](../resources/class04/data/xc330-98g-H1-G1-P06-R01.csv) and [saved activity metrics](../resources/class04/data/xc330-98g-activity-saved-metrics.json) preserve this comparison.
-
-With the frozen candidates and the same analysis rules:
-
-| P06 first held-out repeat | Method 1 episode RMSE | Method 2 episode RMSE |
-|---|---:|---:|
-| Balanced B1 | 0.00797565 rad | 0.00420779 rad |
-| Eccentric G1 | 0.0223445 rad | 0.0219097 rad |
-
-For the selected G1 episode, Method 2 is about 1.26 degrees in position RMSE. Its mean signed residual is −0.01593 rad and its largest absolute residual is about 0.04129 rad, near 3.83 s. Between 2 and 3 s all its retained residual samples are negative, so simulation underpredicts the measured joint angle throughout that interval. This is a specific observation, not proof of a gravity, timing or friction cause.
-
-The same physical episode has internal-reference tracking RMSE about 0.04985 rad and external-goal tracking RMSE about 0.07643 rad. Those are different comparisons from the 0.02191 rad model gap. Both model candidates face the same episode, initialization and scoring rules. There is no arbitrary nominal physical baseline in this study.
-
-![Matched P06 physical/simulated comparisons](../resources/class04/figures/xc330-matched-P06.png)
-
-*Figure 3. B1 and G1 first repeats use the same named P06 profile and H1 context. The differing physical initial states and fixture properties are preserved. The comparison helps investigate condition dependence; it does not uniquely establish a failure mechanism.*
-
-### Read a residual before assigning a cause
-
-An approximately constant offset suggests checking zero or measurement bias. A discrepancy that changes around transitions suggests checking reference meaning, timing, saturation or model dynamics. Direction dependence motivates friction, backlash or controller checks. An eccentric fixture motivates inspecting gravity direction, installed zero and signed centre of mass. Several mechanisms can produce similar patterns.
-
-| Observation | Possible explanation | Discriminating check |
-|---|---|---|
-| Offset across a motion | Coordinate zero or measurement bias | Check a physical reference pose and conversion independently of the scored trace |
-| Error concentrated at transitions | Timing or reference/controller mismatch | Inspect timestamp events and recorded internal references under the frozen alignment rule |
-| Different errors in opposite directions | Friction, lost motion or controller asymmetry | Compare repeated direction reversals at controlled speed and load |
-| Weak eccentric transfer | Gravity/installation or missing load-dependent effects | Check signed geometry and holding behaviour at declared poses; preserve controller settings |
-
-A proposed cause becomes stronger when a check separates it from a credible alternative. Residual shape alone is not proof. At this stage a defensible response is an observation, a hypothesis and a next test—not a confident diagnosis unsupported by measurements.
-
-### Report the aggregation and the condition
-
-The campaign summary is the **arithmetic mean of complete-episode RMSE values**:
-
-$$
-\overline R=\frac{1}{E}\sum_{e=1}^{E}R_e.
-$$
-
-Each episode has equal weight. Pooling all retained samples instead gives
-
-$$
-R_{\mathrm{pooled}}=
-\sqrt{\frac{\sum_e N_e R_e^2}{\sum_e N_e}}.
-$$
-
-These statistics answer different questions. For two episodes with RMSE 0.002 and 0.010 rad and sample counts 100 and 900, the mean episode RMSE is 0.006 rad while pooled RMSE is about 0.009508 rad. The actuator has not changed; only the weighting question has changed.
-
-The released H1 results also depend strongly on the evaluation condition:
-
-| Evaluation group | Method 1 mean episode RMSE | Method 2 mean episode RMSE |
-|---|---:|---:|
-| Model selection, 12 episodes | 0.0120930 rad | 0.00434992 rad |
-| Held out, all 15 H1 episodes | 0.0233431 rad | 0.0165230 rad |
-| Held-out B1/P06, 5 repeats | 0.00869335 rad | 0.003398 rad |
-| Held-out G1/P06–P07, 10 repeats | 0.0306679 rad | 0.023086 rad |
-
-![Method and condition summaries with declared grouping](../resources/class04/figures/xc330-condition-means.png)
-
-*Figure 4. Released mean episode RMSE values, not single-episode scores. B1 and G1 groups have different profile composition as labelled. These bars are deterministic summaries of this archive, not confidence intervals or estimates of a wider actuator population.*
-
-The combined Method 2 held-out value is approximately
-
-$$
-\frac{5(0.003398)+10(0.023086)}{15}
-\approx0.016523\ \mathrm{rad}.
-$$
-
-That aggregate hides the weaker G1 group. Because G1 includes P07 as well as P06, the aggregate contrast does not isolate eccentricity as the cause. Use the matched P06 comparison and additional discriminating checks when investigating the fixture effect.
-
-### Compare prediction with repeatability and intended use
-
-Repeated physical trajectories show how much the recorded response varies under the same declared condition. The archived held-out repeat-to-combination-mean RMSE averages about 0.001375 rad across the 30 primary held-out episodes. This is a run-to-run context measure, not an independent sensor calibration, universal noise floor or ready-made acceptance threshold. The predicted-to-measured gap includes effects that repeatability cannot separately identify.
-
-A useful model decision therefore combines its position metric, residual structure, repeat context, tested operating scope and the consequence of prediction error for the intended task. A tolerable discrepancy for previewing broad free motion might be inadequate for a precise interaction task. This campaign supplies no evidence for contact accuracy or calibrated torque.
-
-The evidence supports investigating the frozen Method 2 candidates for balanced-fixture position prediction within this controller/reference boundary. It leaves eccentric transfer materially weaker and the final prospective claim unresolved. A suitable decision is: **retain the candidate for the stated limited comparison, investigate the G1 discrepancy, and require new reserved evidence before extending the claim.**
-
-**Checkpoint:** Which numerical result would you report for the selected activity episode? Which other result would you report to describe its condition across repeats? Why are those not the same number?
-
-### Evaluate the declared-110 g XC330 fit as a separate case
-
-The retained case compared two estimation methods. We now keep the scoring idea and ask a different question: **does fitting physical-response records improve on a baseline estimated from generated simulation data?** This comparison belongs to the newer XC330 revision. Its model declaration is a 22 g link plus two complete 44 g payload assemblies, totaling 0.110 kg. The saved B1 and G1 MJCFs carry that added moving mass. This is a declaration and a model-consistency check; it is not a new independent weighing of the physical assembly.
-
-The same named placements change balanced inertia from B0 to B2 and introduce an eccentric gravity load in G1. The later replay still receives the logged internal position and velocity references, uses the fixed H1/H2 controller map and limits effort to ±0.1551 N m. Its processing differs from the retained case: it scores active telemetry samples at approximately 200 Hz and linearly interpolates the recorded references onto a 2 ms physics grid. The retained 98 g replay instead holds references from its 10 ms analysis grid. These are different model/data-processing records, so a difference between their scores cannot be attributed to mass alone.
-
-The recorded split contains 72 calibration, 24 selection and 30 held-out-labelled episodes. Four bounded output-error starts are fitted separately for H1 and H2. The recorded rule selects the successful calibration candidate with the smallest mean episode RMSE on the selection profiles. Its frozen-selection file records that held-out numeric data had not yet been loaded and contains the same vectors as the result file:
-
-| Candidate | Armature, kg m² | Damping, N m s/rad | Friction loss, N m |
+| Set | Armature (kg m²) | Damping (N m s/rad) | Friction loss (N m) |
 |---|---:|---:|---:|
-| Synthetic-data baseline, shared | 0.001002523 | 0.014962822 | 0.010094810 |
-| Selected hardware fit, H1 | 0.006051241 | 0.046289368 | 0.003541626 |
-| Selected hardware fit, H2 | 0.004778799 | 0.047629647 | 0.002773439 |
+| Synthetic baseline | 0.001003 | 0.014963 | 0.010095 |
+| H1 selected | 0.006051 | 0.046289 | 0.003542 |
+| H2 selected | 0.004779 | 0.047630 | 0.002773 |
 
-These are effective parameters of this replay. The selected vectors are inside the declared fitting bounds. Neither their numerical convergence nor a saved stage-order declaration independently proves prospective hold-out integrity or unique physical motor constants.
+Neither selected H1 nor H2 parameter reaches an upper fitting bound. The terms still remain effective closed-loop parameters, because the position record alone cannot uniquely separate inertia and damping from timing, effort scaling, compliance, or reference interpolation.
 
-Use the [30 recorded episode scores](../resources/class04/data/xc330-declared110g-heldout-metrics.csv) to calculate the equal-episode means:
+![Selected parameter values normalized to the widened fitting intervals. Neither controller fit reaches an upper limit.](../resources/class04/figures/source/parameter_bounds.png)
 
-| Reserved condition | Episodes | Synthetic-baseline RMSE, rad | Frozen-fit RMSE, rad |
-|---|---:|---:|---:|
-| B1 / H1 / P06 | 5 | 0.01461519 | 0.00341971 |
-| B1 / H2 / P06 | 5 | 0.01018373 | 0.00276886 |
-| G1 / H1 / P06–P07 | 10 | 0.02855784 | 0.02284187 |
-| G1 / H2 / P06–P07 | 10 | 0.02098337 | 0.01850580 |
-| All reserved episodes | 30 | 0.02064689 | 0.01481398 |
+*Figure 4. Selected parameter values normalized to the widened fitting intervals. Neither controller fit reaches an upper limit.*
 
-The relative reduction is
+## Held-out error
+
+For an episode $$e$$ with $$N_e$$ active samples, the position score is:
 
 $$
-100\frac{0.02064688985-0.01481398497}{0.02064688985}
-\approx28.2508\%.
+\operatorname{RMSE}_e =
+\sqrt{\frac{1}{N_e}\sum_{k=1}^{N_e}
+\left(q^{\mathrm{sim}}_{e}[k]-q^{\mathrm{hw}}_{e}[k]\right)^2}.
 $$
 
-Thus **28.3%** is the reduction in the mean of 30 episode position RMSE values for this declared-110 g comparison. It is not a reduction in tracking error, a mean of the 30 episode percentage reductions, or a result for the retained 98 g model.
-
-![Paired episode position errors for the declared-110 g XC330 fit](../resources/class04/figures/xc330-declared110g-heldout.png)
-
-*Figure 5. Recorded baseline and frozen-fit position RMSE for 30 reserved XC330 episodes in the declared-110 g model revision. Small paired marks show individual episodes; large marks show equal-episode condition means. B1 uses P06; G1 combines P06 and P07. The connecting lines preserve each episode's pairing. These are archive summaries, without confidence intervals or a newly executed fit.*
-
-Read the paired marks before making the model-use decision. The fit improves each condition mean, while G1 remains substantially worse than B1. Some individual G1/H2 episodes become worse; the overall mean does not imply universal improvement. The retained 98 g and newer 110 g records both motivate investigating eccentric-load mismatch, but their separate processing and model identities prevent a controlled mass-effect conclusion. The defensible claim is improvement over this revision's own synthetic baseline within its recorded input and evaluation scope.
-
-## Test the same reasoning on the RS06 fixture
-
-Both XC330 cases used recorded internal references. The RS06 comparison now changes the input boundary: **can a model predict the motor's response directly from its applied position command, and how does that prediction differ from command tracking?** Keep that question in view while carrying the same calibration, evaluation and residual reasoning into a different apparatus.
-
-### Follow the applied command into a different controller boundary
-
-The RS06 case uses the four fixtures inspected in Class 03 and records position-mode motion over CAN. The host applies a position command every 20 ms. Unlike the XC330 example, the replay input is this **applied position command**, not a pair of logged internal trajectory references. Measured position is the target of the comparison; measured velocity initializes replay once. Firmware-reported torque is a supporting diagnostic and is excluded from both fits.
-
-| RS06 condition | Fixed position stiffness | Fixed velocity damping |
-|---|---:|---:|
-| H1 | 50 | 3.38 |
-| H2 | 100 | 1.95 |
-
-The replay copies these declared gains into the position actuator, whose effective effort is
+The final aggregate is the arithmetic mean of episode RMSE values:
 
 $$
-\tau_C=K_p^C(q_a-\hat q)-K_d^C\dot{\hat q}.
+\overline{\mathrm{RMSE}}=\frac{1}{E}\sum_{e=1}^{E}\mathrm{RMSE}_e.
 $$
 
-Here $$q_a$$ is `position_applied_rad`; the gain/bias fields implement feedback from the simulated state. In this model the coefficients have units N m/rad and N m s/rad. Copying firmware values into these fields is a fixed modelling assumption, not a calibrated equivalence between the firmware controller and MuJoCo. The H1/H2 labels are local to RS06 and do not identify the XC330 gains.
+Equal episode weighting prevents longer episodes from dominating the reported score. A pooled-sample score instead takes the square root after combining all squared residuals and sample counts; it is not interchangeable with this mean. Report the statistical unit and denominator alongside the number.
 
-The fixture properties also belong to RS06. They are computed from CAD inertial tensors, centres of mass and the joint axis, including the parallel-axis contribution. They exclude fitted joint armature and do not establish independently measured as-built masses:
+Define the signed prediction residual $$g=\hat q-q_{\mathrm{hw}}$$. Its mean is bias; RMSE measures its squared magnitude and therefore retains the angle unit. A positive and negative residual can cancel in bias while RMSE remains positive. For illustrative residuals $$[0.01,-0.01,0]\ \mathrm{rad}$$, bias is zero but RMSE is about $$0.008165\ \mathrm{rad}$$. These constructed values illustrate the metric only.
 
-| RS06 fixture | External moving mass, kg | Fixture-axis inertia, kg m² | Physical interpretation |
-|---|---:|---:|---|
-| M0 | 0 | 0 | No external moving fixture |
-| B0 | 0.687213 | 0.0129095 | Balanced link |
-| B1 | 2.407213 | 0.0576790 | Balanced link with both payloads |
-| G1 | 1.547213 | 0.0352943 | One-sided payload and a gravity load |
+Prediction discrepancy compares simulated with measured output. Physical reference-tracking error compares a reference with measured output. A model can reproduce the actuator's lag accurately even if the actuator does not track its reference closely.
 
-In particular, RS06 B1 and G1 do not have equal external mass. Their labels must not inherit the equal-mass XC330 comparison. M0's model contains a tiny numerical regularization body; its declared physical external-fixture mass and inertia remain zero.
+The held-out conditions are B1 and G1, which have equal external mass and different gravity loading.
 
-### Keep complete episodes and the two estimation methods
+![Held-out fixture callouts. B1 is balanced; G1 has the same external mass but an asymmetric gravity load.](../resources/class04/figures/source/heldout_fixture_callouts.png)
 
-The stored audit reports **108 dynamic episodes and 57,694 samples**, collected on 25 August 2026. One sample is invalid and excluded from scoring; no applied command is marked saturated. These are dataset-audit statements, not a general qualification of hardware limits.
+*Figure 5. Held-out fixture callouts. B1 is balanced; G1 has the same external mass but an asymmetric gravity load.*
 
-| Role | RS06 fixtures and profiles | Episodes across H1/H2 |
-|---|---|---:|
-| Calibration | M0/B0/B1 × P01–P03 × 3 repeats | 54 |
-| Selection | B0/B1 × P04–P05 × 3 repeats | 24 |
-| Held out | B1/P06 and G1/P06–P07 × 5 repeats | 30 |
-
-Each replay starts from the first measured position and velocity and holds the applied command over ten 2 ms physics steps. Subsequent measured states remain comparison targets. The split excludes G1 from calibration, giving a test of a previously unseen gravity-loaded fixture as well as reserved motion profiles.
-
-Method 1 uses the same integrated mechanical balance developed above, with 0.2 s moving windows and a bounded linear fit. It reconstructs effort using the fixed controller and measured state. Method 2 advances MuJoCo with its own simulated state and minimizes calibration output discrepancy. The stored output-error diagnostics report three successful numerical starts with closely agreeing objective values and nearby parameter vectors, with no selected parameter at a bound. This is a convergence observation within the chosen model class, not evidence that the motor has one uniquely recovered physical vector.
-
-Compare the methods within each controller setting first:
-
-| H1 parameter | Method 1 | Method 2 |
-|---|---:|---:|
-| Armature, kg m² | 0.06257 | 0.01086 |
-| Damping, N m s/rad | 0.6531 | 0.0694 |
-| Friction loss, N m | 0.2262 | 0.2993 |
-
-| H2 parameter | Method 1 | Method 2 |
-|---|---:|---:|
-| Armature, kg m² | 0.04600 | 0.01221 |
-| Damping, N m s/rad | 1.2722 | 0.2297 |
-| Friction loss, N m | 0.2595 | 0.2722 |
-
-The methods disagree strongly on armature and damping, although each returns a bounded numerical solution. The effective terms can absorb controller, friction, timing and representation errors. Their usefulness therefore rests on prediction checks, not only on the apparent plausibility of their names.
-
-### Compare output discrepancy, tracking and repeatability
-
-The [recorded aggregate table](../resources/class04/data/rs06-recorded-aggregate-metrics.csv) gives equal-episode position RMSE on each split. Each controller has 27 calibration, 12 selection and 15 held-out episodes. All values in the following table are in radians:
-
-| Controller | Method | Calibration | Selection | Held out |
+| Fixture | Controller | Episodes | Baseline mean RMSE (rad) | Fitted mean RMSE (rad) |
 |---|---|---:|---:|---:|
-| H1 | 1 | 0.00897881 | 0.01242434 | 0.00874032 |
-| H1 | 2 | 0.00447418 | 0.00260380 | **0.00314256** |
-| H2 | 1 | 0.00865194 | 0.01201170 | 0.00903686 |
-| H2 | 2 | 0.00388679 | 0.00268456 | **0.00338017** |
+| B1 | H1 | 5 | 0.014615 | 0.003420 |
+| B1 | H2 | 5 | 0.010184 | 0.002769 |
+| G1 | H1 | 10 | 0.028558 | 0.022842 |
+| G1 | H2 | 10 | 0.020983 | 0.018506 |
+| All | H1/H2 | 30 | 0.020647 | 0.014814 |
 
-Method 2 has lower mean output discrepancy in every split. Its held-out B1 means are 0.00358 rad for H1 and 0.00351 rad for H2; G1 means are 0.00293 and 0.00332 rad. In these records the unseen G1 fixture is not harder than B1 by this metric. That observation does not isolate gravity as a cause or establish transfer to arbitrary loads.
+Across all 30 held-out episodes, the frozen hardware-fitted replay reduces mean episode position RMSE by **28.3%** relative to the synthetic baseline. Let $$R_b$$ and $$R_f$$ denote the overall baseline and fitted means. The source table stores approximately 0.02064688985 rad and 0.01481398497 rad respectively:
 
-The hardware's held-out **command-tracking RMSE** is much larger: 0.06510070 rad for H1 and 0.02915434 rad for H2. The Method 2 output discrepancies are about 21 and 9 times smaller. A good response model can reproduce imperfect command following; low prediction error does not mean that the motor closely tracked its command.
+$$
+100(1-R_f/R_b)\approx28.2508\%.
+$$
 
-Before reading Figure 6, ask: **which two signals define each curve, and how does the prediction discrepancy compare with the variation between repeated physical responses?** Method 1 and Method 2 compare simulated with measured position. Hardware tracking compares the applied command with measured position. The repeat curve compares each physical repeat with its fixture/profile/controller group's mean response.
+The displayed condition table is rounded; the source result retains the precision used for the percentage.
 
-For the held-out records, the mean repeat-to-group-mean RMSE is 0.0004254 rad for H1 and 0.0004821 rad for H2. Method 2's model discrepancy is approximately 7.4 and 7.0 times those repeat measures. A reproducible physical response can still contain a systematic mismatch that the model misses. As in the XC330 case, repeat variability is neither a sensor-calibration result nor an automatic acceptance threshold.
+The asymmetric G1 condition remains harder to predict than B1 in these records, especially under H1. Fixture and profile composition differ, so the table alone does not prove that gravity causes the difference.
 
-![RS06 output discrepancy, physical tracking and repeatability across splits](../resources/class04/figures/rs06-gap-tracking-repeatability.png)
+![Held-out mean episode position RMSE for the synthetic baseline and frozen hardware fit.](../resources/class04/figures/source/heldout_error_overview.png)
 
-*Figure 6. Recorded RS06 RMSE summaries for H1 (left) and H2 (right), on a logarithmic vertical scale. Each panel uses 27/12/15 episodes for calibration/selection/held out. Lines connect categorical split summaries, not a time trajectory. No confidence intervals are estimated.*
+*Figure 6. Held-out mean episode position RMSE for the synthetic baseline and frozen hardware fit.*
 
-### Inspect the physical residual before interpreting the model score
+The largest fitted held-out error occurs in `G1__H1__P07_heldout_sine_hold__R01`: fitted RMSE is 0.026859 rad and baseline RMSE is 0.029262 rad. The fitted replay reduces this episode's RMSE but leaves a directional residual bias of about -0.0171 rad. This observation is evidence of remaining mismatch, not a unique identification of its cause.
 
-The [first B1/H2/P06 record](../resources/class04/data/rs06-B1-H2-P06-first-physical.csv) contains 551 valid samples over 0–11 s. Figure 7 compares the applied command with the measured physical response. Its lower panel uses this page's command-minus-measurement sign convention. Read the short residual excursions around the composite profile's command changes near 3.5 s and 7.3 s, as well as the smaller differences during smooth motion.
+## Held-out B1/H2 composite episode
 
-![Recorded RS06 B1 H2 composite motion and signed physical tracking residual](../resources/class04/figures/rs06-B1-H2-P06-physical-tracking.png)
+The B1/H2 composite episode did not influence parameter fitting or candidate selection. Its hardware-fitted replay has an RMSE of 0.002743 rad, compared with 0.010119 rad for the synthetic baseline.
 
-*Figure 7. Selected recorded RS06 B1/H2/P06 episode, the first chronologically stored repeat. Upper: applied position command and measured position. Lower: their signed tracking residual, with all 551 samples retained. The figure shows physical tracking; the separately stored simulated-output discrepancy is reported in the text.*
+![Recorded inner reference, measured position, and frozen hardware-fitted replay for the held-out B1/H2 composite episode.](../resources/class04/figures/source/good_heldout_episode.png)
 
-The tracking RMSE is 0.02688410 rad and the peak absolute tracking residual is 0.14653971 rad. The source's separately saved Method 2 output-gap RMSE for this same episode is 0.00340486 rad; no replay or fit was executed to draw the physical trace.
+*Figure 7. Recorded inner reference, measured position, and frozen hardware-fitted replay for the held-out B1/H2 composite episode.*
 
-The canonical episode has distinct applied and acknowledged-command fields. Substituting an echoed target for `position_applied_rad` changes the tracking comparison. Use the field named by the experiment contract before interpreting a lag or a numerical score. Likewise, the selected episode's 0.00340486 rad model discrepancy must not replace H2's 15-episode mean of 0.00338017 rad.
+The signal definitions are:
 
-### Use the static-gravity record as a qualified diagnostic
+- **Recorded inner reference** (purple dashed): the motion reference taken from the hardware control record and supplied to the replay.
+- **Hardware position** (black): the measured output angle of the physical XC330 fixture.
+- **Hardware-fitted replay** (green): the MuJoCo output predicted using the frozen H2 effective parameters.
 
-The G1 static record holds seven poses from −2.356 to +2.356 rad, approaching each from both directions under both controllers. Averaging firmware-reported torque over the final second and pairing approach directions gives a regression against MJCF gravity torque. The stored scales are 1.0379 for H1 and 1.0828 for H2, with coefficients of determination 0.9200 and 0.8536. These diagnose broad sign/scale consistency under the CAD and firmware assumptions.
+## What the model does and does not establish
 
-This is not shaft-torque calibration or independent validation of CAD mass. The firmware torque is an estimate; approach-dependent friction and offsets remain, and the diagnostic poses extend beyond the model's ±1.1 rad joint range. They do not expand the dynamic validation domain. The dynamic position records cover approximately ±0.75 rad; evidence outside that range, or under different speed, supply and temperature conditions, remains separate.
+The results support a bounded claim: for the declared one-actuator fixture, H1/H2 controller conditions, recorded inner references, and held-out B1/G1 profiles, the frozen replay model improves position prediction over the synthetic baseline.
 
-Together, the RS06 results support the limited recorded claim that Method 2 predicts these position-mode responses more closely than Method 1 under the declared gains, fixtures and profiles. They do not establish calibrated torque, as-built inertial properties, unique motor parameters or a matched actuator-quality ranking against XC330. The source metrics and this page's arithmetic checks are recorded-evidence analysis; the original identification, hardware experiment and prospective split integrity have not been independently reproduced here.
+Several mechanisms can produce similar residuals:
+
+- fixed effort scaling may be imperfect because output torque was not measured;
+- host-side timestamps include software and USB timing, while command-to-actuation delay was not independently measured;
+- the logged inner references are slower than the hidden embedded control loop;
+- the rigid model excludes shaft compliance, printed-part flex, backlash, joint play, cable forces, base motion, temperature effects, stiction, Stribeck behavior, and direction-dependent friction.
+
+Consequently, the fitted terms are not isolated motor constants. The study does not establish torque accuracy, thermal behavior, contact performance, or transfer to a multi-joint mechanism.
+
+A residual is an observation, not a diagnosis. A sign reversal near motion reversal can motivate a friction or backlash hypothesis; a lag can motivate a timing hypothesis. Neither pattern uniquely establishes its cause. Compare repeated responses and propose a discriminating measurement before changing several effects at once. Repeat variability can contextualize a model gap, but is not a sensor-calibration result or an automatic acceptance threshold. The intended use supplies the allowable error.
 
 ## Instructor and TA demonstration
 
-Follow the retained 98 g XC330 record once from signal identity to a model-use decision. Then use the RS06 input boundary and one tracking-versus-prediction comparison to check whether the same reasoning transfers. The fuller comparisons remain available as extensions below. Physical hardware can be shown unpowered or through a correctly identified recording. A qualified brief live motion is optional; the numerical argument uses preserved evidence and does not depend on completing a fresh collection.
+**Question:** what does the frozen model predict for one motion it did not fit? Use the source notation key, B1/H2 physical-motion record, controller record, frozen-selection record, held-out table and B1/H2/P06/R01 overlay. These preserved materials carry the numerical argument; a fresh hardware run or optimizer is not a prerequisite.
 
-### Identify the configuration and record
+First identify **XC330, B1, H2, P06, R01** and the declared 110 g external assembly. Locate the external goal, recorded inner references, measured output and frozen replay in the signal table. Explain why the inner references enter the replay and why the video supplies apparatus context rather than calibrated joint-angle data.
 
-Use the selected comparison record above and Figure 1; the linked configuration file supplies the full-precision values. Identify XC330, Mode 5, H1, the 98 g G1 fixture and P06 first held-out repeat. Trace the external goal, internal references, measured position and simulated output. Locate the scoring interval, initialization and 10 ms analysis grid. Distinguish the original motor-record capture from a visual illustration. State that these figures use the reduced numerical model rather than the 110 g CAD inspection family.
+Next trace calibration → model selection → frozen candidate → held-out evaluation. Locate the three selected H2 parameters and the fixed controller gains. Explain how the replay starts from measured state once, then advances its own prediction with interpolated references and a bounded effort law.
 
-### Show estimation and freezing
-
-Open the H1 parameter table. Identify the fixed quantities and the three estimated fields. Trace the calibration, selection and reserved-evaluation roles. Compare the supplied integral-fit result with the frozen candidate used for prediction. A frozen-candidate replay evaluates that candidate; it does not estimate new parameters. Full output-error optimization belongs to a separate numerical example.
-
-### Quantify and interpret the reserved response
-
-Use the selected-case analysis shown in the figures and metric table. Read the overlay, signed residual and RMSE. Confirm that the selected Method 2 G1 score is about 0.02191 rad. Compare Figure 3's B1 response before looking at the group means. Name one observed discrepancy and one discriminating check. Do not refit, change zero or shift the held-out trace to improve its score.
-
-### Contrast the RS06 command boundary
-
-The table compares the retained 98 g XC330 record with RS06. The newer 110 g processing rule remains distinct.
-
-| Item | Retained 98 g XC330 | RS06 |
-|---|---|---|
-| Replay input | Logged internal position and velocity references | Applied position command |
-| Controller representation | Fixed mapped limited feedback effort through a motor channel | Fixed position-actuator representation |
-| Analysis grid | 10 ms | 20 ms |
-| Effort evidence | Device current is not independent shaft torque | Firmware effort is excluded from primary fitting |
-
-Use Figure 6's H2 held-out values to contrast 0.02915434 rad physical command-tracking RMSE with 0.00338017 rad model-to-physical discrepancy. Ask which pair of signals each number compares. H1/H2 names remain local to each campaign, and the fixed controller assumptions prevent treating this as a matched actuator-quality contest.
-
-Finish the core demonstration by stating the candidate, observable, condition, measured gap, limitation and next test.
-
-### Choose a further comparison
-
-The following extensions revisit the same reasoning at greater depth. Select one for further demonstration or independent reading; they are not additional steps needed to complete the core XC330 comparison.
-
-- **A revised XC330 model:** Read Figure 5 and its 30-episode table. Recalculate 28.3% from the two overall means. Identify the declared mass, reference interpolation, frozen vectors and baseline before comparing that number with any 98 g score. Locate an individual G1/H2 pair that gets worse despite the improved aggregate.
-- **RS06 across error measures:** Use Figures 6–7 to distinguish physical command tracking, model-to-physical prediction discrepancy and repeat variability. Read the 0.0004821 rad H2 repeat measure alongside the two H2 scores above, then compare the selected physical episode with its own stored score. Keep a selected repeat separate from the aggregate and a physical tracking trace separate from a simulated-output residual.
+Finally read the held-out composite overlay and its **0.002743 rad** fitted episode RMSE against the **0.010119 rad** baseline. Compare that one episode with the 30-episode aggregate, then inspect the reported G1 worst case and remaining signed bias. End with a bounded model-use statement and one proposed measurement that could distinguish a timing explanation from a mechanical one. The source figures and saved scores provide the fallback if a model viewer is unavailable.
 
 ## Student activity
 
-The core activity uses one complete comparison. Analyse the supplied **H1/G1/P06/R01 XC330 episode** using the selected comparison record, Figure 1 and the [saved analysis output](../resources/class04/data/xc330-98g-activity-saved-metrics.json). Its held-out label identifies the retrospective reserved role described above. The saved figures, metric and paired samples supply the evidence for interpretation.
+Analyse the source held-out **B1/H2/P06/R01 XC330** episode using the physical-motion context, signal table, selected H2 parameters and recorded overlay above. Use the supplied [paired held-out result table](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/results/held_out_results.csv) to keep the selected episode separate from the aggregate.
 
-Submit a compact response with five items:
+Submit a compact comparison with five items:
 
-1. **Comparison:** identify the physical and simulated signals, controller context, fixture and input boundary.
-2. **Metric:** report the Method 2 episode position RMSE with units and explain what it compares.
-3. **Observation:** describe one specific feature of the signed residual and identify where it occurs in the figure.
-4. **Hypothesis and check:** propose one possible explanation and a check that could distinguish it from another explanation.
-5. **Decision:** state one sentence limiting the model's use to the evidence.
+1. Identify the fixture, controller, replay input and two outputs compared. Explain the role of the initial measured state.
+2. Report this episode's baseline and fitted position RMSE in radians. State why neither number is a hardware command-tracking score or a calibrated torque error.
+3. Describe one observed feature of the overlay and identify the relevant signal. Separate that observation from a possible explanation.
+4. Recalculate the overall percentage reduction from the two overall means above. State its 30-episode denominator and explain why it need not describe every episode.
+5. Give one bounded use decision and one discriminating follow-up measurement. Do not claim that the residual proves the proposed cause.
 
-A useful response distinguishes the external goal, internal reference and measured output; reports approximately 0.02191 rad rather than a group mean; and treats its explanation as testable. It does not assert that residual shape proves a root cause. There is no requirement to operate hardware, install software during class, implement an optimizer, change the payload or refit the model.
+The required evidence is on the page and in the linked source score table. Further replay or fitting belongs to the prepared source example. For transfer, use the [RS06 companion](04-rs06-hardware-identification.md) to distinguish applied-command tracking from model prediction and compare its two estimation methods without mixing apparatus-specific parameter values.
 
-Assessment concerns the comparison, metric, observation, test and bounded decision. Base the response on the identified evidence rather than whether a program was executed.
+## Source records and the next class
 
-### Optional transfer checks
+| Need | Source record |
+|---|---|
+| Prepared example and demonstration | [Package README](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/README.md); [demonstration guide](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/demonstration/DEMONSTRATION_GUIDE.txt) |
+| Episode membership and selection decision | [Episode index](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/EPISODES_USED.csv); [frozen selection](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/FROZEN_SELECTION_BEFORE_HELD_OUT.json) |
+| Parameter and controller definitions | [Fitted parameters](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/fitted_parameters.csv); [physical parameter sets](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/physical_parameter_sets.json); [controller conditions](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/controller_conditions.json) |
+| Candidate comparisons and final scores | [Optimizer candidates](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/optimizer_candidates.csv); [paired held-out results](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/results/held_out_results.csv); [overall held-out result](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/results/overall_heldout_result.csv) |
+| Fit/replay implementation and result record | [Source program](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/code/full_fit_and_replay.py); [result JSON](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/results/result.json) |
 
-After completing the five-item response, choose either extension for further practice:
+The package retains raw motor-side campaigns, paired samples, generated models and episode context with the source records. These are preserved results of the originating experiment; this lesson does not claim a new hardware execution or refit.
 
-- Calculate the declared-110 g XC330 percentage reduction from its overall baseline and fitted means. Explain why the result belongs to that revision and cannot be assigned to the 98 g case.
-- Use the RS06 H2 table and Figure 7 to distinguish the 15-episode prediction score, the 15-episode tracking score and the selected episode's tracking residual. Explain how a model can reproduce imperfect command following. Name the task-specific tolerance needed before judging either prediction or tracking adequate for an intended use; the two motors' fixtures and input interfaces are not matched.
-
-## Extend the comparison to multiple actuators
-
-The same comparison record must identify the system, input, output and evaluation conditions when more actuators are added. [Class 05](../module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator.md) applies that reasoning to a separate sixteen-motor campaign, where shared infrastructure, motor identity and connected mechanics require different evidence.
-
-## Terminology
-
-For terminology: a **fixture** is the declared link/payload arrangement; an **episode** is one execution; and a **residual** is the signed difference between the named signals. The prediction residual here is simulation minus measurement, whereas tracking uses reference or applied command minus measurement. **Calibration** estimates the parameters; **held-out** identifies a reserved evaluation role; and **RMSE** summarizes squared discrepancy in the output's units. This archive's retrospective status qualifies how strongly its held-out role can be interpreted.
+[Class 05](../module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator.md) extends the same comparison contract to a separate sixteen-motor source campaign. Shared infrastructure does not remove the need to identify each motor, clock, input and evaluation condition.
 
 ## References
 
-The [consolidated scientific provenance record](../resources/class04/data/consolidated-evidence-provenance.json) identifies the pinned source revision and blob hashes for the added declared-110 g XC330 and RS06 tables. These preserve recorded experimental evidence and selective scientific columns; they do not certify a new execution of the originating experiments.
-
-asMagicBrain. n.d. *PhyIntel*. GitHub repository, source commit `9821dae9cb14ecfcd9fde3f97f14308a21f5bc00`. [Source snapshot](https://github.com/asMagicBrain/PhyIntel/tree/9821dae9cb14ecfcd9fde3f97f14308a21f5bc00). The [supplied source manifest](../resources/class04/data/xc330-98g-source-manifest.json) identifies the archive, adapter, released results and processed-data export used here.
-
 Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer.
 
-Ljung, Lennart. 1999. *System Identification: Theory for the User*. 2nd ed. Upper Saddle River, NJ: Prentice Hall. [Author's book page](https://www.rt.isy.liu.se/en/books/sysid/).
+Ljung, Lennart. 1999. *System Identification: Theory for the User*. 2nd ed. Prentice Hall. The model and identification theory explains the calculation; the source package supplies this class's experiment and results.
 
-MuJoCo developers. n.d.-a. “Computation.” *MuJoCo Documentation*, version 3.3.7. Accessed October 17, 2026. [Friction-loss formulation](https://mujoco.readthedocs.io/en/3.3.7/computation/index.html#friction-loss).
+MuJoCo developers. *MuJoCo Documentation*, version 3.3.7. [Friction-loss formulation](https://mujoco.readthedocs.io/en/3.3.7/computation/index.html#friction-loss) and [actuator conventions](https://mujoco.readthedocs.io/en/3.3.7/modeling.html#actuators). Interpret these with the source runtime's actual gain, bias and force-limit settings.
 
-MuJoCo developers. n.d.-b. “Modeling.” *MuJoCo Documentation*, version 3.3.7. Accessed October 17, 2026. [Actuator conventions](https://mujoco.readthedocs.io/en/3.3.7/modeling.html#actuators).
-
-ROBOTIS. n.d. “XC330-M288.” *ROBOTIS e-Manual*. Accessed October 17, 2026. [Model-specific register and mode documentation](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/).
-
-The source campaign supplies the numerical evidence; the dynamics and identification references explain its mathematical setting. MuJoCo's actuator conventions (MuJoCo developers n.d.-b) and the device manual do not establish that the campaign's engineering controller map is a calibrated reproduction of the embedded loop.
+ROBOTIS. “XC330-M288.” *ROBOTIS e-Manual*. [Model-specific register and mode documentation](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/). Register definitions do not themselves calibrate the replay's fixed SI controller mapping.

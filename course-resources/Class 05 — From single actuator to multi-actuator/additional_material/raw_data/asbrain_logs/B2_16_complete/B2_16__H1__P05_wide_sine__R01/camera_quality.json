@@ -1,0 +1,65 @@
+{
+  "episode_id": "B2_16__H1__P05_wide_sine__R01",
+  "note": "This check runs after torque-off and camera STOP. A failure blocks the next episode but cannot undo the episode that was just recorded.",
+  "passed": true,
+  "policy": {
+    "maximum_host_gap_s": 3.0,
+    "maximum_source_gap_s": 3.0,
+    "minimum_frame_count": 2,
+    "minimum_fresh_rate_hz": 8.0
+  },
+  "validated_after_camera_stop": true,
+  "validation_ran_outside_100_hz_motor_loop": true,
+  "views": {
+    "view1": {
+      "achieved_host_rate_hz": 29.90363781029491,
+      "achieved_source_rate_hz": 29.884928893663734,
+      "ar_csv": "views/view1/media/episodes/B2_16__H1__P05_wide_sine__R01/raw/260916-144811_H1-B2-P05-R01_ar.csv",
+      "ar_csv_sha256": "92ca8fa9bbd917c3c1d44d0d974d046c8b8eaecbd122723025d8caa0afee5db1",
+      "capture_manifest": "views/view1/media/episodes/B2_16__H1__P05_wide_sine__R01/capture.json",
+      "capture_manifest_sha256": "3ebbf50b7d9bcd39e7daa8bb9e972a9dfc788e5a2b79a2556464468ab92ce63d",
+      "checks": {
+        "host_timestamps_strictly_advance": true,
+        "maximum_host_gap_respected": true,
+        "maximum_source_gap_respected": true,
+        "minimum_frame_count_reached": true,
+        "minimum_host_rate_reached": true,
+        "minimum_source_rate_reached": true,
+        "raw_and_jpeg_frame_counts_match": true,
+        "source_timestamps_strictly_advance": true,
+        "timestamps_finite": true
+      },
+      "frame_count": 524,
+      "host_span_s": 17.489510918967426,
+      "maximum_host_gap_s": 0.24330705404281616,
+      "maximum_source_gap_s": 0.06664609909057617,
+      "passed": true,
+      "source_span_s": 17.500459909439087
+    },
+    "view2": {
+      "achieved_host_rate_hz": 27.889565759039105,
+      "achieved_source_rate_hz": 27.876900420262185,
+      "ar_csv": "views/view2/media/episodes/B2_16__H1__P05_wide_sine__R01/raw/260916-144811_H1-B2-P05-R01_ar.csv",
+      "ar_csv_sha256": "44dd3a8f6e0385a48e5301c8003c98797849940835a975977867bd2675ae9a2d",
+      "capture_manifest": "views/view2/media/episodes/B2_16__H1__P05_wide_sine__R01/capture.json",
+      "capture_manifest_sha256": "592319647ae1e30b53900782340b0f49452a3b4e077f20b23d286c45a11ba76c",
+      "checks": {
+        "host_timestamps_strictly_advance": true,
+        "maximum_host_gap_respected": true,
+        "maximum_source_gap_respected": true,
+        "minimum_frame_count_reached": true,
+        "minimum_host_rate_reached": true,
+        "minimum_source_rate_reached": true,
+        "raw_and_jpeg_frame_counts_match": true,
+        "source_timestamps_strictly_advance": true,
+        "timestamps_finite": true
+      },
+      "frame_count": 488,
+      "host_span_s": 17.461727594025433,
+      "maximum_host_gap_s": 0.202936883084476,
+      "maximum_source_gap_s": 0.1663980484008789,
+      "passed": true,
+      "source_span_s": 17.469660997390747
+    }
+  }
+}

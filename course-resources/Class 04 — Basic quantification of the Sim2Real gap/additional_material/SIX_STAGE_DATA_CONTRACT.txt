@@ -1,0 +1,30 @@
+SIX-STAGE RECORD
+================
+
+Introduction
+Defines the XC330, asBrain Box, asMagic capture, software and safety boundary.
+
+Claim2Design
+Defines the fixture configurations, controller conditions, trajectories, repetitions and expected comparisons before hardware evaluation.
+
+Design2Data
+Checks the simulation episode contract, generated trajectories, model loading and synthetic identifiability.
+
+Data2Model
+Fits candidate effective models on calibration data and uses separate model-selection profiles to choose one candidate per controller.
+
+Model2Prototype
+Preserves the physical fixture record, exact execution settings, raw asBrain logs, matched asMagic media, episode list and operator note.
+
+Sim2Real
+Freezes the selected candidates, opens held-out data, replays the recorded inner trajectories and reports paired position error.
+
+Rules used here
+---------------
+- The hardware controller, experiment runner and simulated actuator remain separate components.
+- Episode identity links commands, telemetry, fixture, controller, phone media and replay.
+- Calibration estimates parameters; model-selection chooses a candidate; held-out data tests the frozen choice.
+- The primary metric is equal-weight mean per-episode active-profile position RMSE in radians.
+- Poor-agreement cases are retained. No failed accepted episode was present in the five source campaigns.
+- M0 has no external fixture. B0/B1/B2/G1 each use a measured 22 g link and two measured 44 g complete payload-and-pin assemblies, for 110 g total.
+- Results are valid only for the stated one-actuator conditions.

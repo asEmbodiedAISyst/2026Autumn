@@ -1,0 +1,40 @@
+{
+  "best_validation_mae_deg": 0.27289798855781555,
+  "test": {
+    "mae_deg": 0.40234243869781494,
+    "rmse_deg": 1.4077633619308472,
+    "n_rollout_samples": 1168
+  },
+  "checkpoint": "outputs/xc330_id0_stable.pkl",
+  "data_dt": 0.031998999999999,
+  "splits": {
+    "train": [
+      "batch_20260720_142525_b1_id0to7_real_id0_chirp_0p1to5p0Hz",
+      "batch_20260720_142525_b1_id0to7_real_id0_sine_0p1Hz",
+      "batch_20260720_142525_b1_id0to7_real_id0_sine_0p25Hz",
+      "batch_20260720_142525_b1_id0to7_real_id0_sine_0p5Hz",
+      "batch_20260720_142525_b1_id0to7_real_id0_sine_1p0Hz",
+      "batch_20260720_142525_b1_id0to7_real_id0_sine_2p0Hz",
+      "batch_20260720_142525_b1_id0to7_real_id0_sine_3p0Hz",
+      "batch_20260720_142525_b1_id0to7_real_id0_sine_5p0Hz",
+      "batch_20260720_142525_b1_id0to7_real_id0_step_amp15p0",
+      "batch_20260720_142525_b1_id0to7_real_id0_step_amp30p0",
+      "batch_20260720_142525_b1_id0to7_real_id0_step_amp5p0",
+      "neuralactuator_id0_20260720_id0_chirp_0p1to5p0Hz",
+      "neuralactuator_id0_20260720_id0_sine_0p1Hz",
+      "neuralactuator_id0_20260720_id0_sine_0p25Hz"
+    ],
+    "validation": [
+      "neuralactuator_id0_20260720_id0_sine_0p5Hz",
+      "neuralactuator_id0_20260720_id0_sine_1p0Hz",
+      "neuralactuator_id0_20260720_id0_sine_2p0Hz",
+      "neuralactuator_id0_20260720_id0_sine_3p0Hz"
+    ],
+    "test": [
+      "neuralactuator_id0_20260720_id0_sine_5p0Hz",
+      "neuralactuator_id0_20260720_id0_step_amp15p0",
+      "neuralactuator_id0_20260720_id0_step_amp30p0",
+      "neuralactuator_id0_20260720_id0_step_amp5p0"
+    ]
+  }
+}

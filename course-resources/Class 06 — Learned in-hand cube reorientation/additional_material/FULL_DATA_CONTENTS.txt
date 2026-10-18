@@ -1,0 +1,52 @@
+CONTINUOUS POSITIVE-Z ROTATION EVIDENCE
+=======================================
+
+Active scope
+------------
+The active report documents only the continuous proprioceptive rotation policy.
+It is neither visual servoing nor goal-conditioned cube reorientation.  Camera
+RGB is retained solely as documentary evidence and is never supplied to the
+actor.
+
+Reproducible evidence
+---------------------
+evidence/videos/continuous_z_model400_preview_30s.mp4
+  Supplied 30-second simulation preview of model_400.
+
+evidence/videos/rgb.mp4
+  Recent iPhone RGB recording of guarded physical execution.
+
+evidence/simulation_frames/ and evidence/hardware_frames/
+  The twenty uniformly sampled source frames used in the paper sequences.
+
+photos/contact_sheet.png
+  Six marked faces of the 58 mm / 85 g MBZUAI cube, used as the paper's
+  Appendix C object-reference figure. It is not visual feedback to the actor.
+
+results/fig06_simulation_continuous_z_sequence.png
+results/fig07_hardware_continuous_z_sequence.png
+  Publication-ready filmstrips.  Simulation and hardware are intentionally
+  separate figures.
+
+results/fig08_measured_60s_safety_telemetry.png
+results/fig09_measured_joint_tracking.png
+results/fig10_deployment_summary.png
+  Reproducible plots generated from actual bridge telemetry. They report motor
+  behavior and safety quantities, not cube orientation.
+
+results/fig11_training_diagnostics_job16352.png
+  Supplied PPO diagnostics for the continuous proprioceptive-rotation job.
+  They show an early, non-converged policy and are retained as diagnostic,
+  rather than rotation-success, evidence. The separate visual_yaw_metrics.png
+  is excluded because it belongs to a visual-yaw task outside active scope.
+
+code/run_continuous_z_with_iphone_recording.sh
+  The only supported deployment launcher.  It requires --iphone-ip because the
+  address may change, records RGB, and calls the guarded bundle deployment.
+
+code/generate_rotation_sequences.py
+  Deterministically rebuilds both filmstrips from the archived source videos.
+
+The checkpoint, checksum, training YAML, hardware bridge, and NPZ telemetry
+remain in CONTINUOUS_Z_ROTATION_DEPLOYMENT_BUNDLE_20261014.  This prevents
+duplicate executable code and keeps the deployment artifact authoritative.

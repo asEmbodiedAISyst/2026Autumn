@@ -1,0 +1,128 @@
+{
+ "result": {
+  "success": true,
+  "calls": 5,
+  "ended_by": "sim_success",
+  "cost_usd": 0.028208,
+  "usage": {
+   "input": 7020,
+   "output": 1262,
+   "cache_read": 7740,
+   "cache_write": 0
+  }
+ },
+ "transcript": [
+  {
+   "call": 0,
+   "tool": "locate",
+   "input": {
+    "u": 267,
+    "v": 105,
+    "what": "cube"
+   },
+   "report": "cube at x=41.8, y=-3.3 cm; from the tip that is dx=+7.0, dy=-3.4 cm"
+  },
+  {
+   "call": 0,
+   "tool": "locate",
+   "input": {
+    "u": 204,
+    "v": 92,
+    "what": "goal"
+   },
+   "report": "goal at x=45.2, y=1.0 cm; from the tip that is dx=+10.4, dy=+0.9 cm"
+  },
+  {
+   "call": 1,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": 7,
+      "dy_cm": -9,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     },
+     {
+      "dx_cm": 0,
+      "dy_cm": 0,
+      "dz_cm": -12.7,
+      "dyaw_deg": 0
+     },
+     {
+      "dx_cm": 0,
+      "dy_cm": 4.5,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "go right of cube, push left"
+   },
+   "report": "move 1 done: tip at (41.8, -8.9, 13.9) cm\nmove 2 done: tip at (41.8, -8.9, 1.2) cm\nmove 3 done: tip at (41.8, -4.4, 1.2) cm"
+  },
+  {
+   "call": 2,
+   "tool": "locate",
+   "input": {
+    "u": 163,
+    "v": 230,
+    "what": "cube"
+   },
+   "report": "cube at x=41.5, y=-0.4 cm; from the tip that is dx=-0.2, dy=+4.0 cm"
+  },
+  {
+   "call": 2,
+   "tool": "locate",
+   "input": {
+    "u": 112,
+    "v": 165,
+    "what": "goal"
+   },
+   "report": "goal at x=45.3, y=1.5 cm; from the tip that is dx=+3.5, dy=+5.9 cm"
+  },
+  {
+   "call": 3,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": 0,
+      "dy_cm": 0,
+      "dz_cm": 4,
+      "dyaw_deg": 0
+     },
+     {
+      "dx_cm": -6,
+      "dy_cm": 3,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     },
+     {
+      "dx_cm": 0,
+      "dy_cm": 0,
+      "dz_cm": -4,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "get behind cube"
+   },
+   "report": "move 1 done: tip at (41.8, -4.4, 5.2) cm\nmove 2 done: tip at (35.8, -1.4, 5.2) cm\nmove 3 done: tip at (35.8, -1.4, 1.2) cm"
+  },
+  {
+   "call": 4,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": 7,
+      "dy_cm": 1.5,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "push cube to goal"
+   },
+   "report": "move 1 done: tip at (42.8, 0.1, 1.2) cm\nTASK SUCCESS detected by the simulator"
+  }
+ ]
+}

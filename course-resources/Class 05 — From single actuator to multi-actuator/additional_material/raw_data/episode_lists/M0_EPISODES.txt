@@ -1,0 +1,23 @@
+M0 16-MOTOR EPISODE LIST (20 EPISODES)
+==================================================
+
+01. M0_16__H1__P01_slow_triangle__R01
+02. M0_16__H1__P01_slow_triangle__R02
+03. M0_16__H1__P01_slow_triangle__R03
+04. M0_16__H1__P02_multisine__R01
+05. M0_16__H1__P02_multisine__R02
+06. M0_16__H1__P02_multisine__R03
+07. M0_16__H1__P03_smooth_levels__R01
+08. M0_16__H1__P03_smooth_levels__R02
+09. M0_16__H1__P03_smooth_levels__R03
+10. M0_16__H1__PILOT_LOW_AMPLITUDE
+11. M0_16__H2__P01_slow_triangle__R01
+12. M0_16__H2__P01_slow_triangle__R02
+13. M0_16__H2__P01_slow_triangle__R03
+14. M0_16__H2__P02_multisine__R01
+15. M0_16__H2__P02_multisine__R02
+16. M0_16__H2__P02_multisine__R03
+17. M0_16__H2__P03_smooth_levels__R01
+18. M0_16__H2__P03_smooth_levels__R02
+19. M0_16__H2__P03_smooth_levels__R03
+20. M0_16__H2__PILOT_LOW_AMPLITUDE

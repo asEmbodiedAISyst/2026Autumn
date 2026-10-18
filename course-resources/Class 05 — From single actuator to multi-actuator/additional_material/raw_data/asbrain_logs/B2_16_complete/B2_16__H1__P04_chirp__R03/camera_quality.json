@@ -1,0 +1,65 @@
+{
+  "episode_id": "B2_16__H1__P04_chirp__R03",
+  "note": "This check runs after torque-off and camera STOP. A failure blocks the next episode but cannot undo the episode that was just recorded.",
+  "passed": true,
+  "policy": {
+    "maximum_host_gap_s": 3.0,
+    "maximum_source_gap_s": 3.0,
+    "minimum_frame_count": 2,
+    "minimum_fresh_rate_hz": 8.0
+  },
+  "validated_after_camera_stop": true,
+  "validation_ran_outside_100_hz_motor_loop": true,
+  "views": {
+    "view1": {
+      "achieved_host_rate_hz": 51.655678546784046,
+      "achieved_source_rate_hz": 53.24350792172963,
+      "ar_csv": "views/view1/media/episodes/B2_16__H1__P04_chirp__R03/raw/260916-144811_H1-B2-P04-R03_ar.csv",
+      "ar_csv_sha256": "52d66dc6736613f8207c110694164f494ebd1421cce43c1e2268afedcd0a9b20",
+      "capture_manifest": "views/view1/media/episodes/B2_16__H1__P04_chirp__R03/capture.json",
+      "capture_manifest_sha256": "60e0c58e50ba96f2a954c5bb0cc846b72fafb9647d14b7fe80f182c7e57ebd34",
+      "checks": {
+        "host_timestamps_strictly_advance": true,
+        "maximum_host_gap_respected": true,
+        "maximum_source_gap_respected": true,
+        "minimum_frame_count_reached": true,
+        "minimum_host_rate_reached": true,
+        "minimum_source_rate_reached": true,
+        "raw_and_jpeg_frame_counts_match": true,
+        "source_timestamps_strictly_advance": true,
+        "timestamps_finite": true
+      },
+      "frame_count": 972,
+      "host_span_s": 18.797546123038046,
+      "maximum_host_gap_s": 0.36941929592285305,
+      "maximum_source_gap_s": 0.25011301040649414,
+      "passed": true,
+      "source_span_s": 18.23696517944336
+    },
+    "view2": {
+      "achieved_host_rate_hz": 20.496482535426278,
+      "achieved_source_rate_hz": 21.37564961928358,
+      "ar_csv": "views/view2/media/episodes/B2_16__H1__P04_chirp__R03/raw/260916-144811_H1-B2-P04-R03_ar.csv",
+      "ar_csv_sha256": "d6bcdb9bff3740951358fb44e1430ba845b8394b2daf81372bcf964d7a0d920c",
+      "capture_manifest": "views/view2/media/episodes/B2_16__H1__P04_chirp__R03/capture.json",
+      "capture_manifest_sha256": "71cf253c7be1191545bdaef965f5b73961f827a5e9a246b06a3ae0d97a18cb64",
+      "checks": {
+        "host_timestamps_strictly_advance": true,
+        "maximum_host_gap_respected": true,
+        "maximum_source_gap_respected": true,
+        "minimum_frame_count_reached": true,
+        "minimum_host_rate_reached": true,
+        "minimum_source_rate_reached": true,
+        "raw_and_jpeg_frame_counts_match": true,
+        "source_timestamps_strictly_advance": true,
+        "timestamps_finite": true
+      },
+      "frame_count": 378,
+      "host_span_s": 18.39339990890585,
+      "maximum_host_gap_s": 0.7354200859554112,
+      "maximum_source_gap_s": 0.6338062286376953,
+      "passed": true,
+      "source_span_s": 17.63689088821411
+    }
+  }
+}

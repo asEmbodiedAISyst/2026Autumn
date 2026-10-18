@@ -1,0 +1,21 @@
+{
+  "controller_formula": "tau = clip(Kp*(q_trajectory-q) + Kv*(qdot_trajectory-qdot), -0.1551, +0.1551)",
+  "controllers": {
+    "H1": {
+      "position_p_gain_raw": 600,
+      "position_i_gain_raw": 0,
+      "position_d_gain_raw": 150,
+      "kp_Nm_per_rad": 1.579836,
+      "kv_Nm_s_per_rad": 0.202115
+    },
+    "H2": {
+      "position_p_gain_raw": 800,
+      "position_i_gain_raw": 0,
+      "position_d_gain_raw": 150,
+      "kp_Nm_per_rad": 2.106448,
+      "kv_Nm_s_per_rad": 0.202115
+    }
+  },
+  "physics_timestep_s": 0.002,
+  "effort_limit_Nm": 0.1551
+}

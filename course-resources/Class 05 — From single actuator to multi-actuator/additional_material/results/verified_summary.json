@@ -1,0 +1,13 @@
+{
+  "simultaneous_science_episodes": 125,
+  "motor_records": 2000,
+  "fits": 32,
+  "heldout_simultaneous_episodes": 30,
+  "heldout_motor_records": 480,
+  "heldout_baseline_mean_rmse_rad": 0.024020903174454978,
+  "heldout_fitted_mean_rmse_rad": 0.016337739731842396,
+  "armature_upper_bound_count": 0,
+  "damping_upper_bound_count": 0,
+  "friction_upper_bound_count": 0,
+  "heldout_rmse_reduction_percent": 31.985322894866165
+}

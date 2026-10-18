@@ -1,0 +1,2500 @@
+{
+  "schema_version": 1,
+  "campaign": "G1 16-motor H1/H2 campaign",
+  "mechanical_configuration": "G1",
+  "status": "complete",
+  "episode_count": 22,
+  "created_utc": "2026-09-22T12:46:39.632352+00:00",
+  "expected_campaign_ordinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "source_runs": [
+    {
+      "name": "G1_16_dual_full_20260922T114835801579Z",
+      "path": "../G1_16_dual_full_20260922T114835801579Z",
+      "selected_campaign_ordinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "G1_16_dual_resume_11_20260922T122601376316Z",
+      "path": "../G1_16_dual_resume_11_20260922T122601376316Z",
+      "selected_campaign_ordinals": [
+        11,
+        12
+      ]
+    },
+    {
+      "name": "G1_16_dual_resume_13_20260922T122902127865Z",
+      "path": "../G1_16_dual_resume_13_20260922T122902127865Z",
+      "selected_campaign_ordinals": [
+        13,
+        14
+      ]
+    },
+    {
+      "name": "G1_16_dual_resume_15_20260922T123757896057Z",
+      "path": "../G1_16_dual_resume_15_20260922T123757896057Z",
+      "selected_campaign_ordinals": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ]
+    }
+  ],
+  "validation": {
+    "complete_ordinals_present_exactly_once": true,
+    "motor_evidence_passed": true,
+    "camera_quality_passed": true,
+    "both_view_capture_manifests_complete": true
+  },
+  "skipped_noncomplete_copies": [
+    {
+      "campaign_ordinal": 11,
+      "episode_id": "G1_16__H1__P06_heldout_composite__R03",
+      "source_run": "G1_16_dual_full_20260922T114835801579Z",
+      "status": "aborted"
+    },
+    {
+      "campaign_ordinal": 13,
+      "episode_id": "G1_16__H1__P07_heldout_sine_hold__R03",
+      "source_run": "G1_16_dual_resume_11_20260922T122601376316Z",
+      "status": "aborted"
+    },
+    {
+      "campaign_ordinal": 15,
+      "episode_id": "G1_16__H2__P06_heldout_composite__R04",
+      "source_run": "G1_16_dual_resume_13_20260922T122902127865Z",
+      "status": "aborted"
+    }
+  ],
+  "episodes": [
+    {
+      "campaign_ordinal": 1,
+      "episode_id": "G1_16__H1__PILOT_LOW_AMPLITUDE",
+      "controller": "H1",
+      "profile": "PILOT_LOW_AMPLITUDE",
+      "repeat": null,
+      "role": "pilot",
+      "display_code": "H1-G1-PILOT",
+      "source_run": {
+        "name": "G1_16_dual_full_20260922T114835801579Z",
+        "path": "../G1_16_dual_full_20260922T114835801579Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H1__PILOT_LOW_AMPLITUDE",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE",
+          "view2": "views/view2/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/manifest.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/manifest.json",
+          "size_bytes": 59445,
+          "sha256": "9c1ff983c932202e98ad36120e6d5c93543dec15bf386add19acdfc14ba4d26c"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/camera_quality.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/camera_quality.json",
+          "size_bytes": 3493,
+          "sha256": "f191bec3464099c5d83194953691429d06775da6ad89b9251b16b40ed4778aba"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/commands.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/commands.csv",
+          "size_bytes": 3748679,
+          "sha256": "97fbf5900c7e52477ef473fd9276fd7b3ab3f6ffed977c16f3fc804cc6312d56"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/telemetry.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/telemetry.csv",
+          "size_bytes": 5728745,
+          "sha256": "c57a052f9d54eda4c7124590e4340942c7d28733cde64b2030a47c270af288eb"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/capture.json",
+              "size_bytes": 5631,
+              "sha256": "6706d6d7209d44e1167f79474ea96aec5e02bf8afca44d1061cac0341d9e0a4d"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/video/260922-154835_H1-G1-PILOT_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/video/260922-154835_H1-G1-PILOT_experiment-labeled.mp4",
+              "size_bytes": 14216861,
+              "sha256": "1f66ffb541ea702ea7bf9f2e60a8b1c923386b0a6959853707281500864ecd44"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/video/260922-154835_H1-G1-PILOT_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/video/260922-154835_H1-G1-PILOT_experiment-unlabeled.mp4",
+              "size_bytes": 14658875,
+              "sha256": "97bda589a94c123cdb491a6f1d70a155687ec7aefe01edd0a66f06026e516177"
+            },
+            "video_frame_count": 692,
+            "raw_frame_count": 609
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/capture.json",
+              "size_bytes": 5627,
+              "sha256": "601a4a6f05dd7ca5f9c7d46560319c0ecdba0896f181cd28dbcce30deba77b7b"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/video/260922-154835_H1-G1-PILOT_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/video/260922-154835_H1-G1-PILOT_experiment-labeled.mp4",
+              "size_bytes": 10365355,
+              "sha256": "53d9d4d41e0e3dfc8ad193cf8be739e7e7798028bc16fec0d77f6fff2d5c2bdc"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/video/260922-154835_H1-G1-PILOT_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__PILOT_LOW_AMPLITUDE/video/260922-154835_H1-G1-PILOT_experiment-unlabeled.mp4",
+              "size_bytes": 11509516,
+              "sha256": "54a9469ae14d453aed15ea84c02e2f42d325bc582d62e6a6aac93080f89afa12"
+            },
+            "video_frame_count": 671,
+            "raw_frame_count": 561
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 1932,
+        "telemetry_rows": 30912,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "e5ddd952b0e20d6e8c3a830accfe058bad84efe1b6dae0c58962d471a7582a78"
+        },
+        "minimum_voltage_V": 4.5,
+        "maximum_temperature_C": 23,
+        "maximum_missing_fraction": 0.005175983436853002
+      }
+    },
+    {
+      "campaign_ordinal": 2,
+      "episode_id": "G1_16__H2__PILOT_LOW_AMPLITUDE",
+      "controller": "H2",
+      "profile": "PILOT_LOW_AMPLITUDE",
+      "repeat": null,
+      "role": "pilot",
+      "display_code": "H2-G1-PILOT",
+      "source_run": {
+        "name": "G1_16_dual_full_20260922T114835801579Z",
+        "path": "../G1_16_dual_full_20260922T114835801579Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H2__PILOT_LOW_AMPLITUDE",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE",
+          "view2": "views/view2/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/manifest.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/manifest.json",
+          "size_bytes": 59480,
+          "sha256": "1437d1d0afdd11d3aa9346ff968eccdc9012d2212ee76837e5d4f46a9b35b2d1"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/camera_quality.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/camera_quality.json",
+          "size_bytes": 3490,
+          "sha256": "f2fb899831e37d848f48719a91d5a828cf608d96275a97af2290a74852587576"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/commands.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/commands.csv",
+          "size_bytes": 3745737,
+          "sha256": "6861710ca9ef8eadb8e7b99b2bb125ca2b2c95db48afd5c735877b0f4cea68de"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/telemetry.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/telemetry.csv",
+          "size_bytes": 5724739,
+          "sha256": "cf59ad39bd0013d779f5f3daba016c5750b83c0f297d5e375bc7430d753916ef"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/capture.json",
+              "size_bytes": 5631,
+              "sha256": "3b006e0a7270cf249f6f6057adcf69b8cec92ce7f4a65bf7b66d0baad1ae3f46"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/video/260922-154835_H2-G1-PILOT_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/video/260922-154835_H2-G1-PILOT_experiment-labeled.mp4",
+              "size_bytes": 12527722,
+              "sha256": "cf505e6c8d82e420da2d12e7251eb6c01d71d8e2aec8a17f65652ad87f92d640"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/video/260922-154835_H2-G1-PILOT_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/video/260922-154835_H2-G1-PILOT_experiment-unlabeled.mp4",
+              "size_bytes": 12796535,
+              "sha256": "cfbf07b8f7a260ca4efac1550127232a9bc5c3b0e61af6401561f8c5a23e7d06"
+            },
+            "video_frame_count": 702,
+            "raw_frame_count": 485
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/capture.json",
+              "size_bytes": 5635,
+              "sha256": "5a284f9a1fc5fe38e8208e3d2ba97097edd4d92d577d4314f6d361cc5e1b8995"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/video/260922-154835_H2-G1-PILOT_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/video/260922-154835_H2-G1-PILOT_experiment-labeled.mp4",
+              "size_bytes": 11206178,
+              "sha256": "00f6f42d9a214d27da15b1a064057b991aa0d5136976b10826e4ae5e141c1bd8"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/video/260922-154835_H2-G1-PILOT_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__PILOT_LOW_AMPLITUDE/video/260922-154835_H2-G1-PILOT_experiment-unlabeled.mp4",
+              "size_bytes": 12450616,
+              "sha256": "7bfe0b4842c4110c2829886bde4f7f2d38f7cd23cc82e5d5416bd5c6708c8bf2"
+            },
+            "video_frame_count": 703,
+            "raw_frame_count": 694
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 1931,
+        "telemetry_rows": 30896,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "e5ddd952b0e20d6e8c3a830accfe058bad84efe1b6dae0c58962d471a7582a78"
+        },
+        "minimum_voltage_V": 4.4,
+        "maximum_temperature_C": 23,
+        "maximum_missing_fraction": 0.0036250647332988087
+      }
+    },
+    {
+      "campaign_ordinal": 3,
+      "episode_id": "G1_16__H1__P06_heldout_composite__R01",
+      "controller": "H1",
+      "profile": "P06_heldout_composite",
+      "repeat": "R01",
+      "role": "held_out",
+      "display_code": "H1-G1-P06-R01",
+      "source_run": {
+        "name": "G1_16_dual_full_20260922T114835801579Z",
+        "path": "../G1_16_dual_full_20260922T114835801579Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H1__P06_heldout_composite__R01",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R01",
+          "view2": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R01"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R01/manifest.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P06_heldout_composite__R01/manifest.json",
+          "size_bytes": 59797,
+          "sha256": "eb68d832f4d3c1bb307aa2e618d373c66cb05b726bcae7b2961fe1daa55759fe"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R01/camera_quality.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P06_heldout_composite__R01/camera_quality.json",
+          "size_bytes": 3529,
+          "sha256": "74a4283fa9e09ad7fb27727ed7028823fddf8a7c5ab69384eaf7df07656e4b3e"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R01/commands.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P06_heldout_composite__R01/commands.csv",
+          "size_bytes": 5518809,
+          "sha256": "4df0329578c787c7335b0b8ae2a797efe09278c66560547f6b775d60cf3aba25"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R01/telemetry.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P06_heldout_composite__R01/telemetry.csv",
+          "size_bytes": 8280747,
+          "sha256": "7935d20929d2155c74d40128d2f4ff747273a0a6bd7ee27bd806a802103e5bcd"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R01/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R01/capture.json",
+              "size_bytes": 5689,
+              "sha256": "3fadeec9d4ed44da3dd0f675c579291c63006cab9dd765e69677875acabf8ad8"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R01/video/260922-154835_H1-G1-P06-R01_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R01/video/260922-154835_H1-G1-P06-R01_experiment-labeled.mp4",
+              "size_bytes": 18266914,
+              "sha256": "7654cdba56a72695fa3c00610b7be6b1c34993d6b65983c1352fcfe410c54a3b"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R01/video/260922-154835_H1-G1-P06-R01_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R01/video/260922-154835_H1-G1-P06-R01_experiment-unlabeled.mp4",
+              "size_bytes": 18681367,
+              "sha256": "e40f909f8a17095d5d958a1bbf5e5fe834adfde3300f7911cc3e5d4759b8bef1"
+            },
+            "video_frame_count": 920,
+            "raw_frame_count": 708
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R01/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R01/capture.json",
+              "size_bytes": 5684,
+              "sha256": "1b5135cb90104261535d8fe92914c6a20cb8af2e15dc7f67ceceb4f0e7018fe0"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R01/video/260922-154835_H1-G1-P06-R01_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R01/video/260922-154835_H1-G1-P06-R01_experiment-labeled.mp4",
+              "size_bytes": 15133709,
+              "sha256": "4ce483bc3e179ba352628d9937e33c46957ca01feb3de3df5b02557588fe1fb0"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R01/video/260922-154835_H1-G1-P06-R01_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R01/video/260922-154835_H1-G1-P06-R01_experiment-unlabeled.mp4",
+              "size_bytes": 16971263,
+              "sha256": "409542268a5df3fb916302c1c8e55dbfda9bbb4642353596269ff2b7a13af951"
+            },
+            "video_frame_count": 925,
+            "raw_frame_count": 851
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2706,
+        "telemetry_rows": 43296,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "e5ddd952b0e20d6e8c3a830accfe058bad84efe1b6dae0c58962d471a7582a78"
+        },
+        "minimum_voltage_V": 4.2,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.005173688100517369
+      }
+    },
+    {
+      "campaign_ordinal": 4,
+      "episode_id": "G1_16__H2__P06_heldout_composite__R01",
+      "controller": "H2",
+      "profile": "P06_heldout_composite",
+      "repeat": "R01",
+      "role": "held_out",
+      "display_code": "H2-G1-P06-R01",
+      "source_run": {
+        "name": "G1_16_dual_full_20260922T114835801579Z",
+        "path": "../G1_16_dual_full_20260922T114835801579Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H2__P06_heldout_composite__R01",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R01",
+          "view2": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R01"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R01/manifest.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P06_heldout_composite__R01/manifest.json",
+          "size_bytes": 59806,
+          "sha256": "d093b6f5e599685b7bf3a5dc92d6477d87a28a147dc86b271bb0f58b9a883360"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R01/camera_quality.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P06_heldout_composite__R01/camera_quality.json",
+          "size_bytes": 3530,
+          "sha256": "12941e7ed30127b575e863835e4cbd1bfa9a4f3340b913f495e204bdca2e1fcb"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R01/commands.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P06_heldout_composite__R01/commands.csv",
+          "size_bytes": 5516095,
+          "sha256": "9d56776631f0b235aa1e8526fe31e38be38b1e008b6dae64ab3f22ae76de314c"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R01/telemetry.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P06_heldout_composite__R01/telemetry.csv",
+          "size_bytes": 8278510,
+          "sha256": "0fee35896c64c85d0a7918829e30cd4f1b0b3879b0b538ca50177db09b17deec"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R01/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R01/capture.json",
+              "size_bytes": 5689,
+              "sha256": "3b81ec8c40468f983a8d847e13bebf95bbce83366094a3ae2a002a5a5a02d132"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R01/video/260922-154835_H2-G1-P06-R01_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R01/video/260922-154835_H2-G1-P06-R01_experiment-labeled.mp4",
+              "size_bytes": 21387433,
+              "sha256": "084caf1b80d5229ab3925e83ca0be623659d139c505e626922c5b934ddcf0b08"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R01/video/260922-154835_H2-G1-P06-R01_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R01/video/260922-154835_H2-G1-P06-R01_experiment-unlabeled.mp4",
+              "size_bytes": 22006349,
+              "sha256": "3de19c25b67ebb3d7c1261c5020cef5de34b4437bd9a3b072a5e3dbeea3030c1"
+            },
+            "video_frame_count": 929,
+            "raw_frame_count": 815
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R01/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R01/capture.json",
+              "size_bytes": 5685,
+              "sha256": "51bb9374ada41cffa72aa8d96fde24b3da9e8cc1f4a187d8c38fbc017d4e64bf"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R01/video/260922-154835_H2-G1-P06-R01_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R01/video/260922-154835_H2-G1-P06-R01_experiment-labeled.mp4",
+              "size_bytes": 13708044,
+              "sha256": "1df13b24753aa27914dcf0c5b2f3951fefd1128710821eb167943a9b8e89f094"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R01/video/260922-154835_H2-G1-P06-R01_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R01/video/260922-154835_H2-G1-P06-R01_experiment-unlabeled.mp4",
+              "size_bytes": 15233003,
+              "sha256": "0160e452bcd41a74fab0a5ad676995211b6f924d7551e45730abe2ca2ed14cf1"
+            },
+            "video_frame_count": 932,
+            "raw_frame_count": 642
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2705,
+        "telemetry_rows": 43280,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "e5ddd952b0e20d6e8c3a830accfe058bad84efe1b6dae0c58962d471a7582a78"
+        },
+        "minimum_voltage_V": 4.2,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.004805914972273568
+      }
+    },
+    {
+      "campaign_ordinal": 5,
+      "episode_id": "G1_16__H1__P07_heldout_sine_hold__R01",
+      "controller": "H1",
+      "profile": "P07_heldout_sine_hold",
+      "repeat": "R01",
+      "role": "held_out",
+      "display_code": "H1-G1-P07-R01",
+      "source_run": {
+        "name": "G1_16_dual_full_20260922T114835801579Z",
+        "path": "../G1_16_dual_full_20260922T114835801579Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H1__P07_heldout_sine_hold__R01",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R01",
+          "view2": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R01"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R01/manifest.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P07_heldout_sine_hold__R01/manifest.json",
+          "size_bytes": 59818,
+          "sha256": "c58887bd9b9469359ea03aad3cfc666a678293a27f74777d7623e01df4516369"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R01/camera_quality.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P07_heldout_sine_hold__R01/camera_quality.json",
+          "size_bytes": 3531,
+          "sha256": "d7c1d514368b9fd53569b8e7bf1c844d738c7e850eb5fb5b3c56af1ef9fce2b9"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R01/commands.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P07_heldout_sine_hold__R01/commands.csv",
+          "size_bytes": 5293651,
+          "sha256": "5e8d4147114ae6b2501ad0aeb0774e646a39caf45ff36c8c6000c68001aeca5c"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R01/telemetry.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P07_heldout_sine_hold__R01/telemetry.csv",
+          "size_bytes": 7968222,
+          "sha256": "676a8fd060d269060706a34bbcd5fdb0304dd07b9a90d39749738b3e0eaa74ac"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R01/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R01/capture.json",
+              "size_bytes": 5693,
+              "sha256": "cbb2bc71d2bbd711f5ca9c5b872d23f044464c497f7171a39f04519f68d6b056"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R01/video/260922-154835_H1-G1-P07-R01_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R01/video/260922-154835_H1-G1-P07-R01_experiment-labeled.mp4",
+              "size_bytes": 19342362,
+              "sha256": "ca6a2efd57d06cb82fb3e77fd2d3f5a46f0661358675c74d073e26bba0340a32"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R01/video/260922-154835_H1-G1-P07-R01_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R01/video/260922-154835_H1-G1-P07-R01_experiment-unlabeled.mp4",
+              "size_bytes": 20013107,
+              "sha256": "3321adc457f0dc60669e9ffcc26a2dfe38a8f6d3c7d986cfb7a4232cb70979d8"
+            },
+            "video_frame_count": 894,
+            "raw_frame_count": 828
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R01/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R01/capture.json",
+              "size_bytes": 5690,
+              "sha256": "59179e40d334eb7a8f9e2c43dbae2ef89726b2780764835d91777cc68e01bc0a"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R01/video/260922-154835_H1-G1-P07-R01_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R01/video/260922-154835_H1-G1-P07-R01_experiment-labeled.mp4",
+              "size_bytes": 11286051,
+              "sha256": "694e167b6b54c843b37863e1ce4d85cdafc84a25b360c51c1520e9c6f2da90f8"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R01/video/260922-154835_H1-G1-P07-R01_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R01/video/260922-154835_H1-G1-P07-R01_experiment-unlabeled.mp4",
+              "size_bytes": 12204426,
+              "sha256": "567825e62436aab65a0a37bc5d4f042ca1d24b9c06cff5dd271383205cf661e1"
+            },
+            "video_frame_count": 891,
+            "raw_frame_count": 481
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2605,
+        "telemetry_rows": 41680,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "e5ddd952b0e20d6e8c3a830accfe058bad84efe1b6dae0c58962d471a7582a78"
+        },
+        "minimum_voltage_V": 4.1,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.004606525911708253
+      }
+    },
+    {
+      "campaign_ordinal": 6,
+      "episode_id": "G1_16__H2__P07_heldout_sine_hold__R01",
+      "controller": "H2",
+      "profile": "P07_heldout_sine_hold",
+      "repeat": "R01",
+      "role": "held_out",
+      "display_code": "H2-G1-P07-R01",
+      "source_run": {
+        "name": "G1_16_dual_full_20260922T114835801579Z",
+        "path": "../G1_16_dual_full_20260922T114835801579Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H2__P07_heldout_sine_hold__R01",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R01",
+          "view2": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R01"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R01/manifest.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P07_heldout_sine_hold__R01/manifest.json",
+          "size_bytes": 59792,
+          "sha256": "3df002d1211b91721e9d30e4543b3c33abbb245bfb2831d2d24d1d637f424f85"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R01/camera_quality.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P07_heldout_sine_hold__R01/camera_quality.json",
+          "size_bytes": 3530,
+          "sha256": "b24a91a8896335f51c65dcc7411635b0afd286ffc1c3f1ccebb59871cb106023"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R01/commands.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P07_heldout_sine_hold__R01/commands.csv",
+          "size_bytes": 5295275,
+          "sha256": "24c1f86c923f202817e78ad7c9fa878d4cf6cdd84289012b46c24545ca32506d"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R01/telemetry.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P07_heldout_sine_hold__R01/telemetry.csv",
+          "size_bytes": 7969638,
+          "sha256": "0d148386ba479f64bea8b5bd284d84f31ea4be3f6cca7adba32c46bfa7ad1b1d"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R01/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R01/capture.json",
+              "size_bytes": 5692,
+              "sha256": "1850aad9734a47a9f456ec7754a344f9a19805d54e8b23a2f08c3f60f3d89215"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R01/video/260922-154835_H2-G1-P07-R01_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R01/video/260922-154835_H2-G1-P07-R01_experiment-labeled.mp4",
+              "size_bytes": 17922719,
+              "sha256": "f846f1e3d6d6802d38ac9f658c1e3f5d7dc66b20bb7538b118bfcf832951e0bc"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R01/video/260922-154835_H2-G1-P07-R01_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R01/video/260922-154835_H2-G1-P07-R01_experiment-unlabeled.mp4",
+              "size_bytes": 18408291,
+              "sha256": "dd8aea11e34711f4438fed97c4f7c6325984bf6fb2ae949127643bb23a565874"
+            },
+            "video_frame_count": 899,
+            "raw_frame_count": 686
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R01/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R01/capture.json",
+              "size_bytes": 5692,
+              "sha256": "d3eee05a04a5c0dfad9a59c0d8871896b8b94bbddf38f3d4dcb32c6a359cbf83"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R01/video/260922-154835_H2-G1-P07-R01_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R01/video/260922-154835_H2-G1-P07-R01_experiment-labeled.mp4",
+              "size_bytes": 14441584,
+              "sha256": "bdce561d7960df0f3584ca7b4fb84b4b1b063fa3b9fca468355578e5d0cd25ee"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R01/video/260922-154835_H2-G1-P07-R01_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R01/video/260922-154835_H2-G1-P07-R01_experiment-unlabeled.mp4",
+              "size_bytes": 16082804,
+              "sha256": "e9ff7019fbc524fa26a4add22ba003ff94e482a1fce97e05e52cd8db36fb885b"
+            },
+            "video_frame_count": 907,
+            "raw_frame_count": 813
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2606,
+        "telemetry_rows": 41696,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "e5ddd952b0e20d6e8c3a830accfe058bad84efe1b6dae0c58962d471a7582a78"
+        },
+        "minimum_voltage_V": 4.2,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.004604758250191865
+      }
+    },
+    {
+      "campaign_ordinal": 7,
+      "episode_id": "G1_16__H2__P06_heldout_composite__R02",
+      "controller": "H2",
+      "profile": "P06_heldout_composite",
+      "repeat": "R02",
+      "role": "held_out",
+      "display_code": "H2-G1-P06-R02",
+      "source_run": {
+        "name": "G1_16_dual_full_20260922T114835801579Z",
+        "path": "../G1_16_dual_full_20260922T114835801579Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H2__P06_heldout_composite__R02",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R02",
+          "view2": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R02"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R02/manifest.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P06_heldout_composite__R02/manifest.json",
+          "size_bytes": 59822,
+          "sha256": "0f029309e9aef8e5c16b5080dcf082fde6443240b1f60225a716367670b0a839"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R02/camera_quality.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P06_heldout_composite__R02/camera_quality.json",
+          "size_bytes": 3527,
+          "sha256": "240086b0f00f90f7fbff247cf4bb9d4ee25725df5b9b52b57718282b160371ae"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R02/commands.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P06_heldout_composite__R02/commands.csv",
+          "size_bytes": 5518370,
+          "sha256": "e674c04a60c30d35bab81a29aebfab70b141f580e85a4c8c261363914e47ba55"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R02/telemetry.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P06_heldout_composite__R02/telemetry.csv",
+          "size_bytes": 8278862,
+          "sha256": "49ec9de573f75a64f198d49c729cfa7867ae193a53483b508be10ea52a16fbdf"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R02/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R02/capture.json",
+              "size_bytes": 5686,
+              "sha256": "1c65a9a6dca08d3d00b009e6627f5a4d3201933d4187d3cd350bdd854f0659a3"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R02/video/260922-154835_H2-G1-P06-R02_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R02/video/260922-154835_H2-G1-P06-R02_experiment-labeled.mp4",
+              "size_bytes": 19235655,
+              "sha256": "9d7f4d23d4833792cd1540a446d7be0a98c95417fc1fa9bc32230745a7fe383b"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R02/video/260922-154835_H2-G1-P06-R02_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R02/video/260922-154835_H2-G1-P06-R02_experiment-unlabeled.mp4",
+              "size_bytes": 19678971,
+              "sha256": "443d241b28de073f473a5bcfcdb9841ef47e4de4b59c68157e1612381e78c7f1"
+            },
+            "video_frame_count": 926,
+            "raw_frame_count": 740
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R02/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R02/capture.json",
+              "size_bytes": 5689,
+              "sha256": "965d0b21d02c1d8dcc46e29cb7d129b3ed2d84868b1468f1301668a254137306"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R02/video/260922-154835_H2-G1-P06-R02_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R02/video/260922-154835_H2-G1-P06-R02_experiment-labeled.mp4",
+              "size_bytes": 14546971,
+              "sha256": "54f200c7f4dbbd4a329c83611e7d5affaec651567160bb21d853f82dfb629e62"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R02/video/260922-154835_H2-G1-P06-R02_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R02/video/260922-154835_H2-G1-P06-R02_experiment-unlabeled.mp4",
+              "size_bytes": 16262956,
+              "sha256": "2b1cc67aa6a5943423becd8ed5d1f807f17408f69dc5bcbb55404d38ef4ef146"
+            },
+            "video_frame_count": 925,
+            "raw_frame_count": 760
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2706,
+        "telemetry_rows": 43296,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "e5ddd952b0e20d6e8c3a830accfe058bad84efe1b6dae0c58962d471a7582a78"
+        },
+        "minimum_voltage_V": 4.3,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.005543237250554324
+      }
+    },
+    {
+      "campaign_ordinal": 8,
+      "episode_id": "G1_16__H1__P06_heldout_composite__R02",
+      "controller": "H1",
+      "profile": "P06_heldout_composite",
+      "repeat": "R02",
+      "role": "held_out",
+      "display_code": "H1-G1-P06-R02",
+      "source_run": {
+        "name": "G1_16_dual_full_20260922T114835801579Z",
+        "path": "../G1_16_dual_full_20260922T114835801579Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H1__P06_heldout_composite__R02",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R02",
+          "view2": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R02"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R02/manifest.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P06_heldout_composite__R02/manifest.json",
+          "size_bytes": 59805,
+          "sha256": "a6ad2434266aa4c89eeeb4fe946d37fe50af0187a8f090a8d369d530631d6fd0"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R02/camera_quality.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P06_heldout_composite__R02/camera_quality.json",
+          "size_bytes": 3530,
+          "sha256": "848a91279b31ebdfbf738849c3fdbfee676ad411313c5346b47ff34582527ad2"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R02/commands.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P06_heldout_composite__R02/commands.csv",
+          "size_bytes": 5518868,
+          "sha256": "fce029555b5cb2566cc887d4deb5811435eb1d304845454c98d454ddd98e766b"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R02/telemetry.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P06_heldout_composite__R02/telemetry.csv",
+          "size_bytes": 8276536,
+          "sha256": "3c8a1eb0af6aa1c188d4e3c46a1b9be52ce70aed06d7a6b45a06151203c43996"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R02/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R02/capture.json",
+              "size_bytes": 5687,
+              "sha256": "558bc30dc36bcea5cae46f2695868eeab970ac4fff80a3a52639532c4b2bbd11"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R02/video/260922-154835_H1-G1-P06-R02_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R02/video/260922-154835_H1-G1-P06-R02_experiment-labeled.mp4",
+              "size_bytes": 18578830,
+              "sha256": "5fb54afe99420ac9eea5ba36d0e22ca31bf6d7bbc342fe4c4e33153f7efdb2b6"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R02/video/260922-154835_H1-G1-P06-R02_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R02/video/260922-154835_H1-G1-P06-R02_experiment-unlabeled.mp4",
+              "size_bytes": 18987409,
+              "sha256": "b9635e7e64b0d12ac27373876ea27c55cbddc95e047b48edf6c2bf87a0b2b661"
+            },
+            "video_frame_count": 925,
+            "raw_frame_count": 669
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R02/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R02/capture.json",
+              "size_bytes": 5687,
+              "sha256": "5383414a21a86a5a7564fafc941acfd06ac574cd68ff132eb1e30b236c75e84c"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R02/video/260922-154835_H1-G1-P06-R02_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R02/video/260922-154835_H1-G1-P06-R02_experiment-labeled.mp4",
+              "size_bytes": 15005816,
+              "sha256": "c6a13ebaf50ab880fe1f21bfece9437bef4d7621007394833be7afc018e8637a"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R02/video/260922-154835_H1-G1-P06-R02_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R02/video/260922-154835_H1-G1-P06-R02_experiment-unlabeled.mp4",
+              "size_bytes": 16839770,
+              "sha256": "618e28ccf0d03f4aaabe0cbf7c5319f4d1f2cf5b942f8376ed9b3f7f1f6f76b7"
+            },
+            "video_frame_count": 926,
+            "raw_frame_count": 799
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2706,
+        "telemetry_rows": 43296,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "e5ddd952b0e20d6e8c3a830accfe058bad84efe1b6dae0c58962d471a7582a78"
+        },
+        "minimum_voltage_V": 4.2,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.007021433850702144
+      }
+    },
+    {
+      "campaign_ordinal": 9,
+      "episode_id": "G1_16__H2__P07_heldout_sine_hold__R02",
+      "controller": "H2",
+      "profile": "P07_heldout_sine_hold",
+      "repeat": "R02",
+      "role": "held_out",
+      "display_code": "H2-G1-P07-R02",
+      "source_run": {
+        "name": "G1_16_dual_full_20260922T114835801579Z",
+        "path": "../G1_16_dual_full_20260922T114835801579Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H2__P07_heldout_sine_hold__R02",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R02",
+          "view2": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R02"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R02/manifest.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P07_heldout_sine_hold__R02/manifest.json",
+          "size_bytes": 59850,
+          "sha256": "9461b5631c1921f578857fe5467eb2e008d01208916b52c1694cb8406e00a69d"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R02/camera_quality.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P07_heldout_sine_hold__R02/camera_quality.json",
+          "size_bytes": 3532,
+          "sha256": "9c4f8400ab9d0a3753cbbc83930af2207f0071db089013a99a50bf00b95cb54b"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R02/commands.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P07_heldout_sine_hold__R02/commands.csv",
+          "size_bytes": 5293322,
+          "sha256": "664a2cef43532fa778d7017f86e2f0b681d56cdde50fbb31e14abc6f552e63d6"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R02/telemetry.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H2__P07_heldout_sine_hold__R02/telemetry.csv",
+          "size_bytes": 7963987,
+          "sha256": "bd905bdd89fad51dc8dea1397a839c143ef68d80bf4291a732a6fdcf102ae66b"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R02/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R02/capture.json",
+              "size_bytes": 5691,
+              "sha256": "c14e559e91fbabb98bf7d1cad105773e6bb4ae8a26b25af59063343531dfee5b"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R02/video/260922-154835_H2-G1-P07-R02_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R02/video/260922-154835_H2-G1-P07-R02_experiment-labeled.mp4",
+              "size_bytes": 15666725,
+              "sha256": "d9dcb2e5eeaddcb29eec8673cfce0160c69e75cbbf13a3af60455584ae77c3f3"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R02/video/260922-154835_H2-G1-P07-R02_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R02/video/260922-154835_H2-G1-P07-R02_experiment-unlabeled.mp4",
+              "size_bytes": 15956727,
+              "sha256": "e5d770c0b3dc839bb0bc030dbb24a4bd4ac1bf99c3a35084569e9a02c743cd1f"
+            },
+            "video_frame_count": 892,
+            "raw_frame_count": 516
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R02/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R02/capture.json",
+              "size_bytes": 5691,
+              "sha256": "994bb265881a4ed136a45c37bf98ab522ad2c2e8537c5479be4ca272ed76cfd0"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R02/video/260922-154835_H2-G1-P07-R02_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R02/video/260922-154835_H2-G1-P07-R02_experiment-labeled.mp4",
+              "size_bytes": 14713021,
+              "sha256": "c3c74d8119a3ce377ca5a18fe322dab642f0004f5e579d5f1b3aa63d12f2822a"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R02/video/260922-154835_H2-G1-P07-R02_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R02/video/260922-154835_H2-G1-P07-R02_experiment-unlabeled.mp4",
+              "size_bytes": 16464568,
+              "sha256": "74d758d62c74f9aeddd13a87473b6fb213dc9bb15d76078ea4390451d9629473"
+            },
+            "video_frame_count": 899,
+            "raw_frame_count": 842
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2605,
+        "telemetry_rows": 41680,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "e5ddd952b0e20d6e8c3a830accfe058bad84efe1b6dae0c58962d471a7582a78"
+        },
+        "minimum_voltage_V": 4.2,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.0049904030710172746
+      }
+    },
+    {
+      "campaign_ordinal": 10,
+      "episode_id": "G1_16__H1__P07_heldout_sine_hold__R02",
+      "controller": "H1",
+      "profile": "P07_heldout_sine_hold",
+      "repeat": "R02",
+      "role": "held_out",
+      "display_code": "H1-G1-P07-R02",
+      "source_run": {
+        "name": "G1_16_dual_full_20260922T114835801579Z",
+        "path": "../G1_16_dual_full_20260922T114835801579Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H1__P07_heldout_sine_hold__R02",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R02",
+          "view2": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R02"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R02/manifest.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P07_heldout_sine_hold__R02/manifest.json",
+          "size_bytes": 59826,
+          "sha256": "f901d106c7c0dc35d965b18368aebb6de55d231bcbf39432f7acfe5980016b75"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R02/camera_quality.json",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P07_heldout_sine_hold__R02/camera_quality.json",
+          "size_bytes": 3532,
+          "sha256": "79ab4bd1df83585f7822bc706d3a2dd68b0c00dcd8803d235a6c14e9a574af9a"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R02/commands.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P07_heldout_sine_hold__R02/commands.csv",
+          "size_bytes": 5295799,
+          "sha256": "c6277d0eac94d6d61d8f22a9dfeaced47a05048f0df42f0d318842e59435441a"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R02/telemetry.csv",
+          "source_path": "../G1_16_dual_full_20260922T114835801579Z/episodes/G1_16__H1__P07_heldout_sine_hold__R02/telemetry.csv",
+          "size_bytes": 7970666,
+          "sha256": "bb79c406b6b9e93a8925038b3be003004d882d27a256aab569befa78897e36ac"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R02/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R02/capture.json",
+              "size_bytes": 5692,
+              "sha256": "b10c7d61876bcecb00a422cde7c9a169a894df7e6bba196fc1dae2fcdf1ebe7e"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R02/video/260922-154835_H1-G1-P07-R02_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R02/video/260922-154835_H1-G1-P07-R02_experiment-labeled.mp4",
+              "size_bytes": 19058902,
+              "sha256": "c590140e1ce1c5fbd545fe8c751612202535a4baf2c0fc7fcfb00125778cb8e9"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R02/video/260922-154835_H1-G1-P07-R02_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R02/video/260922-154835_H1-G1-P07-R02_experiment-unlabeled.mp4",
+              "size_bytes": 19674097,
+              "sha256": "8a2ed71588e9e36d9255703c434986df8d9c20b8bc4d2678773657e74382da92"
+            },
+            "video_frame_count": 889,
+            "raw_frame_count": 744
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R02/capture.json",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R02/capture.json",
+              "size_bytes": 5691,
+              "sha256": "6bc4cc52c5a14541ca6f876eb864a53557a574570a4dd6486ebcc563584ac6b2"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R02/video/260922-154835_H1-G1-P07-R02_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R02/video/260922-154835_H1-G1-P07-R02_experiment-labeled.mp4",
+              "size_bytes": 13295483,
+              "sha256": "6ad022186ff93cd0cc03d5cb5a4ff3f23ae2a97ef41976529173ef0ef3f87e6a"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R02/video/260922-154835_H1-G1-P07-R02_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_full_20260922T114835801579Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R02/video/260922-154835_H1-G1-P07-R02_experiment-unlabeled.mp4",
+              "size_bytes": 14666566,
+              "sha256": "ddd464f5715e211b4975253c5b483732f643cb765c3260536e9793540d61863d"
+            },
+            "video_frame_count": 896,
+            "raw_frame_count": 719
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2606,
+        "telemetry_rows": 41696,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "e5ddd952b0e20d6e8c3a830accfe058bad84efe1b6dae0c58962d471a7582a78"
+        },
+        "minimum_voltage_V": 4.1,
+        "maximum_temperature_C": 25,
+        "maximum_missing_fraction": 0.0030698388334612432
+      }
+    },
+    {
+      "campaign_ordinal": 11,
+      "episode_id": "G1_16__H1__P06_heldout_composite__R03",
+      "controller": "H1",
+      "profile": "P06_heldout_composite",
+      "repeat": "R03",
+      "role": "held_out",
+      "display_code": "H1-G1-P06-R03",
+      "source_run": {
+        "name": "G1_16_dual_resume_11_20260922T122601376316Z",
+        "path": "../G1_16_dual_resume_11_20260922T122601376316Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H1__P06_heldout_composite__R03",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R03",
+          "view2": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R03"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R03/manifest.json",
+          "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/episodes/G1_16__H1__P06_heldout_composite__R03/manifest.json",
+          "size_bytes": 60500,
+          "sha256": "f93327cb4f9d4e818ccf6aada4a80246e5d87da447bb70e59f199174cefd01d3"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R03/camera_quality.json",
+          "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/episodes/G1_16__H1__P06_heldout_composite__R03/camera_quality.json",
+          "size_bytes": 3548,
+          "sha256": "0087c5240225bb2cc94253fbdb0e0271abdbb2e52621cd45113d75a1ba2562d0"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R03/commands.csv",
+          "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/episodes/G1_16__H1__P06_heldout_composite__R03/commands.csv",
+          "size_bytes": 5520992,
+          "sha256": "e3769f3739bdb8a6f9e521f983bad57df5c30874125b3572066ffd7a611552fc"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R03/telemetry.csv",
+          "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/episodes/G1_16__H1__P06_heldout_composite__R03/telemetry.csv",
+          "size_bytes": 8284620,
+          "sha256": "d7961b178a8e09cffad0235f49e1cc4544094403dbda3f62bc0237d86340e8b9"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R03/capture.json",
+              "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R03/capture.json",
+              "size_bytes": 5690,
+              "sha256": "cd3236bb47f23b86720c070a65a3407d648f89ccbd7776b9689e2b144315959b"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R03/video/260922-162601_H1-G1-P06-R03_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R03/video/260922-162601_H1-G1-P06-R03_experiment-labeled.mp4",
+              "size_bytes": 21245846,
+              "sha256": "789f3711eb199720ac63ab2b9905742fe7afdf6372893328ddf2fbfcf9ce4619"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R03/video/260922-162601_H1-G1-P06-R03_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R03/video/260922-162601_H1-G1-P06-R03_experiment-unlabeled.mp4",
+              "size_bytes": 21765737,
+              "sha256": "f865b29d5cc0c99d665ad6b69b6e44158616e9ff6017b2330907fd788c1a550a"
+            },
+            "video_frame_count": 1031,
+            "raw_frame_count": 787
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R03/capture.json",
+              "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R03/capture.json",
+              "size_bytes": 5691,
+              "sha256": "c65b9eaab635fd076c261ff53ce071d362de0abe43f53279d3149ac694b68ec4"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R03/video/260922-162601_H1-G1-P06-R03_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R03/video/260922-162601_H1-G1-P06-R03_experiment-labeled.mp4",
+              "size_bytes": 14700213,
+              "sha256": "bd9674a59e018b2d6b4f423e1a029ad17281de885a661e6186729d3c258c4b85"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R03/video/260922-162601_H1-G1-P06-R03_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R03/video/260922-162601_H1-G1-P06-R03_experiment-unlabeled.mp4",
+              "size_bytes": 16419700,
+              "sha256": "eddf34d8387ac5ec4a2f16e28b3dd50c9985616fa138d8464888ef8136d4bf73"
+            },
+            "video_frame_count": 1031,
+            "raw_frame_count": 667
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2707,
+        "telemetry_rows": 43312,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "427e856f4844dc9c17d64764d00222172104258057b48ae38c6e2f812004de09"
+        },
+        "minimum_voltage_V": 4.1,
+        "maximum_temperature_C": 23,
+        "maximum_missing_fraction": 0.004063538973032878
+      }
+    },
+    {
+      "campaign_ordinal": 12,
+      "episode_id": "G1_16__H2__P06_heldout_composite__R03",
+      "controller": "H2",
+      "profile": "P06_heldout_composite",
+      "repeat": "R03",
+      "role": "held_out",
+      "display_code": "H2-G1-P06-R03",
+      "source_run": {
+        "name": "G1_16_dual_resume_11_20260922T122601376316Z",
+        "path": "../G1_16_dual_resume_11_20260922T122601376316Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H2__P06_heldout_composite__R03",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R03",
+          "view2": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R03"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R03/manifest.json",
+          "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/episodes/G1_16__H2__P06_heldout_composite__R03/manifest.json",
+          "size_bytes": 60481,
+          "sha256": "76bdf3fea7251010429ef7814dfe04013a8e752f1fd2557364e2c52f2c2d9b85"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R03/camera_quality.json",
+          "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/episodes/G1_16__H2__P06_heldout_composite__R03/camera_quality.json",
+          "size_bytes": 3543,
+          "sha256": "a87ea1f210029a2cae3dcb9cc0d8c202f288f2635ae713f1ad24f07d825df324"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R03/commands.csv",
+          "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/episodes/G1_16__H2__P06_heldout_composite__R03/commands.csv",
+          "size_bytes": 5518522,
+          "sha256": "0388e7a5dbce839ff39ba9f75c91921e3c8acee91b3a33e399f12fb16b7be54c"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R03/telemetry.csv",
+          "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/episodes/G1_16__H2__P06_heldout_composite__R03/telemetry.csv",
+          "size_bytes": 8280517,
+          "sha256": "ea4537dc4ca0352e738bb6be5e10d54c0723dd781d9b96b3c3cd6b4103311d9a"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R03/capture.json",
+              "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R03/capture.json",
+              "size_bytes": 5689,
+              "sha256": "a2d8b06e7558e94c647e95ce4269ce645b050e63b13749870ff7b74feb98c3c5"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R03/video/260922-162601_H2-G1-P06-R03_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R03/video/260922-162601_H2-G1-P06-R03_experiment-labeled.mp4",
+              "size_bytes": 19305230,
+              "sha256": "5ee6814f27f8f76fa7429bd6e88ce7b5fe8eefac1673dbceb7e77ce1bdd1b650"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R03/video/260922-162601_H2-G1-P06-R03_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R03/video/260922-162601_H2-G1-P06-R03_experiment-unlabeled.mp4",
+              "size_bytes": 19610447,
+              "sha256": "ecf6d1c074ca74cc5701d9171df38f0ea3f7cadfd014e2106dea446060c92573"
+            },
+            "video_frame_count": 1021,
+            "raw_frame_count": 719
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R03/capture.json",
+              "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R03/capture.json",
+              "size_bytes": 5693,
+              "sha256": "a2b2f166fb04dd94d806c2ab0fbcfc859e20c54b11a564dc9424b8e661a36d59"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R03/video/260922-162601_H2-G1-P06-R03_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R03/video/260922-162601_H2-G1-P06-R03_experiment-labeled.mp4",
+              "size_bytes": 16006701,
+              "sha256": "4e6bbb9223116aa12c9a7dbb4c42ad5e7a2bd2ad858224c0cf027409381fb8e5"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R03/video/260922-162601_H2-G1-P06-R03_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_11_20260922T122601376316Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R03/video/260922-162601_H2-G1-P06-R03_experiment-unlabeled.mp4",
+              "size_bytes": 18097397,
+              "sha256": "4df80b243bff6cfd65ee42e3e169d3f824e8fd7d33055c2d9f9dd64c35e23de6"
+            },
+            "video_frame_count": 1020,
+            "raw_frame_count": 855
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2706,
+        "telemetry_rows": 43296,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "427e856f4844dc9c17d64764d00222172104258057b48ae38c6e2f812004de09"
+        },
+        "minimum_voltage_V": 4.2,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.004434589800443459
+      }
+    },
+    {
+      "campaign_ordinal": 13,
+      "episode_id": "G1_16__H1__P07_heldout_sine_hold__R03",
+      "controller": "H1",
+      "profile": "P07_heldout_sine_hold",
+      "repeat": "R03",
+      "role": "held_out",
+      "display_code": "H1-G1-P07-R03",
+      "source_run": {
+        "name": "G1_16_dual_resume_13_20260922T122902127865Z",
+        "path": "../G1_16_dual_resume_13_20260922T122902127865Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H1__P07_heldout_sine_hold__R03",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R03",
+          "view2": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R03"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R03/manifest.json",
+          "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/episodes/G1_16__H1__P07_heldout_sine_hold__R03/manifest.json",
+          "size_bytes": 60486,
+          "sha256": "1828bcf0971c36ba7e863bc707add99287f657feb8e4fb30544fe646319719d7"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R03/camera_quality.json",
+          "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/episodes/G1_16__H1__P07_heldout_sine_hold__R03/camera_quality.json",
+          "size_bytes": 3550,
+          "sha256": "f5b68b0da2f7f1c92aab110701a4227057ca4a5c396c1669b51a4d13399262ea"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R03/commands.csv",
+          "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/episodes/G1_16__H1__P07_heldout_sine_hold__R03/commands.csv",
+          "size_bytes": 5390840,
+          "sha256": "d8fdc44da3731a7ee8d979d1141f059e0e5bcd7efcc59ae8d483368fa994ab5b"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R03/telemetry.csv",
+          "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/episodes/G1_16__H1__P07_heldout_sine_hold__R03/telemetry.csv",
+          "size_bytes": 8101560,
+          "sha256": "3b3f5b9e1e810ce162566b2fb8859a2c45628741448d991d395c27f11ebdc3fb"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R03/capture.json",
+              "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R03/capture.json",
+              "size_bytes": 5690,
+              "sha256": "1bcfb84b131bbe524d4ac8b001928daecb26e2b5f1abb8de2894b0698ca4003f"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R03/video/260922-162902_H1-G1-P07-R03_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R03/video/260922-162902_H1-G1-P07-R03_experiment-labeled.mp4",
+              "size_bytes": 20740260,
+              "sha256": "8f35720cd5662fe230618a4e619c7e386f44045098190594e77e3e87fd88b4f2"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R03/video/260922-162902_H1-G1-P07-R03_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R03/video/260922-162902_H1-G1-P07-R03_experiment-unlabeled.mp4",
+              "size_bytes": 21372566,
+              "sha256": "48d0bfc1833a1ff9fa902fc4f79e6b5eaebe74d81afde978da666ad13dcb4bd9"
+            },
+            "video_frame_count": 1019,
+            "raw_frame_count": 834
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R03/capture.json",
+              "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R03/capture.json",
+              "size_bytes": 5693,
+              "sha256": "0fdfc9e757974a0e77fbc799bc7803720919caa42ff887374993dac2308414a3"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R03/video/260922-162902_H1-G1-P07-R03_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R03/video/260922-162902_H1-G1-P07-R03_experiment-labeled.mp4",
+              "size_bytes": 13828922,
+              "sha256": "5d6e828105222c0d1b42af72fb654b6e31aaf36d3401217e4a7eec61bf4c20ab"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R03/video/260922-162902_H1-G1-P07-R03_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R03/video/260922-162902_H1-G1-P07-R03_experiment-unlabeled.mp4",
+              "size_bytes": 15299689,
+              "sha256": "b29421b18e170d79c2fd14145602ff9fa0741fe8fdc532309f9858a06ac2511f"
+            },
+            "video_frame_count": 1021,
+            "raw_frame_count": 634
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2651,
+        "telemetry_rows": 42416,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "9d8dba9789225456fd5ad40f823596543cafae3d0b8810e7494a87c4ca291bc0"
+        },
+        "minimum_voltage_V": 4.1,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.006035458317615994
+      }
+    },
+    {
+      "campaign_ordinal": 14,
+      "episode_id": "G1_16__H2__P07_heldout_sine_hold__R03",
+      "controller": "H2",
+      "profile": "P07_heldout_sine_hold",
+      "repeat": "R03",
+      "role": "held_out",
+      "display_code": "H2-G1-P07-R03",
+      "source_run": {
+        "name": "G1_16_dual_resume_13_20260922T122902127865Z",
+        "path": "../G1_16_dual_resume_13_20260922T122902127865Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H2__P07_heldout_sine_hold__R03",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R03",
+          "view2": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R03"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R03/manifest.json",
+          "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/episodes/G1_16__H2__P07_heldout_sine_hold__R03/manifest.json",
+          "size_bytes": 60501,
+          "sha256": "ac381a3a19b0ed7255e43eec359cd0a1d93a676eb0daf7b067ee23bb5ceff751"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R03/camera_quality.json",
+          "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/episodes/G1_16__H2__P07_heldout_sine_hold__R03/camera_quality.json",
+          "size_bytes": 3548,
+          "sha256": "c5f5dc62be33e1954d3a88d8500df4afa3de02c0beb0c2f85bdb79091d8b64b0"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R03/commands.csv",
+          "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/episodes/G1_16__H2__P07_heldout_sine_hold__R03/commands.csv",
+          "size_bytes": 5293199,
+          "sha256": "3d9c4679a3217a115e5e33faa2b2b218ad2f6ac7af957e2c7425acaf270da132"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R03/telemetry.csv",
+          "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/episodes/G1_16__H2__P07_heldout_sine_hold__R03/telemetry.csv",
+          "size_bytes": 7966175,
+          "sha256": "bf5ff8db1e9fd48dba1bb52c427e14ee0d7baa357f72a10ecca686ca0f467df7"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R03/capture.json",
+              "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R03/capture.json",
+              "size_bytes": 5694,
+              "sha256": "ab45f9851194f3f78b14256989a76447bf8e347fe54c6bc51d38671d16625024"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R03/video/260922-162902_H2-G1-P07-R03_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R03/video/260922-162902_H2-G1-P07-R03_experiment-labeled.mp4",
+              "size_bytes": 17191123,
+              "sha256": "c03cdfdee27dadb97a2bbddc4e4188ab138894caf0d6b6ecd773f7607685bffa"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R03/video/260922-162902_H2-G1-P07-R03_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R03/video/260922-162902_H2-G1-P07-R03_experiment-unlabeled.mp4",
+              "size_bytes": 17515239,
+              "sha256": "0792c418c879db0d27c527350a9e0037615a5bc2caf7c3e7f868c63ac1fb8f3b"
+            },
+            "video_frame_count": 981,
+            "raw_frame_count": 609
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R03/capture.json",
+              "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R03/capture.json",
+              "size_bytes": 5695,
+              "sha256": "03fc1f9ee6ffb095d8034fb277cc82b8649d2dda5a2ea5b5a315c8502c54e621"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R03/video/260922-162902_H2-G1-P07-R03_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R03/video/260922-162902_H2-G1-P07-R03_experiment-labeled.mp4",
+              "size_bytes": 15329814,
+              "sha256": "c986771cb9e0f5a090845a1668bb29bda89ade57bc4ed86e32973c71afcb46e8"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R03/video/260922-162902_H2-G1-P07-R03_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_13_20260922T122902127865Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R03/video/260922-162902_H2-G1-P07-R03_experiment-unlabeled.mp4",
+              "size_bytes": 17282829,
+              "sha256": "14a4922e1877a776010e5af3d96bb52d5cf41ba67fad51b686888cf35f90ed2c"
+            },
+            "video_frame_count": 990,
+            "raw_frame_count": 842
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2605,
+        "telemetry_rows": 41680,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.1,
+          "min_voltage_limit_raw": 41,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "9d8dba9789225456fd5ad40f823596543cafae3d0b8810e7494a87c4ca291bc0"
+        },
+        "minimum_voltage_V": 4.1,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.003071017274472169
+      }
+    },
+    {
+      "campaign_ordinal": 15,
+      "episode_id": "G1_16__H2__P06_heldout_composite__R04",
+      "controller": "H2",
+      "profile": "P06_heldout_composite",
+      "repeat": "R04",
+      "role": "held_out",
+      "display_code": "H2-G1-P06-R04",
+      "source_run": {
+        "name": "G1_16_dual_resume_15_20260922T123757896057Z",
+        "path": "../G1_16_dual_resume_15_20260922T123757896057Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H2__P06_heldout_composite__R04",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R04",
+          "view2": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R04"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R04/manifest.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P06_heldout_composite__R04/manifest.json",
+          "size_bytes": 60482,
+          "sha256": "698ea63c4991b3a9b5dcab3ef1900c061c8efb230c2c0363cf1b5f236ffa55f4"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R04/camera_quality.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P06_heldout_composite__R04/camera_quality.json",
+          "size_bytes": 3550,
+          "sha256": "dc22d06f0915d99f75a90e7f22607246d74a83269236593159d68e6eeef7917b"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R04/commands.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P06_heldout_composite__R04/commands.csv",
+          "size_bytes": 5583774,
+          "sha256": "e5d6ddadb8cde8c9a1e69e46c6a4873abda0997880c1562d094fef1f6530fb57"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R04/telemetry.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P06_heldout_composite__R04/telemetry.csv",
+          "size_bytes": 8372116,
+          "sha256": "fb402bb5a0dd01060eca6a5f40db7fd2085a92dd38c5b4361d46f641e949aca5"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R04/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R04/capture.json",
+              "size_bytes": 5696,
+              "sha256": "3630a28d9e12e8bc1bc0e523c931eb5f5d4810911a5c452a64283328fe27bd34"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R04/video/260922-163757_H2-G1-P06-R04_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R04/video/260922-163757_H2-G1-P06-R04_experiment-labeled.mp4",
+              "size_bytes": 24263982,
+              "sha256": "2850757c927983238133c0e8f52112f62f38b39a85cf62cfa304bf92e6c90e2f"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R04/video/260922-163757_H2-G1-P06-R04_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R04/video/260922-163757_H2-G1-P06-R04_experiment-unlabeled.mp4",
+              "size_bytes": 25018175,
+              "sha256": "9874fc97aef498fd84bd119e031999cc9fd39c1393c807cb32fff8c798117c99"
+            },
+            "video_frame_count": 1078,
+            "raw_frame_count": 1027
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R04/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R04/capture.json",
+              "size_bytes": 5686,
+              "sha256": "75e66833149bbc6dbb69d4bd9f020771db83acccf47618c5212c621b4bf6896c"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R04/video/260922-163757_H2-G1-P06-R04_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R04/video/260922-163757_H2-G1-P06-R04_experiment-labeled.mp4",
+              "size_bytes": 14537196,
+              "sha256": "68e04f235bb9fa0802efc9b15d862d96407890d8647eeb45b2291d3964e051ca"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R04/video/260922-163757_H2-G1-P06-R04_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R04/video/260922-163757_H2-G1-P06-R04_experiment-unlabeled.mp4",
+              "size_bytes": 16121879,
+              "sha256": "058ca752d6356e910b9b4a0463c194cece9582da750c98233bd148a2fd8693ca"
+            },
+            "video_frame_count": 1094,
+            "raw_frame_count": 681
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2737,
+        "telemetry_rows": 43792,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.0,
+          "min_voltage_limit_raw": 40,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "5b76761ef255c0ec6a11206ba536e07fe3b3a193568a79f16862e0200cac319e"
+        },
+        "minimum_voltage_V": 4.2,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.005480453050785532
+      }
+    },
+    {
+      "campaign_ordinal": 16,
+      "episode_id": "G1_16__H1__P06_heldout_composite__R04",
+      "controller": "H1",
+      "profile": "P06_heldout_composite",
+      "repeat": "R04",
+      "role": "held_out",
+      "display_code": "H1-G1-P06-R04",
+      "source_run": {
+        "name": "G1_16_dual_resume_15_20260922T123757896057Z",
+        "path": "../G1_16_dual_resume_15_20260922T123757896057Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H1__P06_heldout_composite__R04",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R04",
+          "view2": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R04"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R04/manifest.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P06_heldout_composite__R04/manifest.json",
+          "size_bytes": 60501,
+          "sha256": "6269efdf7b39bd4584e3b5a5a3dc7974166dec79d5cae07a7862cde74f936900"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R04/camera_quality.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P06_heldout_composite__R04/camera_quality.json",
+          "size_bytes": 3552,
+          "sha256": "bf0e6e29b0490b6f46784b9051b7c94e97d3b0b547503c70556b67ee7f5fb2d8"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R04/commands.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P06_heldout_composite__R04/commands.csv",
+          "size_bytes": 5516841,
+          "sha256": "9f9b2675cb6cbfaab85c00f25bb3a860c161274cab164140c553aa47a874b74d"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R04/telemetry.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P06_heldout_composite__R04/telemetry.csv",
+          "size_bytes": 8275168,
+          "sha256": "7805146509b1b90fc52df5d95205c876580fbbb962c584806b90063948d4200f"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R04/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R04/capture.json",
+              "size_bytes": 5690,
+              "sha256": "9fa1724b7d2a47a481dd4f6a8a42928f91ee655d7e3e400fb2fc540119c8a38b"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R04/video/260922-163757_H1-G1-P06-R04_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R04/video/260922-163757_H1-G1-P06-R04_experiment-labeled.mp4",
+              "size_bytes": 22109267,
+              "sha256": "5b7422dd91ed96ba4a89fa20f058f716296d1046f5e2134ed5f5bd84fe5fe2cc"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R04/video/260922-163757_H1-G1-P06-R04_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R04/video/260922-163757_H1-G1-P06-R04_experiment-unlabeled.mp4",
+              "size_bytes": 22791227,
+              "sha256": "e38f9c06a76b02ab20ebf1d0ae863c54460dfd8df07c7fb1a151bdf5f5d6a953"
+            },
+            "video_frame_count": 1010,
+            "raw_frame_count": 936
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R04/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R04/capture.json",
+              "size_bytes": 5687,
+              "sha256": "ad239c7971f29aecb5af4491de34040aea9446e138f28e0c780c1d29c6b60c47"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R04/video/260922-163757_H1-G1-P06-R04_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R04/video/260922-163757_H1-G1-P06-R04_experiment-labeled.mp4",
+              "size_bytes": 15611630,
+              "sha256": "8967a10eae3d30cfaf1714f712117053706aa96db8115255724f3ad18b0d96a6"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R04/video/260922-163757_H1-G1-P06-R04_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R04/video/260922-163757_H1-G1-P06-R04_experiment-unlabeled.mp4",
+              "size_bytes": 17625948,
+              "sha256": "f449b93e20dda4103ab9663174630a08be922ff9f83bc4512253dd213a3b5f3f"
+            },
+            "video_frame_count": 1011,
+            "raw_frame_count": 785
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2705,
+        "telemetry_rows": 43280,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.0,
+          "min_voltage_limit_raw": 40,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "5b76761ef255c0ec6a11206ba536e07fe3b3a193568a79f16862e0200cac319e"
+        },
+        "minimum_voltage_V": 4.2,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.006654343807763401
+      }
+    },
+    {
+      "campaign_ordinal": 17,
+      "episode_id": "G1_16__H2__P07_heldout_sine_hold__R04",
+      "controller": "H2",
+      "profile": "P07_heldout_sine_hold",
+      "repeat": "R04",
+      "role": "held_out",
+      "display_code": "H2-G1-P07-R04",
+      "source_run": {
+        "name": "G1_16_dual_resume_15_20260922T123757896057Z",
+        "path": "../G1_16_dual_resume_15_20260922T123757896057Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H2__P07_heldout_sine_hold__R04",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R04",
+          "view2": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R04"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R04/manifest.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P07_heldout_sine_hold__R04/manifest.json",
+          "size_bytes": 60556,
+          "sha256": "c0e92da3c65f565bb426f17dcd46ffdd7ceb6346bf975eaca54ae7d5dd9fa40b"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R04/camera_quality.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P07_heldout_sine_hold__R04/camera_quality.json",
+          "size_bytes": 3550,
+          "sha256": "fe319d3429cef58bd1dc40e1786900c229272475edfab659b39c5a1ed475a954"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R04/commands.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P07_heldout_sine_hold__R04/commands.csv",
+          "size_bytes": 5293080,
+          "sha256": "569b0335b766008c524ede84c67dabb99fb815f1d898197d1cfd0eb1e90c24f2"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R04/telemetry.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P07_heldout_sine_hold__R04/telemetry.csv",
+          "size_bytes": 7966019,
+          "sha256": "309cb2eb092e943e5b86ac5d388184c4f89e44e293a04b0f7a770a8c103a4d86"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R04/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R04/capture.json",
+              "size_bytes": 5693,
+              "sha256": "c86d1481006f160b38cb9959378ee2983fe93175cb20947f9c0650f3762c0581"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R04/video/260922-163757_H2-G1-P07-R04_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R04/video/260922-163757_H2-G1-P07-R04_experiment-labeled.mp4",
+              "size_bytes": 16636258,
+              "sha256": "aa61d4a037fa5344216b312bb6ff8f372f7e93dda368683f00ff49ac671f4486"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R04/video/260922-163757_H2-G1-P07-R04_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R04/video/260922-163757_H2-G1-P07-R04_experiment-unlabeled.mp4",
+              "size_bytes": 16910567,
+              "sha256": "5747ecf74718a8702846a236ce69cc0eac00c4f9e9ee5d72f9007c540d2d9757"
+            },
+            "video_frame_count": 985,
+            "raw_frame_count": 582
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R04/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R04/capture.json",
+              "size_bytes": 5696,
+              "sha256": "209aac6e3646c1121cd3338847908992da60c492daa452534fcc8cf67d96d1fd"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R04/video/260922-163757_H2-G1-P07-R04_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R04/video/260922-163757_H2-G1-P07-R04_experiment-labeled.mp4",
+              "size_bytes": 16014193,
+              "sha256": "a27fae92a8e4310ce71828e2b0377083f3e2103f2a3e809987ca2053fd8197e8"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R04/video/260922-163757_H2-G1-P07-R04_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R04/video/260922-163757_H2-G1-P07-R04_experiment-unlabeled.mp4",
+              "size_bytes": 18130537,
+              "sha256": "09280fddd33e662c2ba6f95c0e06cd985e7581fb61ec2569768fe40c6b43d98b"
+            },
+            "video_frame_count": 988,
+            "raw_frame_count": 959
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2605,
+        "telemetry_rows": 41680,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.0,
+          "min_voltage_limit_raw": 40,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "5b76761ef255c0ec6a11206ba536e07fe3b3a193568a79f16862e0200cac319e"
+        },
+        "minimum_voltage_V": 4.0,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.0049904030710172746
+      }
+    },
+    {
+      "campaign_ordinal": 18,
+      "episode_id": "G1_16__H1__P07_heldout_sine_hold__R04",
+      "controller": "H1",
+      "profile": "P07_heldout_sine_hold",
+      "repeat": "R04",
+      "role": "held_out",
+      "display_code": "H1-G1-P07-R04",
+      "source_run": {
+        "name": "G1_16_dual_resume_15_20260922T123757896057Z",
+        "path": "../G1_16_dual_resume_15_20260922T123757896057Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H1__P07_heldout_sine_hold__R04",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R04",
+          "view2": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R04"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R04/manifest.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P07_heldout_sine_hold__R04/manifest.json",
+          "size_bytes": 60502,
+          "sha256": "859b3d50a7ec735b392e7e7ab2eaa97ec3c2ba2193e4d1565e495bf1a034df58"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R04/camera_quality.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P07_heldout_sine_hold__R04/camera_quality.json",
+          "size_bytes": 3549,
+          "sha256": "3da48888ceda8373d2dcf99f73e8804cfe22113d1ecb8bd48bfe3a1a3e65eb40"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R04/commands.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P07_heldout_sine_hold__R04/commands.csv",
+          "size_bytes": 5295879,
+          "sha256": "e1c250fcade272d3efb3f236a260c633d9747dd266074611b081514d964ceb78"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R04/telemetry.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P07_heldout_sine_hold__R04/telemetry.csv",
+          "size_bytes": 7969551,
+          "sha256": "54a7865c4f4b1fbc73293a57aff1e58f19a1fc1b19bc4e9ca14f28ad5b610762"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R04/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R04/capture.json",
+              "size_bytes": 5691,
+              "sha256": "69a837933c09ccbe47130ee062bb436e0514d94d99ddbc79248a7d5f6a584843"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R04/video/260922-163757_H1-G1-P07-R04_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R04/video/260922-163757_H1-G1-P07-R04_experiment-labeled.mp4",
+              "size_bytes": 16143582,
+              "sha256": "b5b5f5603be44eaefea286d9fa4df87f9b41adf5a49312318a970473820e2db4"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R04/video/260922-163757_H1-G1-P07-R04_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R04/video/260922-163757_H1-G1-P07-R04_experiment-unlabeled.mp4",
+              "size_bytes": 16361555,
+              "sha256": "d0d9ca3e69b59625cc4a981b9e4e75d5bf4a45e3f927538f72a596d696c652c3"
+            },
+            "video_frame_count": 983,
+            "raw_frame_count": 547
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R04/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R04/capture.json",
+              "size_bytes": 5692,
+              "sha256": "6575dfbce3769bc218378b0eefe30d58b576fa2d14416abede57cc994626f1b0"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R04/video/260922-163757_H1-G1-P07-R04_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R04/video/260922-163757_H1-G1-P07-R04_experiment-labeled.mp4",
+              "size_bytes": 16116912,
+              "sha256": "a589b37e62d7fde19b566788e178b15249b50cfcf50987f07ce2c63419d64ba2"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R04/video/260922-163757_H1-G1-P07-R04_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R04/video/260922-163757_H1-G1-P07-R04_experiment-unlabeled.mp4",
+              "size_bytes": 18268648,
+              "sha256": "369abbdae2af8389d84dff271094e5ca79b25d7c91e5e56e5ba25dcf94ee30d9"
+            },
+            "video_frame_count": 987,
+            "raw_frame_count": 940
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2606,
+        "telemetry_rows": 41696,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.0,
+          "min_voltage_limit_raw": 40,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "5b76761ef255c0ec6a11206ba536e07fe3b3a193568a79f16862e0200cac319e"
+        },
+        "minimum_voltage_V": 4.1,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.005372217958557176
+      }
+    },
+    {
+      "campaign_ordinal": 19,
+      "episode_id": "G1_16__H1__P06_heldout_composite__R05",
+      "controller": "H1",
+      "profile": "P06_heldout_composite",
+      "repeat": "R05",
+      "role": "held_out",
+      "display_code": "H1-G1-P06-R05",
+      "source_run": {
+        "name": "G1_16_dual_resume_15_20260922T123757896057Z",
+        "path": "../G1_16_dual_resume_15_20260922T123757896057Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H1__P06_heldout_composite__R05",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R05",
+          "view2": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R05"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R05/manifest.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P06_heldout_composite__R05/manifest.json",
+          "size_bytes": 60495,
+          "sha256": "b8b9341f111b2a2895cc516583241ee870392d197fd2f60efee9b57449e2e426"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R05/camera_quality.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P06_heldout_composite__R05/camera_quality.json",
+          "size_bytes": 3550,
+          "sha256": "2a838689b3c3389ca82c75bb8ba0ce5d486f6d3ca8f1ca1b5a431167cdecd752"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R05/commands.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P06_heldout_composite__R05/commands.csv",
+          "size_bytes": 5516748,
+          "sha256": "a0a927dd7372add72bf2075ac2c7fb124c40ca02ab67124da155bba7a347b192"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H1__P06_heldout_composite__R05/telemetry.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P06_heldout_composite__R05/telemetry.csv",
+          "size_bytes": 8278895,
+          "sha256": "61012e88fb9de8dd32743f004e1d7647dfa91815d2e33046e1f67baa13a3947b"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R05/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R05/capture.json",
+              "size_bytes": 5686,
+              "sha256": "cce6f3c4e97c6bf7a1751025285d1166dad6628ccb214974409cc384b7bbac64"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R05/video/260922-163757_H1-G1-P06-R05_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R05/video/260922-163757_H1-G1-P06-R05_experiment-labeled.mp4",
+              "size_bytes": 19426786,
+              "sha256": "dc9641ad90de966710bebbd346a3b7565f3addffdd79f3c6c84e07d22b61bf3c"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P06_heldout_composite__R05/video/260922-163757_H1-G1-P06-R05_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H1__P06_heldout_composite__R05/video/260922-163757_H1-G1-P06-R05_experiment-unlabeled.mp4",
+              "size_bytes": 19789094,
+              "sha256": "0832ee7d06115bd8071235731a99bf23977cf24825643a3c4f055e8d601f6a6f"
+            },
+            "video_frame_count": 1018,
+            "raw_frame_count": 702
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R05/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R05/capture.json",
+              "size_bytes": 5686,
+              "sha256": "3d3859732edcf6f8a54e9e2332786ca889d6612cee69814bb85b90f7ff1adefe"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R05/video/260922-163757_H1-G1-P06-R05_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R05/video/260922-163757_H1-G1-P06-R05_experiment-labeled.mp4",
+              "size_bytes": 16032723,
+              "sha256": "c26471a9d06caef85b2a3eed93978005f6be480c9dc2da20d929254e0f175867"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P06_heldout_composite__R05/video/260922-163757_H1-G1-P06-R05_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H1__P06_heldout_composite__R05/video/260922-163757_H1-G1-P06-R05_experiment-unlabeled.mp4",
+              "size_bytes": 18196816,
+              "sha256": "cad9da82cd1fd1ddbda193d303762d3f1719206a9c46ad66de40743f86137f59"
+            },
+            "video_frame_count": 1020,
+            "raw_frame_count": 866
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2705,
+        "telemetry_rows": 43280,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.0,
+          "min_voltage_limit_raw": 40,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "5b76761ef255c0ec6a11206ba536e07fe3b3a193568a79f16862e0200cac319e"
+        },
+        "minimum_voltage_V": 4.2,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.0033271719038817007
+      }
+    },
+    {
+      "campaign_ordinal": 20,
+      "episode_id": "G1_16__H2__P06_heldout_composite__R05",
+      "controller": "H2",
+      "profile": "P06_heldout_composite",
+      "repeat": "R05",
+      "role": "held_out",
+      "display_code": "H2-G1-P06-R05",
+      "source_run": {
+        "name": "G1_16_dual_resume_15_20260922T123757896057Z",
+        "path": "../G1_16_dual_resume_15_20260922T123757896057Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H2__P06_heldout_composite__R05",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R05",
+          "view2": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R05"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R05/manifest.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P06_heldout_composite__R05/manifest.json",
+          "size_bytes": 60557,
+          "sha256": "203be20257637db7f7266768b6793be3f5819de0e69585a657b880056d97fd43"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R05/camera_quality.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P06_heldout_composite__R05/camera_quality.json",
+          "size_bytes": 3549,
+          "sha256": "5e71124a1967a97779cd4b291a2969b797c1d0793f7ed20aa43eea5186a73e75"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R05/commands.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P06_heldout_composite__R05/commands.csv",
+          "size_bytes": 5516322,
+          "sha256": "0bfa3fb744c726e1bc224c541b2379501f20e0add4383299c98979bb5842dc1e"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H2__P06_heldout_composite__R05/telemetry.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P06_heldout_composite__R05/telemetry.csv",
+          "size_bytes": 8278786,
+          "sha256": "a7b416ccdd90dff74531b54b4073bca251010d2ebc7eb9b3b0e5ff8c110292df"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R05/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R05/capture.json",
+              "size_bytes": 5690,
+              "sha256": "12ea4b85389a1e046b885d0e9c1332cf1f9be90116c19bdf0692609137c4fb5d"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R05/video/260922-163757_H2-G1-P06-R05_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R05/video/260922-163757_H2-G1-P06-R05_experiment-labeled.mp4",
+              "size_bytes": 19857057,
+              "sha256": "b3e8dd5feea5647e13539af69f6cd2ccb99caa254833754d47ef990bfda08544"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P06_heldout_composite__R05/video/260922-163757_H2-G1-P06-R05_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H2__P06_heldout_composite__R05/video/260922-163757_H2-G1-P06-R05_experiment-unlabeled.mp4",
+              "size_bytes": 20284719,
+              "sha256": "5de18bbac25060ea21896c96cb9cb7f73eff1d14aa3a4f616e7b50e55c218c97"
+            },
+            "video_frame_count": 1016,
+            "raw_frame_count": 726
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R05/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R05/capture.json",
+              "size_bytes": 5687,
+              "sha256": "0644b0d0b47eb9b16d47a1825619a3d4c5484f3b14c6c200ee02d542f982147e"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R05/video/260922-163757_H2-G1-P06-R05_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R05/video/260922-163757_H2-G1-P06-R05_experiment-labeled.mp4",
+              "size_bytes": 16636189,
+              "sha256": "6e2e89493f3be28f91359f8a9a7daf3195b583b0ccf93347d5f8c55aca58765a"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P06_heldout_composite__R05/video/260922-163757_H2-G1-P06-R05_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H2__P06_heldout_composite__R05/video/260922-163757_H2-G1-P06-R05_experiment-unlabeled.mp4",
+              "size_bytes": 18896885,
+              "sha256": "6b58f8ab844cffcf87b54f1d1d23b14328b13b950261d9480fcf29169f0dfcc1"
+            },
+            "video_frame_count": 1022,
+            "raw_frame_count": 895
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2705,
+        "telemetry_rows": 43280,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.0,
+          "min_voltage_limit_raw": 40,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "5b76761ef255c0ec6a11206ba536e07fe3b3a193568a79f16862e0200cac319e"
+        },
+        "minimum_voltage_V": 4.2,
+        "maximum_temperature_C": 24,
+        "maximum_missing_fraction": 0.0036968576709796672
+      }
+    },
+    {
+      "campaign_ordinal": 21,
+      "episode_id": "G1_16__H1__P07_heldout_sine_hold__R05",
+      "controller": "H1",
+      "profile": "P07_heldout_sine_hold",
+      "repeat": "R05",
+      "role": "held_out",
+      "display_code": "H1-G1-P07-R05",
+      "source_run": {
+        "name": "G1_16_dual_resume_15_20260922T123757896057Z",
+        "path": "../G1_16_dual_resume_15_20260922T123757896057Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H1__P07_heldout_sine_hold__R05",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R05",
+          "view2": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R05"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R05/manifest.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P07_heldout_sine_hold__R05/manifest.json",
+          "size_bytes": 60487,
+          "sha256": "4cf20b6ad5bfb61b5684384c005514add98555a19c50a9a1ede780bfb1c8b1fc"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R05/camera_quality.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P07_heldout_sine_hold__R05/camera_quality.json",
+          "size_bytes": 3545,
+          "sha256": "94a4d002baae7daf5d73f087f0bed58c20f8b905ec16b127b921480484dc6bf8"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R05/commands.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P07_heldout_sine_hold__R05/commands.csv",
+          "size_bytes": 5293805,
+          "sha256": "9ce2fa7d29b96fa8728789abb5ce3f9cb997ec16b68ec4ae2ba9ca0e67b7dd34"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H1__P07_heldout_sine_hold__R05/telemetry.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H1__P07_heldout_sine_hold__R05/telemetry.csv",
+          "size_bytes": 7967196,
+          "sha256": "b1dba68f9cec928462690be71135ff5c70f9d71c16adf6f5c418004152aec34d"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R05/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R05/capture.json",
+              "size_bytes": 5692,
+              "sha256": "af01c077e64e4b8dade2ce9ff53823897f117b3394823cd56928af0d09c5967b"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R05/video/260922-163757_H1-G1-P07-R05_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R05/video/260922-163757_H1-G1-P07-R05_experiment-labeled.mp4",
+              "size_bytes": 19277381,
+              "sha256": "34083d51c14a6a35b593148547701c78016efdad0b275f8a15c532a62d9092c6"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H1__P07_heldout_sine_hold__R05/video/260922-163757_H1-G1-P07-R05_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H1__P07_heldout_sine_hold__R05/video/260922-163757_H1-G1-P07-R05_experiment-unlabeled.mp4",
+              "size_bytes": 19783822,
+              "sha256": "730dadb98b8a34b76951d58ef01d1647ee60c76cc91c7ab85d24401c4dd96828"
+            },
+            "video_frame_count": 976,
+            "raw_frame_count": 785
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R05/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R05/capture.json",
+              "size_bytes": 5692,
+              "sha256": "db247e493e6bf0278c88701b60c6322e31ba4b8f6703536054b24c62667b4a23"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R05/video/260922-163757_H1-G1-P07-R05_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R05/video/260922-163757_H1-G1-P07-R05_experiment-labeled.mp4",
+              "size_bytes": 14795588,
+              "sha256": "aede18c62bb2659f0fd3bac9282863b8f5932c9841503ff6f4204df92c7d0544"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H1__P07_heldout_sine_hold__R05/video/260922-163757_H1-G1-P07-R05_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H1__P07_heldout_sine_hold__R05/video/260922-163757_H1-G1-P07-R05_experiment-unlabeled.mp4",
+              "size_bytes": 16623900,
+              "sha256": "eb53c33e81ccc526bb2f287d1594274ae04fe0cc8685a24132a5c047217a3a93"
+            },
+            "video_frame_count": 981,
+            "raw_frame_count": 826
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2605,
+        "telemetry_rows": 41680,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.0,
+          "min_voltage_limit_raw": 40,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "5b76761ef255c0ec6a11206ba536e07fe3b3a193568a79f16862e0200cac319e"
+        },
+        "minimum_voltage_V": 4.0,
+        "maximum_temperature_C": 25,
+        "maximum_missing_fraction": 0.004222648752399232
+      }
+    },
+    {
+      "campaign_ordinal": 22,
+      "episode_id": "G1_16__H2__P07_heldout_sine_hold__R05",
+      "controller": "H2",
+      "profile": "P07_heldout_sine_hold",
+      "repeat": "R05",
+      "role": "held_out",
+      "display_code": "H2-G1-P07-R05",
+      "source_run": {
+        "name": "G1_16_dual_resume_15_20260922T123757896057Z",
+        "path": "../G1_16_dual_resume_15_20260922T123757896057Z"
+      },
+      "links": {
+        "episode": "episodes/G1_16__H2__P07_heldout_sine_hold__R05",
+        "views": {
+          "view1": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R05",
+          "view2": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R05"
+        }
+      },
+      "artifacts": {
+        "manifest": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R05/manifest.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P07_heldout_sine_hold__R05/manifest.json",
+          "size_bytes": 60508,
+          "sha256": "9e7ee007a385216b11466d69d90ef6f0b6e2afc19216804ee1ecfc3486ada2ed"
+        },
+        "camera_quality": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R05/camera_quality.json",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P07_heldout_sine_hold__R05/camera_quality.json",
+          "size_bytes": 3549,
+          "sha256": "96268eee1daeac6e8dd092ef1c9129dd90dfc487a6b2ac909409cd1db2a2340d"
+        },
+        "commands": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R05/commands.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P07_heldout_sine_hold__R05/commands.csv",
+          "size_bytes": 5295356,
+          "sha256": "ccd3bd69d36ca5cdca91494f329fa4008cd04c2c8335d999b890ef25b8723a79"
+        },
+        "telemetry": {
+          "campaign_path": "episodes/G1_16__H2__P07_heldout_sine_hold__R05/telemetry.csv",
+          "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/episodes/G1_16__H2__P07_heldout_sine_hold__R05/telemetry.csv",
+          "size_bytes": 7971462,
+          "sha256": "550cde771d2d52d900f27803213f7b359ca0ce5fa47b5f09c1ef69fbf05930c9"
+        },
+        "views": {
+          "view1": {
+            "capture_manifest": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R05/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R05/capture.json",
+              "size_bytes": 5692,
+              "sha256": "e3c49544e9e6648dd21d9dc5a464b3f22acb1c3533e9a72b600fc9907d24a9c7"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R05/video/260922-163757_H2-G1-P07-R05_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R05/video/260922-163757_H2-G1-P07-R05_experiment-labeled.mp4",
+              "size_bytes": 18708815,
+              "sha256": "c74b1f4eba24930d214aa30bef19e228ad0d40fa02a0cc69f870af2f8a25367b"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view1/episodes/G1_16__H2__P07_heldout_sine_hold__R05/video/260922-163757_H2-G1-P07-R05_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view1/media/episodes/G1_16__H2__P07_heldout_sine_hold__R05/video/260922-163757_H2-G1-P07-R05_experiment-unlabeled.mp4",
+              "size_bytes": 19221981,
+              "sha256": "236b8a9671ce6bdab94cc743e384debf3473305bcf83ea5f2add9dbb0237e1d4"
+            },
+            "video_frame_count": 953,
+            "raw_frame_count": 687
+          },
+          "view2": {
+            "capture_manifest": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R05/capture.json",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R05/capture.json",
+              "size_bytes": 5693,
+              "sha256": "7cf1cc6f7cfec46de23e99a3fc7bd6d04213655c7bb771d6f3ac87cead7f9ed5"
+            },
+            "labeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R05/video/260922-163757_H2-G1-P07-R05_experiment-labeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R05/video/260922-163757_H2-G1-P07-R05_experiment-labeled.mp4",
+              "size_bytes": 15481039,
+              "sha256": "1937b8869567b17ca97e3078856ff0896337896c8da32f9b6b66b308503dd92e"
+            },
+            "unlabeled_video": {
+              "campaign_path": "views/view2/episodes/G1_16__H2__P07_heldout_sine_hold__R05/video/260922-163757_H2-G1-P07-R05_experiment-unlabeled.mp4",
+              "source_path": "../G1_16_dual_resume_15_20260922T123757896057Z/views/view2/media/episodes/G1_16__H2__P07_heldout_sine_hold__R05/video/260922-163757_H2-G1-P07-R05_experiment-unlabeled.mp4",
+              "size_bytes": 17450555,
+              "sha256": "467a2a978fad81aaff632b7210c7cf5a13c55b7946b2711e88d8132ac2fddda5"
+            },
+            "video_frame_count": 983,
+            "raw_frame_count": 850
+          }
+        }
+      },
+      "motor_evidence": {
+        "motor_count": 16,
+        "expected_samples_per_motor": 2606,
+        "telemetry_rows": 41696,
+        "acquisition_voltage_policy": {
+          "runtime_voltage_min_V": 4.0,
+          "min_voltage_limit_raw": 40,
+          "start_voltage_min_V": 4.5,
+          "source_config": "experiment_config.json",
+          "source_config_sha256": "5b76761ef255c0ec6a11206ba536e07fe3b3a193568a79f16862e0200cac319e"
+        },
+        "minimum_voltage_V": 4.1,
+        "maximum_temperature_C": 25,
+        "maximum_missing_fraction": 0.0034535686876438986
+      }
+    }
+  ],
+  "full_videos": {
+    "view1": {
+      "labeled": {
+        "path": "views/view1/media/video/G1_16_complete_view1_full-experiment-labeled.mp4",
+        "frame_count": 20739,
+        "decoded_frame_count_verified": 20739,
+        "fps": 30.0,
+        "duration_s": 691.3,
+        "chapter_count": 22
+      },
+      "unlabeled": {
+        "path": "views/view1/media/video/G1_16_complete_view1_full-experiment-unlabeled.mp4",
+        "frame_count": 20739,
+        "decoded_frame_count_verified": 20739,
+        "fps": 30.0,
+        "duration_s": 691.3,
+        "chapter_count": 22
+      }
+    },
+    "view2": {
+      "labeled": {
+        "path": "views/view2/media/video/G1_16_complete_view2_full-experiment-labeled.mp4",
+        "frame_count": 20823,
+        "decoded_frame_count_verified": 20823,
+        "fps": 30.0,
+        "duration_s": 694.1,
+        "chapter_count": 22
+      },
+      "unlabeled": {
+        "path": "views/view2/media/video/G1_16_complete_view2_full-experiment-unlabeled.mp4",
+        "frame_count": 20823,
+        "decoded_frame_count_verified": 20823,
+        "fps": 30.0,
+        "duration_s": 694.1,
+        "chapter_count": 22
+      }
+    }
+  }
+}

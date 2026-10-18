@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "experiment_id": "v5-m0-h1-h5-p01-p03-r3-hardware-v1",
+  "mechanical_configuration": "M0",
+  "dynamixel_id": 5,
+  "expected_model": "XC330-M288-T",
+  "expected_model_number": 1240,
+  "serial_port": "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FTBIHS37-if00-port0",
+  "baud_rate_bps": 4000000,
+  "servo_zero_raw": 2048,
+  "servo_zero_tolerance_ticks": 5,
+  "software_goal_min_raw": 1024,
+  "software_goal_max_raw": 3072,
+  "position_envelope_deg": 90,
+  "command_rate_hz": 100,
+  "telemetry_rate_hz": 200,
+  "required_complete_repetitions": 3,
+  "condition_order_by_repeat": {
+    "R01": ["H1", "H2", "H3", "H4", "H5"],
+    "R02": ["H5", "H4", "H3", "H2", "H1"],
+    "R03": ["H3", "H1", "H5", "H2", "H4"]
+  },
+  "controllers": {
+    "H1": {
+      "role": "baseline",
+      "position_p_gain_raw": 600,
+      "position_i_gain_raw": 0,
+      "position_d_gain_raw": 150
+    },
+    "H2": {
+      "role": "P-only change from H1",
+      "position_p_gain_raw": 800,
+      "position_i_gain_raw": 0,
+      "position_d_gain_raw": 150
+    },
+    "H3": {
+      "role": "D-only change from H1",
+      "position_p_gain_raw": 600,
+      "position_i_gain_raw": 0,
+      "position_d_gain_raw": 220
+    },
+    "H4": {
+      "role": "deliberately low P and D",
+      "position_p_gain_raw": 300,
+      "position_i_gain_raw": 0,
+      "position_d_gain_raw": 60
+    },
+    "H5": {
+      "role": "deliberately high P and D",
+      "position_p_gain_raw": 1200,
+      "position_i_gain_raw": 0,
+      "position_d_gain_raw": 320
+    }
+  },
+  "shared_registers": {
+    "baud_rate": 6,
+    "return_delay_time": 0,
+    "drive_mode": 0,
+    "operating_mode": 5,
+    "secondary_id": 255,
+    "homing_offset": 0,
+    "temperature_limit": 60,
+    "max_voltage_limit": 55,
+    "min_voltage_limit": 45,
+    "pwm_limit": 708,
+    "current_limit": 300,
+    "velocity_limit": 292,
+    "startup_configuration": 0,
+    "pwm_slope": 140,
+    "shutdown": 53,
+    "status_return_level": 2,
+    "velocity_i_gain": 1600,
+    "velocity_p_gain": 50,
+    "feedforward_2nd_gain": 0,
+    "feedforward_1st_gain": 0,
+    "bus_watchdog": 5,
+    "goal_pwm": 708,
+    "goal_current": 300,
+    "profile_acceleration": 32,
+    "profile_velocity": 125
+  },
+  "profiles": {
+    "P01_slow_triangle": {
+      "kind": "triangle",
+      "duration_s": 12.0,
+      "center_rad": 0.0,
+      "amplitude_rad": 0.65,
+      "frequency_hz": 0.16666666666666666,
+      "post_profile_zero_hold_s": 1.0
+    },
+    "P02_multisine": {
+      "kind": "multisine",
+      "duration_s": 12.0,
+      "center_rad": 0.0,
+      "amplitudes_rad": [0.34, 0.18, 0.09],
+      "frequencies_hz": [0.13, 0.37, 0.83],
+      "phases_rad": [0.0, 0.8, 1.7],
+      "pre_profile_zero_hold_s": 0.25,
+      "pre_profile_transition_s": 0.5,
+      "post_profile_return_s": 1.0,
+      "post_profile_zero_hold_s": 1.0
+    },
+    "P03_smooth_levels": {
+      "kind": "smooth_levels",
+      "levels_rad": [0.0, -0.45, 0.45, -0.7, 0.2, 0.7, -0.3, 0.0],
+      "hold_s": 0.55,
+      "transition_s": 0.45,
+      "post_profile_zero_hold_s": 1.0
+    }
+  },
+  "pilot": {
+    "controllers": ["H1", "H4", "H5"],
+    "amplitude_rad": 0.15,
+    "duration_s": 4.0,
+    "frequency_hz": 0.5,
+    "post_profile_zero_hold_s": 1.0
+  },
+  "interlocks": {
+    "start_voltage_min_V": 4.5,
+    "start_voltage_max_V": 5.5,
+    "start_temperature_max_C": 49,
+    "runtime_temperature_stop_C": 55,
+    "following_error_rad": 0.6,
+    "following_error_duration_s": 0.2,
+    "current_stop_A": 0.4,
+    "current_stop_duration_s": 0.1,
+    "pwm_stop_fraction": 0.83,
+    "pwm_stop_duration_s": 0.25,
+    "velocity_stop_rad_s": 7.5
+  },
+  "timing_quality": {
+    "minimum_achieved_rate_hz": 180.0,
+    "p99_9_max_gap_s": 0.008,
+    "outlier_gap_threshold_s": 0.01,
+    "maximum_outlier_fraction": 0.001,
+    "absolute_max_gap_s": 0.02
+  },
+  "measurement_boundary": {
+    "primary_output": "Present Position",
+    "supporting_channels": ["Present Velocity", "Present Current", "Present PWM"],
+    "present_current_semantics": "XC330 input-supply current telemetry",
+    "torque_channel_available": false,
+    "torque_policy": "Do not derive or label output torque without an independent force/torque calibration."
+  },
+  "data_policy": {
+    "source": "new physical measurements collected for V5",
+    "prior_zip_or_V4_observations_used": false,
+    "mujoco_gains_assigned_during_hardware_collection": false,
+    "H_labels_mean": "native DYNAMIXEL hardware register conditions",
+    "collection_scope": "M0 only; stop before fixture change"
+  }
+}

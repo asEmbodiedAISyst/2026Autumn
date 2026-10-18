@@ -1,0 +1,1228 @@
+{
+  "accepted_campaign_ordinals": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "acquisition_sources": [
+    {
+      "accepted_ordinals": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "path": "source/acquisition/1-29",
+      "run_evidence": "source/acquisition/1-29/run_evidence",
+      "source_snapshot": "source/acquisition/1-29/source"
+    },
+    {
+      "accepted_ordinals": [
+        30,
+        31
+      ],
+      "path": "source/acquisition/30-31",
+      "run_evidence": "source/acquisition/30-31/run_evidence",
+      "source_snapshot": "source/acquisition/30-31/source"
+    },
+    {
+      "accepted_ordinals": [
+        32
+      ],
+      "copied_from_episode": "B0_16__H2__P05_wide_sine__R02",
+      "copied_from_run": "B0_16_dual_full_20260921T125536984876Z",
+      "excluded_from_analysis": true,
+      "kind": "trial_placeholder_duplicate",
+      "path": "source/acquisition/32-placeholder",
+      "source_snapshot": "source/acquisition/32-placeholder/source",
+      "trial_only": true
+    }
+  ],
+  "analysis_ready": false,
+  "campaign": "B0 16-motor H1/H2 campaign",
+  "controller_counts": {
+    "H1": 16,
+    "H2": 16
+  },
+  "created_utc": "2026-09-21T13:51:56.711Z",
+  "episode_count": 32,
+  "episodes": [
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__PILOT_LOW_AMPLITUDE",
+        "view2": "views/view2/media/episodes/B0_16__H1__PILOT_LOW_AMPLITUDE"
+      },
+      "campaign_ordinal": 1,
+      "controller": "H1",
+      "display_code": "H1-B0-PILOT",
+      "episode_id": "B0_16__H1__PILOT_LOW_AMPLITUDE",
+      "motor_data": "episodes/B0_16__H1__PILOT_LOW_AMPLITUDE",
+      "placeholder": null,
+      "profile": "PILOT_LOW_AMPLITUDE",
+      "repeat": null,
+      "role": "pilot"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__PILOT_LOW_AMPLITUDE",
+        "view2": "views/view2/media/episodes/B0_16__H2__PILOT_LOW_AMPLITUDE"
+      },
+      "campaign_ordinal": 2,
+      "controller": "H2",
+      "display_code": "H2-B0-PILOT",
+      "episode_id": "B0_16__H2__PILOT_LOW_AMPLITUDE",
+      "motor_data": "episodes/B0_16__H2__PILOT_LOW_AMPLITUDE",
+      "placeholder": null,
+      "profile": "PILOT_LOW_AMPLITUDE",
+      "repeat": null,
+      "role": "pilot"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P01_slow_triangle__R01",
+        "view2": "views/view2/media/episodes/B0_16__H1__P01_slow_triangle__R01"
+      },
+      "campaign_ordinal": 3,
+      "controller": "H1",
+      "display_code": "H1-B0-P01-R01",
+      "episode_id": "B0_16__H1__P01_slow_triangle__R01",
+      "motor_data": "episodes/B0_16__H1__P01_slow_triangle__R01",
+      "placeholder": null,
+      "profile": "P01_slow_triangle",
+      "repeat": "R01",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P01_slow_triangle__R01",
+        "view2": "views/view2/media/episodes/B0_16__H2__P01_slow_triangle__R01"
+      },
+      "campaign_ordinal": 4,
+      "controller": "H2",
+      "display_code": "H2-B0-P01-R01",
+      "episode_id": "B0_16__H2__P01_slow_triangle__R01",
+      "motor_data": "episodes/B0_16__H2__P01_slow_triangle__R01",
+      "placeholder": null,
+      "profile": "P01_slow_triangle",
+      "repeat": "R01",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P02_multisine__R01",
+        "view2": "views/view2/media/episodes/B0_16__H1__P02_multisine__R01"
+      },
+      "campaign_ordinal": 5,
+      "controller": "H1",
+      "display_code": "H1-B0-P02-R01",
+      "episode_id": "B0_16__H1__P02_multisine__R01",
+      "motor_data": "episodes/B0_16__H1__P02_multisine__R01",
+      "placeholder": null,
+      "profile": "P02_multisine",
+      "repeat": "R01",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P02_multisine__R01",
+        "view2": "views/view2/media/episodes/B0_16__H2__P02_multisine__R01"
+      },
+      "campaign_ordinal": 6,
+      "controller": "H2",
+      "display_code": "H2-B0-P02-R01",
+      "episode_id": "B0_16__H2__P02_multisine__R01",
+      "motor_data": "episodes/B0_16__H2__P02_multisine__R01",
+      "placeholder": null,
+      "profile": "P02_multisine",
+      "repeat": "R01",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P03_smooth_levels__R01",
+        "view2": "views/view2/media/episodes/B0_16__H1__P03_smooth_levels__R01"
+      },
+      "campaign_ordinal": 7,
+      "controller": "H1",
+      "display_code": "H1-B0-P03-R01",
+      "episode_id": "B0_16__H1__P03_smooth_levels__R01",
+      "motor_data": "episodes/B0_16__H1__P03_smooth_levels__R01",
+      "placeholder": null,
+      "profile": "P03_smooth_levels",
+      "repeat": "R01",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P03_smooth_levels__R01",
+        "view2": "views/view2/media/episodes/B0_16__H2__P03_smooth_levels__R01"
+      },
+      "campaign_ordinal": 8,
+      "controller": "H2",
+      "display_code": "H2-B0-P03-R01",
+      "episode_id": "B0_16__H2__P03_smooth_levels__R01",
+      "motor_data": "episodes/B0_16__H2__P03_smooth_levels__R01",
+      "placeholder": null,
+      "profile": "P03_smooth_levels",
+      "repeat": "R01",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P01_slow_triangle__R02",
+        "view2": "views/view2/media/episodes/B0_16__H2__P01_slow_triangle__R02"
+      },
+      "campaign_ordinal": 9,
+      "controller": "H2",
+      "display_code": "H2-B0-P01-R02",
+      "episode_id": "B0_16__H2__P01_slow_triangle__R02",
+      "motor_data": "episodes/B0_16__H2__P01_slow_triangle__R02",
+      "placeholder": null,
+      "profile": "P01_slow_triangle",
+      "repeat": "R02",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P01_slow_triangle__R02",
+        "view2": "views/view2/media/episodes/B0_16__H1__P01_slow_triangle__R02"
+      },
+      "campaign_ordinal": 10,
+      "controller": "H1",
+      "display_code": "H1-B0-P01-R02",
+      "episode_id": "B0_16__H1__P01_slow_triangle__R02",
+      "motor_data": "episodes/B0_16__H1__P01_slow_triangle__R02",
+      "placeholder": null,
+      "profile": "P01_slow_triangle",
+      "repeat": "R02",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P02_multisine__R02",
+        "view2": "views/view2/media/episodes/B0_16__H2__P02_multisine__R02"
+      },
+      "campaign_ordinal": 11,
+      "controller": "H2",
+      "display_code": "H2-B0-P02-R02",
+      "episode_id": "B0_16__H2__P02_multisine__R02",
+      "motor_data": "episodes/B0_16__H2__P02_multisine__R02",
+      "placeholder": null,
+      "profile": "P02_multisine",
+      "repeat": "R02",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P02_multisine__R02",
+        "view2": "views/view2/media/episodes/B0_16__H1__P02_multisine__R02"
+      },
+      "campaign_ordinal": 12,
+      "controller": "H1",
+      "display_code": "H1-B0-P02-R02",
+      "episode_id": "B0_16__H1__P02_multisine__R02",
+      "motor_data": "episodes/B0_16__H1__P02_multisine__R02",
+      "placeholder": null,
+      "profile": "P02_multisine",
+      "repeat": "R02",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P03_smooth_levels__R02",
+        "view2": "views/view2/media/episodes/B0_16__H2__P03_smooth_levels__R02"
+      },
+      "campaign_ordinal": 13,
+      "controller": "H2",
+      "display_code": "H2-B0-P03-R02",
+      "episode_id": "B0_16__H2__P03_smooth_levels__R02",
+      "motor_data": "episodes/B0_16__H2__P03_smooth_levels__R02",
+      "placeholder": null,
+      "profile": "P03_smooth_levels",
+      "repeat": "R02",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P03_smooth_levels__R02",
+        "view2": "views/view2/media/episodes/B0_16__H1__P03_smooth_levels__R02"
+      },
+      "campaign_ordinal": 14,
+      "controller": "H1",
+      "display_code": "H1-B0-P03-R02",
+      "episode_id": "B0_16__H1__P03_smooth_levels__R02",
+      "motor_data": "episodes/B0_16__H1__P03_smooth_levels__R02",
+      "placeholder": null,
+      "profile": "P03_smooth_levels",
+      "repeat": "R02",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P01_slow_triangle__R03",
+        "view2": "views/view2/media/episodes/B0_16__H1__P01_slow_triangle__R03"
+      },
+      "campaign_ordinal": 15,
+      "controller": "H1",
+      "display_code": "H1-B0-P01-R03",
+      "episode_id": "B0_16__H1__P01_slow_triangle__R03",
+      "motor_data": "episodes/B0_16__H1__P01_slow_triangle__R03",
+      "placeholder": null,
+      "profile": "P01_slow_triangle",
+      "repeat": "R03",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P01_slow_triangle__R03",
+        "view2": "views/view2/media/episodes/B0_16__H2__P01_slow_triangle__R03"
+      },
+      "campaign_ordinal": 16,
+      "controller": "H2",
+      "display_code": "H2-B0-P01-R03",
+      "episode_id": "B0_16__H2__P01_slow_triangle__R03",
+      "motor_data": "episodes/B0_16__H2__P01_slow_triangle__R03",
+      "placeholder": null,
+      "profile": "P01_slow_triangle",
+      "repeat": "R03",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P02_multisine__R03",
+        "view2": "views/view2/media/episodes/B0_16__H1__P02_multisine__R03"
+      },
+      "campaign_ordinal": 17,
+      "controller": "H1",
+      "display_code": "H1-B0-P02-R03",
+      "episode_id": "B0_16__H1__P02_multisine__R03",
+      "motor_data": "episodes/B0_16__H1__P02_multisine__R03",
+      "placeholder": null,
+      "profile": "P02_multisine",
+      "repeat": "R03",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P02_multisine__R03",
+        "view2": "views/view2/media/episodes/B0_16__H2__P02_multisine__R03"
+      },
+      "campaign_ordinal": 18,
+      "controller": "H2",
+      "display_code": "H2-B0-P02-R03",
+      "episode_id": "B0_16__H2__P02_multisine__R03",
+      "motor_data": "episodes/B0_16__H2__P02_multisine__R03",
+      "placeholder": null,
+      "profile": "P02_multisine",
+      "repeat": "R03",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P03_smooth_levels__R03",
+        "view2": "views/view2/media/episodes/B0_16__H1__P03_smooth_levels__R03"
+      },
+      "campaign_ordinal": 19,
+      "controller": "H1",
+      "display_code": "H1-B0-P03-R03",
+      "episode_id": "B0_16__H1__P03_smooth_levels__R03",
+      "motor_data": "episodes/B0_16__H1__P03_smooth_levels__R03",
+      "placeholder": null,
+      "profile": "P03_smooth_levels",
+      "repeat": "R03",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P03_smooth_levels__R03",
+        "view2": "views/view2/media/episodes/B0_16__H2__P03_smooth_levels__R03"
+      },
+      "campaign_ordinal": 20,
+      "controller": "H2",
+      "display_code": "H2-B0-P03-R03",
+      "episode_id": "B0_16__H2__P03_smooth_levels__R03",
+      "motor_data": "episodes/B0_16__H2__P03_smooth_levels__R03",
+      "placeholder": null,
+      "profile": "P03_smooth_levels",
+      "repeat": "R03",
+      "role": "calibration"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P04_chirp__R01",
+        "view2": "views/view2/media/episodes/B0_16__H1__P04_chirp__R01"
+      },
+      "campaign_ordinal": 21,
+      "controller": "H1",
+      "display_code": "H1-B0-P04-R01",
+      "episode_id": "B0_16__H1__P04_chirp__R01",
+      "motor_data": "episodes/B0_16__H1__P04_chirp__R01",
+      "placeholder": null,
+      "profile": "P04_chirp",
+      "repeat": "R01",
+      "role": "model_selection"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P04_chirp__R01",
+        "view2": "views/view2/media/episodes/B0_16__H2__P04_chirp__R01"
+      },
+      "campaign_ordinal": 22,
+      "controller": "H2",
+      "display_code": "H2-B0-P04-R01",
+      "episode_id": "B0_16__H2__P04_chirp__R01",
+      "motor_data": "episodes/B0_16__H2__P04_chirp__R01",
+      "placeholder": null,
+      "profile": "P04_chirp",
+      "repeat": "R01",
+      "role": "model_selection"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P05_wide_sine__R01",
+        "view2": "views/view2/media/episodes/B0_16__H1__P05_wide_sine__R01"
+      },
+      "campaign_ordinal": 23,
+      "controller": "H1",
+      "display_code": "H1-B0-P05-R01",
+      "episode_id": "B0_16__H1__P05_wide_sine__R01",
+      "motor_data": "episodes/B0_16__H1__P05_wide_sine__R01",
+      "placeholder": null,
+      "profile": "P05_wide_sine",
+      "repeat": "R01",
+      "role": "model_selection"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P05_wide_sine__R01",
+        "view2": "views/view2/media/episodes/B0_16__H2__P05_wide_sine__R01"
+      },
+      "campaign_ordinal": 24,
+      "controller": "H2",
+      "display_code": "H2-B0-P05-R01",
+      "episode_id": "B0_16__H2__P05_wide_sine__R01",
+      "motor_data": "episodes/B0_16__H2__P05_wide_sine__R01",
+      "placeholder": null,
+      "profile": "P05_wide_sine",
+      "repeat": "R01",
+      "role": "model_selection"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P04_chirp__R02",
+        "view2": "views/view2/media/episodes/B0_16__H2__P04_chirp__R02"
+      },
+      "campaign_ordinal": 25,
+      "controller": "H2",
+      "display_code": "H2-B0-P04-R02",
+      "episode_id": "B0_16__H2__P04_chirp__R02",
+      "motor_data": "episodes/B0_16__H2__P04_chirp__R02",
+      "placeholder": null,
+      "profile": "P04_chirp",
+      "repeat": "R02",
+      "role": "model_selection"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P04_chirp__R02",
+        "view2": "views/view2/media/episodes/B0_16__H1__P04_chirp__R02"
+      },
+      "campaign_ordinal": 26,
+      "controller": "H1",
+      "display_code": "H1-B0-P04-R02",
+      "episode_id": "B0_16__H1__P04_chirp__R02",
+      "motor_data": "episodes/B0_16__H1__P04_chirp__R02",
+      "placeholder": null,
+      "profile": "P04_chirp",
+      "repeat": "R02",
+      "role": "model_selection"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P05_wide_sine__R02",
+        "view2": "views/view2/media/episodes/B0_16__H2__P05_wide_sine__R02"
+      },
+      "campaign_ordinal": 27,
+      "controller": "H2",
+      "display_code": "H2-B0-P05-R02",
+      "episode_id": "B0_16__H2__P05_wide_sine__R02",
+      "motor_data": "episodes/B0_16__H2__P05_wide_sine__R02",
+      "placeholder": null,
+      "profile": "P05_wide_sine",
+      "repeat": "R02",
+      "role": "model_selection"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P05_wide_sine__R02",
+        "view2": "views/view2/media/episodes/B0_16__H1__P05_wide_sine__R02"
+      },
+      "campaign_ordinal": 28,
+      "controller": "H1",
+      "display_code": "H1-B0-P05-R02",
+      "episode_id": "B0_16__H1__P05_wide_sine__R02",
+      "motor_data": "episodes/B0_16__H1__P05_wide_sine__R02",
+      "placeholder": null,
+      "profile": "P05_wide_sine",
+      "repeat": "R02",
+      "role": "model_selection"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P04_chirp__R03",
+        "view2": "views/view2/media/episodes/B0_16__H1__P04_chirp__R03"
+      },
+      "campaign_ordinal": 29,
+      "controller": "H1",
+      "display_code": "H1-B0-P04-R03",
+      "episode_id": "B0_16__H1__P04_chirp__R03",
+      "motor_data": "episodes/B0_16__H1__P04_chirp__R03",
+      "placeholder": null,
+      "profile": "P04_chirp",
+      "repeat": "R03",
+      "role": "model_selection"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P04_chirp__R03",
+        "view2": "views/view2/media/episodes/B0_16__H2__P04_chirp__R03"
+      },
+      "campaign_ordinal": 30,
+      "controller": "H2",
+      "display_code": "H2-B0-P04-R03",
+      "episode_id": "B0_16__H2__P04_chirp__R03",
+      "motor_data": "episodes/B0_16__H2__P04_chirp__R03",
+      "placeholder": null,
+      "profile": "P04_chirp",
+      "repeat": "R03",
+      "role": "model_selection"
+    },
+    {
+      "analysis_eligible": true,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H1__P05_wide_sine__R03",
+        "view2": "views/view2/media/episodes/B0_16__H1__P05_wide_sine__R03"
+      },
+      "campaign_ordinal": 31,
+      "controller": "H1",
+      "display_code": "H1-B0-P05-R03",
+      "episode_id": "B0_16__H1__P05_wide_sine__R03",
+      "motor_data": "episodes/B0_16__H1__P05_wide_sine__R03",
+      "placeholder": null,
+      "profile": "P05_wide_sine",
+      "repeat": "R03",
+      "role": "model_selection"
+    },
+    {
+      "analysis_eligible": false,
+      "camera_data": {
+        "view1": "views/view1/media/episodes/B0_16__H2__P05_wide_sine__R03",
+        "view2": "views/view2/media/episodes/B0_16__H2__P05_wide_sine__R03"
+      },
+      "campaign_ordinal": 32,
+      "controller": "H2",
+      "display_code": "H2-B0-P05-R03",
+      "episode_id": "B0_16__H2__P05_wide_sine__R03",
+      "motor_data": "episodes/B0_16__H2__P05_wide_sine__R03",
+      "placeholder": {
+        "copied_from_episode": "B0_16__H2__P05_wide_sine__R02",
+        "copied_from_run": "B0_16_dual_full_20260921T125536984876Z",
+        "excluded_from_analysis": true,
+        "placeholder_duplicate": true,
+        "source_tree_inventory_sha256": "eb5144fdc8d8f92c0bd7760452e6791aa1332ccf17e220ed6abf495481075afe",
+        "trial_only": true
+      },
+      "profile": "P05_wide_sine",
+      "repeat": "R03",
+      "role": "model_selection"
+    }
+  ],
+  "evidence": [
+    {
+      "kind": "center_review",
+      "name": "center_review",
+      "path": "evidence/center_review",
+      "verified_source_file_count": 62
+    },
+    {
+      "kind": "camera_preflight",
+      "name": "camera_preflight_01",
+      "path": "evidence/camera_preflight_01",
+      "verified_source_file_count": 2
+    },
+    {
+      "kind": "camera_preflight",
+      "name": "camera_preflight_02",
+      "path": "evidence/camera_preflight_02",
+      "verified_source_file_count": 2
+    }
+  ],
+  "excluded_from_analysis_ordinals": [
+    32
+  ],
+  "measured_episode_count": 31,
+  "placeholder_duplicate_count": 1,
+  "postprocessing_source": "source/postprocessing",
+  "schema_version": 2,
+  "selection": {
+    "input_index_sha256": "926fdc83a9cb4f964bf6454f78dc73802a758de01728a534f16a6ff055fbca50",
+    "rule": "completed entries selected by the validated campaign index"
+  },
+  "status": "complete",
+  "trial_only": true,
+  "validation": {
+    "accepted_ordinals_present_exactly_once": true,
+    "all_camera_quality_reports_passed": true,
+    "all_episode_manifests_complete": true,
+    "canonical_regular_file_count_before_inventory": 31035,
+    "external_symlink_count": 0,
+    "full_labeled_and_unlabeled_videos_verified": true,
+    "full_video_chapter_count_per_view": 32,
+    "inventory_entry_count": 31035,
+    "materialized_internal_alias_count": 330,
+    "measured_episode_count": 31,
+    "per_episode_labeled_and_unlabeled_videos_verified": true,
+    "placeholder_excluded_from_analysis": true,
+    "source_indexed_artifacts_rechecked_before_publish": true,
+    "source_timing_and_frame_maps_preserved": true,
+    "trial_placeholder_count": 1
+  },
+  "views": {
+    "view1": {
+      "episode_count": 32,
+      "episodes": [
+        {
+          "campaign_ordinal": 1,
+          "directory": "views/view1/media/episodes/B0_16__H1__PILOT_LOW_AMPLITUDE",
+          "episode_id": "B0_16__H1__PILOT_LOW_AMPLITUDE",
+          "excluded_from_analysis": false,
+          "frame_count": 301,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 2,
+          "directory": "views/view1/media/episodes/B0_16__H2__PILOT_LOW_AMPLITUDE",
+          "episode_id": "B0_16__H2__PILOT_LOW_AMPLITUDE",
+          "excluded_from_analysis": false,
+          "frame_count": 293,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 3,
+          "directory": "views/view1/media/episodes/B0_16__H1__P01_slow_triangle__R01",
+          "episode_id": "B0_16__H1__P01_slow_triangle__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 532,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 4,
+          "directory": "views/view1/media/episodes/B0_16__H2__P01_slow_triangle__R01",
+          "episode_id": "B0_16__H2__P01_slow_triangle__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 532,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 5,
+          "directory": "views/view1/media/episodes/B0_16__H1__P02_multisine__R01",
+          "episode_id": "B0_16__H1__P02_multisine__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 545,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 6,
+          "directory": "views/view1/media/episodes/B0_16__H2__P02_multisine__R01",
+          "episode_id": "B0_16__H2__P02_multisine__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 586,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 7,
+          "directory": "views/view1/media/episodes/B0_16__H1__P03_smooth_levels__R01",
+          "episode_id": "B0_16__H1__P03_smooth_levels__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 403,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 8,
+          "directory": "views/view1/media/episodes/B0_16__H2__P03_smooth_levels__R01",
+          "episode_id": "B0_16__H2__P03_smooth_levels__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 400,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 9,
+          "directory": "views/view1/media/episodes/B0_16__H2__P01_slow_triangle__R02",
+          "episode_id": "B0_16__H2__P01_slow_triangle__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 535,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 10,
+          "directory": "views/view1/media/episodes/B0_16__H1__P01_slow_triangle__R02",
+          "episode_id": "B0_16__H1__P01_slow_triangle__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 531,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 11,
+          "directory": "views/view1/media/episodes/B0_16__H2__P02_multisine__R02",
+          "episode_id": "B0_16__H2__P02_multisine__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 576,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 12,
+          "directory": "views/view1/media/episodes/B0_16__H1__P02_multisine__R02",
+          "episode_id": "B0_16__H1__P02_multisine__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 590,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 13,
+          "directory": "views/view1/media/episodes/B0_16__H2__P03_smooth_levels__R02",
+          "episode_id": "B0_16__H2__P03_smooth_levels__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 400,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 14,
+          "directory": "views/view1/media/episodes/B0_16__H1__P03_smooth_levels__R02",
+          "episode_id": "B0_16__H1__P03_smooth_levels__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 400,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 15,
+          "directory": "views/view1/media/episodes/B0_16__H1__P01_slow_triangle__R03",
+          "episode_id": "B0_16__H1__P01_slow_triangle__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 532,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 16,
+          "directory": "views/view1/media/episodes/B0_16__H2__P01_slow_triangle__R03",
+          "episode_id": "B0_16__H2__P01_slow_triangle__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 534,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 17,
+          "directory": "views/view1/media/episodes/B0_16__H1__P02_multisine__R03",
+          "episode_id": "B0_16__H1__P02_multisine__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 579,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 18,
+          "directory": "views/view1/media/episodes/B0_16__H2__P02_multisine__R03",
+          "episode_id": "B0_16__H2__P02_multisine__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 590,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 19,
+          "directory": "views/view1/media/episodes/B0_16__H1__P03_smooth_levels__R03",
+          "episode_id": "B0_16__H1__P03_smooth_levels__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 400,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 20,
+          "directory": "views/view1/media/episodes/B0_16__H2__P03_smooth_levels__R03",
+          "episode_id": "B0_16__H2__P03_smooth_levels__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 396,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 21,
+          "directory": "views/view1/media/episodes/B0_16__H1__P04_chirp__R01",
+          "episode_id": "B0_16__H1__P04_chirp__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 567,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 22,
+          "directory": "views/view1/media/episodes/B0_16__H2__P04_chirp__R01",
+          "episode_id": "B0_16__H2__P04_chirp__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 564,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 23,
+          "directory": "views/view1/media/episodes/B0_16__H1__P05_wide_sine__R01",
+          "episode_id": "B0_16__H1__P05_wide_sine__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 525,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 24,
+          "directory": "views/view1/media/episodes/B0_16__H2__P05_wide_sine__R01",
+          "episode_id": "B0_16__H2__P05_wide_sine__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 515,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 25,
+          "directory": "views/view1/media/episodes/B0_16__H2__P04_chirp__R02",
+          "episode_id": "B0_16__H2__P04_chirp__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 566,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 26,
+          "directory": "views/view1/media/episodes/B0_16__H1__P04_chirp__R02",
+          "episode_id": "B0_16__H1__P04_chirp__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 566,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 27,
+          "directory": "views/view1/media/episodes/B0_16__H2__P05_wide_sine__R02",
+          "episode_id": "B0_16__H2__P05_wide_sine__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 528,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 28,
+          "directory": "views/view1/media/episodes/B0_16__H1__P05_wide_sine__R02",
+          "episode_id": "B0_16__H1__P05_wide_sine__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 462,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 29,
+          "directory": "views/view1/media/episodes/B0_16__H1__P04_chirp__R03",
+          "episode_id": "B0_16__H1__P04_chirp__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 573,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 30,
+          "directory": "views/view1/media/episodes/B0_16__H2__P04_chirp__R03",
+          "episode_id": "B0_16__H2__P04_chirp__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 558,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 31,
+          "directory": "views/view1/media/episodes/B0_16__H1__P05_wide_sine__R03",
+          "episode_id": "B0_16__H1__P05_wide_sine__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 554,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 32,
+          "directory": "views/view1/media/episodes/B0_16__H2__P05_wide_sine__R03",
+          "episode_id": "B0_16__H2__P05_wide_sine__R03",
+          "excluded_from_analysis": true,
+          "frame_count": 528,
+          "placeholder_duplicate": true
+        }
+      ],
+      "full_video": {
+        "chapter_count": 32,
+        "chapters": "views/view1/media/video/260921-135156_B0_16_complete_chapters.csv",
+        "codec": "mp4v",
+        "duration_s": 538.7,
+        "fps": 30.0,
+        "frame_count": 16161,
+        "frame_map": "views/view1/media/video/260921-135156_B0_16_complete_full-experiment-frame-map.csv",
+        "height_px": 480,
+        "labeled": "views/view1/media/video/260921-135156_B0_16_complete_full-experiment-labeled.mp4",
+        "unlabeled": "views/view1/media/video/260921-135156_B0_16_complete_full-experiment-unlabeled.mp4",
+        "width_px": 640
+      },
+      "status": "complete",
+      "view": "view1"
+    },
+    "view2": {
+      "episode_count": 32,
+      "episodes": [
+        {
+          "campaign_ordinal": 1,
+          "directory": "views/view2/media/episodes/B0_16__H1__PILOT_LOW_AMPLITUDE",
+          "episode_id": "B0_16__H1__PILOT_LOW_AMPLITUDE",
+          "excluded_from_analysis": false,
+          "frame_count": 301,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 2,
+          "directory": "views/view2/media/episodes/B0_16__H2__PILOT_LOW_AMPLITUDE",
+          "episode_id": "B0_16__H2__PILOT_LOW_AMPLITUDE",
+          "excluded_from_analysis": false,
+          "frame_count": 293,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 3,
+          "directory": "views/view2/media/episodes/B0_16__H1__P01_slow_triangle__R01",
+          "episode_id": "B0_16__H1__P01_slow_triangle__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 533,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 4,
+          "directory": "views/view2/media/episodes/B0_16__H2__P01_slow_triangle__R01",
+          "episode_id": "B0_16__H2__P01_slow_triangle__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 532,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 5,
+          "directory": "views/view2/media/episodes/B0_16__H1__P02_multisine__R01",
+          "episode_id": "B0_16__H1__P02_multisine__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 549,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 6,
+          "directory": "views/view2/media/episodes/B0_16__H2__P02_multisine__R01",
+          "episode_id": "B0_16__H2__P02_multisine__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 585,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 7,
+          "directory": "views/view2/media/episodes/B0_16__H1__P03_smooth_levels__R01",
+          "episode_id": "B0_16__H1__P03_smooth_levels__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 403,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 8,
+          "directory": "views/view2/media/episodes/B0_16__H2__P03_smooth_levels__R01",
+          "episode_id": "B0_16__H2__P03_smooth_levels__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 398,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 9,
+          "directory": "views/view2/media/episodes/B0_16__H2__P01_slow_triangle__R02",
+          "episode_id": "B0_16__H2__P01_slow_triangle__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 535,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 10,
+          "directory": "views/view2/media/episodes/B0_16__H1__P01_slow_triangle__R02",
+          "episode_id": "B0_16__H1__P01_slow_triangle__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 533,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 11,
+          "directory": "views/view2/media/episodes/B0_16__H2__P02_multisine__R02",
+          "episode_id": "B0_16__H2__P02_multisine__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 582,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 12,
+          "directory": "views/view2/media/episodes/B0_16__H1__P02_multisine__R02",
+          "episode_id": "B0_16__H1__P02_multisine__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 591,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 13,
+          "directory": "views/view2/media/episodes/B0_16__H2__P03_smooth_levels__R02",
+          "episode_id": "B0_16__H2__P03_smooth_levels__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 399,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 14,
+          "directory": "views/view2/media/episodes/B0_16__H1__P03_smooth_levels__R02",
+          "episode_id": "B0_16__H1__P03_smooth_levels__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 401,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 15,
+          "directory": "views/view2/media/episodes/B0_16__H1__P01_slow_triangle__R03",
+          "episode_id": "B0_16__H1__P01_slow_triangle__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 535,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 16,
+          "directory": "views/view2/media/episodes/B0_16__H2__P01_slow_triangle__R03",
+          "episode_id": "B0_16__H2__P01_slow_triangle__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 535,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 17,
+          "directory": "views/view2/media/episodes/B0_16__H1__P02_multisine__R03",
+          "episode_id": "B0_16__H1__P02_multisine__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 579,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 18,
+          "directory": "views/view2/media/episodes/B0_16__H2__P02_multisine__R03",
+          "episode_id": "B0_16__H2__P02_multisine__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 596,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 19,
+          "directory": "views/view2/media/episodes/B0_16__H1__P03_smooth_levels__R03",
+          "episode_id": "B0_16__H1__P03_smooth_levels__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 400,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 20,
+          "directory": "views/view2/media/episodes/B0_16__H2__P03_smooth_levels__R03",
+          "episode_id": "B0_16__H2__P03_smooth_levels__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 396,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 21,
+          "directory": "views/view2/media/episodes/B0_16__H1__P04_chirp__R01",
+          "episode_id": "B0_16__H1__P04_chirp__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 564,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 22,
+          "directory": "views/view2/media/episodes/B0_16__H2__P04_chirp__R01",
+          "episode_id": "B0_16__H2__P04_chirp__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 564,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 23,
+          "directory": "views/view2/media/episodes/B0_16__H1__P05_wide_sine__R01",
+          "episode_id": "B0_16__H1__P05_wide_sine__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 526,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 24,
+          "directory": "views/view2/media/episodes/B0_16__H2__P05_wide_sine__R01",
+          "episode_id": "B0_16__H2__P05_wide_sine__R01",
+          "excluded_from_analysis": false,
+          "frame_count": 499,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 25,
+          "directory": "views/view2/media/episodes/B0_16__H2__P04_chirp__R02",
+          "episode_id": "B0_16__H2__P04_chirp__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 571,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 26,
+          "directory": "views/view2/media/episodes/B0_16__H1__P04_chirp__R02",
+          "episode_id": "B0_16__H1__P04_chirp__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 566,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 27,
+          "directory": "views/view2/media/episodes/B0_16__H2__P05_wide_sine__R02",
+          "episode_id": "B0_16__H2__P05_wide_sine__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 528,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 28,
+          "directory": "views/view2/media/episodes/B0_16__H1__P05_wide_sine__R02",
+          "episode_id": "B0_16__H1__P05_wide_sine__R02",
+          "excluded_from_analysis": false,
+          "frame_count": 517,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 29,
+          "directory": "views/view2/media/episodes/B0_16__H1__P04_chirp__R03",
+          "episode_id": "B0_16__H1__P04_chirp__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 614,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 30,
+          "directory": "views/view2/media/episodes/B0_16__H2__P04_chirp__R03",
+          "episode_id": "B0_16__H2__P04_chirp__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 532,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 31,
+          "directory": "views/view2/media/episodes/B0_16__H1__P05_wide_sine__R03",
+          "episode_id": "B0_16__H1__P05_wide_sine__R03",
+          "excluded_from_analysis": false,
+          "frame_count": 535,
+          "placeholder_duplicate": false
+        },
+        {
+          "campaign_ordinal": 32,
+          "directory": "views/view2/media/episodes/B0_16__H2__P05_wide_sine__R03",
+          "episode_id": "B0_16__H2__P05_wide_sine__R03",
+          "excluded_from_analysis": true,
+          "frame_count": 528,
+          "placeholder_duplicate": true
+        }
+      ],
+      "full_video": {
+        "chapter_count": 32,
+        "chapters": "views/view2/media/video/260921-135156_B0_16_complete_chapters.csv",
+        "codec": "mp4v",
+        "duration_s": 540.6666666666666,
+        "fps": 30.0,
+        "frame_count": 16220,
+        "frame_map": "views/view2/media/video/260921-135156_B0_16_complete_full-experiment-frame-map.csv",
+        "height_px": 480,
+        "labeled": "views/view2/media/video/260921-135156_B0_16_complete_full-experiment-labeled.mp4",
+        "unlabeled": "views/view2/media/video/260921-135156_B0_16_complete_full-experiment-unlabeled.mp4",
+        "width_px": 640
+      },
+      "status": "complete",
+      "view": "view2"
+    }
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "schema_version": "design2data-260901-fixture-grounded-v1",
+  "release_id": "Design2Data",
+  "random_seed": 330288,
+  "simulation": {
+    "required_mujoco_version": "3.3.7",
+    "physics_timestep_s": 0.002,
+    "sample_rate_hz": 100.0,
+    "pre_roll_s": 1.0,
+    "integrator": "implicitfast",
+    "gravity_m_s2": 9.81,
+    "joint_range_rad": [-1.1, 1.1],
+    "ctrlrange_rad": [-0.9, 0.9],
+    "forcerange_Nm": [-0.5, 0.5],
+    "command_delay_s": 0.0,
+    "position_resolution_rad": 0.0015339807878856412,
+    "velocity_resolution_rad_s": 0.023980823922402087,
+    "random_sensor_noise": false,
+    "source_saturation_rejection_fraction": 0.25,
+    "visual_fixture_axis_height_m": 0.125,
+    "collision_policy": "CAD meshes and ground plane are visual-only; the real fixture is mounted with free sweep clearance"
+  },
+  "plants": {
+    "source": {
+      "armature": 0.001,
+      "damping": 0.015,
+      "frictionloss": 0.01
+    },
+    "nominal": {
+      "armature": 0.0007,
+      "damping": 0.009,
+      "frictionloss": 0.006
+    }
+  },
+  "controllers": {
+    "C1": {
+      "kp_Nm_per_rad": 2.5,
+      "kv_Nm_s_per_rad": 0.05,
+      "role": "lower synthetic MuJoCo condition"
+    },
+    "C2": {
+      "kp_Nm_per_rad": 3.1,
+      "kv_Nm_s_per_rad": 0.15,
+      "role": "higher synthetic MuJoCo condition"
+    }
+  },
+  "fixtures": {
+    "M0": {
+      "source_xml": "1DOF-M0/1DOF-M0.xml",
+      "payload_centers_m": [],
+      "link_mass_kg": 0.0,
+      "complete_payload_mass_each_kg": 0.0,
+      "external_moving_mass_kg": 0.0,
+      "study_role": "motor-only software path and bare output"
+    },
+    "B0": {
+      "source_xml": "1DOF-B0/1DOF-B0.xml",
+      "payload_centers_m": [-0.06, 0.06],
+      "link_mass_kg": 0.022,
+      "complete_payload_mass_each_kg": 0.044,
+      "external_moving_mass_kg": 0.110,
+      "study_role": "low-load calibration and model selection"
+    },
+    "B1": {
+      "source_xml": "1DOF-B1/1DOF-B1.xml",
+      "payload_centers_m": [-0.08, 0.08],
+      "link_mass_kg": 0.022,
+      "complete_payload_mass_each_kg": 0.044,
+      "external_moving_mass_kg": 0.110,
+      "study_role": "medium-load calibration and held-out profile"
+    },
+    "B2": {
+      "source_xml": "1DOF-B2/1DOF-B2.xml",
+      "payload_centers_m": [-0.1, 0.1],
+      "link_mass_kg": 0.022,
+      "complete_payload_mass_each_kg": 0.044,
+      "external_moving_mass_kg": 0.110,
+      "study_role": "high-load calibration and model selection"
+    },
+    "G1": {
+      "source_xml": "1DOF-G1/1DOF-G1.xml",
+      "payload_centers_m": [0.06, 0.1],
+      "link_mass_kg": 0.022,
+      "complete_payload_mass_each_kg": 0.044,
+      "external_moving_mass_kg": 0.110,
+      "payload_point_inertia_kg_m2": 0.0005984,
+      "payload_first_moment_kg_m": 0.00704,
+      "payload_only_max_gravity_moment_Nm": 0.0690624,
+      "study_role": "asymmetric held-out transfer"
+    }
+  },
+  "profiles": {
+    "P01_slow_triangle": {
+      "split": "calibration",
+      "kind": "triangle",
+      "duration_s": 12.0,
+      "center_rad": 0.0,
+      "amplitude_rad": 0.65,
+      "frequency_hz": 0.16666666666666666
+    },
+    "P02_multisine": {
+      "split": "calibration",
+      "kind": "multisine",
+      "duration_s": 12.0,
+      "center_rad": 0.0,
+      "amplitudes_rad": [0.34, 0.18, 0.09],
+      "frequencies_hz": [0.13, 0.37, 0.83],
+      "phases_rad": [0.0, 0.8, 1.7]
+    },
+    "P03_smooth_levels": {
+      "split": "calibration",
+      "kind": "smooth_levels",
+      "levels_rad": [0.0, -0.45, 0.45, -0.7, 0.2, 0.7, -0.3, 0.0],
+      "hold_s": 0.55,
+      "transition_s": 0.45
+    },
+    "P04_chirp": {
+      "split": "model_selection",
+      "kind": "chirp",
+      "duration_s": 12.0,
+      "center_rad": 0.0,
+      "amplitude_rad": 0.6,
+      "start_frequency_hz": 0.08,
+      "end_frequency_hz": 0.75
+    },
+    "P05_wide_sine": {
+      "split": "model_selection",
+      "kind": "sine",
+      "duration_s": 10.0,
+      "center_rad": 0.03,
+      "amplitude_rad": 0.72,
+      "frequency_hz": 0.31
+    },
+    "P06_heldout_composite": {
+      "split": "held_out",
+      "kind": "composite",
+      "duration_s": 11.0,
+      "center_offsets_rad": [-0.06, 0.08, -0.02],
+      "switch_times_s": [3.5, 7.3],
+      "amplitudes_rad": [0.34, 0.19, 0.09],
+      "frequencies_hz": [0.19, 0.61, 1.07],
+      "phases_rad": [0.2, 1.1, 2.2]
+    },
+    "P07_heldout_sine_hold": {
+      "split": "held_out",
+      "kind": "sine_hold",
+      "duration_s": 10.0,
+      "active_duration_s": 6.5,
+      "center_rad": 0.0,
+      "amplitude_rad": 0.7,
+      "frequency_hz": 0.27,
+      "hold_position_rad": 0.25,
+      "transition_s": 0.5
+    }
+  },
+  "episode_matrix": {
+    "calibration": {
+      "fixtures": ["M0", "B0", "B1", "B2"],
+      "profiles": ["P01_slow_triangle", "P02_multisine", "P03_smooth_levels"],
+      "controllers": ["C1", "C2"],
+      "repetition": "R01"
+    },
+    "model_selection": {
+      "fixtures": ["B0", "B2"],
+      "profiles": ["P04_chirp", "P05_wide_sine"],
+      "controllers": ["C1", "C2"],
+      "repetition": "R01"
+    },
+    "held_out": {
+      "fixtures": ["G1"],
+      "profiles": ["P06_heldout_composite", "P07_heldout_sine_hold"],
+      "controllers": ["C1", "C2"],
+      "additional_pairs": [["B1", "P06_heldout_composite", "C1"], ["B1", "P06_heldout_composite", "C2"]],
+      "repetition": "R01"
+    }
+  }
+}

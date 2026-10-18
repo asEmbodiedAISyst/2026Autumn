@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "extends": "experiment_config.json",
+  "inheritance_policy": "H1-H5 register definitions, ID5, stable FTDI U2D2 serial path, rates, interlocks, P01-P03 motion definitions, zero, and the ±90 degree software gate are inherited from experiment_config.json; the required 1 ms USB latency declaration and native-640 paired iPhone media contract are declared in this overlay; B1 executes only H1/H2 and expands the frozen settings into every episode manifest/readback",
+  "experiment_id": "v5-b1-80mm-h1-h2-p01-p03-p06-hardware-v3-fixture110g-media30",
+  "mechanical_configuration": "B1",
+  "operator_declared_u2d2_usb_latency_timer_ms": 1,
+  "fixture": {
+    "type": "balanced equal-payload branches",
+    "payload_identity_each_side": "P-B1 as installed",
+    "payload_commonality": "same 3D-printed weight design is used for every weighted V5 configuration",
+    "payload_print_infill_percent": 50,
+    "payload_center_positions_mm": [-80, 80],
+    "absolute_payload_center_distance_mm": 80,
+    "fixture_revision": "2026-08-26-recollection-110g",
+    "complete_payload_mass_each_g": 44,
+    "complete_payload_includes_pin": true,
+    "payload_count": 2,
+    "link_mass_g": 22,
+    "total_external_moving_mass_g": 110,
+    "gravity_moment_design": "approximately canceled by symmetry",
+    "pdf_preliminary_inertia_kg_m2": 0.00075,
+    "mass_property_status": "PDF inertia remains preliminary; measured masses for the 2026-08-26 recollection are two complete 44 g payloads including their pins plus one 22 g link; recompute link inertia from geometry before identification"
+  },
+  "iphone_media_capture": {
+    "enabled_for_run": true,
+    "required_before_motion": true,
+    "iphone_ip": "10.127.52.4",
+    "ar_port": 8000,
+    "python_executable": "/home/oliver/Halwani/mujoco-journey/mbzuai-embodied-ai-design-course/modules/04-vision-action/asmagic-ios-streaming/.venv/bin/python",
+    "service_script": "iphone_capture_service.py",
+    "required_asmagic_sdk_version": "0.1.4",
+    "readiness_timeout_s": 20.0,
+    "command_timeout_s": 15.0,
+    "finalize_timeout_s": 1800.0,
+    "snapshot_max_age_s": 1.0,
+    "maximum_recording_duration_s": 180.0,
+    "post_roll_s": 0.5,
+    "hwm": 256,
+    "poll_timeout_ms": 100,
+    "flush_every_frames": 30,
+    "save_depth": true,
+    "derived_video_fps": 30.0,
+    "experiment_number_format": "YYMMDD-HHMMSS",
+    "experiment_number_timezone": "Asia/Dubai",
+    "native_video_width_px": 640,
+    "native_video_height_px": 480,
+    "paired_labeled_unlabeled_video_required": true,
+    "campaign_total_episodes": 30,
+    "audio_available": false,
+    "capture_scope": "one continuously connected service; one recording session per retained B1 H1/H2 motion episode (two pilots, 18 calibration episodes, and 10 held-out episodes); preparation-only recenter records are not campaign media episodes; each retained episode has paired labeled and unlabeled derived MP4s, with display_code plus a dynamic phase label burned only into the labeled copy; the run-level full videos concatenate the 30 captured episodes in campaign order and intentionally omit STOP-to-next-START gaps; video/ and keyframes/ artifact paths are relative to each episode folder, while media/ paths are relative to the run root",
+    "primary_evidence": [
+      "raw/<experiment_number>_<scene>_ar.csv",
+      "raw/color_frames/<experiment_number>_<scene>_frame_*.jpg",
+      "raw/depth_frames/<experiment_number>_<scene>_depth_*.npy"
+    ],
+    "compatibility_aliases": [
+      "raw/ar.csv"
+    ],
+    "derived_convenience_artifacts": [
+      "video/<experiment_number>_<scene>_experiment-labeled.mp4",
+      "video/<experiment_number>_<scene>_experiment-unlabeled.mp4",
+      "video/<experiment_number>_<scene>_frame-map.csv",
+      "keyframes/<experiment_number>_<scene>_keyframes.csv",
+      "keyframes/<experiment_number>_<scene>_*.jpg",
+      "media/index.html",
+      "media/video/<experiment_number>_<mechanical_configuration>_full-experiment-labeled.mp4",
+      "media/video/<experiment_number>_<mechanical_configuration>_full-experiment-unlabeled.mp4",
+      "media/video/<experiment_number>_<mechanical_configuration>_full-experiment-frame-map.csv",
+      "media/video/<experiment_number>_<mechanical_configuration>_chapters.csv"
+    ]
+  },
+  "condition_order_by_repeat": {
+    "R01": ["H1", "H2"],
+    "R02": ["H2", "H1"],
+    "R03": ["H1", "H2"]
+  },
+  "profiles": {
+    "P06_heldout_composite": {
+      "split": "held_out",
+      "kind": "composite",
+      "duration_s": 11.0,
+      "center_offsets_rad": [-0.06, 0.08, -0.02],
+      "switch_times_s": [3.5, 7.3],
+      "amplitudes_rad": [0.34, 0.19, 0.09],
+      "frequencies_hz": [0.19, 0.61, 1.07],
+      "phases_rad": [0.2, 1.1, 2.2],
+      "pre_profile_zero_hold_s": 0.25,
+      "pre_profile_transition_s": 0.5,
+      "post_profile_return_s": 1.0,
+      "post_profile_zero_hold_s": 1.0
+    }
+  },
+  "pilot": {
+    "controllers": ["H1", "H2"],
+    "amplitude_rad": 0.15,
+    "duration_s": 4.0,
+    "frequency_hz": 0.5,
+    "post_profile_zero_hold_s": 1.0
+  },
+  "held_out_condition_order_by_repeat": {
+    "R01": ["H1", "H2"],
+    "R02": ["H2", "H1"],
+    "R03": ["H1", "H2"],
+    "R04": ["H2", "H1"],
+    "R05": ["H1", "H2"]
+  },
+  "data_policy": {
+    "source": "new physical measurements collected for V5",
+    "prior_zip_or_V4_observations_used": false,
+    "mujoco_gains_assigned_during_hardware_collection": false,
+    "H_labels_mean": "native DYNAMIXEL hardware register conditions",
+    "collection_scope": "B1 at ±80 mm only; stop before fixture change",
+    "split_policy": "P01-P03 calibration under H1-H2 for three repeats; untouched P06 held-out under H1-H2 for five repeats",
+    "held_out_policy": "P06 is collected and frozen but must not influence fitting, bounds, timing treatment, filtering, or model selection"
+  }
+}

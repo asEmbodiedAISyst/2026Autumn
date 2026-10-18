@@ -1,0 +1,15 @@
+ENVIRONMENT USED FOR VALIDATION
+===============================
+
+Date: 7 October 2026
+Time zone: Asia/Dubai
+Python environment: V5/.venv
+MuJoCo: 3.14.0
+Rendering backend: EGL
+Figure library: Pillow from V5/.venv
+Paper compiler: pdfLaTeX
+Bibliography tool: BibTeX
+Font: MiSans Regular and MiSans Semibold from Classes/MiSans.zip
+MiSans license file in the supplied archive: not available
+
+This record applies to the validation and rendering performed for this package. It does not describe the software used for the original CAD export.

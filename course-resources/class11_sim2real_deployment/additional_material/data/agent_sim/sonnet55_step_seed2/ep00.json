@@ -1,0 +1,102 @@
+{
+ "result": {
+  "success": true,
+  "calls": 4,
+  "ended_by": "sim_success",
+  "cost_usd": 0.0187784,
+  "usage": {
+   "input": 4395,
+   "output": 875,
+   "cache_read": 6192,
+   "cache_write": 0
+  }
+ },
+ "transcript": [
+  {
+   "call": 0,
+   "tool": "locate",
+   "input": {
+    "u": 122,
+    "v": 122,
+    "what": "cube"
+   },
+   "report": "cube at x=41.2, y=5.9 cm; from the tip that is dx=+9.1, dy=+7.5 cm"
+  },
+  {
+   "call": 0,
+   "tool": "locate",
+   "input": {
+    "u": 170,
+    "v": 70,
+    "what": "goal"
+   },
+   "report": "goal at x=44.8, y=1.4 cm; from the tip that is dx=+12.8, dy=+3.0 cm"
+  },
+  {
+   "call": 1,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": 6,
+      "dy_cm": 11.4,
+      "dz_cm": -8,
+      "dyaw_deg": 0
+     },
+     {
+      "dx_cm": 0,
+      "dy_cm": 0,
+      "dz_cm": -3.5,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "go behind cube and descend"
+   },
+   "report": "move 1 rejected: longer than 15 cm"
+  },
+  {
+   "call": 2,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": 6,
+      "dy_cm": 11.4,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     },
+     {
+      "dx_cm": 0,
+      "dy_cm": 0,
+      "dz_cm": -11.8,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "go behind cube and descend"
+   },
+   "report": "move 1 done: tip at (38.0, 9.8, 13.3) cm\nmove 2 done: tip at (38.0, 9.8, 1.5) cm"
+  },
+  {
+   "call": 3,
+   "tool": "move",
+   "input": {
+    "moves": [
+     {
+      "dx_cm": 2,
+      "dy_cm": -2.5,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     },
+     {
+      "dx_cm": 2,
+      "dy_cm": -2.5,
+      "dz_cm": 0,
+      "dyaw_deg": 0
+     }
+    ],
+    "why": "push cube toward goal"
+   },
+   "report": "move 1 done: tip at (40.0, 7.3, 1.5) cm\nmove 2 done: tip at (42.0, 4.8, 1.5) cm\nTASK SUCCESS detected by the simulator"
+  }
+ ]
+}

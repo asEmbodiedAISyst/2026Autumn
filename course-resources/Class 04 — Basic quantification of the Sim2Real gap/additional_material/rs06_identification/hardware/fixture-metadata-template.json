@@ -1,0 +1,33 @@
+{
+  "schema_version": "phyintel-chapter02-rs06-physical-fixture-v1",
+  "fixture_id": "REPLACE_WITH_M0_B0_B1_OR_G1",
+  "fixture_description": "REPLACE_WITH_AS_BUILT_DESCRIPTION",
+  "assembly_revision": "REPLACE",
+  "mounting_revision": "REPLACE",
+  "motor_serial_or_asset_id": "REPLACE",
+  "mjcf_file": "REPLACE_WITH_MATCHED_MJCF_PATH",
+  "mjcf_sha256": "REPLACE",
+  "mesh_sha256": {
+    "base_link": "REPLACE",
+    "moving_body": "REPLACE"
+  },
+  "measured_or_cad_properties": {
+    "moving_mass_kg": null,
+    "joint_axis_inertia_kg_m2": null,
+    "signed_gravity_first_moment_kg_m": null,
+    "uncertainty_and_method": "REPLACE"
+  },
+  "coordinates": {
+    "joint_name": "rs06_joint",
+    "zero_definition": "REPLACE",
+    "positive_direction": "REPLACE",
+    "joint_axis_relative_to_gravity": "REPLACE",
+    "mechanical_position_min_rad": null,
+    "mechanical_position_max_rad": null
+  },
+  "evidence": {
+    "photo_or_drawing_references": [],
+    "fastener_and_balance_check": "REPLACE",
+    "notes": ""
+  }
+}

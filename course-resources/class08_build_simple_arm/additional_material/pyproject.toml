@@ -1,0 +1,29 @@
+[project]
+name = "class08-build-simple-arm"
+version = "0.1.0"
+description = "ROB7103/8103 Class 08: view the reBot Arm B601-RS in MuJoCo"
+requires-python = ">=3.10"
+dependencies = [
+    "mujoco>=3.3",
+    "numpy>=1.26",
+    # Separate resolution for Python 3.14 and newer (the real group is not available there), so that the
+    # base install keeps a numpy with wheels for the newest Python.
+    "numpy>=1.26; python_version >= '3.14'",
+]
+
+[dependency-groups]
+# Physical arm (code/real_gripper_*.py): the Seeed LeRobot follower plugin (motorbridge over SocketCAN).
+# lerobot 0.6.1 is the version the bring-up scripts were verified with on the arm.
+real = ["lerobot-robot-seeed-b601>=1.0.5", "lerobot==0.6.1"]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false
+
+# The real group needs Python 3.12 or 3.13: lerobot 0.6.1 needs Python >= 3.12, and motorbridge has Linux and
+# macOS wheels only up to Python 3.13. The base install (simulation) keeps requires-python >= 3.10.
+[tool.uv.dependency-groups]
+real = { requires-python = ">=3.12,<3.14" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,71 @@
+{
+ "model": "claude-haiku-5-5",
+ "mode": "step",
+ "episodes": [
+  {
+   "success": false,
+   "calls": 25,
+   "ended_by": "max_calls",
+   "cost_usd": 0.02578932,
+   "usage": {
+    "input": 195533,
+    "output": 11342,
+    "cache_read": 37152,
+    "cache_write": 1548
+   },
+   "seconds": 116.43410220500664
+  },
+  {
+   "success": true,
+   "calls": 9,
+   "ended_by": "sim_success",
+   "cost_usd": 0.00387972,
+   "usage": {
+    "input": 23764,
+    "output": 2728,
+    "cache_read": 13932,
+    "cache_write": 0
+   },
+   "seconds": 27.202900782998768
+  },
+  {
+   "success": true,
+   "calls": 3,
+   "ended_by": "sim_success",
+   "cost_usd": 0.00086224,
+   "usage": {
+    "input": 2793,
+    "output": 1073,
+    "cache_read": 4644,
+    "cache_write": 0
+   },
+   "seconds": 9.382357731010416
+  },
+  {
+   "success": true,
+   "calls": 4,
+   "ended_by": "sim_success",
+   "cost_usd": 0.00119652,
+   "usage": {
+    "input": 4936,
+    "output": 1282,
+    "cache_read": 6192,
+    "cache_write": 0
+   },
+   "seconds": 9.69046458300727
+  },
+  {
+   "success": true,
+   "calls": 6,
+   "ended_by": "sim_success",
+   "cost_usd": 0.0021361799999999997,
+   "usage": {
+    "input": 11053,
+    "output": 1876,
+    "cache_read": 9288,
+    "cache_write": 0
+   },
+   "seconds": 14.712536627994268
+  }
+ ]
+}

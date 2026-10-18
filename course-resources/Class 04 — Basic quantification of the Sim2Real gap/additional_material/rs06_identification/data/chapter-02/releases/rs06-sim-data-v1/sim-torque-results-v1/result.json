@@ -1,0 +1,232 @@
+{
+  "candidate_names": {
+    "method1": "Sim-Torque M1 Candidate",
+    "method2": "Sim-Torque M2 Candidate"
+  },
+  "dataset_archive_sha256": "4a2e1e705561442365486c4e194fb379da7214a3c13a8d6eb3d703395bbf82d2",
+  "dataset_release_id": "chapter02-rs06-sim-torque-v1",
+  "evidence_role": "simulation-only Sim-Torque identifiability check",
+  "fits": {
+    "method1": {
+      "C1": {
+        "diagnostics": {
+          "equal_episode_torque_balance_rmse_Nm": 0.007831654869528425,
+          "qualified_sample_count": 40541,
+          "rows_by_episode": {
+            "calibration__C1__B0__P01_slow_triangle": 5962,
+            "calibration__C1__B0__P02_multisine": 5452,
+            "calibration__C1__B0__P03_smooth_levels": 2105,
+            "calibration__C1__B1__P01_slow_triangle": 5959,
+            "calibration__C1__B1__P02_multisine": 5451,
+            "calibration__C1__B1__P03_smooth_levels": 1914,
+            "calibration__C1__M0__P01_slow_triangle": 5970,
+            "calibration__C1__M0__P02_multisine": 5548,
+            "calibration__C1__M0__P03_smooth_levels": 2180
+          },
+          "scaled_condition_number": 14.799461620277363,
+          "solver_success": true,
+          "weighted_design_rank": 3
+        },
+        "difference_from_source_percent": {
+          "armature": 0.22403266804570926,
+          "damping": 319.58978897842917,
+          "frictionloss": -4.750296607277885
+        },
+        "joint_parameters": {
+          "armature": 0.0012512856223208266,
+          "damping": 0.0018366903918539553,
+          "frictionloss": 0.04590435697072624
+        }
+      },
+      "C2": {
+        "diagnostics": {
+          "equal_episode_torque_balance_rmse_Nm": 0.030624101379664127,
+          "qualified_sample_count": 39418,
+          "rows_by_episode": {
+            "calibration__C2__B0__P01_slow_triangle": 5986,
+            "calibration__C2__B0__P02_multisine": 5469,
+            "calibration__C2__B0__P03_smooth_levels": 1590,
+            "calibration__C2__B1__P01_slow_triangle": 5979,
+            "calibration__C2__B1__P02_multisine": 5445,
+            "calibration__C2__B1__P03_smooth_levels": 1748,
+            "calibration__C2__M0__P01_slow_triangle": 5995,
+            "calibration__C2__M0__P02_multisine": 5574,
+            "calibration__C2__M0__P03_smooth_levels": 1632
+          },
+          "scaled_condition_number": 30.08973893585518,
+          "solver_success": true,
+          "weighted_design_rank": 3
+        },
+        "difference_from_source_percent": {
+          "armature": 4.688905193921241,
+          "damping": -97.71312674322668,
+          "frictionloss": -32.16408592859518
+        },
+        "joint_parameters": {
+          "armature": 0.0013070290468109147,
+          "damping": 1.0010439358712005e-05,
+          "frictionloss": 0.03269263739468203
+        }
+      },
+      "shared": {
+        "diagnostics": {
+          "equal_episode_torque_balance_rmse_Nm": 0.02376476257399241,
+          "qualified_sample_count": 79959,
+          "rows_by_episode": {
+            "calibration__C1__B0__P01_slow_triangle": 5962,
+            "calibration__C1__B0__P02_multisine": 5452,
+            "calibration__C1__B0__P03_smooth_levels": 2105,
+            "calibration__C1__B1__P01_slow_triangle": 5959,
+            "calibration__C1__B1__P02_multisine": 5451,
+            "calibration__C1__B1__P03_smooth_levels": 1914,
+            "calibration__C1__M0__P01_slow_triangle": 5970,
+            "calibration__C1__M0__P02_multisine": 5548,
+            "calibration__C1__M0__P03_smooth_levels": 2180,
+            "calibration__C2__B0__P01_slow_triangle": 5986,
+            "calibration__C2__B0__P02_multisine": 5469,
+            "calibration__C2__B0__P03_smooth_levels": 1590,
+            "calibration__C2__B1__P01_slow_triangle": 5979,
+            "calibration__C2__B1__P02_multisine": 5445,
+            "calibration__C2__B1__P03_smooth_levels": 1748,
+            "calibration__C2__M0__P01_slow_triangle": 5995,
+            "calibration__C2__M0__P02_multisine": 5574,
+            "calibration__C2__M0__P03_smooth_levels": 1632
+          },
+          "scaled_condition_number": 23.809268862267242,
+          "solver_success": true,
+          "weighted_design_rank": 3
+        },
+        "difference_from_source_percent": {
+          "armature": 3.8588416916005994,
+          "damping": -97.71379325105217,
+          "frictionloss": -17.149898884785664
+        },
+        "joint_parameters": {
+          "armature": 0.0012966657986116807,
+          "damping": 1.0007521822224422e-05,
+          "frictionloss": 0.03992852976111376
+        }
+      }
+    },
+    "method2": {
+      "C1": {
+        "diagnostics": {
+          "episode_count": 9,
+          "function_evaluations": 9,
+          "normalized_forward_dynamics_rmse": 2.9281021619661325e-12,
+          "sample_stride_from_500_Hz": 5,
+          "selected_start_index": 1,
+          "solver_success": true,
+          "starts": [
+            [
+              0.0005,
+              0.0001,
+              0.012
+            ],
+            [
+              0.002,
+              0.002,
+              0.08
+            ]
+          ]
+        },
+        "difference_from_source_percent": {
+          "armature": -5.477020815196652e-09,
+          "damping": 1.5890618216237167e-05,
+          "frictionloss": -5.29618534488531e-08
+        },
+        "joint_parameters": {
+          "armature": 0.00124848859993162,
+          "damping": 0.0004377348381587609,
+          "frictionloss": 0.048193700674475724
+        }
+      },
+      "C2": {
+        "diagnostics": {
+          "episode_count": 9,
+          "function_evaluations": 11,
+          "normalized_forward_dynamics_rmse": 8.342970687253854e-14,
+          "sample_stride_from_500_Hz": 5,
+          "selected_start_index": 0,
+          "solver_success": true,
+          "starts": [
+            [
+              0.0005,
+              0.0001,
+              0.012
+            ],
+            [
+              0.002,
+              0.002,
+              0.08
+            ]
+          ]
+        },
+        "difference_from_source_percent": {
+          "armature": -1.2835125694648519e-10,
+          "damping": 6.982547670907322e-07,
+          "frictionloss": -2.3258699430504234e-09
+        },
+        "joint_parameters": {
+          "armature": 0.0012484885999983976,
+          "damping": 0.0004377347716565039,
+          "frictionloss": 0.04819370069887908
+        }
+      },
+      "shared": {
+        "diagnostics": {
+          "episode_count": 18,
+          "function_evaluations": 9,
+          "normalized_forward_dynamics_rmse": 2.3925629717026934e-12,
+          "sample_stride_from_500_Hz": 5,
+          "selected_start_index": 1,
+          "solver_success": true,
+          "starts": [
+            [
+              0.0005,
+              0.0001,
+              0.012
+            ],
+            [
+              0.002,
+              0.002,
+              0.08
+            ]
+          ]
+        },
+        "difference_from_source_percent": {
+          "armature": -4.184841496446781e-09,
+          "damping": 1.5361035931790862e-05,
+          "frictionloss": -5.152594817703265e-08
+        },
+        "joint_parameters": {
+          "armature": 0.0012484885999477528,
+          "damping": 0.0004377348358405951,
+          "frictionloss": 0.04819370067516774
+        }
+      }
+    }
+  },
+  "hardware_equivalent_claimed": false,
+  "identified_parameters": [
+    "armature",
+    "damping",
+    "frictionloss"
+  ],
+  "input_field": "actuator_effort_input_Nm",
+  "method1": "bounded linear torque-balance least squares",
+  "method2": "bounded MuJoCo pointwise forward-dynamics optimization",
+  "nominal_model": {
+    "armature": 0.0005,
+    "damping": 0.0001,
+    "frictionloss": 0.012
+  },
+  "result_schema": "phyintel-section-2.3-sim-torque-results-v1",
+  "source_controller_gains_consumed_by_fitters": false,
+  "source_model": {
+    "armature": 0.0012484886,
+    "damping": 0.0004377347686,
+    "frictionloss": 0.0481937007
+  },
+  "source_position_command_consumed_by_fitters": false
+}

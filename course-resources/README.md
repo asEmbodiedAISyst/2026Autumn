@@ -1,0 +1,19 @@
+# Course example packages
+
+These are the original teaching authors’ runtime code, data and models. They accompany the standalone course lessons and separate practice pages. Runtime file contents are unchanged; lesson explanations and entry documentation have been consolidated.
+
+| Class | Package | Availability and interpretation |
+|---|---|---|
+| 02 | [Actuator basics](Class%2002%20—%20Actuator%20basics%20for%20controlled%20action/README.md) | The active lesson uses the hardware record, not the older simulation files retained in the source package. Geometry is not an identified dynamics model. |
+| 03 | [Fixture digitization](Class%2003%20—%20Basic%20digitization%20of%20physical%20embodiment/README.md) | Validation establishes model structure and loading. It does not identify physical dynamics or validate a hardware controller. |
+| 04 | [Single-actuator identification](Class%2004%20—%20Basic%20quantification%20of%20the%20Sim2Real%20gap/README.md) | The current source results/overall_heldout_result.csv reports 30 held-out XC330 episodes, mean baseline RMSE 0.02064688985201488 rad and fitted RMSE 0.0148139849688432 rad (28.2508% reduction). Earlier source README values describe a stale result. Effective fit parameters are not isolated motor constants. |
+| 05 | [Population identification](Class%2005%20—%20From%20single%20actuator%20to%20multi-actuator/README.md) | The source campaign contains 125 events split 72/23/30. Keep event, motor and sample denominators distinct. Fixture mass declarations remain uncertain; fitted terms must not conceal that uncertainty. |
+| 06 | [Continuous positive-Z cube rotation](Class%2006%20—%20Learned%20in-hand%20cube%20reorientation/README.md) | The active CONTINUOUS_Z_ROTATION_DEPLOYMENT_BUNDLE_20261014, checkpoint/server/bridge and raw deployment NPZ logs are not in this source tree. The launcher references that external bundle. This is evidence and supporting source, not a ready policy-playback package. Older visual-yaw files are not the active task; no working policy is supplied here. |
+| 08 | [Arm model and commissioning](class08_build_simple_arm/README.md) | The simulation practice is separate from optional assembly and power-on instructions. Students do not assemble or power the physical arm in the required practice. |
+| 09 | [Phone-to-pusher teleoperation](class09_teleoperation/README.md) | The core practice is iPhone teleoperation of the simulated pusher to push a cube. The fake phone checks an input/mapping path. Physical operation and gripper comparison are optional. Verify package-specific phone axes before interpreting directions. |
+| 10 | [Pusher-cube data collection](class10_collect_data_for_learning/README.md) | The complete handheld training dataset is not included. Source Class09 six-joint recordings and Class10 nine-feature tip-pose recordings are different schemas. Preserve that boundary rather than combining them silently. |
+| 11 | [ACT policy evaluation and transfer](class11_sim2real_deployment/README.md) | Ready ACT/Diffusion/SmolVLA policy checkpoint directories are absent. Training recipes require their specified datasets and backend. The source manuscript ACT62%/56% scores and supplied32/50(64%) JSON require run-identity reconciliation. Source physical learned-policy evidence includes0/10; no successful policy transfer is claimed here. |
+
+Class07 currently has a stream/interface lesson but no complete source cube-estimation/control package. The Class09 receiver is a phone-teleoperation implementation, not a cube-pose estimator.
+
+Install each package in its own virtual environment. Do not mix environments or assume that the packages use identical recording schemas. Only the teaching team operates the powered apparatus.

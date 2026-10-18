@@ -1,0 +1,21 @@
+{
+  "motor_id": 0,
+  "model_name": "XC330-M288-T",
+  "model_number": 1230,
+  "firmware": "SIM",
+  "position_p_gain": 3.0,
+  "position_i_gain": 0,
+  "position_d_gain": 0,
+  "velocity_p_gain": 0.03,
+  "velocity_i_gain": 0,
+  "ff_1st_gain": 0,
+  "ff_2nd_gain": 0,
+  "sim_damping": 0.001,
+  "sim_frictionloss": 0.001,
+  "sim_armature": 0.0001,
+  "sim_forcerange": [
+    -0.93,
+    0.93
+  ],
+  "sim_timestep": 0.002
+}

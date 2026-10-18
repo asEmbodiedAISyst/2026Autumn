@@ -1,0 +1,1681 @@
+{
+  "created_at": "2026-10-08T23:31:19.691815+04:00",
+  "mujoco_version": "3.14.0",
+  "source_models": "additional_material/models/source_single",
+  "fitted_parameters": "additional_material/data/fitted_parameters.csv",
+  "layout": {
+    "basis": "supplied camera-to-motor mapping",
+    "lower_pairs": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "upper_pairs": [
+      [
+        10,
+        8
+      ],
+      [
+        12,
+        9
+      ],
+      [
+        14,
+        11
+      ],
+      [
+        15,
+        13
+      ]
+    ],
+    "same_face_pitch_m": 0.27,
+    "opposing_face_stagger_m": 0.135,
+    "vertical_row_spacing_m": 0.5,
+    "front_back_depth": "visual only; not measured",
+    "motor_locations": {
+      "0": {
+        "column": 1,
+        "row": "lower",
+        "face": "face_1",
+        "x_m": -0.405,
+        "y_m": -0.06,
+        "z_m": 0.0,
+        "yaw_rad": 0.0
+      },
+      "1": {
+        "column": 1,
+        "row": "lower",
+        "face": "face_2",
+        "x_m": -0.27,
+        "y_m": 0.06,
+        "z_m": 0.0,
+        "yaw_rad": 3.141592653589793
+      },
+      "2": {
+        "column": 2,
+        "row": "lower",
+        "face": "face_1",
+        "x_m": -0.135,
+        "y_m": -0.06,
+        "z_m": 0.0,
+        "yaw_rad": 0.0
+      },
+      "3": {
+        "column": 2,
+        "row": "lower",
+        "face": "face_2",
+        "x_m": 0.0,
+        "y_m": 0.06,
+        "z_m": 0.0,
+        "yaw_rad": 3.141592653589793
+      },
+      "4": {
+        "column": 3,
+        "row": "lower",
+        "face": "face_1",
+        "x_m": 0.135,
+        "y_m": -0.06,
+        "z_m": 0.0,
+        "yaw_rad": 0.0
+      },
+      "5": {
+        "column": 3,
+        "row": "lower",
+        "face": "face_2",
+        "x_m": 0.27,
+        "y_m": 0.06,
+        "z_m": 0.0,
+        "yaw_rad": 3.141592653589793
+      },
+      "6": {
+        "column": 4,
+        "row": "lower",
+        "face": "face_1",
+        "x_m": 0.405,
+        "y_m": -0.06,
+        "z_m": 0.0,
+        "yaw_rad": 0.0
+      },
+      "7": {
+        "column": 4,
+        "row": "lower",
+        "face": "face_2",
+        "x_m": 0.54,
+        "y_m": 0.06,
+        "z_m": 0.0,
+        "yaw_rad": 3.141592653589793
+      },
+      "8": {
+        "column": 1,
+        "row": "upper",
+        "face": "face_2",
+        "x_m": -0.27,
+        "y_m": 0.06,
+        "z_m": 0.5,
+        "yaw_rad": 3.141592653589793
+      },
+      "9": {
+        "column": 2,
+        "row": "upper",
+        "face": "face_2",
+        "x_m": 0.0,
+        "y_m": 0.06,
+        "z_m": 0.5,
+        "yaw_rad": 3.141592653589793
+      },
+      "10": {
+        "column": 1,
+        "row": "upper",
+        "face": "face_1",
+        "x_m": -0.405,
+        "y_m": -0.06,
+        "z_m": 0.5,
+        "yaw_rad": 0.0
+      },
+      "11": {
+        "column": 3,
+        "row": "upper",
+        "face": "face_2",
+        "x_m": 0.27,
+        "y_m": 0.06,
+        "z_m": 0.5,
+        "yaw_rad": 3.141592653589793
+      },
+      "12": {
+        "column": 2,
+        "row": "upper",
+        "face": "face_1",
+        "x_m": -0.135,
+        "y_m": -0.06,
+        "z_m": 0.5,
+        "yaw_rad": 0.0
+      },
+      "13": {
+        "column": 4,
+        "row": "upper",
+        "face": "face_2",
+        "x_m": 0.54,
+        "y_m": 0.06,
+        "z_m": 0.5,
+        "yaw_rad": 3.141592653589793
+      },
+      "14": {
+        "column": 3,
+        "row": "upper",
+        "face": "face_1",
+        "x_m": 0.135,
+        "y_m": -0.06,
+        "z_m": 0.5,
+        "yaw_rad": 0.0
+      },
+      "15": {
+        "column": 4,
+        "row": "upper",
+        "face": "face_1",
+        "x_m": 0.405,
+        "y_m": -0.06,
+        "z_m": 0.5,
+        "yaw_rad": 0.0
+      }
+    }
+  },
+  "controller_settings": {
+    "H1": {
+      "kp": 1.579836,
+      "kv": 0.202115,
+      "effort_limit_Nm": 0.1551
+    },
+    "H2": {
+      "kp": 2.106448,
+      "kv": 0.202115,
+      "effort_limit_Nm": 0.1551
+    }
+  },
+  "generated_models": [
+    "additional_material/models/models/M0_H1.xml",
+    "additional_material/models/models/M0_H2.xml",
+    "additional_material/models/models/B0_H1.xml",
+    "additional_material/models/models/B0_H2.xml",
+    "additional_material/models/models/B1_H1.xml",
+    "additional_material/models/models/B1_H2.xml",
+    "additional_material/models/models/B2_H1.xml",
+    "additional_material/models/models/B2_H2.xml",
+    "additional_material/models/models/G1_H1.xml",
+    "additional_material/models/models/G1_H2.xml"
+  ],
+  "render": {
+    "created": true,
+    "path": "additional_material/results/combined_16_motor_layout_B2_H1.png"
+  },
+  "models": [
+    {
+      "configuration": "M0",
+      "controller": "H1",
+      "path": "additional_material/models/models/M0_H1.xml",
+      "steps": 500,
+      "duration_s": 1.0,
+      "dimensions": {
+        "nq": 16,
+        "nv": 16,
+        "nu": 16
+      },
+      "sensor_count": 48,
+      "equivalence_duration_s": 1.0,
+      "max_abs_difference_vs_individual_over_1s": {
+        "q_rad": 0.0,
+        "qdot_rad_s": 2.168404344971009e-18,
+        "actuator_force_Nm": 0.0
+      },
+      "per_motor_max_abs_difference_vs_individual_over_1s": [
+        {
+          "motor_id": 0,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 1,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 2,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 3,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 4,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 5,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 4.336808689942018e-19,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 6,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.734723475976807e-18,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 7,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 8,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 9,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 10,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.734723475976807e-18,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 11,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 12,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 2.168404344971009e-19,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 13,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 14,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 15,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 2.168404344971009e-18,
+          "actuator_force_Nm": 0.0
+        }
+      ],
+      "checks": {
+        "dimensions_are_16_16_16": true,
+        "forty_eight_sensors": true,
+        "timestep_is_0p002_s": true,
+        "all_fitted_motor_values_match": true,
+        "controller_and_effort_limit_match": true,
+        "layout_matches_supplied_arrangement": true,
+        "all_contacts_disabled": true,
+        "finite_for_1_second": true,
+        "matches_individual_1dof_models_over_1s": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "M0",
+      "controller": "H2",
+      "path": "additional_material/models/models/M0_H2.xml",
+      "steps": 500,
+      "duration_s": 1.0,
+      "dimensions": {
+        "nq": 16,
+        "nv": 16,
+        "nu": 16
+      },
+      "sensor_count": 48,
+      "equivalence_duration_s": 1.0,
+      "max_abs_difference_vs_individual_over_1s": {
+        "q_rad": 0.0,
+        "qdot_rad_s": 6.938893903907228e-18,
+        "actuator_force_Nm": 1.3877787807814457e-17
+      },
+      "per_motor_max_abs_difference_vs_individual_over_1s": [
+        {
+          "motor_id": 0,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 1,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 4.336808689942018e-19,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 2,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 3,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 4,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 5,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 6,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 7,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 8,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 9,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 10,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 6.938893903907228e-18,
+          "actuator_force_Nm": 1.3877787807814457e-17
+        },
+        {
+          "motor_id": 11,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 12,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 4.336808689942018e-19,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 13,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 14,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        },
+        {
+          "motor_id": 15,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 0.0,
+          "actuator_force_Nm": 0.0
+        }
+      ],
+      "checks": {
+        "dimensions_are_16_16_16": true,
+        "forty_eight_sensors": true,
+        "timestep_is_0p002_s": true,
+        "all_fitted_motor_values_match": true,
+        "controller_and_effort_limit_match": true,
+        "layout_matches_supplied_arrangement": true,
+        "all_contacts_disabled": true,
+        "finite_for_1_second": true,
+        "matches_individual_1dof_models_over_1s": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "B0",
+      "controller": "H1",
+      "path": "additional_material/models/models/B0_H1.xml",
+      "steps": 500,
+      "duration_s": 1.0,
+      "dimensions": {
+        "nq": 16,
+        "nv": 16,
+        "nu": 16
+      },
+      "sensor_count": 48,
+      "equivalence_duration_s": 1.0,
+      "max_abs_difference_vs_individual_over_1s": {
+        "q_rad": 5.551115123125783e-17,
+        "qdot_rad_s": 3.3306690738754696e-16,
+        "actuator_force_Nm": 1.6653345369377348e-16
+      },
+      "per_motor_max_abs_difference_vs_individual_over_1s": [
+        {
+          "motor_id": 0,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.942890293094024e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 1,
+          "face": "face_2",
+          "q_rad": 5.551115123125783e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 2,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 3,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 5.551115123125783e-17,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 4,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 5,
+          "face": "face_2",
+          "q_rad": 5.551115123125783e-17,
+          "qdot_rad_s": 3.3306690738754696e-16,
+          "actuator_force_Nm": 1.6653345369377348e-16
+        },
+        {
+          "motor_id": 6,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 8.326672684688674e-17
+        },
+        {
+          "motor_id": 7,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 8.326672684688674e-17
+        },
+        {
+          "motor_id": 8,
+          "face": "face_2",
+          "q_rad": 5.551115123125783e-17,
+          "qdot_rad_s": 1.942890293094024e-16,
+          "actuator_force_Nm": 1.3877787807814457e-16
+        },
+        {
+          "motor_id": 9,
+          "face": "face_2",
+          "q_rad": 6.938893903907228e-18,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 10,
+          "face": "face_1",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 11,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 8.326672684688674e-17
+        },
+        {
+          "motor_id": 12,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.42861286636753e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 13,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.942890293094024e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 14,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 15,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        }
+      ],
+      "checks": {
+        "dimensions_are_16_16_16": true,
+        "forty_eight_sensors": true,
+        "timestep_is_0p002_s": true,
+        "all_fitted_motor_values_match": true,
+        "controller_and_effort_limit_match": true,
+        "layout_matches_supplied_arrangement": true,
+        "all_contacts_disabled": true,
+        "finite_for_1_second": true,
+        "matches_individual_1dof_models_over_1s": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "B0",
+      "controller": "H2",
+      "path": "additional_material/models/models/B0_H2.xml",
+      "steps": 500,
+      "duration_s": 1.0,
+      "dimensions": {
+        "nq": 16,
+        "nv": 16,
+        "nu": 16
+      },
+      "sensor_count": 48,
+      "equivalence_duration_s": 1.0,
+      "max_abs_difference_vs_individual_over_1s": {
+        "q_rad": 5.551115123125783e-17,
+        "qdot_rad_s": 4.440892098500626e-16,
+        "actuator_force_Nm": 1.6653345369377348e-16
+      },
+      "per_motor_max_abs_difference_vs_individual_over_1s": [
+        {
+          "motor_id": 0,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.3877787807814457e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 1,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 1.6653345369377348e-16
+        },
+        {
+          "motor_id": 2,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 3,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 5.551115123125783e-17,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 4,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 5,
+          "face": "face_2",
+          "q_rad": 5.551115123125783e-17,
+          "qdot_rad_s": 4.440892098500626e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 6,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 3.885780586188048e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 7,
+          "face": "face_2",
+          "q_rad": 2.0816681711721685e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 8.326672684688674e-17
+        },
+        {
+          "motor_id": 8,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 9,
+          "face": "face_2",
+          "q_rad": 1.734723475976807e-18,
+          "qdot_rad_s": 5.551115123125783e-17,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 10,
+          "face": "face_1",
+          "q_rad": 6.938893903907228e-18,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 11,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 12,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 5.551115123125783e-17,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 13,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 14,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 15,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 3.3306690738754696e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        }
+      ],
+      "checks": {
+        "dimensions_are_16_16_16": true,
+        "forty_eight_sensors": true,
+        "timestep_is_0p002_s": true,
+        "all_fitted_motor_values_match": true,
+        "controller_and_effort_limit_match": true,
+        "layout_matches_supplied_arrangement": true,
+        "all_contacts_disabled": true,
+        "finite_for_1_second": true,
+        "matches_individual_1dof_models_over_1s": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "B1",
+      "controller": "H1",
+      "path": "additional_material/models/models/B1_H1.xml",
+      "steps": 500,
+      "duration_s": 1.0,
+      "dimensions": {
+        "nq": 16,
+        "nv": 16,
+        "nu": 16
+      },
+      "sensor_count": 48,
+      "equivalence_duration_s": 1.0,
+      "max_abs_difference_vs_individual_over_1s": {
+        "q_rad": 4.163336342344337e-17,
+        "qdot_rad_s": 2.220446049250313e-16,
+        "actuator_force_Nm": 1.1102230246251565e-16
+      },
+      "per_motor_max_abs_difference_vs_individual_over_1s": [
+        {
+          "motor_id": 0,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.3877787807814457e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 1,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 2,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 5.551115123125783e-17,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 3,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 4,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 5.551115123125783e-17,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 5,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 6,
+          "face": "face_1",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 7,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 8.326672684688674e-17
+        },
+        {
+          "motor_id": 8,
+          "face": "face_2",
+          "q_rad": 4.163336342344337e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 9,
+          "face": "face_2",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 10,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1796119636642288e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 11,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.942890293094024e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 12,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 5.551115123125783e-17,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 13,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 14,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 15,
+          "face": "face_1",
+          "q_rad": 6.938893903907228e-18,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        }
+      ],
+      "checks": {
+        "dimensions_are_16_16_16": true,
+        "forty_eight_sensors": true,
+        "timestep_is_0p002_s": true,
+        "all_fitted_motor_values_match": true,
+        "controller_and_effort_limit_match": true,
+        "layout_matches_supplied_arrangement": true,
+        "all_contacts_disabled": true,
+        "finite_for_1_second": true,
+        "matches_individual_1dof_models_over_1s": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "B1",
+      "controller": "H2",
+      "path": "additional_material/models/models/B1_H2.xml",
+      "steps": 500,
+      "duration_s": 1.0,
+      "dimensions": {
+        "nq": 16,
+        "nv": 16,
+        "nu": 16
+      },
+      "sensor_count": 48,
+      "equivalence_duration_s": 1.0,
+      "max_abs_difference_vs_individual_over_1s": {
+        "q_rad": 4.163336342344337e-17,
+        "qdot_rad_s": 3.3306690738754696e-16,
+        "actuator_force_Nm": 1.6653345369377348e-16
+      },
+      "per_motor_max_abs_difference_vs_individual_over_1s": [
+        {
+          "motor_id": 0,
+          "face": "face_1",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 8.326672684688674e-17
+        },
+        {
+          "motor_id": 1,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.942890293094024e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 2,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 3,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 4,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.8041124150158794e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 5,
+          "face": "face_2",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 3.3306690738754696e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 6,
+          "face": "face_1",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 7,
+          "face": "face_2",
+          "q_rad": 4.163336342344337e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 8,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 6.938893903907228e-17
+        },
+        {
+          "motor_id": 9,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.498001805406602e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 10,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.3877787807814457e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 11,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 12,
+          "face": "face_1",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 13,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.3592239273284576e-16,
+          "actuator_force_Nm": 1.6653345369377348e-16
+        },
+        {
+          "motor_id": 14,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 15,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        }
+      ],
+      "checks": {
+        "dimensions_are_16_16_16": true,
+        "forty_eight_sensors": true,
+        "timestep_is_0p002_s": true,
+        "all_fitted_motor_values_match": true,
+        "controller_and_effort_limit_match": true,
+        "layout_matches_supplied_arrangement": true,
+        "all_contacts_disabled": true,
+        "finite_for_1_second": true,
+        "matches_individual_1dof_models_over_1s": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "B2",
+      "controller": "H1",
+      "path": "additional_material/models/models/B2_H1.xml",
+      "steps": 500,
+      "duration_s": 1.0,
+      "dimensions": {
+        "nq": 16,
+        "nv": 16,
+        "nu": 16
+      },
+      "sensor_count": 48,
+      "equivalence_duration_s": 1.0,
+      "max_abs_difference_vs_individual_over_1s": {
+        "q_rad": 2.7755575615628914e-17,
+        "qdot_rad_s": 2.7755575615628914e-16,
+        "actuator_force_Nm": 1.1102230246251565e-16
+      },
+      "per_motor_max_abs_difference_vs_individual_over_1s": [
+        {
+          "motor_id": 0,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.8041124150158794e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 1,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 2,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.1163626406917047e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 3,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 4,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 5,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 8.326672684688674e-17
+        },
+        {
+          "motor_id": 6,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 8.326672684688674e-17
+        },
+        {
+          "motor_id": 7,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 8.326672684688674e-17
+        },
+        {
+          "motor_id": 8,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 8.326672684688674e-17
+        },
+        {
+          "motor_id": 9,
+          "face": "face_2",
+          "q_rad": 6.938893903907228e-18,
+          "qdot_rad_s": 5.551115123125783e-17,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 10,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 11,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 12,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 5.551115123125783e-17,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 13,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 14,
+          "face": "face_1",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 15,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.3245294578089215e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        }
+      ],
+      "checks": {
+        "dimensions_are_16_16_16": true,
+        "forty_eight_sensors": true,
+        "timestep_is_0p002_s": true,
+        "all_fitted_motor_values_match": true,
+        "controller_and_effort_limit_match": true,
+        "layout_matches_supplied_arrangement": true,
+        "all_contacts_disabled": true,
+        "finite_for_1_second": true,
+        "matches_individual_1dof_models_over_1s": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "B2",
+      "controller": "H2",
+      "path": "additional_material/models/models/B2_H2.xml",
+      "steps": 500,
+      "duration_s": 1.0,
+      "dimensions": {
+        "nq": 16,
+        "nv": 16,
+        "nu": 16
+      },
+      "sensor_count": 48,
+      "equivalence_duration_s": 1.0,
+      "max_abs_difference_vs_individual_over_1s": {
+        "q_rad": 5.551115123125783e-17,
+        "qdot_rad_s": 2.7755575615628914e-16,
+        "actuator_force_Nm": 1.6653345369377348e-16
+      },
+      "per_motor_max_abs_difference_vs_individual_over_1s": [
+        {
+          "motor_id": 0,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.498001805406602e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 1,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.682681771697503e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 2,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 3,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 4,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.3071822230491534e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 5,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.6653345369377348e-16
+        },
+        {
+          "motor_id": 6,
+          "face": "face_1",
+          "q_rad": 6.938893903907228e-18,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 7,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 8,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.5265566588595902e-16,
+          "actuator_force_Nm": 1.6653345369377348e-16
+        },
+        {
+          "motor_id": 9,
+          "face": "face_2",
+          "q_rad": 1.734723475976807e-18,
+          "qdot_rad_s": 8.326672684688674e-17,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 10,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.636779683484747e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 11,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 12,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 13,
+          "face": "face_2",
+          "q_rad": 5.551115123125783e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.6653345369377348e-16
+        },
+        {
+          "motor_id": 14,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 1.6653345369377348e-16
+        },
+        {
+          "motor_id": 15,
+          "face": "face_1",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 6.938893903907228e-17
+        }
+      ],
+      "checks": {
+        "dimensions_are_16_16_16": true,
+        "forty_eight_sensors": true,
+        "timestep_is_0p002_s": true,
+        "all_fitted_motor_values_match": true,
+        "controller_and_effort_limit_match": true,
+        "layout_matches_supplied_arrangement": true,
+        "all_contacts_disabled": true,
+        "finite_for_1_second": true,
+        "matches_individual_1dof_models_over_1s": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "G1",
+      "controller": "H1",
+      "path": "additional_material/models/models/G1_H1.xml",
+      "steps": 500,
+      "duration_s": 1.0,
+      "dimensions": {
+        "nq": 16,
+        "nv": 16,
+        "nu": 16
+      },
+      "sensor_count": 48,
+      "equivalence_duration_s": 1.0,
+      "max_abs_difference_vs_individual_over_1s": {
+        "q_rad": 5.551115123125783e-17,
+        "qdot_rad_s": 3.3306690738754696e-16,
+        "actuator_force_Nm": 1.6653345369377348e-16
+      },
+      "per_motor_max_abs_difference_vs_individual_over_1s": [
+        {
+          "motor_id": 0,
+          "face": "face_1",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 1,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.942890293094024e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 2,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 2.7755575615628914e-17,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 3,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 4,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 5,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 8.326672684688674e-17
+        },
+        {
+          "motor_id": 6,
+          "face": "face_1",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 7,
+          "face": "face_2",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 8,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 9,
+          "face": "face_2",
+          "q_rad": 6.938893903907228e-18,
+          "qdot_rad_s": 8.326672684688674e-17,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 10,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 11,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 12,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 1.942890293094024e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 13,
+          "face": "face_2",
+          "q_rad": 5.551115123125783e-17,
+          "qdot_rad_s": 3.3306690738754696e-16,
+          "actuator_force_Nm": 1.6653345369377348e-16
+        },
+        {
+          "motor_id": 14,
+          "face": "face_1",
+          "q_rad": 5.551115123125783e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 15,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        }
+      ],
+      "checks": {
+        "dimensions_are_16_16_16": true,
+        "forty_eight_sensors": true,
+        "timestep_is_0p002_s": true,
+        "all_fitted_motor_values_match": true,
+        "controller_and_effort_limit_match": true,
+        "layout_matches_supplied_arrangement": true,
+        "all_contacts_disabled": true,
+        "finite_for_1_second": true,
+        "matches_individual_1dof_models_over_1s": true
+      },
+      "passed": true
+    },
+    {
+      "configuration": "G1",
+      "controller": "H2",
+      "path": "additional_material/models/models/G1_H2.xml",
+      "steps": 500,
+      "duration_s": 1.0,
+      "dimensions": {
+        "nq": 16,
+        "nv": 16,
+        "nu": 16
+      },
+      "sensor_count": 48,
+      "equivalence_duration_s": 1.0,
+      "max_abs_difference_vs_individual_over_1s": {
+        "q_rad": 2.7755575615628914e-17,
+        "qdot_rad_s": 3.3306690738754696e-16,
+        "actuator_force_Nm": 1.6653345369377348e-16
+      },
+      "per_motor_max_abs_difference_vs_individual_over_1s": [
+        {
+          "motor_id": 0,
+          "face": "face_1",
+          "q_rad": 6.938893903907228e-18,
+          "qdot_rad_s": 1.3877787807814457e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 1,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 2,
+          "face": "face_1",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 1.6653345369377348e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 3,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 4,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 3.3306690738754696e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 5,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 6,
+          "face": "face_1",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 7,
+          "face": "face_2",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 8,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 9,
+          "face": "face_2",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 5.551115123125783e-17
+        },
+        {
+          "motor_id": 10,
+          "face": "face_1",
+          "q_rad": 1.3877787807814457e-17,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 11,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.7755575615628914e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 12,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 1.1102230246251565e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 13,
+          "face": "face_2",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.463307335887066e-16,
+          "actuator_force_Nm": 1.6653345369377348e-16
+        },
+        {
+          "motor_id": 14,
+          "face": "face_1",
+          "q_rad": 0.0,
+          "qdot_rad_s": 2.220446049250313e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        },
+        {
+          "motor_id": 15,
+          "face": "face_1",
+          "q_rad": 2.7755575615628914e-17,
+          "qdot_rad_s": 2.0816681711721685e-16,
+          "actuator_force_Nm": 1.1102230246251565e-16
+        }
+      ],
+      "checks": {
+        "dimensions_are_16_16_16": true,
+        "forty_eight_sensors": true,
+        "timestep_is_0p002_s": true,
+        "all_fitted_motor_values_match": true,
+        "controller_and_effort_limit_match": true,
+        "layout_matches_supplied_arrangement": true,
+        "all_contacts_disabled": true,
+        "finite_for_1_second": true,
+        "matches_individual_1dof_models_over_1s": true
+      },
+      "passed": true
+    }
+  ],
+  "summary": {
+    "models_expected": 10,
+    "models_generated": 10,
+    "models_passed": 10,
+    "all_models_passed": true
+  }
+}

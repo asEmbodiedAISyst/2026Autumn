@@ -3,10 +3,10 @@
   "version": "1.0",
   "single_page": true,
   "description": "11 November 2026 \u00b7 10:30\u201311:50 \u00b7 CR6 | WEI Jinqi & SONG Chaoyang",
-  "scope": "Executable scripted simulation checks and retained policy records; no policy inference or physical deployment",
+  "scope": "Current source-led lesson; original author package is linked from README. Earlier assets retained historically.",
   "files_sha256": {
     "2026-autumn/resources/class11/.gitignore": "9e0ca3065216ec119f48364b1431cf0a661fbde960e3f0a232ced9d56f327a65",
-    "2026-autumn/resources/class11/README.md": "4ffeeff2172cf7f80291c04c14ca312f65109930d07d6adbd4f1ed7f8d6a8c1e",
+    "2026-autumn/resources/class11/README.md": "6d9485440674a7d859a05c8323b4e20278f1837d231d6d2f91eaf941c411f1a0",
     "2026-autumn/resources/class11/code/compare_reset.py": "48320134dbeada8d5456952badd4485ec9527c8d31a10a61d5e3c72b59df0116",
     "2026-autumn/resources/class11/code/lesson_lab.py": "badc9682a8476339d1ca671448037810e9b694c43fe6d18fa6690b15cd51abd4",
     "2026-autumn/resources/class11/consolidation/package/additional_material/code/replay_state_check.py": "b65d924e04a3e1934c8e1c70b1da96dd6bcbc2a6de08f8344a224f15b86fd59e",
