@@ -574,56 +574,56 @@ bias, and gravity calibration are the next items to verify.
 
 ### Reproduce and Inspect
 
-The following files are served directly by GitBook. The result package does
+The supplied scientific tables and result below link to this course repository. Historical downloads that are not included are identified explicitly. The result package does
 not redistribute the raw hardware archive; it records that archive's filename,
 size, and SHA-256 so an authorized local copy can be verified before rerunning.
 
-{% file src="../.gitbook/assets/chapter-02/real-position-results-v2.zip" %}
+**Historical source artifact:** `real-position-results-v2.zip`. This original download is not included in this extract.
+
 Complete preliminary result package: summary, audit, fixed controller
 conditions, parameter and metric tables, figures, requirements, and
 reproducible runner.
-{% endfile %}
 
-{% file src="../.gitbook/assets/chapter-02/real-position-result-v2.json" %}
+[real-position-result-v2.json](../data/phyintel/xc330/published/result.json)
+
 Machine-readable result, methodological decisions, diagnostics, source hash,
 and acceptance status.
-{% endfile %}
 
-{% file src="../.gitbook/assets/chapter-02/real-position-joint-parameters-v2.csv" %}
+[real-position-joint-parameters-v2.csv](../data/phyintel/xc330/published/joint-parameter-estimates.csv)
+
 Independent H1/H2 Method 1 and Method 2 parameter values.
-{% endfile %}
 
-{% file src="../.gitbook/assets/chapter-02/real-position-aggregate-metrics-v2.csv" %}
+[real-position-aggregate-metrics-v2.csv](../data/phyintel/xc330/published/aggregate-metrics.csv)
+
 Equal-episode absolute output-gap metrics and gap-to-repeatability ratios for
 all three evidence splits.
-{% endfile %}
 
-{% file src="../.gitbook/assets/chapter-02/real-position-fixture-split-metrics-v2.csv" %}
+[real-position-fixture-split-metrics-v2.csv](../data/phyintel/xc330/published/fixture-split-metrics.csv)
+
 Fixture-specific absolute output-gap metrics used to distinguish balanced B1
 transfer from eccentric G1 transfer.
-{% endfile %}
 
-{% file src="../.gitbook/assets/chapter-02/real-position-fixture-mass-properties-v2.csv" %}
+[real-position-fixture-mass-properties-v2.csv](../data/phyintel/xc330/published/fixture-mass-properties.csv)
+
 Measured masses, installed positions, inertia estimates, and signed G1 first
 moment used by the replay models.
-{% endfile %}
 
-{% file src="../.gitbook/assets/chapter-02/real-position-fixed-controller-conditions-v2.csv" %}
+[real-position-fixed-controller-conditions-v2.csv](../data/phyintel/xc330/published/fixed-controller-conditions.csv)
+
 H1 and H2 hardware settings, unit factors, fixed Mode-5-equivalent MuJoCo
 controller coefficients, and effort limit.
-{% endfile %}
 
-{% file src="../.gitbook/assets/chapter-02/run-chapter02-real-position-identification-v2.py" %}
+[run-chapter02-real-position-identification-v2.py](../code/upstream/run_chapter02_real_position_identification_v2.py)
+
 Reproducible archive audit, Method 1/2 identification, evaluation, and plotting
 runner.
-{% endfile %}
 
-{% file src="../.gitbook/assets/chapter-02/plot-chapter02-real-position-comparisons-v2.py" %}
+**Historical source artifact:** `plot-chapter02-real-position-comparisons-v2.py`. This original download is not included in this extract.
+
 Reproduce the matched H1/H2 output-gap and tracking-error figures from the
 identified parameters and an authorized local copy of the hardware archive.
-{% endfile %}
 
-Run from the repository root after installing `requirements-simulation.txt`:
+The following commands describe the historical authoring layout, including its original script names. For the portable numerical commands in this course package, use the [current optional examples](../RUN.md):
 
 ```bash
 .venv/bin/python scripts/run_chapter02_real_position_identification_v2.py \

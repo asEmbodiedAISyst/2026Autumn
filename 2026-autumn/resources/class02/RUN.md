@@ -29,7 +29,7 @@ Open `interactive/hardware-telemetry.html` in a browser. It contains the supplie
 python -m http.server 8765 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8765/media/interactive/hardware-telemetry.html`, then stop this local server with Ctrl+C. Download the resource folder before opening HTML; a GitHub file preview shows its source. Use the browser/localhost route for interaction, and the static figures and sample table for reading the lesson. Interactive execution inside GitBook or a Markdown viewer is not required.
+Open `http://127.0.0.1:8765/interactive/hardware-telemetry.html`, then stop this local server with Ctrl+C. Download the resource folder before opening HTML; a GitHub file preview shows its source. Use the browser/localhost route for interaction, and the static figures and sample table for reading the lesson. Interactive execution inside GitBook or a Markdown viewer is not required.
 
 # Optional campaign and model experiments
 
@@ -61,7 +61,7 @@ python code/phyintel_lab.py fit-output-error --actuator rs06 --controller H1
 
 `--controller H2` selects the second context. `--actuator xc330`, `rs06` or `both` selects campaigns. Fitting does not overwrite frozen published parameters. After calibration, each fresh fit is automatically frozen and evaluated on the other episode roles; its JSON contains per-episode gaps and equal-episode split means. Repeat evaluation is deterministic but small numerical differences can occur across platforms. Read the exact published-score discrepancy in `results/phyintel/*-replay.json`.
 
-Outputs are resolved relative to the script location: `results/phyintel/*-audit.json`, `*-models.json`, `*-replay.json`, `*-replay.npz` and separate `*-fit-*.json`; figures go to `media/`. Repeating a command replaces that command's generated outputs, not `data/phyintel/*/published`. `evaluate` replaces the representative replay outputs with full-episode outputs; subsequent figures deliberately select H1/B1 and H1/G1/P06 first repeats from that output.
+Outputs are resolved relative to the script location: `results/phyintel/*-audit.json`, `*-models.json`, `*-replay.json`, `*-replay.npz` and separate `*-fit-*.json`. Published PNG illustrations are in `figures/`. Repeating a command replaces that command's generated outputs, not `data/phyintel/*/published`. `evaluate` replaces the representative replay outputs with full-episode outputs.
 
 The earlier Mode-3 examples remain runnable with `python code/course_lab.py all`. These use the earlier CSVs, geometry and two-parameter command correction. They are separate from the campaign identification.
 
@@ -69,4 +69,4 @@ Optional older visual examples: on macOS use `mjpython code/view.py --model weig
 
 ## Visual mechanism examples
 
-Open `interactive/actuator-explorer.html` in a browser. It runs offline from the extracted class package and uses locally installed MiSans or the optional local font files; keep the package folders together. If local file opening is restricted, run `python -m http.server 8765 --bind 127.0.0.1` from the class folder and open `http://127.0.0.1:8765/media/interactive/actuator-explorer.html`. Stop this local server with Ctrl+C. No package installation or hardware connection is required. HTML execution inside asMagicBrain Preview/Present is not assumed; the supplied static equivalents remain the teaching fallback.
+Open `interactive/actuator-explorer.html` in a browser. It runs offline from the extracted class package and uses locally installed MiSans with a system-font fallback; keep the package folders together. If local file opening is restricted, run `python -m http.server 8765 --bind 127.0.0.1` from the class folder and open `http://127.0.0.1:8765/interactive/actuator-explorer.html`. Stop this local server with Ctrl+C. No package installation or hardware connection is required. HTML execution inside asMagicBrain Preview/Present is not assumed; the supplied static equivalents remain the teaching fallback.

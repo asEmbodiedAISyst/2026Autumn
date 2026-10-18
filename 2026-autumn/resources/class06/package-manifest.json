@@ -5,7 +5,7 @@
     "code/provenance.json": "7f892dce57db5a137d9897e88375030e651c463fb30ff3eee75779e47eec74c9",
     "code/validate_lettered.py": "738c6a329bc06876d483eafde801008e88070bc430bb68f3024940844f623ac7",
     "code/native_task.py": "c2e6206af4046218439c0d85aca9fcd8e1c43455bcabc77beaaf87b6d99eebf0",
-    "code/lesson_lab.py": "ed6f0823fd92ccfdd6daf0c5177e2a937d1b52fc4b6975d67b2124c77aaa4d9d",
+    "code/lesson_lab.py": "fcc3e89a1a01d8e8be8d7973839887b1a96fd798e352343e2092ef72119f4eef",
     "code/PLAYGROUND-LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
     "code/compare_practice.py": "6e71d942b2a8b72926d5655127977a83b7b507e0caefd08848a23d742508e696",
     "code/requirements-gpu-reference.txt": "59621dfda8effb4f6d4d139caa7397e18221ad788e2a452d86f142f721f4c2ab",
@@ -83,6 +83,7 @@
     "code/reference/leap_hand_constants.py": "1f324ba39afce3ce5d894c511597b5f9f6ab2e7c3892adf5555243ae8b0dce83",
     "code/reference/mjx_env.py": "d2d13c1dfce21f3e08eb156d4eb8182ad36fe7b110983e0f3799f8d9ae4f7db9",
     "code/reference/reward.py": "6f2d74c0d968db8fade71a80ba455979f99b071eb0f9a6a8fea3680d33f68adc",
-    "code/reference/base.py": "c461ce8dbcaafa464041699231eff99b49cd269bce7690eb9bcde02561c1f4d9"
+    "code/reference/base.py": "c461ce8dbcaafa464041699231eff99b49cd269bce7690eb9bcde02561c1f4d9",
+    "records/continuous-example.json": "e57cf50df283ba602f3c30772d378504f3cfd611b9d89f4e3d674688b1167b3f"
   }
 }
