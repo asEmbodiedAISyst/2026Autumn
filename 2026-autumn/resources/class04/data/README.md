@@ -1,6 +1,6 @@
 # Class 04 selected scientific records
 
-These tables support the current [XC330 lesson](../../../module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md) and [RS06 comparison](../../../module-01-actuator-data-for-1-dof-systems/04-rs06-hardware-identification.md). Their code, raw data and models are in the selected [author package](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap).
+These tables support the current [XC330 lesson](../../../module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md) and [RS06 comparison](../../../module-01-actuator-data-for-1-dof-systems/04-rs06-hardware-identification.md). Their code, raw data and models are in the selected [author package](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class04/practical).
 
 ## Declared 110 g XC330 case
 

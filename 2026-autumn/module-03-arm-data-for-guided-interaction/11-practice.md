@@ -9,7 +9,7 @@ ladder and what the physical arm showed.
 ## Set up
 
 The code is the pusher package of the course, the same as in Class 10:
-[`course-resources/class11_sim2real_deployment/additional_material/rebot_pusher/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/class11_sim2real_deployment/additional_material/rebot_pusher).
+[`2026-autumn/resources/class11/practical/additional_material/rebot_pusher/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class11/practical/additional_material/rebot_pusher).
 
 You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (Apple silicon or Intel).
 
@@ -26,7 +26,7 @@ cd rob7103
 python3 -m venv .course-tools
 .course-tools/bin/python -m pip install uv
 export PATH="$PWD/.course-tools/bin:$PATH"
-cd course-resources/class11_sim2real_deployment/additional_material/rebot_pusher
+cd 2026-autumn/resources/class11/practical/additional_material/rebot_pusher
 uv sync
 ```
 
@@ -47,9 +47,9 @@ The source gives CUDA and Apple-silicon MPS training commands. Backend support a
 
 | Script | What it does |
 | --- | --- |
-| [`scripts/generate_tool_demos.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class11_sim2real_deployment/additional_material/rebot_pusher/scripts/generate_tool_demos.py) | Simulated demonstrations of the scripted expert, written as a LeRobot dataset |
+| [`scripts/generate_tool_demos.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class11/practical/additional_material/rebot_pusher/scripts/generate_tool_demos.py) | Simulated demonstrations of the scripted expert, written as a LeRobot dataset |
 | `lerobot-train` | Trains a policy on a LeRobot dataset ([LeRobot](https://github.com/huggingface/lerobot)) |
-| [`scripts/eval_policy.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class11_sim2real_deployment/additional_material/rebot_pusher/scripts/eval_policy.py) | Runs a policy in closed loop on the simulated arm or tool: success rate, results file and videos |
+| [`scripts/eval_policy.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class11/practical/additional_material/rebot_pusher/scripts/eval_policy.py) | Runs a policy in closed loop on the simulated arm or tool: success rate, results file and videos |
 
 ---
 

@@ -1,5 +1,0 @@
-Class 06 practical instructions
-
-Use the current Class 06 practical: https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-02-hand-data-for-multi-fingered-manipulation/06-learned-in-hand-cube-reorientation.md#instructor-and-ta-demonstration and the package entry: https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2006%20%E2%80%94%20Learned%20in-hand%20cube%20reorientation#readme. They define the selected task, setup, commands, expected outputs and availability limits.
-
-The available evidence is under `evidence/videos/` and `evidence/simulation_frames/` / `evidence/hardware_frames/`. The retained `photos/contact_sheet.png` is a cached simulation panel, not a verified six-face photograph. The active bundle, checkpoint, bridge, training configuration, raw NPZ telemetry and ten referenced meshes are absent. The continuous launcher references that external bundle; a ready playback policy is not supplied. Original figures are published with the lecture; figure-production scripts are not runtime dependencies.

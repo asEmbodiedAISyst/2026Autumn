@@ -1,6 +1,6 @@
 # Class 03 classroom resources
 
-[Lecture](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-01-actuator-data-for-1-dof-systems/03-basic-digitization-of-physical-embodiment.md) · [Selected practical](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment)
+[Lecture](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-01-actuator-data-for-1-dof-systems/03-basic-digitization-of-physical-embodiment.md) · [Selected practical](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class03/practical)
 
 This folder contains the classroom figures, recordings, manuals and selected scientific records used by the lesson. Runtime code, models and practical instructions are provided through the selected practical above.
 

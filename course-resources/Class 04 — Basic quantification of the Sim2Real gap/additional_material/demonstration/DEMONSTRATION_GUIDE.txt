@@ -1,5 +1,0 @@
-Class 04 practical instructions
-
-Use the current Class 04 practical: https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md#instructor-and-ta-demonstration and the package entry: https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap#readme. They define the selected task, materials, interpretation and availability limits.
-
-Use a package-local isolated virtual environment for executable work. Physical operation and any optional extension require their own stated preparation. Source code, model and numerical records retain their original values; a recipe or recording is not evidence of a new successful run.

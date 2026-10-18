@@ -10,7 +10,7 @@ your hand. The class page [Class 10](10-collect-data-for-reinforcement-learning.
 
 The code is the pusher package of the course, `rebot_pusher`, for the pusher tool of the end of
 [Class 09 — Practice](09-practice.md#the-pusher-tool). Class 11 uses the same package:
-[`course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher).
+[`2026-autumn/resources/class10/practical/additional_material/rebot_pusher/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher).
 
 You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (Apple silicon or Intel).
 
@@ -25,7 +25,7 @@ cd rob7103
 python3 -m venv .course-tools
 .course-tools/bin/python -m pip install uv
 export PATH="$PWD/.course-tools/bin:$PATH"
-cd course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher
+cd 2026-autumn/resources/class10/practical/additional_material/rebot_pusher
 uv sync
 ```
 
@@ -46,11 +46,11 @@ with `uv run mjpython`; the other commands keep `uv run python`.
 
 | Script | What it does |
 | --- | --- |
-| [`scripts/teleop_real.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher/scripts/teleop_real.py) | Teleoperation with the iPhone; `--robot sim --record` records the simulated arm |
-| [`scripts/check_handheld_dataset.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher/scripts/check_handheld_dataset.py) | Checks observed poses with simulated-arm inverse kinematics; reports reachability, speed, tilt and yaw |
-| [`rebot_sim/teleop/fake_phone.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher/rebot_sim/teleop/fake_phone.py) | Phone simulator, for a test without an iPhone |
-| [`scripts/record_handheld.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher/scripts/record_handheld.py) | Optional: records demonstrations with the iPhone in your hand, phone pose and image, to a LeRobot dataset |
-| [`DATA_FORMAT.md`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher/DATA_FORMAT.md) | The features, the episode frame and the height reference of the datasets |
+| [`scripts/teleop_real.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/scripts/teleop_real.py) | Teleoperation with the iPhone; `--robot sim --record` records the simulated arm |
+| [`scripts/check_handheld_dataset.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/scripts/check_handheld_dataset.py) | Checks observed poses with simulated-arm inverse kinematics; reports reachability, speed, tilt and yaw |
+| [`rebot_sim/teleop/fake_phone.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/rebot_sim/teleop/fake_phone.py) | Phone simulator, for a test without an iPhone |
+| [`scripts/record_handheld.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/scripts/record_handheld.py) | Optional: records demonstrations with the iPhone in your hand, phone pose and image, to a LeRobot dataset |
+| [`DATA_FORMAT.md`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/DATA_FORMAT.md) | The features, the episode frame and the height reference of the datasets |
 
 ---
 

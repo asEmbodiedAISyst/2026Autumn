@@ -9,7 +9,7 @@ joint, run a bounded joint motion and a Cartesian path, then change one gain and
 ## Set up
 
 The runnable class folder is
-[`course-resources/class08_build_simple_arm/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/class08_build_simple_arm)
+[`2026-autumn/resources/class08/practical/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class08/practical)
 in the course repository.
 
 You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (Apple silicon or Intel). No GPU is needed.
@@ -25,7 +25,7 @@ cd rob7103
 python3 -m venv .course-tools
 .course-tools/bin/python -m pip install uv
 export PATH="$PWD/.course-tools/bin:$PATH"
-cd course-resources/class08_build_simple_arm/additional_material
+cd 2026-autumn/resources/class08/practical/additional_material
 uv sync
 ```
 

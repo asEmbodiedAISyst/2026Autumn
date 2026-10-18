@@ -56,7 +56,7 @@ Get the code and make the environment:
 ```bash
 git clone https://github.com/asEmbodiedAISyst/2026Autumn.git rob7103
 cd rob7103
-cd course-resources/class08_build_simple_arm/additional_material
+cd 2026-autumn/resources/class08/practical/additional_material
 uv sync --group real                  # the drivers of the physical arm
 ```
 

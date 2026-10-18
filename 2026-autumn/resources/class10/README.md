@@ -1,6 +1,6 @@
 # Class 10 classroom resources
 
-[Lecture](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-03-arm-data-for-guided-interaction/10-collect-data-for-reinforcement-learning.md) · [Selected practical](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/class10_collect_data_for_learning)
+[Lecture](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-03-arm-data-for-guided-interaction/10-collect-data-for-reinforcement-learning.md) · [Selected practical](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class10/practical)
 
 This folder contains the classroom figures, recordings, manuals and selected scientific records used by the lesson. Runtime code, models and practical instructions are provided through the selected practical above.
 
