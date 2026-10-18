@@ -10,11 +10,19 @@ layout:
 
 > What does a digital representation preserve, and which parts can we validate?
 
-An actuator receives a command, applies effort and produces measurable motion. Digitization describes the mechanism receiving that effort: what moves, where motion occurs, how mass is distributed and how the model accepts an input. This class follows the source XC330 fixture through physical assembly, CAD and an executable MuJoCo description. [Class 02](02-actuator-basics-for-controlled-action.md) supplies the actuator functions, control objectives and manufacturer-document reading that precede this inspection.
+An actuator receives a command, applies effort and produces measurable motion. Digitization describes the mechanism receiving that effort: what moves, where motion occurs, how mass is distributed and how the model accepts an input. This class follows the source XC330 fixture through physical assembly, computer-aided design (CAD) and an executable MuJoCo description. [Class 02](02-actuator-basics-for-controlled-action.md) supplies the actuator functions, control objectives and manufacturer-document reading that precede this inspection.
 
 The main route uses the **ROBOTIS XC330-M288-T** and its declared 110 g external moving fixture. The separate [RS06 fixture companion](03-rs06-fixture-digitization.md) applies the same inspection questions to a different actuator, different loads and a different controller interface. Configuration names such as B1 are local to each apparatus; they do not identify interchangeable masses or models.
 
-By the end, you should be able to explain the difference between appearance and mechanical correspondence; inspect units, frames, joints, mass, inertia and input meaning; and identify the evidence needed before calling a model predictive. The [demonstration](#instructor-and-ta-demonstration) and [activity](#student-activity) use the source CAD views, models, measurements and saved load checks. They can be completed from these prepared records.
+By the end of this class, you should be able to:
+
+- Explain the difference between appearance and mechanical correspondence.
+- Inspect units, frames, joints, mass, inertia and actuator-input meaning.
+- Identify the evidence needed before calling a model predictive.
+
+[Lecture](#start-with-the-same-b2-assembly-in-three-records) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+
+The source CAD views, models, measurements and saved load checks support the demonstration and activity. They can be completed from these prepared records.
 
 ## Start with the same B2 assembly in three records
 
@@ -40,7 +48,7 @@ A photograph records appearance from one viewpoint. CAD describes designed geome
 
 Use these course definitions to state the correspondence claim. A **digital representation** describes selected physical-system properties. A **digital cousin** supports exploration of a similar mechanism without establishing correspondence to this particular unit. A **task-bounded digital twin** links an identified physical counterpart to tested predictions for stated tasks and conditions. The stronger claim needs stronger evidence. A useful geometry model can precede dynamic validation.
 
-The source digitization chain below connects the physical measurement, CAD, MJCF and validation records. Ask which arrow supplies a declaration and which supplies evidence against a physical counterpart.
+The source digitization chain below connects the physical measurement, CAD, MJCF and validation records. MJCF is MuJoCo’s XML model-description format. Ask which arrow supplies a declaration and which supplies evidence against a physical counterpart.
 
 ![Validation-aware digitization chain](../resources/class03/figures/digitization_workflow.png)
 
@@ -298,14 +306,14 @@ For the source fabrication extension, inspect the prepared H2D link file, declar
 
 ## Student activity
 
-Inspect the source **B2 XC330** records and complete one compact inspection sheet. The supplied objects are the three opening B2 views, component/mass table, complete B2 MJCF and saved validation record.
+Inspect the source **B2 XC330** records and complete one compact inspection record. The supplied objects are the three opening B2 views, component/mass table, complete B2 MJCF and saved validation record.
 
 1. Identify the fixed component, moving rigid assembly, joint axis, range and one input/output pair. Explain why two payload bodies do not create two extra degrees of freedom.
 2. Trace one payload-centre declaration from millimetres in the configuration record to metres in the model. Name the parent frame; explain why its local coordinate is not automatically a world coordinate.
 3. Recalculate the analytical B0-to-B2 inertia difference above. State what stays constant and why this is not a measured total joint inertia.
 4. Separate a source physical mass, a CAD estimate and a model assumption. Use the B2 views or validation record for one observation, then identify a physical check needed before claiming dynamic correspondence.
 
-Submit the sheet with the configuration and source files identified, units on the calculation, and one bounded conclusion. The task concerns inspection and explanation. Follow the preserved source package if conducting further model inspection; do not treat an unrecorded payload alteration as an existing experiment.
+Submit the record with the configuration and source files identified, units on the calculation, and one bounded conclusion. The task concerns inspection and explanation. Follow the preserved source package if conducting further model inspection; do not treat an unrecorded payload alteration as an existing experiment.
 
 ## Carry the model into a response test
 
@@ -313,11 +321,11 @@ Submit the sheet with the configuration and source files identified, units on th
 
 ## Source records and further reading
 
-The source package preserves the original CAD, accepted measurement record, complete MJCF/meshes, photographs and validation outputs. Its prepared example records support the inspection above:
+The source package preserves the original CAD, accepted measurement record, complete MJCF/meshes, photographs and validation outputs from the course fixture record at source revision `f7c118edaadc9f33498669736fa9d99160ff629a`. The B2 views, component/configuration figures, B0 Fusion screenshots and load-check images above belong to that record. Its prepared example records support the inspection above:
 
 | Need | Source record |
 |---|---|
-| Package and demonstration guide | [README](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/README.md); [demonstration guide](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/demonstration/DEMONSTRATION_GUIDE.txt) |
+| Package and demonstration guide | [README](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/README.md); [current demonstration notes](#instructor-and-ta-demonstration) |
 | B2 CAD and MJCF | [STEP assembly](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/cad/STEP/1DOF-B2.step); [complete B2 model](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/models/1DOF-B2.xml) |
 | Fabrication geometry | [Link](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/cad/3MF/Link.3mf), [Pin](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/cad/3MF/Pin.3mf), [Payload](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/cad/3MF/Payload.3mf) |
 | Accepted masses and placements | [Measurement record](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/measurements/AS_BUILT_DIMENSIONS_MASSES_AND_POSITIONS.txt); [CAD comparison notes](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/measurements/CAD_COMPARISON_NOTES.txt) |

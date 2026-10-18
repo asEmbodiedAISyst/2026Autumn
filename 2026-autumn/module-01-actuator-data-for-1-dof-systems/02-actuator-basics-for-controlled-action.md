@@ -200,7 +200,7 @@ A command states what the system should do. A measurement is evidence of what a 
 
 In that record, row 400 reports goal 2330 counts, trajectory 2337 counts and position 2347 counts. Relative to the declared 2048-count reference, these are approximately 24.785, 25.400 and 26.279 degrees. The goal curve is readback of the device's goal register, not an independent timestamp of host transmission. “Trajectory” identifies the device's internal reference; “Present Position” identifies returned state information. Neither becomes interchangeable with the host goal simply because all three use position units.
 
-The retained CSV makes the connection to the mathematical symbols explicit:
+The [retained telemetry CSV](../resources/class02/data/xc330-hardware-demo/telemetry_events.csv) makes the connection to the mathematical symbols explicit:
 
 | Exported field and signal in Figure 1 | Row 400 (counts) |
 |---|---:|
@@ -216,7 +216,7 @@ $$
 
 The chosen zero is a plotting reference; it does not calibrate the output to the room. At this row, measured-minus-internal-reference is 10 counts, approximately 0.879°. Measured-minus-goal-readback is 17 counts, approximately 1.494°. These are two different tracking comparisons, not two estimates of a simulation error. The controller's position-error convention $$q_r-y_q$$ reverses the first sign.
 
-The [original command and telemetry tables](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2002%20%E2%80%94%20Actuator%20basics%20for%20controlled%20action/additional_material/data/hardware/xc330_physical_demo) are included unchanged. Their file hashes match the retained raw files used for this worked example.
+The original [command table](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2002%20%E2%80%94%20Actuator%20basics%20for%20controlled%20action/additional_material/data/hardware/xc330_physical_demo/command_events.parquet) and [telemetry table](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2002%20%E2%80%94%20Actuator%20basics%20for%20controlled%20action/additional_material/data/hardware/xc330_physical_demo/telemetry_events.parquet) are included unchanged. Their file hashes match the retained raw files used for this worked example.
 
 The same row reports negative velocity while the angle is still positive: the output is returning from its positive peak. A positive angle therefore does not imply positive motion. This observation identifies signals and signs; it does not identify which physical effect caused their separation. The record is XC330-M288-T, ID 5, firmware 53, Mode 5, M0 motor-only configuration, at about 2.001918 s on the host receive-end clock. The [retained sample](../resources/class02/results/hardware-demo/sample-400.json) identifies its raw and converted values.
 

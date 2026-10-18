@@ -12,11 +12,20 @@ description: 27 October 2026 · 09:00–10:20 · CR6 | Mohamed HALWANI & SONG Ch
 
 The main experiment is the source **XC330-M288-T with a declared 110 g external moving fixture**. Its preserved hardware records, controller references and frozen MuJoCo replays supply the demonstration and activity. The [RS06 identification companion](04-rs06-hardware-identification.md) retains the second physical experiment and its two estimation methods. It uses a different command boundary, load family and controller; its numbers must remain with that apparatus.
 
-By the end, you should be able to identify what enters a replay, explain the three effective fitted terms, distinguish fitting from evaluation, calculate a position-discrepancy metric and bound the resulting model-use claim. The [demonstration](#instructor-and-ta-demonstration) and [activity](#student-activity) follow one identified source held-out episode rather than requiring a new collection or optimizer run.
+By the end of this class, you should be able to:
 
-The course development route connects this question to Introduction → Claim2Design → Design2Data → Data2Model → Model2Prototype → Sim2Real. Here a prediction claim selects the fixture, informative motions and recorded signals; data support parameter estimation; the frozen model is then tested against reserved physical responses. Analytical calculations explain the balance, while optimization estimates a candidate within the chosen model class. Neither replaces evaluation against the physical record.
+- Identify the replay input, measured output, controller and fixture.
+- Explain the roles and units of armature, damping and friction loss.
+- Distinguish fitting, model selection and held-out evaluation.
+- Calculate a position-discrepancy metric and justify a bounded model-use claim.
+
+[Lecture](#name-the-experiment-before-reading-its-result) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+
+The supplied physical-motion record, signal definitions, selected parameters and saved replay support the demonstration and activity. They follow one identified held-out episode; a new collection or optimizer run is not required.
 
 ## Name the experiment before reading its result
+
+The course development route connects this question to Introduction → Claim2Design → Design2Data → Data2Model → Model2Prototype → Sim2Real. Here a prediction claim selects the fixture, informative motions and recorded signals; data support parameter estimation; the frozen model is then tested against reserved physical responses. Analytical calculations explain the balance, while optimization estimates a candidate within the chosen model class. Neither replaces evaluation against the physical record.
 
 ![Notation key for the fixture configurations, controller conditions, episode identifiers, and trace names.](../resources/class04/figures/source/experiment_language.png)
 
@@ -80,7 +89,7 @@ The asMagic recording documents physical motion for the held-out B1/H2 composite
 
 *Figure 2. Physical B1/H2 composite motion recorded by asMagic.*
 
-The video, before-motion photograph, command record, telemetry record, and replay trace share the same episode identifier. This maintains the connection between visible hardware motion and the numerical comparison without treating video frames as calibrated motion capture.
+The [recorded video](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/demonstration/asmagic_media/B1__H2__P06_heldout_composite__R01.mp4), [before-motion photograph](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/demonstration/asmagic_media/B1__H2__P06_heldout_composite__R01_before_motion.jpg), command record, telemetry record and replay trace share the same episode identifier. This maintains the connection between visible hardware motion and the numerical comparison without treating video frames as calibrated motion capture.
 
 The motion profiles have distinct decision roles:
 
@@ -282,7 +291,7 @@ The asymmetric G1 condition remains harder to predict than B1 in these records, 
 
 ![Held-out mean episode position RMSE for the synthetic baseline and frozen hardware fit.](../resources/class04/figures/source/heldout_error_overview.png)
 
-*Figure 6. Held-out mean episode position RMSE for the synthetic baseline and frozen hardware fit.*
+*Figure 6. Source XC330 held-out mean episode position RMSE for the synthetic baseline and frozen hardware fit, over 30 B1/G1 episodes. Each episode has equal weight.*
 
 The largest fitted held-out error occurs in `G1__H1__P07_heldout_sine_hold__R01`: fitted RMSE is 0.026859 rad and baseline RMSE is 0.029262 rad. The fitted replay reduces this episode's RMSE but leaves a directional residual bias of about -0.0171 rad. This observation is evidence of remaining mismatch, not a unique identification of its cause.
 
@@ -290,15 +299,17 @@ The largest fitted held-out error occurs in `G1__H1__P07_heldout_sine_hold__R01`
 
 The B1/H2 composite episode did not influence parameter fitting or candidate selection. Its hardware-fitted replay has an RMSE of 0.002743 rad, compared with 0.010119 rad for the synthetic baseline.
 
-![Recorded inner reference, measured position, and frozen hardware-fitted replay for the held-out B1/H2 composite episode.](../resources/class04/figures/source/good_heldout_episode.png)
-
-*Figure 7. Recorded inner reference, measured position, and frozen hardware-fitted replay for the held-out B1/H2 composite episode.*
-
 The signal definitions are:
 
 - **Recorded inner reference** (purple dashed): the motion reference taken from the hardware control record and supplied to the replay.
 - **Hardware position** (black): the measured output angle of the physical XC330 fixture.
 - **Hardware-fitted replay** (green): the MuJoCo output predicted using the frozen H2 effective parameters.
+
+Compare the green prediction with the black measured output to read model discrepancy; compare the purple inner reference with the black output to read physical tracking.
+
+![Recorded inner reference, measured position, and frozen hardware-fitted replay for the held-out B1/H2 composite episode.](../resources/class04/figures/source/good_heldout_episode.png)
+
+*Figure 7. Source XC330 B1/H2/P06/R01: recorded inner reference, measured position and frozen H2 replay. This selected episode is separate from the 30-episode aggregate.*
 
 ## What the model does and does not establish
 
@@ -343,13 +354,13 @@ The required evidence is on the page and in the linked source score table. Furth
 
 | Need | Source record |
 |---|---|
-| Prepared example and demonstration | [Package README](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/README.md); [demonstration guide](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/demonstration/DEMONSTRATION_GUIDE.txt) |
+| Prepared example and demonstration | [Package README](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/README.md); [current demonstration notes](#instructor-and-ta-demonstration) |
 | Episode membership and selection decision | [Episode index](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/EPISODES_USED.csv); [frozen selection](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/FROZEN_SELECTION_BEFORE_HELD_OUT.json) |
 | Parameter and controller definitions | [Fitted parameters](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/fitted_parameters.csv); [physical parameter sets](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/physical_parameter_sets.json); [controller conditions](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/controller_conditions.json) |
 | Candidate comparisons and final scores | [Optimizer candidates](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/data/optimizer_candidates.csv); [paired held-out results](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/results/held_out_results.csv); [overall held-out result](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/results/overall_heldout_result.csv) |
 | Fit/replay implementation and result record | [Source program](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/code/full_fit_and_replay.py); [result JSON](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/results/result.json) |
 
-The package retains raw motor-side campaigns, paired samples, generated models and episode context with the source records. These are preserved results of the originating experiment; this lesson does not claim a new hardware execution or refit.
+The package retains raw motor-side campaigns, paired samples, generated models and episode context with the source records at revision `f7c118edaadc9f33498669736fa9d99160ff629a`. The seven experiment figures above are retained from that source course record. These are preserved results of the originating experiment; this lesson does not claim a new hardware execution or refit.
 
 [Class 05](../module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator.md) extends the same comparison contract to a separate sixteen-motor source campaign. Shared infrastructure does not remove the need to identify each motor, clock, input and evaluation condition.
 

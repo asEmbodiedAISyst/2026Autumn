@@ -17,7 +17,6 @@ You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (App
 The setup below installs `uv` in a course-local `.course-tools` environment and class dependencies in a package-local `.venv`. It does not change a system Python installation. If `uv` is already available, the three `.course-tools` bootstrap lines may be skipped.
 
 
-
 Get the code and make the environment:
 
 ```bash
@@ -30,7 +29,15 @@ cd course-resources/class10_collect_data_for_learning/additional_material/rebot_
 uv sync
 ```
 
-If you already have the course checkout, update it with `git pull --ff-only` before opening the class package.
+If you already have the checkout, start from its `rob7103/` root and update it with `git pull --ff-only`; do not clone another copy or recreate an existing `.course-tools` environment. Continue from the `export PATH` line, then enter this page's package directory. Each class has its own `.venv`; switching to another class package does not reuse its dependencies automatically.
+
+In every additional terminal, open the **same package directory** and expose the course-local `uv` command before running the examples:
+
+```bash
+export PATH="$(git rev-parse --show-toplevel)/.course-tools/bin:$PATH"
+```
+
+This line assumes the terminal is already inside the cloned repository. Omit it if your existing `uv` is already on `PATH`. Check `pwd` before using a relative data or output path.
 
 `uv sync` installs the declared MuJoCo, LeRobot and PyTorch dependencies into the package-local `.venv`. Download and setup time depend on the platform.
 
@@ -110,7 +117,7 @@ Press Space, push the cube into the green target, and press the Right arrow to s
 ```
 
 The arm then goes back to a new start pose with a new layout of the cube and the target. Record five episodes.
-A failed push is discarded with the Left arrow.
+For this successful-demonstration collection, a failed push is discarded with the Left arrow. Record its rejection reason separately; discarded data do not remove failures from a later policy-evaluation denominator.
 {% endstep %}
 {% endstepper %}
 
@@ -128,7 +135,7 @@ Open `datasets/my_sim_teleop/meta/info.json`. Find the three features and their 
 | --- | --- | --- |
 | `observation.images.phone` | 480 × 640 × 3 | the image of the phone on the robot tool |
 | `observation.state` | 9 | the measured tip pose: position and orientation |
-| `action` | 9 | the tip pose to reach at the next frame |
+| `action` | 9 | accepted tool-pose target for this transition, after controller limits; not the next measured pose |
 
 Find also the names of the state, the fps (30) and `robot_type` (`rebot_pusher_tool_sim`). Then open
 `meta/stats.json`: these are the numbers that normalise the data for training. `DATA_FORMAT.md` gives the frame
@@ -136,22 +143,22 @@ of each episode and the units.
 {% endstep %}
 
 {% step %}
-### Replay on the simulated arm
+### Check the pose sequence on the simulated arm
 
 ```bash
 uv run python scripts/check_handheld_dataset.py --root datasets/my_sim_teleop
 ```
 
-The script replays each episode on the simulated arm with the same tool:
+The source checker decodes the **observed pose sequence**, solves inverse kinematics and estimates speed/tilt/yaw. It does not execute the logged actions through dynamics or reconstruct cube contact. Its terminal table has the following form; values depend on the recorded episode:
 
 ```
   ep frames  reach  peak speed  P95 speed  max tilt      yaw range
    0     91   100%    0.10 m/s   0.09 m/s     0.2 deg     -1 ~    0 deg
 ```
 
-A `!` marks an episode with unreachable frames or with a motion outside the limits (0.25 m/s, tilt 30°, yaw
-±60°). Data recorded through the simulated arm always stay inside these limits; data recorded by hand, in the optional handheld route,
-may not.
+A `!` means this source diagnostic found reachability below 98%, peak speed above 105% of its 0.25 m/s bound (0.2625 m/s), tilt above 30°, or yaw outside ±60°. These tolerances differ from requiring every pose to pass. An accepted controller target does not guarantee that the measured state sequence passes every diagnostic.
+
+**Frame assumption:** this unchanged checker creates a fixed `EpisodeFrame(TOOL_START_POS, TCP_DOWN_ROT)`. It does not read the dataset's `z_frame` or recover each original start pose. The collection command above uses the source default `start` height convention; start-pose noise can still change a replayed placement. Do not pass table-anchored or differently initialised data to it and interpret the result as a faithful physical replay. A correct frame-aware checker or explicit, recorded conversion is required before extending this diagnostic to those records.
 {% endstep %}
 
 {% step %}
@@ -174,7 +181,7 @@ Visibility and reachability are NOT assessed; geometric success alone does not a
 ```
 
 The script reads only numbers and finds two faults. The other three need the images and the reachability check.
-The answers are in `additional_material/data/pilot_push_cube_handheld/audit_reference.json`. Open it only after
+From the current `rebot_pusher/` working directory, the answers are in `../data/pilot_push_cube_handheld/audit_reference.json`. Open it only after
 you wrote your own.
 {% endstep %}
 {% endstepper %}
@@ -183,9 +190,11 @@ you wrote your own.
 
 ## Student activity
 
+For the core classroom response, inspect one supplied or newly recorded episode, make one accept/reject decision and complete its short contract. The complete five-episode collection and ten-episode fault audit below are the extended practice; finish them after class if needed.
+
 * [ ] **Collect:** record five teleoperated episodes of Push Cube in simulation.
 * [ ] **Inspect:** write the features, their shapes, the fps and `robot_type` of your dataset.
-* [ ] **Check:** replay your episodes. Do all of them reach 100 %?
+* [ ] **Check:** run the pose-sequence diagnostic. Report its assumed frame and reach fraction; does 100% IK success establish that the cube reached its target?
 * [ ] **Contract:** write a `README.md` for your dataset: task, scene, operator, date, height reference, rejects.
   Which items of the data contract of the class page does `info.json` not have?
 * [ ] **Audit:** accept or reject each of the ten pilot episodes, with one reason each. Then compare with
@@ -258,13 +267,11 @@ poses that the arm cannot reach. It warns when the start height is more than 2.5
 {% endstep %}
 
 {% step %}
-### Check it with the same audit
+### Inspect the record and establish a frame-aware check
 
-```bash
-uv run python scripts/check_handheld_dataset.py --root datasets/my_handheld
-```
+Inspect the images, feature names, units and the dataset card. Record that this handheld route uses table-anchored height by default. The earlier `check_handheld_dataset.py` command assumes a fixed start-anchored frame and cannot recover this convention from metadata. Do not interpret its raw output on this dataset as a matched reachability or replay result. The teaching team must supply a frame-aware check or a documented conversion with a validation record before comparing it with the simulated collection.
 
-Compare with your simulated data: which one has the robot's own limits in it?
+The recorder itself also performs its declared online checks. Distinguish those acquisition checks from a later, independently configured audit.
 {% endstep %}
 {% endstepper %}
 

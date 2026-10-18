@@ -177,12 +177,12 @@ The motor 0 declaration in the supplied H1 XML makes this mapping explicit:
          forcerange="-0.1551 0.1551" />
 ```
 
-The input itself is not clipped to ±0.1551: the example's reference sum can be 0.5143738 N m. The affine bias first subtracts the simulated position/velocity contribution; the force limit then bounds the resulting actuator output. Because `gear="1"`, its output has the same numerical value as the applied generalized joint torque. This explains why this input contract differs from Class 04's already bounded motor-effort input (MuJoCo developers n.d.-a, n.d.-b).
+The input itself is not clipped to ±0.1551: the example's reference sum can be 0.5143738 N m. The affine bias first subtracts the simulated position/velocity contribution; the force limit then bounds the resulting actuator output. Because `gear="1"`, its output has the same numerical value as the applied generalized joint torque. This is the same affine feedforward/feedback structure used by the current Class 04 source replay, and it differs from the direct-motor interface inspected in Class 03 (MuJoCo developers n.d.-a, n.d.-b).
 
 | Executable example | Meaning of the input slot | Where feedback is calculated |
 |---|---|---|
 | Class 03 XC330 motor | Generalized torque request | No embedded position servo in the supplied structural model |
-| Class 04 reduced motor | Already computed bounded controller effort | Python recomputes feedback from the simulated state |
+| Class 04 source replay | Position/velocity reference sum | Actuator affine bias subtracts simulated position/velocity |
 | Class 05 combined general actuator | Position/velocity reference sum | XML affine bias subtracts simulated position/velocity |
 
 **Worked input check.** Let the references be 0.3 rad and 0.2 rad/s, with simulated state 0.2 rad and 0.4 rad/s. Using the rounded coefficients actually present in the combined H1 XML,
@@ -388,6 +388,8 @@ These records support conditional prediction for their supplied inputs and earli
 
 ## Instructor and TA demonstration
 
+Complete the source experiment/controller and two-motor comparison below as the core demonstration. The final measurement/neural comparison is an optional extension; the prepared figures and saved tables support the complete core route.
+
 ### Establish the source experiment and controller boundary
 
 Use Figures 1–4 to identify one motor, moving fixture, physical record and combined-scene representation. Distinguish the campaign's declared 113 g fixture from the 110 g declaration in the current Class 03–04 source case; do not import the historical 98 g replay as evidence. Trace internal position/velocity references to the simulated response and scored encoder channel. Use the worked affine-actuator calculation to explain the input meaning; it is an equation-reading exercise, not a newly run scene test.
@@ -398,7 +400,7 @@ Use the event table and Figure 5 to count 125 shared events, 2,000 motor records
 
 Use Figure 8 to identify a fitted term, its physical units and its normalized plotted value. State one supported observation and one explanation that requires another measurement. Keep prediction discrepancy separate from command tracking and fitted armature separate from measured rotor inertia.
 
-### Compare measurement and learned-model evidence
+### Optional extension: compare measurement and learned-model evidence
 
 Use Figures 9–10 to identify what marker detection establishes and what an optical angle still needs. Apply the illustrative timing calculation. Finally, use Figures 11–12 and the eight-feature table to identify the earlier neural record, its surrogate output and its retained telemetry. Explain why the local full-trajectory MAE does not validate a sixteen-motor or command-only neural model.
 

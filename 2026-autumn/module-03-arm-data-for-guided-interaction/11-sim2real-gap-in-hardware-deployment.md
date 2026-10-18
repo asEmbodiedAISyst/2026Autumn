@@ -47,17 +47,16 @@ $$
 \big(\hat a_{t+1}, \dots, \hat a_{t+k}\big) = \pi_\theta(o_t, s_t)
 $$
 
-The actions are poses in the episode frame of Class 10. Before the network sees a state or an action, each value
-is normalised with the statistics of the training set, $$\bar x = (x - \mu)/\sigma$$. The values of $$\mu$$ and
-$$\sigma$$ come from `meta/stats.json` and are stored in the checkpoint.
+The actions are poses in the episode frame of Class 10. For the declared mean/std preprocessing, state/action features are
+normalised with statistics that must be computed on the training partition, $$\bar x = (x - \mu)/\sigma$$. The dataset stores statistics in `meta/stats.json`, and the checkpoint/preprocessor preserves the statistics used by the policy. Selecting 130 episodes for training does not by itself prove that an existing dataset-wide statistics file excludes the 20 held-out episodes; verify or recompute that partition before making a strict held-out comparison.
 
-### Three policies on the same data
+### Three policy families and their declared data variants
 
 | Policy | What it outputs | Chunk |
 | --- | --- | --- |
 | ACT (Zhao et al. 2023) | a chunk regressed with an L1 loss and a KL term (below) | 100 steps |
 | Diffusion Policy (Chi et al. 2023) | a sequence sampled by iterative denoising | configured observation, prediction and execution horizons; inspect the checkpoint |
-| SmolVLA (Shukor et al. 2025) | a chunk from a vision-language-action model that also reads the task string | 50 steps; approximately 150 ms per chunk on the course GPU |
+| SmolVLA (Shukor et al. 2025) | a chunk from a vision-language-action model that also reads the task string | 50 steps; source reports approximately 150 ms per chunk on its GPU setup |
 
 The source uses LeRobot training for all three, with declared physical and/or simulated dataset variants. The model configuration, learning schedule, horizon and preprocessing differ; changing only a policy-type name is not a complete matched training protocol. Training uses random brightness and contrast on the images, because the light on the bench changes.
 
@@ -251,10 +250,7 @@ A later rung does not repair a wrong earlier interface. Conversely, a failed rol
 
 *Figure 4. Offline replay of recorded actions in the model.*
 
-Sending the recorded actions of an episode back to the model reproduces the recording exactly (deviation below
-$$10^{-5}$$ degrees) when the logged object pose is restored. Without the object pose, the arm touches the cube
-elsewhere and the replay deviates by 0.42°. On the physical arm the same replay will deviate because of the
-dynamics. That deviation is **not measured yet**.
+In the retained source replay case, replaying the recorded actions with the matching initial object pose produced a joint-state deviation below $$10^{-5}$$ degrees. Omitting that object pose produced 0.42° deviation in the reported comparison. This is a reconstruction check for that configured model and record, not a general guarantee that all replay is exact. Physical replay would additionally test the apparatus, calibration, timing and dynamics; its deviation is **not measured in the supplied record**.
 
 ### Rung 3: open-loop prediction
 

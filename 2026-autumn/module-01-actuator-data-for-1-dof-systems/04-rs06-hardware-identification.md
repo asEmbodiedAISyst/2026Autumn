@@ -12,6 +12,17 @@ This source experiment uses the fixtures in the [RS06 digitization companion](03
 
 Unlike the XC330 replay, RS06 replay receives the **applied position command**, not logged inner position/velocity trajectories. Its CAD load family, fixed gains and error scores therefore belong to a separate experiment. Read the command, measured position and model output as three distinct signals.
 
+By the end of this class, you should be able to:
+
+- Identify the applied-command input, measured position and predicted output.
+- Compare integral regression and output-error fitting under one fixed controller.
+- Distinguish model discrepancy, command tracking and physical repeat variability.
+- Justify the limits of the held-out position claim and static-torque diagnostic.
+
+[Lecture](#the-experiment) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+
+The supplied hardware-episode summaries, parameter tables and source replay figures support the comparison. The activity reads the preserved evidence; it does not require a new fit, powered operation or torque calibration.
+
 ## The experiment
 
 The RS06 runs in position mode. The computer sends one position target every 20 ms (50 Hz) over CAN and records
@@ -224,7 +235,7 @@ An optional mechanics check uses the Class 03 CAD fixture inertia and the integr
 
 ## Source records
 
-The [RS06 identification package](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/rs06_identification/README.md) preserves the source experiment and prepared numerical example. Its [hardware record description](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/rs06_identification/hardware/README.md) documents the collected episodes, trajectory suites, static-gravity sessions and model sources.
+The six RS06 experiment figures above are retained from the source course record at revision `f7c118edaadc9f33498669736fa9d99160ff629a`. The [RS06 identification package](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/rs06_identification/README.md) preserves the source experiment and prepared numerical example. Its [hardware record description](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap/additional_material/rs06_identification/hardware/README.md) documents the collected episodes, trajectory suites, static-gravity sessions and model sources.
 
 | Need | Source result or implementation |
 |---|---|

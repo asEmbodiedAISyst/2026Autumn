@@ -14,6 +14,16 @@ This companion follows the RobStride RS06 source fixture from CAD to four frozen
 
 The RS06 load masses below are CAD-derived. They are not the XC330's accepted 110 g external assembly, and RS06 B1 and G1 do not even have equal external mass. Use the actuator identity and source model together whenever interpreting a configuration label.
 
+By the end of this class, you should be able to:
+
+- Compare fixture inertia and gravity first moment without treating them as the same property.
+- Trace the RS06 joint, mesh units and position-actuator input through the model.
+- Distinguish CAD-derived properties, manufacturer ratings and later fitted joint terms.
+
+[Lecture](#the-rs06-actuator) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+
+The supplied CAD renders, XML excerpt and saved model-load views support the comparison. They are source records; inspecting them does not claim a new physical measurement or model run.
+
 ## The RS06 actuator
 
 ![The RS06 outline and mounting dimensions, and the values of its user manual.](../resources/class03/figures/source/rs06/rs06_mechanical_reference.png)
@@ -29,6 +39,8 @@ The RS06 load masses below are CAD-derived. They are not the XC330's accepted 11
 | Mass | 621 g ± 3 g |
 | Supply | 48 V (15–60 V) |
 | Interface | CAN, 1 Mbit/s |
+
+These manufacturer ratings retain the manual’s operating and cooling conditions; the 11 N m figure is not a measured continuous capability of this fixture. [Class 02](02-actuator-basics-for-controlled-action.md#inspect-the-rs06-and-rs00-documentation) discusses the supplied manual revision and its unresolved cooling-dimension discrepancy.
 
 The RS06 is a quasi-direct-drive actuator: a brushless motor with field-oriented control, an encoder and a
 9 : 1 gear in one housing. The low gear ratio keeps the joint backdrivable, so the load and the friction of the
@@ -126,4 +138,4 @@ Using the four supplied configurations, submit a short comparison: identify one 
 
 ## Source records
 
-The [RS06 fixture package](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/rs06_fixtures/README.md) preserves the prepared example. The [vendor CAD](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/demonstration/rs06/RS06_vendor_motor.step) and [manufacturer user manual](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/demonstration/rs06/RS06_User_Manual_260713.pdf) support component and rating inspection. Frozen [G1](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/rs06_fixtures/model-sources/G1.xml), [B0](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/rs06_fixtures/model-sources/B0.xml), [B1](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/rs06_fixtures/model-sources/B1.xml) and [M0](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/rs06_fixtures/model-sources/M0.xml) models retain their source meshes and export records in the package. Keep the CAD property and export-report records with the model when reusing it.
+The RS06 CAD, manufacturer-reference and model-load illustrations above are retained from the source course fixture record, revision `f7c118edaadc9f33498669736fa9d99160ff629a`. The [RS06 fixture package](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/rs06_fixtures/README.md) preserves the prepared example. The [vendor CAD](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/demonstration/rs06/RS06_vendor_motor.step) and [manufacturer user manual](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/demonstration/rs06/RS06_User_Manual_260713.pdf) support component and rating inspection. Frozen [G1](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/rs06_fixtures/model-sources/G1.xml), [B0](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/rs06_fixtures/model-sources/B0.xml), [B1](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/rs06_fixtures/model-sources/B1.xml) and [M0](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment/additional_material/rs06_fixtures/model-sources/M0.xml) models retain their source meshes and export records in the package. Keep the CAD property and export-report records with the model when reusing it.

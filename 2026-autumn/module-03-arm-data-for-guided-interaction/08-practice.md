@@ -17,7 +17,6 @@ You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (App
 The setup below installs `uv` in a course-local `.course-tools` environment and class dependencies in a package-local `.venv`. It does not change a system Python installation. If `uv` is already available, the three `.course-tools` bootstrap lines may be skipped.
 
 
-
 Get the code and make the environment:
 
 ```bash
@@ -30,7 +29,15 @@ cd course-resources/class08_build_simple_arm/additional_material
 uv sync
 ```
 
-If you already have the course checkout, update it with `git pull --ff-only` before opening the class package.
+If you already have the checkout, start from its `rob7103/` root and update it with `git pull --ff-only`; do not clone another copy or recreate an existing `.course-tools` environment. Continue from the `export PATH` line, then enter this page's package directory. Each class has its own `.venv`; switching to another class package does not reuse its dependencies automatically.
+
+In every additional terminal, open the **same package directory** and expose the course-local `uv` command before running the examples:
+
+```bash
+export PATH="$(git rev-parse --show-toplevel)/.course-tools/bin:$PATH"
+```
+
+This line assumes the terminal is already inside the cloned repository. Omit it if your existing `uv` is already on `PATH`. Check `pwd` before using a relative data or output path.
 
 `uv sync` creates a package-local `.venv` with the declared MuJoCo and NumPy dependencies. Setup time depends on downloads and the platform.
 
@@ -80,13 +87,13 @@ ID  MJCF joint        LeRobot name   motor  MJCF range (deg)    soft limit (deg)
 ### Zero and home
 
 In the viewer, press `Z` for the zero pose and `H` for the home pose. In zero the arm is folded and the gripper
-points forward. In home the gripper points down, with the TCP at (0.25, 0, 0.10) m.
+points forward. In home the gripper points down, with the TCP at (0.25, 0, 0.10) m. These keys assign the simulated state and targets directly; they are pose resets, not physically executed paths or encoder calibration.
 {% endstep %}
 
 {% step %}
 ### Positive directions
 
-Open the Control group of the right panel. Move one slider at a time. Predict the direction before you move it.
+Open the Control group of the right panel. Move one slider at a time. Predict the direction before you move it. The viewer sliders use the model actuator ranges; they do not enforce every declared software bound. The separate bounded-motion script checks its requested excursions. Keep those two interfaces distinct.
 
 **Try:** an increasing target on joint 3 moves the elbow which way? Why can the model keep the URDF sign while
 the dataset multiplies this joint by −1?

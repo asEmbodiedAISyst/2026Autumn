@@ -16,7 +16,6 @@ You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (App
 The setup below installs `uv` in a course-local `.course-tools` environment and class dependencies in a package-local `.venv`. It does not change a system Python installation. If `uv` is already available, the three `.course-tools` bootstrap lines may be skipped.
 
 
-
 Training reads dataset videos through FFmpeg. Check that FFmpeg is available to the selected training environment before starting. On a shared computer, use a prepared isolated environment/container supplied by the teaching team rather than changing system packages. FFmpeg availability and the selected PyTorch backend are prerequisites to verify; the source recipe is not a guarantee of an already configured training machine.
 
 Get the code and make the environment:
@@ -31,13 +30,20 @@ cd course-resources/class11_sim2real_deployment/additional_material/rebot_pusher
 uv sync
 ```
 
-If you already have the course checkout, update it with `git pull --ff-only` before opening the class package.
+If you already have the checkout, start from its `rob7103/` root and update it with `git pull --ff-only`; do not clone another copy or recreate an existing `.course-tools` environment. Continue from the `export PATH` line, then enter this page's package directory. Each class has its own `.venv`; switching to another class package does not reuse its dependencies automatically.
+
+In every additional terminal, open the **same package directory** and expose the course-local `uv` command before running the examples:
+
+```bash
+export PATH="$(git rev-parse --show-toplevel)/.course-tools/bin:$PATH"
+```
+
+This line assumes the terminal is already inside the cloned repository. Omit it if your existing `uv` is already on `PATH`. Check `pwd` before using a relative data or output path.
 
 **macOS:** the commands of this page open no window. Train on the GPU of the Mac with `--policy.device=mps`
 instead of `--policy.device=cuda`; the training step gives both.
 
-Training needs a GPU: an NVIDIA GPU with CUDA, or the GPU of an Apple Silicon Mac (slower). The data generation and
-the evaluation also run on a CPU.
+The source gives CUDA and Apple-silicon MPS training commands. Backend support and performance must be checked with the installed environment; an Intel Mac has no MPS backend. CPU training is an available but slow optional route (`--policy.device=cpu`), not the planned classroom workload. Generation and evaluation can run on a CPU, while their offscreen renderer still needs a supported graphics backend.
 
 | Script | What it does |
 | --- | --- |
@@ -55,7 +61,7 @@ the evaluation also run on a CPU.
 
 A reported checkpoint result requires the matching checkpoint, preprocessing and configuration. If no ready checkpoint is distributed, this is a generation-and-training route; it is not a zero-training playback package. Do not replace missing weights with another policy while keeping the reported score.
 
-Generate the 300 simulated Push Cube demonstrations of Class 10 with the scripted expert (approximately 6 minutes):
+Generate the declared 300 simulated Push Cube demonstrations with the source scripted expert. The source reported approximately six minutes for its generation machine; allow preparation time rather than assuming this duration on a student laptop:
 
 ```bash
 uv run python scripts/generate_tool_demos.py --task push_cube --embodiment handheld --num-episodes 300 \
@@ -67,7 +73,7 @@ uv run python scripts/generate_tool_demos.py --task push_cube --embodiment handh
 | `--task push_cube` | the task: push the cube into the target  |
 | `--embodiment handheld` | who holds the tool in the demonstrations: the simulated hand (`pusher`: the simulated arm) |
 | `--num-episodes 300` | number of successful episodes to keep |
-| `--seed 20000` | seed of the first episode; each next attempt uses the next seed, so the same seed gives the same dataset |
+| `--seed 20000` | seed of the first episode; each next attempt uses the next seed, so seeds identify the attempted reset sequence under a fixed implementation |
 | `--repo-id local/sim_push_cube` | the LeRobot name of the dataset; `local/` means it stays on your computer |
 | `--root datasets/sim_push_cube` | the folder of the dataset |
 
@@ -78,7 +84,7 @@ done: 300 episodes (355 attempts, 55 discarded as unreachable for the arm), data
 ```
 
 This is the source recipe used in Class 10. Matching seeds alone does not guarantee identical episodes across changed simulator, code or dependency versions; retain those versions with the generated dataset. You can also train on the
-episodes that you recorded yourself in the Class 10 practice.
+episodes that you recorded yourself in Class 10, provided you replace `--dataset.root` and `--dataset.repo_id` with their actual values. Class 10 and Class 11 have separate package directories; a relative `datasets/...` path in one does not automatically refer to the other. Keep the action semantics and height reference with the chosen dataset.
 {% endstep %}
 
 {% step %}
@@ -116,8 +122,7 @@ uv run lerobot-train --dataset.repo_id=local/sim_push_cube --dataset.root=datase
 | `--batch_size=16` | number of samples per step |
 | `--save_freq=20000` | a checkpoint every 20k steps, in `checkpoints/020000/`, `040000/`, … and `last/` |
 
-60k steps take approximately 1 hour on an RTX 5090. For a short optional training exercise, the source suggests `--steps=5000`. Its decreasing loss would be a new observed optimisation result, not evidence that the 60k-step score has been reproduced. Keep full training outside the main classroom demonstration. On a Mac the training runs on
-the GPU of the Mac (`--policy.device=mps`), slower than on an NVIDIA GPU.
+The source reported approximately one hour for 60k steps on its RTX 5090 setup; this is a recorded planning estimate, not a verified runtime for every machine. For a short optional training exercise, the source suggests `--steps=5000`. Its decreasing loss would be a new observed optimisation result, not evidence that the 60k-step score has been reproduced. Keep full training outside the main classroom demonstration. The MPS command requests the Apple-silicon GPU; verify its kernel support before a long run. It is a supplied recipe, not evidence that this checkpoint has already been trained on the current Mac.
 
 **Look at:** the log prints `loss`, `l1_loss` and `kld_loss` at regular steps. A decreasing loss is necessary, but it
 does not show that the policy does the task.
@@ -170,7 +175,7 @@ The folder `outputs/eval/act_sim_push_cube/` has `results.json`, with the seed, 
 `ik_ok` and the final distance of every episode, and the videos of the first episodes: the phone image on the left,
 the scene on the right.
 
-Compare your result only after establishing the checkpoint/scene/executor identity. The source manuscript reports 62% for execution horizon $$n$$ = 10 on the arm, while a supplied source result file records32/50=64%; the class page retains that unresolved run-identity discrepancy. Fifty independent episodes give a standard error near 7 percentage points around this result; that is not a 95% interval. A rerun can differ, and an exact comparison also requires the same checkpoint, scene and seeds.
+Compare your result only after establishing the checkpoint/scene/executor identity. The source manuscript reports 62% for execution horizon $$n$$ = 10 and 56% for $$n$$ = 100 on the arm. The supplied file named `results_act_ip17_cube300_handheld_060000_pusher_n100.json` records 32/50 = 64%, but its JSON does not establish the executor or horizon. If the filename describes the same setting, the corresponding manuscript cell is 56% at $$n$$ = 100; a filename alone does not resolve the configuration identity. Do not treat the 62% and 64% values as a matched $$n$$ = 10 comparison. Fifty independent episodes give a standard error near 7 percentage points around this result; that is not a 95% interval. A rerun can differ, and an exact comparison also requires the same checkpoint, scene and seeds.
 
 **Try:**
 

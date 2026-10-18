@@ -25,11 +25,13 @@ By the end of this class, you should be able to:
 
 [Lecture](#start-with-the-hand-cube-and-task) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The supplied source figures, declared interface, worked calculations and recorded diagnostic patterns support the demonstration and activity. The [source support package](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2006%20%E2%80%94%20Learned%20in-hand%20cube%20reorientation/README.md) provides the available models, records and original simulation/physical videos, together with explicit missing-file notes. The active deployment bundle containing the checkpoint, bridge, training configuration and raw NPZ logs is referenced outside the source snapshot. The page therefore interprets the author's recorded evidence; it does not claim a fresh policy execution or require powered hardware.
+The supplied source figures, declared interface, worked calculations and recorded diagnostic patterns support the demonstration and activity. The [source support package](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2006%20%E2%80%94%20Learned%20in-hand%20cube%20reorientation/README.md) provides the available models, records and original simulation/physical videos, together with explicit missing-file notes. The active deployment bundle containing the checkpoint, bridge, training configuration and raw NPZ logs is referenced outside the source snapshot; the archived hand model also has missing mesh dependencies. The page therefore interprets the author's recorded evidence; it does not claim a fresh policy execution or require powered hardware.
 
 ## Start with the hand, cube and task
 
 The physical question is continuous rotation about the declared positive-Z direction while retaining the cube. There is no requested final orientation for the actor to match. A useful evaluation would measure rotation and retention over a declared interval, including drops, resets and manual assistance. Visible movement alone does not supply those measurements or a trial-success denominator.
+
+Before measuring signed progress, identify the frame whose Z axis defines the task and its positive direction. Clockwise motion in a camera image depends on viewpoint. The missing active task/configuration must establish that axis convention and the rotation/retention rule; the task name alone does not define a measurable success criterion.
 
 | Component | Source-declared contract |
 |---|---|
@@ -178,7 +180,7 @@ $$
 \end{aligned}
 $$
 
-This makes the one-step command lag explicit for the explanation. The source equation leaves part of the indexing ambiguous; the absent history implementation must confirm actual stacking, lag, normalization and reset initialization before checkpoint compatibility is asserted. Dimensional agreement alone is insufficient.
+This makes the one-step command lag explicit for the explanation. The source equation leaves part of the indexing ambiguous; the absent history implementation must confirm actual stacking, lag, normalization and reset initialization before checkpoint compatibility is asserted. It must also identify whether the preceding command is the raw actor target or the target after bridge limits, since clipping can make them differ. Dimensional agreement alone is insufficient.
 
 A history can reveal response lag or a change in joint loading. It cannot uniquely recover cube pose, contact force or slip. The actor outputs sixteen desired joint positions; the reported bridge separately clips joint ranges and limits each target increment to 0.05 rad. A desired target remains distinct from measured joint position, applied effort and actual object motion.
 
@@ -205,25 +207,31 @@ These are the source's reported design values, not an independently reconstructe
 
 Learning is useful because it can search across many contact, slip and recovery transitions instead of prescribing every finger change by hand. Training with varied friction, object pose, mass, actuator response and disturbances can seek a strategy that tolerates a range of modeled conditions. That explains the purpose of domain randomization; it does not establish which ranges this particular checkpoint used or prove robustness on the physical hand.
 
+In Figure 2, compare the reward panel with the separately labelled rotation-progress and fingertip-contact traces. Ask whether a changing reward is accompanied by sustained task progress. Read the legend before comparing magnitudes: several panels place quantities with different meanings on one vertical scale.
+
 ![Published PPO diagnostics for the continuous-rotation job](../resources/class06/figures/source/fig11_training_diagnostics_job16352.png)
 
 *Figure 2. Source PPO diagnostic figure for job 16352. Reward, rotation progress, contact fraction, episode/termination metrics and training throughput describe different aspects of learning. The report identifies an early, nonconverged case. This is a diagnostic record, not a physical rotation-success curve.*
 
-Low rotation progress, low fingertip-contact fraction and short episodes motivate examining the task and contact strategy rather than treating a running process as a learned capability. Reward alone does not establish retention or sustained rotation. The plot extends to roughly 700 iterations, while the report names `model_400.pt`; the checkpoint name does not establish where the full job stopped or which plotted interval selected that artifact. Raw metrics, metric definitions and selection records are needed for a more specific diagnosis.
+Low reported rotation progress, low fingertip-contact fraction and short episodes motivate examining the task and contact strategy rather than treating a running process as a learned capability. Reward alone does not establish retention or sustained rotation. A trace compressed near zero by a shared scale is not evidence that its value is exactly zero. The plot extends to roughly 700 iterations, while the report names `model_400.pt`; the checkpoint name does not establish where the full job stopped or which plotted interval selected that artifact. Raw metrics, metric definitions and selection records are needed for a more specific diagnosis.
 
 ## Inspect the simulation preview before the physical record
+
+The [original simulation preview (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2006%20%E2%80%94%20Learned%20in-hand%20cube%20reorientation/additional_material/evidence/videos/continuous_z_model400_preview_30s.mp4) accompanies the sampled frames below. Follow a fingertip and its contact with the cube through the intervening motion; keep this early-policy preview distinct from an autonomous-success benchmark. The link opens the original file page, where the recording can be downloaded for playback.
 
 Identify which digits appear to support the cube and which reposition. Then ask what the images can show without an independent numerical object-motion record.
 
 ![Source simulation filmstrip for continuous positive-Z rotation](../resources/class06/figures/source/fig06_simulation_continuous_z_sequence.png)
 
-*Figure 3. Twenty source frames sampled from the reported 30 s MuJoCo preview associated with `model_400`. They portray the simulated contact sequence under the source model. They are policy output for inspection; images are not actor inputs and the filmstrip is not a fresh rollout or a repeated-trial success estimate.*
+*Figure 3. Twenty source frames sampled from the reported 30 s MuJoCo preview associated with `model_400`. They portray the simulated contact sequence under the source model. These are rendered simulation observations, not actor inputs; the filmstrip is not a fresh rollout or a repeated-trial success estimate.*
 
 A coherent-looking sequence is useful for locating contacts and formulating a question. It cannot establish physical transfer. The hand scene, actor, observation history, initial state and object properties all belong to the rollout identity. The source preview is retained as its own evidence rather than replaced with another policy's successful animation.
 
 ## Read the physical trial and motor diagnostics
 
 ### Keep operator intervention visible
+
+Use the [original physical recording (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/Class%2006%20%E2%80%94%20Learned%20in-hand%20cube%20reorientation/additional_material/evidence/videos/rgb.mp4) to inspect what happens between the sampled frames. Locate manual contact or replacement before judging the motion as autonomous; the recording remains assisted evidence.
 
 ![Source physical-trial filmstrip with visible manual intervention](../resources/class06/figures/source/fig07_hardware_continuous_z_sequence.png)
 
@@ -232,6 +240,8 @@ A coherent-looking sequence is useful for locating contacts and formulating a qu
 The source title names the intended positive-Z task. The pixels also show manual touches or cube replacement, which must remain part of the interpretation. Video time, bridge elapsed time, startup and policy-active intervals need a common event/time record before they can be aligned. These camera images are documentary observations; they provide neither calibrated cube yaw nor a visual-error signal to the actor.
 
 ### Read the quantities actually plotted
+
+Read Figure 5 from top to bottom: current in mA, joint error in radians, sampled temperature in °C and computation time in milliseconds. Locate the configured-current and abort lines, then compare computation-time excursions with the nominal 50 ms interval. An image-based reading can identify a pattern; exact peaks and overrun counts require the underlying samples.
 
 ![Published motor-side deployment telemetry](../resources/class06/figures/source/fig08_measured_60s_safety_telemetry.png)
 
@@ -247,7 +257,7 @@ The source plotting script carries the latest finite temperature sample forward.
 
 *Figure 6. Source joint-tracking figure for four representative hardware-order joints during the reported 1,200-step run. Commands and reported positions are in radians. Agreement concerns the actuator/bridge response; it does not measure the cube's orientation, retention or autonomy.*
 
-Check names and ordering before interpreting a lag or a tracking difference. A correct target for the wrong named joint would undermine both control and diagnosis. The raw `q_hw`, `command_hw` and timestamps would permit a numerical tracking check; the figure alone does not reproduce that analysis.
+Check names and ordering before interpreting a lag or a tracking difference. Figure 6 names index, middle and ring PIP at hardware indices 2, 6 and 10, and thumb MCP at index 14. Locate those names in the order table, then compare one plateau and one changing-target interval. A correct target for the wrong named joint would undermine both control and diagnosis. The raw `q_hw`, `command_hw` and timestamps would permit a numerical tracking check; the figure alone does not reproduce that analysis.
 
 ![Published staged-run motor diagnostic summary](../resources/class06/figures/source/fig10_deployment_summary.png)
 
@@ -272,7 +282,7 @@ The source current panel also marks a configured 450 mA line. Settings, firmware
 The author describes a staged deployment route. Read it as the preparation and interpretation needed for this case, rather than evidence that every step has been independently reproduced.
 
 1. With torque disabled, verify motor IDs, bus device, baud rate, encoder convention and named joint order.
-2. Read the encoder pose and stage it as the initial target before enabling motion. This prevents a persisted goal from causing a startup jump.
+2. Read the encoder pose and stage it as the initial target before enabling motion, to avoid requesting a jump toward a persisted goal.
 3. Configure the declared mode, gains, velocity profile and current limit, then repeat the measured-pose/target check.
 4. Define the ramp from measured pose to the declared grasp and initialize history consistently from measured state.
 5. Evaluate a shadow pass with torque disabled, checking actor outputs and bridge conditions.
@@ -294,7 +304,7 @@ Use Figures 2–3 to distinguish the reported early training state from the simu
 
 ### Read the assisted physical record
 
-Use Figures 4–7 together. Identify visible manual intervention, one motor-response quantity and one timing limitation. Compare the quantities actually shown with the guard table. State which missing event or object-state record would distinguish assisted motion from autonomous rotation and motor execution from task success.
+Use Figures 4–7 together. Identify visible manual intervention, one motor-response quantity and one timing limitation. In Figure 6, connect a plotted hardware index to its named joint before discussing tracking. In Figure 7, compare the three stage labels and units without interpreting the bars as task outcomes. State which missing event or object-state record would distinguish assisted motion from autonomous rotation and motor execution from task success.
 
 ## Student activity
 
@@ -315,7 +325,7 @@ For the named-vector calculation, use canonical index targets `[0.30, −0.10, 0
 
 The natural next question is how to observe the cube itself. Calibrated fiducials or a validated visual pose estimator could provide object orientation, timestamps and uncertainty for evaluation. That measurement could distinguish intended rotation, slip, retention and manual intervention more clearly than motor telemetry alone.
 
-Class 07 develops the visual-measurement problem. For the actor studied here, such a measurement is initially an evaluation channel: it is not replacing a cube-pose input, because this actor has none. Feeding visual pose into control requires an explicitly changed observation/controller contract and its own validation.
+[Class 07](07-rotating-a-cube-with-visual-feedback.md) develops the visual-measurement problem. For the actor studied here, such a measurement is initially an evaluation channel: it is not replacing a cube-pose input, because this actor has none. Feeding visual pose into control requires an explicitly changed observation/controller contract and its own validation.
 
 ## References
 

@@ -114,7 +114,7 @@ Rod, plate and camera are at the same position relative to the rod tip in both p
 the pose of the rod tip. The STL files of both prints are in the class folder
 (`rebot_pusher/hardware/hand_tool.stl`, `robot_tool.stl`).
 
-### Why the two embodiments are interchangeable
+### Conditions for sharing demonstrations across embodiments
 
 | Condition | How it is met |
 | --- | --- |

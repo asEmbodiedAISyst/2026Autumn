@@ -80,7 +80,7 @@ the leader: the operator holds it like the gripper, and the gripper follows.
 
 ---
 
-## The asMagic app: an iPhone Pro with asMagic
+## An iPhone as the leader
 
 ### asMagic
 
@@ -290,11 +290,13 @@ teleoperation on the simulated arm.
 
 ### The source gripper recording and the pusher task
 
+The following source video is a gripper-interface recording with a real iPhone and the simulated arm. It illustrates the mapping and record contract, not the pusher task score. The class demonstration and practice use the source pusher script: an iPhone drives the simulated rod tip to push the black cube into the green target. The pusher script is already part of the source package; it is not a newly invented deployment.
+
 {% embed url="https://1750588168-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FCq8PJ6eHO7umpiGK34s5%2Fuploads%2Fgit-blob-6702971cb3f5f34868a0d0afff07075f7c82031a%2Fteleop-sim-iphone.mp4?alt=media" %}
 An iPhone with asMagic drives the simulated arm; front and side cameras of the scene (8 s).
 {% endembed %}
 
-The source video below is a gripper-interface recording with a real iPhone and the simulated arm. It illustrates the mapping and record contract, not the pusher task score. The class demonstration and practice use the source pusher script: an iPhone drives the simulated rod tip to push the black cube into the green target. The pusher script is already part of the source package; it is not a newly invented deployment.
+
 
 The gripper video shows an episode recorded with a real iPhone and the simulated arm. The video is made from the record:
 the recorded joint commands are sent again to the same model, and the two scene cameras are rendered. The
@@ -358,7 +360,7 @@ $$
 \text{motor target} = \text{action} \times [1, 1, -1, -1, -1, 1, 6]
 $$
 
-Thus `state.elbow_flex` and `action.elbow_flex` have opposite signs. The state is the observation before the
+Thus the elbow state and action use opposite sign conventions; their numerical values need not have opposite signs at every instant, for example during a reversal or large tracking error. The state is the observation before the
 action of the same frame is applied. Keep this alignment when constructing a supervised target: the action request and the response after its application belong at different points in a transition.
 
 ### A real episode
@@ -367,7 +369,7 @@ action of the same frame is applied. Keep this alignment when constructing a sup
 
 *Figure 5. Traces of an eight-second episode recorded with an iPhone.*
 
-This is the gripper episode shown in the source video above. It illustrates that interface only; the pusher route uses its own tool-tip pose and recording schema as developed in Class 10. The left panel shows the raw elbow channels, the middle panel the
+This is the seven-channel gripper episode shown in the source video above. It is not the Class 09 six-joint pusher diagnostic or the Class 10 nine-component tip-pose learning record. The left panel shows the raw elbow channels, the middle panel the
 same channels after the direction vector, the right panel the tracking lag of the first three joints: the state
 one frame later minus the target. The lag stays within 5°.
 
@@ -375,11 +377,9 @@ one frame later minus the target. The lag stays within 5°.
 
 ## The physical arm
 
-When teleoperation works in simulation, the same script drives the physical arm. It uses the same mapping, keys
-and record format, and drives the seven motors over CAN. The motor gains are 80 % of the vendor values, a 0.1 s
-filter smooths the joint targets, and each joint moves at most 2° per control period. The source reports
-11 physical pusher Push Cube episodes from 10 October 2026. This is retained development evidence, not a fresh class execution or an autonomous-policy success rate. The
-practice page shows a video of this run.
+The source supplies a **separate physical gripper script**, `teleop_rebot_rs_real.py`. It reuses the gripper mapping, keys and seven-channel record conventions, while replacing the simulation backend with seven CAN-connected motors. Its declared gains, 0.1 s target filter and 2° per-cycle joint bound belong to that physical gripper configuration. Agreement of the high-level interface is not a physical commissioning result.
+
+The physical **pusher** clip is another configuration: the gripper is removed, six arm motors carry the tool, and the source uses the Class 10 `rebot_pusher` package. The source reports 11 pusher Push Cube episodes from 10 October 2026; the practice page links its retained video. Those records are not a seven-motor gripper run, a new class execution or an autonomous-policy success rate. Physical operation remains optional teaching-team work after its own checks. The required classroom demonstration remains iPhone control of the simulated pusher.
 
 ---
 

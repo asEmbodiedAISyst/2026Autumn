@@ -14,7 +14,6 @@ You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (App
 The setup below installs `uv` in a course-local `.course-tools` environment and class dependencies in a package-local `.venv`. It does not change a system Python installation. If `uv` is already available, the three `.course-tools` bootstrap lines may be skipped.
 
 
-
 Get the code and make the environment:
 
 ```bash
@@ -27,7 +26,15 @@ cd course-resources/class09_teleoperation/additional_material
 uv sync
 ```
 
-If you already have the course checkout, update it with `git pull --ff-only` before opening the class package.
+If you already have the checkout, start from its `rob7103/` root and update it with `git pull --ff-only`; do not clone another copy or recreate an existing `.course-tools` environment. Continue from the `export PATH` line, then enter this page's package directory. Each class has its own `.venv`; switching to another class package does not reuse its dependencies automatically.
+
+In every additional terminal, open the **same package directory** and expose the course-local `uv` command before running the examples:
+
+```bash
+export PATH="$(git rev-parse --show-toplevel)/.course-tools/bin:$PATH"
+```
+
+This line assumes the terminal is already inside the cloned repository. Omit it if your existing `uv` is already on `PATH`. Check `pwd` before using a relative data or output path.
 
 **macOS:** the MuJoCo window must run under `mjpython`. The two teleoperation scripts open the window, so they
 run with `uv run mjpython`; the phone simulator keeps `uv run python`. The steps below give both.
@@ -49,10 +56,12 @@ Click the MuJoCo window first: the keys work when the window has the focus.
 
 | Key | Action |
 | --- | --- |
-| Space | start or pause; at every start the phone pose and the gripper pose become the references, and while paused the arm holds and you can move the phone freely |
-| Enter | open or close the gripper |
+| Space | Engage or pause the mapping; re-engagement stores the current phone and tool poses as references. |
+| Right arrow | Start recording; press again to stop and save the diagnostic episode. |
+| Left arrow | Discard the recording in progress. |
+| Enter | Gripper comparison only: open/close. The pusher has no gripper and reports that fact. |
 
-Close the window to quit.
+Close the window to quit. An active recording is saved on window closure; use the discard key first if you do not want to retain it.
 
 ---
 
@@ -91,13 +100,15 @@ uv run mjpython code/teleop_rebot_rs_pusher_sim.py --phone-ip <phone IP>   # wit
 After setup, start the phone simulator in a separate terminal if needed, or use the iPhone IP shown by asMagic Data Streaming. Switch AR Data on and keep the phone and computer on the same local network. Click the MuJoCo window for key input. Hold the phone in landscape, the back camera looking
 forward and down at the table, and press Space. The scene has the black cube and a green square to push it into.
 
+The two command lines in each operating-system tab are **alternatives**: run one local-publisher client or one iPhone client, not both. Replace `<phone IP>` with the address shown by the app; the angle-bracket text is not a literal shell argument.
+
 **Try:** with `fake_phone.py --pattern tilt` the phone only rotates. Watch the rod tip: it moves several
 centimetres while the phone stays in place.
 
 
 ### Demonstration and activity
 
-Predict one tool-tip direction before engaging. Press Space, move the phone slowly, and push the cube toward the green square. Pause and reposition the phone, then engage again. Stop AR Data briefly and inspect the hold message. Record what was requested, what moved and whether the cube reached the target; a streamed pose alone is not a task outcome.
+Predict one tool-tip direction before engaging. Press Space, move the phone slowly, and push the cube toward the green square. Pause and reposition the phone, then engage again. Stop AR Data briefly and inspect the hold message. Record what was requested, what moved and whether the cube reached the target; a streamed pose alone is not a task outcome. To keep a diagnostic episode, press Right arrow before the motion and again after it. The source writes `recordings/pusher/episode_000/` (then the next free index), including six joint state/action channels and front/side/phone images. This is the Class 09 diagnostic format, not the nine-component LeRobot learning format introduced in Class 10. The bridge does not automatically score a cube-goal success; identify the terminal observation yourself.
 
 ## Optional gripper interface comparison
 

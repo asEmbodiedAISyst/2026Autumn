@@ -24,6 +24,8 @@ By the end of this class, you should be able to:
 
 [Lecture](#what-vision-adds-to-the-manipulation-problem) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
+The supplied architecture and geometry figures, app screenshots and worked calculations support the core demonstration and activity. A live stream inspection is conditional on a configured original asMagic receiver. The source has not yet supplied a complete calibrated cube estimator connected to the Class 06 actor, so no powered hand operation or completed visual-control deployment is required.
+
 ## What vision adds to the manipulation problem
 
 ### A camera can evaluate a controller without controlling it
@@ -34,13 +36,13 @@ A calibrated visual estimate could answer questions that joint telemetry alone c
 
 **Visual feedback** goes further: information derived from images influences the next action. There must be a computational path from image capture through estimation and observation construction to a controller. A recording that is watched after the run is visual evidence, rather than a closed visual feedback loop.
 
-![Visual feedback architecture](../resources/class07/figures/source/visual-feedback-loop.png)
+![Prospective image-to-action feedback architecture](../resources/class07/figures/vision-loop-classroom.png)
 
-*Figure 1. The author's conceptual visual-feedback architecture. The estimation and controller connection describe the system to be established; they are not evidence that the Class 06 proprioceptive actor already accepts visual pose.*
+*Figure 1. Prospective visual-feedback architecture: image and capture time → pose estimation → frame and age checks → a compatible policy → actuation and contact → a new image. Trace the path that would make visual information affect an action. The current Class 06 actor does not implement this visual input path.*
 
 OpenAI et al. (2018), in *Learning Dexterous In-Hand Manipulation*, provide a reference system that combined learned dexterous manipulation, simulation randomization and a camera-based observation path on a Shadow Hand. Their robot, observations, training and evaluation must be considered together. The later Rubik's Cube work also involved reasoning about internal face permutations. Rotating a rigid cube and solving a puzzle are different tasks.
 
-Our Class 06 source instead studies continuous positive-Z rotation of a 58 mm, 85 g cube using joint-history feedback. Neither the hand's appearance nor letters on the cube make its actor interchangeable with OpenAI's policy or a goal-conditioned Playground actor.
+Our Class 06 source instead studies continuous positive-Z rotation of a 58 mm, 85 g cube using joint-history feedback. Its task, observations and evaluation differ from the Shadow Hand reference. A similar-looking hand or lettered cube does not establish a compatible policy interface.
 
 ### Two possible roles for an object-pose estimate
 
@@ -82,13 +84,13 @@ $$
 {}^HT_O={}^HT_C\,{}^CT_O.
 $$
 
-The rightmost map acts first. If the estimator observes a marker fixed to a cube face, include the known marker-to-object relationship:
+The rightmost map acts first. If the estimator observes a marker fixed to a cube face, include the known object pose relative to that marker:
 
 $$
 {}^HT_O={}^HT_C\,{}^CT_M\,{}^MT_O.
 $$
 
-A marker's origin on a face is not the cube center. The marker mounting and physical dimensions belong to the measurement model, just as link geometry belonged to the actuator fixture model in Class 03.
+A marker's origin on a face is not the cube center. Here $${}^MT_O$$ maps object-frame coordinates into marker coordinates; using its inverse would reverse that relationship. The marker mounting and physical dimensions belong to the measurement model, just as link geometry belonged to the actuator fixture model in Class 03.
 
 The inverse transform is
 
@@ -97,6 +99,8 @@ $$
 $$
 
 Negating translation without rotating it is not a general inverse. A moving phone also requires the camera-to-hand relationship at the relevant observation time; a fixed calibration applies only while the mounting relationship stays fixed.
+
+A device AR pose alone does not supply $${}^HT_C$$. Using it in this chain also needs the mounting transform between the tracked device and camera, a relation between the AR world and the hand, and compatible timestamps. Inspect those relationships before multiplying pose arrays returned by different systems.
 
 These are 4 × 4 maps for points and rigid-body pose. Featherstone's 6 × 6 spatial transforms act on motion or force vectors with declared ordering. Do not apply a point transform directly to an angular-first spatial wrench, and do not identify an image-based pose vector with a spatial velocity (Featherstone 2008).
 
@@ -120,7 +124,7 @@ Translation-only addition would give (0.30, 0.03, 0.40) m, a different physical 
 
 ![The same point in camera and hand coordinates](../resources/class07/figures/frame-chain-classroom.png)
 
-*Figure 2. Geometry of the analytical transform example, shown in the x–y plane. Camera +x points along hand +y. The diagram explains coordinates; it reports no camera experiment.*
+*Figure 2. Geometry of the analytical transform example, shown in the x–y plane. Locate the two origins, follow camera +x along hand +y, and read the same point relative to each origin. The diagram explains coordinates; it reports no camera experiment.*
 
 If a controller instead expects object pose in world W, an additional declared hand-to-world map is required:
 
@@ -191,11 +195,11 @@ Holding a pose estimate differs from holding an actuator command. An observation
 
 ![Original asMagic streaming interface](../resources/class07/figures/source/asmagic-app.png)
 
-*Figure 3. The author's original asMagic interface reference. Verify the installed version and enabled stream fields before using this setup; a screenshot is not a current packet-schema specification.*
+*Figure 3. The author's original asMagic interface reference: app icon, home page and Data Streaming panel. Locate AR Data, the displayed IP address and port 8000. These controls identify a stream setup; the screenshot does not establish a cube estimator or the current packet schema.*
 
 The author's Class 07 plan uses the original asMagic app to publish device AR pose, color images, depth and intrinsics over a network, with port 8000 stated in the plan. Availability and synchronization of these fields must be checked in the actual receiver. A phone's AR pose tracks the phone relative to its AR world; it does not directly track the cube in the hand.
 
-The source Class 09 practice provides the next concrete application of the phone stream: mapping device motion to a simulated arm's pusher target. That is phone-pose teleoperation. It is neither cube-pose estimation nor human-finger retargeting. Its supplied receiver and frame conventions must be inspected as implemented; a conceptual frame diagram is not evidence that every software package uses identical axes.
+The source [Class 09 practice](../module-03-arm-data-for-guided-interaction/09-practice.md#teleoperate-the-pusher-with-the-iphone) provides the next concrete application of the phone stream: mapping device motion to a simulated arm's pusher target. That is phone-pose teleoperation. It is neither cube-pose estimation nor human-finger retargeting. Its supplied receiver and frame conventions must be inspected as implemented; a conceptual frame diagram is not evidence that every software package uses identical axes.
 
 For this class, the source materials establish a stream-inspection and visual-feedback design discussion. They do not yet supply a complete calibrated cube estimator connected to the continuous-rotation actor. Keep that boundary visible when planning or presenting the demonstration.
 
@@ -205,7 +209,7 @@ A learning formulation begins with the available observations. One possible obse
 
 Training can randomize measurement delay, noise, visibility and dropout under declared distributions. Ground-truth simulator state can support rewards and evaluation without being secretly supplied as a visual observation. Randomization is a hypothesis about robustness; the resulting controller still needs held-out tests under meaningful conditions.
 
-Report accepted-pose accuracy and coverage alongside manipulation behavior. A tracker accurate on 70 of 100 required samples has 70% coverage; its error on accepted samples does not describe the 30 missing inputs. This is arithmetic illustrating an evaluation distinction, not a result from our setup.
+Report accepted-pose accuracy and coverage alongside manipulation behavior. A tracker returning accepted estimates for 70 of 100 required samples has 70% coverage. Accuracy must be evaluated separately on those accepted estimates; acceptance alone does not make them correct, and their error does not describe the 30 missing inputs. This is arithmetic illustrating an evaluation distinction, not a result from our setup.
 
 Human-hand retargeting is another problem: mapping observed landmarks to robot joints under different link lengths, joint axes and limits. DexPilot is a reference example on a different hand-arm system (Handa et al. 2019). It requires finger observations and a declared correspondence; an ordinary device-pose stream does not supply those observations automatically. Retargeting remains an optional direction rather than the required Class 07 implementation.
 
@@ -213,7 +217,7 @@ Human-hand retargeting is another problem: mapping observed landmarks to robot j
 
 ### Identify the observation boundary
 
-Use the Class 06 input definition and Figure 1. Locate where a camera currently records evidence and where an additional connection would be required for closed-loop visual control. State that the existing actor remains proprioceptive. Do not present an old pose-observing policy or a generated latency simulation as the source practical for this class.
+Use the [Class 06 input definition](06-learned-in-hand-cube-reorientation.md#history-provides-indirect-feedback) and Figure 1. Trace image → estimate → frame/age check, then identify the additional connection and compatible policy required for visual control. Compare that prospective path with the documentary camera in Class 06. State that the existing actor remains proprioceptive; the architecture is a design explanation, not a new policy demonstration.
 
 ### Inspect a configured stream
 
@@ -223,7 +227,7 @@ A viewpoint or occlusion comparison may be shown as an object-pose experiment on
 
 ### Work through the coordinate example
 
-Rotate the example point before adding translation. Locate the extra marker-to-cube and hand-to-world relationships that an implementation would need. Explain why a camera origin and a cube center cannot be treated as the same point.
+Use Figure 2 to predict the sign of each hand-frame coordinate, then rotate the example point before adding translation. Locate the extra object-to-marker and hand-to-world relationships that an implementation would need. Explain why a camera origin and a cube center cannot be treated as the same point.
 
 No powered hand control is required. If the receiver or calibrated estimator is unavailable, keep the session to the supplied interface figures, geometry and observation-contract analysis; record the missing component rather than claiming a completed live demonstration.
 
