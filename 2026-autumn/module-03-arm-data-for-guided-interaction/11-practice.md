@@ -1,12 +1,25 @@
 # Class 11 — Practice
 
-On this page you train a policy on the simulated Push Cube data of Class 10, run it on the simulated arm and read
-its results: rung 5 in simulation. The class page [Class 11](11-sim2real-gap-in-hardware-deployment.md) explains the pipeline, the evidence
-ladder and what the physical arm showed.
+The required activity on this page reads saved ACT results and success/failure recordings for Push Cube, then writes a bounded claim. The class page [Class 11](11-sim2real-gap-in-hardware-deployment.md) explains the pipeline, evidence ladder and separate physical failure reports. Generation, training and a new simulation evaluation are optional extended practice, available only after the matching checkpoint/environment and run record are verified.
+
+---
+
+## Required saved-record activity
+
+Use the retained [ACT simulation comparison and success/failure recordings](11-sim2real-gap-in-hardware-deployment.md#rung-5-in-simulation-act-on-push-cube), the [physical evidence summary](11-sim2real-gap-in-hardware-deployment.md#state-of-the-physical-evidence), and the supplied [50-episode result JSON](../resources/class11/practical/additional_material/data/videos/results_act_ip17_cube300_handheld_060000_pusher_n100.json). The [successful source recording](../resources/class11/recordings/source/act-push-cube-sim.mp4) and [failed source recording](../resources/class11/recordings/source/act-push-cube-sim-failure.mp4) are also distributed as files. You can complete this route without installing dependencies, collecting data, training or possessing a ready checkpoint.
+
+1. Read the saved result's `policy`, `task`, `success_rate` and episode entries. Count successes and all attempted episodes, including failures. Record 32/50 = 64% as the result in that file, and distinguish it from the manuscript's reported 62%/56% arm cells. Its path/filename does not establish the missing checkpoint bytes, embodiment, execution horizon or scene identity.
+2. Compare one retained successful and one failed source recording. State an observable failure and a separately labelled hypothesis. The lesson's failed video reaches the 450-step limit; do not assign it a particular JSON episode ID unless a matching record establishes that identity.
+3. Write a bounded ACT claim: task, training data as reported, checkpoint identity or explicit missing identity, scene, embodiment, action-chunk execution length, success rule, numerator/denominator and evidence rung. Mark unestablished settings as unknown. Contrast the saved simulation evidence with the separate physical 0/10 report; neither is a fresh run by you.
+4. Propose one controlled change and identify the settings/outcome record needed to test it. Predicting its effect completes this required activity; executing it is extended practice.
+
+Prepare one short claim and evidence table plus the proposed test for class discussion. A missing checkpoint is a limitation to state in that claim, not a reason to invent a fresh result.
 
 ---
 
 ## Set up
+
+This setup belongs to the optional executable route. The required saved-record activity above needs no installation.
 
 The code is the pusher package of the course, the same as in Class 10:
 [`2026-autumn/resources/class11/practical/additional_material/rebot_pusher/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class11/practical/additional_material/rebot_pusher).
@@ -53,7 +66,9 @@ The source gives CUDA and Apple-silicon MPS training commands. Backend support a
 
 ---
 
-## Train and evaluate in simulation
+## Optional: train and evaluate in simulation
+
+The following source recipe is extended practice. No ready matching checkpoint is included in this distribution. New evaluation requires either a verified checkpoint supplied by the teaching team or your separately trained checkpoint, its preprocessing/statistics/data identity, and a rehearsed isolated environment. A newly trained policy has its own identity and score; it does not inherit a historical source result. Until these prerequisites are met, use the required saved-record activity above.
 
 {% stepper %}
 {% step %}
@@ -135,6 +150,7 @@ does not show that the policy does the task.
 uv run python scripts/eval_policy.py \
     --policy-path outputs/train/act_sim_push_cube/checkpoints/last/pretrained_model \
     --task push_cube --embodiment pusher --episodes 50 --max-steps 450 --n-action-steps 10 \
+    --seed 100000 --delta-reference command --image-size 480x640 --device cpu \
     --video-dir outputs/eval/act_sim_push_cube
 ```
 
@@ -147,6 +163,8 @@ uv run python scripts/eval_policy.py \
 | `--max-steps 450` | time limit of an episode, in control steps at 30 Hz (450 = 15 s) |
 | `--n-action-steps 10` | actions executed from each predicted chunk before the policy looks again |
 | `--video-dir` | the folder of the results file and of the videos |
+
+Use a distinct output directory for each changed setting so later runs cannot overwrite earlier outcomes. This command explicitly selects CPU inference; another verified backend is an optional change and belongs in the run configuration. Save the configuration sidecar described below before running.
 
 The policy was trained on handheld demonstrations and now drives the tool on the arm. Each episode has a new
 layout of the cube and the target, with seeds from 100000, disjoint from the training seeds. The time limit is
@@ -169,6 +187,24 @@ This is a five-episode terminal excerpt retained in the source practice page. Th
 {% endstep %}
 
 {% step %}
+### Save the evaluation configuration alongside its outcomes
+
+The unchanged `eval_policy.py` writes `results.json` only when `--video-dir` is supplied. It saves the policy path, task, aggregate score and per-episode seed/outcome/steps/scalar metrics. It does **not** save embodiment, effective `n_action_steps`, maximum steps, delta reference, device, image size, scene/model identity or checkpoint digests. A path or filename alone cannot recover these settings later.
+
+Before a new evaluation, create a separate `run-config.json` or `run-config.md` in that run's output folder and retain it with `results.json`, terminal output and videos. Record:
+
+| Record | Required content |
+| --- | --- |
+| Source and environment | repository commit, package path, dependency lockfile digest, installed MuJoCo/LeRobot/PyTorch versions, actual device and renderer/backend |
+| Dataset and policy | training dataset identity/split and height/action convention; exact checkpoint directory; SHA256 of each weight, config, preprocessor/postprocessor and statistics file; camera-feature mapping |
+| Evaluation command | exact command and resolved values: task, embodiment, effective `n_action_steps`, `max_steps`, `delta_reference`, device, image size, first seed and complete seed list |
+| Simulator and executor | selected scene XML and digest of it plus its included XML/assets; action mode inferred from checkpoint output (9 = episode, 6 = delta); reset/start/noise rules; fps, limits and success/termination rule |
+| Outputs | run ID/date, complete attempted-episode denominator, output paths and any interruption or intervention |
+
+For the explicit command above, the declared settings are `push_cube`, `pusher`, 50 episodes, 450 steps, 10 actions per inference, seed 100000 through 100049, `delta_reference=command`, 480×640 images and CPU inference. Confirm that the loaded ACT configuration and environment actually use them. Use `sha256sum` on Linux or `shasum -a 256` on macOS for each retained input file; include the file paths with the digests. Copy the actual configuration/preprocessor files rather than recreating their contents from memory. The task chooses the embodiment-specific scene in `rebot_sim/tasks.py`; resolve that path and its dependencies in the checked-out revision.
+
+Do not backfill unknown historical settings as though they were logged. Without this sidecar, a new outcome file is an outcome record with incomplete run identity, not a complete reproduction protocol. The teaching team must verify one optional run with this record and a matching checkpoint before assigning fresh evaluation.
+
 ### Read the results
 
 The folder `outputs/eval/act_sim_push_cube/` has `results.json`, with the seed, the success, the number of steps,
@@ -188,10 +224,12 @@ Compare your result only after establishing the checkpoint/scene/executor identi
 
 ---
 
-## Student activity
+## Optional executable activity
 
-* [ ] **Run:** evaluate your policy on 50 episodes. Write the success rate and the setting ($$n$$, embodiment,
-  checkpoint).
+The [required saved-record activity](#required-saved-record-activity) is the common class deliverable. Complete this executable extension only after its checkpoint and environment prerequisites are met.
+
+* [ ] **Run:** evaluate your verified policy on 50 episodes, saving the configuration sidecar and every outcome. Write the success rate and the setting ($$n$$, embodiment,
+  checkpoint digest, scene, seeds and output record).
 * [ ] **Failure:** pick one failed episode in `results.json` and watch its video. Where does the motion stop, and
   what does the phone image show at that moment?
 * [ ] **One change:** propose one change (more data, more steps, another $$n$$) and predict its effect. Then run it.

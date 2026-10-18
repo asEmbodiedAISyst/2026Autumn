@@ -396,7 +396,7 @@ $$
 
 That is about 6.9 percentage points, not a 95% interval. A Wilson 95% interval is approximately 48.2–74.1%. Dependence between layouts, selected videos and repeated tuning can invalidate a simple independent-trial interpretation. Keep seeds, failed outcomes and the exact checkpoint rather than using a rounded score as its identity.
 
-A fresh run must save its checkpoint, scene, execution horizon and seed list. The source-score discrepancy described beside the ACT table prevents treating its reported cell values as a fully reconciled reproduction target.
+A fresh run must save its checkpoint, scene, execution horizon and seed list. The current evaluation writer saves outcomes and a policy path, but omits embodiment, execution length, horizon, device and model/checkpoint digests. Follow the [configuration-sidecar instructions](11-practice.md#save-the-evaluation-configuration-alongside-its-outcomes) before an optional new run; a result filename does not fill these gaps. The source-score discrepancy described beside the ACT table prevents treating its reported cell values as a fully reconciled reproduction target.
 
 ### An example claim
 
@@ -422,6 +422,8 @@ the demonstrations, the scene, the amount of physical data.
 The [vision-language model as the controller](11-vlm-controller-optional.md) is the second controller of the arm block. It
 needs no new task-specific demonstrations or policy training, so a project can compare it with a learned policy on the same task.
 
+The examples here are candidate starting points for a project, not automatic approval of its assessment scope. Confirm the simulation/physical scope and final demonstration plan with the instructor under the [course assessment guidance](../student.md#project-scope-and-assessment-guidance); the course overview currently specifies a physical prototype. A supported simulation result and an approved simulation-only final project are separate decisions.
+
 ### The project record
 
 The six worksheets of Classes 12–17 are Claim, Experience, System, Grounding, Learning and Decision. Without more
@@ -432,7 +434,7 @@ hardware, the baseline project uses simulation and an iPhone, and it reproduces 
 
 ## Instructor and TA demonstration
 
-Use [Class 11 practice](11-practice.md) to inspect the source Push Cube generation/training/evaluation route with ACT. Long training is preparation or optional work; demonstrate an existing source checkpoint only if its required files are actually supplied and verified. Otherwise use the retained source result tables and success/failure recordings, and present the training command as a recipe rather than a completed reproduction.
+Use the [required saved-record route in Class 11 practice](11-practice.md#required-saved-record-activity) to inspect the ACT results and success/failure evidence. The same page retains the optional source Push Cube generation/training/evaluation recipe. Long training is preparation or optional work; demonstrate an existing source checkpoint only if its required files are actually supplied and verified. Otherwise use the retained source result tables and success/failure recordings, and present the training command as a recipe rather than a completed reproduction.
 
 Compare one successful and one failed source rollout. Identify the checkpoint/configuration, embodiment, action-chunk execution length, seed, terminal distance and 450-step limit. Then compare the reported offline physical-data errors with the physical 0/10 rollout report. Ask why a low prediction error need not imply closed-loop success.
 
@@ -442,7 +444,7 @@ Diffusion Policy and SmolVLA provide conceptual and source-result comparisons. T
 
 Write a bounded ACT claim with the task, training data, checkpoint identity or explicit missing identity, scene, embodiment, execution horizon, episode denominator and success rule. Explain one failure using an observation and a separately labelled hypothesis. Propose one controlled change and the new record required to evaluate it. Do not claim a fresh rollout or hardware transfer from a saved video.
 
-For extended practice, evaluate the supplied or newly trained source policy on the unchanged seed protocol and retain every outcome. Report the exact numerator and denominator and compare matched settings only. The six project worksheets will carry these distinctions into claim, experience, system, grounding, learning and decision.
+For optional extended practice, evaluate only after a matching checkpoint, preprocessing and isolated environment have been supplied or separately prepared and rehearsed. Use the declared seed protocol, retain every outcome and save the configuration sidecar; no ready matching policy is currently included. Report the exact numerator and denominator and compare matched settings only. The six project worksheets will carry these distinctions into claim, experience, system, grounding, learning and decision.
 
 ## References
 

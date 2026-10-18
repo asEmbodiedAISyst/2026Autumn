@@ -4,7 +4,7 @@ layout:
   width: wide
 ---
 
-# 08 Let's Build a Simple Arm & Turn it On
+# 08 Arm commissioning and control in simulation
 
 ## Central question
 

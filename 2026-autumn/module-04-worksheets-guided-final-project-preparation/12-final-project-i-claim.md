@@ -43,6 +43,10 @@ For the 10% consolidated and updated project record, place your final signed cop
 
 The file above is the required worksheet submission. The [editable project record](../resources/project-workbook/project-record.md) is a working aid, not a second submission. Use the guidance below while doing your project work.
 
+## Confirm your project scope
+
+Confirm the proposed physical/simulation scope and final demonstration plan with the instructor, following the [course assessment guidance](../student.md#project-scope-and-assessment-guidance). A bounded simulation claim can be scientifically useful without automatically satisfying the final project's physical-prototype expectation. Record the agreed scope, remaining decisions and next feasible test on your Claim worksheet. Check the instructor's marking criteria as well as the submission checklist; evidence-support labels are not course marks.
+
 ## Reading and project guidance
 
 Choose one observable capability and state the conditions, measure and comparison that would test it. Keep two candidate claims, select the narrower one and identify the next feasible experiment. A planned test is acceptable; distinguish it from a result.

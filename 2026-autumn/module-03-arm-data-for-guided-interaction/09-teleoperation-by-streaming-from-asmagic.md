@@ -279,7 +279,7 @@ approximately 0.12 m because of the wrist limit. Tilt the phone to tilt the grip
 ### When the stream stops
 
 If no phone sample arrives for 0.25 s, the arm holds its last target and the log reports the loss. It continues
-when the stream comes back. A hold in the data is thus a reach limit or a stream loss, and the record says which.
+when the stream comes back. A hold can also follow an operator pause or a stationary request. The saved fields support a partial diagnosis: sample age indicates stale input and `blocked` records the controller's reach check, but neither field records engagement or a Space-key event. A fresh stream with a stationary target does not distinguish a pause from an engaged operator who is holding still.
 
 ---
 
@@ -326,13 +326,12 @@ the age of the sample that was used.
 
 A latest-sample receiver intentionally omits intermediate phone packets. Publication rate, controller rate and saved-frame rate are therefore different quantities. Let $$t_k^r$$ be the receiver timestamp and $$t_k^c$$ the control timestamp on a declared clock. Then $$\Delta t_k=t_k^c-t_{k-1}^c$$ describes the actual control interval and $$a_k=t_k^c-t_{\mathrm{sample}(k)}^r$$ describes receiver-side sample age. Neither measures the phone's full sensing-to-control delay unless the phone and receiver clocks are aligned.
 
-A nominal 60 Hz stream does not guarantee a new packet for every controller update. Check interval distributions, missing-frame indices, duplicate samples and holds. A blocked IK flag, stream-loss flag and operator pause have different causes even when the resulting target is stationary. Retain the distinction in the data.
+A nominal 60 Hz stream does not guarantee a new packet for every controller update. Check interval distributions, missing-frame indices, duplicate samples and holds. A blocked IK flag, stale sample and operator pause have different causes even when the resulting target is stationary. The current recorder has sample age and `blocked`, but no separate stream-loss, engagement or pause-event field. Keep a manual intervention record alongside the episode: episode ID, frame index or elapsed time, Space press/pause/re-engagement, AR Data switch or network interruption, and the observed response. Mark an unknown cause as unknown; do not infer an unrecorded event from stillness alone.
 
 ### What the recorder writes about time
 
-Every frame stores its wall-clock timestamp since the start of the recording, the age of the phone sample
-(`phone_age`) and the `blocked` flag. With these three columns you can measure the real control period and its
-jitter, and you can tell a stream loss from a reach limit.
+Every frame stores elapsed time from a monotonic clock, the age of the phone sample
+(`phone_age`) and the `blocked` flag. The metadata calls this elapsed timestamp wall-clock time; it is not a synchronised phone timestamp. These columns let you measure the recorded control interval and jitter, identify stale samples and inspect reach-check failures. They cannot identify every cause of a hold. Use the manual intervention record to interpret deliberate pauses and stream interruptions; if that record is missing, keep the ambiguity explicit. Adding an engagement field would require a separately versioned recorder and schema, rather than relabelling these historical records.
 
 ---
 

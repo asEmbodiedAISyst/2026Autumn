@@ -22,13 +22,13 @@
 
 ## Module 03: Arm Data for Guided Interaction
 
-* [08 Let's Build a Simple Arm & Turn it On](module-03-arm-data-for-guided-interaction/08-lets-build-a-simple-arm-and-turn-it-on.md)
+* [08 Arm commissioning and control in simulation](module-03-arm-data-for-guided-interaction/08-lets-build-a-simple-arm-and-turn-it-on.md)
   * [Practice: control the arm in simulation](module-03-arm-data-for-guided-interaction/08-practice.md)
   * [Optional: assembly guide](module-03-arm-data-for-guided-interaction/08-assembly-optional.md)
   * [Optional: power-on and zero](module-03-arm-data-for-guided-interaction/08-power-on-and-zero-optional.md)
 * [09 Teleoperation by Streaming from asMagic](module-03-arm-data-for-guided-interaction/09-teleoperation-by-streaming-from-asmagic.md)
   * [Practice: teleoperate the simulated pusher](module-03-arm-data-for-guided-interaction/09-practice.md)
-* [10 Collect Data for Reinforcement Learning](module-03-arm-data-for-guided-interaction/10-collect-data-for-reinforcement-learning.md)
+* [10 Collect Demonstrations for Robot Learning](module-03-arm-data-for-guided-interaction/10-collect-data-for-reinforcement-learning.md)
   * [Practice: record and audit pusher data](module-03-arm-data-for-guided-interaction/10-practice.md)
 * [11 Sim2Real Gap in Hardware Deployment](module-03-arm-data-for-guided-interaction/11-sim2real-gap-in-hardware-deployment.md)
   * [Practice: policy evidence and deployment checks](module-03-arm-data-for-guided-interaction/11-practice.md)

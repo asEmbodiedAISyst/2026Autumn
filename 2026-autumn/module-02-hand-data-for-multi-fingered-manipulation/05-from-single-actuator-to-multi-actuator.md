@@ -233,6 +233,8 @@ The source [event index](https://github.com/asEmbodiedAISyst/2026Autumn/blob/mai
 
 The label **synthetic_baseline** identifies a shared supplied parameter vector. It does not mean that a second hardware motor supplied the comparison trajectory. **hardware_fitted** identifies the selected effective model for each motor/controller pair. Both predictions are compared with the same encoder record.
 
+This comparison changes both hardware calibration and motor-specific parameterization. It establishes improvement of the selected per-motor fits over the supplied synthetic baseline; it does not isolate whether separate motor models are needed or outperform one shared hardware-calibrated model. That question needs a matched shared-fit/per-motor-fit comparison using the same data roles and held-out scoring. The present saved-record activity does not require new fitting.
+
 | Effective parameter | Shared baseline | Selected motor 0 / H1 |
 |---|---:|---:|
 | Armature, kg m² | 0.000998198 | 0.007187994 |

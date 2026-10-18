@@ -86,16 +86,24 @@ camera looking at the table in front of you; best, mount it in the handheld prin
 {% tabs %}
 {% tab title="Linux" %}
 ```bash
-uv run python scripts/teleop_real.py --robot sim --phone-ip <phone IP> --record --root datasets/my_sim_teleop --num-episodes 5
+uv run python scripts/teleop_real.py --robot sim --phone-ip <phone IP> --record \
+    --action-mode episode --fps 30 --z-frame start --start-x 0.33 --start-z 0.12 --no-start-noise \
+    --max-speed 0.25 --x-range 0.22,0.56 --y-range=-0.20,0.20 --z-min 0.003 --z-max 0.20 \
+    --max-yaw 60 --max-tilt 30 --root datasets/my_sim_teleop --num-episodes 5
 ```
 {% endtab %}
 
 {% tab title="macOS" %}
 ```bash
-uv run mjpython scripts/teleop_real.py --robot sim --phone-ip <phone IP> --record --root datasets/my_sim_teleop --num-episodes 5
+uv run mjpython scripts/teleop_real.py --robot sim --phone-ip <phone IP> --record \
+    --action-mode episode --fps 30 --z-frame start --start-x 0.33 --start-z 0.12 --no-start-noise \
+    --max-speed 0.25 --x-range 0.22,0.56 --y-range=-0.20,0.20 --z-min 0.003 --z-max 0.20 \
+    --max-yaw 60 --max-tilt 30 --root datasets/my_sim_teleop --num-episodes 5
 ```
 {% endtab %}
 {% endtabs %}
+
+These options select the lecture's simulation-controller bounds and the fixed nominal start used by the later pose diagnostic: x 0.22–0.56 m, y ±0.20 m, z 0.003–0.20 m, 0.25 m/s, yaw ±60° and tilt 30°. Angular speed remains the controller default, 2 rad/s. `--robot sim` by itself does not select these bounds: the teleoperation defaults are 0.15 m/s, x 0.10–0.65 m, y ±0.45 m, z up to 0.30 m and yaw ±80°. Keep the exact command, source revision, start/frame convention and any changed settings in the dataset contract. These classroom options describe simulation; they are not a physical commissioning instruction.
 
 The keys work in the MuJoCo window and in the terminal:
 
@@ -149,7 +157,7 @@ of each episode and the units.
 uv run python scripts/check_handheld_dataset.py --root datasets/my_sim_teleop
 ```
 
-The source checker decodes the **observed pose sequence**, solves inverse kinematics and estimates speed/tilt/yaw. It does not execute the logged actions through dynamics or reconstruct cube contact. Its terminal table has the following form; values depend on the recorded episode:
+The source checker decodes the **observed pose sequence**, solves inverse kinematics and estimates speed/tilt/yaw. It does not execute the logged actions through dynamics or reconstruct cube contact. It also does not test workspace-box membership, angular speed or the semantic correctness of `action`. Its terminal table has the following form; values depend on the recorded episode:
 
 ```
   ep frames  reach  peak speed  P95 speed  max tilt      yaw range
@@ -158,13 +166,13 @@ The source checker decodes the **observed pose sequence**, solves inverse kinema
 
 A `!` means this source diagnostic found reachability below 98%, peak speed above 105% of its 0.25 m/s bound (0.2625 m/s), tilt above 30°, or yaw outside ±60°. These tolerances differ from requiring every pose to pass. An accepted controller target does not guarantee that the measured state sequence passes every diagnostic.
 
-**Frame assumption:** this unchanged checker creates a fixed `EpisodeFrame(TOOL_START_POS, TCP_DOWN_ROT)`. It does not read the dataset's `z_frame` or recover each original start pose. The collection command above uses the source default `start` height convention; start-pose noise can still change the reconstructed placement. Do not pass table-anchored or differently initialised data to it and interpret the result as a faithful physical replay. A correct frame-aware checker or explicit, recorded conversion is required before extending this diagnostic to those records.
+**Frame assumption:** this unchanged checker creates a fixed `EpisodeFrame(TOOL_START_POS, TCP_DOWN_ROT)`. It does not read the dataset's `z_frame` or recover each original start pose. The collection command above explicitly uses `start`, the nominal (0.33, 0, 0.12) m start and `--no-start-noise`, so its episode-frame definition matches that diagnostic assumption. If you omit those settings, random start position/yaw or a changed start height changes the reconstructed placement. Do not pass table-anchored or differently initialised data to it and interpret the result as a faithful physical replay. A correct frame-aware checker or explicit, recorded conversion is required before extending this diagnostic to those records.
 {% endstep %}
 
 {% step %}
 ### Audit a pilot with faults
 
-The class folder has a pilot of ten handheld episodes, five of them with a fault. The audit script is in
+The class folder has a pilot of ten simulated handheld episodes. Five have a deliberately injected change; that count is not an acceptance target. The audit script is in
 `additional_material/code/`. Run it from the package folder, with the environment of the package:
 
 ```bash
@@ -180,9 +188,9 @@ ep06: 66frames; dt_ok=True; 0.600m/s; inside15mm=True; command speed exceeds dec
 Visibility and reachability are NOT assessed; geometric success alone does not accept a demonstration.
 ```
 
-The script reads only numbers and finds two faults. The other three need the images and the reachability check.
-From the current `rebot_pusher/` working directory, the answers are in `../data/pilot_push_cube_handheld/audit_reference.json`. Open it only after
-you wrote your own.
+The numeric script flags the truncated final recorded state and excessive command speed. It does not assess visibility, orientation or reachability and does not find every unacceptable demonstration. Compare the recorded source reachability metrics and inspect the images as separate evidence.
+
+After writing your decision, read [the acceptance interpretation](../resources/class10/practical/additional_material/data/pilot_push_cube_handheld/ACCEPTANCE.md), alongside `../data/pilot_push_cube_handheld/audit_reference.json` from the current working directory. The JSON preserves injected-fault labels, source outcomes and metrics; it does not contain a complete accept/reject verdict. Episode 3 has no injected fault but reachability 0.903, below 0.98. Six episodes already have a recorded gate failure under this interpretation; four are eligible for image/remaining-contract review, not automatically accepted. Do not force the rejection count to five.
 {% endstep %}
 {% endstepper %}
 
@@ -198,7 +206,7 @@ For the core classroom response, inspect one supplied or newly recorded episode,
 * [ ] **Contract:** write a `README.md` for your dataset: task, scene, operator, date, height reference, rejects.
   Which items of the data contract of the class page does `info.json` not have?
 * [ ] **Audit:** accept or reject each of the ten pilot episodes, with one reason each. Then compare with
-  `audit_reference.json`.
+  the acceptance interpretation and `audit_reference.json`; distinguish an injected fault from a gate failure and state any review still needed.
 
 ---
 
@@ -231,11 +239,11 @@ Put the cube and the goal there.
 {% endstep %}
 
 {% step %}
-### Touch the table, then start
+### Calibrate the keyboard session, then start each episode
 
-Hold the tool with the phone mounted, as the robot would hold it. Rest the rod tip on the table for one second,
-lift the tool to approximately 12 cm, the start height of the arm, and keep it still. The touch sets the zero of
-the height axis for this episode.
+The command above uses keyboard mode, without `--gesture`. At the initial calibration prompt, rest the rod tip on the table for one second, or press Enter while the tip is on the table to accept its current height. Wait for “Table height calibrated”. This sets the session's table-height reference.
+
+Lift the tool to approximately 12 cm, the arm's nominal start height, and keep it still. Press **Enter to start recording**, then push. After saving or discarding an episode, place the next cube/goal, return to the start pose and press Enter to start again. A touch between keyboard episodes does not invoke per-episode table sampling. If the ARKit reference drifts, stop and calibrate a new, separately identified recording session; keep both session IDs in the contract.
 {% endstep %}
 
 {% step %}
@@ -247,8 +255,7 @@ Push the cube into the goal in one smooth motion. The status line shows what the
 frame   45 | phone   56 Hz | displacement [-3.9 -10.7  12. ] cm | tilt  0.0 deg yaw   0.0 deg | robot can reach | jumps 0
 ```
 
-**Look at:** `robot can reach` tells you if the arm could follow your motion at this moment. Keep the tilt
-below 30° and the yaw within ±60°: these are the limits of the arm.
+**Look at:** `robot can reach` reports the online IK check for the mapped pose. It does not check dynamic tracking, collision/contact or camera visibility. Keep the measured motion within the intended 0.25 m/s, 30° tilt and ±60° yaw contract and record the workspace/frame convention. This recorder does not clip or reject every speed/orientation/workspace violation; it writes the next measured pose as `action`, rather than a controller-limited command.
 {% endstep %}
 
 {% step %}
@@ -275,11 +282,13 @@ The recorder itself also performs its declared online checks. Distinguish those 
 {% endstep %}
 {% endstepper %}
 
-With `--gesture --voice` you need no keyboard and no screen. A voice says each event and the next placement.
+### Optional gesture mode
+
+For gesture input, add `--gesture --voice` to the optional handheld command. Complete the same initial session calibration. Before **every** episode, rest the tip on the table for about 0.5 s, lift to the approximately 12 cm start pose, hold still for about 0.5 s, then move to start. This mode searches the last 30 s of still samples for the table touch; the touch must be at least 5 cm below the start. If it reports no touch, it keeps the previous height. Discard or explicitly flag such an episode for reference review. Voice announces events and placement; verify this optional interface before relying on operation without a keyboard or screen.
 
 | Gesture | Event |
 | --- | --- |
-| Rest the rod tip on the table, then lift the tool | the table touch: the zero of the height axis for this episode |
+| Rest the rod tip on the table, then lift the tool | per-episode table sample in gesture mode; a missing valid touch leaves the previous reference in use |
 | Rest the tool at the start pose, then move | the episode starts |
 | Lift the tip 8 cm and hold still for 0.7 s | the episode is saved |
 | Shake or twist the tool fast | the episode is discarded |

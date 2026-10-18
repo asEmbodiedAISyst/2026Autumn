@@ -17,6 +17,8 @@ No hardware operation is required.
 
 Answer:
 Synthetic baseline RMSE: 0.010119 rad
-Hardware-fitted RMSE:   0.005545 rad
+Hardware-fitted RMSE:   0.002743 rad
+
+These are position RMSE values over all 2,200 rows in the named file, giving equal weight to each row. Before rounding, the baseline is 0.01011925087655448 rad and the fitted value is 0.0027433228212922363 rad.
 
 The hardware-fitted replay is closer for this held-out episode. Plausible causes of the remaining error include unmeasured command-to-actuation delay, approximate effort scaling, interpolation of the logged inner reference, omitted compliance, or a friction model that does not include stiction and direction dependence. The episode alone does not identify which cause is dominant.

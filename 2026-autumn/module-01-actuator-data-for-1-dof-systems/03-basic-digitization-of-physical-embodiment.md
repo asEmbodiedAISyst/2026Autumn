@@ -284,7 +284,7 @@ The source fabrication example provides a [prepared H2D link 3MF](https://github
 
 ## Separate a successful load from a validated prediction
 
-The source validation program loads the five MJCF files and checks the platform, joint structure, range, actuator, collision declarations, moving mass and gravity signature. The saved views show that the exported models load. Compare the source M0/B0/B1/B2/G1 records below with their declared load arrangements.
+The source validation program loads the five MJCF files. Its `passed` field combines assertions for the declared platform mesh and visual geometry, one position/velocity degree of freedom, one actuator, the named joint’s ±90° limits, disabled collisions and the expected external-mass comparison. It also reports the joint axis and zero-control acceleration at a position of 0.4 rad for inspection; neither quantity is tested against an expected value in the pass decision. A pass therefore does not certify the intended axis, actuator type/gear/control limits or gravity response. The saved views show that the exported models load. Compare the source M0/B0/B1/B2/G1 records below with their declared load arrangements.
 
 ![Five source MJCF load checks](../resources/class03/figures/source/all-models.png)
 

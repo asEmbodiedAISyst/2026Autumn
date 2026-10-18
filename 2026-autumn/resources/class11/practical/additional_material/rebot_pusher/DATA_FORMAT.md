@@ -1,22 +1,18 @@
 # Data format of the pusher-tool datasets
 
-All datasets of this package are LeRobot v3 datasets at 30 fps with the features below. `record_handheld.py`
-(person with the handheld tool) and `teleop_real.py` (phone teleoperation of the arm) write the same features
-and, on the physical arm, the same `robot_type`. A policy can be trained on one of them or on both, if the two
-datasets use the same height convention (see "Height reference") and the same scene.
+The selected `episode`-mode datasets use LeRobot v3 at nominal 30 fps with the features below. `record_handheld.py` (physical handheld tool), `teleop_real.py` (phone teleoperation of the arm) and `generate_tool_demos.py` (scripted simulation) share feature names/shapes, but their action labels have different meanings. Identify the recorder, source revision, fps, frame/height convention, limits, scene and timing rule in the dataset contract. Equal features, `robot_type` or height convention alone do not make the routes interchangeable for training or merging. The optional `delta` mode has a different schema and is outside this nine-component contract.
 
 | Feature | Shape | Names | Content |
 | --- | --- | --- | --- |
 | `observation.images.phone` | 480 x 640 x 3, video | | Colour image of the phone on the tool |
 | `observation.state` | 9, float32 | `x, y, z, r11, r21, r31, r12, r22, r32` | Measured rod-tip pose at this frame, in the episode frame |
-| `action` | 9, float32 | the same | Rod-tip pose to reach at the next frame, in the episode frame |
+| `action` | 9, float32 | the same | Route-specific label in the episode frame: next measured pose for physical handheld recording; accepted controller target for teleoperation/scripted simulation (below) |
 | `task` | string | | `Push the black cube into the green target area.` (or the Push-T string) |
 
 `robot_type`: `rebot_pusher_tool_real` (handheld with a real phone, and the physical arm), `rebot_pusher_tool_sim`
 (`teleop_real.py --robot sim`), `rebot_pusher_tool_handheld` and `rebot_pusher_tool_robot` (simulated
 demonstrations). Datasets recorded before 10 October 2026 with the handheld recorder have
-`rebot_pusher_tool_handheld_real`; change it to `rebot_pusher_tool_real` in `meta/info.json` before a merge
-(`lerobot-edit-dataset --operation.type merge` needs the same fps, features and `robot_type`).
+`rebot_pusher_tool_handheld_real`. A merge tool may require equal fps, features and `robot_type`, but changing this label does not reconcile action/frame/timing semantics. Preserve the original metadata and document any separately versioned metadata migration before merging; verify the scientific contract as well as the tool's structural requirements.
 
 ## Pose encoding
 
@@ -30,7 +26,7 @@ Every episode has its own frame: x and y origin = rod-tip position at the first 
 the tool at the first frame, z = up (gravity); the z origin is given by the height reference below. The person and the robot each define it from their own start pose, so a
 handheld episode and a robot episode of the same motion give the same numbers without a calibration between
 the phone frame and the robot base. The only absolute reference is gravity, which ARKit and the robot base
-share. The action is an absolute target in this frame (no accumulation of tracking lag, unlike per-step deltas).
+share. The action is encoded as an absolute pose in this frame, rather than a per-step delta. Whether that pose is a measured successor or a commanded target depends on the recorder; the representation alone does not establish the label's timing or executor semantics.
 
 ## Height reference (`z_frame`)
 
@@ -46,10 +42,7 @@ makes the arm push 3 cm above the table. The first 150 physical handheld episode
 9.4 cm, and the first physical rollouts failed for this reason. With `table`, the height of the push does not
 depend on the start height.
 
-- `record_handheld.py` asks for one touch of the table at the start of a session (rod tip still on the table for
-  1 s, or Enter). In gesture mode, each episode also needs a touch of the table before its start, because the
-  ARKit position drifts by some centimetres within minutes. If the tip goes more than 5 mm below the table, the
-  table height is lowered.
+- `record_handheld.py` asks for a session table calibration (tip still for 1 s, or Enter accepting the current height). In default keyboard mode, lift to the start pose and press Enter again to start each episode; it does not resample table touches while waiting between episodes. In `--gesture` mode, each episode searches a 30-second still-sample history for a touch at least 5 cm below its start. If none is found, it warns and retains the previous reference. After a saved episode that goes more than 5 mm below the calibrated table, the estimate is lowered; this does not correct every drift direction. Record calibration mode, session identity and warnings.
 - `teleop_real.py --z-frame table` records in the table frame on the arm (the arm knows the table from its model).
 - `tools/anchor_z_to_table.py <dataset>` converts a `start` dataset: it estimates the table from the lowest point
   of each episode (minus the push height, 8 mm), writes `<dataset>_tablez` with `z_frame = table` in
@@ -71,14 +64,17 @@ depend on the start height.
   asMagic intrinsics of an iPhone 17 Pro).
 - Robot: joint angles are read from the motors; the tool pose comes from the forward kinematics of the model.
 
-## Software limits (the same for the person and the arm)
+## Action labels and limits by collection route
 
-Workspace box of the rod tip x 0.22 to 0.56 m, y plus or minus 0.20 m, z 0.003 to 0.20 m (teleoperation of the
-physical arm uses a wider box, see the script options); speed 0.25 m/s; angular speed 2 rad/s; rod tilt 30
-degrees; yaw plus or minus 60 degrees. A dataset stores the action after these limits, so a demonstration never
-contains a motion that the arm would clip. Handheld episodes are also checked for reachability with the IK of
-the arm while they are recorded (an episode with more than 2 % unreachable frames is not saved) and afterwards
-with `check_handheld_dataset.py`.
+| Route | What `action` stores | Limits and checks |
+| --- | --- | --- |
+| `generate_tool_demos.py`, simulation | `info["applied_action"]`: controller-limited target, paired with the pre-transition observation/state; embodiment-specific IK status/handling is separate | `default_tool_limits()`: workspace x 0.22–0.56 m, y ±0.20 m, z 0.003–0.20 m; linear speed 0.25 m/s, angular speed 2 rad/s, tilt 30°, yaw ±60° |
+| `teleop_real.py`, simulated or physical arm | `info["applied_action"]`: accepted target after controller limits/IK handling, not the next measured tip pose | CLI settings override defaults even with `--robot sim`: source defaults are x 0.10–0.65 m, y ±0.45 m, z 0.003–0.30 m, 0.15 m/s, yaw ±80°, tilt 30°; angular speed remains 2 rad/s |
+| `record_handheld.py`, physical handheld | the next measured tip pose, paired with the preceding measured state/image | No workspace/speed/tilt/yaw clipping. The source defaults reject a saved attempt with fewer than 10 transitions, any >3 cm inter-sample jump, or an online unreachable count above 2% of its transition-count denominator. A retained episode is not thereby a complete demonstration-acceptance pass. |
+
+The current [Class 10 practice collection command](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-03-arm-data-for-guided-interaction/10-practice.md#start-the-recorder) explicitly selects the simulation-controller limits, `episode` mode, nominal start pose, `--no-start-noise` and `z_frame=start`. Store the actual command/configuration with every new dataset. Other settings are separate declared routes, not automatically the same contract. `ToolPushEnv` records this target before its pusher IK result. Controller-target limits do not guarantee successful IK, identical measured motion, successful contact or valid physical deployment.
+
+The later `check_handheld_dataset.py` reads **observed states**, not `action`. It decodes them with a fixed `EpisodeFrame(TOOL_START_POS, TCP_DOWN_ROT)` and tests IK reach fraction ≥0.98, estimated peak linear speed ≤0.2625 m/s (105% of 0.25), tilt ≤30° and yaw within ±60°. It does not read `z_frame`, recover an episode's original start pose, test workspace membership/angular speed, execute logged actions through dynamics or assess visibility/contact/outcome. Default physical handheld data are table anchored, so this unchanged start-anchored checker is not a matched checker for them. Require a frame-aware checker or a documented conversion with validation before interpreting its output on such data. The online handheld IK check uses its selected height convention; it is a different acquisition check, not an independent full replay.
 
 ## Episode start pose and task
 

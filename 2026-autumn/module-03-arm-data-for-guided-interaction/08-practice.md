@@ -147,9 +147,9 @@ uv run mjpython code/controlled_motion.py --mode letters
 {% endtab %}
 {% endtabs %}
 
-The TCP draws the letters ROB 3 cm above the table at 0.04 m/s, with the gripper vertical. Inverse kinematics
-changes each TCP target into joint targets. The largest TCP tracking error is approximately 6 mm, because the
-position actuators lag behind a moving target. The red dots in the viewer are the drawn path.
+The TCP draws the letters ROB 3 cm above the table, with the gripper vertical. The script's `DRAW_SPEED = 0.04` m/s sets each segment's nominal duration from its distance; it is a nominal average-speed setting. Each target segment uses a half-cosine profile, which starts and ends at rest. Before rounding the duration to control steps, its peak commanded TCP speed is $$(\pi/2)\times 0.04\approx 0.063\,\mathrm{m/s}$$. The implementation uses an integer number of 30 Hz steps, with at least two steps per segment, so the sampled duration and peak commanded speed can differ from these nominal values.
+
+Inverse kinematics changes each commanded TCP position into joint targets. The simulated TCP position can lag behind that reference; the speed setting and calculated peak do not establish a measured physical speed. The source example reports a largest simulated TCP tracking error of approximately 6 mm. Compare your own run with that example. The red dots in the viewer trace the simulated TCP path.
 
 ![Joint 2 tracking during the example](../resources/class08/figures/source/joint2-tracking.png)
 

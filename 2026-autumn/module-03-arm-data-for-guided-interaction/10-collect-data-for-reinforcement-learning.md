@@ -4,7 +4,7 @@ layout:
   width: wide
 ---
 
-# 10 Collect Data for Reinforcement Learning
+# 10 Collect Demonstrations for Robot Learning
 
 ## Central question
 
@@ -12,7 +12,7 @@ layout:
 
 This class follows **push a cube with the pusher tool** from a task definition to an auditable demonstration dataset. The question is not how many frames we can save, but whether those frames preserve what a learner needs: observation, action, context, timing and outcome.
 
-Class 09 supplied the operator-to-tool mapping. Here we compare the source's scripted simulation, simulated-arm teleoperation and physical handheld/teleoperation records for that same pusher-cube task. Class 11 will train ACT and evaluate a policy on the declared dataset; a successful record and a successful learned policy are different forms of evidence.
+Class 09 supplied the operator-to-tool mapping. Here we compare the source's scripted simulation, simulated-arm teleoperation and physical handheld/teleoperation records for that same pusher-cube task. Class 11 uses saved ACT results for the required evidence exercise, with training and new evaluation as optional extended practice; a successful record and a successful learned policy are different forms of evidence.
 
 By the end of this class, you should be able to:
 
@@ -120,7 +120,9 @@ the pose of the rod tip. The STL files of both prints are in the class folder
 | --- | --- |
 | Matched camera-to-tip geometry | the camera is on the tool; compare actual views for occlusion and appearance |
 | Relative pose | each episode has its own frame (below); only gravity is shared by the phone and the robot |
-| Same limits | workspace box, 0.25 m/s, rod tilt 30°, yaw ±60°; the dataset stores the action after the limits |
+| Declared executor limits | simulation-controller contract: tip workspace x 0.22–0.56 m, y ±0.20 m, z 0.003–0.20 m; linear speed 0.25 m/s, angular speed 2 rad/s, rod tilt 30°, yaw ±60° |
+
+The scripted simulation expert stores controller-limited targets. The assigned simulated-arm teleoperation command on the [practice page](10-practice.md#start-the-recorder) explicitly selects those limits; `--robot sim` alone retains the script's different teleoperation defaults. Physical handheld recording does not clip measured poses to this contract: its next-pose labels require a separate executability audit. Equal limits are a condition to establish when sharing demonstrations, not a property guaranteed by equal field names. The supplied later checker diagnoses observed-pose reachability, speed, tilt and yaw; it does not test workspace membership, angular speed or contact dynamics.
 
 ### The episode frame
 
@@ -277,9 +279,9 @@ An unusually long or short pusher-cube episode can indicate a stall, truncation,
 
 *Figure 7. Audit of the pilot dataset.*
 
-The pilot of this class has ten handheld Push Cube episodes, and five of them have a fault: facing away (two
-episodes), a truncated recording, a raised speed limit and a removed yaw limit. Frames per episode, visibility and
-reachability find them. The answers are in `audit_reference.json`. Open it only after you wrote your own.
+The pilot contains ten **simulated handheld** Push Cube episodes. Five episodes have deliberately injected changes: facing away (two episodes), truncation, a raised speed limit and a removed yaw limit. The historical `audit_reference.json` records the injection label and source metrics; `fault: none` means no injected change, not acceptance. For example, episode 3 has `fault: none` but only 0.903 robot reachability, below the 0.98 diagnostic gate.
+
+Use the [pilot acceptance interpretation](../resources/class10/practical/additional_material/data/pilot_push_cube_handheld/ACCEPTANCE.md) after writing your own decision. It separates injection identity, outcome and diagnostic gates, and identifies image review still needed for a full acceptance decision. There is no rule that exactly five episodes must be rejected. The retained pilot values are existing source simulation records, not new physical measurements or a newly collected dataset.
 
 ### A numeric pass is only one part of acceptance
 
@@ -308,7 +310,7 @@ The two routes can share field names while differing in noise, visibility, reset
 | A — Handheld | a person holds the handheld print with the phone; no robot is necessary | 150 Push Cube episodes |
 | B — Teleoperation | a second phone drives the arm with the robot print | 11 Push Cube episodes |
 
-Both routes write the same features and the same `robot_type`. Thus `lerobot-edit-dataset` can merge them.
+Both routes write the same features and the same `robot_type`, which can satisfy part of a merge tool's structural requirements. Before merging, also establish matched fps, scene, height reference, action-label meaning and timing, and record the participant/session split. A next-measured-pose handheld label and an accepted teleoperation target remain different definitions even when a tool permits the files to be joined.
 
 ### The height reference and the table touch
 
@@ -317,10 +319,9 @@ Both routes write the same features and the same `robot_type`. Thus `lerobot-edi
 | `table` | the table | the handheld recorder (default) |
 | `start` | the rod tip at the first frame of the episode | the teleoperation script (default), older handheld data |
 
-Before each handheld episode the operator rests the rod tip on the table, lifts the tool and starts. The recorder
-takes the lowest still height in the 30 s before the start as the table height. This height must be at least
-5 cm below the start height. The touch is repeated for each episode, because the ARKit position drifts by some centimetres
-within minutes. Do not mix the two conventions in one training set.
+Calibration depends on the selected input mode. In the default **keyboard mode**, the recorder calibrates the table once at the beginning of the session: rest the tip for one second or accept its current height with Enter. Lift to about 12 cm, then press Enter again to start each episode. Touching the table while waiting between keyboard episodes does not run the per-episode calibration branch. The estimate can be lowered after a saved episode that went more than 5 mm below it; this is not a general drift correction. Restart and calibrate a new, separately identified session if the reference has drifted.
+
+With **`--gesture`**, rest the tip on the table before each episode, then lift to the start pose, hold still and move to start. That branch searches its 30-second still-sample history for a table touch at least 5 cm below the start. If none is found, it warns and reuses the previous table height; record that warning rather than treating the episode as freshly calibrated. The [optional handheld practice](10-practice.md#optional-physical-handheld-collection) gives separate keyboard and gesture procedures. Do not mix height conventions in one training set.
 
 ### What the phone saw
 

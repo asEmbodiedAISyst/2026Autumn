@@ -11,6 +11,6 @@ Keep the evolving record in the team project repository. Complete one worksheet 
 |16|Learning|How data, adaptation or policy/model learning changes behaviour; splits, baselines, tests and failure evidence|
 |17|Decision|What the evidence supports, remaining limits, next experiment and justified project decision|
 
-A simulation project can make a supported simulation claim. Missing hardware evidence does not automatically invalidate that claim. Distinguish planned, observed and independently verified evidence. Do not replace worksheet evidence with a deployment ladder or assume all teams must execute hardware.
+A simulation project can make a supported simulation claim. Missing hardware evidence does not automatically invalidate that claim. Distinguish planned, observed and independently verified evidence. Do not replace worksheet evidence with a deployment ladder. The scientific scope of a simulation claim and the assessment eligibility of a simulation-only project are separate questions. Confirm the approved project scope and demonstration plan with the instructor; follow the [course assessment guidance](../../../../../student.md#project-scope-and-assessment-guidance). This working template does not grant an exemption from the published physical-prototype expectation or impose a live hardware demonstration on every team.
 
 Classes18–20 prepare the poster, code and video. The assessed commit, results, dependencies and media belong in the team repository. Confirm deadlines against the current course schedule; this template does not establish new dates.

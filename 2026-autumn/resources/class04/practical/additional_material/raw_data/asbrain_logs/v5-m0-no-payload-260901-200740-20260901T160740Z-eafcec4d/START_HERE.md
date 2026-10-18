@@ -1,6 +1,6 @@
 # START HERE — M0 XC330 experiment
 
-This folder is the record of the M0 motor campaign. When camera capture succeeds, synchronized iPhone evidence is kept alongside the motor measurements.
+This folder distributes retained motor records from the M0 campaign. The original campaign also reported synchronized iPhone capture; that original capture report and this release’s contents have different scopes.
 
 ## What was installed
 
@@ -9,7 +9,7 @@ This folder is the record of the M0 motor campaign. When camera capture succeeds
 - Moving mass declared for this run: 0 g.
 - Experiment zero is measured encoder tick 2048 ±5 under torque; M0 uses the standard zero/recenter path and never G1's torque-off gravity-rest rule.
 
-## Run status
+## Original run status
 
 - Collection status before independent verification: **complete**.
 - Campaign error: none.
@@ -18,59 +18,62 @@ This folder is the record of the M0 motor campaign. When camera capture succeeds
 - M0 captured design: H1/H2 only; 2 pilots and 18 calibration episodes (P01-P03 x H1/H2 x R01-R03).
 - M0 has no P04/P05 model-selection or P06 held-out sessions; the design contract excludes model selection from M0.
 
-## Where to look
+## Distribution scope
 
-- episode-summary.csv: one-row-per-episode motor and media summary.
-- episodes/: full command, telemetry, zero-acquisition, register, and episode manifest data.
-- HOST_PREFLIGHT.json: read-only U2D2 latency-timer evidence.
-- VERIFICATION.json: per-run independent verification report.
-- inventory.sha256: hashes every retained artifact, including VERIFICATION.json.
+This release retains 21 episode rows and matching episode directories, including 1 preparation/recentring record. It includes motor commands, telemetry, zero-acquisition records, control-register snapshots and episode manifests.
 
-## Camera capture result
+The campaign-local `media/` tree is **not distributed** here: the full labeled/unlabeled videos, episode videos, camera JPEG/depth/AR records, keyframes, snapshots, visual index and full-video frame/chapter maps are absent. The original `inventory.sha256` is also absent. Camera paths and inventory references inside retained source reports describe the original archive; they are not links to supplied files or a completeness check of this export.
 
-- Status: **complete**.
-- Episode media sessions: 20/20.
+### Available teaching records
 
-### Full experiment viewing copies
+- [Current Class 04 lesson](../../../../../../../module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md): worked explanation and saved-record activity.
+- [Selected B1/H2/P06/R01 clip](../../../../../recordings/source/b1-h2-p06-heldout.mp4): one available teaching record, not full visual coverage of this M0 campaign.
+- [Paired B1/H2/P06/R01 samples](../../../data/minimal_heldout_episode_B1_H2_P06_R01.csv.gz), [held-out episode scores](../../../results/held_out_results.csv) and [overall held-out result](../../../results/overall_heldout_result.csv): the supplied numerical comparison.
 
-- Full-video status: **complete**.
-- Full labeled video: [open labeled video](media/video/260901-200740_M0_full-experiment-labeled.mp4).
-- Full unlabeled video: [open unlabeled video](media/video/260901-200740_M0_full-experiment-unlabeled.mp4).
-- Full-video frame map: media/video/260901-200740_M0_full-experiment-frame-map.csv.
-- Full-video chapter map: media/video/260901-200740_M0_chapters.csv.
-- Presentation: on the labeled copy, episode and phase labels are burned into the frames; the paired unlabeled copy has no overlays. There is no audio track; inter-episode gaps are omitted.
-- Visual index: media/index.html.
-- media/episodes/: one plainly named folder per motion episode.
-- Each episode has a timestamp-prefixed labeled video and a matching timestamp-prefixed unlabeled video (derived, no audio).
-- media/episodes/*/keyframes/: four event-aligned images: before motion, experiment zero/profile start, motion finished, and torque disabled.
-- media/episodes/*/snapshots/: a separate timestamp-prefixed pre-motion photograph; it is not counted as a phase keyframe.
-- media/episodes/*/raw/color_frames/: exact JPEG frames received from the iPhone; these are primary evidence.
-- media/episodes/*/raw/depth_frames/: received uint16 depth arrays.
-- media/episodes/*/raw/<number>_<scene>_ar.csv: authoritative iPhone time, host wall time, host monotonic time, pose, and camera intrinsics. raw/ar.csv is only a compatibility symlink.
+## Retained source records
 
-Retain the JPEGs, depth arrays, CSV tables, and inventory with every derived MP4.
+- [Episode summary](episode-summary.csv): one row per motor episode; its camera fields retain original-capture metadata.
+- [Run manifest](run.json): original apparatus/protocol and run identities.
+- [Method and results](M0_METHOD_AND_RESULTS.md): original campaign interpretation.
+- [Host timing preflight](HOST_PREFLIGHT.json): recorded read-only U2D2 latency-timer evidence.
+- [Original verification report](VERIFICATION.json): checks of the original archive, including camera files that are absent from this release. Its saved pass is not a new verification of release completeness.
+- [Position-counter canonicalization](position-counter-canonicalization.json): original conversion record.
 
-## Episode guide
+## Original camera-capture report
 
-| # | Friendly name | Robot result | Media folder | Labeled video | Unlabeled video |
-|---:|---|---|---|---|---|
-| 1 | H1 low-amplitude safety pilot | complete | media/episodes/260901-200740_H1-M0-PILOT_01-h1-safety-pilot | [open](media/episodes/260901-200740_H1-M0-PILOT_01-h1-safety-pilot/video/260901-200740_H1-M0-PILOT_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H1-M0-PILOT_01-h1-safety-pilot/video/260901-200740_H1-M0-PILOT_experiment-unlabeled.mp4) |
-| 2 | H2 low-amplitude safety pilot | complete | media/episodes/260901-200740_H2-M0-PILOT_02-h2-safety-pilot | [open](media/episodes/260901-200740_H2-M0-PILOT_02-h2-safety-pilot/video/260901-200740_H2-M0-PILOT_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H2-M0-PILOT_02-h2-safety-pilot/video/260901-200740_H2-M0-PILOT_experiment-unlabeled.mp4) |
-| 3 | H1 slow triangle motion, calibration repeat 01 | complete | media/episodes/260901-200740_H1-M0-P01-R01_03-h1-slow-triangle-repeat-01 | [open](media/episodes/260901-200740_H1-M0-P01-R01_03-h1-slow-triangle-repeat-01/video/260901-200740_H1-M0-P01-R01_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H1-M0-P01-R01_03-h1-slow-triangle-repeat-01/video/260901-200740_H1-M0-P01-R01_experiment-unlabeled.mp4) |
-| 4 | H2 slow triangle motion, calibration repeat 01 | complete | media/episodes/260901-200740_H2-M0-P01-R01_04-h2-slow-triangle-repeat-01 | [open](media/episodes/260901-200740_H2-M0-P01-R01_04-h2-slow-triangle-repeat-01/video/260901-200740_H2-M0-P01-R01_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H2-M0-P01-R01_04-h2-slow-triangle-repeat-01/video/260901-200740_H2-M0-P01-R01_experiment-unlabeled.mp4) |
-| 5 | H1 multisine motion, calibration repeat 01 | complete | media/episodes/260901-200740_H1-M0-P02-R01_05-h1-multisine-repeat-01 | [open](media/episodes/260901-200740_H1-M0-P02-R01_05-h1-multisine-repeat-01/video/260901-200740_H1-M0-P02-R01_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H1-M0-P02-R01_05-h1-multisine-repeat-01/video/260901-200740_H1-M0-P02-R01_experiment-unlabeled.mp4) |
-| 6 | H2 multisine motion, calibration repeat 01 | complete | media/episodes/260901-200740_H2-M0-P02-R01_06-h2-multisine-repeat-01 | [open](media/episodes/260901-200740_H2-M0-P02-R01_06-h2-multisine-repeat-01/video/260901-200740_H2-M0-P02-R01_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H2-M0-P02-R01_06-h2-multisine-repeat-01/video/260901-200740_H2-M0-P02-R01_experiment-unlabeled.mp4) |
-| 7 | H1 smooth-level motion, calibration repeat 01 | complete | media/episodes/260901-200740_H1-M0-P03-R01_07-h1-smooth-levels-repeat-01 | [open](media/episodes/260901-200740_H1-M0-P03-R01_07-h1-smooth-levels-repeat-01/video/260901-200740_H1-M0-P03-R01_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H1-M0-P03-R01_07-h1-smooth-levels-repeat-01/video/260901-200740_H1-M0-P03-R01_experiment-unlabeled.mp4) |
-| 8 | H2 smooth-level motion, calibration repeat 01 | complete | media/episodes/260901-200740_H2-M0-P03-R01_08-h2-smooth-levels-repeat-01 | [open](media/episodes/260901-200740_H2-M0-P03-R01_08-h2-smooth-levels-repeat-01/video/260901-200740_H2-M0-P03-R01_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H2-M0-P03-R01_08-h2-smooth-levels-repeat-01/video/260901-200740_H2-M0-P03-R01_experiment-unlabeled.mp4) |
-| 9 | H2 slow triangle motion, calibration repeat 02 | complete | media/episodes/260901-200740_H2-M0-P01-R02_09-h2-slow-triangle-repeat-02 | [open](media/episodes/260901-200740_H2-M0-P01-R02_09-h2-slow-triangle-repeat-02/video/260901-200740_H2-M0-P01-R02_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H2-M0-P01-R02_09-h2-slow-triangle-repeat-02/video/260901-200740_H2-M0-P01-R02_experiment-unlabeled.mp4) |
-| 10 | H1 slow triangle motion, calibration repeat 02 | complete | media/episodes/260901-200740_H1-M0-P01-R02_10-h1-slow-triangle-repeat-02 | [open](media/episodes/260901-200740_H1-M0-P01-R02_10-h1-slow-triangle-repeat-02/video/260901-200740_H1-M0-P01-R02_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H1-M0-P01-R02_10-h1-slow-triangle-repeat-02/video/260901-200740_H1-M0-P01-R02_experiment-unlabeled.mp4) |
-| 11 | H2 multisine motion, calibration repeat 02 | complete | media/episodes/260901-200740_H2-M0-P02-R02_11-h2-multisine-repeat-02 | [open](media/episodes/260901-200740_H2-M0-P02-R02_11-h2-multisine-repeat-02/video/260901-200740_H2-M0-P02-R02_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H2-M0-P02-R02_11-h2-multisine-repeat-02/video/260901-200740_H2-M0-P02-R02_experiment-unlabeled.mp4) |
-| 12 | H1 multisine motion, calibration repeat 02 | complete | media/episodes/260901-200740_H1-M0-P02-R02_12-h1-multisine-repeat-02 | [open](media/episodes/260901-200740_H1-M0-P02-R02_12-h1-multisine-repeat-02/video/260901-200740_H1-M0-P02-R02_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H1-M0-P02-R02_12-h1-multisine-repeat-02/video/260901-200740_H1-M0-P02-R02_experiment-unlabeled.mp4) |
-| 13 | H2 smooth-level motion, calibration repeat 02 | complete | media/episodes/260901-200740_H2-M0-P03-R02_13-h2-smooth-levels-repeat-02 | [open](media/episodes/260901-200740_H2-M0-P03-R02_13-h2-smooth-levels-repeat-02/video/260901-200740_H2-M0-P03-R02_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H2-M0-P03-R02_13-h2-smooth-levels-repeat-02/video/260901-200740_H2-M0-P03-R02_experiment-unlabeled.mp4) |
-| 14 | H1 smooth-level motion, calibration repeat 02 | complete | media/episodes/260901-200740_H1-M0-P03-R02_14-h1-smooth-levels-repeat-02 | [open](media/episodes/260901-200740_H1-M0-P03-R02_14-h1-smooth-levels-repeat-02/video/260901-200740_H1-M0-P03-R02_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H1-M0-P03-R02_14-h1-smooth-levels-repeat-02/video/260901-200740_H1-M0-P03-R02_experiment-unlabeled.mp4) |
-| 15 | H1 slow triangle motion, calibration repeat 03 | complete | media/episodes/260901-200740_H1-M0-P01-R03_15-h1-slow-triangle-repeat-03 | [open](media/episodes/260901-200740_H1-M0-P01-R03_15-h1-slow-triangle-repeat-03/video/260901-200740_H1-M0-P01-R03_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H1-M0-P01-R03_15-h1-slow-triangle-repeat-03/video/260901-200740_H1-M0-P01-R03_experiment-unlabeled.mp4) |
-| 16 | H2 slow triangle motion, calibration repeat 03 | complete | media/episodes/260901-200740_H2-M0-P01-R03_16-h2-slow-triangle-repeat-03 | [open](media/episodes/260901-200740_H2-M0-P01-R03_16-h2-slow-triangle-repeat-03/video/260901-200740_H2-M0-P01-R03_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H2-M0-P01-R03_16-h2-slow-triangle-repeat-03/video/260901-200740_H2-M0-P01-R03_experiment-unlabeled.mp4) |
-| 17 | H1 multisine motion, calibration repeat 03 | complete | media/episodes/260901-200740_H1-M0-P02-R03_17-h1-multisine-repeat-03 | [open](media/episodes/260901-200740_H1-M0-P02-R03_17-h1-multisine-repeat-03/video/260901-200740_H1-M0-P02-R03_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H1-M0-P02-R03_17-h1-multisine-repeat-03/video/260901-200740_H1-M0-P02-R03_experiment-unlabeled.mp4) |
-| 18 | H2 multisine motion, calibration repeat 03 | complete | media/episodes/260901-200740_H2-M0-P02-R03_18-h2-multisine-repeat-03 | [open](media/episodes/260901-200740_H2-M0-P02-R03_18-h2-multisine-repeat-03/video/260901-200740_H2-M0-P02-R03_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H2-M0-P02-R03_18-h2-multisine-repeat-03/video/260901-200740_H2-M0-P02-R03_experiment-unlabeled.mp4) |
-| 19 | H1 smooth-level motion, calibration repeat 03 | complete | media/episodes/260901-200740_H1-M0-P03-R03_19-h1-smooth-levels-repeat-03 | [open](media/episodes/260901-200740_H1-M0-P03-R03_19-h1-smooth-levels-repeat-03/video/260901-200740_H1-M0-P03-R03_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H1-M0-P03-R03_19-h1-smooth-levels-repeat-03/video/260901-200740_H1-M0-P03-R03_experiment-unlabeled.mp4) |
-| 20 | H2 smooth-level motion, calibration repeat 03 | complete | media/episodes/260901-200740_H2-M0-P03-R03_20-h2-smooth-levels-repeat-03 | [open](media/episodes/260901-200740_H2-M0-P03-R03_20-h2-smooth-levels-repeat-03/video/260901-200740_H2-M0-P03-R03_experiment-labeled.mp4) | [open](media/episodes/260901-200740_H2-M0-P03-R03_20-h2-smooth-levels-repeat-03/video/260901-200740_H2-M0-P03-R03_experiment-unlabeled.mp4) |
+- Original camera-capture status: **complete**.
+- Original episode media sessions: 20/20.
+- Original full-video status: **complete**.
+
+These statuses record what the source capture system reported at collection and verification time. They do not mean that the original camera archive is included in this release. Full and episode camera paths remain as provenance in the run, summary and episode manifests.
+
+## Episode guide for retained motor records
+
+The table uses the original friendly names, order and robot-result declarations. Each row links to its supplied manifest and motor data. Original camera locations remain in the manifest or episode summary. The campaign-local camera files are absent; the separate selected teaching clip is linked above.
+
+| # | Friendly name | Original robot result | Episode manifest | Motor data |
+|---:|---|---|---|---|
+| 1 | H1 low-amplitude safety pilot | complete | [M0__H1__PILOT_LOW_AMPLITUDE](episodes/M0__H1__PILOT_LOW_AMPLITUDE/episode.json) | [commands](episodes/M0__H1__PILOT_LOW_AMPLITUDE/command_events.parquet) · [telemetry](episodes/M0__H1__PILOT_LOW_AMPLITUDE/telemetry_events.parquet) |
+| 2 | H2 low-amplitude safety pilot | complete | [M0__H2__PILOT_LOW_AMPLITUDE](episodes/M0__H2__PILOT_LOW_AMPLITUDE/episode.json) | [commands](episodes/M0__H2__PILOT_LOW_AMPLITUDE/command_events.parquet) · [telemetry](episodes/M0__H2__PILOT_LOW_AMPLITUDE/telemetry_events.parquet) |
+| 3 | H1 slow triangle motion, calibration repeat 01 | complete | [M0__H1__P01_slow_triangle__R01](episodes/M0__H1__P01_slow_triangle__R01/episode.json) | [commands](episodes/M0__H1__P01_slow_triangle__R01/command_events.parquet) · [telemetry](episodes/M0__H1__P01_slow_triangle__R01/telemetry_events.parquet) |
+| 4 | H2 slow triangle motion, calibration repeat 01 | complete | [M0__H2__P01_slow_triangle__R01](episodes/M0__H2__P01_slow_triangle__R01/episode.json) | [commands](episodes/M0__H2__P01_slow_triangle__R01/command_events.parquet) · [telemetry](episodes/M0__H2__P01_slow_triangle__R01/telemetry_events.parquet) |
+| 5 | H1 multisine motion, calibration repeat 01 | complete | [M0__H1__P02_multisine__R01](episodes/M0__H1__P02_multisine__R01/episode.json) | [commands](episodes/M0__H1__P02_multisine__R01/command_events.parquet) · [telemetry](episodes/M0__H1__P02_multisine__R01/telemetry_events.parquet) |
+| 6 | H2 multisine motion, calibration repeat 01 | complete | [M0__H2__P02_multisine__R01](episodes/M0__H2__P02_multisine__R01/episode.json) | [commands](episodes/M0__H2__P02_multisine__R01/command_events.parquet) · [telemetry](episodes/M0__H2__P02_multisine__R01/telemetry_events.parquet) |
+| 7 | H1 smooth-level motion, calibration repeat 01 | complete | [M0__H1__P03_smooth_levels__R01](episodes/M0__H1__P03_smooth_levels__R01/episode.json) | [commands](episodes/M0__H1__P03_smooth_levels__R01/command_events.parquet) · [telemetry](episodes/M0__H1__P03_smooth_levels__R01/telemetry_events.parquet) |
+| 8 | H2 smooth-level motion, calibration repeat 01 | complete | [M0__H2__P03_smooth_levels__R01](episodes/M0__H2__P03_smooth_levels__R01/episode.json) | [commands](episodes/M0__H2__P03_smooth_levels__R01/command_events.parquet) · [telemetry](episodes/M0__H2__P03_smooth_levels__R01/telemetry_events.parquet) |
+| 9 | H2 slow triangle motion, calibration repeat 02 | complete | [M0__H2__P01_slow_triangle__R02](episodes/M0__H2__P01_slow_triangle__R02/episode.json) | [commands](episodes/M0__H2__P01_slow_triangle__R02/command_events.parquet) · [telemetry](episodes/M0__H2__P01_slow_triangle__R02/telemetry_events.parquet) |
+| 10 | H1 slow triangle motion, calibration repeat 02 | complete | [M0__H1__P01_slow_triangle__R02](episodes/M0__H1__P01_slow_triangle__R02/episode.json) | [commands](episodes/M0__H1__P01_slow_triangle__R02/command_events.parquet) · [telemetry](episodes/M0__H1__P01_slow_triangle__R02/telemetry_events.parquet) |
+| 11 | H2 multisine motion, calibration repeat 02 | complete | [M0__H2__P02_multisine__R02](episodes/M0__H2__P02_multisine__R02/episode.json) | [commands](episodes/M0__H2__P02_multisine__R02/command_events.parquet) · [telemetry](episodes/M0__H2__P02_multisine__R02/telemetry_events.parquet) |
+| 12 | H1 multisine motion, calibration repeat 02 | complete | [M0__H1__P02_multisine__R02](episodes/M0__H1__P02_multisine__R02/episode.json) | [commands](episodes/M0__H1__P02_multisine__R02/command_events.parquet) · [telemetry](episodes/M0__H1__P02_multisine__R02/telemetry_events.parquet) |
+| 13 | H2 smooth-level motion, calibration repeat 02 | complete | [M0__H2__P03_smooth_levels__R02](episodes/M0__H2__P03_smooth_levels__R02/episode.json) | [commands](episodes/M0__H2__P03_smooth_levels__R02/command_events.parquet) · [telemetry](episodes/M0__H2__P03_smooth_levels__R02/telemetry_events.parquet) |
+| 14 | H1 smooth-level motion, calibration repeat 02 | complete | [M0__H1__P03_smooth_levels__R02](episodes/M0__H1__P03_smooth_levels__R02/episode.json) | [commands](episodes/M0__H1__P03_smooth_levels__R02/command_events.parquet) · [telemetry](episodes/M0__H1__P03_smooth_levels__R02/telemetry_events.parquet) |
+| 15 | H1 slow triangle motion, calibration repeat 03 | complete | [M0__H1__P01_slow_triangle__R03](episodes/M0__H1__P01_slow_triangle__R03/episode.json) | [commands](episodes/M0__H1__P01_slow_triangle__R03/command_events.parquet) · [telemetry](episodes/M0__H1__P01_slow_triangle__R03/telemetry_events.parquet) |
+| 16 | H2 slow triangle motion, calibration repeat 03 | complete | [M0__H2__P01_slow_triangle__R03](episodes/M0__H2__P01_slow_triangle__R03/episode.json) | [commands](episodes/M0__H2__P01_slow_triangle__R03/command_events.parquet) · [telemetry](episodes/M0__H2__P01_slow_triangle__R03/telemetry_events.parquet) |
+| 17 | H1 multisine motion, calibration repeat 03 | complete | [M0__H1__P02_multisine__R03](episodes/M0__H1__P02_multisine__R03/episode.json) | [commands](episodes/M0__H1__P02_multisine__R03/command_events.parquet) · [telemetry](episodes/M0__H1__P02_multisine__R03/telemetry_events.parquet) |
+| 18 | H2 multisine motion, calibration repeat 03 | complete | [M0__H2__P02_multisine__R03](episodes/M0__H2__P02_multisine__R03/episode.json) | [commands](episodes/M0__H2__P02_multisine__R03/command_events.parquet) · [telemetry](episodes/M0__H2__P02_multisine__R03/telemetry_events.parquet) |
+| 19 | H1 smooth-level motion, calibration repeat 03 | complete | [M0__H1__P03_smooth_levels__R03](episodes/M0__H1__P03_smooth_levels__R03/episode.json) | [commands](episodes/M0__H1__P03_smooth_levels__R03/command_events.parquet) · [telemetry](episodes/M0__H1__P03_smooth_levels__R03/telemetry_events.parquet) |
+| 20 | H2 smooth-level motion, calibration repeat 03 | complete | [M0__H2__P03_smooth_levels__R03](episodes/M0__H2__P03_smooth_levels__R03/episode.json) | [commands](episodes/M0__H2__P03_smooth_levels__R03/command_events.parquet) · [telemetry](episodes/M0__H2__P03_smooth_levels__R03/telemetry_events.parquet) |
+
+### Preparation records
+
+- [M0__H1__RECENTER_001 manifest](episodes/M0__H1__RECENTER_001/episode.json), [commands](episodes/M0__H1__RECENTER_001/command_events.parquet) and [telemetry](episodes/M0__H1__RECENTER_001/telemetry_events.parquet): preparation/recentring, separate from the motion-and-media episode count above.
