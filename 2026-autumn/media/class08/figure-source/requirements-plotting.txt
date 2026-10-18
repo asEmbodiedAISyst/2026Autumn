@@ -1,7 +1,0 @@
-# Minimal dependencies for render_class08.py; the original environment declaration
-# is preserved in source/requirements-figures-macos.txt for provenance.
-matplotlib
-numpy
-pandas
-Pillow
-fonttools

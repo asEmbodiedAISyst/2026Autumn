@@ -37,7 +37,7 @@ The command path starts with a phone pose. A mapping converts its change into a 
 
 The response path starts with the simulated mechanism. It supplies joint positions and rendered observations. The recorder writes those beside the issued action, timing information and episode identity. The operator's phone motion is not the robot's measured motion.
 
-![Command path and response record](../media/class09/teleop-path-classroom.png)
+![Command path and response record](../resources/class09/figures/teleop-path-classroom.png)
 
 *Figure 1. Schematic of the supplied bridge. The recorder must retain action and response semantics with separate command and robot-response paths.*
 
@@ -81,7 +81,7 @@ $$
 
 The code names this matrix `EE_TF_IPHONE`; we write `R_EP` throughout so it cannot be confused with a dynamics bias term. Its columns are the phone's axes expressed in TCP coordinates. Phone x becomes TCP +y, phone y becomes TCP +x, and phone z becomes TCP −z. The phone's back-camera viewing direction is opposite its screen-normal direction, so it maps to the TCP approach direction in this convention.
 
-![Read the columns of the mapping](../media/class09/phone-axes-classroom.png)
+![Read the columns of the mapping](../resources/class09/figures/phone-axes-classroom.png)
 
 *Figure 2. Declared axis correspondence in the supplied software. The axes are drawn independently; use the stated mapping to relate them. This is a frame convention, not a physical calibration measurement.*
 
@@ -133,7 +133,7 @@ $$
 \|\Delta p\|\le v_{max}\Delta t=0.25/30=0.008333\ldots\ \mathrm{m}.
 $$
 
-![One tick has a bounded target increment](../media/class09/motion-limit-classroom.png)
+![One tick has a bounded target increment](../resources/class09/figures/motion-limit-classroom.png)
 
 *Figure 3. Constructed arithmetic showing how the speed bound limits an individual requested displacement. It is not a measured arm trajectory.*
 
@@ -186,7 +186,7 @@ The seven-value form is `[tx, ty, tz, qx, qy, qz, qw]`. Quaternion element order
 
 The bridge observes joint state, renders the two cameras, appends the row and images, then advances physics under the command. The saved state therefore precedes the simulated transition caused by that row's action.
 
-![The recording boundary](../media/class09/recording-order-classroom.png)
+![The recording boundary](../resources/class09/figures/recording-order-classroom.png)
 
 *Figure 4. Schematic of the code's observation/action/step ordering. The recorder stamps its row after rendering; this is not a claim of simultaneous physical camera and encoder acquisition.*
 
@@ -214,7 +214,7 @@ A training pair at time k is a declared observation and action. The next measure
 
 ### Read the recorded action/state relationship
 
-![Raw signs, converted targets and residuals](../media/class09/command-state-classroom.png)
+![Raw signs, converted targets and residuals](../resources/class09/figures/command-state-classroom.png)
 
 *Figure 5. The retained local circular-motion recording. Left: raw elbow action and state. Middle: action converted into motor-target coordinates. Right: measured state minus converted motor target. These are simulation records, not physical tracking data.*
 
@@ -236,7 +236,7 @@ The corrected simulation covers exactly `1/30` s per control update, with sevent
 
 For the 170 saved circle rows, there are 169 intervals between the first and last states. At the configured simulation rate this is 169/30 ≈ 5.6333 s of simulated evolution, whereas the recorded monotonic timestamps span 5.8604 s. The CSV does not contain a `sim_time` field; the former interval is derived from the verified fixed-step code, not a directly saved clock measurement. Do not use wall-time differences as simulation integration steps or assume they are equal when estimating derivatives.
 
-![Inspect the time intervals and stale-input rule](../media/class09/stream-record-classroom.png)
+![Inspect the time intervals and stale-input rule](../resources/class09/figures/stream-record-classroom.png)
 
 *Figure 6. Upper panel: intervals from a recorded local fake-phone run, compared with the nominal 30 Hz period. Lower panel: receiver-side pose age during a separate deliberate stream interruption. The two panels are different tests, not a shared time-synchronized experiment.*
 
@@ -274,7 +274,7 @@ Use the declared identity-orientation example to check the target [0.27, 0.01, 0
 
 Select a row and its matching front/side image pair. Check channel order, convert the elbow action into motor-target coordinates and interpret the residual. Locate when the state and images are recorded relative to the issued action and the subsequent physics step. Explain why using the following state as the same-step observation would change the learning example.
 
-![Two views from the same recorded simulation row](../media/class09/episode-views-classroom.png)
+![Two views from the same recorded simulation row](../resources/class09/figures/episode-views-classroom.png)
 
 *Figure 7. Front and side views from frame 0 of the retained circle episode. Both are rendered simulation images, associated with the same CSV row. Neither is a phone camera image. The two views make the scene and camera keys concrete; they do not establish physical camera calibration.*
 

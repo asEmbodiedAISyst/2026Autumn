@@ -23,7 +23,7 @@ Expected: 2,601 telemetry rows, 1,301 commands, ID 5, firmware 53, Mode 5, H2 P/
 
 ## Measured-record explorer
 
-Open `media/interactive/hardware-telemetry.html` in a browser. It contains the supplied record and uses locally installed MiSans with a system-font fallback. It makes no external network or hardware calls. Set row 400, choose raw or engineering units, and select a channel. If the local viewer restricts file opening, run:
+Open `interactive/hardware-telemetry.html` in a browser. It contains the supplied record and uses locally installed MiSans with a system-font fallback. It makes no external network or hardware calls. Set row 400, choose raw or engineering units, and select a channel. If the local viewer restricts file opening, run:
 
 ```bash
 python -m http.server 8765 --bind 127.0.0.1
@@ -69,4 +69,4 @@ Optional older visual examples: on macOS use `mjpython code/view.py --model weig
 
 ## Visual mechanism examples
 
-Open `media/interactive/actuator-explorer.html` in a browser. It runs offline from the extracted class package and uses locally installed MiSans or the optional local font files; keep the package folders together. If local file opening is restricted, run `python -m http.server 8765 --bind 127.0.0.1` from the class folder and open `http://127.0.0.1:8765/media/interactive/actuator-explorer.html`. Stop this local server with Ctrl+C. No package installation or hardware connection is required. HTML execution inside asMagicBrain Preview/Present is not assumed; the supplied static equivalents remain the teaching fallback.
+Open `interactive/actuator-explorer.html` in a browser. It runs offline from the extracted class package and uses locally installed MiSans or the optional local font files; keep the package folders together. If local file opening is restricted, run `python -m http.server 8765 --bind 127.0.0.1` from the class folder and open `http://127.0.0.1:8765/media/interactive/actuator-explorer.html`. Stop this local server with Ctrl+C. No package installation or hardware connection is required. HTML execution inside asMagicBrain Preview/Present is not assumed; the supplied static equivalents remain the teaching fallback.

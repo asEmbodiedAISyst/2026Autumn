@@ -6,4 +6,4 @@ This legacy bundle contains native playback code, the supplied ONNX actor, pinne
 
 The playback requirements and environment versions are in `code/requirements-demo.txt`; platform preparation and execution belong to a separate example package. No commands are required to interpret the course page. Apple-silicon native playback was checked in the retained receipts; this content review audits saved evidence and does not claim a new cross-platform evaluation.
 
-Images, animation and editable delivery masters are in `../../media/class06`. Retain upstream licences and notices. No new training, hardware deployment, optical calibration or manufactured-cube qualification is claimed.
+Lesson figures are in `figures/`; the selected animation is in `recordings/`. Retain upstream licences and notices. No new training, hardware deployment, optical calibration or manufactured-cube qualification is claimed.

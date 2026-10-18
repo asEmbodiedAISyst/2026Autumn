@@ -74,7 +74,7 @@ def main():
         from matplotlib import font_manager
     except ImportError as exc:
         print('Metrics are complete. To make the optional plot, install Matplotlib in your prepared environment.');return
-    for path in (ROOT/'code/fonts').glob('*.ttf'):font_manager.fontManager.addfont(path)
+    for path in (ROOT.parent/'fonts').glob('*.ttf'):font_manager.fontManager.addfont(path)
     plt.rcParams.update({'font.family':'MiSans','font.size':11,'axes.spines.top':False,'axes.spines.right':False,'svg.fonttype':'path'})
     fig,(a,b)=plt.subplots(2,1,figsize=(11,7),sharex=True,gridspec_kw={'height_ratios':[2,1]},layout='constrained')
     for k,label,color,style,width in [

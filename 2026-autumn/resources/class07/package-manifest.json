@@ -3,7 +3,6 @@
     "code/perception_lab.py": "2be09bd0fcb35eacf8b758bbaf738a7d6d28a88becc524e16a56357e249fbd99",
     "code/requirements-simulation.txt": "728d2192d6244760cd780920c9170049b027d1a1a157eca92863b01ea4c60d86",
     "code/verify_package.py": "bf086bf701b1562da17a9754192cb4fe51307647a6379f69517c38c0f7b8c973",
-    "code/draw_frames.py": "f3638d0afe4599fe17a4eda7102d280f8d982b3d86d071ecc56cbe6351515c02",
     "code/inspect_results.py": "086ce29ddc30df947522ab0d58ac88d0801be1302f6ad06b374ec5c6e810a5b1",
     "code/README.md": "93ae0e6d0f829358960468fa6d6c4f77f0a39ffb36f06df7b343d74299313d45",
     "code/requirements-perception.txt": "53cb865a153728fa75a588bd899d4b54ebe41cebecb74949dcd89194ca2c19e6",

@@ -32,7 +32,7 @@ The figures, animation, equations and saved results provide a complete reading r
 
 Suppose M faces upward on both cubes. They can still differ by a rotation about the vertical axis: their side faces point in different directions. The task asks for a **full three-dimensional orientation**, not merely an upward face.
 
-![Same upward face with two different complete orientations](../media/class06/full-orientation-classroom.png)
+![Same upward face with two different complete orientations](../resources/class06/figures/full-orientation-classroom.png)
 
 *Figure 1. Both illustrated cubes have M upward. A further 45° yaw changes the complete orientation while preserving that upward face. These synthetic poses explain the task and do not prescribe the runner's initial state.*
 
@@ -81,7 +81,7 @@ The task scores uncorrupted pose-sensor information even when the actor's observ
 
 The LEAP Hand has four fingers and sixteen actuated joints. The reference cube is 70 mm wide with a declared mass of 108 g. A network action changes finger joint targets. Actuators respond, the fingers move, and contacts transmit forces to the cube. Contact geometry, gravity, inertia and friction all matter to the resulting motion.
 
-![Contact force and moment about a declared origin](../media/class06/contact-wrench-classroom.png)
+![Contact force and moment about a declared origin](../resources/class06/figures/contact-wrench-classroom.png)
 
 *Figure 2. A synthetic planar contact illustrates displacement, force and moment. The arrows explain geometry; they are not measured fingertip forces. The worked calculation below declares its own cube-centered axes and SI values.*
 
@@ -127,7 +127,7 @@ For scale, a uniform cube with mass 0.108 kg and side 0.070 m has principal iner
 
 ### Preserve the learned interface
 
-![Closed feedback loop from observations through contact dynamics](../media/class06/feedback-loop-classroom.png)
+![Closed feedback loop from observations through contact dynamics](../resources/class06/figures/feedback-loop-classroom.png)
 
 *Figure 3. The policy receives a target-relative state, chooses joint-target increments and observes the next simulated state. MuJoCo supplies actuator and contact dynamics. The loop explicitly includes cube pose; it is not a proprioception-only controller.*
 
@@ -157,7 +157,7 @@ The exact history timing also matters. In the pinned task, a returned observatio
 
 ### Distinguish the policy clock from the physics clock
 
-![Observation dimensions and policy versus physics clocks](../media/class06/policy-and-clock-classroom.png)
+![Observation dimensions and policy versus physics clocks](../resources/class06/figures/policy-and-clock-classroom.png)
 
 *Figure 4. The 57-value actor interface and the native task clocks. One 50 ms control interval contains five 10 ms physics steps. These are simulation rates, not measured wall-clock throughput.*
 
@@ -179,15 +179,15 @@ Domain randomization can vary selected properties during training to encourage r
 
 ### Watch the selected changing-goal example
 
-![Selected native cube reorientation recording](../media/class06/cube-reorientation.gif)
+![Selected native cube reorientation recording](../resources/class06/recordings/cube-reorientation.gif)
 
 The recording uses **seed 9204 with ideal actor observations**. Follow the held cube and separate target. Look at side faces as well as the top face, and identify fingers that appear to retain support while another contact changes. The animation illustrates one selected episode; it does not estimate reliability.
 
-![Four retained states from the selected episode](../media/class06/demo-storyboard-classroom.png)
+![Four retained states from the selected episode](../resources/class06/figures/demo-storyboard-classroom.png)
 
 *Figure 5. Four native rendered states with a consistent camera. Interior samples were selected at successful control steps. Frames show rendering-phase poses, while the success test uses task sensor-phase information.*
 
-![Orientation error and successful-step counter](../media/class06/continuous-trace-classroom.png)
+![Orientation error and successful-step counter](../resources/class06/figures/continuous-trace-classroom.png)
 
 *Figure 6. The saved sensor-phase error trace has events at steps 356 and 761, corresponding to 17.80 s and 38.05 s. A target update can increase subsequent error. Both events belong to one continuous episode.*
 
@@ -223,7 +223,7 @@ The retained first-goal evaluations use seeds **20000–20099**, a **50 s limit*
 
 The ideal-observation condition's counts should be read with its own receipt; they do not change the selected ideal-observation demonstration's identity.
 
-![Retained first-goal evaluation outcomes and intervals](../media/class06/qualification-results-classroom.png)
+![Retained first-goal evaluation outcomes and intervals](../resources/class06/figures/qualification-results-classroom.png)
 
 *Figure 7. First-goal rates and 95% Wilson intervals, with all outcomes retained. Native playback used MuJoCo 3.6; the GPU records used 3.14. The comparison does not isolate a backend-only effect. These evaluations were retained and audited, not newly rerun for publication.*
 
@@ -233,7 +233,7 @@ The native and original-noise GPU results meet the course's existing **80% obser
 
 Removing actor-observation noise did not improve the retained GPU result. The same seeds can be paired to inspect that observation:
 
-![Matched-seed outcomes with noisy and ideal observations](../media/class06/paired-noise-classroom.png)
+![Matched-seed outcomes with noisy and ideal observations](../resources/class06/figures/paired-noise-classroom.png)
 
 *Figure 8. Among the same 100 GPU seeds, 54 succeeded with both conditions, 35 only with noise, four only without noise and seven with neither. The matrix establishes the paired outcomes, not their mechanism.*
 

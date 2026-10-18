@@ -225,7 +225,7 @@ CMA 的两个 restart 分别得到 armature `0.00798029` 和 `0.00799981 kg·m²
 ```
 
 输出为 `outputs/rs06_armature_evidence_run01/armature_evidence.json`、
-`armature_evidence.png` 和 `README.md`。若要释放 armature，至少需要断使能但编码器
+`armature_evidence.png` 和 `../../../../README.md`。若要释放 armature，至少需要断使能但编码器
 可读的多初角/双方向释放，或第二个已知且明显更低的惯量配置；当前上电自由落体仅能
 辅助约束，不足以独立辨识。
 

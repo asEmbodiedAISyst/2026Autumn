@@ -88,7 +88,7 @@ At a constant tool speed of 0.10 m/s, an 80 ms observation-to-action delay corre
 
 Holding the last command when a frame is late, skipping a policy update and executing a longer action chunk produce different trajectories. The controller’s timeout and the policy’s replan interval therefore belong in the evaluated configuration.
 
-![Observation age and travel during an illustrative delay](../media/class11/latency-budget-classroom.png)
+![Observation age and travel during an illustrative delay](../resources/class11/figures/latency-budget-classroom.png)
 
 *Figure 1. Constructed timing example: 20 ms capture/transport, 40 ms preprocessing/inference and 20 ms scheduling/execution sum to 80 ms. The lower-panel travel scale assumes constant 0.10 m/s. These values illustrate a timing budget; they are not measured phone, robot or policy latency.*
 
@@ -114,7 +114,7 @@ Use an aligned comparison: the same declared command, initial pose, payload/obje
 
 An incremental action needs a reference. If `Δp` is added to the previous commanded pose, the command can continue advancing while the mechanism lags. If the same `Δp` is added to the measured pose, the next command starts behind it. The two conventions can produce different speeds and contact sequences.
 
-![The reference changes the trajectory](../media/class11/reference-choice-classroom.png)
+![The reference changes the trajectory](../resources/class11/figures/reference-choice-classroom.png)
 
 *Figure 2. Constructed one-dimensional lag example. Each tick requests a 10 mm increment and the toy mechanism closes half the remaining target error. This is not robot data or a reproduction of a reported policy result.*
 
@@ -149,7 +149,7 @@ Changing several items at once can repair a system but makes causal explanation 
 
 A useful progression is interface inspection, deterministic replay, open-loop prediction, a shadow check and supervised physical evaluation when the project makes a physical claim.
 
-![Checks and their evidence boundaries](../media/class11/evidence-checks-classroom.png)
+![Checks and their evidence boundaries](../resources/class11/figures/evidence-checks-classroom.png)
 
 *Figure 3. Conceptual progression of checks. The order helps control cost and isolate faults; it is not a universal project grade or proof that every project needs hardware.*
 
@@ -171,7 +171,7 @@ where s is the selected simulation integration state, u is the issued command an
 
 Consider replaying a pushing sequence with the cube shifted. The arm's initial joint values can be identical while contact occurs at a different point. A replay difference may therefore arise from incomplete initial state rather than an incorrect integrator or a policy problem.
 
-![The ingredients of an exact repeat](../media/class11/replay-components-classroom.png)
+![The ingredients of an exact repeat](../resources/class11/figures/replay-components-classroom.png)
 
 *Figure 4. Constructed simulation replay with the retained pusher model. The example restores MuJoCo's integration state and issues the same scripted joint targets. The reported zero difference is conditional on this exact repeat.*
 
@@ -185,7 +185,7 @@ Policy chunk queues, observation filters, random-generator state, external task 
 
 The bundled reset-comparison experiment gives the cube an initial +0.20 m/s velocity in robot-base x, then runs the same sixty joint commands. Restoring the integration state reproduces the reference cube trajectory. Restoring only initial `qpos` after a reset omits that velocity and other integration-state fields, producing a maximum cube xy separation of about 4.93 mm in the tested run.
 
-![Cube trajectory discrepancy under two reset procedures](../media/class11/reset-comparison-classroom.png)
+![Cube trajectory discrepancy under two reset procedures](../resources/class11/figures/reset-comparison-classroom.png)
 
 *Figure 5. Controlled simulation experiment using the bundled model. Both reset procedures are compared with the same scripted reference. Full integration-state restoration has zero recorded xy discrepancy; the deliberately incomplete reset differs. This diagnoses state completeness in this constructed case, not a learned policy or a physical friction parameter.*
 
@@ -244,7 +244,7 @@ This result belongs to the specified ACT/pusher evaluation, associated in the so
 
 The complete JSON uses seeds 100000–100049. All eighteen recorded failures end at 450 steps, whereas the included evaluator's default cap is 600; the retained source command does not explain that difference. Preserve the recorded outcomes while requesting the exact evaluator version and arguments. Do not substitute current defaults for a missing run manifest.
 
-![Keep all stored outcomes visible](../media/class11/stored-outcomes-classroom.png)
+![Keep all stored outcomes visible](../resources/class11/figures/stored-outcomes-classroom.png)
 
 *Figure 6. Left: the fifty supplied binary outcomes. Right: the 32/50 fraction with a descriptive 95% Wilson interval, approximately 0.501–0.759. The interval assumes independent comparable Bernoulli trials; it is not a hardware-transfer interval or a training-seed uncertainty estimate.*
 
@@ -264,7 +264,7 @@ For example, compare the same frozen system under nominal camera placement and a
 
 The selected failure is episode 0 of the supplied video set. Its summary reports 450 steps, success false, final cube-goal distance approximately 0.031074 m and `ik_ok = 1.0`. At nominal 30 Hz, 450 control steps correspond to fifteen seconds of simulated control time.
 
-![A selected failed rollout](../media/class11/failure-frames-classroom.png)
+![A selected failed rollout](../resources/class11/figures/failure-frames-classroom.png)
 
 *Figure 7. Selected frames 0, 225 and 449 from the supplied episode-0 failure video. The figure crops the policy-view half of the two-view video, without retouching; the full video retains the observer view. These samples alone do not locate the exact onset of failure.*
 
@@ -289,7 +289,7 @@ Inspect the policy's available image, not only the observer view. Identify when 
 
 A failure analysis should connect observation, competing explanations and a measurement. “Improve the model” is not a complete experiment. Name the changed factor, fixed conditions, predicted observation and decision rule.
 
-![Turn a diagnosis into a test](../media/class11/next-experiment-classroom.png)
+![Turn a diagnosis into a test](../resources/class11/figures/next-experiment-classroom.png)
 
 *Figure 8. Conceptual design of a discriminating next experiment.*
 

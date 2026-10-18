@@ -12,7 +12,7 @@ This page preserves the existing worked motor/power relationships, effort/satura
 
 A motor converts electrical energy into mechanical motion. An integrated servo actuator combines the motor with some or all of a transmission, position sensor, drive electronics, embedded controller and communication interface. The XC330 is an integrated actuator. The host sends commands through its digital interface; the host does not directly apply the winding voltage.
 
-![Electrical energy flow from supply to joint](media/energy-path-classroom.png)
+![Electrical energy flow from supply to joint](figures/energy-path-classroom.png)
 
 *Figure 1. Conceptual energy path; no device constants are inferred.*
 
@@ -44,7 +44,7 @@ Efficiency $$\eta$$ is a modelling approximation, not a measured constant here. 
 
 ## 3. Trace the signal path
 
-![Command, internal reference, actuator and mechanism](media/actuator-chain-classroom.png)
+![Command, internal reference, actuator and mechanism](figures/actuator-chain-classroom.png)
 
 *Figure 2. Conceptual signal path, not a measured circuit diagram. The internal reference is distinct from the host command.*
 
@@ -58,7 +58,7 @@ Use three symbols throughout the sequence:
 
 The measured position $$y(t)$$ is an observation of $$q(t)$$ with finite resolution, possible latency and noise. It is not a perfect continuous observation. A servo may construct a smooth reference from a discontinuous command; it may also clip requests or apply a profile. Thus $$u$$, $$r$$ and $$q$$ need not be equal during motion.
 
-![Illustrative goal, internal reference and physical response](media/three-signals-classroom.png)
+![Illustrative goal, internal reference and physical response](figures/three-signals-classroom.png)
 
 *Figure 3. Constructed curves show why u, r and q can differ; they are not fitted or measured XC330 trajectories.*
 
@@ -117,7 +117,7 @@ The logged `load_pct` field does not establish output torque. Preserve its origi
 
 ## 6. Read a step response
 
-![Recorded step response and sample intervals](media/recorded-step-classroom.png)
+![Recorded step response and sample intervals](figures/recorded-step-classroom.png)
 
 *Figure 4. Entire 30-degree-amplitude block for each assembly, including positive and negative requests. Position is measured relative to 180 degrees. The right panel shows actual consecutive sample intervals within that block. These are two assemblies, not repeated trials of one motor.*
 
@@ -127,7 +127,7 @@ Read the plot in this order: identify the command transitions, find the directio
 
 The response has finite rise time. A rise-time definition usually specifies two fractions of the commanded change, such as 10% and 90%. Define the local starting and ending levels, isolate one transition and interpolate the threshold crossings if appropriate. Overshoot concerns departure beyond the intended final level; it is not the same as the largest command-tracking error. Settling time requires both a tolerance band and a minimum period of remaining inside it.
 
-![Constructed response with discrete samples](media/sampling-resolution-classroom.png)
+![Constructed response with discrete samples](figures/sampling-resolution-classroom.png)
 
 *Figure 5. Illustrative 30-degree response with a 22 ms exponential time constant and 16 ms observations; the continuous curve is known by construction.*
 
@@ -146,7 +146,7 @@ $$
 
 ---
 
-![Signed errors cancel while squared errors remain](media/error-cancellation-classroom.png)
+![Signed errors cancel while squared errors remain](figures/error-cancellation-classroom.png)
 
 *Figure 6. Constructed errors [0, 2, −2, 0] degrees; the zero signed mean conceals nonzero tracking error.*
 
@@ -160,7 +160,7 @@ An RMSE between command and hardware measures tracking. In Class 04, an RMSE bet
 
 ### Inspect one transition
 
-![Annotated measured step transition](media/step-transition-classroom.png)
+![Annotated measured step transition](figures/step-transition-classroom.png)
 
 *Figure 7. First positive 30-degree command transition for weighted ID 1 in the earlier Mode3 recording. Thresholds use local measured starting and ending levels. The ±2% band is illustrative; it is not a certified hardware tolerance. Markers show actual samples.*
 
@@ -170,7 +170,7 @@ Read the horizontal axis before interpreting the threshold crossings. Locate the
 
 ## 7. Read a frequency response
 
-![Recorded amplitude gain](media/frequency-gain-classroom.png)
+![Recorded amplitude gain](figures/frequency-gain-classroom.png)
 
 *Figure 8. Recorded harmonic gain estimates at seven frequencies; first cycle excluded from each block. The horizontal −3 dB line is a reference, not an observed bandwidth crossing.*
 
@@ -178,7 +178,7 @@ Read the horizontal axis before interpreting the threshold crossings. Locate the
 
 ---
 
-![Recorded phase lag](media/frequency-phase-classroom.png)
+![Recorded phase lag](figures/frequency-phase-classroom.png)
 
 *Figure 9. Phase-lag estimates from the same recordings and selection. Linear frequency ticks make values directly readable; connected points do not add experiments.*
 
@@ -199,7 +199,7 @@ At 5 Hz, one period is 0.2 s. A pure 10 ms delay creates a phase lag of $$\displ
 
 ---
 
-**Explore amplitude versus delay:** open the [offline actuator explorer](media/interactive/actuator-explorer.html), choose Amplitude and delay, keep ratio 1 and set delay 10 ms. Compare 1 Hz with 5 Hz; predict 3.6 degrees and 18 degrees of lag before reading the output. Then set zero delay and ratio 0.708: the gain changes but there is no imposed delay. This constructed waveform illustrates the definitions; the recorded actuator can have coupled frequency-dependent gain and phase.
+**Explore amplitude versus delay:** open the [offline actuator explorer](interactive/actuator-explorer.html), choose Amplitude and delay, keep ratio 1 and set delay 10 ms. Compare 1 Hz with 5 Hz; predict 3.6 degrees and 18 degrees of lag before reading the output. Then set zero delay and ratio 0.708: the gain changes but there is no imposed delay. This constructed waveform illustrates the definitions; the recorded actuator can have coupled frequency-dependent gain and phase.
 
 Our fit uses sine and cosine coefficients plus a constant offset. Removing the first cycle limits startup influence. It does not manufacture independent repeats. The seven frequencies are conditions; the two assemblies are separate devices. We have no basis for confidence intervals representing a population of actuators.
 
@@ -211,7 +211,7 @@ Motor identity and load changed together.
 
 ---
 
-![Proposed motor and load crossover experiment](media/load-crossover-classroom.png)
+![Proposed motor and load crossover experiment](figures/load-crossover-classroom.png)
 
 *Figure 10. Proposed future design; these crossed conditions are not supplied measurements.*
 
@@ -257,13 +257,13 @@ M0 means no external moving load. B0/B1/B2 identify balanced fixtures; G1 identi
 
 ### External goals and internal references
 
-![XC330 external goal and internal reference](media/boundary-xc330-classroom.png)
+![XC330 external goal and internal reference](figures/boundary-xc330-classroom.png)
 
 *Figure 11. XC330 H1/B1/P03: distinguish external goal, internal reference and measured motion.*
 
 ---
 
-![RS06 applied command and response](media/boundary-rs06-classroom.png)
+![RS06 applied command and response](figures/boundary-rs06-classroom.png)
 
 *Figure 12. First recorded H1/B1/P03 repeat in each campaign. The XC330 exposes an external goal and an internal position trajectory; the RS06 dataset exposes the applied command. These signals are not assumed interchangeable.*
 
@@ -281,11 +281,11 @@ The source uses a fixed engineering conversion from register units: H1 has $$\di
 
 ---
 
-![XC330 H1 model demanded and limited effort](media/effort-limit-classroom.png)
+![XC330 H1 model demanded and limited effort](figures/effort-limit-classroom.png)
 
 *Figure 13. Engineering-map calculation at velocity-reference error 0.20 rad/s; points mark position errors 0.05 and 0.10 rad. Not a torque measurement.*
 
-**Predict:** follow the orange demand and blue limited effort. Increasing error beyond the bound no longer increases applied model effort. Open the [offline actuator explorer](media/interactive/actuator-explorer.html) and test both points; if the app shows the file source, open the supplied HTML in a browser as described in RUN.md.
+**Predict:** follow the orange demand and blue limited effort. Increasing error beyond the bound no longer increases applied model effort. Open the [offline actuator explorer](interactive/actuator-explorer.html) and test both points; if the app shows the file source, open the supplied HTML in a browser as described in RUN.md.
 
 ---
 
@@ -307,7 +307,7 @@ M0 has no external moving load. Balanced fixtures change inertia while keeping t
 
 ### Repeats and reserved experiments
 
-![Complete episode counts in the two primary studies](media/campaign-splits-classroom.png)
+![Complete episode counts in the two primary studies](figures/campaign-splits-classroom.png)
 
 *Figure 14. Counts of complete primary episodes after the declared analysis adapters. Diagnostic XC330 records are outside these bars. A sample is not an independent trial.*
 
@@ -326,4 +326,4 @@ Our claim is restricted to position prediction in a declared context. The experi
 
 ## Continue the experiment
 
-Use the optional commands in [RUN.md](RUN.md), with the exact source identities in [CAMPAIGNS.md](CAMPAIGNS.md). Preserve the distinction between a constructed illustration, a replay of a fitted model and a new physical validation. The earlier [offline actuator explorer](media/interactive/actuator-explorer.html) illustrates amplitude/delay, sampling and effort limits; the new [telemetry explorer](media/interactive/hardware-telemetry.html) inspects the supplied physical record.
+Use the optional commands in [RUN.md](RUN.md), with the exact source identities in [CAMPAIGNS.md](CAMPAIGNS.md). Preserve the distinction between a constructed illustration, a replay of a fitted model and a new physical validation. The earlier [offline actuator explorer](interactive/actuator-explorer.html) illustrates amplitude/delay, sampling and effort limits; the new [telemetry explorer](interactive/hardware-telemetry.html) inspects the supplied physical record.

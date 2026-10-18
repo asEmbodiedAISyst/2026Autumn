@@ -44,7 +44,7 @@ For the present campaign, a replay consumes logged internal position and velocit
 
 A smaller prediction error does not establish that the physical actuator tracks better. We are evaluating a representation of an observed experiment, rather than changing the hardware controller.
 
-![Physical campaign views and combined simulation](../media/class05/physical_and_combined_simulation.jpg)
+![Physical campaign views and combined simulation](../resources/class05/figures/physical_and_combined_simulation.png)
 
 *Figure 1. Supplied B2 camera views and the combined B2/H1 MuJoCo scene. The photographs show fixtures from two viewpoints; they should not be counted as separate experiments. The simulated rack illustrates arrangement, including unmeasured front-to-back spacing. Visual correspondence does not validate dynamics.*
 
@@ -62,7 +62,7 @@ Preserve the dataset-to-model mapping instead of changing a mass until totals ag
 
 Sixteen independent hinges do not become mechanically coupled merely because they appear in one scene. In the supplied construction, each fixture is fixed independently to the world, with one moving joint. Contacts are disabled. The visual supports have no simulated flexibility, and the model does not reconstruct supply dynamics or a communication bus.
 
-![Evidence required when scaling an actuator system](../media/class05/evidence-scale-classroom.png)
+![Evidence required when scaling an actuator system](../resources/class05/figures/evidence-scale-classroom.png)
 
 *Figure 2. Three distinct steps in scope. Moving from one actuator to simultaneous fixtures introduces population and infrastructure questions. Connecting joints adds configuration-dependent mechanics and contact. Each transition needs evidence for its own claims.*
 
@@ -108,7 +108,7 @@ These are diagnostic possibilities, not established causes in the supplied data.
 
 To examine simultaneous-operation effects, keep one motor, fixture and command protocol fixed; compare it alone and with the other motors active while measuring timing and supply. To examine identity, swap the motor while holding the fixture and protocol fixed. Changing identity, fixture and controller together prevents a clean interpretation.
 
-![Input and output boundary of the supplied replay](../media/class05/replay-boundary-classroom.png)
+![Input and output boundary of the supplied replay](../resources/class05/figures/replay-boundary-classroom.png)
 
 *Figure 3. The replay begins at logged internal references and ends at predicted position. It does not regenerate the device's internal reference from an application request, or simulate shared supply, communication scheduling or rack flexibility.*
 
@@ -204,7 +204,7 @@ A useful actuator model may need recent history. The same current reference erro
 
 In Hwangbo and colleagues' [*Learning Agile and Dynamic Motor Skills for Legged Robots* (2019)](https://arxiv.org/abs/1901.08652), the platform was ANYmal, a quadruped with twelve series-elastic actuators. Their approach combined rigid-body/contact simulation with an actuator network learned from physical data. The network used joint-error and velocity history to predict torque; a separate policy chose joint targets for locomotion. The study supports this modeling approach in its tested robot and tasks, rather than demonstrating transfer to XC330 servos or a robotic hand.
 
-![Actuator network versus control policy](../media/class05/neural-actuator-classroom.png)
+![Actuator network versus control policy](../resources/class05/figures/neural-actuator-classroom.png)
 
 *Figure 4. Conceptual separation of two learned mappings. An actuator model predicts how commands and recent state produce actuation. A control policy chooses actions for a task. This diagram contains no Class 05 training result.*
 
@@ -235,7 +235,7 @@ The accepted campaign contains 125 simultaneous science events. Every event cont
 
 There are sixteen motor identities and two controller contexts, giving **32 selected parameter vectors**. Each held-out motor/controller cell has fifteen records: five B1/P06, five G1/P06 and five G1/P07. The cell mean therefore combines fixture and profile conditions; it is not the score of one G1 episode. These fits are applied across the campaign's tested fixtures and profiles; they are not 32 unrelated physical tests.
 
-![How collection events produce paired prediction records](../media/class05/experiment-units-classroom.png)
+![How collection events produce paired prediction records](../resources/class05/figures/experiment-units-classroom.png)
 
 *Figure 5. Thirty held-out events × sixteen motors produce 480 physical motor records. Baseline and fitted predictions create 960 scored rows for those records. Prediction count does not double the physical experiment count.*
 
@@ -276,7 +276,7 @@ This is a reduction in this metric relative to this baseline. It is not a failur
 
 Class 04 distinguished averaging complete-record RMSEs from pooling all time samples. The same distinction applies here, with a further grouping level: several motor records belong to one shared event. Keep the original per-record score for the reported mean, and preserve event identity when examining dependence or constructing a new split. Neither a larger sample count nor a second prediction creates another physical repeat.
 
-![Held-out fitted error across sixteen motor identities](../media/class05/population-errors-classroom.png)
+![Held-out fitted error across sixteen motor identities](../resources/class05/figures/population-errors-classroom.png)
 
 *Figure 6. Mean fitted position RMSE for each motor/controller cell, with fifteen held-out records per bar. Motor ID is categorical. The plot is descriptive and supplies no confidence intervals; shared-event dependence remains relevant.*
 
@@ -293,13 +293,13 @@ The activity focuses on motors 0 and 9. All four cells improve relative to their
 
 For motor 0, H2 has the smaller fitted error but the smaller relative reduction because its baseline is already better. These observations describe the tested conditions. They do not establish a causal explanation for motor differences or a generally superior hardware controller.
 
-![Selected effective armature by motor and controller](../media/class05/effective-armature-classroom.png)
+![Selected effective armature by motor and controller](../resources/class05/figures/effective-armature-classroom.png)
 
 *Figure 7. Effective armature from the 32 selected vectors. Compare H1 and H2 for the same motor: the fitted term depends on controller context. The vertical scale is 10⁻³ kg m². Values describe this effective model rather than independent rotor measurements.*
 
 A different friction-loss parameter similarly does not prove a physical friction difference. Inspect resistance independently, or instrument input timing and effort, according to the competing explanations. Parameters near an optimization bound deserve inspection. A fit inside its bounds still does not establish uniqueness or correct physics. The activity reaggregates saved predictions; it does not rerun optimization or verify the physical cause of a fitted value.
 
-![Two motors in one supplied held-out event](../media/class05/paired-traces-classroom.png)
+![Two motors in one supplied held-out event](../resources/class05/figures/paired-traces-classroom.png)
 
 *Figure 8. Left: encoder and stored baseline/fitted trajectories; right: signed prediction-minus-encoder residuals on a common vertical scale. Rows show motors 0 and 9 in the same G1/H1/P06/R01 held-out collection event. The selected trace illustrates local discrepancies, not the population average. The supplied per-motor trace intervals reproduce their corresponding episode metrics; the population table separately averages records.*
 
@@ -322,13 +322,13 @@ Read the time series before interpreting the mean. Locate a reversal or region o
 
 The campaign scores **encoder position**. Camera views and ArUco detections help inspect fixture identity, visible motion, occlusion and recording conditions. A marker detection is not automatically an independent joint-angle measurement.
 
-![Assigned marker detections in the original camera views](../media/class05/aruco_assigned_view_detection.png)
+![Assigned marker detections in the original camera views](../resources/class05/figures/aruco_assigned_view_detection.png)
 
 *Figure 9. Retained source detection images. The outlines and IDs show marker detections in two views. They do not establish camera calibration, joint-axis angle or synchronized measurement uncertainty. Use the marker arrangement as physical context.*
 
 To construct an optical angle, calibrate the camera and marker geometry, establish the marker-to-moving-body transform and fixed reference, define the joint axis and zero, and align the video clock with the encoder clock. Inspect occlusions and pose ambiguities, then quantify uncertainty. A marker's image-plane orientation is generally not the physical hinge angle under an arbitrary viewpoint. The [OpenCV pose-estimation documentation](https://docs.opencv.org/4.13.0/d5/dae/tutorial_aruco_detection.html) distinguishes corner/ID detection from pose recovery using calibrated camera parameters and known marker geometry (OpenCV contributors n.d.).
 
-![Two measurement paths to a common joint angle](../media/class05/measurement-chain-classroom.png)
+![Two measurement paths to a common joint angle](../resources/class05/figures/measurement-chain-classroom.png)
 
 *Figure 10. The encoder and optical chains need a common angle convention and time base before comparison. Camera calibration and body transforms connect marker pose to joint motion; uncertainty belongs to both measurement paths.*
 

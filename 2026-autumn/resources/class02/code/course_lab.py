@@ -103,7 +103,7 @@ def sensitivity():
 
 def manifest():
  files={}
- for directory in ('data','models','source/fonts','code'):
+ for directory in ('data','models','../fonts','code'):
   for p in sorted((ROOT/directory).rglob('*')):
    if p.is_file() and '__pycache__' not in str(p):files[str(p.relative_to(ROOT))]=hashlib.sha256(p.read_bytes()).hexdigest()
  return {'files':files,'python':platform.python_version(),'numpy':np.__version__,'mujoco':mujoco.__version__,'platform':platform.platform()}

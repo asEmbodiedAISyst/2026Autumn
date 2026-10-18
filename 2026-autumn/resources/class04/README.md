@@ -11,7 +11,7 @@ cd 2026-autumn/resources/class04
 python code/analyze_episode.py
 ```
 
-The command reads frozen predictions and writes `activity-output/metrics.json` and an optional overlay/residual plot. It does not operate an actuator, refit parameters or run MuJoCo. Add `--no-plot` for a Python standard-library-only metric calculation. Matplotlib is needed only for plotting; see [analysis dependencies](code/requirements-analysis.txt). The bundled MiSans fonts include their [license](code/fonts/MiSans-LICENSE.txt).
+The command reads frozen predictions and writes `activity-output/metrics.json` and an optional overlay/residual plot. It does not operate an actuator, refit parameters or run MuJoCo. Add `--no-plot` for a Python standard-library-only metric calculation. Matplotlib is needed only for plotting; see [analysis dependencies](code/requirements-analysis.txt). The bundled MiSans fonts include their [license](../fonts/MiSans-LICENSE.txt).
 
 Use the [configuration and signal guide](data/README.md), [G1 activity samples](data/xc330-98g-H1-G1-P06-R01.csv), [B1 comparison samples](data/xc330-98g-H1-B1-P06-R01.csv), [frozen model configuration](data/xc330-98g-model-config.json), [saved activity metrics](data/xc330-98g-activity-saved-metrics.json) and [condition summaries](data/xc330-98g-heldout-condition-metrics.csv). Correct interpretation of the saved figures and metrics receives equal activity credit.
 

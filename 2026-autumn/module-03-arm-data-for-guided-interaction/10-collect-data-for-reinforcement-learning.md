@@ -34,7 +34,7 @@ The supplied figures, worked examples and pilot audit results support the demons
 
 A **demonstration** records observations and actions selected by an operator or another declared expert. A behavior-cloning learner uses those pairs as supervised examples. A **reinforcement learner** optimizes a reward objective using interaction experience. An **evaluation record** describes what a frozen policy did under specified conditions and how its outcomes were judged.
 
-![Demonstration, reinforcement-learning experience and evaluation records](../media/class10/learning-records-classroom.png)
+![Demonstration, reinforcement-learning experience and evaluation records](../resources/class10/figures/learning-records-classroom.png)
 
 *Figure 1. Record types answer different questions. Their roles depend on available information and intended use, not on file extensions.*
 
@@ -72,7 +72,7 @@ The pilot uses a **pusher tool with a tool-mounted camera**. Its state/action re
 
 The [Universal Manipulation Interface](https://umi-gripper.github.io/) motivates careful relative-trajectory and latency interfaces (Chi et al. 2024). The simpler course pusher is a separate implementation; it does not inherit UMI's transfer results.
 
-![Nine-value tool-pose schema and camera input](../media/class10/tool-schema-classroom.png)
+![Nine-value tool-pose schema and camera input](../resources/class10/figures/tool-schema-classroom.png)
 
 *Figure 2. The pusher schema contains three position values and two rotation-matrix columns. It describes a pose interface, not nine robot joints.*
 
@@ -196,7 +196,7 @@ These are not interchangeable protocols. If you require a hold duration, impleme
 
 The supplied simulated pilot contains **ten episodes and 638 retained frames**. It includes useful fault cases. A pilot tests the task, recording and audit procedure before collection expands; it is not a persuasive policy-performance experiment.
 
-![Example learner-camera views from the simulated pilot](../media/class10/pilot-views-classroom.png)
+![Example learner-camera views from the simulated pilot](../resources/class10/figures/pilot-views-classroom.png)
 
 *Figure 3. Selected frames from the supplied phone-camera simulation video. They support visual inspection, not an automatic visibility score or a physical collection claim.*
 
@@ -217,7 +217,7 @@ Passing one column does not automatically close the others. An episode can reach
 
 The portable numeric audit checks counts, dimensions, finite values and stored timestamp increments. It also derives speed from successive action-position values and computes the final saved cube-to-goal distance from the privileged environment field.
 
-![Numeric audit of the ten-episode pilot](../media/class10/pilot-audit-classroom.png)
+![Numeric audit of the ten-episode pilot](../resources/class10/figures/pilot-audit-classroom.png)
 
 *Figure 4. Retained pilot audit. Lines mark the stated 0.25 m/s speed limit and 15 mm final-frame distance threshold. The plotted speed is inferred from the pose sequence and nominal sample rate; no policy is trained or evaluated.*
 
@@ -264,7 +264,7 @@ Therefore, uniformly spaced stored timestamps do not prove the absence of gaps o
 
 The prepared IK audit reconstructs observed tool poses at a declared canonical robot start: position [0.33, 0, 0.12] m with the tool pointing downward. It uses the supplied pusher model, limits and numerical solver, trying a previous solution and a home-pose retry.
 
-![Canonical target-frame reachability and yaw warnings](../media/class10/pilot-reach-classroom.png)
+![Canonical target-frame reachability and yaw warnings](../resources/class10/figures/pilot-reach-classroom.png)
 
 *Figure 5. Retained model/solver-dependent audit. Reach percentages are rounded terminal values. The 98% reach fraction and ±60-degree yaw lines are audit thresholds, not hardware qualification.*
 
@@ -298,7 +298,7 @@ The numeric-only audit leaves visibility and reachability unassessed. Its succes
 
 Adjacent frames in one episode are strongly related. Randomly distributing them across training and testing can make the test set almost a replay of the training trajectory. That evaluates a different question from performance on a new attempt.
 
-![Illustrative whole-episode training, selection and test split](../media/class10/episode-splits-classroom.png)
+![Illustrative whole-episode training, selection and test split](../resources/class10/figures/episode-splits-classroom.png)
 
 *Figure 6. Constructed episode-level split. A–J are an illustration; they are not an executed split of the supplied pilot.*
 
@@ -314,7 +314,7 @@ Fit normalization and other learned preprocessing on training data only. An epis
 
 Distinguish **predicted chunk length** from **executed actions before replanning**. A policy can predict a long sequence while an executor applies only a prefix before requesting a new observation. Some implementations combine overlapping predictions; inspect the actual executor rather than assuming every implementation uses the same options.
 
-![Nominal action execution and replanning intervals](../media/class10/action-chunks-classroom.png)
+![Nominal action execution and replanning intervals](../resources/class10/figures/action-chunks-classroom.png)
 
 *Figure 7. Constructed replanning examples at nominal 30 Hz. They illustrate feedback opportunities, not a measured ranking of policy success.*
 

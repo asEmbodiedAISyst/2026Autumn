@@ -32,13 +32,13 @@ The figures, XML excerpts, tables and recorded measurements on this page support
 
 Place the physical actuator and its link/payload assembly beside their digital representations. The housing is fixed to the support. The output shaft turns the link. The pins and payloads are attached to the link and move with it. Before discussing software, identify the relative motion: the moving assembly rotates about one axis relative to the housing.
 
-![Physical fixture, CAD assembly and MuJoCo representation](../media/class03/physical_cad_mjcf_comparison.png)
+![Physical fixture, CAD assembly and MuJoCo representation](../resources/class03/figures/physical_cad_mjcf_comparison.png)
 
 *Figure 1. The declared B2 fixture in physical, CAD and simulator views. Appearance establishes recognizable geometry; each view supports different claims about structure and behavior.*
 
 Several manufactured parts can form one moving rigid assembly. Separate model bodies can also preserve component bookkeeping while remaining rigidly attached. Neither the number of parts nor the number of meshes determines the number of degrees of freedom. Our one hinge supplies one rotational coordinate. Adding a payload mesh should not accidentally add another independent motion.
 
-![Physical grouping and executable body tree](../media/class03/body-tree-classroom.png)
+![Physical grouping and executable body tree](../resources/class03/figures/body-tree-classroom.png)
 
 *Figure 2. Read the tree from top to bottom: the fixed housing supports one hinge, the link rotates at that hinge, and the two attached payload groups introduce no extra joints. The left sketch groups the same external mechanism physically.*
 
@@ -106,7 +106,7 @@ Our declared XC330 teaching family uses a 22 g link and two complete 44 g pin–
 
 The source XML also retains approximately 0.11859 kg on its fixed `XC330-M288-T` body, an unverified CAD/export property rather than the catalogue module mass. That fixed body does not contribute to the isolated hinge's moving inertia. Its mass record would need correction or verification before reusing the assembly in a floating-base or whole-system mass calculation.
 
-![Declared XC330 fixture configurations](../media/class03/configuration_mass_positions.png)
+![Declared XC330 fixture configurations](../resources/class03/figures/configuration_mass_positions.png)
 
 *Figure 3. B0, B1 and B2 place equal 44 g assemblies at symmetric radii. G1 places them on one side. Each complete assembly includes its pin. These are declared positions in the 110 g teaching family.*
 
@@ -151,7 +151,7 @@ A claim such as “the model matches the actuator” leaves too much unspecified
 
 For our later position-response experiment, the target is a specified actuator and fixture under stated commands and controller settings. Contact, thermal behavior and gearbox wear are outside this initial task. Those effects need additional states, observations or experiments before predictive claims about them are justified.
 
-![Matched conditions, physical and digital outputs, and three evidence levels](../media/class03/validation-chain-classroom.png)
+![Matched conditions, physical and digital outputs, and three evidence levels](../resources/class03/figures/validation-chain-classroom.png)
 
 *Figure 4. Declared conceptual comparison. Physical and simulated inputs must have compatible meaning and conditions; measured and predicted outputs must be aligned before comparison. The diagram contains no experimental trajectories.*
 
@@ -192,7 +192,7 @@ Class 03 prepares a structurally inspectable representation and specifies this t
 
 ### Separate three representation layers
 
-![The digitization workflow](../media/class03/digitization_workflow.png)
+![The digitization workflow](../resources/class03/figures/digitization_workflow.png)
 
 *Figure 5. The physical-to-executable chain preserves selected information at each stage. Export transfers a representation; inspection establishes what was transferred.*
 
@@ -222,7 +222,7 @@ This is an explanatory excerpt: the ellipses omit attributes, so load the comple
 
 **Identify what stays fixed.** When the joint turns, P stays attached at the same Link-frame coordinates. Its world coordinates change. In this model's zero pose, the Link axes align with the world axes and the joint is located at [−0.210, 0.0035, 0.370] m in the world. The positive hinge axis is +y, so positive rotation moves the initially positive-x payload toward negative world z.
 
-![Trace a pin attachment point through the actual B2 model and its units](../media/class03/frames-and-units-classroom.png)
+![Trace a pin attachment point through the actual B2 model and its units](../resources/class03/figures/frames-and-units-classroom.png)
 
 *Figure 6. The same B2 attachment point at zero and +30° joint positions. The plot shows displacement from the joint in the world x–z plane; the table reports absolute world coordinates. The 7 mm axial offset is outside this projection. These are declared model coordinates, verified against MuJoCo, rather than hardware measurements.*
 
@@ -270,7 +270,7 @@ Here `pin_id` identifies `Pin_1`, and `joint_id` identifies `actuator_joint`. Th
 
 ### Separate visual, collision and inertial descriptions
 
-![Visual geometry, a candidate collision simplification and inertial properties](../media/class03/geometry-roles-classroom.png)
+![Visual geometry, a candidate collision simplification and inertial properties](../resources/class03/figures/geometry-roles-classroom.png)
 
 *Figure 7. Three descriptions of the same conceptual link: the visual surface retains holes, a candidate collision rectangle simplifies those surfaces, and the inertial panel marks the centre of mass while retaining the link outline. The supplied fixtures currently disable contact.*
 
@@ -343,7 +343,7 @@ Here 0.30 is a position reference, not a torque. Reading `qfrc_actuator` reports
 
 Printing turns nominal geometry into a part with an actual material structure and interfaces. Wall count, infill and orientation influence mass and stiffness; shrinkage, support removal and fastening can affect fit and alignment. A rigid-body model abstracts those details, so inspect whether that abstraction remains appropriate.
 
-![Nominal and as-built interface checks](../media/class03/printed-interface-classroom.png)
+![Nominal and as-built interface checks](../resources/class03/figures/printed-interface-classroom.png)
 
 *Figure 8. The solid circle is the nominal bore. The dashed circle illustrates a possible smaller, offset as-built bore. Compare diameter and alignment rather than appearance alone; the difference is exaggerated and is not a measured tolerance.*
 
@@ -361,13 +361,13 @@ The H2D preparation connects these decisions to fabrication. Inspect the supplie
 
 Open the [RS06 motor STEP](../resources/class03/preparation/demonstration/rs06/RS06_vendor_motor.step) and compare its output axis and mounting interfaces with the engineering drawing. Locate the shaft centreline and mounting-hole pattern, then compare their orientation with the model. If CAD is available, inspect a nominal dimension and the reported physical properties.
 
-![RS06 mechanical reference](../media/class03/RS06_outline_and_mounting_dimensions.png)
+![RS06 mechanical reference](../resources/class03/figures/RS06_outline_and_mounting_dimensions.png)
 
 *Figure 9a. Use the shaft centreline and mounting interfaces to orient the RS06 motor reference. Drawing values are manufacturer nominal values, not measurements of the available unit. Source: RobStride RS06 documentation; see the supplied [user manual](../resources/class03/preparation/demonstration/rs06/RS06_User_Manual_260713.pdf) and [original-brand product files](https://github.com/RobStride/Product_Information).*
 
 Keep manufacturer values, CAD estimates and actual measurements in separate ledger entries. The motor STEP is a component reference rather than a complete editable fixture assembly. Use the prepared fixture/export records to inspect the assembled mechanism.
 
-![RS06 fixture configurations shown as CAD renders](../media/class03/rs06-fixture-cad.jpg)
+![RS06 fixture configurations shown as CAD renders](../resources/class03/figures/rs06-fixture-cad.png)
 
 *Figure 9b. Identify the fixed motor housing and moving link: M0 has no external fixture, B0 has the balanced link, B1 adds both large end payloads, and G1 has one large end payload. These are CAD renders, not physical photographs.*
 
@@ -379,43 +379,43 @@ The sequence below shows the current XC330 Fusion workflow. Use it to identify t
 
 **1. Choose the joint origin.** The joint dialog identifies Link and XC330 as the two components. Locate the output-shaft interface and inspect the selected origins and offsets before accepting the joint.
 
-![Choose the joint origin in Fusion](../media/class03/fusion-01-joint-origin.png)
+![Choose the joint origin in Fusion](../resources/class03/figures/fusion-01-joint-origin.png)
 
 *Figure 10a. Choose the joint origin; recorded XC330 interface view.*
 
 **2. Align the moving link.** The transparent link and selected component origins expose the alignment decision. Check that the intended shaft and link attachment coincide; do not infer alignment only from the camera view.
 
-![Align the moving link in Fusion](../media/class03/fusion-02-component-alignment.png)
+![Align the moving link in Fusion](../resources/class03/figures/fusion-02-component-alignment.png)
 
 *Figure 10b. Align the moving link; recorded XC330 interface view.*
 
 **3. Set the revolute motion.** The Motion tab shows a revolute joint and a selected rotation axis. The limit checkboxes in this capture are not enabled; this screenshot does not verify the ±90° range later declared in the MJCF.
 
-![Set the revolute motion in Fusion](../media/class03/fusion-03-revolute-motion.png)
+![Set the revolute motion in Fusion](../resources/class03/figures/fusion-03-revolute-motion.png)
 
 *Figure 10c. Set the revolute motion; recorded XC330 interface view.*
 
 **4. Locate the payload and pin origins.** The Position tab selects the payload and pin attachment origins. This is an attachment-coordinate decision, not a material-property measurement.
 
-![Locate the payload and pin origins in Fusion](../media/class03/fusion-04-payload-pin-origins.png)
+![Locate the payload and pin origins in Fusion](../resources/class03/figures/fusion-04-payload-pin-origins.png)
 
 *Figure 10d. Locate the payload and pin origins; recorded XC330 interface view.*
 
 **5. Make the payload attachment rigid.** The Motion tab explicitly shows Rigid. The payload follows its parent attachment without introducing a second moving degree of freedom.
 
-![Make the payload attachment rigid in Fusion](../media/class03/fusion-05-rigid-payload.png)
+![Make the payload attachment rigid in Fusion](../resources/class03/figures/fusion-05-rigid-payload.png)
 
 *Figure 10e. Make the payload attachment rigid; recorded XC330 interface view.*
 
 **6. Repeat and inspect the second attachment.** The second payload/pin joint is positioned through the selected origins and offsets. Check both sides of the assembly rather than assuming that one correct attachment guarantees symmetry.
 
-![Repeat and inspect the second attachment in Fusion](../media/class03/fusion-06-second-payload.png)
+![Repeat and inspect the second attachment in Fusion](../resources/class03/figures/fusion-06-second-payload.png)
 
 *Figure 10f. Repeat and inspect the second attachment; recorded XC330 interface view.*
 
 **7. Export the robot description.** The ACDC4Robot dialog selects MJCF and MuJoCo. Export the assembled mechanism and inspect the generated XML and meshes; selecting an export format alone does not validate them.
 
-![Export the robot description in Fusion](../media/class03/fusion-07-mjcf-export.png)
+![Export the robot description in Fusion](../resources/class03/figures/fusion-07-mjcf-export.png)
 
 *Figure 10g. Export the robot description; recorded XC330 interface view.*
 
@@ -427,7 +427,7 @@ The [RS06 source export](../resources/class03/preparation/rs06_fixtures/source-a
 
 Load the [prepared RS06 B1 model](../resources/class03/preparation/rs06_fixtures/model-sources/B1.xml). Find `rs06_joint`, its local axis, parent transforms, range, inertial records and position actuator. Compare the source export with this prepared model to identify added actuator/passive assumptions.
 
-![Prepared RS06 model configurations loaded in MuJoCo](../media/class03/rs06-model-loads.png)
+![Prepared RS06 model configurations loaded in MuJoCo](../resources/class03/figures/rs06-model-loads.png)
 
 *Figure 11. Compare the loaded RS06 configurations with Figure 9b: check the link, end-payload arrangement and one-hinge structure. A changed camera view does not establish a changed mechanism.*
 

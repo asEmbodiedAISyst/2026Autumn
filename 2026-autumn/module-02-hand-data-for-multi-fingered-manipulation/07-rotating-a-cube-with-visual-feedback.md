@@ -34,7 +34,7 @@ OpenAI et al. (2018), in [*Learning Dexterous In-Hand Manipulation*](https://arx
 
 Object reorientation changes an object's pose. Solving a Rubik's Cube additionally changes and reasons about its internal face permutations. Our supplied LEAP task changes a rigid cube's complete orientation; it does not solve a puzzle or reproduce the Shadow Hand system.
 
-![Visual estimation within the manipulation feedback loop](../media/class07/vision-loop-classroom.png)
+![Visual estimation within the manipulation feedback loop](../resources/class07/figures/vision-loop-classroom.png)
 
 *Figure 1. A conceptual visual-feedback architecture. Estimation, frame conversion, validity and age checks sit between images and policy input. The diagram describes the intended chain, not an implemented live phone integration.*
 
@@ -80,7 +80,7 @@ Here $$t_c$$ is capture time and $$t_u$$ is controller use time. Network arrival
 
 At 20 Hz, three control intervals are **150 ms**. At approximately constant angular speed of 1 rad/s, an exact observation that old can differ from current orientation by about **0.15 rad**, or **8.59°**. That exceeds the unchanged 0.1 rad angular criterion. The calculation is a local constant-speed approximation, not a prediction for every grasp trajectory.
 
-![Synthetic delayed measurements and a missing-detection interval](../media/class07/packet-age-classroom.png)
+![Synthetic delayed measurements and a missing-detection interval](../resources/class07/figures/packet-age-classroom.png)
 
 *Figure 2. A synthetic yaw signal is delayed by three samples and held during a declared detection gap. The lower plot shows growing age. Gray shading marks the imposed gap; 200 ms is an illustrative staleness rule, not a hardware safety threshold.*
 
@@ -116,7 +116,7 @@ $$
 
 Negating the translation alone is not a general inverse.
 
-![One object point expressed in the camera and hand frames](../media/class07/frame-chain-classroom.png)
+![One object point expressed in the camera and hand frames](../resources/class07/figures/frame-chain-classroom.png)
 
 *Figure 3. The worked camera is translated 0.10 m along hand x and rotated 90° about hand z. Camera +x points along hand +y; camera +y points along hand −x. The same point has camera coordinates (0.20, 0.03, 0.40) m and hand coordinates (0.07, 0.20, 0.40) m. The plot shows the x–y projection.*
 
@@ -173,7 +173,7 @@ The focal lengths are in pixels and (c_x, c_y) is the principal point. The synth
 
 A 70 mm segment parallel to the image plane, with 700 px focal length, spans about **98 px at 0.50 m** depth and **49 px at 1.00 m**. The object has not shrunk. Known geometry or another scale source is needed for metric recovery.
 
-![Known synthetic corner correspondences in image coordinates](../media/class07/pinhole-points-classroom.png)
+![Known synthetic corner correspondences in image coordinates](../resources/class07/figures/pinhole-points-classroom.png)
 
 *Figure 4. Four ordered corners projected from a tilted 70 mm planar square. The correspondences are generated from known geometry and pose; no image detector is being evaluated. Image v increases downward.*
 
@@ -187,7 +187,7 @@ Reprojection error measures consistency between image points and projections of 
 
 The [supplied sensitivity study](../resources/class07/results/perception-summary.json) records OpenCV 5.0.0, seed 7 and 100 trials at each of five corner-noise levels; its [500 trial rows](../resources/class07/results/pnp-trials.csv) retain the individual errors. All trials use the same tilted square, known camera matrix and declared ground-truth pose. They sample corner perturbations, not 500 different camera setups or detected physical objects. It reports median translation/orientation error and a 90th-percentile orientation error. The percentile describes these generated trials; it is not a confidence interval.
 
-![Synthetic pose-estimation sensitivity to corner noise](../media/class07/pnp-sensitivity-classroom.png)
+![Synthetic pose-estimation sensitivity to corner noise](../resources/class07/figures/pnp-sensitivity-classroom.png)
 
 *Figure 5. PnP sensitivity for known correspondences and calibration. The curves exclude detection failures, real occlusion, calibration error and hardware measurements. Noise-free recovery is a numerical check, not a claim that a physical camera is exact.*
 
@@ -223,7 +223,7 @@ Report perception and task outcomes together. For example, an estimator accurate
 
 The supplied diagnostic preserves the Class 06 policy, task and clocks. It uses the same bundled ONNX actor and native MuJoCo 3.6.0 runtime identified in that class. It delays or holds only observation indices **32–40**: three position-error and six orientation-error features. Joint-position features, joint-target errors and action history remain current according to the pinned task's ordering. In `feedback_experiment.py`, `obs[32:41]` selects these nine values because Python excludes the upper bound. The script checks that entries before index 32 and from index 41 onward are unchanged; a different slice would change the experiment.
 
-![The nine pose-error channels under test](../media/class07/observation-interface-classroom.png)
+![The nine pose-error channels under test](../resources/class07/figures/observation-interface-classroom.png)
 
 *Figure 6. Only the nine highlighted pose-error values are changed. They include the goal relation when the feature packet was created. The intervention is not raw-camera latency followed by recomputation against the newest goal.*
 
@@ -235,7 +235,7 @@ Here `feature_age_s` is the additional simulated queue/hold age at policy-input 
 
 Once an observation changes the action, later trajectories can diverge. The intervention's consequences belong to a closed loop, rather than a comparison of identical underlying state trajectories.
 
-![Selected native pose-error packet diagnostics](../media/class07/feedback-diagnostic-classroom.png)
+![Selected native pose-error packet diagnostics](../resources/class07/figures/feedback-diagnostic-classroom.png)
 
 *Figure 7. One native run per condition. The loss run terminates at its fall and has no invented tail. The lower plot reports delivered-feature age. These traces demonstrate a controlled intervention, not population reliability.*
 
@@ -255,7 +255,7 @@ A successful delayed run does not establish delay robustness, and one loss-assoc
 
 Human-hand retargeting maps hand measurements to a robot with different link lengths, joint axes, limits and contact capabilities. Phone-pose teleoperation instead uses device motion to specify a target. A joystick or phone-orientation stream is not a measurement of human finger configuration.
 
-![Human-hand measurements mapped to robot joints](../media/class07/retargeting-classroom.png)
+![Human-hand measurements mapped to robot joints](../resources/class07/figures/retargeting-classroom.png)
 
 *Figure 8. Conceptual retargeting: measured landmarks, a task-space objective and constrained robot joints. Finger tracking and retargeting are not implemented by the core visual-feedback practical.*
 

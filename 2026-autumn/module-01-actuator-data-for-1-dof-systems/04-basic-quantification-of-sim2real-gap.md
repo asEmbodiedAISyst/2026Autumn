@@ -32,7 +32,7 @@ The **Sim2Real gap** in this class is the difference between simulated and measu
 
 **Predict:** If hardware and simulation both lag their reference by the same amount, is their model-to-hardware gap necessarily large?
 
-![Frozen XC330 prediction and physical response for the eccentric held-out case](../media/class04/xc330-H1-G1-P06.png)
+![Frozen XC330 prediction and physical response for the eccentric held-out case](../resources/class04/figures/xc330-H1-G1-P06.png)
 
 *Figure 1. One recorded XC330 H1/G1/P06/R01 episode and two frozen MuJoCo candidates. The lower panel retains the signed model-to-measurement residual. These are predictions from the 98 g campaign; no parameter is adjusted to this episode. Method 2's position RMSE is approximately 0.02191 rad. Read the signal labels before deciding what the overlay establishes.*
 
@@ -62,7 +62,7 @@ Positions use radians and velocities use rad/s. A hat denotes an estimate or mod
 
 The **experiment runner** schedules requests and associates them with a record. The **hardware controller** shapes references and produces a limited drive response on the device. The **capture path** preserves commands, observations, timestamps and configuration. In replay, a declared controller approximation computes effort from recorded references and simulated feedback; **MuJoCo** then integrates the mechanics. A torque channel in an XML file supplies a route for effort. It does not, by itself, recreate the embedded position controller.
 
-![Physical record and conditional simulation boundary](../media/class04/comparison-boundary.png)
+![Physical record and conditional simulation boundary](../resources/class04/figures/comparison-boundary.png)
 
 *Figure 2. The simulation receives recorded internal references and an initial state, then evolves independently. The physical position is the comparison target, not a state repeatedly injected into replay. The external goal remains visible but firmware reference generation lies outside this prediction boundary.*
 
@@ -355,7 +355,7 @@ For the selected G1 episode, Method 2 is about 1.26 degrees in position RMSE. It
 
 The same physical episode has internal-reference tracking RMSE about 0.04985 rad and external-goal tracking RMSE about 0.07643 rad. Those are different comparisons from the 0.02191 rad model gap. Both model candidates face the same episode, initialization and scoring rules. There is no arbitrary nominal physical baseline in this study.
 
-![Matched P06 physical/simulated comparisons](../media/class04/xc330-matched-P06.png)
+![Matched P06 physical/simulated comparisons](../resources/class04/figures/xc330-matched-P06.png)
 
 *Figure 3. B1 and G1 first repeats use the same named P06 profile and H1 context. The differing physical initial states and fixture properties are preserved. The comparison helps investigate condition dependence; it does not uniquely establish a failure mechanism.*
 
@@ -398,7 +398,7 @@ The released H1 results also depend strongly on the evaluation condition:
 | Held-out B1/P06, 5 repeats | 0.00869335 rad | 0.003398 rad |
 | Held-out G1/P06–P07, 10 repeats | 0.0306679 rad | 0.023086 rad |
 
-![Method and condition summaries with declared grouping](../media/class04/xc330-condition-means.png)
+![Method and condition summaries with declared grouping](../resources/class04/figures/xc330-condition-means.png)
 
 *Figure 4. Released mean episode RMSE values, not single-episode scores. B1 and G1 groups have different profile composition as labelled. These bars are deterministic summaries of this archive, not confidence intervals or estimates of a wider actuator population.*
 

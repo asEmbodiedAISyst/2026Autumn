@@ -41,7 +41,7 @@ Identify the body tree before reasoning about motion: fixed base, moving links, 
 
 A URDF describes links, joint origins and axes, geometry, inertial properties and joint limits. A runnable MuJoCo experiment also needs actuation, passive parameters, an environment, initial conditions and a stepping rule. Those additions are modeling decisions with their own provenance.
 
-![From mechanical description to a controlled experiment](../media/class08/model-pipeline-classroom.png)
+![From mechanical description to a controlled experiment](../resources/class08/figures/model-pipeline-classroom.png)
 
 *Figure 1. The description-to-experiment chain. The arrows represent modeling and inspection steps; physical readiness requires evidence from the actual system.*
 
@@ -87,7 +87,7 @@ The corresponding compiled TCP positions are:
 | Zero arm vector | Approximately [0.28671, 0, 0.21775] m |
 | Working home | Approximately [0.25003, 0, 0.09986] m |
 
-![Zero and working home configurations of the reBot RS model](../media/class08/arm-poses-classroom.png)
+![Zero and working home configurations of the reBot RS model](../resources/class08/figures/arm-poses-classroom.png)
 
 *Figure 2. Native simulation renders of the retained model with the same camera. Zero and home are declared joint configurations, not photographs or measurements of physical calibration.*
 
@@ -157,7 +157,7 @@ $$
 
 If the lower bound exceeds the upper bound, the two declarations have no common interval. Even a valid intersection does not guarantee a collision-free or dynamically feasible movement; inspect the actuator bounds and intended scene as well.
 
-![Compiled joint limits, software limits and home positions](../media/class08/joint-limits-classroom.png)
+![Compiled joint limits, software limits and home positions](../resources/class08/figures/joint-limits-classroom.png)
 
 *Figure 3. Selected joint ranges converted to degrees, their intersections with the supplied software bounds, and working home coordinates. The software declarations are not measured hardware calibration.*
 
@@ -191,7 +191,7 @@ The joint-by-joint script checks its soft bounds for these particular small excu
 
 A position target is a request; the measured joint position is a response. Their difference depends on the configured gains, effort limits, gravity, inertia, damping and target trajectory.
 
-![Position target, controller, mechanism and feedback](../media/class08/control-loop-classroom.png)
+![Position target, controller, mechanism and feedback](../resources/class08/figures/control-loop-classroom.png)
 
 *Figure 4. Conceptual feedback path. The supplied simulation and a physical embedded controller can have different internal states, compensation and limits.*
 
@@ -239,7 +239,7 @@ The continuous profile starts and ends with zero commanded velocity. Smooth targ
 
 The classroom trace moves joint2 from home to +10 degrees and back, then to −10 degrees and back. Each row pairs the current target with the state recorded **before** the corresponding control update is stepped.
 
-![Joint2 target and pre-step response with signed tracking residual](../media/class08/joint-response-classroom.png)
+![Joint2 target and pre-step response with signed tracking residual](../resources/class08/figures/joint-response-classroom.png)
 
 *Figure 5. Retained simulation trace with 180 rows. The residual is pre-step measured position minus the paired target. No filtering or alignment shift is applied; the record contains no hardware measurements.*
 
@@ -267,7 +267,7 @@ $$
 \Delta t_c=17\Delta t_p=\frac{1}{30}\,\mathrm{s}.
 $$
 
-![Rounded and corrected constructions of the control period](../media/class08/control-clock-classroom.png)
+![Rounded and corrected constructions of the control period](../resources/class08/figures/control-clock-classroom.png)
 
 *Figure 6. Arithmetic comparison of the earlier rounded period and the corrected period used by the classroom controlled-motion runner. The diagram describes simulation stepping, not operating-system scheduling.*
 
