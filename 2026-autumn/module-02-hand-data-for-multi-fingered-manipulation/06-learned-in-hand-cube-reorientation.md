@@ -25,7 +25,7 @@ By the end of this class, you should be able to:
 
 [Lecture](#start-with-the-hand-cube-and-task) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The supplied source figures, declared interface, worked calculations and recorded diagnostic patterns support the demonstration and activity. The active deployment bundle containing the checkpoint, bridge, training configuration and raw NPZ logs is referenced outside the source snapshot. The page therefore interprets the author's recorded evidence; it does not claim a fresh policy execution or require powered hardware.
+The supplied source figures, declared interface, worked calculations and recorded diagnostic patterns support the demonstration and activity. The [source support package](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2006%20%E2%80%94%20Learned%20in-hand%20cube%20reorientation/README.md) provides the available models, records and original simulation/physical videos, together with explicit missing-file notes. The active deployment bundle containing the checkpoint, bridge, training configuration and raw NPZ logs is referenced outside the source snapshot. The page therefore interprets the author's recorded evidence; it does not claim a fresh policy execution or require powered hardware.
 
 ## Start with the hand, cube and task
 
