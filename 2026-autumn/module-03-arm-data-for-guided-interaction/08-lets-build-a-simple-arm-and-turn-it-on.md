@@ -1,7 +1,5 @@
 ---
 description: 04 November 2026 · 10:30–11:50 · CR6 | WEI Jinqi & SONG Chaoyang
-layout:
-  width: wide
 ---
 
 # 08 Arm commissioning and control in simulation
@@ -32,9 +30,7 @@ The explanation and supplied records can be read without executing code. The sep
 
 
 
-![The reBot Arm B601-RS](../resources/class08/figures/source/arm-seeed.png)
-
-*Figure 1. The reBot Arm B601-RS (image: Seeed Studio).*
+<figure><img src="../resources/class08/figures/source/arm-seeed.png" alt="The reBot Arm B601-RS"><figcaption><p>Figure 1. The reBot Arm B601-RS (image: Seeed Studio).</p></figcaption></figure>
 
 {% hint style="info" %}
 **Photo to be added:** the course arm on the bench, clamped to the table, with its supply.
@@ -47,9 +43,7 @@ bench, with its 48 V supply behind it. Each joint is a RobStride motor of the ki
 
 
 
-![The four boxes of the kit: RS-Pn Power Adapter, RS-Sn Structure Kit, RS-Mn Motor Kit and RS-Gn Gripper Kit](../resources/class08/figures/source/kit-boxes.png)
-
-*Figure 2. The four boxes of the kit: RS-Pn Power Adapter, RS-Sn Structure Kit, RS-Mn Motor Kit and RS-Gn Gripper Kit. Four of the five boxes of the kit.*
+<figure><img src="../resources/class08/figures/source/kit-boxes.png" alt="The four boxes of the kit: RS-Pn Power Adapter, RS-Sn Structure Kit, RS-Mn Motor Kit and RS-Gn Gripper Kit"><figcaption><p>Figure 2. The four boxes of the kit: RS-Pn Power Adapter, RS-Sn Structure Kit, RS-Mn Motor Kit and RS-Gn Gripper Kit. Four of the five boxes of the kit.</p></figcaption></figure>
 
 {% hint style="info" %}
 **Photos to be added:** the parts of each box, laid out.
@@ -201,29 +195,17 @@ For equal finger strokes $$s_L=s_R$$, the tendon coordinate $$\ell_g=0.5s_L+0.5s
 
 
 
-![Joint 1 at +30 degrees from home](../resources/class08/figures/source/joint-sweep-1.png)
+<figure><img src="../resources/class08/figures/source/joint-sweep-1.png" alt="Joint 1 at +30 degrees from home"><figcaption><p>Figure 3. Joint 1 at +30 degrees from home.</p></figcaption></figure>
 
-*Figure 3. Joint 1 at +30 degrees from home.*
+<figure><img src="../resources/class08/figures/source/joint-sweep-2.png" alt="Joint 2 at +30 degrees from home"><figcaption><p>Figure 4. Joint 2 at +30 degrees from home.</p></figcaption></figure>
 
-![Joint 2 at +30 degrees from home](../resources/class08/figures/source/joint-sweep-2.png)
+<figure><img src="../resources/class08/figures/source/joint-sweep-3.png" alt="Joint 3 at +30 degrees from home"><figcaption><p>Figure 5. Joint 3 at +30 degrees from home.</p></figcaption></figure>
 
-*Figure 4. Joint 2 at +30 degrees from home.*
+<figure><img src="../resources/class08/figures/source/joint-sweep-4.png" alt="Joint 4 at +30 degrees from home"><figcaption><p>Figure 6. Joint 4 at +30 degrees from home.</p></figcaption></figure>
 
-![Joint 3 at +30 degrees from home](../resources/class08/figures/source/joint-sweep-3.png)
+<figure><img src="../resources/class08/figures/source/joint-sweep-5.png" alt="Joint 5 at +30 degrees from home"><figcaption><p>Figure 7. Joint 5 at +30 degrees from home.</p></figcaption></figure>
 
-*Figure 5. Joint 3 at +30 degrees from home.*
-
-![Joint 4 at +30 degrees from home](../resources/class08/figures/source/joint-sweep-4.png)
-
-*Figure 6. Joint 4 at +30 degrees from home.*
-
-![Joint 5 at +30 degrees from home](../resources/class08/figures/source/joint-sweep-5.png)
-
-*Figure 7. Joint 5 at +30 degrees from home.*
-
-![Joint 6 at +30 degrees from home](../resources/class08/figures/source/joint-sweep-6.png)
-
-*Figure 8. Joint 6 at +30 degrees from home.*
+<figure><img src="../resources/class08/figures/source/joint-sweep-6.png" alt="Joint 6 at +30 degrees from home"><figcaption><p>Figure 8. Joint 6 at +30 degrees from home.</p></figcaption></figure>
 
 Each image shows one joint at +30° from the home pose (the zero and home configurations below). Read the positive direction of each joint. A
 target outside the declared limits is skipped and reported. It is not clipped without a message.
@@ -260,13 +242,9 @@ kinematics.
 
 
 
-![Zero pose of the model](../resources/class08/figures/source/zero-pose.png)
+<figure><img src="../resources/class08/figures/source/zero-pose.png" alt="Zero pose of the model"><figcaption><p>Figure 9. Zero pose of the model.</p></figcaption></figure>
 
-*Figure 9. Zero pose of the model.*
-
-![Home pose of the model](../resources/class08/figures/source/home-pose.png)
-
-*Figure 10. Home pose of the model.*
+<figure><img src="../resources/class08/figures/source/home-pose.png" alt="Home pose of the model"><figcaption><p>Figure 10. Home pose of the model.</p></figcaption></figure>
 
 | Pose | Joints | Use |
 | --- | --- | --- |
@@ -342,13 +320,9 @@ At home, joint 4 is approximately −70.8°. A −10° excursion would request �
 
 
 
-![Gravity-compensation hold at the home pose](../resources/class08/figures/source/gravcomp-hold.png)
+<figure><img src="../resources/class08/figures/source/gravcomp-hold.png" alt="Gravity-compensation hold at the home pose"><figcaption><p>Figure 11. Gravity-compensation hold at the home pose. Hold at home, with and without g(q).</p></figcaption></figure>
 
-*Figure 11. Gravity-compensation hold at the home pose. Hold at home, with and without g(q).*
-
-![Step response of one joint](../resources/class08/figures/source/step-response.png)
-
-*Figure 12. Step response of one joint. A 10° step on one joint.*
+<figure><img src="../resources/class08/figures/source/step-response.png" alt="Step response of one joint"><figcaption><p>Figure 12. Step response of one joint. A 10° step on one joint.</p></figcaption></figure>
 
 With gravity compensation, the arm stays within a small error at the home pose. Without it, the PD term alone
 must carry the weight: the joint sags until $$K_p\,(q_d - q) = g(q)$$. A 10° step settles to within 1° in
@@ -364,21 +338,13 @@ A simulation can advance at the correct simulated period while rendering more sl
 
 
 
-![Front camera](../resources/class08/figures/source/camera-front.png)
+<figure><img src="../resources/class08/figures/source/camera-front.png" alt="Front camera"><figcaption><p>Figure 13. Front camera.</p></figcaption></figure>
 
-*Figure 13. Front camera.*
+<figure><img src="../resources/class08/figures/source/camera-side.png" alt="Side camera"><figcaption><p>Figure 14. Side camera.</p></figcaption></figure>
 
-![Side camera](../resources/class08/figures/source/camera-side.png)
+<figure><img src="../resources/class08/figures/source/camera-top.png" alt="Top camera"><figcaption><p>Figure 15. Top camera.</p></figcaption></figure>
 
-*Figure 14. Side camera.*
-
-![Top camera](../resources/class08/figures/source/camera-top.png)
-
-*Figure 15. Top camera.*
-
-![Wrist camera](../resources/class08/figures/source/camera-wrist.png)
-
-*Figure 16. Wrist camera.*
+<figure><img src="../resources/class08/figures/source/camera-wrist.png" alt="Wrist camera"><figcaption><p>Figure 16. Wrist camera.</p></figcaption></figure>
 
 The scene has four cameras. `front`, `side` and `top` are fixed; `wrist` moves with the gripper. Each renders
 640 × 480 images, the image size of the course datasets.

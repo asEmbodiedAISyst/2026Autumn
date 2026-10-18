@@ -46,29 +46,17 @@ plans again. With `locate`, the model does the perception, and the script does t
 
 
 
-![Push mode, start](../resources/class11/figures/source/agent-push-1.png)
+<figure><img src="../resources/class11/figures/source/agent-push-1.png" alt="Push mode, start"><figcaption><p>Figure 1. Push mode, start. Push mode: locate the cube and the goal.</p></figcaption></figure>
 
-*Figure 1. Push mode, start. Push mode: locate the cube and the goal.*
+<figure><img src="../resources/class11/figures/source/agent-push-2.png" alt="Push mode, after the first push"><figcaption><p>Figure 2. Push mode, after the first push. After the first push (6 of 9 cm).</p></figcaption></figure>
 
-![Push mode, after the first push](../resources/class11/figures/source/agent-push-2.png)
+<figure><img src="../resources/class11/figures/source/agent-push-3.png" alt="Push mode, success"><figcaption><p>Figure 3. Push mode, success. After the second push: success.</p></figcaption></figure>
 
-*Figure 2. Push mode, after the first push. After the first push (6 of 9 cm).*
+<figure><img src="../resources/class11/figures/source/agent-step-1.png" alt="Step mode, start pose"><figcaption><p>Figure 4. Step mode, start pose. Step mode: start pose.</p></figcaption></figure>
 
-![Push mode, success](../resources/class11/figures/source/agent-push-3.png)
+<figure><img src="../resources/class11/figures/source/agent-step-2.png" alt="Step mode, tip behind the cube"><figcaption><p>Figure 5. Step mode, tip behind the cube.</p></figcaption></figure>
 
-*Figure 3. Push mode, success. After the second push: success.*
-
-![Step mode, start pose](../resources/class11/figures/source/agent-step-1.png)
-
-*Figure 4. Step mode, start pose. Step mode: start pose.*
-
-![Step mode, tip behind the cube](../resources/class11/figures/source/agent-step-2.png)
-
-*Figure 5. Step mode, tip behind the cube.*
-
-![Step mode, success](../resources/class11/figures/source/agent-step-3.png)
-
-*Figure 6. Step mode, success. After the last push: success.*
+<figure><img src="../resources/class11/figures/source/agent-step-3.png" alt="Step mode, success"><figcaption><p>Figure 6. Step mode, success. After the last push: success.</p></figcaption></figure>
 
 Yellow and cyan lines: the 5 cm table grid, labels in cm. Red circle: the rod tip projected on the table. Red
 arrow: the forward direction. Top row: push mode with Sonnet 5.5. Bottom row: step mode with Opus 5.5.

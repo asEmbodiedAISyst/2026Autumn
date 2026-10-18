@@ -1,7 +1,5 @@
 ---
 description: 30 October 2026 · 09:00–10:50 · L12 | Mohamed HALWANI & SONG Chaoyang
-layout:
-  width: wide
 ---
 
 # 06 Learned In-Hand Cube Reorientation

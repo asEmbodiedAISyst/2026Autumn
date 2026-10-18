@@ -1,7 +1,5 @@
 ---
 description: 17 November 2026 · 09:00–10:20 · CR6 | SONG Chaoyang
-layout:
-  width: wide
 ---
 
 # 13 Final Project II: Experience

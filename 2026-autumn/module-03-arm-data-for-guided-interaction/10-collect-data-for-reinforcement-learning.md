@@ -1,7 +1,5 @@
 ---
 description: 10 November 2026 · 09:00–10:20 · CR6 | WEI Jinqi & SONG Chaoyang
-layout:
-  width: wide
 ---
 
 # 10 Collect Demonstrations for Robot Learning
@@ -90,9 +88,7 @@ language input of a vision-language-action policy, so the contract fixes it.
 
 
 
-![The physical arm with the robot print and the phone](../resources/class10/figures/source/arm-pusher-tool-photo.png)
-
-*Figure 1. The physical arm with the robot print and the phone. The physical arm with the pusher tool and the phone.*
+<figure><img src="../resources/class10/figures/source/arm-pusher-tool-photo.png" alt="The physical arm with the robot print and the phone"><figcaption><p>Figure 1. The physical arm with the robot print and the phone. The physical arm with the pusher tool and the phone.</p></figcaption></figure>
 
 A person cannot demonstrate with the gripper of the arm in hand, but can hold a tool. The course replaces the
 gripper by a printed rod with a plate for the phone. A person records demonstrations with one copy of the tool.
@@ -102,13 +98,9 @@ The arm uses another copy. The approach follows the Universal Manipulation Inter
 
 
 
-![The handheld print with a handle](../resources/class10/figures/source/pusher-tool-print-handheld.png)
+<figure><img src="../resources/class10/figures/source/pusher-tool-print-handheld.png" alt="The handheld print with a handle"><figcaption><p>Figure 2. The handheld print with a handle. Handheld print, with a handle.</p></figcaption></figure>
 
-*Figure 2. The handheld print with a handle. Handheld print, with a handle.*
-
-![The robot print with a flange](../resources/class10/figures/source/pusher-tool-print-robot.png)
-
-*Figure 3. The robot print with a flange. Robot print, with a flange for motor 6.*
+<figure><img src="../resources/class10/figures/source/pusher-tool-print-robot.png" alt="The robot print with a flange"><figcaption><p>Figure 3. The robot print with a flange. Robot print, with a flange for motor 6.</p></figcaption></figure>
 
 Rod, plate and camera are at the same position relative to the rod tip in both prints. Thus the nominal camera-to-tip geometry is shared when a person or the arm holds it. Background, hands, lighting, image timing and mounting tolerances can still change the observation. The phone image is the observation of the policy. The phone pose gives
 the pose of the rod tip. The STL files of both prints are in the class folder
@@ -231,17 +223,11 @@ The scripted expert and the teleoperation recorder are supplied in the source pa
 
 
 
-![Accepted: the camera faces the push direction](../resources/class10/figures/source/pilot-accepted.png)
+<figure><img src="../resources/class10/figures/source/pilot-accepted.png" alt="Accepted: the camera faces the push direction"><figcaption><p>Figure 4. Accepted: the camera faces the push direction. Accepted: cube and goal in view.</p></figcaption></figure>
 
-*Figure 4. Accepted: the camera faces the push direction. Accepted: cube and goal in view.*
+<figure><img src="../resources/class10/figures/source/pilot-borderline.png" alt="Borderline: yaw at the limit"><figcaption><p>Figure 5. Borderline: yaw at the limit. Borderline: goal near the edge.</p></figcaption></figure>
 
-![Borderline: yaw at the limit](../resources/class10/figures/source/pilot-borderline.png)
-
-*Figure 5. Borderline: yaw at the limit. Borderline: goal near the edge.*
-
-![Rejected: the operator faces away](../resources/class10/figures/source/pilot-rejected.png)
-
-*Figure 6. Rejected: the operator faces away. Rejected: objects out of view.*
+<figure><img src="../resources/class10/figures/source/pilot-rejected.png" alt="Rejected: the operator faces away"><figcaption><p>Figure 6. Rejected: the operator faces away. Rejected: objects out of view.</p></figcaption></figure>
 
 In the first handheld experiment the operator could face any direction, and the goal could be anywhere. Cube and
 goal were both visible at the start of only 19 of 50 episodes. The trained policy reached approximately 5 % in
@@ -275,9 +261,7 @@ An unusually long or short pusher-cube episode can indicate a stall, truncation,
 
 ### A pilot with injected faults
 
-![Audit of the pilot dataset](../resources/class10/figures/source/pilot-audit.png)
-
-*Figure 7. Audit of the pilot dataset.*
+<figure><img src="../resources/class10/figures/source/pilot-audit.png" alt="Audit of the pilot dataset"><figcaption><p>Figure 7. Audit of the pilot dataset.</p></figcaption></figure>
 
 The pilot contains ten **simulated handheld** Push Cube episodes. Five episodes have deliberately injected changes: facing away (two episodes), truncation, a raised speed limit and a removed yaw limit. The historical `audit_reference.json` records the injection label and source metrics; `fault: none` means no injected change, not acceptance. For example, episode 3 has `fault: none` but only 0.903 robot reachability, below the 0.98 diagnostic gate.
 
@@ -327,26 +311,18 @@ With **`--gesture`**, rest the tip on the table before each episode, then lift t
 
 
 
-![Handheld episode at 0.2 s](../resources/class10/figures/source/real-frame-handheld-0.2s.png)
+<figure><img src="../resources/class10/figures/source/real-frame-handheld-0.2s.png" alt="Handheld episode at 0.2 s"><figcaption><p>Figure 8. Handheld episode at 0.2 s. Handheld, 0.2 s.</p></figcaption></figure>
 
-*Figure 8. Handheld episode at 0.2 s. Handheld, 0.2 s.*
+<figure><img src="../resources/class10/figures/source/real-frame-handheld-4.0s.png" alt="Handheld episode at 4.0 s"><figcaption><p>Figure 9. Handheld episode at 4.0 s. Handheld, 4.0 s.</p></figcaption></figure>
 
-![Handheld episode at 4.0 s](../resources/class10/figures/source/real-frame-handheld-4.0s.png)
-
-*Figure 9. Handheld episode at 4.0 s. Handheld, 4.0 s.*
-
-![Handheld episode at 9.0 s](../resources/class10/figures/source/real-frame-handheld-9.0s.png)
-
-*Figure 10. Handheld episode at 9.0 s. Handheld, 9.0 s.*
+<figure><img src="../resources/class10/figures/source/real-frame-handheld-9.0s.png" alt="Handheld episode at 9.0 s"><figcaption><p>Figure 10. Handheld episode at 9.0 s. Handheld, 9.0 s.</p></figcaption></figure>
 
 A handheld episode on the course table with the printed green goal. The rod is always at the same place in the
 image, as the tool design intends.
 
 ### The audit of 161 physical episodes
 
-![Audit of the physical data: start height, duration and speed](../resources/class10/figures/source/real-audit.png)
-
-*Figure 11. Audit of the physical data: start height, duration and speed.*
+<figure><img src="../resources/class10/figures/source/real-audit.png" alt="Audit of the physical data: start height, duration and speed"><figcaption><p>Figure 11. Audit of the physical data: start height, duration and speed.</p></figcaption></figure>
 
 The figure shows the start height of the 150 handheld episodes, the duration of all 161 episodes and the tip speed
 of each episode. Three findings changed the data. None of them occurs in simulation, where the scripted operator
@@ -374,13 +350,9 @@ Observation agreement is one relevant Sim2Real condition, alongside geometry, co
 
 
 
-![Real phone image](../resources/class10/figures/source/real-frame-handheld-0.2s.png)
+<figure><img src="../resources/class10/figures/source/real-frame-handheld-0.2s.png" alt="Real phone image"><figcaption><p>Figure 12. Real phone image.</p></figcaption></figure>
 
-*Figure 12. Real phone image.*
-
-![Simulated phone image with the estimated scene](../resources/class11/figures/source/agent-step-1.png)
-
-*Figure 13. Simulated phone image with the estimated scene. Simulated phone image, estimated scene (with the grid of Class 11).*
+<figure><img src="../resources/class11/figures/source/agent-step-1.png" alt="Simulated phone image with the estimated scene"><figcaption><p>Figure 13. Simulated phone image with the estimated scene. Simulated phone image, estimated scene (with the grid of Class 11).</p></figcaption></figure>
 
 The same provenance discipline applies to dynamics. Class 08 used the motion-test log to examine a quasi-static controller residual relative to the declared gravity model. Damping and friction require suitable dynamic excitation and an identification protocol; the static sweep alone does not identify them. A parameter added to the MJCF needs its source, units, fitted conditions and validation record.
 

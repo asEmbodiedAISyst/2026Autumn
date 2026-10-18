@@ -1,7 +1,5 @@
 ---
 description: 24 November 2026 · 09:00–10:20 · CR6 | SONG Chaoyang
-layout:
-  width: wide
 ---
 
 # 16 Final Project V: Learning

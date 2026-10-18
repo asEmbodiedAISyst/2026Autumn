@@ -1,7 +1,5 @@
 ---
 description: 18 November 2026 · 10:30–11:50 · CR6 | SONG Chaoyang
-layout:
-  width: wide
 ---
 
 # 14 Final Project III: System

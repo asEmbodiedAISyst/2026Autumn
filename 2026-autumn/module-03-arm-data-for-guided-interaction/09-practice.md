@@ -138,9 +138,7 @@ uv run mjpython code/teleop_rebot_rs_sim.py --phone-ip 127.0.0.1   # terminal 2
 
 The window opens with the arm in its home pose and a small black cube in front of it:
 
-![The MuJoCo window of the teleoperation: the arm at its home pose above the table, the black cube under the gripper](../resources/class09/figures/source/teleop-window.png)
-
-*Figure 1. The MuJoCo window of the teleoperation: the arm at its home pose above the table, the black cube under the gripper.*
+<figure><img src="../resources/class09/figures/source/teleop-window.png" alt="The MuJoCo window of the teleoperation: the arm at its home pose above the table, the black cube under the gripper"><figcaption><p>Figure 1. The MuJoCo window of the teleoperation: the arm at its home pose above the table, the black cube under the gripper.</p></figcaption></figure>
 
 The terminal shows:
 
@@ -168,9 +166,7 @@ If you have an iPhone, install asMagic from the App Store:
 {% column width="33%" %}
 
 
-![QR code for the asMagic App Store page](../resources/class09/figures/source/asmagic-qr.png)
-
-*Figure 2. QR code for the asMagic App Store page. Scan to install.*
+<figure><img src="../resources/class09/figures/source/asmagic-qr.png" alt="QR code for the asMagic App Store page"><figcaption><p>Figure 2. QR code for the asMagic App Store page. Scan to install.</p></figcaption></figure>
 
 {% endcolumn %}
 
@@ -189,9 +185,7 @@ points, can delay the stream, and the arm then moves in jerks.
 
 Open asMagic and open **Data Streaming**: the page shows the IP address of the phone.
 
-![The asMagic icon on the iPhone home screen, the home page of the app and the Data Streaming page with the IP address](../resources/class09/figures/source/app-screens.png)
-
-*Figure 3. The asMagic icon on the iPhone home screen, the home page of the app and the Data Streaming page with the IP address.*
+<figure><img src="../resources/class09/figures/source/app-screens.png" alt="The asMagic icon on the iPhone home screen, the home page of the app and the Data Streaming page with the IP address"><figcaption><p>Figure 3. The asMagic icon on the iPhone home screen, the home page of the app and the Data Streaming page with the IP address.</p></figcaption></figure>
 
 Start the script with this address, then switch **AR Data** on:
 

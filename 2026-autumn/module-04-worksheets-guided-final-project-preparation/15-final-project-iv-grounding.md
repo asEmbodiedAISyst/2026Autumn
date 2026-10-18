@@ -1,7 +1,5 @@
 ---
 description: 20 November 2026 · 09:00–10:50 · L12 | SONG Chaoyang
-layout:
-  width: wide
 ---
 
 # 15 Final Project IV: Grounding

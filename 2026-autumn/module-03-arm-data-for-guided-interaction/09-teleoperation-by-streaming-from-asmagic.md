@@ -1,7 +1,5 @@
 ---
 description: 06 November 2026 · 09:00–10:50 · L12 | WEI Jinqi & SONG Chaoyang
-layout:
-  width: wide
 ---
 
 # 09 Teleoperation by Streaming from asMagic
@@ -97,9 +95,7 @@ From the [asMagic documentation](https://doc.ancoraspring.com/asmagic):
 {% column width="33%" %}
 
 
-![QR code for the asMagic App Store page](../resources/class09/figures/source/asmagic-qr.png)
-
-*Figure 1. QR code for the asMagic App Store page. Scan to install.*
+<figure><img src="../resources/class09/figures/source/asmagic-qr.png" alt="QR code for the asMagic App Store page"><figcaption><p>Figure 1. QR code for the asMagic App Store page. Scan to install.</p></figcaption></figure>
 
 {% endcolumn %}
 
@@ -114,9 +110,7 @@ From the [asMagic documentation](https://doc.ancoraspring.com/asmagic):
 
 
 
-![The asMagic icon on the iPhone home screen, the home page of the app and the Data Streaming page with the IP address](../resources/class09/figures/source/app-screens.png)
-
-*Figure 2. The asMagic icon on the iPhone home screen, the home page of the app and the Data Streaming page with the IP address. The app on the iPhone, its home page and the Data Streaming page.*
+<figure><img src="../resources/class09/figures/source/app-screens.png" alt="The asMagic icon on the iPhone home screen, the home page of the app and the Data Streaming page with the IP address"><figcaption><p>Figure 2. The asMagic icon on the iPhone home screen, the home page of the app and the Data Streaming page with the IP address. The app on the iPhone, its home page and the Data Streaming page.</p></figcaption></figure>
 
 The course uses an iPhone Pro with the asMagic app. The phone tracks its own pose with ARKit, from its cameras and
 its inertial sensors. The Pro models also have a LiDAR sensor, so the app can stream depth. The phone needs no SIM
@@ -156,9 +150,7 @@ letters agree: $${}^{a}T_{c} = {}^{a}T_{b}\,{}^{b}T_{c}$$.
 
 ### The phone frame and the gripper frame
 
-![Left: the iPhone placed where the gripper is, with its frame. Right: the gripper at the home pose with the end-effector frame. Same view in both panels.](../resources/class09/figures/source/frames-mapping.png)
-
-*Figure 3. Left: the iPhone placed where the gripper is, with its frame. Right: the gripper at the home pose with the end-effector frame. Same view in both panels.*
+<figure><img src="../resources/class09/figures/source/frames-mapping.png" alt="Left: the iPhone placed where the gripper is, with its frame. Right: the gripper at the home pose with the end-effector frame. Same view in both panels."><figcaption><p>Figure 3. Left: the iPhone placed where the gripper is, with its frame. Right: the gripper at the home pose with the end-effector frame. Same view in both panels.</p></figcaption></figure>
 
 The app gives the phone frame of ARKit: $$x$$ toward the bottom of the phone (the charging port), $$y$$ toward
 its right edge, $$z$$ out of the screen. Thus the back camera, at the top end of the phone, looks along $$-z$$. The end-effector frame is at the TCP: $$z$$ points out of the
@@ -314,9 +306,7 @@ before you see it on hardware. The source provides physical variants, but config
 
 ### Two rates
 
-![Timing of the phone stream and the control loop](../resources/class09/figures/source/timing.png)
-
-*Figure 4. Timing of the phone stream and the control loop.*
+<figure><img src="../resources/class09/figures/source/timing.png" alt="Timing of the phone stream and the control loop"><figcaption><p>Figure 4. Timing of the phone stream and the control loop.</p></figcaption></figure>
 
 The phone publishes at approximately 60 Hz. The control loop and the recorder run at 30 Hz. In every control
 period the script uses the latest phone sample, so approximately every second sample is skipped. The record keeps
@@ -364,9 +354,7 @@ action of the same frame is applied. Keep this alignment when constructing a sup
 
 ### A real episode
 
-![Traces of an eight-second episode recorded with an iPhone](../resources/class09/figures/source/traces.png)
-
-*Figure 5. Traces of an eight-second episode recorded with an iPhone.*
+<figure><img src="../resources/class09/figures/source/traces.png" alt="Traces of an eight-second episode recorded with an iPhone"><figcaption><p>Figure 5. Traces of an eight-second episode recorded with an iPhone.</p></figcaption></figure>
 
 This is the seven-channel gripper episode shown in the source video above. It is not the Class 09 six-joint pusher diagnostic or the Class 10 nine-component tip-pose learning record. The left panel shows the raw elbow channels, the middle panel the
 same channels after the direction vector, the right panel the tracking lag of the first three joints: the state

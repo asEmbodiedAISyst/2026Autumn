@@ -1,7 +1,5 @@
 ---
 description: 28 October 2026 · 10:30–11:50 · CR6 | Mohamed HALWANI & SONG Chaoyang
-layout:
-  width: wide
 ---
 
 # 05 From Single-Actuator to Multi-Actuator

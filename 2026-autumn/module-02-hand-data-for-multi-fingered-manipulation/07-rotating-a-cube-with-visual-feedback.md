@@ -1,7 +1,5 @@
 ---
 description: 03 November 2026 · 09:00–10:20 · CR6 | Mohamed HALWANI & SONG Chaoyang
-layout:
-  width: wide
 ---
 
 # 07 Rotating a Cube with Visual Feedback
