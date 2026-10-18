@@ -47,7 +47,7 @@ with `uv run mjpython`; the other commands keep `uv run python`.
 | Script | What it does |
 | --- | --- |
 | [`scripts/teleop_real.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher/scripts/teleop_real.py) | Teleoperation with the iPhone; `--robot sim --record` records the simulated arm |
-| [`scripts/check_handheld_dataset.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher/scripts/check_handheld_dataset.py) | Replays a dataset on the simulated arm: reach, speed, tilt and yaw of every episode |
+| [`scripts/check_handheld_dataset.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher/scripts/check_handheld_dataset.py) | Checks observed poses with simulated-arm inverse kinematics; reports reachability, speed, tilt and yaw |
 | [`rebot_sim/teleop/fake_phone.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher/rebot_sim/teleop/fake_phone.py) | Phone simulator, for a test without an iPhone |
 | [`scripts/record_handheld.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher/scripts/record_handheld.py) | Optional: records demonstrations with the iPhone in your hand, phone pose and image, to a LeRobot dataset |
 | [`DATA_FORMAT.md`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/course-resources/class10_collect_data_for_learning/additional_material/rebot_pusher/DATA_FORMAT.md) | The features, the episode frame and the height reference of the datasets |
@@ -158,7 +158,7 @@ The source checker decodes the **observed pose sequence**, solves inverse kinema
 
 A `!` means this source diagnostic found reachability below 98%, peak speed above 105% of its 0.25 m/s bound (0.2625 m/s), tilt above 30°, or yaw outside ±60°. These tolerances differ from requiring every pose to pass. An accepted controller target does not guarantee that the measured state sequence passes every diagnostic.
 
-**Frame assumption:** this unchanged checker creates a fixed `EpisodeFrame(TOOL_START_POS, TCP_DOWN_ROT)`. It does not read the dataset's `z_frame` or recover each original start pose. The collection command above uses the source default `start` height convention; start-pose noise can still change a replayed placement. Do not pass table-anchored or differently initialised data to it and interpret the result as a faithful physical replay. A correct frame-aware checker or explicit, recorded conversion is required before extending this diagnostic to those records.
+**Frame assumption:** this unchanged checker creates a fixed `EpisodeFrame(TOOL_START_POS, TCP_DOWN_ROT)`. It does not read the dataset's `z_frame` or recover each original start pose. The collection command above uses the source default `start` height convention; start-pose noise can still change the reconstructed placement. Do not pass table-anchored or differently initialised data to it and interpret the result as a faithful physical replay. A correct frame-aware checker or explicit, recorded conversion is required before extending this diagnostic to those records.
 {% endstep %}
 
 {% step %}
