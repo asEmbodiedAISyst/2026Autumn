@@ -31,6 +31,12 @@ The supplied figures, worked examples and episode excerpts support the demonstra
 
 A usable recording must connect the operator input to the actual command and response. We will inspect that connection at each conversion boundary. The same approach applies whether the input comes from a physical phone or the deterministic local publisher.
 
+### Choose a leader by the signal it supplies
+
+The leader is the device the operator moves; the follower is the arm. A leader arm reports joint coordinates and usually needs a compatible kinematic interpretation. A joystick reports deflection that can become a velocity request. A tracked VR controller, optical marker body or phone can supply a pose. These signals need different adapters before they become a robot target.
+
+The asMagic case uses the phone's camera/inertial tracking as a pose source. Its image, depth where available, camera intrinsics and pose are distinct channels. The operator's tracking camera helps estimate the phone motion; the robot's recorded front and side cameras describe the follower. A phone stream alone therefore omits the post-limit command, joint response and robot-view images needed to reconstruct what the follower did.
+
 ### Follow both paths through the experiment
 
 The command path starts with a phone pose. A mapping converts its change into a desired TCP pose. Limits and inverse kinematics convert that request into joint targets. Position actuators then act on the mechanism. Each step can change the request.
@@ -264,6 +270,22 @@ A valid transition can reuse principles—identity, timing, frames and evidence�
 
 The important result of this class is an inspectable command/response episode with a narrow scope. It is the basis for deciding what data a learner can legitimately consume.
 
+## From a real phone to a physical follower
+
+The source includes a real-iPhone-to-simulation example. Its video is described as a render of recorded joint commands replayed through the same simulated arm, with front and side scene cameras. It provides a concrete view of an operator-controlled mechanism. It is separate from the fully retained local circular-motion and dropout records analyzed above.
+
+{% embed url="https://1750588168-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FCq8PJ6eHO7umpiGK34s5%2Fuploads%2Fgit-blob-6702971cb3f5f34868a0d0afff07075f7c82031a%2Fteleop-sim-iphone.mp4?alt=media" %}
+Source recording: a real iPhone drives the simulated arm; the displayed front and side views are simulation renders.
+{% endembed %}
+
+The complete raw payload, packet-time convention, post-mapping commands, measured state and episode manifest for that example are not included with the retained Class 09 record. We can inspect the reported demonstration, but cannot recompute its tracking or latency from the video, or claim a fresh rerun. If playback is unavailable, the local circle/dropout CSVs and page figures provide the complete mapping and recording activity.
+
+The source also reports physical teleoperation through the RS arm's CAN interface, followed by eleven pusher-tool episodes collected on 10 October 2026. Its declared physical executor uses gains at 80% of the vendor values, a 0.1 s target filter and a two-degree joint-target step bound per control period. These are source configuration descriptions; they are not settings verified for every arm or the simulation's actuator law. The pusher episodes reappear as eleven rows in Class 10's physical collection audit. Their presence supports a collection record, while task success and tracking need episode-specific outcomes and traces.
+
+A source description calls the tracking world z-up and gives orientation-specific phone axes. Preserve the distinction between native ARKit coordinates, the app's exported representation, any receiver remap and the robot frame. The physical case does not resolve their documented discrepancy. A single-axis translation/rotation record paired with a raw packet and receiver revision would do so. Relative clutching removes dependence on an arbitrary origin; it does not remove axis, orientation, tool-offset or scale conventions.
+
+This comparison gives three different evidence levels: a protocol-compatible local source with retained records; a reported real-phone simulation demonstration; and a reported physical route with a later collection summary. A successful local mapping check does not validate wireless acquisition or the physical follower. Conversely, incomplete physical records do not prevent us from learning the command/response reasoning from the retained fallback.
+
 ## Instructor and TA demonstration
 
 ### Inspect the mapping and retained recording
@@ -295,6 +317,10 @@ A local protocol-compatible publisher supplies the retained operator pose. The t
 
 Inspect the retained interruption trace. Predict what should hold when the latest input becomes stale: the target stays fixed, while the simulated mechanism can continue converging. Observe receiver-side age, the timeout rule and the last ten action rows. The retained dropout episode has 169 rows and a maximum receiver-side age of 3.1515 s. Its last ten actions change by less than 2 × 10⁻¹⁵ in the saved command units. A flat action trace supports a held command in this selected run; it does not prove zero measured velocity or exact freezing of every IK solve. Contrast stale input with a rejected IK candidate marked by `blocked=1`.
 
+### Compare the three source routes
+
+Inspect the reported real-phone video when available and identify its rendered follower views. Contrast it with the retained local row/image pairs. Name the raw-packet, timestamp and execution records needed to recompute a physical-phone result. Trace the eleven physical pusher records into Class 10 without changing their nine-value tool-pose schema into this lesson's seven-channel motor schema.
+
 ### Compare with the original app interface
 
 When an already prepared asMagic interface is available, identify its AR/device-pose, camera and IMU streams. Test the meaning of one translation and rotation axis. Explain which streams the bridge actually uses and which observations the recorder retains. A protocol-compatible pose source can test the mapping without establishing physical camera calibration or wireless reliability.
@@ -308,7 +334,8 @@ Work from the retained circle/dropout episodes or a fresh simulation run. No pho
 1. **Check the interface.** Identify the seven channel names in order and both image keys. Use row 0 above and its front/side images in Figure 7. Record episode identity, frame index and timestamp; use the declared image dimensions from the observation record. Explain why the two images do not make this a phone-camera dataset.
 2. **Convert before comparing.** Use row 1 above: copy the elbow action and state, apply the direction vector and calculate state-minus-motor-target in degrees. Explain why a raw sign difference is insufficient evidence of an inverted motor.
 3. **Audit time and missing input.** Report frame count, elapsed timestamp interval, effective frequency and largest inter-frame gap from the retained timestamp record and the reported checks. Inspect the dropout tail and distinguish receiver age from sensor-to-actuator latency. Name another possible cause of a flat trace. Explain why latest-receiver age need not identify the packet used for a command, and why the interval of simulated evolution differs from the wall-time span.
-4. **Define one repeatable task.** Complete the contract below. Separate a mapping diagnostic from an attempted manipulation and define how a reset reproduces the start.
+4. **Bound the physical claim.** Compare the retained local source with the reported real-phone and physical examples. Name two missing artifacts that prevent a tracking or latency rerun, and explain why the eleven pusher episodes do not establish an eleven-attempt success rate.
+5. **Define one repeatable task.** Complete the contract below. Separate a mapping diagnostic from an attempted manipulation and define how a reset reproduces the start.
 
 | Contract field | Your declaration |
 | --- | --- |
@@ -333,6 +360,9 @@ The result is a reproducible teleoperation episode that can be inspected before 
 
 
 ## References
+
+The [physical-case source record](../resources/class09/data/consolidation-source.json) identifies the pinned development passages and stored artifacts added to this lesson. Source inspection and arithmetic checks are distinct from a fresh experiment.
+
 
 The supplied bridge, mapper and recorder are the implementation examined in this lesson. The [retained circle episode](../resources/class09/data/recorded/circle/meta.json), [circle timestamp/channel record](../resources/class09/data/recorded/circle/frames.csv), [dropout metadata](../resources/class09/data/recorded/dropout/meta.json) and [dropout record](../resources/class09/data/recorded/dropout/frames.csv) identify the evidence used above. These records concern local simulated input; the physical app convention and hardware calibration require separate verification.
 

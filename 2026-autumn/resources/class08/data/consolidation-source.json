@@ -1,0 +1,35 @@
+{
+  "source_repository": "asEmbodiedAISyst/2026Autumn-Assistants",
+  "source_ref": "f7c118edaadc9f33498669736fa9d99160ff629a",
+  "checked_on": "2026-10-18",
+  "evidence_scope": "Versioned source and stored-record inspection; no new hardware experiment, policy inference or training.",
+  "inputs": [
+    {
+      "path": "rob7103/classes/class08.md",
+      "git_blob_sha1": "6491b21f662d209ba0bd4091ad22a16c8c76e3f2"
+    },
+    {
+      "path": "rob7103/classes/class08-assembly.md",
+      "git_blob_sha1": "30f46a15d391935b576f935cd1733348a51be005"
+    },
+    {
+      "path": "rob7103/classes/class08-power-on.md",
+      "git_blob_sha1": "89be19074e5448321d2385329623aeebf423b5db"
+    },
+    {
+      "path": "rob7103/classes/class08-practice.md",
+      "git_blob_sha1": "0ac017532e262dd415ec334cbf0f598e7697a248"
+    },
+    {
+      "path": "course-resources/class08_build_simple_arm/additional_material/results/motion_test_20261010_000129.json",
+      "git_blob_sha1": "14f0a84954670f55c139080ec7a36f24941f2dc9"
+    }
+  ],
+  "public_files": [
+    {
+      "path": "resources/class08/data/motion-test-single-joint-20261010.json",
+      "sha256": "7ed1d58a49811a25fd07af77d31935037dbe69b8ea012e45a416cc29f0ef2de7"
+    }
+  ],
+  "processing": "Scientific record copied byte-for-byte; figure processing documented privately."
+}

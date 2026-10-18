@@ -1,0 +1,9 @@
+policy,training_data,z_frame,error_1s_mm,direction_cosine,direction_ok_fraction,source
+hold still (baseline),-,-,50.6,,,eval_offline.py baseline
+ACT,130 physical,start,34.5,0.82,0.83,act_real_cube
+ACT,130 physical + 300 simulated (v3),start,29.0,0.84,0.86,act_real_plus_sim_cube
+ACT,130 physical,table,32.0,0.85,0.84,act_real_cube_tablez
+ACT,130 physical + 300 simulated (v4),table,30.3,0.86,0.87,act_real_plus_sim_cube_tablez
+Diffusion Policy,130 physical + 300 simulated (v3),start,30.5,0.82,0.81,dp_real_plus_sim_cube
+SmolVLA,130 physical + 300 simulated (v4),table,29.3,0.81,0.81,smolvla_real_plus_sim_cube_tablez
+ACT,300 simulated only (v3),start,73.5,,,act_ip17v3_cube300_handheld

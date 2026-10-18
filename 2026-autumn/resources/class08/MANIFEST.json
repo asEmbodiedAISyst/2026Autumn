@@ -1,10 +1,10 @@
 {
-  "scope": "portable Class 08 simulation teaching export",
+  "scope": "Class 08 simulation teaching export and pinned physical single-joint evidence; no physical operating code added.",
   "files": [
     {
       "path": "README.md",
-      "bytes": 2044,
-      "sha256": "32896a435e06c53e7ba15e5cedc84cf09cb53d21dc5052f59195f020e8146a3f"
+      "bytes": 2521,
+      "sha256": "e43f4a4b9b12c67c4a832ff5697fa43c8cd5c47328be1073f358a7330e885e9b"
     },
     {
       "path": "SOURCE.md",
@@ -30,6 +30,51 @@
       "path": "code/view_arm_scene.py",
       "bytes": 8381,
       "sha256": "c738d790657f30022609f9c159a64e8da9e4acc20b97df5953bd713bd24d42b2"
+    },
+    {
+      "path": "data/consolidation-source.json",
+      "bytes": 1320,
+      "sha256": "c2a2e169103a6fbfa7a30b8697c3c4ddf82b49f93fde61ca3368556ac1a71ed3"
+    },
+    {
+      "path": "data/motion-test-single-joint-20261010.json",
+      "bytes": 2527,
+      "sha256": "7ed1d58a49811a25fd07af77d31935037dbe69b8ea012e45a416cc29f0ef2de7"
+    },
+    {
+      "path": "figures/arm-poses-classroom.png",
+      "bytes": 2492845,
+      "sha256": "c72ca02bc4d831ad31a6f542f57d5c60b3ce320b9dcf798321ae0af0479bfe1c"
+    },
+    {
+      "path": "figures/control-clock-classroom.png",
+      "bytes": 128737,
+      "sha256": "61e4b14a0fdcd734f1d3ea1f11dea9612a02470ff6fbafe9f7def9be5214efd2"
+    },
+    {
+      "path": "figures/control-loop-classroom.png",
+      "bytes": 126876,
+      "sha256": "841d8f3dc2efe04b23b39ea73e058e4ac35cba4db9451851d088120733f45a01"
+    },
+    {
+      "path": "figures/joint-limits-classroom.png",
+      "bytes": 127550,
+      "sha256": "3d796421f587cbdc21531106f4ecf1cf220e4027b6cc850d78f0340ce2f0cf78"
+    },
+    {
+      "path": "figures/joint-response-classroom.png",
+      "bytes": 445569,
+      "sha256": "90799754c1fd9beac3ff5b6c1b0279b1dbdea4cb5c855d11c5b05bffd410c02f"
+    },
+    {
+      "path": "figures/model-pipeline-classroom.png",
+      "bytes": 100912,
+      "sha256": "3c1ec875821e3d054ce20aa14a06151809cfa5cface4da3b395621b88ae44b42"
+    },
+    {
+      "path": "figures/physical-topology-classroom.png",
+      "bytes": 141577,
+      "sha256": "3bc7cf99f795fd4c8559c6adfd9825aa09bd1223fbd289d23ee31bcdcdba9eb5"
     },
     {
       "path": "model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W",
@@ -236,5 +281,6 @@
       "bytes": 9956,
       "sha256": "9859459624f5c79698def1ac631caf972cb6dab1c1ace331657e7ef84418eaae"
     }
-  ]
+  ],
+  "recorded_evidence_scope": "18 October 2026 additions inspect stored source records; no new hardware experiment or policy inference."
 }

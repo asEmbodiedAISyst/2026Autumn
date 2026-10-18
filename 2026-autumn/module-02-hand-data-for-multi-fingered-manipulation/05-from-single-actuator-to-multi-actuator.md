@@ -220,6 +220,38 @@ The present teaching activity evaluates the supplied parametric baseline and fit
 
 **Checkpoint:** A neural predictor has low next-step error when given measured history. What additional result would justify using it as an actuator component inside a long simulation rollout?
 
+### Inspect a local telemetry-conditioned Transformer
+
+The retained local single-motor example makes the learned-actuator idea concrete. It uses a temporal Transformer with two layers, hidden dimension 64 and four attention heads. At each replay step it combines host-commanded position, simulated position and velocity with recorded current, PWM, voltage, temperature and position error. A recent history accompanies those eight features. The network produces a bounded torque surrogate used to advance a simulated joint.
+
+Let $$h_k$$ denote the recent feature history, $$\hat q_k$$ and $$\hat{\dot q}_k$$ the simulated state, $$q_{c,k}$$ the recorded host-command field, and $$z_k^{\mathrm{recorded}}$$ the retained electrical/status telemetry supplied at that replay step. The important dependency is
+
+$$
+\hat\tau_k = f_\theta\!\left(h_k,q_{c,k},\hat q_k,
+\hat{\dot q}_k,z_k^{\mathrm{recorded}}\right).
+$$
+
+The source forms the commanded position from `q_cmd_rad` with its recorded centering convention. It is not the internal Position Trajectory used by the population replay. The eight features, in order, are command position (rad), simulated position (rad), simulated velocity (rad/s), recorded current (mA), recorded PWM (raw register counts), input voltage (V), temperature (°C) and command-minus-simulated-position error (rad). Their units and normalization belong to the learned model contract.
+
+This is a **telemetry-conditioned replay model**. It predicts position while receiving measured channels from the recorded execution. A simulator considering a new future command would not automatically know the current, PWM or temperature that command will produce. The model must predict those quantities, omit them, or state another valid source before it becomes a command-only predictor for a counterfactual rollout. A low position error in the recorded experiment does not remove that requirement.
+
+| Model boundary | Parametric population replay | Local learned example |
+|---|---|---|
+| Record | Sixteen-motor campaign, thirty-two motor/controller contexts | Earlier ID-0 single-motor recordings |
+| Model | Fixed controller approximation with selected effective armature, damping and friction | History-conditioned Transformer with simulated-state feedback and retained telemetry |
+| Effort range used | ±0.1551 N m teaching-model limit | ±0.93 N m surrogate bound |
+| Interpretation | Frozen prediction for the declared held-out fixtures/profiles | Conditional prediction for the supplied earlier record; not calibrated torque |
+
+The different limits are material. The 0.93 N m value appears in the exact-model stall specification at its stated voltage; it must not be called a continuous rated torque. Bounding a network output by that number does not identify delivered torque, establish a thermally sustainable hardware setting, or create an equivalent comparison with the lower-limit parametric replay.
+
+### Read one neural comparison without changing its scope
+
+The saved earlier 5 Hz sine comparison uses recorded encoder position as its reference. Its [comparison record](../resources/class05/data/local-transformer-comparison.json) reports full-trajectory mean absolute error of approximately 1.4318° for the learned replay and 15.3151° for its older parametric comparator. A separate saved test aggregate reports different values because it evaluates other trajectories/windows. Neither result is the sixteen-motor campaign's equal-episode RMSE.
+
+These records answer a useful but bounded question: how closely did those two configured models reproduce this earlier trajectory under their supplied inputs? They do not isolate an improvement caused solely by a Transformer, because model limits, conditioning and comparator configuration differ. A stronger next comparison would keep data, input availability, effort limits, initialization, scoring interval and held-out unit fixed before comparing model classes.
+
+**Worked evidence decision.** A student proposes using the learned model inside a simulation policy search because it has lower error on this sine. Ask the student to list every required signal during a new simulated rollout. Which ones come from the simulator or command, and which currently come from the physical recording? Then specify one model/interface change and a held-out test that would justify the proposed use. The point is to select a model appropriate to the available evidence and intended decision.
+
 ## Read the sixteen-motor campaign and compare individuals
 
 ### Count events, records and prediction rows separately
@@ -362,6 +394,8 @@ Read the event and record counts before the improvement percentage. Compare the 
 
 The four selected-trace RMSEs can also be checked directly from the saved trajectories. Identify motor 0’s episode result before comparing it with the motor/controller mean. Use Figures 6–8 to connect cell means, parameters and trajectories. Ask for one supported observation, then one possible explanation that would require a new measurement. Keep prediction error separate from reference tracking and fitted armature separate from measured rotor inertia.
 
+Place the local learned-model comparison beside the population replay. Identify the different dataset, effort range, conditioning signals and error aggregation. Use the comparison record to explain what the lower error supports, then identify the unavailable future telemetry in a proposed autonomous simulation. This is an interpretation of retained results, not a newly trained model demonstration.
+
 ### Inspect the measurement evidence
 
 Use the original marker images in Figure 9 and the measurement chain in Figure 10. Identify what the image establishes and list the missing steps for a synchronized optical angle. Apply the 40 ms timing example. End by choosing one next experiment: an alone-versus-simultaneous test, an independently instrumented motor comparison, or a connected-joint test. State which uncertainty that experiment would address.
@@ -389,6 +423,8 @@ Submit a compact record:
 | Next experiment | Measurement, controlled conditions and claim to be tested |
 
 A defensible conclusion reports improved held-out encoder-position prediction under the declared campaign conditions. It leaves the physical cause of parameter variation, shared-infrastructure effects and transfer to a coupled hand as questions for further evidence.
+
+For the optional learned-model extension, submit a short input-availability table and one controlled comparison protocol. Identify the source of each of the eight features during a fresh rollout. State the dataset split, common effort range, initialization and trajectory-level score you would hold fixed. Do not compare the earlier sine MAE directly with the sixteen-motor RMSE.
 
 ## Carry the evidence into manipulation
 

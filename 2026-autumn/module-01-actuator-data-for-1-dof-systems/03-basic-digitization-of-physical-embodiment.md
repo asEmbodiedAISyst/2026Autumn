@@ -143,6 +143,19 @@ Scaling a CAD inertia by a mass ratio approximates a density change while retain
 
 **Checkpoint:** A scale confirms the assembled moving mass. Which entries in the ledger remain estimates or assumptions?
 
+### Compare balanced fixtures through inertia
+
+The RS06 fixture provides a second way to read the property ledger. Its balanced-link B0 and balanced-link-plus-payload B1 assemblies have very different inertia while their ideal gravity moments nearly cancel. The CAD-derived fixture contributions about the joint are approximately 0.01291 and 0.05768 kg m². Their ratio is
+
+$$
+\frac{I_{\mathrm{fixture,B1}}}{I_{\mathrm{fixture,B0}}}
+=\frac{0.05768}{0.01291}\approx4.47.
+$$
+
+This is the ratio of **fixture** inertia contributions. If the same reflected actuator armature is added to both models, the ratio of total joint inertias changes. It is not correct to multiply every torque by 4.47. Acceleration effort changes with total inertia; gravitational effort depends on the first mass moment; passive and actuator effects have their own terms. A nearly balanced static pose can therefore conceal a large difference in dynamic response.
+
+Use the [RS06 fixture record](../resources/class03/records/rs06-inertia-comparison.json) and the prepared models to identify which numbers came from CAD and which were measured. The M0 model's tiny moving-body placeholder supports a valid numerical hinge; it is not a claim that the physical rotor has negligible inertia. These distinctions become directly testable when Class 04 compares commanded, measured and predicted trajectories.
+
 ## Define the single-actuator experiment before claiming validation
 
 ### Make the comparison specific
@@ -480,6 +493,8 @@ The [raw inspection output](../resources/class03/results/class03-core/inspection
 ### Compare with the actual or printed component
 
 Check one dimension or mass against the available assembly or printed part. Keep the actuator unpowered while handling or measuring it; powered motion belongs to the supervised demonstration. Record its value, unit and method. For a document-based submission, compare the B2 model’s 0.110 kg moving mass with the B2 row of the [included mass record](../resources/class03/records/fixture-masses.txt). Identify that comparison as a source-record check and propose one dimensional or clearance measurement you would make on the built assembly. Inspect the printer when feasible.
+
+As an additional comparison, explain why the balanced RS06 B0 and B1 fixtures can have similar ideal gravity signatures but different acceleration effort. Calculate the approximately 4.47 ratio of their fixture inertia contributions. State why that ratio is not automatically the ratio of total joint inertia or of actuator torque throughout a trajectory.
 
 ### Submit a compact inspection record
 

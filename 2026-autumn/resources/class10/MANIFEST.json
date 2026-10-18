@@ -1,15 +1,17 @@
 {
   "algorithm": "SHA-256",
-  "scope": "All distributed regular files except MANIFEST.json; generated results and environments excluded.",
+  "scope": "All current distributed regular files except MANIFEST.json; no environments or private authoring sources.",
   "sha256": {
     ".gitignore": "5a25fac15d21f4c167a951fa1071f91770f8efa43afbbdc19949f586a5c4398b",
-    "README.md": "da4b2372a4cc4d43f5ca9f95d2d51934e49af88f48008bb7c242b448b30122c2",
+    "README.md": "e1e387ebe9bf76b68cdf354e62e775bdaa20c40f16ffcdacc0aa0dd53760031e",
     "SOURCE.json": "0794308f2bb98be2221c14ffb33b249843901103d2c8a08b5c979f464978a8df",
     "check_ik.py": "494f7191131f8a121ceb9e03ed233c3a3a9bba9c465f752003a27815c2a797d2",
     "config.json": "df3b8a108fe4c41e1ac368f937db16ab9b1299c31d43b4de07133c630d418016",
+    "data/consolidation-source.json": "7d8a8f9073b7216e93307cb7cfac4dcdc61239cda77fe2c3bd831669a150dc3d",
     "data/images/pilot-nominal.png": "1807d9fdc6cb073af0665b2d7b43878651140f5e17b74b871785baae89f3283f",
     "data/images/pilot-turned.png": "2c8cb76e38c61c976396bd044ced1b7ebae550b00bb65b2fd7f29c2caace0c4e",
     "data/images/provenance.json": "a4327c4db47d57d62b436394d02d520271d54cd1b3ba626103d939617c23b43d",
+    "data/physical-collection/real-episode-stats.csv": "c26b1bb6625ea7798aa14832a985c4929402b29286a624b05086761b3119a187",
     "data/pilot_push_cube_handheld/data/chunk-000/file-000.parquet": "6457317b51396bedf6f0db36609b2446f794f57e07a3b52ca3db2c3a1f3ee5f5",
     "data/pilot_push_cube_handheld/episodes.json": "98b63ce783aed59ee60b8601e0d5cb18cadd1be502aad89fe05738f30bee022f",
     "data/pilot_push_cube_handheld/frames.csv": "d43023b73920be400452205e7aa04d182ae2108dc2df84ceef87d65172bedf80",
@@ -20,6 +22,14 @@
     "data/pilot_push_cube_handheld/tasks.json": "c5f25a90bb44d825724c5900c2df11b45bbb4771206c311c5d4e3aae517c7a35",
     "data/pilot_push_cube_handheld/videos/observation.images.phone/chunk-000/file-000.mp4": "99e089ac71120eeac57cc5f01bcdf842c27865bddade42bdc9ec3b72ef12efd0",
     "dataset-contract-template.md": "cce3cf14b4c5c39d28777e69574f685794d65c575ddda45e58288315cdba4ea7",
+    "figures/action-chunks-classroom.png": "b0b27373675c01fa0809f1eae11492dc1d75feacdc48df2d52aede11f216dd25",
+    "figures/episode-splits-classroom.png": "98a2c5841b9fc156527082032bf4e9289329111a4604c32243456075452acccd",
+    "figures/learning-records-classroom.png": "7bfe22a013551dbfcc334b6b8adb5c6a9f3a120077ef7cb58101ade3a0a68ef7",
+    "figures/physical-collection-audit-classroom.png": "f5a2619171054d85ed89da6dde299de496e2a1e7fb257f76f27971262c1f3e56",
+    "figures/pilot-audit-classroom.png": "b72f6ceeda468fbc8eb82f7f4a5dd5152d5608bd936e89010295864f0c250c8e",
+    "figures/pilot-reach-classroom.png": "5ff39fb7499db1f4d7863c7415d995e83fe4f21e81dd2c19d5d22f54dd2efd5a",
+    "figures/pilot-views-classroom.png": "b0ad7ede3c95f77d2cf385a8cb1edf155f3e7c5c9cb9899e1e77cad965da2d5c",
+    "figures/tool-schema-classroom.png": "5df3f26d7b1fba0a0008e9dbd053f0448be8e413e2e96ac8369b11a2b48fb930",
     "lesson_lab.py": "b183bd2090cfc5695b5a472a639dc6cd6ac0ead1c391299f3e5aba69b7e1c439",
     "model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W": "e258a9c6833bfd17fb90252df8c33e29d13fabc2768508248927824c17878db7",
     "model/rebot_b601_rs_mjcf/NOTICE.md": "66bfd41ec2103f9898c769a4a0f95461ee149cf9e4adf337cb4846b5d94e3026",
@@ -88,5 +98,6 @@
     "saved/contract.json": "e5e0abd04873235af8dc1ca5e001461d5095d9249100c09b8b2421dd45e2f263",
     "saved/numeric-audit-source.json": "fada9084c8be23d5fd83e9320b172a6a6da9b72ded28af6a6de4e75eb8aff9e2",
     "saved/numeric-audit.json": "f371dccbee8b9d60bc2dfe2bf4c7eb7ed1c116719771bda9447310dab083daf1"
-  }
+  },
+  "recorded_evidence_scope": "18 October 2026 additions inspect stored source records; no new hardware experiment or policy inference."
 }

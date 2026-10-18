@@ -12,7 +12,7 @@ layout:
 
 A policy can perform well in one simulator and fail when the camera, timing or executor changes. It can also fail because an interface was interpreted incorrectly rather than because learning itself was ineffective. Our task is to distinguish these explanations and state what a result actually supports.
 
-The required session remains simulation-based. We can inspect interfaces, run a constructed full-state replay, examine recorded policy outcomes and diagnose a selected failure. The current student repository includes the replay model/code, outcome JSON and selected success/failure videos. It does not include the exact learned-policy weights and saved processors needed to rerun those evaluations. Hardware teleoperation reported by the source is distinct from measured physical policy rollout evidence.
+The required session remains simulation-based. We can inspect interfaces, run a constructed full-state replay, examine recorded policy outcomes and diagnose a selected failure. The current student repository includes the replay model/code, outcome JSON and selected success/failure videos. It does not include the exact learned-policy weights and saved processors needed to rerun those evaluations. The source also reports unsuccessful physical policy trials and a tool-using VLM demonstration. We use them as recorded diagnoses with stated evidence limits, rather than as freshly reproduced deployments.
 
 Classes 02–05 established actuator, model and dataset identities. Classes 06–07 connected a manipulation policy to its observation and timing contract. Classes 08–09 established an arm and teleoperation interface; Class 10 asked whether demonstration records suit a learner and executor. Here we test the next link: what changes between that declared system and the system used for evaluation, and which experiment can distinguish the resulting explanations? We reuse the earlier mathematics and interfaces while keeping their different data and fixtures identifiable.
 
@@ -66,7 +66,7 @@ $$
 
 Here x is a raw feature and the mean and scale come from the saved training processor. With `μ = 0.30 m`, `σ = 0.05 m` and raw position `x = 0.35 m`, the normalized value is 1. Passing 0.35 where 1 is expected changes the input. Applying the same normalization again gives approximately 14, not 1. Output decoding also matters: if a normalized predicted position is 2 under these illustrative statistics, the raw target is 0.05×2+0.30=0.40 m. This is a decoded target; the executor can still limit it before issuing a joint command. This example is illustrative; the policy's actual statistics must come from its saved processors.
 
-For the supplied pusher representation, `observation.state` and `action` each have nine values: `[x, y, z, r11, r21, r31, r12, r22, r32]`. The first three are rod-tip position in metres; the remaining six are the first two columns of an orientation matrix. The action is an absolute pose target in an episode frame. Its origin is the initial rod-tip position, its horizontal heading follows the initial tool yaw, and its vertical axis follows gravity. This representation is different from the seven motor-style action/state channels used with the gripper. A nine-value pose is not nine joint commands. Use this declared nine-feature interface for the worked checks continued from Class 10. The supplied evaluator can select either six-dimensional delta actions or nine-feature episode poses from a saved checkpoint configuration. The outcome JSON omits that configuration, so an exact reproduction must recover it; a pusher name alone does not establish the checkpoint's feature semantics. The ten-episode pilot is also separate from the source's reported 300-demonstration training set.
+For the supplied pusher representation, `observation.state` and `action` each have nine values: `[x, y, z, r11, r21, r31, r12, r22, r32]`. The first three are rod-tip position in metres; the remaining six are the first two columns of an orientation matrix. The action is an absolute pose target in an episode frame. In the retained start-relative case, its origin is the initial rod-tip position, its horizontal heading follows the initial tool yaw, and its vertical axis follows gravity. Table-relative data instead anchor the vertical origin at the declared table surface; the dataset and executor must agree on that choice. This representation is different from the seven motor-style action/state channels used with the gripper. A nine-value pose is not nine joint commands. Use this declared nine-feature interface for the worked checks continued from Class 10. The supplied evaluator can select either six-dimensional delta actions or nine-feature episode poses from a saved checkpoint configuration. The outcome JSON omits that configuration, so an exact reproduction must recover it; a pusher name alone does not establish the checkpoint's feature semantics. The ten-episode pilot is also separate from the source's reported 300-demonstration training set.
 
 The policy image key is `observation.images.phone`: a tool-mounted camera view in this simulation. A front or side observer view may be useful to a human but cannot be substituted for the trained policy view without evaluating that change. The actual checkpoint must specify tensor order, scaling, resizing and preprocessing; the dataset’s stored RGB layout is not enough to infer the model’s tensor layout.
 
@@ -230,6 +230,31 @@ A policy trained on physical camera images can be evaluated in simulation as a s
 
 The supplied inference scripts require exact weights and processors. Until those are available, this class can inspect the procedure and source records, but cannot claim to have rerun their learned-policy predictions.
 
+### Compare the recorded physical-data predictors
+
+The arm sources compare three policy families. ACT predicts action chunks with a Transformer-based imitation model (Zhao et al. 2023). Diffusion Policy models a conditional action distribution through denoising and uses receding-horizon execution ([Chi et al. 2023](https://www.roboticsproceedings.org/rss19/p026.html)). SmolVLA combines vision/language representation with an action model ([Shukor et al. 2025](https://arxiv.org/abs/2506.01844)). Their names describe different model constructions, not a ranking of task competence. Each still depends on the observation/action processor, tool frame, execution horizon and evaluation protocol.
+
+The [stored offline comparison](../resources/class11/data/recorded-comparisons/offline-real.csv) reports a one-second future tool-position error on twenty held-out physical handheld episodes, identified in the source as episodes 130–149. It is a recorded comparison against the demonstrator's future pose, without executing the predicted actions on the arm.
+
+![Recorded one-second prediction errors on physical handheld observations](../resources/class11/figures/offline-physical-comparison-classroom.png)
+
+*Figure 6. All eight rows of the stored offline comparison, in their recorded conditions. The dashed reference is the recorded hold-still predictor's 50.6 mm error. Values are aggregate tool-position prediction errors at a one-second horizon; no per-episode uncertainty or new model inference is supplied. Mixed-data rows retain their scene-version and height-reference distinctions in the accompanying CSV.*
+
+| Predictor | Reported training collection | Height reference | Recorded error at 1 s (mm) |
+| --- | --- | --- | ---: |
+| Hold still | None | — | 50.6 |
+| ACT | 130 physical | Start | 34.5 |
+| ACT | 130 physical + 300 simulated, v3 | Start | 29.0 |
+| ACT | 130 physical | Table | 32.0 |
+| ACT | 130 physical + 300 simulated, v4 | Table | 30.3 |
+| Diffusion Policy | 130 physical + 300 simulated, v3 | Start | 30.5 |
+| SmolVLA | 130 physical + 300 simulated, v4 | Table | 29.3 |
+| ACT | 300 simulated only, v3 | Start | 73.5 |
+
+For example, 34.5 mm versus the 50.6 mm hold baseline is a 16.1 mm absolute reduction, approximately 31.8% of the baseline. The simulated-only row is worse than holding still on these physical observations. These facts describe the saved table. They do not isolate image-domain mismatch from training, normalization or scene differences, and do not show that a mixed-data predictor will push successfully in closed loop.
+
+The table changes several factors: policy family, collection composition, height reference and simulated scene revision. Comparing 29.0 with 29.3 mm is therefore not a controlled algorithm comparison. There are no per-episode residuals or repeated-training results here from which to establish a statistically meaningful ranking. No exact ACT, Diffusion Policy or SmolVLA weights, processors and frozen inference configurations are included for these rows. The comparison is inspectable recorded evidence; its predictions have not been reproduced in this lesson.
+
 ## Nominal and held-out conditions, failures and bounded claims
 
 ### Read the denominator and the exact run
@@ -242,11 +267,13 @@ $$
 
 This result belongs to the specified ACT/pusher evaluation, associated in the source with a 300-demonstration model, 60k training steps and executed chunk setting `n = 100`. The outcome JSON verifies the count. The source command requests 100 actions per inference; at 30 Hz its nominal prefix spans about 3.33 s. This establishes the reported command setting, not a measurement of actual policy-query times or latency matching. UMI provides an example of why observation/action latency is part of a manipulation interface (Chi et al. 2024). The training configuration and missing checkpoint must still establish the exact inference artifacts before a reproduction claim is made.
 
+The outcome JSON fixes the denominator for this run. Aggregate scores with a similar model label can still belong to another scene, dataset, checkpoint, executed prefix or evaluator. Keep those results separate until a matching run manifest identifies each condition. A scene change may explain a score difference; the scene must first be identified.
+
 The complete JSON uses seeds 100000–100049. All eighteen recorded failures end at 450 steps, whereas the included evaluator's default cap is 600; the retained source command does not explain that difference. Preserve the recorded outcomes while requesting the exact evaluator version and arguments. Do not substitute current defaults for a missing run manifest.
 
 ![Keep all stored outcomes visible](../resources/class11/figures/stored-outcomes-classroom.png)
 
-*Figure 6. Left: the fifty supplied binary outcomes. Right: the 32/50 fraction with a descriptive 95% Wilson interval, approximately 0.501–0.759. The interval assumes independent comparable Bernoulli trials; it is not a hardware-transfer interval or a training-seed uncertainty estimate.*
+*Figure 7. Left: the fifty supplied binary outcomes. Right: the 32/50 fraction with a descriptive 95% Wilson interval, approximately 0.501–0.759. The interval assumes independent comparable Bernoulli trials; it is not a hardware-transfer interval or a training-seed uncertainty estimate.*
 
 Fifty evaluation attempts do not make a score exact. Outcomes can also share training runs, conditions and implementation errors. The interval only describes a particular sampling model. It does not cover uncertainty from a new trained checkpoint, changed camera or hardware. The 95% level refers to the interval procedure under its sampling assumptions, not a 95% task-success requirement (NIST/SEMATECH n.d.).
 
@@ -266,7 +293,7 @@ The selected failure is episode 0 of the supplied video set. Its summary reports
 
 ![A selected failed rollout](../resources/class11/figures/failure-frames-classroom.png)
 
-*Figure 7. Selected frames 0, 225 and 449 from the supplied episode-0 failure video. The figure crops the policy-view half of the two-view video, without retouching; the full video retains the observer view. These samples alone do not locate the exact onset of failure.*
+*Figure 8. Selected frames 0, 225 and 449 from the supplied episode-0 failure video. The figure crops the policy-view half of the two-view video, without retouching; the full video retains the observer view. These samples alone do not locate the exact onset of failure.*
 
 The saved `ik_ok=1.0` is not an episode-wide IK success fraction. In the included environment, `ik_ok` describes the current step, and the supplied evaluator copies scalar fields from the final `info` dictionary into its result. It therefore reports the last step's flag under that code. It does not establish that all 450 steps passed IK, that every target was achieved dynamically, or that the cube reached its goal. A per-step log is needed to calculate a fraction. Likewise, the final distance alone does not tell us whether the problem was visibility, action execution, contact or insufficient recovery data.
 
@@ -285,19 +312,57 @@ Inspect the policy's available image, not only the observer view. Identify when 
 
 **Worked hypothesis:** “Long action execution before replanning prevents recovery near the goal.” A test can keep the checkpoint, reset seeds and environment fixed while changing executed chunk length. Predict a change in recovery behaviour and success rate, and define what result would weaken the hypothesis. Without the checkpoint this is a proposed experiment, not a completed one.
 
+### Read the reported physical failure as an experiment
+
+The source describes a first physical series on 14 October 2026 using a 0.10 m/s executor limit. ACT trained on the 130 physical handheld episodes reportedly moved toward the cube and pushed off its intended line in **zero successes out of ten attempts**. A mixed physical/simulated policy reportedly sometimes moved away; the draft describes a second ten-attempt series, but does not provide a complete per-attempt outcome record for it. Retain the explicit 0/10 result for the identified physical-only series without assigning an invented rate to the other narrative.
+
+The report is useful even though the exact checkpoint, physical trajectories, images, interventions and evaluator manifest are not supplied here. It demonstrates why the 29–35 mm offline errors above cannot be presented as physical skill. Its 0/10 count is a reported result under the named source conditions, not a fresh test or a general estimate for ACT.
+
+Two candidate explanations connect the collection to the executor:
+
+| Observation or source record | Candidate mechanism | Discriminating next comparison |
+| --- | --- | --- |
+| Handheld median start height 0.0941 m; declared robot start 0.120 m | Start-relative actions decode about 25.9 mm higher when the start is shifted by that amount | Match contact geometry and table reference, then compare the frozen policy under a declared reset; record actual tip/object motion |
+| Source reports later rollouts stalling near 200 steps, then lifting or holding | The learner may reproduce a recorder save gesture included at the end of demonstrations | Identify and trim the gesture using an explicit rule; retrain with otherwise matched data/settings and retest the same evaluation conditions |
+
+The source attributes an approximately eight-centimetre lift/hold near the end of many handheld recordings to the recorder's save gesture. It reports a 93% prevalence and an approximately three-second terminal phase. The episode-statistics CSV supports durations and heights, but not that temporal segmentation or causal attribution. Those claims need the original trajectories and labeled gesture boundaries. Preserve them as reported observations and a hypothesis, rather than asserting that the policy learned a particular internal intention or was trying to obtain a favorable image.
+
+Table-relative height can correct a known reference mismatch, but a successful correction/retest is not recorded. Trimming the gesture, retraining and repeating the physical series are also proposed work. A diagnosis becomes stronger when the corrected system is tested with the original alternatives still measurable. An honest failed-transfer case can therefore be complete teaching evidence while its physical improvement remains open.
+
 ### Make a bounded next-experiment decision
 
 A failure analysis should connect observation, competing explanations and a measurement. “Improve the model” is not a complete experiment. Name the changed factor, fixed conditions, predicted observation and decision rule.
 
 ![Turn a diagnosis into a test](../resources/class11/figures/next-experiment-classroom.png)
 
-*Figure 8. Conceptual design of a discriminating next experiment.*
+*Figure 9. Conceptual design of a discriminating next experiment.*
 
 For example, keep the controller and target trajectory fixed and compare full-state versus incomplete-state replay. If only the incomplete reset changes the result, the finding supports a state-completeness explanation for that replay discrepancy. It does not identify a hardware friction error.
 
 For a camera hypothesis, vary a declared camera factor while keeping the physics and action convention fixed. A successful robustness test under that variation supports only the tested range. It is stronger to specify a five-centimetre camera displacement and an evaluation protocol than to say “the policy is robust.”
 
 A shadow check can inspect a policy's proposed actions in a simulated or non-actuating path before a physical trial. Its role is bounded: acceptable numeric outputs do not establish that the physical task will succeed. Physical operation requires its own approved setup and supervision; this session does not issue hardware commands.
+
+## A tool-using vision-language controller as a comparison
+
+A pretrained VLM can select high-level motions from the tool-camera image while a geometric executor carries them out. This optional source case uses no new task-specific demonstrations or local policy training for the controller. It is not data-free: pretraining and the hand-designed tool/executor contain prior knowledge.
+
+The source controller receives an image with a projected table grid, the current rod-tip position and feedback from earlier calls. Its response is a structured tool request with named arguments. In `move`, it requests a bounded relative displacement and optional yaw. In `locate`, it marks an image pixel and the calibrated geometric layer returns a table-plane location. In `push`, it marks cube and goal, then a fixed primitive constructs the push. In `done`, it claims completion; the simulator must still apply the task's success test.
+
+This separates perception, planning and execution. The VLM chooses a pixel or an intended move; camera projection, workspace checks, inverse kinematics and low-level control supply the geometry and motion. The source executor rejects an invalid candidate and returns a reason before replanning. It does not treat a language-model tool call as proof that a pose is reachable. A successful push primitive also measures the combined system, rather than the VLM alone.
+
+The [retained run-outcome table](../resources/class11/data/recorded-comparisons/vlm-tool-outcomes.csv) distinguishes the twenty base records from one follow-up rerun. Run labels below are historical source identifiers; they make no claim about current API model availability.
+
+| Historical run setting | Base records | Simulator-checked successes | Other base outcomes |
+| --- | ---: | ---: | --- |
+| `sonnet55_push` | 5 | 5 | None |
+| `sonnet55_step` | 5 | 4 | One `done` claim marked success without a simulator check |
+| `opus55_step` | 5 | 5 | None |
+| `haiku55_step` | 5 | 4 | One call-limit failure |
+
+The raw base record therefore has eighteen simulator-checked successes, one checked failure and one unchecked completion claim. The additional `sonnet55_step_seed2` record is a simulator-checked success on the previously unchecked layout. If that checked rerun replaces the unchecked claim, the declared replacement set contains nineteen successes in twenty checked layouts. There were twenty-one recorded attempts including the follow-up. Keep both the original record and the replacement policy visible; do not silently count the unchecked claim as verified or present the rerun as an additional independent layout.
+
+These few stored layouts do not establish superiority over the fifty-episode ACT run, which has a different controller, attempt budget and run identity. The source's reported physical VLM completion has no trial denominator or accompanying physical logs here. It remains a reported demonstration. Comparing controllers meaningfully would require matched reset layouts, observation domain, success rule, executor, interventions and time/action budget.
 
 ## Connect actuator validation, LEAP and reBot evidence
 
@@ -317,7 +382,7 @@ A useful project therefore links measurements across levels: parameter/property 
 
 ## Instructor and TA demonstration
 
-**Scope:** This demonstration uses simulation replay and supplied simulated policy-rollout records. It does not execute a learned policy on physical hardware. Missing evidence for a physical deployment claim includes the exact checkpoint/processors, calibrated hardware interface, measured timing and actuation response, and logged supervised physical task trials.
+**Scope:** This demonstration uses simulation replay, supplied simulated policy-rollout records, the stored offline comparison and a reported physical failure case. It does not execute a learned policy on physical hardware. Missing evidence for a physical deployment claim includes the exact checkpoint/processors, calibrated hardware interface, measured timing and actuation response, and logged supervised physical task trials.
 
 ### Interpret the retained replay checks
 
@@ -330,6 +395,10 @@ Explain why replay equality does not reproduce the policy's decisions and why th
 Write down the pusher’s nine-value pose feature, image key, episode frame and absolute-target convention. Contrast them with seven motor channels. Work the normalization example and identify the saved statistics/processor artifact needed before policy inference. An absent processor is an unresolved dependency, not an invitation to guess its statistics.
 
 Trace the replay and reset-comparison definitions: model, state specification, initial cube velocity and scripted commands. Predict why the two reset procedures differ, then compare their retained results. Ask what would have to change for this to be a physical model-validation experiment.
+
+### Compare offline prediction with the physical report
+
+Read Figure 6 and the corresponding CSV. Compute the ACT physical-data reduction against holding still, then identify the scene/height changes that prevent a clean algorithm ranking. Contrast the prediction metric with the reported physical 0/10 outcome. Build the height-mismatch and save-gesture hypotheses from their actual evidence, and state the correction/retest that is still missing. Optionally inspect the VLM outcome table and distinguish its unchecked `done` claim from a checked success.
 
 ### Inspect both outcomes and diagnose the failure
 
@@ -346,9 +415,10 @@ Use the retained failure case and reported summary. No new training or hardware 
 1. Record episode ID, seed, success flag, step count, final distance and IK field. Explain how valid IK can coexist with task failure.
 2. Identify one directly visible observation with a frame range, and two competing explanations. Mark what the video cannot establish.
 3. Propose one experiment: changed factor, fixed conditions, measured prediction and a result that would weaken your explanation. State which missing artifact or physical observation it needs.
-4. Draft a two-sentence claim naming system, conditions, metric, evidence source and limits. Separate the supplied policy record from a test you executed yourself.
+4. Compare the recorded one-second physical-data prediction error with the reported 0/10 physical series. Explain why they answer different questions, and specify one matched correction/retest for the height or save-gesture hypothesis.
+5. Draft a two-sentence claim naming system, conditions, metric, evidence source and limits. Separate the supplied policy record from a test you executed yourself.
 
-If playback is unavailable, use Figure 7's frames 0/225/449, the selected-record table and the saved summary. Make only the bounded before/after observation supported by those images, and mark the precise onset or contact sequence unresolved. This provides a complete page-only route without inventing motion between still frames.
+If playback is unavailable, use Figure 8's frames 0/225/449, the selected-record table and the saved summary. Make only the bounded before/after observation supported by those images, and mark the precise onset or contact sequence unresolved. This provides a complete page-only route without inventing motion between still frames.
 
 Save the diagnosis, claim, experiment and assessed source/commit in the team repository. For example: “The supplied pusher evaluation records 32 successes in 50 nominal simulated attempts. The retained replay check verifies state/command reproducibility under the supplied model; physical policy transfer and a rerun of the original checkpoint remain unestablished.”
 
@@ -371,6 +441,9 @@ Unfinished printing, actuator identification, data collection, retargeting or tr
 
 
 ## References
+
+The [physical-case source record](../resources/class11/data/consolidation-source.json) identifies the pinned development passages and stored artifacts added to this lesson. Source inspection and arithmetic checks are distinct from a fresh experiment.
+
 
 The [scripted replay result](../resources/class11/results/replay-state.json), [reset-comparison result](../resources/class11/results/reset-comparison.json) and [complete recorded policy summary](../resources/class11/results/recorded-policy-summary.json) concern separate checks. Their scope statements remain attached to the results. The [mechanical source notice](../resources/class11/consolidation/package/additional_material/rebot_pusher/model/rebot_b601_rs_mjcf/NOTICE.md) and [CERN-OHL-W licence](../resources/class11/consolidation/package/additional_material/rebot_pusher/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W) accompany the adapted model. These artifacts support the comparisons described above; exact policy reproduction requires the missing execution artifacts.
 

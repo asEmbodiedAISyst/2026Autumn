@@ -12,7 +12,7 @@ layout:
 
 Move a camera around a stationary cube, then rotate the cube while keeping the camera still. The image changes in both cases. A robot must distinguish those motions in the frame where it controls its hand. It also needs to know when an estimate was captured and whether enough of the object was visible to support it.
 
-Classes 02–05 distinguished requested, measured and simulated quantities. The same distinction now applies to object pose: an estimate from an image is neither a direct view of the complete physical state nor a command. The Class 06 actor already receives cube-pose features as well as joint information. Today's problem is to supply a usable observation from vision, preserving the policy's required frame, feature convention and timing. We investigate two separate components: a synthetic known-corner pose-estimation exercise, and native MuJoCo diagnostics that delay or hold selected pose-error features. They are reproducible component tests, not a completed image-to-policy system.
+Classes 02–05 distinguished requested, measured and simulated quantities. The same distinction now applies to object pose: an estimate from an image is neither a direct view of the complete physical state nor a command. The Class 06 pose-observing baseline actor already receives cube-pose features as well as joint information. Today's problem is to supply a usable observation from vision, preserving the policy's required frame, feature convention and timing. We investigate two separate components: a synthetic known-corner pose-estimation exercise, and native MuJoCo diagnostics that delay or hold selected pose-error features. They are reproducible component tests, not a completed image-to-policy system.
 
 By the end of this class, you should be able to:
 
@@ -43,6 +43,18 @@ A strong pose estimator and a strong controller do not automatically make a stro
 Retain the Class 06 task definition: complete orientation error below 0.1 rad, with the task's retention and termination rules. A successful-step event is not automatically an independent completed rotation. Replacing the observation source does not justify silently relaxing those criteria.
 
 **Predict:** A camera reports a four-value quaternion. Can it be copied directly into the actor's six orientation-error features? Explain what must be established before constructing the input.
+
+### Choose the policy case before replacing an observation
+
+Class 06 now contains two distinct cases. This class continues the **57-input Playground-derived, goal-conditioned reorientation actor**: its cube-related observation fields make replacing simulated pose by an estimated pose a meaningful interface question. The separate 320-input proprioceptive continuous-rotation actor receives joint/command history and has no cube-pose field. Appending a camera estimate would change its learned input contract and require a compatible newly trained actor; a camera recording alone does not change that controller.
+
+| Question | Pose-observing reorientation case | Proprioceptive continuous-rotation case |
+|---|---|---|
+| Does the actor use object-pose information? | Yes, in the declared observation construction | No direct cube-pose input |
+| What can a calibrated camera replace? | The corresponding simulated object-state source, after frame/time/feature conversion | Evaluation or diagnosis initially; no existing actor input is replaced |
+| What stays to be checked? | Feature order/scaling, uncertainty, delay, validity and trained operating conditions | Whether a changed observation design and new policy improve the intended task |
+
+Both cases can use recorded images to assess object motion. Only a declared estimator-to-actor connection makes those images part of visual feedback. Keep actor identity beside every demonstration: the same hand or cube lettering does not make two policies interchangeable.
 
 ## Replace a simulated pose with a measurement contract
 
@@ -267,9 +279,11 @@ Before a human-hand demonstration, verify that valid landmarks or joint observat
 
 ### Trace a visual measurement to the policy
 
-Use Figure 1 to identify where estimation replaces simulated pose information. State that the Class 06 actor already observes cube pose. Distinguish a camera's motion from the cube's motion and locate the missing calibrations for a live phone implementation.
+Use Figure 1 to identify where estimation replaces simulated pose information. State that the Class 06 pose-observing baseline actor already observes cube pose. Distinguish a camera's motion from the cube's motion and locate the missing calibrations for a live phone implementation.
 
 Work through Figure 3 on paper: rotate the point, then add the camera origin. Ask why translation-only addition gives the wrong answer. Identify what a cube-mounted marker's pose would still need before it represents the cube center in the hand frame.
+
+For a physical phone-stream inspection, first identify the actor case, device/software revision and actual packet fields. Locate an image, matching intrinsics and capture timestamp; then identify the object estimator and hand-frame calibration. The phone's own AR pose is not a cube measurement. If any part is unavailable, use the prepared synthetic case below and record the missing physical evidence instead of labeling the demonstration a completed visual hand-control deployment.
 
 ### Recover a declared synthetic pose
 
@@ -284,6 +298,8 @@ The saved traces provide the evidence for this comparison. End with one supporte
 ## Student activity
 
 ### Calculate, inspect and bound the conclusion
+
+First name the Class 06 pose-observing baseline actor continued here and explain why replacing its object-state source differs from adding a pose input to the proprioceptive actor.
 
 Use the page's worked examples, synthetic experiment description and result tables.
 

@@ -1,0 +1,53 @@
+{
+  "source_revision": "f7c118edaadc9f33498669736fa9d99160ff629a",
+  "evidence_status": "recorded experimental results; arithmetic verified, original identification and hardware not rerun",
+  "case_identities": [
+    "retained98g (existing unchanged data)",
+    "XC330 declared110g result, 15 October 2026",
+    "RS06 hardware-position-v1, 25 August 2026"
+  ],
+  "tables": [
+    {
+      "file": "xc330-declared110g-heldout-metrics.csv",
+      "sha256": "256d3c7fca317cd9d9c2faf4ffff7864db2ba198b3d8f0e4348d78790f247161",
+      "source_git_blob_sha": "9b23bba5b585a220924069a92c6298aff0dae7d7",
+      "processing": "selected scientific columns only"
+    },
+    {
+      "file": "xc330-declared110g-parameters.csv",
+      "sha256": "ec4d0345780894e72cd7fade47c877cc4dd617cd3c7013ca0582e17d3fa76e82",
+      "source_git_blob_sha": "a52796e17725b0f1f25d091feb6ffa14daada8fa",
+      "processing": "CSV values preserved; line endings normalized"
+    },
+    {
+      "file": "rs06-recorded-aggregate-metrics.csv",
+      "sha256": "9eaedfb5a13fa83e20e571a301a2083a0b95b8d558e722d0bda5e89550fef0f1",
+      "source_git_blob_sha": "f21b442c58c79c5e27f326c888b1618988996849",
+      "processing": "CSV values preserved; line endings normalized"
+    },
+    {
+      "file": "rs06-recorded-parameters.csv",
+      "sha256": "ca50092d6a712babefcc6ec403db395da41039f70d5c7b1338cb94a296b1f2e9",
+      "source_git_blob_sha": "898d26ba72803d2b45c2c8e9d8d5048f71ea5e84",
+      "processing": "CSV values preserved; line endings normalized"
+    },
+    {
+      "file": "rs06-recorded-repeatability.csv",
+      "sha256": "2406f1a72765c15773b190269ecbf8dd46e995619f7de44f216e79cb78470f4e",
+      "source_git_blob_sha": "7586f86a54087e735d788b7440e0e5027e22dfab",
+      "processing": "CSV values preserved; line endings normalized"
+    },
+    {
+      "file": "rs06-recorded-fixture-metrics.csv",
+      "sha256": "07b56f4a5e577771ddd0949687c085b49e93b7b71a3cdd47caea72f649d53e10",
+      "source_git_blob_sha": "b51882a25dec8095a4626abc19166bfc112522fd",
+      "processing": "CSV values preserved; line endings normalized"
+    },
+    {
+      "file": "rs06-B1-H2-P06-first-physical.csv",
+      "sha256": "7d5721c809dcee3a846dd88c4d5febeefec6bdc34f396f3175ba837095531305",
+      "source_git_blob_sha": "5d131a47d55445867a05c982f4e0123ba72c5d7a",
+      "processing": "selected scientific columns only"
+    }
+  ]
+}

@@ -12,7 +12,7 @@ layout:
 
 Robot data acquire meaning through their task, observations, actions and collection procedure. A large folder can contain correctly shaped arrays that are poorly aligned, visually uninformative or impossible for the target robot to execute. Collecting more of those records preserves the problem.
 
-This class separates reinforcement-learning experience from demonstrations and evaluation records. Its concrete arm-learning example is **demonstration-based imitation learning with ACT**. We inspect a small simulated pusher pilot, identify what its records establish, and write a dataset contract. The practical uses a numeric audit and a prepared model/IK check; full training and physical robot operation are outside the required activity.
+This class separates reinforcement-learning experience from demonstrations and evaluation records. Its concrete arm-learning example is **demonstration-based imitation learning with ACT**. We inspect a small simulated pusher pilot and a 161-episode physical collection audit, identify what their records establish, and write a dataset contract. The practical uses a numeric audit and a prepared model/IK check; full training and physical robot operation are outside the required activity.
 
 Classes 02–05 established the meanings of requested, measured and simulated quantities. Classes 06–07 showed why a learner's observations and timing must match its implementation. Classes 08–09 established an arm interface and a traceable command/response record. Here we decide whether a collection procedure supplies the evidence an intended learner and executor require. We change to a camera pusher, so we must declare the new tool and schema instead of simply renaming Class 09's motor channels.
 
@@ -104,6 +104,20 @@ The third column is reconstructed by a cross product. Six stored orientation val
 
 The simulated environment-state field is privileged evaluation information. Do not silently add object/goal coordinates to a deployed actor that receives only camera images and tool pose. A third-person scene render can also reveal information absent from the policy's camera.
 
+### A tool shared by a person and an arm
+
+The physical tool case explains why the pose interface is useful. The handheld print has a handle; the robot print has a flange for the arm's sixth motor. Both place a printed rod and phone mount in the intended same relationship to the rod tip. A person can therefore demonstrate a push with the handheld tool while the arm carries the robot-mounted version. The source includes the two STL geometries and a photograph of the physical arm carrying the phone and rod.
+
+This design aims to preserve a useful camera-to-tip geometry across embodiments, following the interface idea of UMI (Chi et al. 2024). The camera observes from the tool rather than a fixed room viewpoint. Its tracked pose and calibrated mounting transform locate the rod tip. The learner predicts a tool pose, leaving the robot's kinematics and limits to the executor. A human hand in the image, mount flex, a different phone alignment, unreachable poses or different contact dynamics can still distinguish the two routes. Shared CAD dimensions are a hypothesis about correspondence to check, rather than proof of interchangeable observations.
+
+| Collection route | Who chooses motion | Information and limits to retain |
+| --- | --- | --- |
+| Scripted expert in simulation | A program using privileged cube/goal state | Script and reset revision, sampled disturbances, rejects and the policy's restricted observation |
+| Physical handheld tool | A person directly moves the tool | Camera-to-tip calibration, table reference, images, pose/time association and target-frame executability |
+| Physical or simulated teleoperation | A person moves a separate leader | Mapped request, applied limited command, follower response and intervention history |
+
+The routes can write the same nine feature names while recording different action semantics and visual/contact distributions. This is why dataset merging requires a scientific decision as well as a successful file conversion.
+
 ### Define what an action actually means
 
 In the retained **handheld recorder**, the previous measured state and image are paired with the next measured tool pose as `action`. That action is a demonstration target derived from motion, not an issued motor command. A robot teleoperation recorder uses a different convention: previous observation paired with the limited applied command.
@@ -143,6 +157,16 @@ $$
 **Worked reconstruction:** choose robot start [0.33,0,0.12] m and an episode heading of +90° about base z. The relative position [0.10,0,0] m decodes to [0.33,0.10,0.12] m. It is ten centimetres along episode +x, which is base +y here. Because F is yaw-only, the initial downward tool rotation remains in the orientation features; the first rotation is not necessarily identity. With the declared downward start, its stored columns are [1,0,0,0,−1,0].
 
 Relative coordinates remove a declared dependence on global origin and heading. They do not establish reachability, equivalent contact, camera-domain compatibility or latency matching. A human trajectory that is convenient in one frame may become unsuitable when reconstructed at a different robot start.
+
+### Anchor height to the table when the task requires it
+
+A start-relative record sets height zero at the first tool pose. A table-relative record sets height zero at the table while retaining the episode's horizontal origin and heading. Both are valid conventions if the learner and executor agree. They answer different questions: “how far below my start?” versus “how high above the contact surface?”
+
+The physical handheld recorder's table-reference design uses a recent still table touch before each episode. It searches the preceding 30 s for the lowest still tip height and requires it to be at least 5 cm below the start. These are the recorded algorithm's window and separation rules, not evidence that every touch was correct. A false touch, tracking jump or moving tip can corrupt the height anchor. Repeating the touch makes each episode's local reference inspectable; it does not independently measure tracking drift or remove camera-to-tip error.
+
+**Worked height mismatch:** the 150 handheld records below have median start height 0.0940736 m above the table, while the declared robot start is 0.120 m. A demonstrated contact pose 0.0740736 m below that median start would be 0.020 m above the table. Decoding the same start-relative displacement from 0.120 m gives 0.0459264 m: approximately 25.9 mm higher. This calculation isolates the reference-height effect; individual episodes and actual contact require their own poses. Table-relative data encode the intended 0.020 m contact height directly, provided the table and tool calibration agree.
+
+Do not relabel a start-relative dataset as table-relative. Conversion needs each episode's table offset and provenance, followed by renewed geometric and executor checks. Normalization and dataset cards must identify the converted revision.
 
 ## Define task, reset and outcome before collecting labels
 
@@ -260,13 +284,40 @@ The pilot audit can verify the sample grid stored in the dataset. It cannot esta
 
 Therefore, uniformly spaced stored timestamps do not prove the absence of gaps or a physically measured 30 Hz camera stream. Record acquisition, reception and action times where available, together with resampling and gap-handling rules. A correct time grid can still pair the wrong image and action.
 
+## Learn from the larger physical collection
+
+The [physical episode-statistics CSV](../resources/class10/data/physical-collection/real-episode-stats.csv) contains **161 rows: 150 handheld and eleven teleoperated episodes**. This is an aggregate audit of a physical collection, separate from the ten-episode simulated pilot. It records frame count, duration, start/minimum height, path length and derived speed summaries per episode. The CSV makes the arithmetic inspectable; it does not contain all original images, packets or trajectory samples.
+
+![Start height, duration and speed in the 161-episode physical collection](../resources/class10/figures/physical-collection-audit-classroom.png)
+
+*Figure 5. Recomputed from all 161 stored episode-statistics rows. Left: all 150 handheld start heights, with the nominal 0.120 m robot start. Middle: all durations, separated by collection route. Right: each episode's stored 95th-percentile tip speed, with the declared 0.25 m/s limit. Markers distinguish handheld and teleoperation; no rows are removed. These are recorded summaries, not a new physical collection or independently measured acquisition timing.*
+
+| Recomputed audit quantity | Handheld | Teleoperation | Teaching consequence |
+| --- | ---: | ---: | --- |
+| Episode count | 150 | 11 | Keep route and episode identity through a merge |
+| Median duration | 6.8167 s | 13.3 s | Different duration distributions can alter training-frame weighting |
+| Median start height | 0.0940736 m | Not used for the handheld comparison | Compare the training height reference with the executor's 0.120 m start |
+| Episodes with stored 95th-percentile speed above 0.25 m/s | 8 | 3 | Eleven episodes need an executor/collection decision; the threshold is not a new accepted speed |
+
+Only 69 of the 150 handheld starts lie within ±0.025 m of 0.120 m. The median height alone therefore hides a substantial distribution. The p95 warning means a per-episode speed statistic exceeds the stated bound; it does not identify the exact violating frames or prove a controller clipped them. The trajectory and time-base records are needed for that test. Likewise, a longer teleoperation median may reflect route, operator or task differences rather than follower dynamics alone.
+
+The source reports a separate kinematic audit in which all 150 handheld episodes were solver-reachable, with sixteen exceeding a speed, tilt or yaw condition. The aggregate CSV here independently supports the eleven p95-speed warnings; it does not contain all the per-pose IK and orientation data needed to reproduce the sixteen-episode combined warning. Preserve that distinction when accepting episodes.
+
+### Reconstruct the scene from measurements with declared limits
+
+The physical source also describes moving from a white sheet and drawn outline to the course table and printed goal. A file merge can succeed while combining those scenes. The simulated scene was revised using phone intrinsics for camera field of view, a table photograph with known sheet corners for planar rectification and scale, goal pixels for appearance, table touches for height, and the declared 40 mm cube/60 mm goal dimensions.
+
+Each measurement constrains a different part of the model. Intrinsics constrain the image projection. A homography can rectify the table plane, but does not recover arbitrary three-dimensional geometry. Matching a goal colour under one exposure does not characterize all illumination. A table texture does not identify friction. These changes make specific observation assumptions more defensible; they do not by themselves demonstrate a smaller physical policy error.
+
+The source summarizes a 300-episode simulated Push Cube collection and a 100-episode Push-T extension. Those full collections are described separately from the packaged small examples and this 161-row audit. A summary, generator or placeholder download is not the complete dataset. Before reproducing training, identify a versioned full-data manifest or a clearly bounded public sample, the accepted episode list, scene/reset revision and held-out split. Preserve the ten-episode pilot as its own inspectable diagnostic rather than treating it as the reported training collection.
+
 ## Check executability in the target robot frame
 
 The prepared IK audit reconstructs observed tool poses at a declared canonical robot start: position [0.33, 0, 0.12] m with the tool pointing downward. It uses the supplied pusher model, limits and numerical solver, trying a previous solution and a home-pose retry.
 
 ![Canonical target-frame reachability and yaw warnings](../resources/class10/figures/pilot-reach-classroom.png)
 
-*Figure 5. Retained model/solver-dependent audit. Reach percentages are rounded terminal values. The 98% reach fraction and ±60-degree yaw lines are audit thresholds, not hardware qualification.*
+*Figure 6. Retained model/solver-dependent audit. Reach percentages are rounded terminal values. The 98% reach fraction and ±60-degree yaw lines are audit thresholds, not hardware qualification.*
 
 The labels “reachable” in the saved report mean **solver-reported success under this particular audit**, rather than certified reachability. It uses position residual below 5 mm and cross-product orientation residual norm below 0.05. That orientation residual is a small-error measure; it is not a global geodesic-angle bound and can vanish for a 180° mismatch. The numerical solver is useful locally, while a qualified executor needs a final-pose check with an appropriate rotation metric.
 
@@ -300,7 +351,7 @@ Adjacent frames in one episode are strongly related. Randomly distributing them 
 
 ![Illustrative whole-episode training, selection and test split](../resources/class10/figures/episode-splits-classroom.png)
 
-*Figure 6. Constructed episode-level split. A–J are an illustration; they are not an executed split of the supplied pilot.*
+*Figure 7. Constructed episode-level split. A–J are an illustration; they are not an executed split of the supplied pilot.*
 
 Choose the split unit from the claim. For new attempts under the same conditions, hold out complete episodes. For a new operator, object arrangement, camera or session, reserve that factor explicitly. Different seeds identify distinct simulator attempts under a versioned reset; they do not automatically establish the desired distribution shift.
 
@@ -316,7 +367,7 @@ Distinguish **predicted chunk length** from **executed actions before replanning
 
 ![Nominal action execution and replanning intervals](../resources/class10/figures/action-chunks-classroom.png)
 
-*Figure 7. Constructed replanning examples at nominal 30 Hz. They illustrate feedback opportunities, not a measured ranking of policy success.*
+*Figure 8. Constructed replanning examples at nominal 30 Hz. They illustrate feedback opportunities, not a measured ranking of policy success.*
 
 If the executor applies $$n$$ actions at nominal rate $$f$$, its nominal open-loop interval is:
 
@@ -369,6 +420,10 @@ Show the pilot-camera examples and feature schema. Locate an episode's task, ima
 
 Inspect counts and shapes, then compare episodes 4 and 6. Calculate the last-frame geometry and implied pose-speed decisions against the declared thresholds. Give separate verdicts for geometry, speed and unresolved visibility. Locate the stored timestamp grid and explain what acquisition evidence it does not contain.
 
+### Audit the physical collection and height convention
+
+Read the two route counts and recompute the handheld median start height, both duration medians and eleven p95-speed warnings from the supplied CSV. Use Figure 5 to inspect the distribution behind those medians. Work the 25.9 mm height-offset example. Explain which fields are required to convert an episode from a start reference to a table reference, and why the aggregate CSV alone cannot rerun IK or policy inference.
+
 ### Inspect the target-frame model check
 
 Inspect the retained canonical IK/physics report. Compare episodes 2 and 7 and identify the start frame, model, limits and solver. Keep the source fault-reference file separate from the current result. State a candidate explanation and what additional observation would distinguish it.
@@ -396,6 +451,10 @@ Choose an IK, yaw or reachability warning. State the observed result, one possib
 ### Complete the short contract
 
 Refer to the declared nine-feature schema, frame definitions, action alignment and timestamp limitations rather than copying or reordering them. State the intended learner and make three decisions: which outcome rule applies, what split/preprocessing boundary you propose, and which evidence still prevents acceptance. Cite the known definitions and complete only these decision fields in the short response. Expand the full contract later when preparing an actual collection.
+
+### Compare the physical collection contract
+
+Use the 161-row audit to state the two route counts, the handheld median start height and the speed-warning denominator. Decode a contact 0.0740736 m below a 0.120 m robot start and compare it with a 0.020 m table-relative target. Decide which calibration and episode metadata a conversion needs. Explain why the stored eleven p95-speed warnings are different from a per-step clipping record.
 
 ### Choose the next action
 
@@ -425,6 +484,9 @@ Full ACT or RL training can continue as a project when the matching dataset, env
 Class 11 follows these interface assumptions into deployment: a matched feature shape must still become a valid, timed command for the chosen mechanism. Keep the dataset, tool, camera, normalization, executor and evaluator identities attached to each result when diagnosing a Sim2Real gap.
 
 ## References
+
+The [physical-case source record](../resources/class10/data/consolidation-source.json) identifies the pinned development passages and stored artifacts added to this lesson. Source inspection and arithmetic checks are distinct from a fresh experiment.
+
 
 The [pilot metadata](../resources/class10/data/pilot_push_cube_handheld/meta/info.json), [exported frame records](../resources/class10/data/pilot_push_cube_handheld/frames.csv), [numeric audit](../resources/class10/saved/numeric-audit.json), [canonical IK report](../resources/class10/saved/canonical-ik.json) and [separate ACT outcome record](../resources/class10/recorded-policy/results_act_push_cube_40k.json) identify this lesson's supplied evidence. The [model notice](../resources/class10/model/rebot_b601_rs_mjcf/NOTICE.md) and [CERN-OHL-W licence](../resources/class10/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W) identify the retained mechanical source. Algorithm papers support the concepts; their reported performance does not become a result for this course pilot.
 

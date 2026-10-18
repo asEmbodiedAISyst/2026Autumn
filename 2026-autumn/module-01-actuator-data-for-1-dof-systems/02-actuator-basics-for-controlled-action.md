@@ -245,6 +245,10 @@ As you inspect the unpowered XC330 and XL330 passed around the room, relate the 
 
 The device's control table provides the software counterpart of the physical module: identity and mode settings, commands, limits, and reported state. A host addresses a device and reads or writes particular fields through the protocol. A successful write establishes that a command was accepted at that interface; the subsequent physical response still has to be observed.
 
+![Qualitative construction animation of a compact geared actuator](../resources/class02/animations/xc330-exploded.gif)
+
+*Figure 3. Retained qualitative construction animation of a compact geared servo. Locate the motor, reduction train, output and electronics, then relate them to the feedback functions. It is a course illustration, not a manufacturer-certified dimensional model or a measured internal inspection.*
+
 ### Compare exact models, not family names
 
 The following extract concerns **XC330-M288-T** and **XL330-M288-T**. Other ratios and voltage variants must be checked separately.
@@ -279,7 +283,7 @@ The two quoted torque/speed values also describe different conditions. Stall tor
 
 ![Official XC330 performance curve](../resources/class02/figures/source-performance-curve.png)
 
-*Figure 3. ROBOTIS performance data retained with its original axes and typography. Speed uses the black left scale, efficiency the green left scale, and current the magenta right scale. Follow one torque value vertically to read a corresponding operating point. The crop does not print the supply/test conditions; consult the model documentation and retain any unspecified conditions. It does not establish a continuous rating. Source: [ROBOTIS XC330-M288-T model documentation](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/).*
+*Figure 4. ROBOTIS performance data retained with its original axes and typography. Speed uses the black left scale, efficiency the green left scale, and current the magenta right scale. Follow one torque value vertically to read a corresponding operating point. The crop does not print the supply/test conditions; consult the model documentation and retain any unspecified conditions. It does not establish a continuous rating. Source: [ROBOTIS XC330-M288-T model documentation](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288/).*
 
 **Comparison question.** For a finger-mounted mechanism, why might the XL330's lower mass matter? For a loaded joint, why might the XC330's higher quoted stall torque matter? What further information would you need before selecting either for continuous operation?
 
@@ -293,19 +297,29 @@ Limits are also mode-dependent: the documented single-turn Min/Max Position Limi
 
 ![ROBOTIS position-controller diagram](../resources/class02/figures/robotis-position-controller.png)
 
-*Figure 4. ROBOTIS's published DYNAMIXEL position-controller illustration. A goal enters a profile; feedback and control terms determine a limited drive output. This is a manufacturer's diagram, retaining its original typography. Read it with the exact model's control-table descriptions; the generic drawing includes interface alternatives and is not a claim that XC330 provides RS-485.*
+*Figure 5. ROBOTIS's published DYNAMIXEL position-controller illustration. A goal enters a profile; feedback and control terms determine a limited drive output. This is a manufacturer's diagram, retaining its original typography. Read it with the exact model's control-table descriptions; the generic drawing includes interface alternatives and is not a claim that XC330 provides RS-485.*
 
 The conceptual position-PD equation earlier is useful for reasoning about error and effort. The published device diagram gives more implementation detail, including profiling, feedforward and limits. It should not be replaced by an assumed textbook cascade. In particular, a gain-register value is not automatically a gain expressed in N m/rad.
 
 ![ROBOTIS current-based position-controller diagram](../resources/class02/figures/robotis-current-position-controller.png)
 
-*Figure 5. ROBOTIS's current-based position-controller illustration. Compare the additional current-related stage and limits with Figure 4. A current-related control path is not evidence of an independent torque transducer at the output.*
+*Figure 6. ROBOTIS's current-based position-controller illustration. Compare the additional current-related stage and limits with Figure 5. A current-related control path is not evidence of an independent torque transducer at the output.*
 
 In the supplied XC330 record, `Present Current` is documented as current at the input supply, in 1 mA units. It should not be substituted directly into a motor winding-current equation or treated as calibrated output torque. Its variation remains useful evidence about operation when interpreted with voltage, PWM, motion and configuration.
 
 The host rate, bus transmission rate and internal control rate are also distinct. A bus specification in Mbit/s describes communication capacity. A host log at approximately 200 samples/s describes the returned record. Neither number establishes the firmware's internal servo update rate. See ROBOTIS's [Protocol 2.0 documentation](https://docs.robotis.com/docs/dxl/protocol/protocol2/) for the packet layer.
 
-In Figure 4, follow goal → profile → error/control terms → limited drive output → mechanical part, then trace the returned state. In Figure 5, locate the current-related bound and controller. Use the drawings to ask which loop is closed and where a limit acts, rather than treating every drawn signal as an independently measured physical quantity.
+In Figure 5, follow goal → profile → error/control terms → limited drive output → mechanical part, then trace the returned state. In Figure 6, locate the current-related bound and controller. Use the drawings to ask which loop is closed and where a limit acts, rather than treating every drawn signal as an independently measured physical quantity.
+
+### Give a bus message a destination
+
+A shared communication cable needs an addressing rule. A DYNAMIXEL **ID** identifies the device that a packet addresses; the **baud rate** describes the serial communication speed. The XC330 stores these selections at control-table addresses 7 and 8. A host can use device ID 5 at 4 Mbit/s: the number 5 selects a device, while the documented baud-selection value 6 selects the rate. They are different fields with different meanings. See the [exact-model ID and baud definitions](https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/#id7).
+
+The XC330's two bus sockets provide a convenient daisy-chain connection. Cable order does not assign device identity: a packet still selects its destination by ID. Modules on the same bus need compatible communication settings and distinct primary IDs. A duplicate ID can make responses ambiguous; a host using the wrong baud rate may fail to decode a correctly addressed device. Neither failure establishes that the motor or its mechanical model is defective.
+
+The cable also distributes electrical power. In the demonstration arrangement, the U2D2 provides the USB-to-TTL communication interface and a separate supply/power connection provides actuator power. Adding modules increases the current carried by the shared wiring. An arrangement can communicate correctly while voltage at a loaded downstream device differs from the supply-terminal voltage. This is one reason shared-operation records become important in Class 05.
+
+**Worked message trace.** Suppose the host writes a new Goal Position to ID 5. The packet destination, requested register value, generated Position Trajectory and returned Present Position belong to different layers. A successful write response establishes communication; an encoder trace establishes the reported output motion. Identify which of those quantities would change if the link were loaded, the profile limit changed, or a second actuator were added to the bus. Do not infer the mechanical outcome from the packet alone.
 
 ### From a module to a research system
 
@@ -313,13 +327,13 @@ The original **LEAP Hand** makes the connection especially concrete. Its version
 
 ![Original LEAP Hand and manipulation examples](../resources/class02/figures/leap-hand-figure1.png)
 
-*Figure 6. Original LEAP Hand and examples of object grasping, extracted from Figure 1 of Shaw, Agarwal, and Pathak (2023). Source labels are retained. Identify how multiple integrated actuator modules become a dexterous mechanism; the image does not by itself establish sensing or policy performance. The [project](https://v1.leaphand.com/) provides demonstrations and hardware/code links.*
+*Figure 7. Original LEAP Hand and examples of object grasping, extracted from Figure 1 of Shaw, Agarwal, and Pathak (2023). Source labels are retained. Identify how multiple integrated actuator modules become a dexterous mechanism; the image does not by itself establish sensing or policy performance. The [project](https://v1.leaphand.com/) provides demonstrations and hardware/code links.*
 
 **ALOHA** is another important example. It combines bimanual teleoperation with learned manipulation using Action Chunking with Transformers. Its commercial arms use other DYNAMIXEL models, rather than the XC330 used here. The [six-degree-of-freedom ViperX 300S specification](https://docs.trossenrobotics.com/interbotix_xsarms_docs/specifications/vx300s.html) identifies XM540 and XM430 families. The learned policy chooses actions; the actuator system still turns those actions into physical motion through its existing control loops (Zhao et al. 2023).
 
 ![ALOHA bimanual teleoperation and manipulation](../resources/class02/figures/aloha-figure1.png)
 
-*Figure 7. ALOHA's teleoperation arrangement and task examples, extracted from Figure 1 of Zhao et al. (2023), with original labels. Compare the high-level task with the lower-level joint actions. Videos are available on the [authors' project page](https://tonyzhaozh.github.io/aloha/).*
+*Figure 8. ALOHA's teleoperation arrangement and task examples, extracted from Figure 1 of Zhao et al. (2023), with original labels. Compare the high-level task with the lower-level joint actions. Videos are available on the [authors' project page](https://tonyzhaozh.github.io/aloha/).*
 
 ROBOTIS's [OpenMANIPULATOR-X](https://emanual.robotis.com/docs/en/platform/openmanipulator_main) offers a smaller arm example using XM430-series modules. These examples share an integration strategy, not an identical actuator model. A research paper's robot name is therefore insufficient evidence for a particular motor, gear ratio or control capability; check its bill of materials and hardware revision.
 
@@ -350,17 +364,21 @@ Wensing et al. (2017) describe the MIT Cheetah approach through motor/transmissi
 
 These concepts matter for locomotion, teleoperation and contact-rich learning because the actuator must respond to unpredictable contact as well as track trajectories. Lower mechanical impedance and useful internal effort information can make some interaction tasks easier to implement. They do not eliminate the need to calibrate current/torque relationships, identify friction, or respect joint and thermal limits.
 
+![Qualitative construction animation for the QDD discussion](../resources/class02/animations/rs06-exploded.gif)
+
+*Figure 9. Retained QDD construction animation for comparing the motor, transmission and output arrangement with the compact servo above. Use supplier drawings and exact-model documentation for dimensions, ratings and interfaces; the animation does not establish those quantities.*
+
 ### Inspect the RS06 and RS00 documentation
 
 RobStride's supplied manuals call these products integrated QDD motor modules. They combine a brushless motor, reduction, sensing and drive electronics, with CAN communication. “Smart integration” and “QDD” describe different dimensions of design; an integrated QDD module can also have configurable commands and returned state.
 
 ![RS06 manufacturer drawing and service conditions](../resources/class02/figures/rs06-manual-page09.png)
 
-*Figure 8. RS06 manual, revision 260713, PDF page 9 / printed page 8. Read the mechanical views alongside the service conditions. This original supplier page retains its own typography; the full manual is provided in the [RS06 source file](../resources/class02/manuals/RobStride_RS06_User_Manual_260713.pdf).*
+*Figure 10. RS06 manual, revision 260713, PDF page 9 / printed page 8. Read the mechanical views alongside the service conditions. This original supplier page retains its own typography; the full manual is provided in the [RS06 source file](../resources/class02/manuals/RobStride_RS06_User_Manual_260713.pdf).*
 
 ![RS00 manufacturer drawing and service conditions](../resources/class02/figures/rs00-manual-page08.png)
 
-*Figure 9. RS00 manual, revision 260713, PDF page 8 / printed page 7. Compare the mounting envelope, voltage range and cooling conditions with RS06. See the [RS00 source file](../resources/class02/manuals/RobStride_RS00_User_Manual_260713.pdf).*
+*Figure 11. RS00 manual, revision 260713, PDF page 8 / printed page 7. Compare the mounting envelope, voltage range and cooling conditions with RS06. See the [RS00 source file](../resources/class02/manuals/RobStride_RS00_User_Manual_260713.pdf).*
 
 | Property in the supplied manuals | RS06 | RS00 |
 |---|---|---|
@@ -417,8 +435,8 @@ The three document questions are: **what is specified** in the TDS, **how the pr
 |---|---|---|---|
 | XC330-M288-T | Model-specific dimensions, ratings and performance curves | ROBOTIS model page: wiring, modes, control table, commands and feedback | Official drawing/download links and operating warnings; a separate model-specific SDS has not been established here |
 | XL330-M288-T | Its own mass, construction and conditioned torque/speed ratings | Its own model page, configuration and feedback descriptions | Check exact-variant drawings and warnings; do not infer a separate SDS |
-| RS06 | Manufacturer specifications and service conditions | Revision-260713 user manual: installation, CAN messages, modes and status | Figure 8 and original STEP files; manual safety sections and the cooling discrepancy |
-| RS00 | Its own specifications, voltage and cooling conditions | Revision-260713 user manual and model-specific operating instructions | Figure 9 and original STEP files; manual safety information |
+| RS06 | Manufacturer specifications and service conditions | Revision-260713 user manual: installation, CAN messages, modes and status | Figure 10 and original STEP files; manual safety sections and the cooling discrepancy |
+| RS00 | Its own specifications, voltage and cooling conditions | Revision-260713 user manual and model-specific operating instructions | Figure 11 and original STEP files; manual safety information |
 
 Open a model page and identify three different kinds of content: a rated value, an interface instruction, and an operating warning. Then open a mechanical drawing and find the units, mounting dimensions and output reference. These documents answer different questions even when they appear on the same website.
 
@@ -446,7 +464,7 @@ The teaching team demonstrates the path from an application through the asBrain/
 
 ![Communication and power components for the XC330 station](../resources/class02/figures/03-interface-components.png)
 
-*Figure 10. Course hardware components used to discuss the communication and power paths. A USB interface and a power connection perform different functions. The associated connection photograph in the package does not show a complete energized setup.*
+*Figure 12. Course hardware components used to discuss the communication and power paths. A USB interface and a power connection perform different functions. The associated connection photograph in the package does not show a complete energized setup.*
 
 During the demonstration, follow these questions in order:
 
@@ -461,6 +479,8 @@ Students observe powered operation on the established teaching station. The unpo
 
 If a live station is unavailable, use Figure 1 and the supplied record: XC330-M288-T, ID 5, firmware 53, Mode 5, motor-only M0 assembly. Its goal, trajectory, position and electrical/status signals support the same interpretation questions. Reading RS06/RS00 protocol examples from manuals is a documentation demonstration, not a recorded or live RS motion test.
 
+Read the retained motor-only record as a hardware example rather than as a simulation: it contains 2,601 telemetry samples and 1,301 host-command records. The two counts differ because commands and observations are logged on different schedules. Trace one request, internal trajectory and measured position, then identify which status channels help distinguish a communication/configuration problem from a mechanical response. Sample count alone does not establish a constant acquisition rate.
+
 ## Student activity
 
 ### Activities during the explanation and demonstration
@@ -474,6 +494,7 @@ If a live station is unavailable, use Figure 1 and the supplied record: XC330-M2
 | Read a recorded reversal | Locate goal, trajectory and reported position in Figure 1 | Identify signal identity and timing before explaining tracking differences |
 | Read the product curves | Locate the stall and no-load conditions | Explain why their maxima cannot occur together |
 | Identify research hardware | Find the original LEAP/Lite actuator models and one ALOHA actuator family | Distinguish a platform name from a verified model/revision |
+| Address one device | Distinguish ID 5 from a 4 Mbit/s bus setting and trace a request/readback | Separate destination, communication rate and physical response |
 | Follow the teaching station | Trace application, interface, power, output and returning telemetry | Connect software action to physical evidence |
 
 ### Unpowered inspection and short team comparison

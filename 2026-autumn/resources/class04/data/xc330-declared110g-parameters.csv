@@ -1,0 +1,4 @@
+model,controller_id,armature_kg_m2,damping_Nm_s_per_rad,frictionloss_Nm
+synthetic_baseline,shared,0.00100252290869,0.014962821731,0.0100948101196
+hardware_fitted,H1,0.00605124092273,0.0462893675966,0.00354162639989
+hardware_fitted,H2,0.00477879859541,0.0476296465285,0.00277343898616

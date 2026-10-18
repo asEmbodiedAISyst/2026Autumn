@@ -12,7 +12,7 @@ layout:
 
 A robot that moves can still have the wrong joint order, an incorrect sign, an unsuitable limit or a misinterpreted gripper command. A rendered arm can look convincing while its control interface is inconsistent. Commissioning means establishing the configuration and evidence needed for a specified next operation.
 
-This class uses the **reBot Arm B601-RS MuJoCo simulation**. The mechanism has six rotary arm joints and a parallel gripper. We will inspect its description, identify its frames and interfaces, predict which movements are permitted, and examine bounded motion. The same questions guide a physical commissioning session, with additional checks of the actual assembly, communication and calibration.
+This class uses the **reBot Arm B601-RS MuJoCo simulation**. The mechanism has six rotary arm joints and a parallel gripper. We will inspect its description, identify its frames and interfaces, predict which movements are permitted, and examine bounded motion. The physical case adds the kit, shared power/CAN path, assembly and zeroing logic, and a saved single-joint commissioning result. These records connect the model to an apparatus; they do not qualify every joint for a new operation.
 
 By the end of this class, you should be able to:
 
@@ -69,6 +69,38 @@ $$
 
 The equality couples the two sliding coordinates, while the actuator requests tendon length. With equal finger strokes, this average equals one finger's stroke. It is not the sum of both strokes or a direct measurement of total jaw aperture. The compiled coordinate count still includes both fingers; a constraint does not remove an entry from `qpos`.
 
+### The kit makes the model physical
+
+The B601-RS kit separates five physical roles: a power adapter, a structural kit, a motor kit, a bench clamp and a gripper kit. The structural parts locate the joint axes; the clamp transfers the arm's reaction loads to the bench. Bearings and locating features constrain how parts seat. Cables must follow the moving structure without becoming a joint stop. These details affect the mechanism that the model is intended to describe.
+
+The source assembly record assigns the seven motor identities as follows. A bus address identifies a device; its mechanical location gives that address a joint meaning.
+
+| Bus ID | Actuator family | Mechanical role |
+| --- | --- | --- |
+| 1 | RS-06 | Base yaw |
+| 2 | RS-06 | Shoulder lift |
+| 3 | RS-06 | Elbow |
+| 4 | RS-00 | Forearm/wrist flexion |
+| 5 | RS-00 | Wrist |
+| 6 | RS-00 | Wrist rotation at the tool mount |
+| 7 | RS-00 | Parallel-gripper opening mechanism |
+
+The assembly proceeds through base, upper arm, forearm, wrist and gripper subassemblies before these are joined from the base outward. The motor labels, bracket left/right marks, connector direction and locating pins matter together. An incorrectly seated output or a swapped motor may still produce a plausible rendered joint vector. It changes the relationship between that vector and the physical links. The source assembly guide also records a vendor-video label inconsistency at the wrist; the housing IDs and completed mechanism must resolve it, rather than a copied caption.
+
+### Follow power and information separately
+
+![Physical power path and shared CAN bus of the source arm](../resources/class08/figures/physical-topology-classroom.png)
+
+*Figure 2. Apparatus schematic reconstructed from the pinned assembly and power-on records. The 48 V power path and CAN signal path meet at the splitter. Motor positions follow the source ID allocation. This is a topology drawing, not a photograph or a wiring qualification.*
+
+The computer communicates through a USB-to-CAN adapter. The adapter connects CAN-H and CAN-L to the splitter; the separate 48 V supply feeds the splitter through the source installation's power switch. An XT30 2+2 cable then carries power, ground and the two CAN signals to ID1. Successive motor cables continue the same four conductors along the arm. The physical chain is therefore one shared CAN bus, rather than seven independent computer links.
+
+The source installation specifies 1 Mbit/s and a termination resistor at each bus end. Two 120-ohm terminations in parallel would give approximately 60 ohms across the signal pair with the installation unpowered. That resistance is a diagnostic of the declared termination arrangement; it does not establish correct polarity, device identity or successful command exchange.
+
+In this host-led design a control cycle sends a command to each selected motor and collects its feedback. CAN itself permits multiple transmitting nodes and arbitration; “the host polls the motors” describes this implementation, not a universal single-master property of CAN. Feedback fields include position, velocity, firmware-reported torque and temperature. A decoded packet proves a communication event, while its physical meaning still depends on the device schema, sign and zero.
+
+For scale, a hypothetical seven-command/seven-reply cycle at 150 cycles/s contains 2,100 CAN frames/s. If a particular frame budget were 150 bits including overhead, that would consume 315 kbit/s, or 31.5% of a 1 Mbit/s link, before additional traffic. The frame size here is an explicit arithmetic assumption; arbitration, stuffing, USB batching and scheduling must be measured for the actual implementation. A nominal bus bitrate does not prove a sustained feedback rate.
+
 ## Frames, reference configurations and calibration
 
 A **frame** has an origin and axes. A **pose** gives position and orientation relative to a frame. A **reference configuration** gives joint coordinates. A tool centre point, or **TCP**, is the model site used to describe the tool pose. Its definition is part of the experiment.
@@ -89,7 +121,7 @@ The corresponding compiled TCP positions are:
 
 ![Zero and working home configurations of the reBot RS model](../resources/class08/figures/arm-poses-classroom.png)
 
-*Figure 2. Native simulation renders of the retained model with the same camera. Zero and home are declared joint configurations, not photographs or measurements of physical calibration.*
+*Figure 3. Native simulation renders of the retained model with the same camera. Zero and home are declared joint configurations, not photographs or measurements of physical calibration.*
 
 The names “zero” and “home” do not determine a TCP position. The model and tool definition do. A TCP position alone also does not fully specify a pose: orientation matters, and inverse kinematics can admit different joint configurations for a requested pose.
 
@@ -159,7 +191,7 @@ If the lower bound exceeds the upper bound, the two declarations have no common 
 
 ![Compiled joint limits, software limits and home positions](../resources/class08/figures/joint-limits-classroom.png)
 
-*Figure 3. Selected joint ranges converted to degrees, their intersections with the supplied software bounds, and working home coordinates. The software declarations are not measured hardware calibration.*
+*Figure 4. Selected joint ranges converted to degrees, their intersections with the supplied software bounds, and working home coordinates. The software declarations are not measured hardware calibration.*
 
 The arm intervals are:
 
@@ -193,7 +225,7 @@ A position target is a request; the measured joint position is a response. Their
 
 ![Position target, controller, mechanism and feedback](../resources/class08/figures/control-loop-classroom.png)
 
-*Figure 4. Conceptual feedback path. The supplied simulation and a physical embedded controller can have different internal states, compensation and limits.*
+*Figure 5. Conceptual feedback path. The supplied simulation and a physical embedded controller can have different internal states, compensation and limits.*
 
 A conceptual feedback expression is:
 
@@ -241,7 +273,7 @@ The classroom trace moves joint2 from home to +10 degrees and back, then to −1
 
 ![Joint2 target and pre-step response with signed tracking residual](../resources/class08/figures/joint-response-classroom.png)
 
-*Figure 5. Retained simulation trace with 180 rows. The residual is pre-step measured position minus the paired target. No filtering or alignment shift is applied; the record contains no hardware measurements.*
+*Figure 6. Retained simulation trace with 180 rows. The residual is pre-step measured position minus the paired target. No filtering or alignment shift is applied; the record contains no hardware measurements.*
 
 Define that residual as:
 
@@ -258,6 +290,31 @@ The full joint-motion script compares each selected joint after stepping with th
 
 Before comparing plots or scores, identify the joint and coordinate convention, target/state pairing, units, retained sample window and aggregation. Moving a trace to reduce its plotted error changes the comparison; it does not establish improved control.
 
+### Read the saved single-joint commissioning case
+
+The [10 October motion-test record](../resources/class08/data/motion-test-single-joint-20261010.json) grounds the commissioning question in physical feedback. Its selected joint is `shoulder_lift` (joint2), with a declared ten-degree excursion and 5 degrees/s request. The saved record contains one entry in its `joints` list:
+
+| Recorded quantity | Value | Interpretation |
+| --- | ---: | --- |
+| Worst absolute tracking error | 1.8724° | Summary of this selected joint test; no full per-sample trace is supplied in this JSON |
+| Peak reported torque | 1.9249 N m | Firmware-reported torque, not an independently calibrated shaft-torque measurement |
+| Recorded MOS temperature | 27°C | The stored end-of-test field, not a thermal endurance test |
+
+This is a different experiment from Figure 6's pre-step simulation trace. Its 1.8724° maximum cannot be compared as a like-for-like accuracy ranking with the simulated 1.3264° maximum without matching the target, gains, load, sampling boundary and calibration. The JSON records gains and test arguments, but a single aggregate error does not reveal transient timing or every limit event.
+
+The same record contains a four-position gravity diagnostic:
+
+| Target (°) | Reported position (°) | Model feed-forward (N m) | Stored model-error field (N m) |
+| ---: | ---: | ---: | ---: |
+| 0 | 1.0107 | 1.5254 | −0.7056 |
+| 10 | 9.9540 | 1.1474 | +0.0321 |
+| 20 | 20.4791 | 0.6676 | −0.3345 |
+| 30 | 29.7739 | 0.2250 | +0.1579 |
+
+The saved sinusoidal shoulder correction has a largest residual of approximately 0.36665 N m on this small sweep. This is a fitted diagnostic under the recorded configuration. Its `model_error_nm` field is retained with the source name; without a calibrated torque measurement and full signal definition it should not be relabeled as true gravity torque. Four poses do not identify every moving mass, friction term or configuration-dependent load.
+
+The evidence supports discussing a physical joint2 response and a candidate gravity correction. It does not show that all six rotary joints and the gripper passed, that the correction generalizes to another tool, or that a seven-joint policy deployment is ready. The useful next decision is narrower: which remaining joint, frame, stop or loaded-motion check is needed for the intended operation?
+
 ## Simulation time and wall-clock time
 
 The controlled-motion runner requests a 30 Hz control period. Its copied implementation chooses seventeen physics substeps and sets the physics timestep so that their product matches the period:
@@ -269,7 +326,7 @@ $$
 
 ![Rounded and corrected constructions of the control period](../resources/class08/figures/control-clock-classroom.png)
 
-*Figure 6. Arithmetic comparison of the earlier rounded period and the corrected period used by the classroom controlled-motion runner. The diagram describes simulation stepping, not operating-system scheduling.*
+*Figure 7. Arithmetic comparison of the earlier rounded period and the corrected period used by the classroom controlled-motion runner. The diagram describes simulation stepping, not operating-system scheduling.*
 
 The scene originally declares a 2 ms physics step. Seventeen unchanged 2 ms steps would cover 34 ms, approximately 29.412 Hz. The controlled-motion runner overrides that timestep to approximately 1.960784 ms. This numerical-model change is recorded with the example and distinguishes its corrected results from older runs.
 
@@ -317,19 +374,25 @@ Keep an unresolved check visible. A model load closes a different question from 
 
 For example: “The compiled reBot RS simulation has a declared channel schema, home configuration, checked limits and a recorded bounded joint2 response. This supports a further simulated recording experiment. Physical mounting, communication and calibration remain separate checks.”
 
-### Conditional physical session
+### Assembly, zero and the first response answer different questions
 
-When physical arms are available, teaching staff preassemble and inspect them. Students can complete a small number of final screws or connections under supervision, then work through the commissioning record. Full kit assembly is not required for the simulation session.
+The source commissioning progression begins with the unpowered mechanism: correct parts and IDs, mounting, free travel and cable clearance. Communication then establishes which devices answer, whether their settings can be read back, and whether feedback has the intended units and signs. Only after these conventions are established can a bounded motion test compare a request with a response.
 
-Use the exact RS kit, supply, communication configuration, motor identities and software revision. With power off, check mounting, parts, fasteners and cable routing. Teaching staff then verify communication and feedback conventions, the defined zero/calibration procedure, configured limits, stop behavior and a bounded first movement. Record results for the actual arm. A properly operating arm is the intended physical-session outcome, after those checks have passed.
+Writing an encoder zero changes the relationship between a device reading and the physical mechanism. The source uses a folded, closed-gripper reference. That operation differs from moving to the convenient working home configuration, and its persistence across power cycles is a firmware-specific property to check. A near-zero readback is meaningful only with the physical reference, device identities and calibration revision recorded together.
 
-The [vendor B601-RS quick start](https://wiki.seeedstudio.com/rebot_b601_rs_getting_started/) provides revision-specific assembly and calibration instructions; the [B601-RS LeRobot tutorial](https://wiki.seeedstudio.com/rebot_arm_b601_rs_lerobot/) describes that software integration. These are source references for the physical route, not evidence that the course simulation has qualified a particular physical installation. The supplied course scripts operate the simulation only. This class does not assume interchangeability with a different arm or software branch.
+The first response test connects these earlier checks: a known physical joint should move in the declared direction, stay inside the configured range and return interpretable feedback. Stop behavior is part of this contract. The source notes that holding a last target, disabling torque and cutting power have different mechanical consequences on a gravity-loaded arm. Their exact behavior belongs to the verified installation and companion procedure, rather than being inferred from the simulation.
+
+The [vendor B601-RS quick start](https://wiki.seeedstudio.com/rebot_b601_rs_getting_started/) and [B601-RS LeRobot tutorial](https://wiki.seeedstudio.com/rebot_arm_b601_rs_lerobot/) supply revision-specific background. The saved physical joint2 case and the retained simulation are separate evidence routes. Each leaves the other route's unmeasured checks open.
 
 ## Instructor and TA demonstration
 
 ### Identify the model and interface
 
-Open the supplied inspection result and name the model, coordinate counts and seven channels. Identify a joint's compiled range, declared software bound and home value. Ask for a prediction of zero versus home before showing Figure 2. Explain the two finger coordinates and single gripper actuator.
+Open the supplied inspection result and name the model, coordinate counts and seven channels. Identify a joint's compiled range, declared software bound and home value. Ask for a prediction of zero versus home before showing Figure 3. Explain the two finger coordinates and single gripper actuator.
+
+### Trace the physical apparatus and its evidence
+
+Use Figure 2 and the motor-ID table to follow one shoulder command from the computer to ID2 and its feedback back to the record. Then follow the separate power path. Explain why a correct device reply does not prove correct mechanical assembly or zero. Read the single-joint JSON and distinguish its three summary fields from a full time series. Compare the gravity-sweep rows with the fitted residual without calling either an independent torque calibration.
 
 ### Predict the limit decision
 
@@ -368,7 +431,8 @@ Use the supplied inspection result, trace and figures. The task is to interpret 
 ### Read the evidence and make a decision
 
 7. Choose one joint2 trace row. Report its target, pre-step state, residual and unit. Explain how a post-step comparison would differ.
-8. Write a short readiness decision: name a next simulated operation supported by the evidence and one physical commissioning check still required. Include the model/configuration identity used.
+8. Use the physical JSON to name the tested joint, error, torque-field meaning and temperature. Explain why this is insufficient evidence for all seven devices.
+9. Write a short readiness decision: name a next simulated operation supported by the evidence and one physical commissioning check still required. Include the model/configuration identity used.
 
 Use this compact record for your team:
 
@@ -388,6 +452,9 @@ Keep the record with the team's experiment files. The evidence should allow anot
 The bounded joint and gripper interface becomes the robot side of the next class’s teleoperation system. A phone pose must still be mapped through named frames, units, limits and timing before its motion can be interpreted as a robot command.
 
 ## References
+
+The [physical-case source record](../resources/class08/data/consolidation-source.json) identifies the pinned development passages and stored artifacts added to this lesson. Source inspection and arithmetic checks are distinct from a fresh experiment.
+
 
 - [Model source notice](../resources/class08/model/rebot_b601_rs_mjcf/NOTICE.md) and [source license](../resources/class08/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W).
 - [Pinned Seeed RS mechanical description](https://github.com/Seeed-Projects/reBot-DevArm/tree/c247ea9cb0da29cd52c31953659cc8c47e6d1a6e/Rebot_Arm_description/RS).
