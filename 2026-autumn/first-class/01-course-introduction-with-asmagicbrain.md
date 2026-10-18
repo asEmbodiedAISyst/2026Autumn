@@ -10,9 +10,12 @@ Introduce the course's physical–digital experimentation pathway, eight-team or
 
 #### Learning objectives
 
-* Distinguish a motor from an integrated actuator, its sensing, drive electronics, transmission, and controller.
-* Distinguish a command, an internal reference, and a measured response.
-* Read model-specific actuator specifications and operating limits.
+By the end of this class, you should be able to:
+
+* Explain how robot bodies, data and learning work together.
+* Compare how ALOHA, LEAP Hand and UMI support robot learning.
+* Explain how Sim2Real testing helps assess claims about physical capability.
+* Outline the course pathway and the evidence required for the team project.
 
 #### Lecture — 40 minutes
 
