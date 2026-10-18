@@ -1,5 +1,0 @@
-<!-- reBot B601-RS with the original parallel gripper; task: table. -->
-<mujoco model="rebot_gripper_table">
-  <include file="rebot_b601_rs.xml"/>
-  <include file="table_env.xml"/>
-</mujoco>

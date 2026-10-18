@@ -1,30 +1,5 @@
-PREPARED DIGITIZATION DEMONSTRATION
-===================================
+Class 03 practical instructions
 
-RS06 reference
-- Open rs06/RS06_vendor_motor.step in Fusion.
-- Compare the imported geometry with rs06/RS06_outline_and_mounting_dimensions.png.
-- Inspect component origin, output axis, mounting interfaces and Fusion physical properties.
-- Treat Fusion mass and inertia as CAD estimates. The manual mass is a manufacturer value, not a measurement of the available unit.
-- The current package contains the motor STEP, not a complete jointed RS06 mechanism or an RS06 MJCF export.
+Use the current Class 03 practical: https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-01-actuator-data-for-1-dof-systems/03-basic-digitization-of-physical-embodiment.md#instructor-and-ta-demonstration and the package entry: https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2003%20%E2%80%94%20Basic%20digitization%20of%20physical%20embodiment#readme. They define the selected task, materials, interpretation and availability limits.
 
-Recorded Fusion and ACDC4Robot sequence
-- fusion_acdc/Fusion_revolute_joint_preview.png: inspect the joint type and axis.
-- fusion_acdc/Fusion_physical_material.png: verify the material used for CAD properties.
-- fusion_acdc/Fusion_rigid_payload_joint.png: distinguish rigid attachments from the revolute joint.
-- fusion_acdc/Fusion_scripts_and_addins.png and ACDC4Robot_selected.png: load the add-in.
-- fusion_acdc/ACDC4Robot_toolbar.png and ACDC4Robot_MJCF_export.png: select MJCF and MuJoCo export.
-- These screenshots record the XC330 workflow. Repeat the checks on the RS06 assembly before describing an RS06 export.
-
-MuJoCo checks
-- Confirm that mesh paths resolve.
-- Confirm the output-axis direction and reference pose.
-- Confirm declared joint limits.
-- Compare gravity-on and gravity-off behavior.
-- Keep visual geometry separate from simplified collision geometry.
-
-H2D setup
-- Import h2d/Link_for_H2D.3mf in millimetres.
-- Select Bambu Lab H2D, the installed 0.4 mm nozzle, the installed plate and the labelled PLA preset.
-- Lay the broad face on the plate, auto-arrange, slice and inspect the preview.
-- Show the prepared printed link and printer setup; the demonstration does not wait for printing to finish.
+Use a package-local isolated virtual environment for executable work. Physical operation and any optional extension require their own stated preparation. Source code, model and numerical records retain their original values; a recipe or recording is not evidence of a new successful run.

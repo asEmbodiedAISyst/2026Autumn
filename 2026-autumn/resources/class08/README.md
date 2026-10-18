@@ -1,7 +1,7 @@
-# Class 08 resources
+# Class 08 classroom resources
 
-The current practical/evidence package is the [teaching authors’ source package](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/class08_build_simple_arm). Start with its availability notes and the linked course practice page.
+[Lecture](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-03-arm-data-for-guided-interaction/08-lets-build-a-simple-arm-and-turn-it-on.md) · [Selected practical](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/class08_build_simple_arm)
 
-This folder supplies course illustrations and retained earlier assets. Earlier code, generated results or model variants here are historical material, not the practical or experimental authority for the current source-led lesson. They must not be substituted for missing checkpoints or source demonstrations.
+This folder contains the classroom figures, recordings, manuals and selected scientific records used by the lesson. Runtime code, models and practical instructions are provided through the selected practical above.
 
-Static course illustrations are PNG. Worksheets/manuals remain PDF; recordings and original runtime dataset images retain their native formats. Figure-production sources remain in the private Assistants repository.
+Illustrations are PNG. Worksheet and manual documents remain PDF; recordings and self-contained interactive explanations retain their native formats. Scientific attribution and the conditions of each record remain with the lesson.

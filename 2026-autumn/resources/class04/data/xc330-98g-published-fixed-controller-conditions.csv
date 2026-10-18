@@ -1,3 +1,0 @@
-controller_id,position_p_gain_raw,position_i_gain_raw,position_d_gain_raw,operating_mode,position_p_divisor,position_d_divisor,position_unit_rad_per_count,velocity_unit_rad_s_per_count,current_unit_A_per_count,published_torque_constant_Nm_per_A_at_5V,fixed_MuJoCo_kp,fixed_MuJoCo_kv,current_limit_raw,fixed_effort_limit_Nm,mapping_status
-H1,600,0,150,5,128.0,16.0,0.0015339807878856412,0.023980823922402087,0.001,0.517,1.57983562710739,0.20211461523105595,300,0.1551,fixed Mode-5 engineering conversion; no gain fitted
-H2,800,0,150,5,128.0,16.0,0.0015339807878856412,0.023980823922402087,0.001,0.517,2.106447502809853,0.20211461523105595,300,0.1551,fixed Mode-5 engineering conversion; no gain fitted

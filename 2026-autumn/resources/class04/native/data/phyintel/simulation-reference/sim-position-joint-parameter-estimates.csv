@@ -1,4 +1,0 @@
-parameter,unit,source_model,source_model_difference_percent,nominal_model,nominal_model_difference_percent,sim_position_m1,sim_position_m1_difference_percent,sim_position_m2,sim_position_m2_difference_percent
-armature,kg·m²,0.001,0.0,0.0007,-30.0,0.0017296326461677352,72.96326461677351,0.001003984237806736,0.3984237806735954
-damping,N·m·s/rad,0.015,0.0,0.009,-40.0,0.026750203171079408,78.33468780719605,0.015053719226488424,0.3581281765894946
-frictionloss,N·m,0.01,0.0,0.006,-40.0,0.010550651614181767,5.506516141817672,0.010000138055421246,0.0013805542124593895

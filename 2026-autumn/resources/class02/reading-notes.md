@@ -1,14 +1,14 @@
 # Class 02 detailed technical reading
 
-These notes retain the motor, transmission, response-analysis and campaign material developed before the current consolidation. They extend the [classroom lesson](../../module-01-actuator-data-for-1-dof-systems/02-actuator-basics-for-controlled-action.md) and support Classes 03-04. The required Class 02 demonstration and practice use the motor-only ID 5 record described in the lesson and [RUN.md](RUN.md).
+These notes retain the motor, transmission, response-analysis and campaign material developed before the current consolidation. They extend the [classroom lesson](../../module-01-actuator-data-for-1-dof-systems/02-actuator-basics-for-controlled-action.md) and support Classes 03-04. The required Class 02 demonstration and practice use the motor-only ID 5 record described in the lesson and [the class activity](activity.md).
 
 ## Read the experiment identity first
 
 The current core record is M0, Mode 5, H2, ID 5, with about 200 Hz telemetry and no external moving load. The earlier weighted/light recording below uses Mode 3, IDs 1 and 2, nominal 60 Hz and different assemblies. The PhyIntel model-comparison campaigns have their own adapters, controllers and episode roles. Keep their clocks, references, limits and claims distinct.
 
-This page preserves the existing worked motor/power relationships, effort/saturation examples, measured step/frequency interpretation, confounding analysis and campaign calculations. Detailed fitting and reserved-episode arguments are extensions; the original historical timed demonstration/practice has been replaced by the aligned core tasks in lesson.md and activity.md.
+This page preserves the existing worked motor/power relationships, effort/saturation examples, measured step/frequency interpretation, confounding analysis and campaign calculations. Detailed fitting and reserved-episode arguments are extensions; the original historical timed demonstration/practice has been replaced by the aligned core tasks in the [lecture](../../module-01-actuator-data-for-1-dof-systems/02-actuator-basics-for-controlled-action.md) and [activity](activity.md).
 
-## 2. A motor and an integrated actuator
+## A motor and an integrated actuator
 
 A motor converts electrical energy into mechanical motion. An integrated servo actuator combines the motor with some or all of a transmission, position sensor, drive electronics, embedded controller and communication interface. The XC330 is an integrated actuator. The host sends commands through its digital interface; the host does not directly apply the winding voltage.
 
@@ -42,7 +42,7 @@ Efficiency $$\eta$$ is a modelling approximation, not a measured constant here. 
 
 **Check:** If the ratio doubles while the motor inertia remains unchanged, the reflected inertia becomes four times as large. This does not imply that the entire mechanism inertia increases fourfold; the moving link has its own inertia.
 
-## 3. Trace the signal path
+## Trace the signal path
 
 ![Command, internal reference, actuator and mechanism](figures/actuator-chain-classroom.png)
 
@@ -72,13 +72,13 @@ $$
 \tau_a=\operatorname{clip}\left(k_p(r-q)-k_v\dot q,-\tau_{\max},\tau_{\max}\right).
 $$
 
-For $$q$$ in rad and unit joint transmission, $$k_p$$ has units N m/rad and $$k_v$$ has units N m s/rad. A larger position error demands greater effort until saturation is reached. Velocity feedback resists motion and can reduce oscillation. This equation is the course's simulated actuator model. It is not a claim that the physical firmware implements exactly this law with these numerical gains.
+For $$q$$ in rad and unit joint transmission, $$k_p$$ has units N m/rad and $$k_v$$ has units N m s/rad. A larger position error demands greater effort until saturation is reached. Velocity feedback resists motion and can reduce oscillation. This equation is an illustrative actuator model. It is not a claim that the physical firmware implements exactly this law with these numerical gains.
 
 ---
 
 **Worked calculation:** With $$k_p=3$$ N m/rad, a 30-degree error is $$\pi/6$$ rad, so the proportional demand is $$\displaystyle 3\pi/6=1.571$$ N m. With the model's assumed 0.93 N m limit, the effort clips. The initial response therefore cannot be inferred from the unsaturated linear gain alone. The 0.93 value is a modelling bound inherited from the source, not a permitted continuous hardware operating torque.
 
-## 4. Choose what the actuator is asked to control
+## Choose what the actuator is asked to control
 
 In position operation, the request is an angle. In velocity operation, it is an angular speed. In a current or torque-oriented interface, it is an electrical current or a torque-related request. A PWM request concerns drive duty, not a guaranteed position or mechanical torque. Available modes and the meaning of each register depend on the actuator model.
 
@@ -96,7 +96,7 @@ The ROBOTIS manual distinguishes goal position, measured position and internal t
 
 No. Other loops, filtering, motor physics and transmission resistance can create it.
 
-## 5. Define the experiment before interpreting it
+## Define the experiment before interpreting it
 
 ID 1 carries the weighted assembly; ID 2 carries the light assembly. Both use the same declared controller settings. The test battery contains steps of 5, 15 and 30 degrees, a 20-degree sine command at seven frequencies from 0.1 to 5 Hz, and a 0.1–5 Hz chirp.
 
@@ -115,7 +115,7 @@ A velocity of 6 rpm is approximately 0.628 rad/s. For example, multiplying rpm b
 
 The logged `load_pct` field does not establish output torque. Preserve its original name and explain the source mapping before quantitative use. This package uses position as the primary measured variable. PWM and temperature are auxiliary context; they cannot identify efficiency or provide an independent torque calibration.
 
-## 6. Read a step response
+## Read a step response
 
 ![Recorded step response and sample intervals](figures/recorded-step-classroom.png)
 
@@ -168,7 +168,7 @@ An RMSE between command and hardware measures tracking. In Class 04, an RMSE bet
 
 Read the horizontal axis before interpreting the threshold crossings. Locate the 10% and 90% levels, count intervening samples and compare that temporal resolution with the apparent rise. A line between samples is interpolation, not a new measurement. Settling requires a declared observation duration as well as a band; entering the shaded band once does not establish settling.
 
-## 7. Read a frequency response
+## Read a frequency response
 
 ![Recorded amplitude gain](figures/frequency-gain-classroom.png)
 
@@ -203,7 +203,7 @@ At 5 Hz, one period is 0.2 s. A pure 10 ms delay creates a phase lag of $$\displ
 
 Our fit uses sine and cosine coefficients plus a constant offset. Removing the first cycle limits startup influence. It does not manufacture independent repeats. The seven frequencies are conditions; the two assemblies are separate devices. We have no basis for confidence intervals representing a population of actuators.
 
-## 8. What can we conclude about the load?
+## What can we conclude about the load?
 
 The weighted and light responses are similar under the tested conditions. This supports a narrow observation: these two assemblies with their declared settings had similar response behaviour. It does not establish that load never matters.
 
@@ -235,7 +235,7 @@ Follow the six-stage reasoning:
 | Decision | Choose the next measurement that distinguishes plausible causes. |
 
 
-## 9. Move from a response recording to a controlled campaign
+## Move from a response recording to a controlled campaign
 
 The August 17 weighted/light recording is useful for learning to read signals. It does not provide repeated motor–load crossover tests. The PhyIntel repository contains a separate XC330 hardware campaign and a separate RS06 campaign that let us ask a stronger question: can a model calibrated on some complete experiments predict other complete experiments?
 
@@ -253,7 +253,7 @@ The H1 and H2 names are local to each campaign. They are not universal gains. A 
 
 ### Read the experiment names
 
-M0 means no external moving load. B0/B1/B2 identify balanced fixtures; G1 identifies an eccentric fixture. These labels are local to the actuator campaign; a matching label does not mean matching dimensions. H1/H2 identify two declared controller settings. P03/P06 identify source trajectory profiles; P03 appears in the command-boundary example and P06 in the final replay examples. Read the full identity as actuator → controller → fixture → profile → repeat → role. [CAMPAIGNS.md](CAMPAIGNS.md) records the exact matrix.
+M0 means no external moving load. B0/B1/B2 identify balanced fixtures; G1 identifies an eccentric fixture. These labels are local to the actuator campaign; a matching label does not mean matching dimensions. H1/H2 identify two declared controller settings. P03/P06 identify source trajectory profiles; P03 appears in the command-boundary example and P06 in the final replay examples. Read the full identity as actuator → controller → fixture → profile → repeat → role. These are historical campaign examples, not the dataset or commands for the current Class 02 activity.
 
 ### External goals and internal references
 
@@ -285,7 +285,7 @@ The source uses a fixed engineering conversion from register units: H1 has $$\di
 
 *Figure 13. Engineering-map calculation at velocity-reference error 0.20 rad/s; points mark position errors 0.05 and 0.10 rad. Not a torque measurement.*
 
-**Predict:** follow the orange demand and blue limited effort. Increasing error beyond the bound no longer increases applied model effort. Open the [offline actuator explorer](interactive/actuator-explorer.html) and test both points; if the app shows the file source, open the supplied HTML in a browser as described in RUN.md.
+**Predict:** follow the orange demand and blue limited effort. Increasing error beyond the bound no longer increases applied model effort. Open the [offline actuator explorer](interactive/actuator-explorer.html) and test both points; if the app shows the file source, open the self-contained HTML as an explanatory visualization.
 
 ---
 
@@ -317,7 +317,7 @@ The XC330 archive contains 260 complete episode directories. Its primary H1/H2 s
 
 Calibration estimates model parameters. Model selection tests choices on other trajectories. Held-out evaluation measures the final frozen model on reserved trajectory/fixture combinations. If the developer changes the adapter or model after examining all records, that last evaluation is retrospective even when the files carry a held-out label. A new prospective test would freeze those choices before collecting or revealing new records.
 
-Run `python code/phyintel_lab.py audit`. Read the exact role counts and one entry in the experiment matrix. Locate the recorded actuator identity, controller boundary and original archive hash in [CAMPAIGNS.md](CAMPAIGNS.md). Explain why 1000 time samples from one episode do not provide the same evidence as 1000 independent experiments.
+For any reported experiment, identify its actuator, controller, fixture, profile, repeat and split role. Explain why 1000 time samples from one episode do not provide the same evidence as 1000 independent experiments. The current Class 02 activity uses the identified motor-only record; Classes 04–05 develop model-fitting and held-out comparisons with their own declared datasets.
 
 ### From Claim to Decision
 
@@ -326,4 +326,4 @@ Our claim is restricted to position prediction in a declared context. The experi
 
 ## Continue the experiment
 
-Use the optional commands in [RUN.md](RUN.md), with the exact source identities in [CAMPAIGNS.md](CAMPAIGNS.md). Preserve the distinction between a constructed illustration, a replay of a fitted model and a new physical validation. The earlier [offline actuator explorer](interactive/actuator-explorer.html) illustrates amplitude/delay, sampling and effort limits; the new [telemetry explorer](interactive/hardware-telemetry.html) inspects the supplied physical record.
+Follow the [class activity](activity.md) and the selected source package linked from the [resource index](README.md). Preserve the distinction between a constructed illustration, a replay of a fitted model and a new physical validation. The earlier [offline actuator explorer](interactive/actuator-explorer.html) illustrates amplitude/delay, sampling and effort limits; the new [telemetry explorer](interactive/hardware-telemetry.html) inspects the supplied physical record.

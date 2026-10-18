@@ -1,6 +1,6 @@
 # Optional worked example — reading XC330 telemetry
 
-This supporting example preserves the detailed recorded-data work developed for Class 02. It can be read after class or used during preparation. The required ten-minute class activity is the unpowered inspection and XC330/XL330 document comparison in [activity.md](activity.md).
+This supporting example preserves the detailed recorded-data work developed for Class 02. It can be read after class or used during preparation. The required class activity is the unpowered inspection and XC330/XL330 document comparison in [activity.md](activity.md).
 
 ## Turn telemetry into physical quantities
 

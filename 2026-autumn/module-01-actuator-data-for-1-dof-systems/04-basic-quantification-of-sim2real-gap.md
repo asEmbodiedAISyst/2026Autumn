@@ -25,7 +25,7 @@ The supplied physical-motion record, signal definitions, selected parameters and
 
 ## Name the experiment before reading its result
 
-The course development route connects this question to Introduction → Claim2Design → Design2Data → Data2Model → Model2Prototype → Sim2Real. Here a prediction claim selects the fixture, informative motions and recorded signals; data support parameter estimation; the frozen model is then tested against reserved physical responses. Analytical calculations explain the balance, while optimization estimates a candidate within the chosen model class. Neither replaces evaluation against the physical record.
+A prediction claim selects the fixture, informative motions and recorded signals; data support parameter estimation; the frozen model is then tested against reserved physical responses. Analytical calculations explain the balance, while optimization estimates a candidate within the chosen model class. Neither replaces evaluation against the physical record.
 
 ![Notation key for the fixture configurations, controller conditions, episode identifiers, and trace names.](../resources/class04/figures/source/experiment_language.png)
 

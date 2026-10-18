@@ -12,7 +12,7 @@ The core practice is iPhone teleoperation of the simulated pusher to push a cube
 
 ## Source and file identity
 
-Runtime code, numerical data and model files are copied unchanged from the teaching authors' course package at source commit `f7c118edaadc9f33498669736fa9d99160ff629a`. The lecture and practice pages explain the current task and available evidence. Source package documentation may describe historical configurations; use the explicit qualifications above.
+Retained runtime code, numerical data and model files preserve their bytes from the teaching authors' course package at source commit `f7c118edaadc9f33498669736fa9d99160ff629a`. The lecture and practice pages explain the current task and available evidence. Use this entry and the linked current practice for instructions; superseded recipes and inactive alternatives are outside the current route.
 
 Paper-production files, fonts and standalone figure-generation sources remain with the teaching authors. Classroom illustrations are published once as PNG in the class resources; camera/dataset images and recordings retain their original runtime formats. Missing checkpoints or external bundles have not been replaced.
 

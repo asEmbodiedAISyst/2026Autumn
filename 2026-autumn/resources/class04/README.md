@@ -1,7 +1,9 @@
-# Class 04 resources
+# Class 04 classroom resources
 
-The current practical/evidence package is the [teaching authors’ source package](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap). Start with its availability notes and the linked course practice page.
+[Lecture](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md) · [Selected practical](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap)
 
-This folder supplies course illustrations and retained earlier assets. Earlier code, generated results or model variants here are historical material, not the practical or experimental authority for the current source-led lesson. They must not be substituted for missing checkpoints or source demonstrations.
+This folder contains the classroom figures, recordings, manuals and selected scientific records used by the lesson. Runtime code, models and practical instructions are provided through the selected practical above.
 
-Static course illustrations are PNG. Worksheets/manuals remain PDF; recordings and original runtime dataset images retain their native formats. Figure-production sources remain in the private Assistants repository.
+The XC330 case is the core; the RS06 page is a labelled comparison using the same selected package.
+
+Illustrations are PNG. Worksheet and manual documents remain PDF; recordings and self-contained interactive explanations retain their native formats. Scientific attribution and the conditions of each record remain with the lesson.

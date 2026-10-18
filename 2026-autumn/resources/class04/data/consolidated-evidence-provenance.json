@@ -2,7 +2,6 @@
   "source_revision": "f7c118edaadc9f33498669736fa9d99160ff629a",
   "evidence_status": "recorded experimental results; arithmetic verified, original identification and hardware not rerun",
   "case_identities": [
-    "retained98g (existing unchanged data)",
     "XC330 declared110g result, 15 October 2026",
     "RS06 hardware-position-v1, 25 August 2026"
   ],

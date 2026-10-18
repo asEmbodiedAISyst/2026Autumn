@@ -1,8 +1,0 @@
-{
-  "source_commit": "f7c118edaadc9f33498669736fa9d99160ff629a",
-  "source_document": "Class03 RS06 fixture companion",
-  "property_basis": "rounded CAD-derived moving-fixture inertia about the joint; not an as-built measurement and excluding actuator armature",
-  "B0_fixture_inertia_kg_m2": 0.01291,
-  "B1_fixture_inertia_kg_m2": 0.05768,
-  "fixture_inertia_ratio": 4.467854376452363
-}

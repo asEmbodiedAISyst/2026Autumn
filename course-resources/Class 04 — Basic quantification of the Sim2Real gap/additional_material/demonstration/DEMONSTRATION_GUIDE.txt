@@ -1,34 +1,5 @@
-XC330 MATCHED HARDWARE AND MUJOCO DEMONSTRATION
-================================================
+Class 04 practical instructions
 
-Episode:
-B1__H2__P06_heldout_composite__R01
+Use the current Class 04 practical: https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md#instructor-and-ta-demonstration and the package entry: https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2004%20%E2%80%94%20Basic%20quantification%20of%20the%20Sim2Real%20gap#readme. They define the selected task, materials, interpretation and availability limits.
 
-Condition:
-B1 fixture, 22 g link and two complete 44 g payload-and-pin assemblies at -80 mm and +80 mm. Controller H2 uses raw P/I/D registers 800/0/150.
-
-asbrain_log/
-command_events.parquet contains the external command and recorded inner position/velocity references with write-request timestamps.
-telemetry_events.parquet contains the measured actuator response with receive timestamps.
-episode.json records the episode identity, conditions and file contract.
-
-asmagic_media/
-The MP4 and before-motion photograph carry the same episode identifier and provide visual context for the motor-side record.
-
-hardware_runner/
-collect_b1.py is the exact B1 collection entrypoint. Its inherited collection modules, bus interface, profile generator, media helper, base configuration and B1 overlay are kept beside it so the bounded live-run logic can be inspected without reconstructing imports.
-
-Corresponding replay:
-paper/figures/heldout_demo_episode.png shows the external command, recorded inner reference, hardware response, synthetic baseline, hardware-fitted replay and residuals.
-
-Checks:
-- do not replace the recorded inner reference with the external command;
-- score only the active-profile samples;
-- initialize once from the first measured active position and velocity;
-- do not inject measured state during replay;
-- interpret the phone record as context, not position ground truth;
-- keep the B1 load, H2 controller and episode timestamps attached to the result.
-
-Result:
-Synthetic baseline RMSE: 0.010119 rad
-Hardware-fitted RMSE:   0.005545 rad
+Use a package-local isolated virtual environment for executable work. Physical operation and any optional extension require their own stated preparation. Source code, model and numerical records retain their original values; a recipe or recording is not evidence of a new successful run.

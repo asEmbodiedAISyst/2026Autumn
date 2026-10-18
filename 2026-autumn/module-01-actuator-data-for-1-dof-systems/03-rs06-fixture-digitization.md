@@ -12,7 +12,7 @@ layout:
 
 This companion follows the RobStride RS06 source fixture from CAD to four frozen MJCF models. It shares the [main lesson's explanations of mass, inertia, frames and validation](03-basic-digitization-of-physical-embodiment.md), while keeping the **RS06 apparatus** separate from XC330. The [RS06 Class 04 companion](04-rs06-hardware-identification.md) uses these fixtures in the measured position-response experiment.
 
-The RS06 load masses below are CAD-derived. They are not the XC330's accepted 110 g external assembly, and RS06 B1 and G1 do not even have equal external mass. Use the actuator identity and source model together whenever interpreting a configuration label.
+The RS06 load masses below are CAD-derived. They are not the XC330's declared 110 g external assembly, and RS06 B1 and G1 do not even have equal external mass. Use the actuator identity and source model together whenever interpreting a configuration label.
 
 By the end of this class, you should be able to:
 

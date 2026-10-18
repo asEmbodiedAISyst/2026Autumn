@@ -1,8 +1,0 @@
-[[32mINFO[0m]: scene cube; listening to the phone on tcp://127.0.0.1:18739; episodes go to /Volumes/1TB/Projects/Class09-Preparation-20261017/verification/circle/recording [2026-10-17 19:34:37,812](teleop_rebot_rs_sim.py:139)
-[[32mINFO[0m]: keys: Space = start/pause teleop, Right = start/stop+save recording, Left = discard recording, Enter = gripper [2026-10-17 19:34:37,812](teleop_rebot_rs_sim.py:140)
-[[32mINFO[0m]: waiting for the phone stream (AR Data on, same network) [2026-10-17 19:34:37,813](teleop_rebot_rs_sim.py:150)
-[[32mINFO[0m]: phone stream received (0 Hz, pose as 7 values) [2026-10-17 19:34:38,313](teleop_rebot_rs_sim.py:162)
-[[32mINFO[0m]: teleop started at TCP (0.250, -0.000, 0.100) m; the gripper now follows the phone [2026-10-17 19:34:38,313](teleop_rebot_rs_sim.py:180)
-[[32mINFO[0m]: recording started (episode_000) [2026-10-17 19:34:38,313](teleop_rebot_rs_sim.py:187)
-[[32mINFO[0m]: window closed while recording: /Volumes/1TB/Projects/Class09-Preparation-20261017/verification/circle/recording/episode_000 saved [2026-10-17 19:34:53,436](teleop_rebot_rs_sim.py:217)
-[[32mINFO[0m]: done: 1 episode(s) in /Volumes/1TB/Projects/Class09-Preparation-20261017/verification/circle/recording [2026-10-17 19:34:53,441](teleop_rebot_rs_sim.py:219)

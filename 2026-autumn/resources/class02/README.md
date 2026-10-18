@@ -1,7 +1,7 @@
-# Class 02 resources
+# Class 02 classroom resources
 
-The current practical/evidence package is the [teaching authors’ source package](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2002%20%E2%80%94%20Actuator%20basics%20for%20controlled%20action). Start with its availability notes and the linked course practice page.
+[Lecture](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-01-actuator-data-for-1-dof-systems/02-actuator-basics-for-controlled-action.md) · [Selected practical](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/course-resources/Class%2002%20%E2%80%94%20Actuator%20basics%20for%20controlled%20action)
 
-This folder supplies course illustrations and retained earlier assets. Earlier code, generated results or model variants here are historical material, not the practical or experimental authority for the current source-led lesson. They must not be substituted for missing checkpoints or source demonstrations.
+This folder contains the classroom figures, recordings, manuals and selected scientific records used by the lesson. Runtime code, models and practical instructions are provided through the selected practical above.
 
-Static course illustrations are PNG. Worksheets/manuals remain PDF; recordings and original runtime dataset images retain their native formats. Figure-production sources remain in the private Assistants repository.
+Illustrations are PNG. Worksheet and manual documents remain PDF; recordings and self-contained interactive explanations retain their native formats. Scientific attribution and the conditions of each record remain with the lesson.

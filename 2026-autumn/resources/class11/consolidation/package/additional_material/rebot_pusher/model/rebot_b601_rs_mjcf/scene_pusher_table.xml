@@ -1,5 +1,0 @@
-<!-- reBot B601-RS with the gripper replaced by the rigid pusher tool (rod + phone); task: table. -->
-<mujoco model="rebot_pusher_table">
-  <include file="rebot_b601_rs_pusher.xml"/>
-  <include file="table_env.xml"/>
-</mujoco>
