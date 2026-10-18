@@ -12,7 +12,9 @@ layout:
 
 Turning a cube in your hand requires more than moving fingers. Some contacts support the object while others produce rotation; as the cube turns, those roles change. A useful controller must make progress toward its target while keeping the object within the grasp.
 
-We study a simulated LEAP Hand using a supplied pretrained policy. The hand provides a concrete robot-learning platform (Shaw, Agarwal, and Pathak 2023); the policy and reorientation task used here come from MuJoCo Playground (Google DeepMind 2026). The held cube is the physical object in the simulation. A separate goal cube displays the desired orientation. M/B/Z/U/A/I artwork makes the faces easy to follow, but the policy receives joint and cube-pose features—not letters or images. The practical runs the controller in native MuJoCo; it does not train a policy or move hardware. A separate recorded physical case uses a custom proprioceptive policy for continuous positive-Z rotation. Comparing the two cases shows why a hand, an actor interface and a task outcome must each be identified.
+We study a simulated LEAP Hand using a supplied pretrained policy. The hand provides a concrete robot-learning platform (Shaw, Agarwal, and Pathak 2023); the policy and reorientation task used here come from MuJoCo Playground (Google DeepMind 2026). The held cube is the physical object in the simulation. A separate goal cube displays the desired orientation. M/B/Z/U/A/I artwork makes the faces easy to follow, but the policy receives joint and cube-pose features—not letters or images. The main practical examines this controller in native MuJoCo, using the prepared playback or its saved records; it does not train a policy or move hardware.
+
+An optional recorded physical case uses a custom proprioceptive policy for continuous positive-Z rotation. After the main simulation activity, this comparison asks why the hand, actor interface and task outcome must each be identified.
 
 By the end of this class, you should be able to:
 
@@ -21,12 +23,12 @@ By the end of this class, you should be able to:
 - Explain the policy's 57-input/16-output interface and its two simulation clocks.
 - Read a native rollout and distinguish first-goal success, successful steps, stalls and drops.
 - Test a display-only cube change while preserving the policy and physical conditions.
-- Map named joint vectors between the custom model and its reported hardware order.
-- Interpret assisted physical images, published motor diagnostics and early training evidence without confusing them with autonomous task success.
+
+The optional extension also develops named joint-vector mapping and interpretation of assisted physical images, published motor diagnostics and early training evidence. Its separate controller does not inherit the simulation baseline's performance claim.
 
 [Lecture](#start-with-the-held-cube-and-the-goal-cube) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The figures, animation, equations and saved results provide a complete reading route on this page. The selected recordings, comparison tables and worked calculations support the demonstration and activity without a local simulator. The custom hardware case is a recorded-evidence exercise: its active checkpoint, bridge and raw deployment logs are not included in the supplied source snapshot. It does not require a powered hand or establish a fresh hardware execution.
+The figures, animation, equations and saved results support the main demonstration and activity without a local simulator. Follow the simulation explanation, then complete the matched reference/lettered comparison. The [optional physical-case extension](#optional-extension-compare-a-proprioceptive-physical-trial) follows that activity; its active checkpoint, bridge and raw deployment logs are absent from the supplied snapshot. It uses recorded evidence and requires no powered hand.
 
 ## Start with the held cube and the goal cube
 
@@ -42,7 +44,7 @@ Identify the held cube and the separate goal in the recording below. The goal is
 
 ### Make the claim precise
 
-Classes 02–04 established the difference between a requested quantity, an actuator response and evidence for a simulated model. Class 05 added population variation and the distinction between independent fixtures and connected mechanics. Here we use those ideas in a coupled hand whose contacts change as it manipulates an object. Here the **policy chooses finger commands** for a manipulation task; actuators and contact dynamics determine how those commands affect the cube. The claim we test is whether this policy reaches the task's orientation criterion while retaining the cube under declared simulation conditions.
+Classes 02–04 established the difference between a requested quantity, an actuator response and evidence for a simulated model. Class 05 added population variation and the distinction between independent fixtures and connected mechanics. We now use those ideas in a coupled hand whose contacts change as it manipulates an object. The **policy chooses finger commands** for a manipulation task; actuators and contact dynamics determine how those commands affect the cube. The claim we test is whether this policy reaches the task's orientation criterion while retaining the cube under declared simulation conditions.
 
 Keep three questions separate: did the fingers move, did the cube reach its target, and did the controller do so reliably across episodes? A compelling animation can answer part of the second question for one episode. It cannot supply the denominator needed for the third.
 
@@ -58,16 +60,7 @@ The physical hand has three fingers and an opposing thumb, with four independent
 
 LEAP approximates the useful knuckle motions with two motorized axes. Their arrangement preserves a second motion direction as the finger flexes, allowing a fingertip to change its contact direction while other digits support the object. Thus the second MCP-related axis does more than open an extended finger sideways. Its visible effect depends on the finger pose. This is a joint-actuated mechanism; its uncertainty includes gear response, joint compliance and fingertip deformation.
 
-The custom right-hand model uses the following chains from palm toward fingertip. These exact names belong to that supplied model; do not assume that another LEAP model or actor uses the same labels or ordering.
-
-| Digit | Custom model chain | Physical reading |
-|---|---|---|
-| Index | `if_mcp`, `if_rot`, `if_pip`, `if_dip` | Main knuckle flexion, second MCP-related axis, middle hinge, distal hinge |
-| Middle | `mf_mcp`, `mf_rot`, `mf_pip`, `mf_dip` | Same four-stage arrangement |
-| Ring | `rf_mcp`, `rf_rot`, `rf_pip`, `rf_dip` | Same four-stage arrangement |
-| Thumb | `th_cmc`, `th_axl`, `th_mcp`, `th_ipl` | Base placement, axial motion, knuckle flexion, distal hinge |
-
-The suffix `axl` denotes the model's thumb axial joint. The spelling `th_ipl` is the exact software identifier for its distal interphalangeal joint. Neither a familiar anatomical name nor a plausible 16-value array establishes compatibility with a checkpoint.
+Use this anatomy to identify supporting and repositioning digits in the simulated recording. The optional physical-case extension later connects the same anatomy to a particular model's joint names and hardware mapping.
 
 ## Measure full orientation and define success
 
@@ -102,7 +95,7 @@ The task scores uncorrupted pose-sensor information even when the actor's observ
 
 ### A joint command is not a cube torque
 
-The LEAP Hand has four fingers and sixteen actuated joints. The reference cube is 70 mm wide with a declared mass of 108 g. A network action changes finger joint targets. Actuators respond, the fingers move, and contacts transmit forces to the cube. Contact geometry, gravity, inertia and friction all matter to the resulting motion.
+The LEAP Hand has four digits and sixteen actuated joints. The reference cube is 70 mm wide with a declared mass of 108 g. A network action changes finger joint targets. Actuators respond, the fingers move, and contacts transmit forces to the cube. Contact geometry, gravity, inertia and friction all matter to the resulting motion.
 
 ![Contact force and moment about a declared origin](../resources/class06/figures/contact-wrench-classroom.png)
 
@@ -166,7 +159,7 @@ For scale, a uniform cube with mass 0.108 kg and side 0.070 m has principal iner
 
 *Figure 4. The policy receives a target-relative state, chooses joint-target increments and observes the next simulated state. MuJoCo supplies actuator and contact dynamics. The loop explicitly includes cube pose; it is not a proprioception-only controller.*
 
-The deployed actor receives **57 numbers**:
+The baseline actor used for native playback receives **57 numbers**:
 
 | Actor block | Count | Meaning |
 |---|---:|---|
@@ -222,11 +215,13 @@ The recording uses **seed 9204 with ideal actor observations**. Follow the held 
 
 *Figure 6. Four native rendered states with a consistent camera. Interior samples were selected at successful control steps. Frames show rendering-phase poses, while the success test uses task sensor-phase information.*
 
+Compare those states with the error trace below. Read a logged success against the goal evaluated at that step, before interpreting the mismatch after a target update.
+
 ![Orientation error and successful-step counter](../resources/class06/figures/continuous-trace-classroom.png)
 
 *Figure 7. The saved sensor-phase error trace has events at steps 356 and 761, corresponding to 17.80 s and 38.05 s. A target update can increase subsequent error. Both events belong to one continuous episode.*
 
-The [selected trace](../resources/class06/saved-runs/selected-demo/trace.jsonl) and [run summary](../resources/class06/saved-runs/selected-demo/summary.json) retain the numerical record behind Figures 5 and 6. Use `orientation_error_rad` for the task error. The runner also saves `render_pose_error_rad` as a separate diagnostic. `goal_quat_wxyz` identifies the goal used for the action and `next_goal_quat_wxyz` the following target. Do not mix a later target with an earlier success measurement.
+The [selected trace](../resources/class06/saved-runs/selected-demo/trace.jsonl) and [run summary](../resources/class06/saved-runs/selected-demo/summary.json) retain the numerical record behind Figures 6 and 7. Use `orientation_error_rad` for the task error. The runner also saves `render_pose_error_rad` as a separate diagnostic. `goal_quat_wxyz` identifies the goal used for the action and `next_goal_quat_wxyz` the following target. Do not mix a later target with an earlier success measurement.
 
 The event counter measures successful control steps, not necessarily distinct target commands. A repeated-target reliability study would need a declared goal-identity and acceptance rule. Two events in one chosen episode are not two independent successful trials.
 
@@ -244,7 +239,7 @@ The reference-to-lettered intervention replaces only the noncontact, zero-densit
 
 Equality in the first comparison does not qualify the other two. Labels applied to a physical cube can also change contact; the simulation's display-only guarantee is not a guarantee about stickers on hardware.
 
-For the student comparison, run reference and lettered variants for **200 control steps**, with seed 9204, ideal observations and the same supplied policy. The [retained comparison](../resources/class06/evidence/practice-comparison.json) reports that, under the tested runtime, all saved step fields match and no engine warnings occur. The [model comparison](../resources/class06/evidence/physics-contract.json) separately checks the physical fields and a short state/observation rollout. Both runs end at the requested 10 simulated seconds, before the selected episode's first event. Zero events are therefore compatible with a successful controlled comparison.
+The student comparison uses reference and lettered records of **200 control steps**, with seed 9204, ideal observations and the same supplied policy. A prepared execution must preserve those conditions. The [retained comparison](../resources/class06/evidence/practice-comparison.json) reports that, under the tested runtime, all saved step fields match and no engine warnings occur. The [model comparison](../resources/class06/evidence/physics-contract.json) separately checks the physical fields and a short state/observation rollout. Both runs end at the requested 10 simulated seconds, before the selected episode's first event. Zero events are therefore compatible with a successful controlled comparison.
 
 ### Evaluate performance with a denominator
 
@@ -280,7 +275,63 @@ In the first-goal evaluator, a timeout means the first target was not reached wi
 
 **Checkpoint:** What can the artwork comparison establish that the noisy-versus-ideal success table cannot? What additional evidence would support a physical replacement cube?
 
-## Compare the separate proprioceptive physical case
+## Instructor and TA demonstration
+
+The main demonstration follows the working Playground simulation: identify the task, read a selected episode, then test the display-only intervention. Use the saved animation and records when prepared native playback is unavailable.
+
+### Establish the task and interface
+
+Use Figure 1 to test whether matching the top face is enough, then watch the prepared animation. Identify the held cube, target cube and supporting contacts. Work through the 1 N force at a 35 mm perpendicular lever arm. Connect the result to Figure 4: policy action, bounded joint target, actuator response, finger contact, cube motion and next observation.
+
+Use the actor table and Figure 5 to count 57 inputs, sixteen outputs and five physics steps per action. Explain why this is a cube-pose-observing policy and why loading ONNX is inference.
+
+### Inspect the prepared native run
+
+Inspect the selected seed 9204 recording and its trace. Identify the policy, reference/noise settings and event rule before interpreting the outcome. Use the recorded successful-step times below to distinguish task events from later goal updates.
+
+| Retained selected-event check | Value |
+|---|---:|
+| First recorded successful step | 356 |
+| First event time (s) | 17.80 |
+| Second recorded successful step | 761 |
+| Second event time (s) | 38.05 |
+| Episodes represented | 1 |
+
+Read the evaluated goal before its next update. An increased rendered mismatch after a goal change does not retrospectively invalidate an earlier event. Conversely, a visually close pose is not a substitute for the task's recorded error and retention checks.
+
+### Demonstrate the controlled intervention
+
+Predict what changing only artwork should do, then compare the reference and lettered 200-step runs. Show the model equality check and paired trace result. Contrast this single-seed comparison with the 100-episode first-goal table and the seed 20001 timeout. Distinguish what the failed-outcome record proves from what would need a failure trajectory. Finish by naming one additional measurement needed for a manufactured cube or a camera-based pose input.
+
+## Student activity
+
+Complete the simulation comparison below and submit one compact record. The later optional physical-case exercise extends this work; it is not a second required deliverable.
+
+### Predict, compare and explain
+
+Compare the retained reference and lettered 200-step traces under seed 9204 with observation noise disabled. Only the displayed artwork changes; the policy and physics stay fixed.
+
+Predict the result before revealing the comparison. Inspect the variant, seed, policy identity, noise setting and step count. The expected result is **200 rows per variant, identical saved step fields and zero engine warnings**. The comparison tests a display intervention; it does not require a goal event in this short horizon.
+
+Use the supplied matched-trace result, the model/intervention description and the event-time table above. Label the result as retained evidence and explain what a new experiment would need to preserve. Interpreting that evidence is distinct from executing a new experiment.
+
+Submit a compact record:
+
+| Field | Required entry |
+|---|---|
+| Task | Full-orientation criterion and grasp-retention requirement |
+| Intervention | Exactly what changed and what stayed fixed |
+| Evidence | Seed, noise, policy, row count and matched-trace result |
+| Interpretation | Why zero events can be expected in this run |
+| Boundary | Why display equivalence does not qualify a physical cube or camera tracker |
+
+Also calculate the requested target for 0.20 rad plus action 0.40, and the contact moment for the 1 N/35 mm example. In one final sentence, distinguish an actuator model from this task policy.
+
+This record completes the main activity. Continue to the [visual-measurement handoff](#from-simulated-pose-to-visual-measurement), or use the optional physical case below to examine a different observation and evidence boundary.
+
+## Optional extension: compare a proprioceptive physical trial
+
+The main demonstration and student task above use the working Playground simulation. This optional extension asks what changes when a separate controller receives no direct cube-pose measurement. It develops the anatomy, interface and evidence questions through a reported physical case. Its joint-mapping and diagnostic exercises are separate from completion of the main simulation activity.
 
 ### Keep task, actor and object identities together
 
@@ -316,7 +367,18 @@ History can reveal delayed or constrained joint motion: the same command followe
 
 ### Carry named joint vectors across the hardware boundary
 
-The supplied custom model lists the canonical order below. The accompanying report declares a hardware order that swaps the first two joints of each non-thumb digit. The active bridge is external, so this is a mapping to inspect and verify, rather than permission to send a pose to a physical hand.
+The custom right-hand model uses the following chains from palm toward fingertip. These exact names belong to that supplied model; do not assume that another LEAP model or actor uses the same labels or ordering.
+
+| Digit | Custom model chain | Physical reading |
+|---|---|---|
+| Index | `if_mcp`, `if_rot`, `if_pip`, `if_dip` | Main knuckle flexion, second MCP-related axis, middle hinge, distal hinge |
+| Middle | `mf_mcp`, `mf_rot`, `mf_pip`, `mf_dip` | Same four-stage arrangement |
+| Ring | `rf_mcp`, `rf_rot`, `rf_pip`, `rf_dip` | Same four-stage arrangement |
+| Thumb | `th_cmc`, `th_axl`, `th_mcp`, `th_ipl` | Base placement, axial motion, knuckle flexion, distal hinge |
+
+The suffix `axl` denotes the model's thumb axial joint. The spelling `th_ipl` is the exact software identifier for its distal interphalangeal joint. Neither a familiar anatomical name nor a plausible 16-value array establishes compatibility with a checkpoint.
+
+The supplied custom model lists the canonical order below. The accompanying report declares a hardware order that swaps the first two joints of each non-thumb digit. The active bridge is external, so this reported mapping still needs verification against that implementation.
 
 | Zero-based positions | Canonical model order | Reported hardware order |
 |---|---|---|
@@ -344,33 +406,37 @@ Class 05's sixteen-actuator campaign shares infrastructure while keeping the fix
 | Parameter record | What it establishes | Boundary |
 |---|---|---|
 | Pinned Playground model | Position gain 3 N m/rad; separate passive damping 0.2 N m s/rad and stated effort limit | The tested simulation baseline described above |
-| Declared independent-fixture H1 replay-controller map | Engineering-mapped proportional coefficient 1.579836 N m/rad and velocity coefficient 0.202115 N m s/rad | Fixed controller coefficients; the fitted parameters are armature, damping and friction. Equivalence to the active hand controller is not established. |
+| Declared independent-fixture H1 replay-controller map | Engineering-mapped proportional coefficient 1.579836 N m/rad and velocity coefficient 0.202115 N m s/rad | Fixed replay-controller coefficients; active hand equivalence unverified |
 | Archived custom right-hand XML | Position `kp=3.0`, actuator `kv=0.01`, separate joint `damping=0.03` | A source model; active training/deployment overrides remain unverified |
 
-These are three separate records. The custom runtime's model fields, firmware settings, passive terms and saturation must be reconciled before the declared replay coefficients can be identified with deployed gains. Better isolated actuator agreement does not by itself validate contact forces, cube retention or task success.
-
-## Read the physical trial and learning diagnostics
+Armature, damping and friction are the fitted parameters; the H1 controller coefficients above are fixed by the declared engineering map. These are three separate records. The custom runtime's model fields, firmware settings, passive terms and saturation must be reconciled before the declared replay coefficients can be identified with deployed gains. Better isolated actuator agreement does not by itself validate contact forces, cube retention or task success.
 
 ### Retain the assistance in the camera evidence
 
 ![Selected assisted physical-trial frames with visible manual interventions](../resources/class06/figures/hardware-assisted-filmstrip.png)
 
-*Figure 10. Eight selected frames from the continuous-Z report's 20-frame iPhone filmstrip. Numbers and approximate timestamps retain the source sequence's video time; the reported source recording lasts 77.9 s. Manual hands remain visible at 15.0, 37.1, 40.8, 51.9 and 74.0 s. This is an assisted trial record, not an autonomous rotation-success demonstration. Camera pixels are cropped from the published filmstrip at their available resolution; the new labels use MiSans. Source: course continuous-rotation report, 14 October 2026.*
+*Figure 10. Eight selected frames from the continuous-Z report's 20-frame iPhone filmstrip, retaining source frame numbers and approximate video timestamps. The source recording lasts 77.9 s. Visible manual interventions make this an assisted trial record, not an autonomous rotation-success demonstration. Source: course continuous-rotation report, 14 October 2026.*
 
-The selected frames show real hand–cube interaction and occasions when an operator touches or replaces the object. They make the physical setup inspectable. They do not distinguish every policy-active interval, measure calibrated cube yaw or establish the cause of motion between frames. Video time, bridge elapsed time and startup time need a common timestamp record before events can be aligned. Removing intervention frames would conceal an essential condition of this experiment.
+Manual hands are visible at 15.0, 37.1, 40.8, 51.9 and 74.0 s. The camera panels retain the available pixels from the published filmstrip; they do not provide additional image resolution. The selected frames show real hand–cube interaction and occasions when an operator touches or replaces the object. They make the physical setup inspectable. They do not distinguish every policy-active interval, measure calibrated cube yaw or establish the cause of motion between frames. Video time, bridge elapsed time and startup time need a common timestamp record before events can be aligned. Removing intervention frames would conceal an essential condition of this experiment.
 
 ### Ask a different question of each diagnostic
 
-The source report includes a four-panel figure described as measured deployment telemetry and a PPO diagnostic figure for job 16352. The active deployment bundle, raw NPZ logs, checkpoint and source training metrics are absent from the supplied snapshot. The table below reads those **published diagnostics**; it does not claim independently regenerated measurements or exact statistics digitized from pixels. Older illustrative telemetry generated from trigonometric functions and random numbers is excluded from this physical evidence.
+The source report includes a four-panel figure described as measured deployment telemetry and a PPO diagnostic figure for job 16352. The active deployment bundle, raw NPZ logs, checkpoint and source training metrics are absent from the supplied snapshot. The table summarizes the reported patterns in those **published diagnostics**; it does not claim independently regenerated measurements or exact statistics digitized from pixels. Older illustrative telemetry generated from trigonometric functions and random numbers is excluded from this physical evidence.
 
-| Published evidence | What to inspect | Supported interpretation and next check |
+| Published diagnostic | Reported pattern or reference | Question it addresses |
 |---|---|---|
-| Maximum absolute motor current | Trace relative to configured 450 mA line and 500 mA abort line | A motor-side electrical-load diagnostic; not calibrated contact force or cube torque. Confirm filtering and guard persistence in raw logs/bridge. |
-| Maximum joint tracking error | Trace relative to 0.65 rad line | Target following at the actuator layer; good tracking can coexist with poor cube rotation. Confirm order, timestamps and startup grace. |
-| Maximum sampled actuator temperature | Nearly constant displayed trace below 65 °C line | The source script carries the latest finite temperature forward. Check sampling age and missing rows before inferring thermal stability. |
-| Bridge computation time | Some displayed samples exceed the 50 ms nominal period | Nominal 20 Hz does not establish achieved update intervals. Raw timestamps are needed for overrun counts and deadline statistics. |
-| PPO reward and rotation progress | Reward fluctuates while rotation progress remains low | Execution and reward do not establish a learned stable rotation gait. A task-specific evaluation is still needed. |
-| PPO contact and episode diagnostics | Low fingertip-contact fraction and short episodes | Consistent with the report's early, nonconverged status; metric definitions and termination reasons are needed for a mechanism diagnosis. |
+| Maximum absolute motor current | Configured 450 mA line; 500 mA abort line | Electrical load at the motor side |
+| Maximum joint tracking error | Reference line at 0.65 rad | Joint-target following |
+| Maximum sampled actuator temperature | Nearly constant trace below 65 °C line | Reported temperature samples |
+| Bridge computation time | Some samples exceed the nominal 50 ms period | Control-loop timing |
+| PPO reward and rotation progress | Fluctuating reward; low rotation progress | Learning the intended rotation task |
+| PPO contact and episode diagnostics | Low fingertip-contact fraction; short episodes | Contact and termination during training |
+
+Motor current is an electrical-load diagnostic, not calibrated contact force or cube torque; filtering and guard persistence need the raw logs and bridge. Joint tracking describes target following at the actuator layer. Good tracking can coexist with poor cube rotation, so its interpretation also needs the correct joint order, timestamps and startup grace.
+
+The source script carries the latest finite temperature sample forward. A nearly constant displayed trace therefore needs a sampling-age and missing-row check before it can support an inference about thermal stability. Similarly, nominal 20 Hz does not establish achieved update intervals. Raw timestamps are needed for computation-overrun counts and deadline statistics.
+
+The training diagnostics answer a task-learning question. Execution and reward do not establish a stable rotation gait; that requires task-specific evaluation. Low contact fraction and short episodes are consistent with the report's early, nonconverged status, but their metric definitions and termination reasons are needed before diagnosing a mechanism.
 
 The four telemetry panels display current, tracking error, sampled temperature and computation time. They do not display velocity or command increments. The report declares additional guards at 8 rad/s velocity, 65 °C temperature, 0.65 rad tracking error after startup grace, and a 0.05 rad command-increment limit. These settings describe the proposed execution boundary; the missing bridge/logs prevent an independent assertion that every guard was respected. A current limit is not a general contact-safety criterion.
 
@@ -380,61 +446,13 @@ An interpretable physical trial starts with verified named measurements, reads t
 
 **Checkpoint:** Can a bounded tracking-error trace and a visibly turning cube establish autonomous continuous rotation when the camera sequence includes manual intervention? Name the additional object-state and event records needed.
 
-## Instructor and TA demonstration
-
-### Establish the task and interface
-
-Use Figure 1 to test whether matching the top face is enough, then watch the prepared animation. Identify the held cube, target cube and supporting contacts. Work through the 1 N force at a 35 mm perpendicular lever arm. Connect the result to Figure 4: policy action, bounded joint target, actuator response, finger contact, cube motion and next observation.
-
-Use the actor table and Figure 5 to count 57 inputs, sixteen outputs and five physics steps per action. Explain why this is a cube-pose-observing policy and why loading ONNX is inference.
-
-### Inspect the prepared native run
-
-Inspect the selected seed 9204 recording and its trace. Identify the policy, reference/noise settings and event rule before interpreting the outcome. Use the recorded successful-step times below to distinguish task events from later goal updates.
-
-| Retained selected-event check | Value |
-|---|---:|
-| First recorded successful step | 356 |
-| First event time (s) | 17.80 |
-| Second recorded successful step | 761 |
-| Second event time (s) | 38.05 |
-| Episodes represented | 1 |
-
-Read the evaluated goal before its next update. An increased rendered mismatch after a goal change does not retrospectively invalidate an earlier event. Conversely, a visually close pose is not a substitute for the task's recorded error and retention checks.
-
-### Demonstrate the controlled intervention
-
-Predict what changing only artwork should do, then compare the reference and lettered 200-step runs. Show the model equality check and paired trace result. Contrast this single-seed comparison with the 100-episode first-goal table and the seed 20001 timeout. Distinguish what the failed-outcome record proves from what would need a failure trajectory. Finish by naming one additional measurement needed for a manufactured cube or a camera-based pose input.
-
-### Read the custom case beside the working baseline
+### Optional instructor and TA demonstration
 
 Use Figure 2 to identify a flexion hinge and the second MCP-related axis. Trace the custom index vector through the reported hardware permutation, then bring a measurement back into canonical order. State which active bridge records would be needed to move from this paper exercise to a verified hardware contract.
 
 Compare the two actor/object contracts before showing Figure 10. Identify manual interventions and distinguish video time from policy-active time. Use the diagnostic table to separate motor target following, missed computation deadlines, training nonconvergence and unmeasured object motion. Keep the 88/100 simulation denominator attached to the Playground actor; the assisted hardware case supplies no comparable autonomous-success denominator.
 
-## Student activity
-
-### Predict, compare and explain
-
-Compare the retained reference and lettered 200-step traces under seed 9204 with observation noise disabled. Only the displayed artwork changes; the policy and physics stay fixed.
-
-Predict the result before revealing the comparison. Inspect the variant, seed, policy identity, noise setting and step count. The expected result is **200 rows per variant, identical saved step fields and zero engine warnings**. The comparison tests a display intervention; it does not require a goal event in this short horizon.
-
-Use the supplied matched-trace result, the model/intervention description and the event-time table above. Label the result as retained evidence and explain what a new experiment would need to preserve. Interpreting that evidence is distinct from executing a new experiment.
-
-Submit a compact record:
-
-| Field | Required entry |
-|---|---|
-| Task | Full-orientation criterion and grasp-retention requirement |
-| Intervention | Exactly what changed and what stayed fixed |
-| Evidence | Seed, noise, policy, row count and matched-trace result |
-| Interpretation | Why zero events can be expected in this run |
-| Boundary | Why display equivalence does not qualify a physical cube or camera tracker |
-
-Also calculate the requested target for 0.20 rad plus action 0.40, and the contact moment for the 1 N/35 mm example. In one final sentence, distinguish an actuator model from this task policy.
-
-### Map a joint vector and bound a physical claim
+### Optional student activity: map joints and assess evidence
 
 Use the custom model's named order. For index targets `[0.30, −0.10, 0.50, 0.20]` rad, write the outgoing hardware vector and apply the inverse permutation to a measurement in that order. Explain why swapping only the commands would leave the actor input wrong. State one further convention that a permutation does not establish.
 
@@ -452,8 +470,7 @@ Finish with a defensible statement about the custom trial and a proposed measure
 
 ## From simulated pose to visual measurement
 
-The Playground reference policy already uses cube-pose information. Class 07 examines what is required to replace the relevant observation with a visual estimate while preserving its frame, timestamp and meaning; changing the cube artwork alone does not supply that measurement pipeline. In the custom proprioceptive case, calibrated visual pose could first supply an **evaluation measurement** of rotation and intervention intervals. Feeding it to the actor would change that actor's input contract. The next class must therefore identify which policy it extends before saying that simulator pose is being replaced.
-
+The Playground reference policy already uses cube-pose information. Class 07 examines what is required to replace the relevant observation with a visual estimate while preserving its frame, timestamp and meaning; changing the cube artwork alone does not supply that measurement pipeline. In the custom proprioceptive case, calibrated visual pose could first supply an **evaluation measurement** of rotation and intervention intervals. Feeding it to the actor would change that actor's input contract. The Class 07 teaching route extends the pose-observing baseline. The custom case supplies an optional contrast between measuring an outcome and changing a controller's observations.
 
 ## References
 

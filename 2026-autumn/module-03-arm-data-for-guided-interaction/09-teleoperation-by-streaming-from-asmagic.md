@@ -288,6 +288,8 @@ This comparison gives three different evidence levels: a protocol-compatible loc
 
 ## Instructor and TA demonstration
 
+Use the retained circle and dropout records for the mapping, action/state and timing checks. Compare the reported real-phone video when available; a prepared app session is an optional extension. This keeps the row-level calculations complete when a phone or live stream is unavailable.
+
 ### Inspect the mapping and retained recording
 
 Use the declared identity-orientation example to check the target [0.27, 0.01, 0.10] m. Predict how the target changes to [0.24, 0.02, 0.10] m when the initial TCP frame rotates +90° about base z. Identify the initial-frame factor responsible. Then inspect the retained circular-motion episode: 170 frames, seven state/action channels, increasing timestamps and an effective rate near 28.84 Hz. These are properties of this recorded simulation, rather than guaranteed streaming specifications.
@@ -329,7 +331,20 @@ Pause and re-engagement provide a final comparison: re-engagement establishes ne
 
 ## Student activity
 
-Work from the retained circle/dropout episodes or a fresh simulation run. No phone is required.
+Work from the retained circle/dropout episodes and the row excerpts on this page. No phone or new simulation run is required for the core response.
+
+### Core classroom response
+
+Submit three short entries:
+
+1. Use circle row 1: apply the elbow direction factor and calculate state minus motor target in degrees. Identify the row used.
+2. State one timing limitation of the saved record and the claim it prevents. Choose either receiver-side age or the difference between nominal and observed timing.
+3. Declare one repeatable task in three brief statements: what counts as the task, how its start is reset, and which measurable criterion determines success. Identify whether it is a mapping diagnostic or a manipulation task.
+
+### Further practice
+
+Expand that response with the complete episode audit and task contract below. A fresh simulation or prepared phone session can supply a new episode for this further practice.
+
 
 1. **Check the interface.** Identify the seven channel names in order and both image keys. Use row 0 above and its front/side images in Figure 7. Record episode identity, frame index and timestamp; use the declared image dimensions from the observation record. Explain why the two images do not make this a phone-camera dataset.
 2. **Convert before comparing.** Use row 1 above: copy the elbow action and state, apply the direction vector and calculate state-minus-motor-target in degrees. Explain why a raw sign difference is insufficient evidence of an inverted motor.
@@ -350,13 +365,13 @@ Work from the retained circle/dropout episodes or a fresh simulation run. No pho
 
 For an interface diagnostic, “a circle command was received and recorded” can be the outcome; it is not cube-pushing success. For a manipulation task, choose an object/goal arrangement and geometric criterion before collecting attempts. Preserve failures with their labels when they are valid attempts rather than silently changing the target after observing the result.
 
-Submit one short audit record containing your episode/row references, converted residual, timing results, interpretation of the interruption and completed task contract. Include one limitation of the evidence.
+For the expanded exercise, save the episode/row references, converted residual, timing results, interruption interpretation and full task contract. Include the evidence limits you identified when comparing the real-phone and physical routes.
 
 ## Completion checks
 
 You should be able to trace the received phone pose, relative TCP request, bounded/accepted joint target and observed response; explain each frame and unit conversion; find a row’s two simulation images; and distinguish a timestamp gap, stale-input hold and controller rejection. A reusable record also needs the task/reset definition and explicit acquisition provenance.
 
-The result is a reproducible teleoperation episode that can be inspected before dataset conversion. It establishes a simulation interface and recording contract. Physical calibration, contact suitability and a learner-specific observation/action adapter require their own experiments.
+The retained local episodes establish an inspectable simulation interface and recording contract. The reported real-phone and physical examples require additional records before their tracking and timing can be reproduced. Physical calibration, contact suitability and a learner-specific adapter remain separate checks. Carry the command/response distinction into Class 10, where the new tool, learner observations and action semantics determine the dataset contract.
 
 
 ## References

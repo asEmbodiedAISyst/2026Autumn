@@ -460,7 +460,7 @@ When information conflicts, keep the conflicting statements and their document l
 
 ## Instructor and TA demonstration
 
-The teaching team demonstrates the path from an application through the asBrain/interface arrangement to the actuator and back through telemetry. Identify the actual interface in use: the saved data do not establish that a newly configured asBrain station has been tested.
+Follow the path from an application through the asBrain/interface arrangement to the actuator and back through telemetry. The teaching team uses either a prepared station or the identified motor-only recording below. Identify the actual interface in use: the saved data do not establish that a newly configured asBrain station has been tested.
 
 ![Communication and power components for the XC330 station](../resources/class02/figures/03-interface-components.png)
 
@@ -475,7 +475,7 @@ During the demonstration, follow these questions in order:
 5. How do goal and response differ during motion or reversal? What evidence would distinguish a physical load effect from a unit or timing error?
 6. How does the teaching team close the operation and return the station to its prepared state?
 
-Students observe powered operation on the established teaching station. The unpowered inspection activity does not require students to connect or configure a drive. Mode comparisons use qualified operations or clearly identified records; they should not suggest that different devices and loads form a controlled causal comparison.
+When the prepared teaching station is available, students observe the teaching team's powered operation. The unpowered inspection activity does not require students to connect or configure a drive. Mode comparisons use qualified operations or clearly identified records; they should not suggest that different devices and loads form a controlled causal comparison.
 
 If a live station is unavailable, use Figure 1 and the supplied record: XC330-M288-T, ID 5, firmware 53, Mode 5, motor-only M0 assembly. Its goal, trajectory, position and electrical/status signals support the same interpretation questions. Reading RS06/RS00 protocol examples from manuals is a documentation demonstration, not a recorded or live RS motion test.
 
@@ -484,6 +484,8 @@ Read the retained motor-only record as a hardware example rather than as a simul
 ## Student activity
 
 ### Activities during the explanation and demonstration
+
+Use these questions as discussion prompts while reading the examples and watching the demonstration. They build toward the unpowered inspection and short team comparison below; they are not nine separate submissions.
 
 | Activity | What to do | What the response should establish |
 |---|---|---|

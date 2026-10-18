@@ -4,7 +4,7 @@
   "scope": "Comprehensive notes; retained 98 g XC330 case, declared-110 g XC330 fit and RS06 recorded evidence; existing optional scientific replay code retained",
   "verification_scope": "Saved metrics arithmetic, source hashes, selected physical trace and figure generation checked; original experiments and fresh identification not rerun",
   "files_sha256": {
-    "2026-autumn/module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md": "bfba71058548667be6559d0fae16b690640d2e529ff4fa683cedfca6084f599c",
+    "2026-autumn/module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md": "f18128c82b822401ca10a1527955beb484b2dbc6322546cc38d0b3be2d4dd796",
     "2026-autumn/resources/class04/README.md": "2039c29a2c7f0e87cb1f82f9e260e2ea279531f6788cc075a491e5d3667ae637",
     "2026-autumn/resources/class04/code/analyze_episode.py": "cd0295226084b229f7a0e11a43db03de28f5e56ed4364cf4cde4af4367e8dc6d",
     "2026-autumn/resources/class04/code/requirements-analysis.txt": "18ec9ed4f4561b771a676b88fe0cafe04888c7f84e053353a8baffeb411da712",

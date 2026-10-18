@@ -301,7 +301,7 @@ The saved traces provide the evidence for this comparison. End with one supporte
 
 First name the Class 06 pose-observing baseline actor continued here and explain why replacing its object-state source differs from adding a pose input to the proprioceptive actor.
 
-Use the page's worked examples, synthetic experiment description and result tables.
+Use the page's worked examples, synthetic experiment description and result tables. For the core team response, complete **one geometry calculation** from items 1–2, the **measurement-age calculation** in item 4, and **one observation** from the timing comparison in item 5. State the actor and observation channels being discussed. Items 1–5 remain a complete practice set for further study; the full set is not a separate requirement for the short classroom response.
 
 1. Transform the camera-frame point (0.20, 0.03, 0.40) m into the hand frame using the declared 90° rotation and camera origin. Show the rotation before translation.
 2. Calculate the apparent width of the 70 mm segment at 0.50 m depth with 700 px focal length. Predict the width at twice that depth.
@@ -311,11 +311,11 @@ Use the page's worked examples, synthetic experiment description and result tabl
 
 Make each prediction before consulting the corresponding worked example or result table. Show the calculation and explain what its assumptions allow you to conclude.
 
-Submit a compact record:
+Submit the geometry and timing calculations with one bounded conclusion. Use the following fields to organize the response; complete Measurement and Intervention in more detail when extending the exercise:
 
 | Field | Required content |
 |---|---|
-| Geometry | Named frames, units and one checked transform |
+| Geometry | Named frames, units and the selected transform or projection calculation |
 | Measurement | Generated correspondences, calibration and visibility rule |
 | Timing | Capture/use clock assumption and computed age effect |
 | Intervention | Selected feature channels, delay/loss setting and outputs |

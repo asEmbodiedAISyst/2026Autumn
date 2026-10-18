@@ -24,7 +24,7 @@ By the end of this class, you should be able to:
 
 [Lecture](#review-the-single-actuator-validation-task) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The figures, worked examples and result tables provide a complete reading and activity route on this page. The activity uses the supplied figures, metric tables and worked calculations. CAD software, motors, cameras and neural-network training are not required to complete it.
+The figures, worked examples and result tables provide a complete reading and activity route on this page. The main demonstration and activity compare two motors in the sixteen-motor campaign. The earlier single-motor Transformer is a separate worked comparison and optional extension. CAD software, motors, cameras and neural-network training are not required to complete the main activity.
 
 ## Review the single-actuator validation task
 
@@ -210,7 +210,7 @@ In Hwangbo and colleagues' [*Learning Agile and Dynamic Motor Skills for Legged 
 
 The original study used present and past position-error/velocity samples; its independent-actuator assumption was itself a modeling choice. Shared actuation dynamics can require a joint model instead. The useful lesson is the placement of a learned actuator component inside otherwise explicit mechanics, not that a network removes the need to specify the physical boundary (Hwangbo et al. 2019).
 
-For a generic history-conditioned actuator component, let $$h_t$$ contain available recent references and states. One might propose $$\hat\tau_t=f_\theta(h_t)$$. In simulation this component would feed effort into the rigid-body balance; the policy would still choose task actions. This notation describes a proposed model class here, not a trained Class 05 network. A low error on actuator data and a successful manipulation policy require different evaluations.
+For a generic history-conditioned actuator component, let $$h_t$$ contain available recent references and states. One might propose $$\hat\tau_t=f_\theta(h_t)$$. In simulation this component would feed effort into the rigid-body balance; the policy would still choose task actions. The equation specifies a possible interface; it does not by itself establish that a network has been trained or validated. The worked example below identifies one reported implementation and its actual input requirements. A low error on actuator data and a successful manipulation policy require different evaluations.
 
 For a proposed XC330 neural model, specify the learning target first: torque, a residual effort, or next state? A torque target requires suitable torque evidence; electrical current or a simulated effort field is not automatically calibrated torque ground truth. Specify which signals will exist at inference, their units and timing, and the range covered by training data.
 
@@ -222,7 +222,7 @@ The present teaching activity evaluates the supplied parametric baseline and fit
 
 ### Inspect a local telemetry-conditioned Transformer
 
-The retained local single-motor example makes the learned-actuator idea concrete. It uses a temporal Transformer with two layers, hidden dimension 64 and four attention heads. At each replay step it combines host-commanded position, simulated position and velocity with recorded current, PWM, voltage, temperature and position error. A recent history accompanies those eight features. The network produces a bounded torque surrogate used to advance a simulated joint.
+The retained local single-motor example makes the learned-actuator idea concrete. Read it as a worked check of input availability before returning to the sixteen-motor campaign; its dataset and scores are separate. It uses a temporal Transformer with two layers, hidden dimension 64 and four attention heads. At each replay step it combines host-commanded position, simulated position and velocity with recorded current, PWM, voltage, temperature and position error. A recent history accompanies those eight features. The network produces a bounded torque surrogate used to advance a simulated joint.
 
 Let $$h_k$$ denote the recent feature history, $$\hat q_k$$ and $$\hat{\dot q}_k$$ the simulated state, $$q_{c,k}$$ the recorded host-command field, and $$z_k^{\mathrm{recorded}}$$ the retained electrical/status telemetry supplied at that replay step. The important dependency is
 
@@ -394,11 +394,13 @@ Read the event and record counts before the improvement percentage. Compare the 
 
 The four selected-trace RMSEs can also be checked directly from the saved trajectories. Identify motor 0’s episode result before comparing it with the motor/controller mean. Use Figures 6–8 to connect cell means, parameters and trajectories. Ask for one supported observation, then one possible explanation that would require a new measurement. Keep prediction error separate from reference tracking and fitted armature separate from measured rotor inertia.
 
-Place the local learned-model comparison beside the population replay. Identify the different dataset, effort range, conditioning signals and error aggregation. Use the comparison record to explain what the lower error supports, then identify the unavailable future telemetry in a proposed autonomous simulation. This is an interpretation of retained results, not a newly trained model demonstration.
-
 ### Inspect the measurement evidence
 
 Use the original marker images in Figure 9 and the measurement chain in Figure 10. Identify what the image establishes and list the missing steps for a synchronized optical angle. Apply the 40 ms timing example. End by choosing one next experiment: an alone-versus-simultaneous test, an independently instrumented motor comparison, or a connected-joint test. State which uncertainty that experiment would address.
+
+### Optional comparison with the learned replay
+
+Return to the local learned-model example after completing the population comparison. Identify its different dataset, effort range, conditioning signals and error aggregation. Use the comparison record to explain what the lower error supports, then identify the unavailable future telemetry in a proposed autonomous simulation. This is an interpretation of retained results, not a newly trained model demonstration.
 
 ## Student activity
 

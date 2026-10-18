@@ -89,6 +89,8 @@ The assembly proceeds through base, upper arm, forearm, wrist and gripper subass
 
 ### Follow power and information separately
 
+Trace the command and power paths in Figure 2 separately. Then identify where they share a cable on the arm.
+
 ![Physical power path and shared CAN bus of the source arm](../resources/class08/figures/physical-topology-classroom.png)
 
 *Figure 2. Apparatus schematic reconstructed from the pinned assembly and power-on records. The 48 V power path and CAN signal path meet at the splitter. Motor positions follow the source ID allocation. This is a topology drawing, not a photograph or a wiring qualification.*
@@ -368,7 +370,7 @@ Separate assembly, communication and motion readiness. A closed check should nam
 | --- | --- | --- |
 | Assembly | Is the correct structure mounted, with correct parts, fasteners and cable routing? | Inspect the model and source description. Actual hardware needs physical inspection. |
 | Communication and conventions | Do identity, channel order, units, signs, zero and feedback agree? | Inspect compiled interfaces and declared mappings. A real bus and encoder calibration need their own records. |
-| Motion | Can the configured system execute the chosen bounded operation and report its response? | Run or inspect the declared simulation, limit decisions and target/response records. |
+| Motion | Can the configured system execute the chosen bounded operation and report its response? | Inspect the simulation trace and limit decisions, then the separate physical joint2 summary. The latter does not qualify other joints. |
 
 Keep an unresolved check visible. A model load closes a different question from a correct joint movement; a small simulated tracking error closes a different question from physical readiness. The decision is always readiness for a **specified next operation**.
 
@@ -386,6 +388,8 @@ The [vendor B601-RS quick start](https://wiki.seeedstudio.com/rebot_b601_rs_gett
 
 ## Instructor and TA demonstration
 
+Use the prepared simulation records, figures and physical joint2 JSON to connect a configured command with its response. A rehearsed simulation can supplement the saved record. The physical case is a record to interpret; powered operation is outside this demonstration.
+
 ### Identify the model and interface
 
 Open the supplied inspection result and name the model, coordinate counts and seven channels. Identify a joint's compiled range, declared software bound and home value. Ask for a prediction of zero versus home before showing Figure 3. Explain the two finger coordinates and single gripper actuator.
@@ -396,7 +400,7 @@ Use Figure 2 and the motor-ID table to follow one shoulder command from the comp
 
 ### Predict the limit decision
 
-Convert joint2 and joint3 limits into a common unit. Calculate joint4's positive and negative excursions. State which request should be skipped before running the joint-by-joint example. Compare the reported skip with the prediction. Keep the original bounds rather than widening them to complete a visual demonstration.
+Convert joint2 and joint3 limits into a common unit. Calculate joint4's positive and negative excursions. State which request should be skipped before inspecting the joint-by-joint result or a rehearsed simulation. Compare the reported skip with the prediction. Keep the original bounds rather than widening them to complete a visual demonstration.
 
 ### Run bounded joint and gripper motion
 
@@ -414,27 +418,40 @@ Finish with one supported next simulated operation and one physical check still 
 
 ## Student activity
 
-Use the supplied inspection result, trace and figures. The task is to interpret the declared mechanism, limits and response; software installation is not part of the evidence of understanding.
+Use the supplied inspection result, trace and figures. The core response connects a bounded request, a recorded response and a readiness decision.
 
-### Inspect the mechanism
+### Core classroom response
+
+Submit three short entries:
+
+1. Calculate the two ten-degree joint4 endpoints around home. Identify which endpoint violates the declared bound.
+2. Use the worked joint2 target/state pair on this page, or one identified saved trace row. Calculate state minus target, give the unit and state whether the response is sampled before or after the step. Label the worked pair as illustrative if you use it.
+3. Name one next simulated operation supported by the evidence and one physical commissioning check still open. Identify the model or record supporting your decision.
+
+### Further practice
+
+Use the complete inspection below to expand the response when preparing an experiment. It covers the mechanism, interface, limits and physical evidence in full.
+
+
+#### Inspect the mechanism
 
 1. Record `nq`, `nv` and `nu`. Explain the two finger coordinates, their coupling and the single gripper actuator.
 2. List the seven channel names in order. State the units and meaning of the six arm targets and the gripper target.
 3. Describe zero and working home using the joint configuration, TCP frame and orientation. State what a physical calibration record would add.
 
-### Check a proposed movement
+#### Check a proposed movement
 
 4. Convert the compiled joint2 and joint3 ranges to degrees and compare them with the supplied software bounds. Give each intersection and identify the tighter bound.
 5. Calculate both ten-degree joint4 endpoints around home. Identify the rejected endpoint and the bound it violates.
 6. Explain why an action-coordinate sign conversion must not be applied again to a bound already expressed in motor coordinates. If a viewer is available, describe the positive joint3 motion; keep the model-axis observation separate from the action mapping.
 
-### Read the evidence and make a decision
+#### Read the evidence and make a decision
 
 7. Choose one joint2 trace row. Report its target, pre-step state, residual and unit. Explain how a post-step comparison would differ.
 8. Use the physical JSON to name the tested joint, error, torque-field meaning and temperature. Explain why this is insufficient evidence for all seven devices.
 9. Write a short readiness decision: name a next simulated operation supported by the evidence and one physical commissioning check still required. Include the model/configuration identity used.
 
-Use this compact record for your team:
+For the expanded exercise, use this record for your team:
 
 | Record | Your answer |
 | --- | --- |
@@ -443,6 +460,7 @@ Use this compact record for your team:
 | Reference configuration | Joint vector, frame, tool and zero/calibration distinction |
 | Limits | Joint2/joint3 intersections and joint4 endpoint decision |
 | Tracking observation | One target/state/residual calculation |
+| Physical case | Tested joint, stored error, firmware torque field and temperature; untested scope |
 | Readiness decision | Supported next operation and one open physical check |
 
 Keep the record with the team's experiment files. The evidence should allow another reader to reconstruct the meaning of the command and the reason for the readiness decision.

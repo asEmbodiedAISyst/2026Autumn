@@ -28,7 +28,7 @@ By the end of this class, you should be able to:
 
 [Lecture](#choose-the-record-from-the-learning-question) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The supplied figures, worked examples and pilot audit results support the demonstration and activity on this page. Inspecting the recorded ACT result is distinct from rerunning its checkpoint; neither training nor hardware operation is required for the activity.
+The supplied figures, worked examples, pilot audit results and physical collection summaries support the demonstration and activity on this page. Inspecting the recorded ACT result is distinct from rerunning its checkpoint; neither training nor hardware operation is required for the activity.
 
 ## Choose the record from the learning question
 
@@ -145,7 +145,7 @@ The original handheld recorder implements this through `tcp_pose`, `P_CAM_TCP` a
 
 Changing the tool-camera mounting offset changes the recorded tip pose even when the image still looks plausible. As an illustrative calculation, let the offset be [0,0,−0.16] m. A +90° camera rotation about world y turns that offset into [−0.16,0,0] m. Adding the offset directly without rotation would put the tip at the wrong point. The physical mounting transform, scale and time alignment belong in the contract; a relative representation does not remove mounting errors.
 
-Each episode establishes an origin at its initial tool-tip position and a **yaw-only heading**, while retaining world up. Let `p_WT0` be the initial tip position and `R_WF` the rotation about world z given by the initial tool yaw. Then
+For the pilot's start-relative convention, each episode establishes an origin at its initial tool-tip position and a **yaw-only heading**, while retaining world up. Let `p_WT0` be the initial tip position and `R_WF` the rotation about world z given by the initial tool yaw. Then
 
 $$
 \mathbf p_{FT}=R_{WF}^T(\mathbf p_{WT}-\mathbf p_{WT0}),\qquad
@@ -164,7 +164,7 @@ A start-relative record sets height zero at the first tool pose. A table-relativ
 
 The physical handheld recorder's table-reference design uses a recent still table touch before each episode. It searches the preceding 30 s for the lowest still tip height and requires it to be at least 5 cm below the start. These are the recorded algorithm's window and separation rules, not evidence that every touch was correct. A false touch, tracking jump or moving tip can corrupt the height anchor. Repeating the touch makes each episode's local reference inspectable; it does not independently measure tracking drift or remove camera-to-tip error.
 
-**Worked height mismatch:** the 150 handheld records below have median start height 0.0940736 m above the table, while the declared robot start is 0.120 m. A demonstrated contact pose 0.0740736 m below that median start would be 0.020 m above the table. Decoding the same start-relative displacement from 0.120 m gives 0.0459264 m: approximately 25.9 mm higher. This calculation isolates the reference-height effect; individual episodes and actual contact require their own poses. Table-relative data encode the intended 0.020 m contact height directly, provided the table and tool calibration agree.
+**Worked height mismatch:** the 150 handheld records below have median start height 0.0940736 m above the table, while the declared robot start is 0.120 m. For an illustrative contact pose 0.0740736 m below that median start, the tip would be 0.020 m above the table. Decoding the same start-relative displacement from 0.120 m gives 0.0459264 m: approximately 25.9 mm higher. This calculation isolates the reference-height effect; individual episodes and actual contact require their own poses. Table-relative data encode the intended 0.020 m contact height directly, provided the table and tool calibration agree.
 
 Do not relabel a start-relative dataset as table-relative. Conversion needs each episode's table offset and provenance, followed by renewed geometric and executor checks. Normalization and dataset cards must identify the converted revision.
 
@@ -296,7 +296,7 @@ The [physical episode-statistics CSV](../resources/class10/data/physical-collect
 | --- | ---: | ---: | --- |
 | Episode count | 150 | 11 | Keep route and episode identity through a merge |
 | Median duration | 6.8167 s | 13.3 s | Different duration distributions can alter training-frame weighting |
-| Median start height | 0.0940736 m | Not used for the handheld comparison | Compare the training height reference with the executor's 0.120 m start |
+| Median handheld start height | 0.0940736 m | — | Compare the training height reference with the executor's 0.120 m start |
 | Episodes with stored 95th-percentile speed above 0.25 m/s | 8 | 3 | Eleven episodes need an executor/collection decision; the threshold is not a new accepted speed |
 
 Only 69 of the 150 handheld starts lie within ±0.025 m of 0.120 m. The median height alone therefore hides a substantial distribution. The p95 warning means a per-episode speed statistic exceeds the stated bound; it does not identify the exact violating frames or prove a controller clipped them. The trajectory and time-base records are needed for that test. Likewise, a longer teleoperation median may reflect route, operator or task differences rather than follower dynamics alone.
@@ -313,7 +313,7 @@ The source summarizes a 300-episode simulated Push Cube collection and a 100-epi
 
 ## Check executability in the target robot frame
 
-The prepared IK audit reconstructs observed tool poses at a declared canonical robot start: position [0.33, 0, 0.12] m with the tool pointing downward. It uses the supplied pusher model, limits and numerical solver, trying a previous solution and a home-pose retry.
+Returning to the ten-episode simulated pilot, the prepared IK audit reconstructs observed tool poses at a declared canonical robot start: position [0.33, 0, 0.12] m with the tool pointing downward. It uses the supplied pusher model, limits and numerical solver, trying a previous solution and a home-pose retry.
 
 ![Canonical target-frame reachability and yaw warnings](../resources/class10/figures/pilot-reach-classroom.png)
 
@@ -412,6 +412,8 @@ Keep the contract version with the accepted episode list and audit decisions. If
 
 ## Instructor and TA demonstration
 
+Use the ten-episode pilot for row-level geometry, speed and IK reasoning; use the 161-row physical summary for collection-level height and duration comparisons. Keep the separate gripper ACT outcome record identified when discussing its score. The demonstration inspects these saved records and does not train or execute a policy.
+
 ### Identify the learner's observations and target
 
 Show the pilot-camera examples and feature schema. Locate an episode's task, image, measured pose and next-pose action. Identify the privileged object coordinates used for auditing and explain why they are not automatically policy input.
@@ -438,35 +440,50 @@ Fill the feature, action-alignment, timing, outcome and split rows. Turn one war
 
 ## Student activity
 
-Use the pilot evidence and schema above as the supplied contract context. Complete the compact response record below during the activity; the full downloadable contract is for later project development. Base each decision on the identified records, figures and calculations. The task concerns interpreting evidence; it does not require new training or a successful robot rollout.
+Use the supplied pilot or physical collection evidence to make one acceptance decision. The core response requires no new training or robot rollout.
 
-### Make separate episode decisions
+### Core classroom response
+
+Choose **one** audit route:
+
+- **Pilot episode:** choose episode 4 or 6. Use its saved distance and implied pose speed to give separate geometry and speed verdicts against the declared thresholds. Identify the episode and evidence used.
+- **Physical frame:** use the worked height example. Decode a contact 0.0740736 m below a 0.120 m start, compare it with the 0.020 m table-relative target, and name one calibration or metadata field needed for a valid conversion.
+
+Finish with one decision sentence: **collect, adapt, inspect or reject**, with the evidence supporting that choice and one unresolved condition. Submit the selected data identity, your calculation or verdicts, and that sentence.
+
+### Further practice and project follow-up
+
+Use the complete prompts and response record below to develop a full audit and dataset contract. They extend the chosen core route to the remaining episode, executability, split and collection questions.
+
+
+#### Make separate episode decisions
 
 For episodes 4 and 6, record the last-frame distance, implied pose speed, applicable threshold and evidence source. Give separate geometry and speed verdicts. Mark visibility as requiring image review unless you cite actual frames and observations. Explain why episode 6 can meet the snapshot geometry criterion while still being unsuitable as an unmodified robot demonstration.
 
-### Investigate a target-frame warning
+#### Investigate a target-frame warning
 
 Choose an IK, yaw or reachability warning. State the observed result, one possible explanation and one additional detail needed before altering collection or labels. Keep a solver warning separate from proof of physical impossibility.
 
-### Complete the short contract
+#### Complete the short contract
 
-Refer to the declared nine-feature schema, frame definitions, action alignment and timestamp limitations rather than copying or reordering them. State the intended learner and make three decisions: which outcome rule applies, what split/preprocessing boundary you propose, and which evidence still prevents acceptance. Cite the known definitions and complete only these decision fields in the short response. Expand the full contract later when preparing an actual collection.
+Refer to the declared nine-feature schema, frame definitions, action alignment and timestamp limitations rather than copying or reordering them. State the intended learner and make three decisions: which outcome rule applies, what split/preprocessing boundary you propose, and which evidence still prevents acceptance. Cite the known definitions and complete these decision fields in the expanded response. Develop the full contract when preparing an actual collection.
 
-### Compare the physical collection contract
+#### Compare the physical collection contract
 
 Use the 161-row audit to state the two route counts, the handheld median start height and the speed-warning denominator. Decode a contact 0.0740736 m below a 0.120 m robot start and compare it with a 0.020 m table-relative target. Decide which calibration and episode metadata a conversion needs. Explain why the stored eleven p95-speed warnings are different from a per-step clipping record.
 
-### Choose the next action
+#### Choose the next action
 
 Select **collect, adapt, inspect or reject**, and name the evidence supporting that choice. Preserve a dataset identity and the distinction between source labels and derived audit fields.
 
-Use this response record:
+For project follow-up, use this full response record:
 
 | Record | Your answer |
 | --- | --- |
 | Dataset and learner | Data identity, tool/interface and intended learning use |
 | Episodes 4 and 6 | Geometry, speed and visibility decisions with units and evidence |
 | Target-frame warning | Observation, hypothesis and discriminating check |
+| Physical comparison | Route counts, height-reference calculation and speed-warning denominator |
 | Contract | Schema/alignment, frames, timing, outcome, split and acceptance rule |
 | Next action | Collect, adapt, inspect or reject, with a reason |
 

@@ -14,7 +14,7 @@ An actuator receives a command, applies effort and produces motion that can be m
 
 Our running example is an XC330 actuator carrying a link and two payload assemblies. We follow it from the physical mechanism through CAD, robot description and MuJoCo. The RS06 demonstration applies the same inspection method to another actuator. The student activity returns to XC330 and changes one declared payload parameter.
 
-The new task is to make and inspect an executable representation. Actuator-family history, product selection and control-law introductions remain in Class 02. Here, geometry, coordinate frames, rigid connections and mass distribution determine what the simulated mechanism does. Class 04 develops quantitative identification and response comparison using a separately documented 98 g campaign. It carries forward the inspection method, while keeping that campaign distinct from this 110 g structural model.
+The new task is to make and inspect an executable representation. Actuator-family history, product selection and control-law introductions remain in Class 02. Here, geometry, coordinate frames, rigid connections and mass distribution determine what the simulated mechanism does. Class 04 carries this inspection into quantitative response tests. Its main worked analysis uses a separately documented 98 g XC330 campaign; further cases examine a declared-110 g XC330 fit and an RS06 experiment. Shared mass totals or fixture names do not establish that these are the same built mechanism or experiment.
 
 By the end of this class, you should be able to:
 
@@ -511,7 +511,7 @@ Conclude with two sentences: what the representation is ready to support, and wh
 
 ## Carry the model into a response test
 
-A structurally inspectable model states how its parts, frames, mass and inputs are represented. [Class 04](04-basic-quantification-of-sim2real-gap.md) asks whether a model predicts a recorded response under declared conditions; its retained 98 g campaign is a separate source family from this 110 g CAD example. Carry forward the inspection record, coordinate convention and input contract; establish that campaign's own fixture and data identity before comparing responses.
+A structurally inspectable model states how its parts, frames, mass and inputs are represented. [Class 04](04-basic-quantification-of-sim2real-gap.md) asks whether a model predicts a recorded response under declared conditions. Carry forward the inspection record, coordinate convention and input contract, then establish each experiment's own fixture and data identity. Its main 98 g analysis remains separate from this 110 g CAD example. Its additional declared-110 g fit and RS06 case show how the same comparison method applies to other explicitly identified models and records.
 
 ## References
 

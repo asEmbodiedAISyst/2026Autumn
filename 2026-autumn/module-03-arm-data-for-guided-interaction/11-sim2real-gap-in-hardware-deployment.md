@@ -12,7 +12,7 @@ layout:
 
 A policy can perform well in one simulator and fail when the camera, timing or executor changes. It can also fail because an interface was interpreted incorrectly rather than because learning itself was ineffective. Our task is to distinguish these explanations and state what a result actually supports.
 
-The required session remains simulation-based. We can inspect interfaces, run a constructed full-state replay, examine recorded policy outcomes and diagnose a selected failure. The current student repository includes the replay model/code, outcome JSON and selected success/failure videos. It does not include the exact learned-policy weights and saved processors needed to rerun those evaluations. The source also reports unsuccessful physical policy trials and a tool-using VLM demonstration. We use them as recorded diagnoses with stated evidence limits, rather than as freshly reproduced deployments.
+The required work uses simulation replay, recorded policy outcomes and a selected failure. The physical policy trials and tool-using VLM example add reported cases for comparison. Exact learned-policy weights and saved processors are not supplied, so the lesson distinguishes inspection of these records from a fresh policy rerun or physical deployment.
 
 Classes 02–05 established actuator, model and dataset identities. Classes 06–07 connected a manipulation policy to its observation and timing contract. Classes 08–09 established an arm and teleoperation interface; Class 10 asked whether demonstration records suit a learner and executor. Here we test the next link: what changes between that declared system and the system used for evaluation, and which experiment can distinguish the resulting explanations? We reuse the earlier mathematics and interfaces while keeping their different data and fixtures identifiable.
 
@@ -66,7 +66,9 @@ $$
 
 Here x is a raw feature and the mean and scale come from the saved training processor. With `μ = 0.30 m`, `σ = 0.05 m` and raw position `x = 0.35 m`, the normalized value is 1. Passing 0.35 where 1 is expected changes the input. Applying the same normalization again gives approximately 14, not 1. Output decoding also matters: if a normalized predicted position is 2 under these illustrative statistics, the raw target is 0.05×2+0.30=0.40 m. This is a decoded target; the executor can still limit it before issuing a joint command. This example is illustrative; the policy's actual statistics must come from its saved processors.
 
-For the supplied pusher representation, `observation.state` and `action` each have nine values: `[x, y, z, r11, r21, r31, r12, r22, r32]`. The first three are rod-tip position in metres; the remaining six are the first two columns of an orientation matrix. The action is an absolute pose target in an episode frame. In the retained start-relative case, its origin is the initial rod-tip position, its horizontal heading follows the initial tool yaw, and its vertical axis follows gravity. Table-relative data instead anchor the vertical origin at the declared table surface; the dataset and executor must agree on that choice. This representation is different from the seven motor-style action/state channels used with the gripper. A nine-value pose is not nine joint commands. Use this declared nine-feature interface for the worked checks continued from Class 10. The supplied evaluator can select either six-dimensional delta actions or nine-feature episode poses from a saved checkpoint configuration. The outcome JSON omits that configuration, so an exact reproduction must recover it; a pusher name alone does not establish the checkpoint's feature semantics. The ten-episode pilot is also separate from the source's reported 300-demonstration training set.
+For the supplied pusher representation, `observation.state` and `action` each have nine values: `[x, y, z, r11, r21, r31, r12, r22, r32]`. The first three are rod-tip position in metres; the remaining six are the first two columns of an orientation matrix. The action is an absolute pose target in an episode frame. In the retained start-relative case, its origin is the initial rod-tip position, its horizontal heading follows the initial tool yaw, and its vertical axis follows gravity. Table-relative data instead anchor the vertical origin at the declared table surface; the dataset and executor must agree on that choice. This representation is different from the seven motor-style action/state channels used with the gripper. A nine-value pose is not nine joint commands. Use this declared nine-feature interface for the worked checks continued from Class 10.
+
+The supplied evaluator can select either six-dimensional delta actions or nine-feature episode poses from a saved checkpoint configuration. The outcome JSON omits that configuration, so an exact reproduction must recover it; a pusher name alone does not establish the checkpoint's feature semantics. The ten-episode pilot is also separate from the source's reported 300-demonstration training set.
 
 The policy image key is `observation.images.phone`: a tool-mounted camera view in this simulation. A front or side observer view may be useful to a human but cannot be substituted for the trained policy view without evaluating that change. The actual checkpoint must specify tensor order, scaling, resizing and preprocessing; the dataset’s stored RGB layout is not enough to infer the model’s tensor layout.
 
@@ -314,7 +316,7 @@ Inspect the policy's available image, not only the observer view. Identify when 
 
 ### Read the reported physical failure as an experiment
 
-The source describes a first physical series on 14 October 2026 using a 0.10 m/s executor limit. ACT trained on the 130 physical handheld episodes reportedly moved toward the cube and pushed off its intended line in **zero successes out of ten attempts**. A mixed physical/simulated policy reportedly sometimes moved away; the draft describes a second ten-attempt series, but does not provide a complete per-attempt outcome record for it. Retain the explicit 0/10 result for the identified physical-only series without assigning an invented rate to the other narrative.
+The source describes a first physical series on 14 October 2026 using a 0.10 m/s executor limit. ACT trained on the 130 physical handheld episodes reportedly moved toward the cube and pushed off its intended line, with **zero successes out of ten attempts**. A mixed physical/simulated policy reportedly sometimes moved away in a second ten-attempt series, but a complete per-attempt outcome record is not supplied for that series. The explicit 0/10 result belongs to the physical-only series; the other narrative does not establish its own success rate.
 
 The report is useful even though the exact checkpoint, physical trajectories, images, interventions and evaluator manifest are not supplied here. It demonstrates why the 29–35 mm offline errors above cannot be presented as physical skill. Its 0/10 count is a reported result under the named source conditions, not a fresh test or a general estimate for ACT.
 
@@ -345,7 +347,7 @@ A shadow check can inspect a policy's proposed actions in a simulated or non-act
 
 ## A tool-using vision-language controller as a comparison
 
-A pretrained VLM can select high-level motions from the tool-camera image while a geometric executor carries them out. This optional source case uses no new task-specific demonstrations or local policy training for the controller. It is not data-free: pretraining and the hand-designed tool/executor contain prior knowledge.
+The same evidence questions apply when a controller selects structured tools instead of predicting pose actions directly. A pretrained VLM can select high-level motions from the tool-camera image while a geometric executor carries them out. This optional source case uses no new task-specific demonstrations or local policy training for the controller. It is not data-free: pretraining and the hand-designed tool/executor contain prior knowledge.
 
 The source controller receives an image with a projected table grid, the current rod-tip position and feedback from earlier calls. Its response is a structured tool request with named arguments. In `move`, it requests a bounded relative displacement and optional yaw. In `locate`, it marks an image pixel and the calibrated geometric layer returns a table-plane location. In `push`, it marks cube and goal, then a fixed primitive constructs the push. In `done`, it claims completion; the simulator must still apply the task's success test.
 
@@ -360,7 +362,7 @@ The [retained run-outcome table](../resources/class11/data/recorded-comparisons/
 | `opus55_step` | 5 | 5 | None |
 | `haiku55_step` | 5 | 4 | One call-limit failure |
 
-The raw base record therefore has eighteen simulator-checked successes, one checked failure and one unchecked completion claim. The additional `sonnet55_step_seed2` record is a simulator-checked success on the previously unchecked layout. If that checked rerun replaces the unchecked claim, the declared replacement set contains nineteen successes in twenty checked layouts. There were twenty-one recorded attempts including the follow-up. Keep both the original record and the replacement policy visible; do not silently count the unchecked claim as verified or present the rerun as an additional independent layout.
+The raw base record therefore has eighteen simulator-checked successes, one checked failure and one unchecked completion claim. The additional `sonnet55_step_seed2` record is a simulator-checked success on the previously unchecked layout. If that checked rerun replaces the unchecked claim, the declared replacement set contains nineteen successes in twenty simulator-checked evaluation records. There were twenty-one recorded attempts including the follow-up. Keep both the original record and the replacement policy visible; do not silently count the unchecked claim as verified or present the rerun as an additional independent layout.
 
 These few stored layouts do not establish superiority over the fifty-episode ACT run, which has a different controller, attempt budget and run identity. The source's reported physical VLM completion has no trial denominator or accompanying physical logs here. It remains a reported demonstration. Comparing controllers meaningfully would require matched reset layouts, observation domain, success rule, executor, interventions and time/action budget.
 
@@ -410,12 +412,12 @@ Finish with a shadow-check plan: supply real observations to the frozen policy w
 
 ## Student activity
 
-Use the retained failure case and reported summary. No new training or hardware is required.
+Use the retained failure case and reported summary. The core response is one failure diagnosis, one discriminating experiment and one bounded claim: complete items 1–3 and 5. Item 4 is an optional physical-evidence comparison. No new training or hardware is required.
 
 1. Record episode ID, seed, success flag, step count, final distance and IK field. Explain how valid IK can coexist with task failure.
 2. Identify one directly visible observation with a frame range, and two competing explanations. Mark what the video cannot establish.
 3. Propose one experiment: changed factor, fixed conditions, measured prediction and a result that would weaken your explanation. State which missing artifact or physical observation it needs.
-4. Compare the recorded one-second physical-data prediction error with the reported 0/10 physical series. Explain why they answer different questions, and specify one matched correction/retest for the height or save-gesture hypothesis.
+4. **Optional physical comparison.** Compare the recorded one-second physical-data prediction error with the reported 0/10 physical series. Explain why they answer different questions, and specify one matched correction/retest for the height or save-gesture hypothesis.
 5. Draft a two-sentence claim naming system, conditions, metric, evidence source and limits. Separate the supplied policy record from a test you executed yourself.
 
 If playback is unavailable, use Figure 8's frames 0/225/449, the selected-record table and the saved summary. Make only the bounded before/after observation supported by those images, and mark the precise onset or contact sequence unresolved. This provides a complete page-only route without inventing motion between still frames.
@@ -447,6 +449,8 @@ The [physical-case source record](../resources/class11/data/consolidation-source
 
 The [scripted replay result](../resources/class11/results/replay-state.json), [reset-comparison result](../resources/class11/results/reset-comparison.json) and [complete recorded policy summary](../resources/class11/results/recorded-policy-summary.json) concern separate checks. Their scope statements remain attached to the results. The [mechanical source notice](../resources/class11/consolidation/package/additional_material/rebot_pusher/model/rebot_b601_rs_mjcf/NOTICE.md) and [CERN-OHL-W licence](../resources/class11/consolidation/package/additional_material/rebot_pusher/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W) accompany the adapted model. These artifacts support the comparisons described above; exact policy reproduction requires the missing execution artifacts.
 
+Chi, Cheng, Siyuan Feng, Yilun Du, Zhenjia Xu, Eric Cousineau, Benjamin CM Burchfiel, and Shuran Song. 2023. “Diffusion Policy: Visuomotor Policy Learning via Action Diffusion.” In *Proceedings of Robotics: Science and Systems*. [Primary paper](https://www.roboticsproceedings.org/rss19/p026.html).
+
 Chi, Cheng, Zhenjia Xu, Chuer Pan, Eric Cousineau, Benjamin Burchfiel, Siyuan Feng, Russ Tedrake, and Shuran Song. 2024. “Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots.” In *Proceedings of Robotics: Science and Systems*. [Paper and interface/latency experiments](https://umi-gripper.github.io/).
 
 Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. [Spatial-vector resources](https://royfeatherstone.org/spatial/v2/index.html).
@@ -456,5 +460,7 @@ MuJoCo developers. n.d.-a. “Simulation.” *MuJoCo Documentation*, version 3.1
 MuJoCo developers. n.d.-b. “Types.” *MuJoCo Documentation*, version 3.14.0. Accessed October 18, 2026. [State specification and data fields](https://mujoco.readthedocs.io/en/3.14.0/APIreference/APItypes.html#mjtstate).
 
 NIST/SEMATECH. n.d. “Confidence Intervals.” *e-Handbook of Statistical Methods*, section 7.2.4.1. Accessed October 18, 2026. [Binomial proportion intervals and assumptions](https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm).
+
+Shukor, Mustafa, Dana Aubakirova, Francesco Capuano, Pepijn Kooijmans, Steven Palma, Adil Zouitine, Michel Aractingi, Caroline Pascal, Martino Russi, Andres Marafioti, Simon Alibert, Matthieu Cord, Thomas Wolf, and Remi Cadene. 2025. “SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics.” *arXiv*, 2506.01844. [Primary paper](https://arxiv.org/abs/2506.01844).
 
 Zhao, Tony Z., Vikash Kumar, Sergey Levine, and Chelsea Finn. 2023. “Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.” In *Proceedings of Robotics: Science and Systems*. [ACT primary paper](https://www.roboticsproceedings.org/rss19/p016.html).
