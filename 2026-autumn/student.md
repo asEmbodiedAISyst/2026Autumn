@@ -1,5 +1,7 @@
 ---
 description: 2026 Autumn
+layout:
+  width: wide
 ---
 
 # \[ROB7103/8103] Embodied AI Systems @ MBZUAI
