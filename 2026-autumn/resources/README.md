@@ -10,7 +10,17 @@ To download code or a folder, open the [public student repository](https://githu
 
 ## Class packages
 
-All course resources are organized by class in this folder. Each `classXX/` contains its classroom assets and selected records; `classXX/practical/` contains the selected teaching-author code, data and models where supplied. This is the single practical distribution for Classes 02–11. The linked current lecture/practice page is the instruction entry point for each selected task. Retained source runtime, data and model files keep their original bytes; obsolete alternative scripts and superseded recipe documents are retired from the current distribution.
+Return to the [course home and linked schedule](../student.md#teaching-schedule). Read the relevant class page before downloading or running its practical files. **Public course files are learning resources; submit assessed work in your assigned private team repository.**
+
+- **Classes 01–11:** use the class packages below for illustrations, code, models and data. Follow the linked instructions and their availability notes.
+- **Classes 12–17:** open the [worksheet templates and submission guide](project-workbook/README.md); filled examples and source papers are linked separately on each class page.
+- **Classes 18–21:** use the [poster](../module-05-final-project-submissions/18-final-poster-submission.md), [code](../module-05-final-project-submissions/19-final-code-submission.md), [video and final worksheets](../module-05-final-project-submissions/20-final-video-submission.md) and [showcase](../21-final-project-showcase.md) instructions.
+
+To download code or a folder, open the [public student repository](https://github.com/asEmbodiedAISyst/2026Autumn), then clone it or choose **Code → Download ZIP**. Packages are under `2026-autumn/resources/classXX/`; use the selected class's setup instructions.
+
+## Class packages
+
+All course resources are organized by class in this folder. Each `classXX/` contains its classroom assets and selected records. The selected teaching-author code, data and models are in `classXX/practical/` for Classes 02–06 and in `classXX/additional_material/` for Classes 08–11. 
 
 | Class | Package | Availability and interpretation |
 |---|---|---|
@@ -21,10 +31,10 @@ All course resources are organized by class in this folder. Each `classXX/` cont
 | 05 | [Population identification](class05/practical/README.md) | The source campaign contains 125 events split 72/23/30. Keep event, motor and sample denominators distinct. Fixture mass declarations remain uncertain; fitted terms must not conceal that uncertainty. |
 | 06 | [Continuous positive-Z cube rotation](class06/practical/README.md) | The active CONTINUOUS_Z_ROTATION_DEPLOYMENT_BUNDLE_20261014, checkpoint/server/bridge and raw deployment NPZ logs are not in this source tree. The launcher references that external bundle. This is evidence and supporting source, not a ready policy-playback package. Older visual-yaw files are not the active task; no working policy is supplied here. |
 | 07 | [Visual measurement and stream inspection](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-02-hand-data-for-multi-fingered-manipulation/07-rotating-a-cube-with-visual-feedback.md#instructor-and-ta-demonstration) | Geometry and frame/age analysis are available. A configured original receiver is required for live stream inspection; a complete cube estimator and visual-control policy are not supplied. |
-| 08 | [Arm model and commissioning](class08/practical/README.md) | The simulation practice is separate from optional assembly and power-on instructions. Students do not assemble or power the physical arm in the required practice. |
-| 09 | [Phone-to-pusher teleoperation](class09/practical/README.md) | The core practice is iPhone teleoperation of the simulated pusher to push a cube. The fake phone checks an input/mapping path. Physical operation and gripper comparison are optional. Verify package-specific phone axes before interpreting directions. |
-| 10 | [Pusher-cube data collection](class10/practical/README.md) | The complete handheld training dataset is not included. Source Class09 six-joint recordings and Class10 nine-feature tip-pose recordings are different schemas. Preserve that boundary rather than combining them silently. |
-| 11 | [ACT policy evaluation and transfer](class11/practical/README.md) | Ready ACT/Diffusion/SmolVLA policy checkpoint directories are absent. Training recipes require their specified datasets and backend. The source manuscript ACT62%/56% scores and supplied32/50(64%) JSON require run-identity reconciliation. Source physical learned-policy evidence includes0/10; no successful policy transfer is claimed here. |
+| 08 | [Arm model and commissioning](class08/additional_material/README.md) | The simulation practice is separate from optional assembly and power-on instructions. Students do not assemble or power the physical arm in the required practice. |
+| 09 | [Phone-to-pusher teleoperation](class09/additional_material/README.md) | The core practice is iPhone teleoperation of the simulated pusher to push a cube. The fake phone checks an input/mapping path. Physical operation and gripper comparison are optional. Verify package-specific phone axes before interpreting directions. |
+| 10 | [Pusher-cube data collection](class10/additional_material/rebot_pusher/README.md) | The complete handheld training dataset is not included. Source Class09 six-joint recordings and Class10 nine-feature tip-pose recordings are different schemas. Preserve that boundary rather than combining them silently. |
+| 11 | [ACT policy evaluation and transfer](class11/additional_material/rebot_pusher/README.md) | Ready ACT/Diffusion/SmolVLA policy checkpoint directories are absent. Training recipes require their specified datasets and backend. The source manuscript ACT62%/56% scores and supplied32/50(64%) JSON require run-identity reconciliation. Source physical learned-policy evidence includes0/10; no successful policy transfer is claimed here. |
 
 Class07 currently has a stream/interface lesson but no complete source cube-estimation/control package. The Class09 receiver is a phone-teleoperation implementation, not a cube-pose estimator.
 
