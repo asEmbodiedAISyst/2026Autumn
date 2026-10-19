@@ -6,7 +6,7 @@ The required activity on this page reads saved ACT results and success/failure r
 
 ## Required saved-record activity
 
-Use the retained [ACT simulation comparison and success/failure recordings](11-sim2real-gap-in-hardware-deployment.md#rung-5-in-simulation-act-on-push-cube), the [physical evidence summary](11-sim2real-gap-in-hardware-deployment.md#state-of-the-physical-evidence), and the supplied [50-episode result JSON](../resources/class11/practical/additional_material/data/videos/results_act_ip17_cube300_handheld_060000_pusher_n100.json). The [successful source recording](../resources/class11/recordings/source/act-push-cube-sim.mp4) and [failed source recording](../resources/class11/recordings/source/act-push-cube-sim-failure.mp4) are also distributed as files. You can complete this route without installing dependencies, collecting data, training or possessing a ready checkpoint.
+Use the retained [ACT simulation comparison and success/failure recordings](11-sim2real-gap-in-hardware-deployment.md#rung-5-in-simulation-act-on-push-cube), the [physical evidence summary](11-sim2real-gap-in-hardware-deployment.md#state-of-the-physical-evidence), and the supplied [50-episode result JSON](../resources/class11/additional_material/data/videos/results_act_ip17_cube300_handheld_060000_pusher_n100.json). The [successful source recording](../resources/class11/recordings/source/act-push-cube-sim.mp4) and [failed source recording](../resources/class11/recordings/source/act-push-cube-sim-failure.mp4) are also distributed as files. You can complete this route without installing dependencies, collecting data, training or possessing a ready checkpoint.
 
 1. Read the saved result's `policy`, `task`, `success_rate` and episode entries. Count successes and all attempted episodes, including failures. Record 32/50 = 64% as the result in that file, and distinguish it from the manuscript's reported 62%/56% arm cells. Its path/filename does not establish the missing checkpoint bytes, embodiment, execution horizon or scene identity.
 2. Compare one retained successful and one failed source recording. State an observable failure and a separately labelled hypothesis. The lesson's failed video reaches the 450-step limit; do not assign it a particular JSON episode ID unless a matching record establishes that identity.
@@ -22,7 +22,7 @@ Prepare one short claim and evidence table plus the proposed test for class disc
 This setup belongs to the optional executable route. The required saved-record activity above needs no installation.
 
 The code is the pusher package of the course, the same as in Class 10:
-[`2026-autumn/resources/class11/practical/additional_material/rebot_pusher/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class11/practical/additional_material/rebot_pusher).
+[`2026-autumn/resources/class11/additional_material/rebot_pusher/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class11/additional_material/rebot_pusher).
 
 You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (Apple silicon or Intel).
 
@@ -55,7 +55,7 @@ Get the code and make the environment:
 ```bash
 git clone https://github.com/asEmbodiedAISyst/2026Autumn.git rob7103
 cd rob7103
-cd 2026-autumn/resources/class11/practical/additional_material/rebot_pusher
+cd 2026-autumn/resources/class11/additional_material/rebot_pusher
 uv sync
 ```
 
@@ -70,9 +70,9 @@ The source gives CUDA and Apple-silicon MPS training commands. Backend support a
 
 | Script | What it does |
 | --- | --- |
-| [`scripts/generate_tool_demos.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class11/practical/additional_material/rebot_pusher/scripts/generate_tool_demos.py) | Simulated demonstrations of the scripted expert, written as a LeRobot dataset |
+| [`scripts/generate_tool_demos.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class11/additional_material/rebot_pusher/scripts/generate_tool_demos.py) | Simulated demonstrations of the scripted expert, written as a LeRobot dataset |
 | `lerobot-train` | Trains a policy on a LeRobot dataset ([LeRobot](https://github.com/huggingface/lerobot)) |
-| [`scripts/eval_policy.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class11/practical/additional_material/rebot_pusher/scripts/eval_policy.py) | Runs a policy in closed loop on the simulated arm or tool: success rate, results file and videos |
+| [`scripts/eval_policy.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class11/additional_material/rebot_pusher/scripts/eval_policy.py) | Runs a policy in closed loop on the simulated arm or tool: success rate, results file and videos |
 
 ---
 
@@ -86,7 +86,7 @@ The following source recipe is extended practice. No ready matching checkpoint i
 
 A reported checkpoint result requires the matching checkpoint, preprocessing and configuration. If no ready checkpoint is distributed, this is a generation-and-training route; it is not a zero-training playback package. Do not replace missing weights with another policy while keeping the reported score.
 
-Generate the declared 300 simulated Push Cube demonstrations with the source scripted expert. The source reported approximately six minutes for its generation machine; allow preparation time rather than assuming this duration on a student laptop:
+Generate the declared 300 simulated Push Cube demonstrations with the source scripted expert. The source machine needed about six minutes. On a Mac the generation is much slower, about 15 s per episode or about one hour in total; use a Linux machine when you can:
 
 ```bash
 uv run python scripts/generate_tool_demos.py --task push_cube --embodiment handheld --num-episodes 300 \

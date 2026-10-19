@@ -9,7 +9,7 @@ joint, run a bounded joint motion and a Cartesian path, then change one gain and
 ## Set up
 
 The runnable class folder is
-[`2026-autumn/resources/class08/practical/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class08/practical)
+[`2026-autumn/resources/class08/additional_material/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class08/additional_material)
 in the course repository.
 
 You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (Apple silicon or Intel). No GPU is needed.
@@ -41,7 +41,7 @@ Get the code and make the environment:
 ```bash
 git clone https://github.com/asEmbodiedAISyst/2026Autumn.git rob7103
 cd rob7103
-cd 2026-autumn/resources/class08/practical/additional_material
+cd 2026-autumn/resources/class08/additional_material
 uv sync
 ```
 

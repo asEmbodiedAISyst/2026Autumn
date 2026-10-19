@@ -259,7 +259,7 @@ An unusually long or short pusher-cube episode can indicate a stall, truncation,
 
 The pilot contains ten **simulated handheld** Push Cube episodes. Five episodes have deliberately injected changes: facing away (two episodes), truncation, a raised speed limit and a removed yaw limit. The historical `audit_reference.json` records the injection label and source metrics; `fault: none` means no injected change, not acceptance. For example, episode 3 has `fault: none` but only 0.903 robot reachability, below the 0.98 diagnostic gate.
 
-Use the [pilot acceptance interpretation](../resources/class10/practical/additional_material/data/pilot_push_cube_handheld/ACCEPTANCE.md) after writing your own decision. It separates injection identity, outcome and diagnostic gates, and identifies image review still needed for a full acceptance decision. There is no rule that exactly five episodes must be rejected. The retained pilot values are existing source simulation records, not new physical measurements or a newly collected dataset.
+Use the [pilot acceptance interpretation](../resources/class10/additional_material/data/pilot_push_cube_handheld/ACCEPTANCE.md) after writing your own decision. It separates injection identity, outcome and diagnostic gates, and identifies image review still needed for a full acceptance decision. There is no rule that exactly five episodes must be rejected. The retained pilot values are existing source simulation records, not new physical measurements or a newly collected dataset.
 
 ### A numeric pass is only one part of acceptance
 

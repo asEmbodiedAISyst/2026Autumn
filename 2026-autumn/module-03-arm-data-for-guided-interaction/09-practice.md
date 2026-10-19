@@ -7,7 +7,7 @@ The core demonstration uses an iPhone with asMagic to teleoperate the **simulate
 ## Set up
 
 The code is the Class 09 folder of the course:
-[`2026-autumn/resources/class09/practical/additional_material/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class09/practical/additional_material).
+[`2026-autumn/resources/class09/additional_material/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class09/additional_material).
 
 You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (Apple silicon or Intel).
 
@@ -38,7 +38,7 @@ Get the code and make the environment:
 ```bash
 git clone https://github.com/asEmbodiedAISyst/2026Autumn.git rob7103
 cd rob7103
-cd 2026-autumn/resources/class09/practical/additional_material
+cd 2026-autumn/resources/class09/additional_material
 uv sync
 ```
 
@@ -53,10 +53,10 @@ run with `uv run mjpython`; the phone simulator keeps `uv run python`. The steps
 
 | Script | What it does |
 | --- | --- |
-| [`code/teleop_rebot_rs_sim.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class09/practical/additional_material/code/teleop_rebot_rs_sim.py) | Phone teleoperation of the simulated arm with the gripper |
-| [`code/teleop_common.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class09/practical/additional_material/code/teleop_common.py) | The parts of the class page: phone receiver, mapping `PhoneMapper`, inverse kinematics |
-| [`code/fake_phone.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class09/practical/additional_material/code/fake_phone.py) | Phone simulator: publishes poses with the asMagic protocol |
-| [`code/teleop_rebot_rs_pusher_sim.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class09/practical/additional_material/code/teleop_rebot_rs_pusher_sim.py) | Teleoperation with the pusher tool instead of the gripper |
+| [`code/teleop_rebot_rs_sim.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class09/additional_material/code/teleop_rebot_rs_sim.py) | Phone teleoperation of the simulated arm with the gripper |
+| [`code/teleop_common.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class09/additional_material/code/teleop_common.py) | The parts of the class page: phone receiver, mapping `PhoneMapper`, inverse kinematics |
+| [`code/fake_phone.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class09/additional_material/code/fake_phone.py) | Phone simulator: publishes poses with the asMagic protocol |
+| [`code/teleop_rebot_rs_pusher_sim.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class09/additional_material/code/teleop_rebot_rs_pusher_sim.py) | Teleoperation with the pusher tool instead of the gripper |
 
 ---
 

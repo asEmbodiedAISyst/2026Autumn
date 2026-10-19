@@ -149,7 +149,7 @@ The section on commanding the motors shows what one frame contains.
 | Vendor URDF and meshes | `Rebot_Arm_description/RS/` | [Seeed reBot-DevArm repository](https://github.com/Seeed-Projects/reBot-DevArm/tree/main/Rebot_Arm_description/RS) |
 | CAD and user manual of the RS-06 | `RS06-new.step`, `RS06User Manual260428.pdf` | [RobStride Product_Information, `RS06/`](https://github.com/RobStride/Product_Information/tree/main/Product%20Literature/RS06) |
 | CAD and user manual of the RS-00 | `RS00.step`, `RS00User Manual260428.pdf` | [RobStride Product_Information, `RS00/`](https://github.com/RobStride/Product_Information/tree/main/Product%20Literature/RS00) |
-| Course model (MJCF) | [`rebot_b601_rs.xml`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class08/practical/additional_material/model/rebot_b601_rs_mjcf/rebot_b601_rs.xml) | [course repository, `additional_material/model/rebot_b601_rs_mjcf/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class08/practical/additional_material/model/rebot_b601_rs_mjcf), with the meshes |
+| Course model (MJCF) | [`rebot_b601_rs.xml`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class08/additional_material/model/rebot_b601_rs_mjcf/rebot_b601_rs.xml) | [course repository, `additional_material/model/rebot_b601_rs_mjcf/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class08/additional_material/model/rebot_b601_rs_mjcf), with the meshes |
 
 ---
 
