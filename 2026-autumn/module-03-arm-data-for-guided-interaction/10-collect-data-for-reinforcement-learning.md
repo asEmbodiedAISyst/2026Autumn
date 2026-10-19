@@ -88,7 +88,7 @@ language input of a vision-language-action policy, so the contract fixes it.
 
 
 
-<figure><img src="../resources/class10/figures/source/arm-pusher-tool-photo.png" alt="The physical arm with the arm-mounted pusher and the phone"><figcaption><p>Figure 1. The physical arm with the arm-mounted pusher and the phone. The physical arm with the pusher tool and the phone.</p></figcaption></figure>
+<figure><img src="../resources/class10/figures/source/arm-pusher-push-cube-setup.jpg" alt="The arm with the arm-mounted pusher and the phone, above the black cube and the green target on the table"><figcaption><p>Figure 1. The arm with the arm-mounted pusher and the phone, set up for Push Cube: the black cube and the green target.</p></figcaption></figure>
 
 A person cannot demonstrate with the gripper of the arm in hand, but can hold a tool. The course replaces the
 gripper by the pusher tool, a printed rod with a plate for the phone. A person records demonstrations with one copy of the tool.
