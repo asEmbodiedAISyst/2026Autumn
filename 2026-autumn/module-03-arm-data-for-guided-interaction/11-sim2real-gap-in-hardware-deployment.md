@@ -105,9 +105,7 @@ action goes back to the motors through the inverse kinematics of Class 09.
 
 
 
-<figure><img src="../resources/class11/figures/source/zero-pose-tool.png" alt="Zero pose of the arm with the tool"><figcaption><p>Figure 1. Zero pose of the arm with the tool.</p></figcaption></figure>
-
-<figure><img src="../resources/class11/figures/source/start-pose-tool.png" alt="Episode start pose of the arm with the tool"><figcaption><p>Figure 2. Episode start pose of the arm with the tool. Episode start pose: rod tip 12 cm above the table.</p></figcaption></figure>
+<div><figure><img src="../resources/class11/figures/source/zero-pose-tool.png" alt="Zero pose of the arm with the tool"><figcaption><p>Figure 1. Zero pose of the arm with the tool.</p></figcaption></figure> <figure><img src="../resources/class11/figures/source/start-pose-tool.png" alt="Episode start pose of the arm with the tool"><figcaption><p>Figure 2. Episode start pose of the arm with the tool. Episode start pose: rod tip 12 cm above the table.</p></figcaption></figure></div>
 
 At the start of each episode the arm moves to its start pose. That pose fixes the episode frame $$e$$. Its origin
 is the rod tip, and its heading is the heading of the tool. For data in the table frame, $$z = 0$$ is at the table. An action
@@ -249,9 +247,7 @@ with what the operator did. A policy that only holds still is the baseline.
 
 
 
-<figure><img src="../resources/class11/figures/source/offline-horizon.png" alt="Open-loop prediction error on simulated handheld data"><figcaption><p>Figure 5. Open-loop prediction error on simulated handheld data.</p></figcaption></figure>
-
-<figure><img src="../resources/class11/figures/source/offline-real.png" alt="Open-loop error 1 s ahead of policies trained on physical data"><figcaption><p>Figure 6. Open-loop error 1 s ahead of policies trained on physical data. Physical handheld data.</p></figcaption></figure>
+<div><figure><img src="../resources/class11/figures/source/offline-horizon.png" alt="Open-loop prediction error on simulated handheld data"><figcaption><p>Figure 5. Open-loop prediction error on simulated handheld data.</p></figcaption></figure> <figure><img src="../resources/class11/figures/source/offline-real.png" alt="Open-loop error 1 s ahead of policies trained on physical data"><figcaption><p>Figure 6. Open-loop error 1 s ahead of policies trained on physical data. Physical handheld data.</p></figcaption></figure></div>
 
 | Policy | Training data | Error 1 s ahead (mm) |
 | --- | --- | --- |

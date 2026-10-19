@@ -98,9 +98,7 @@ The arm uses another copy. The approach follows the Universal Manipulation Inter
 
 
 
-<figure><img src="../resources/class10/figures/source/pusher-tool-print-handheld.png" alt="The handheld print with a handle"><figcaption><p>Figure 2. The handheld print with a handle. Handheld print, with a handle.</p></figcaption></figure>
-
-<figure><img src="../resources/class10/figures/source/pusher-tool-print-robot.png" alt="The robot print with a flange"><figcaption><p>Figure 3. The robot print with a flange. Robot print, with a flange for motor 6.</p></figcaption></figure>
+<div><figure><img src="../resources/class10/figures/source/pusher-tool-print-handheld.png" alt="The handheld print with a handle"><figcaption><p>Figure 2. The handheld print with a handle. Handheld print, with a handle.</p></figcaption></figure> <figure><img src="../resources/class10/figures/source/pusher-tool-print-robot.png" alt="The robot print with a flange"><figcaption><p>Figure 3. The robot print with a flange. Robot print, with a flange for motor 6.</p></figcaption></figure></div>
 
 Rod, plate and camera are at the same position relative to the rod tip in both prints. Thus the nominal camera-to-tip geometry is shared when a person or the arm holds it. Background, hands, lighting, image timing and mounting tolerances can still change the observation. The phone image is the observation of the policy. The phone pose gives
 the pose of the rod tip. The STL files of both prints are in the class folder
@@ -223,11 +221,7 @@ The scripted expert and the teleoperation recorder are supplied in the source pa
 
 
 
-<figure><img src="../resources/class10/figures/source/pilot-accepted.png" alt="Accepted: the camera faces the push direction"><figcaption><p>Figure 4. Accepted: the camera faces the push direction. Accepted: cube and goal in view.</p></figcaption></figure>
-
-<figure><img src="../resources/class10/figures/source/pilot-borderline.png" alt="Borderline: yaw at the limit"><figcaption><p>Figure 5. Borderline: yaw at the limit. Borderline: goal near the edge.</p></figcaption></figure>
-
-<figure><img src="../resources/class10/figures/source/pilot-rejected.png" alt="Rejected: the operator faces away"><figcaption><p>Figure 6. Rejected: the operator faces away. Rejected: objects out of view.</p></figcaption></figure>
+<div><figure><img src="../resources/class10/figures/source/pilot-accepted.png" alt="Accepted: the camera faces the push direction"><figcaption><p>Figure 4. Accepted: the camera faces the push direction. Accepted: cube and goal in view.</p></figcaption></figure> <figure><img src="../resources/class10/figures/source/pilot-borderline.png" alt="Borderline: yaw at the limit"><figcaption><p>Figure 5. Borderline: yaw at the limit. Borderline: goal near the edge.</p></figcaption></figure> <figure><img src="../resources/class10/figures/source/pilot-rejected.png" alt="Rejected: the operator faces away"><figcaption><p>Figure 6. Rejected: the operator faces away. Rejected: objects out of view.</p></figcaption></figure></div>
 
 In the first handheld experiment the operator could face any direction, and the goal could be anywhere. Cube and
 goal were both visible at the start of only 19 of 50 episodes. The trained policy reached approximately 5 % in
@@ -311,11 +305,7 @@ With **`--gesture`**, rest the tip on the table before each episode, then lift t
 
 
 
-<figure><img src="../resources/class10/figures/source/real-frame-handheld-0.2s.png" alt="Handheld episode at 0.2 s"><figcaption><p>Figure 8. Handheld episode at 0.2 s. Handheld, 0.2 s.</p></figcaption></figure>
-
-<figure><img src="../resources/class10/figures/source/real-frame-handheld-4.0s.png" alt="Handheld episode at 4.0 s"><figcaption><p>Figure 9. Handheld episode at 4.0 s. Handheld, 4.0 s.</p></figcaption></figure>
-
-<figure><img src="../resources/class10/figures/source/real-frame-handheld-9.0s.png" alt="Handheld episode at 9.0 s"><figcaption><p>Figure 10. Handheld episode at 9.0 s. Handheld, 9.0 s.</p></figcaption></figure>
+<div><figure><img src="../resources/class10/figures/source/real-frame-handheld-0.2s.png" alt="Handheld episode at 0.2 s"><figcaption><p>Figure 8. Handheld episode at 0.2 s. Handheld, 0.2 s.</p></figcaption></figure> <figure><img src="../resources/class10/figures/source/real-frame-handheld-4.0s.png" alt="Handheld episode at 4.0 s"><figcaption><p>Figure 9. Handheld episode at 4.0 s. Handheld, 4.0 s.</p></figcaption></figure> <figure><img src="../resources/class10/figures/source/real-frame-handheld-9.0s.png" alt="Handheld episode at 9.0 s"><figcaption><p>Figure 10. Handheld episode at 9.0 s. Handheld, 9.0 s.</p></figcaption></figure></div>
 
 A handheld episode on the course table with the printed green goal. The rod is always at the same place in the
 image, as the tool design intends.
@@ -350,9 +340,7 @@ Observation agreement is one relevant Sim2Real condition, alongside geometry, co
 
 
 
-<figure><img src="../resources/class10/figures/source/real-frame-handheld-0.2s.png" alt="Real phone image"><figcaption><p>Figure 12. Real phone image.</p></figcaption></figure>
-
-<figure><img src="../resources/class11/figures/source/agent-step-1.png" alt="Simulated phone image with the estimated scene"><figcaption><p>Figure 13. Simulated phone image with the estimated scene. Simulated phone image, estimated scene (with the grid of Class 11).</p></figcaption></figure>
+<div><figure><img src="../resources/class10/figures/source/real-frame-handheld-0.2s.png" alt="Real phone image"><figcaption><p>Figure 12. Real phone image.</p></figcaption></figure> <figure><img src="../resources/class11/figures/source/agent-step-1.png" alt="Simulated phone image with the estimated scene"><figcaption><p>Figure 13. Simulated phone image with the estimated scene. Simulated phone image, estimated scene (with the grid of Class 11).</p></figcaption></figure></div>
 
 The same provenance discipline applies to dynamics. Class 08 used the motion-test log to examine a quasi-static controller residual relative to the declared gravity model. Damping and friction require suitable dynamic excitation and an identification protocol; the static sweep alone does not identify them. A parameter added to the MJCF needs its source, units, fitted conditions and validation record.
 

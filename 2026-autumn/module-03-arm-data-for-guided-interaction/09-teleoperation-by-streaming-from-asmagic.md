@@ -225,7 +225,7 @@ The gripper example above supplies the body-axis rotation and a convenient relat
 
 | Stage | Rule |
 | --- | --- |
-| Workspace | $$x$$ 0.12–0.42 m, $$y$$ ±0.25 m, $$z$$ 0.03–0.30 m |
+| Virtual Workspace | $$x$$ 0.12–0.42 m, $$y$$ ±0.25 m, $$z$$ 0.03–0.30 m |
 | Speed | 0.25 m/s and 90 °/s |
 | Inverse kinematics | damped least squares on the MuJoCo Jacobian, 30 iterations per period |
 
