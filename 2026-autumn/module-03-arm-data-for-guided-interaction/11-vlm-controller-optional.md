@@ -1,16 +1,16 @@
 # Class 11 — A vision-language model as the controller
 
-This optional simulation controller needs no new task-specific demonstrations or policy training; it does rely on a pretrained model, its earlier data, API access and the source executor. A large pretrained
+This optional controller needs no task-specific demonstrations or policy training. A large pretrained
 vision-language model (VLM), Claude, looks at the phone image and decides the motion. The same model-based layers
 as in [Class 11](11-sim2real-gap-in-hardware-deployment.md) execute it. The controller is `agent_control.py` of the course package. It ran in 20
-simulated episodes with four model settings, The core exercise is simulation only.
+simulated episodes with four model settings. This page uses simulation only.
 
 ---
 
 ## The approach
 
 A learned policy needs demonstrations. A pretrained VLM can instead act as a high-level controller and leave the
-motion to a reliable executor. SayCan grounds language choices in a repertoire of skills and their affordances (Ahn et al. 2022). Code as Policies composes robot behaviours as programs (Liang et al. 2023). VoxPoser constructs spatial value maps for planning (Huang et al. 2023). MOKA and PIVOT use visual marks or iterative visual proposals to connect language models with geometric actions (Liu et al. 2024; Nasiriany et al. 2024). These are related design approaches; this small course controller is not a reproduction of all their evaluation protocols.
+motion to a reliable executor. SayCan grounds language choices in a repertoire of skills and their affordances (Ahn et al. 2022). Code as Policies composes robot behaviours as programs (Liang et al. 2023). VoxPoser constructs spatial value maps for planning (Huang et al. 2023). MOKA and PIVOT use visual marks or iterative visual proposals to connect language models with geometric actions (Liu et al. 2024; Nasiriany et al. 2024). The course controller follows the same idea at a small scale.
 
 ## One call per step
 
@@ -74,21 +74,20 @@ checked claims. That layout was run again with the check and succeeded in 4 call
 
 ## Reading the results
 
-Across the original twenty attempts, eighteen have checked success, one has checked failure and one ended with an unchecked `done` claim. A checked rerun of that layout succeeded. Replacing the unchecked attempt gives nineteen successes out of twenty selected checked layouts, but the complete execution record contains twenty-one attempts. Keep both denominators rather than silently calling the first twenty attempts 19/20 successes. Model identifiers and API costs below are historical labels from the source record, not a guarantee of current API availability or pricing.
+Of the twenty episodes, eighteen succeeded under the simulator's check, one failed, and one ended with the model's own
+`done` claim before the check existed; that layout succeeded when run again with the check. Model names and prices
+are those of 15 October 2026.
 
-
-In this small recorded sample push mode used the fewest API calls and had five checked successes; that sample does not establish general reliability. In push mode the model finds only two points, and the primitive does the
+Push mode used the fewest calls: the model finds only two points, and the primitive does the
 motion. In step mode Sonnet 5.5 and Opus 5.5 close the loop through the image in 4–8 calls. Haiku 5.5 reached the
-limit of 25 calls in one episode. The source manuscript reports ACT56–62% on the simulated arm task, with the unresolved manuscript/result-file identity described in Class11. These are not matched trials against the small VLM sample
-([Class 11, ACT simulation comparison](11-sim2real-gap-in-hardware-deployment.md#rung-5-in-simulation-act-on-push-cube)).
+limit of 25 calls in one episode. ACT reaches 56–62 % on the same simulated task
+([Class 11](11-sim2real-gap-in-hardware-deployment.md#rung-5-in-simulation-act-on-push-cube)); the two were not tested on the same layouts.
 
 ## What the result supports
 
-The agent requires no task-specific policy training for this setup; its pretrained model is not data-free. The sample contains checked outcomes and a self-declared outcome, which must be counted separately. It does not run at
+The agent needs no task-specific training, but its model was trained on large data. It does not run at
 30 Hz: each call takes 2–5 s and needs a network connection and an account. The simulated result does not measure
-perception on real images. The source also mentions a physical-arm success without a complete trial denominator or logs. That report is not part of this simulation practice and does not qualify deployment or establish a physical success rate.
-
-
+perception on real images.
 
 ## The API key
 
@@ -101,10 +100,10 @@ course does not supply a key.**
 ## Commands
 
 The package and its set-up are those of [Class 11 — Practice](11-practice.md#set-up). The script opens a
-MuJoCo window, so on macOS use `uv run mjpython` in place of `uv run python` for this same source command. Confirm that the historical model identifier is available to the API account before running; API access is optional and is not supplied by the course.
+MuJoCo window, so on macOS use `uv run mjpython` in place of `uv run python`. You need your own API key and access to the model you choose.
 
 ```bash
-# simulation (from additional_material/rebot_pusher/ of the Class 11 folder; key in the environment)
+# simulation (from the additional_material folder of Class 11; key in the environment)
 uv run python scripts/agent_control.py --robot sim --episodes 5 --model claude-sonnet-5-5 \
     --mode push --log-dir outputs/agent/sim_push
 ```

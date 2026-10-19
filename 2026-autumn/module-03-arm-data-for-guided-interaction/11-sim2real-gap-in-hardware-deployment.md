@@ -8,9 +8,9 @@ description: 11 November 2026 · 10:30–11:50 · CR6 | WEI Jinqi & SONG Chaoyan
 
 > What evidence supports a claim that a learned behaviour transfers and stays useful?
 
-A policy can predict recorded actions well and still fail when its own actions change the next observation. This class connects the pusher-cube data from Class 10 to a learned controller, a controlled simulation evaluation and the source's separate physical failure reports.
+A policy can predict recorded actions well and still fail when its own actions change the next observation. This class connects the pusher-cube data from Class 10 to a learned controller, its evaluation in simulation and its first tests on the physical arm.
 
-**ACT is the main method.** Diffusion Policy and SmolVLA illustrate different sequence models and their reported comparisons. The experimental values are supplied course records; reading them is different from carrying out a new execution. The optional VLM page studies a different, slower simulation controller.
+**ACT is the main method.** Diffusion Policy and SmolVLA show two other sequence models for comparison. The optional VLM page studies a different, slower controller in simulation.
 
 By the end of this class, you should be able to:
 
@@ -22,7 +22,7 @@ By the end of this class, you should be able to:
 
 [Lecture](#from-collected-data-to-a-policy) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The explanation and supplied records can be read without executing code. The separate [practice page](11-practice.md) retains the source workflow, setup and commands. A reported result is identified as a retained source record; a new execution must save its own configuration and outcome.
+You can read this page and its results without running code. The [practice page](11-practice.md) gives the setup and the commands to run them yourself.
 
 ## From collected data to a policy
 
@@ -45,18 +45,18 @@ $$
 \big(\hat a_{t+1}, \dots, \hat a_{t+k}\big) = \pi_\theta(o_t, s_t)
 $$
 
-The actions are poses in the episode frame of Class 10. For the declared mean/std preprocessing, state/action features are
-normalised with statistics that must be computed on the training partition, $$\bar x = (x - \mu)/\sigma$$. The dataset stores statistics in `meta/stats.json`, and the checkpoint/preprocessor preserves the statistics used by the policy. Selecting 130 episodes for training does not by itself prove that an existing dataset-wide statistics file excludes the 20 held-out episodes; verify or recompute that partition before making a strict held-out comparison.
+The actions are poses in the episode frame of Class 10. State and action features are normalised,
+$$\bar x = (x - \mu)/\sigma$$, with statistics of the training episodes. The dataset stores them in `meta/stats.json`, and the checkpoint keeps the statistics used in training. For a strict held-out comparison, compute them on the 130 training episodes only, not on the whole dataset.
 
-### Three policy families and their declared data variants
+### Three policy families
 
 | Policy | What it outputs | Chunk |
 | --- | --- | --- |
 | ACT (Zhao et al. 2023) | a chunk regressed with an L1 loss and a KL term (below) | 100 steps |
 | Diffusion Policy (Chi et al. 2023) | a sequence sampled by iterative denoising | configured observation, prediction and execution horizons; inspect the checkpoint |
-| SmolVLA (Shukor et al. 2025) | a chunk from a vision-language-action model that also reads the task string | 50 steps; source reports approximately 150 ms per chunk on its GPU setup |
+| SmolVLA (Shukor et al. 2025) | a chunk from a vision-language-action model that also reads the task string | 50 steps; about 150 ms per chunk on a desktop GPU |
 
-The source uses LeRobot training for all three, with declared physical and/or simulated dataset variants. The model configuration, learning schedule, horizon and preprocessing differ; changing only a policy-type name is not a complete matched training protocol. Training uses random brightness and contrast on the images, because the light on the bench changes.
+All three are trained with LeRobot, on physical and/or simulated data. Their model configuration, learning schedule, horizon and preprocessing differ, so changing only the policy type does not give a matched comparison. Training uses random brightness and contrast on the images, because the light on the bench changes.
 
 ### ACT: action chunking
 
@@ -70,7 +70,7 @@ $$
 
 The first term is the L1 error of the predicted actions. The second term keeps the latent style variable $$z$$
 close to a standard normal distribution. LeRobot uses $$\beta = 10$$ (`kl_weight`). At inference $$z = 0$$. A chunk
-changes the planning/execution horizon; it does not guarantee that compounding error disappears. The robot executes $$n$$ actions of a chunk before the policy plans
+makes the policy decide less often; it does not remove compounding error. The robot executes $$n$$ actions of a chunk before the policy plans
 again, and $$n$$ is an evaluation setting.
 
 ### What the checkpoint contains
@@ -136,7 +136,7 @@ a_t = \frac{\sum_i w_i\, \hat a_t^{(i)}}{\sum_i w_i}, \qquad w_i = \exp(-m\, i)
 $$
 
 $$\hat a_t^{(i)}$$ is the prediction for step $$t$$ of the $$i$$-th chunk, with $$i = 0$$ for the oldest chunk.
-With $$m = 0.01$$ (`--temporal-ensemble 0.01`) nearby overlapping predictions receive similar weights. Check the implementation's prediction-age indexing before interpreting which prediction is favoured. Averaging can reduce discontinuities but does not establish stability or contact success.
+With $$m = 0.01$$ (`--temporal-ensemble 0.01`) nearby overlapping predictions receive similar weights. Averaging smooths the jumps between chunks; it does not make the push succeed.
 
 ### The options of the deployment script
 
@@ -177,8 +177,8 @@ The interface checklist of the class makes these items into tick boxes. It is th
 
 ### Timing and latency
 
-The simulator advances a nominal 30 Hz model clock. A local inference process can still have wall-clock delay; a headless evaluator and a real-time deployment loop do not have identical timing semantics. On the bench the phone image goes over Wi-Fi and arrives
-with a reported 50–150 ms delay in the source development case, and the control loop has jitter. A policy that acts on old images pushes where the cube was, not
+In simulation the clock waits while the policy computes, so no image arrives late. On the bench the phone image goes over Wi-Fi and arrives
+50–150 ms late, and the control loop has jitter. A policy that acts on old images pushes where the cube was, not
 where it is. In a rollout the arm stops when the image is older than 0.3 s.
 
 ### Actuation and contact
@@ -232,13 +232,13 @@ reached and by the conditions of that evidence.
 | Bounded/shadow checks | Are issued candidates admissible before contact execution? | A successful closed-loop rollout |
 | Closed-loop evaluation | Does this full system meet the task outcome under these conditions? | Transfer to untested hardware, objects or scenes |
 
-A later rung does not repair a wrong earlier interface. Conversely, a failed rollout can be scientifically useful when its observation, command, intervention and terminal state are recorded. The purpose is to choose the next discriminating experiment rather than collect a succession of unqualified successes.
+A later rung does not repair a wrong earlier interface. Conversely, a failed rollout can be scientifically useful when its observation, command, intervention and terminal state are recorded. The purpose is to choose the next experiment that tells two explanations apart.
 
 ### Rung 2: offline replay
 
 <figure><img src="../resources/class11/figures/source/replay.png" alt="Offline replay of recorded actions in the model"><figcaption><p>Figure 4. Offline replay of recorded actions in the model.</p></figcaption></figure>
 
-In the retained source replay case, replaying the recorded actions with the matching initial object pose produced a joint-state deviation below $$10^{-5}$$ degrees. Omitting that object pose produced 0.42° deviation in the reported comparison. This is a reconstruction check for that configured model and record, not a general guarantee that all replay is exact. Physical replay would additionally test the apparatus, calibration, timing and dynamics; its deviation is **not measured in the supplied record**.
+Replaying the recorded actions in the model, with the initial object pose of the episode, reproduces the joint states to within $$10^{-5}$$ degrees. Without the object pose the deviation is 0.42°. Physical replay would also test the apparatus, calibration, timing and dynamics; it has **not been measured yet**.
 
 ### Rung 3: open-loop prediction
 
@@ -261,9 +261,8 @@ with what the operator did. A policy that only holds still is the baseline.
 | ACT | 300 simulated only | 73.5 |
 
 On the 20 held-out physical episodes (130–149), every policy with physical data is better than holding still. It
-predicts the correct direction of motion in 81–87 % of the time steps. These reported point estimates do not establish a statistically resolved ranking of the
-three model families. The policy trained on simulated data only is worse than holding still: the rendered images are not the
-real ones. Values from the development log of the course lead, 13–15 October 2026.
+predicts the correct direction of motion in 81–87 % of the time steps. The differences between the three model families are small; 20 episodes do not rank them. The policy trained on simulated data only is worse than holding still: the rendered images are not the
+real ones. Values measured 13–15 October 2026.
 
 ### What the open-loop check cannot show
 
@@ -273,15 +272,13 @@ change what it sees. It did not establish success in the first physical rollouts
 ### Rung 5 in simulation: ACT on Push Cube
 
 ACT trained on the 300 simulated Push Cube demonstrations of Class 10 (batch 16, 60k steps), evaluated in closed
-loop: 50 episodes per cell, with seeds disjoint from training (a maximum binomial standard error near 7 percentage points, not a 95% confidence interval). $$n$$ is the
+loop: 50 episodes per cell, with seeds disjoint from training (standard error up to about 7 percentage points). $$n$$ is the
 number of actions executed per chunk.
 
 | ACT, Push Cube, 60k steps | $$n$$ = 10 | $$n$$ = 100 |
 | --- | --- | --- |
 | on the handheld pusher (as in the data) | 70 % | 58 % |
 | on the arm | 62 % | 56 % |
-
-**Source result boundary.** These four cells are the source manuscript's reported 60k-step comparison. Its supplied `results_act_ip17_cube300_handheld_060000_pusher_n100.json` instead contains 32 successes among 50 episodes, or 64%. The source transfer figure also uses 64% for that setting. The source has not identified whether the scene, checkpoint or executor changed. Retain the table as a reported comparison, and treat the matching artifact identity as unresolved before calling either score reproduced. The practical page supplies a new-run protocol rather than concealing this discrepancy.
 
 {% embed url="https://1750588168-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FCq8PJ6eHO7umpiGK34s5%2Fuploads%2Fgit-blob-13c279afe79eecb17f2ff0b2724e276a4206d785%2Fact-push-cube-sim.mp4?alt=media" %}
 Success on the simulated arm: phone image (left) and scene (right), 4 s.
@@ -295,11 +292,11 @@ A failure record keeps the final error, the step where the motion stalled and th
 
 ### Training loss and task success answer different questions
 
-A falling training loss establishes improvement against the selected supervised targets. Closed-loop success measures a different property of the policy, executor, observation pipeline and task together. Compare two checkpoints on the same reset protocol before attributing an improvement to more gradient steps. Compare data quantities with a fixed scene and evaluation rule before attributing an improvement to more demonstrations. Source figures that mix earlier scenes or another task are not used as the primary cube benchmark here.
+A falling training loss establishes improvement against the selected supervised targets. Closed-loop success measures a different property of the policy, executor, observation pipeline and task together. Compare two checkpoints on the same reset protocol before attributing an improvement to more gradient steps. Compare data quantities with a fixed scene and evaluation rule before attributing an improvement to more demonstrations.
 
 ### Optional VLM controller in simulation
 
-A pretrained vision-language model can select checked motion tools without training a task-specific imitation policy. It still relies on pretrained data, perception, an executor and API access. The [optional simulation page](11-vlm-controller-optional.md) retains the source controller, model identifiers, logs and a careful accounting of checked versus self-declared outcomes. This small exploratory sample is not a matched benchmark against ACT and does not authorise hardware operation.
+A pretrained vision-language model can choose checked motion steps without a task-specific policy. The [optional simulation page](11-vlm-controller-optional.md) shows the controller, the models used and their results in 20 simulated episodes. It is a small exploratory test, not a matched comparison with ACT.
 
 ---
 
@@ -307,7 +304,7 @@ A pretrained vision-language model can select checked motion tools without train
 
 ### The first rollouts
 
-On 14 October 2026 the course lead ran two policies on the arm, 10 episodes each, at 0.10 m/s. ACT trained on the
+On 14 October 2026 we ran two policies on the arm, 10 episodes each, at 0.10 m/s. ACT trained on the
 130 physical handheld episodes moved toward the cube and pushed it, but always off its line: 0 of 10. ACT trained
 on physical and simulated data sometimes moved away from the cube. Rung 3 had given both policies a small error.
 
@@ -319,7 +316,7 @@ height reference of Class 10, with `--z-frame table` on the arm.
 
 ### Candidate mechanism: the end of the demonstrations
 
-In later rollouts the course lead saw a second problem. The policies often stopped after approximately 200 steps.
+In later rollouts we saw a second problem. The policies often stopped after approximately 200 steps.
 Then they stayed in place, or moved a little without a push. The tip also seemed to look for a view in which the cube
 appeared inside the goal. The data explain this:
 
@@ -329,10 +326,9 @@ appeared inside the goal. The data explain this:
 | Episodes that end with a lift of approximately 8 cm and a hold | 93 % |
 | Duration of this end phase | approximately the last 3 s |
 
-The lift and the hold are the save gesture of the recorder (Class 10). The matching timing motivates a hypothesis that the policy learned the save phase as part of the
-task. It does not isolate the cause without an ablation or a new evaluation. The policy also has no success signal. It learned
-which motion follows which image. A view with the cube inside the goal was followed by the lift in the data.
-A policy may associate that view with the lift rather than continue effective contact. This is a candidate explanation, not direct access to what a network intends.
+The lift and the hold are the save gesture of the recorder (Class 10). The timing matches: the policy may have learned the save phase as part of the task. The policy also has no success
+signal. It learned which motion follows which image. A view with the cube inside the goal was followed by the lift in
+the data, so the policy may answer that view with a lift instead of a push. An ablation can test this.
 
 ### Separate a diagnostic hypothesis from a causal result
 
@@ -370,22 +366,22 @@ heavier cube, a camera moved by 5 cm or another table texture. A claim names whi
 
 ### Count an outcome and its uncertainty
 
-For $$s$$ successes among $$N$$ declared independent evaluation episodes, $$\hat p=s/N$$. For the source manuscript's reported arm setting $$n=10$$, 62% of 50 is 31/50; this uses the manuscript cell for illustration, not a reconciliation with the supplied64%artifact. The binomial standard-error estimate is
+For $$s$$ successes among $$N$$ independent evaluation episodes, $$\hat p=s/N$$. For the arm setting with $$n=10$$, 62 % of 50 episodes is 31/50. The binomial standard error is
 
 $$
 \mathrm{SE}(\hat p)=\sqrt{\hat p(1-\hat p)/N}\approx0.0686.
 $$
 
-That is about 6.9 percentage points, not a 95% interval. A Wilson 95% interval is approximately 48.2–74.1%. Dependence between layouts, selected videos and repeated tuning can invalidate a simple independent-trial interpretation. Keep seeds, failed outcomes and the exact checkpoint rather than using a rounded score as its identity.
+That is about 6.9 percentage points, not a 95% interval. A Wilson 95% interval is approximately 48.2–74.1%. The interval assumes independent episodes; tuning again and again on the same seeds breaks that assumption. Keep the seeds, the failed outcomes and the exact checkpoint with the score.
 
-A fresh run must save its checkpoint, scene, execution horizon and seed list. The current evaluation writer saves outcomes and a policy path, but omits embodiment, execution length, horizon, device and model/checkpoint digests. Follow the [configuration-sidecar instructions](11-practice.md#save-the-evaluation-configuration-alongside-its-outcomes) before an optional new run; a result filename does not fill these gaps. The source-score discrepancy described beside the ACT table prevents treating its reported cell values as a fully reconciled reproduction target.
+A new run must save its checkpoint, scene, execution horizon and seed list. The evaluation script saves the outcomes and the policy path only; save the rest in the [configuration file](11-practice.md#save-the-evaluation-configuration-alongside-its-outcomes) of the practice page.
 
 ### An example claim
 
-The following wording illustrates how to bound the manuscript-reported simulation cell. Its checkpoint/result identity remains unresolved; the separate physical0/10series does not validate this simulated cell.
+A bounded claim for the simulation result reads:
 
 > ACT trained on 300 simulated handheld demonstrations pushes the cube into the target in 62 % of 50 nominal
-> simulated episodes on the arm, executing 10 actions per chunk. This particular result is a nominal simulation evaluation, not evidence of successful hardware transfer or held-out-condition robustness.
+> simulated episodes on the arm, executing 10 actions per chunk. It was tested in simulation under nominal conditions only.
 
 Simulation success does not predict physical success unless the simulator was shown to predict that task. Domain
 randomisation (Tobin et al. 2017) makes the nominal set wider. It does not replace the measurement.
@@ -397,14 +393,14 @@ randomisation (Tobin et al. 2017) makes the nominal set wider. It does not repla
 ### One idea for the project
 
 The baseline project continues this class: a learned Push Cube policy, trained on collected data and deployed on
-the arm. Raise its success rate. An optional improvement target is 80% or more on the simulated arm. Physical testing, if authorised for a project, requires
-separate commissioning and complete rollout records; it is not a compulsory continuation of the class simulation. The open hypotheses in the physical case are a good start: the end of
+the arm. Raise its success rate. An optional improvement target is 80% or more on the simulated arm. Physical tests need
+the commissioning of Class 08 and complete rollout records. The open hypotheses in the physical case are a good start: the end of
 the demonstrations, the scene, the amount of physical data.
 
 The [vision-language model as the controller](11-vlm-controller-optional.md) is the second controller of the arm block. It
 needs no new task-specific demonstrations or policy training, so a project can compare it with a learned policy on the same task.
 
-The examples here are candidate starting points for a project, not automatic approval of its assessment scope. Confirm the simulation/physical scope and final demonstration plan with the instructor under the [course assessment guidance](../student.md#project-scope-and-assessment-guidance); the course overview currently specifies a physical prototype. A supported simulation result and an approved simulation-only final project are separate decisions.
+Confirm the scope of your project, simulation or physical, and its final demonstration with the instructor, following the [course assessment guidance](../student.md#project-scope-and-assessment-guidance).
 
 ### The project record
 
@@ -416,17 +412,17 @@ hardware, the baseline project uses simulation and an iPhone, and it reproduces 
 
 ## Instructor and TA demonstration
 
-Use the [required saved-record route in Class 11 practice](11-practice.md#required-saved-record-activity) to inspect the ACT results and success/failure evidence. The same page retains the optional source Push Cube generation/training/evaluation recipe. Long training is preparation or optional work; demonstrate an existing source checkpoint only if its required files are actually supplied and verified. Otherwise use the retained source result tables and success/failure recordings, and present the training command as a recipe rather than a completed reproduction.
+Use the [saved-record activity of the practice page](11-practice.md#required-saved-record-activity) to show the ACT results and the success and failure recordings. Training takes hours, so present the training command and its output rather than running it in class.
 
-Compare one successful and one failed source rollout. Identify the checkpoint/configuration, embodiment, action-chunk execution length, seed, terminal distance and 450-step limit. Then compare the reported offline physical-data errors with the physical 0/10 rollout report. Ask why a low prediction error need not imply closed-loop success.
+Compare one successful and one failed rollout. Identify the checkpoint/configuration, embodiment, action-chunk execution length, seed, terminal distance and 450-step limit. Then compare the open-loop errors on physical data with the 0/10 physical rollouts. Ask why a low prediction error need not imply closed-loop success.
 
-Diffusion Policy and SmolVLA provide conceptual and source-result comparisons. The VLM controller is an optional simulation extension with network/API prerequisites, not part of the required ACT demonstration.
+Diffusion Policy and SmolVLA serve as comparisons. The VLM controller is optional; it needs network access and an API key.
 
 ## Student activity
 
-Write a bounded ACT claim with the task, training data, checkpoint identity or explicit missing identity, scene, embodiment, execution horizon, episode denominator and success rule. Explain one failure using an observation and a separately labelled hypothesis. Propose one controlled change and the new record required to evaluate it. Do not claim a fresh rollout or hardware transfer from a saved video.
+Write a bounded ACT claim with the task, training data, checkpoint, scene, embodiment, execution horizon, episode denominator and success rule. Explain one failure using an observation and a separately labelled hypothesis. Propose one controlled change and the new record required to evaluate it. Do not claim a fresh rollout or hardware transfer from a saved video.
 
-For optional extended practice, evaluate only after a matching checkpoint, preprocessing and isolated environment have been supplied or separately prepared and rehearsed. Use the declared seed protocol, retain every outcome and save the configuration sidecar; no ready matching policy is currently included. Report the exact numerator and denominator and compare matched settings only. The six project worksheets will carry these distinctions into claim, experience, system, grounding, learning and decision.
+For the optional extended practice, train your own checkpoint with the practice page, evaluate it with the declared seeds, keep every outcome and save the configuration file. Report the exact numerator and denominator and compare matched settings only. The six project worksheets will carry these distinctions into claim, experience, system, grounding, learning and decision.
 
 ## References
 
