@@ -113,7 +113,7 @@ uv run mjpython scripts/teleop_real.py --robot sim --phone-ip <phone IP> --recor
 {% endtab %}
 {% endtabs %}
 
-These options select the lecture's simulation-controller bounds and the fixed nominal start used by the later pose diagnostic: x 0.22–0.56 m, y ±0.20 m, z 0.003–0.20 m, 0.25 m/s, yaw ±60° and tilt 30°. Angular speed remains the controller default, 2 rad/s. `--robot sim` by itself does not select these bounds: the teleoperation defaults are 0.15 m/s, x 0.10–0.65 m, y ±0.45 m, z up to 0.30 m and yaw ±80°. Keep the exact command, source revision, start/frame convention and any changed settings in the dataset contract. These classroom options describe simulation; they are not a physical commissioning instruction.
+These options select the lecture's virtual workspace and motion limits, and the fixed nominal start used by the later pose diagnostic: x 0.22–0.56 m, y ±0.20 m, z 0.003–0.20 m, 0.25 m/s, yaw ±60° and tilt 30°. Angular speed remains the controller default, 2 rad/s. `--robot sim` by itself does not select these bounds: the teleoperation defaults are 0.15 m/s, x 0.10–0.65 m, y ±0.45 m, z up to 0.30 m and yaw ±80°. Keep the exact command, source revision, start/frame convention and any changed settings in the dataset contract. These classroom options describe simulation; they are not a physical commissioning instruction.
 
 The keys work in the MuJoCo window and in the terminal:
 
@@ -167,7 +167,7 @@ of each episode and the units.
 uv run python scripts/check_handheld_dataset.py --root datasets/my_sim_teleop
 ```
 
-The source checker decodes the **observed pose sequence**, solves inverse kinematics and estimates speed/tilt/yaw. It does not execute the logged actions through dynamics or reconstruct cube contact. It also does not test workspace-box membership, angular speed or the semantic correctness of `action`. Its terminal table has the following form; values depend on the recorded episode:
+The source checker decodes the **observed pose sequence**, solves inverse kinematics and estimates speed/tilt/yaw. It does not execute the logged actions through dynamics or reconstruct cube contact. It also does not test virtual-workspace membership, angular speed or the semantic correctness of `action`. Its terminal table has the following form; values depend on the recorded episode:
 
 ```
   ep frames  reach  peak speed  P95 speed  max tilt      yaw range
@@ -265,7 +265,7 @@ Push the cube into the goal in one smooth motion. The status line shows what the
 frame   45 | phone   56 Hz | displacement [-3.9 -10.7  12. ] cm | tilt  0.0 deg yaw   0.0 deg | robot can reach | jumps 0
 ```
 
-**Look at:** `robot can reach` reports the online IK check for the mapped pose. It does not check dynamic tracking, collision/contact or camera visibility. Keep the measured motion within the intended 0.25 m/s, 30° tilt and ±60° yaw contract and record the workspace/frame convention. This recorder does not clip or reject every speed/orientation/workspace violation; it writes the next measured pose as `action`, rather than a controller-limited command.
+**Look at:** `robot can reach` reports the online IK check for the mapped pose. It does not check dynamic tracking, collision/contact or camera visibility. Keep the measured motion within the intended 0.25 m/s, 30° tilt and ±60° yaw contract and record the virtual workspace and frame convention. This recorder does not clip or reject every speed/orientation/workspace violation; it writes the next measured pose as `action`, rather than a controller-limited command.
 {% endstep %}
 
 {% step %}

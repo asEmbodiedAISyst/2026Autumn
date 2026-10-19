@@ -95,7 +95,7 @@ same units and frame.
 flowchart LR
     I[phone image] --> P[policy]
     Q[motor angles] --> K[forward kinematics] --> E[state in the episode frame] --> P
-    P --> A[action in the episode frame] --> B[target in the base frame] --> L[workspace and speed limits] --> IK[inverse kinematics] --> M[motor targets, 150 Hz]
+    P --> A[action in the episode frame] --> B[target in the base frame] --> L[virtual workspace and speed limits] --> IK[inverse kinematics] --> M[motor targets, 150 Hz]
 ```
 
 The loop runs at 30 Hz. The state comes from the motor angles through the forward kinematics of Class 08. The
@@ -122,7 +122,7 @@ origin = pos if self.z_frame == "start" else np.array([pos[0], pos[1], 0.0])   #
 self.frame = EpisodeFrame(origin, rot)
 ...
 p_des, R_des = self.frame.decode(action)            # episode frame -> base frame
-p, R = self.ctrl.command(p_des, R_des)              # workspace box, speed limits
+p, R = self.ctrl.command(p_des, R_des)              # virtual workspace, speed limits
 res = self.ik.solve(p, R, self.q_cmd, max_iters=30) # refused if out of reach: the arm holds
 ```
 

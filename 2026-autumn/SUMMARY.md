@@ -22,7 +22,7 @@
 
 ## Module 03: Arm Data for Guided Interaction
 
-* [08 Arm commissioning and control in simulation](module-03-arm-data-for-guided-interaction/08-lets-build-a-simple-arm-and-turn-it-on.md)
+* [08 Let's build a simple arm and turn it on](module-03-arm-data-for-guided-interaction/08-lets-build-a-simple-arm-and-turn-it-on.md)
   * [Practice: control the arm in simulation](module-03-arm-data-for-guided-interaction/08-practice.md)
   * [Optional: assembly guide](module-03-arm-data-for-guided-interaction/08-assembly-optional.md)
   * [Optional: power-on and zero](module-03-arm-data-for-guided-interaction/08-power-on-and-zero-optional.md)

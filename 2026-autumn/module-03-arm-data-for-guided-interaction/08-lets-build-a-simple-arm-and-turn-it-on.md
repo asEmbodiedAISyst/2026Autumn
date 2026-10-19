@@ -45,10 +45,6 @@ bench, with its 48 V supply behind it. Each joint is a RobStride motor of the ki
 
 <figure><img src="../resources/class08/figures/source/kit-boxes.png" alt="The four boxes of the kit: RS-Pn Power Adapter, RS-Sn Structure Kit, RS-Mn Motor Kit and RS-Gn Gripper Kit"><figcaption><p>Figure 2. The four boxes of the kit: RS-Pn Power Adapter, RS-Sn Structure Kit, RS-Mn Motor Kit and RS-Gn Gripper Kit. Four of the five boxes of the kit.</p></figcaption></figure>
 
-{% hint style="info" %}
-**Photos to be added:** the parts of each box, laid out.
-{% endhint %}
-
 The arm comes in five boxes: the power adapter, the structure kit, the motor kit, the clamp and the gripper kit.
 The [assembly guide](08-assembly-optional.md) lists the content of each box and builds the arm step by step.
 

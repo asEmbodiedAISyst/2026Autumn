@@ -38,7 +38,7 @@ The model must call exactly one tool per step. A tool call is a structured reque
 
 ## Rejected, not clipped
 
-The script checks each `move` target against the workspace box, the inverse kinematics and a step length of 15 cm.
+The script checks each `move` target against the virtual workspace, the inverse kinematics and a step length of 15 cm.
 A target that fails is rejected with the reason, and the moves after it do not run. The model reads the reason and
 plans again. With `locate`, the model does the perception, and the script does the geometry.
 

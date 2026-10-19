@@ -285,7 +285,7 @@ The gripper is one end effector. The mapping can be reused with another tool whe
    add a camera named `phone` where the phone camera is.
 3. Copy `scene_pusher_cube.xml` and include your model.
 4. In a copy of `teleop_rebot_rs_pusher_sim.py`, set the scene, a start pose that puts the tool where you want it,
-   and the workspace box of the `tcp` site.
+   and the virtual workspace of the `tcp` site.
 5. Run it with the phone simulator first, then with the iPhone.
 
 ### The pusher on the physical arm

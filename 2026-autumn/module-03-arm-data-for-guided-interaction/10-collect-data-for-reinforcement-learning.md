@@ -110,9 +110,9 @@ the pose of the rod tip. The STL files of both prints are in the class folder
 | --- | --- |
 | Matched camera-to-tip geometry | the camera is on the tool; compare actual views for occlusion and appearance |
 | Relative pose | each episode has its own frame (below); only gravity is shared by the phone and the robot |
-| Declared executor limits | simulation-controller contract: tip workspace x 0.22–0.56 m, y ±0.20 m, z 0.003–0.20 m; linear speed 0.25 m/s, angular speed 2 rad/s, rod tilt 30°, yaw ±60° |
+| Declared executor limits | simulation-controller contract: tip virtual workspace x 0.22–0.56 m, y ±0.20 m, z 0.003–0.20 m; linear speed 0.25 m/s, angular speed 2 rad/s, rod tilt 30°, yaw ±60° |
 
-The scripted simulation expert stores controller-limited targets. The assigned simulated-arm teleoperation command on the [practice page](10-practice.md#start-the-recorder) explicitly selects those limits; `--robot sim` alone retains the script's different teleoperation defaults. Physical handheld recording does not clip measured poses to this contract: its next-pose labels require a separate executability audit. Equal limits are a condition to establish when sharing demonstrations, not a property guaranteed by equal field names. The supplied later checker diagnoses observed-pose reachability, speed, tilt and yaw; it does not test workspace membership, angular speed or contact dynamics.
+The scripted simulation expert stores controller-limited targets. The assigned simulated-arm teleoperation command on the [practice page](10-practice.md#start-the-recorder) explicitly selects those limits; `--robot sim` alone retains the script's different teleoperation defaults. Physical handheld recording does not clip measured poses to this contract: its next-pose labels require a separate executability audit. Equal limits are a condition to establish when sharing demonstrations, not a property guaranteed by equal field names. The supplied later checker diagnoses observed-pose reachability, speed, tilt and yaw; it does not test virtual-workspace membership, angular speed or contact dynamics.
 
 ### The episode frame
 

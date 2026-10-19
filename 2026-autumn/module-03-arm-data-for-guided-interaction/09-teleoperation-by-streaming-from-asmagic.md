@@ -30,7 +30,7 @@ The explanation and supplied records can be read without executing code. The sep
 
 ```mermaid
 flowchart LR
-    P[iPhone pose, 60 Hz] --> M[clutched mapping] --> L[workspace and speed limits] --> K[inverse kinematics] --> J[joint targets, 30 Hz] --> A[arm]
+    P[iPhone pose, 60 Hz] --> M[clutched mapping] --> L[virtual workspace and speed limits] --> K[inverse kinematics] --> J[joint targets, 30 Hz] --> A[arm]
     A --> S[motor angles] --> R[recorder, 30 Hz]
     C[robot cameras] --> R
 ```
@@ -217,15 +217,18 @@ $$
 
 Rotating the phone changes the second term even when its tracked origin is stationary. A 0.16 m offset rotated by a small illustrative angle $$\delta\theta=0.1\,\mathrm{rad}$$ gives a first-order tip displacement of about $$0.016\,\mathrm{m}$$ when the offset is perpendicular to the rotation axis. This is geometry, not a measured tracking result. The source `--pattern tilt` example makes this effect observable without moving the phone origin.
 
-The gripper example above supplies the body-axis rotation and a convenient relative reference. The pusher script additionally supplies a translation and its own start pose and workspace. Reusing the gripper's matrix while dropping this offset would give the wrong contact point. The practical page promotes the existing source pusher route; the gripper remains a useful contrast.
+The gripper example above supplies the body-axis rotation and a convenient relative reference. The pusher script additionally supplies a translation and its own start pose and virtual workspace. Reusing the gripper's matrix while dropping this offset would give the wrong contact point. The practical page promotes the existing source pusher route; the gripper remains a useful contrast.
 
 ## From the gripper target to joint targets
 
 ### Limits on the target
 
+The **virtual workspace** is a software limit: a box that the target of the rod tip must stay in. It is set in the
+script, apart from the workspace of the arm, the region that the hardware can reach.
+
 | Stage | Rule |
 | --- | --- |
-| Virtual Workspace | $$x$$ 0.12–0.42 m, $$y$$ ±0.25 m, $$z$$ 0.03–0.30 m |
+| Virtual workspace | rod tip in $$x$$ 0.15–0.50 m, $$y$$ ±0.25 m, $$z$$ 0.005–0.25 m |
 | Speed | 0.25 m/s and 90 °/s |
 | Inverse kinematics | damped least squares on the MuJoCo Jacobian, 30 iterations per period |
 
@@ -239,8 +242,19 @@ e = \begin{bmatrix} p_d - p \\ \tfrac12\, e_R \end{bmatrix}, \qquad
 e_R = \tfrac12 \sum_{k=1}^{3} r_k \times r_{d,k}
 $$
 
-where $$r_k$$ and $$r_{d,k}$$ are the columns of $$R$$ and $$R_d$$. The step is the damped least-squares
-solution (Lynch and Park 2017, chap. 6):
+where $$r_k$$ and $$r_{d,k}$$ are the columns of $$R$$ and $$R_d$$.
+
+The two factors ½ have different jobs:
+
+- **The ½ inside $$e_R$$ is part of the orientation error.** For a rotation by an angle $$\theta$$ about a unit
+  axis $$a$$, the sum $$\sum_k r_k \times r_{d,k}$$ equals $$2\sin\theta\,a$$. The ½ turns it into
+  $$e_R = \sin\theta\,a \approx \theta\,a$$: the rotation still to do, in radians, about its axis.
+- **The ½ in front of $$e_R$$ is a weight.** It says how much one radian of orientation error counts against one
+  metre of position error: here 1 rad weighs as much as 0.5 m. The code multiplies the rotation rows of $$J$$ by the
+  same ½, so the error and the Jacobian stay consistent. Without damping, this weight would not change the step;
+  it matters through the damping, near a singularity, where the solver must trade position against orientation.
+
+The step is the damped least-squares solution (Lynch and Park 2017, chap. 6):
 
 $$
 \Delta q = J^{\top}\big(J J^{\top} + \lambda^2 I\big)^{-1} e \;+\; \big(I - J^{+} J\big)\,k\,(q_{home} - q)
@@ -257,16 +271,17 @@ dq = J_pinv @ e + (np.eye(6) - J_pinv @ J) @ (0.05 * (self.home - q))           
 
 ### Read this Jacobian in the correct ordering
 
-The solver stacks translation before rotation. Featherstone spatial motion vectors stack angular before linear components. Both are valid representations when the matrix rows, residual and code agree; a permutation is required before treating one as the other. The factor 0.5 is an engineering weight between position and orientation residuals, not a universal physical conversion between metres and radians. Damping, posture bias, initial guess, joint clipping and the acceptance tolerance together define this particular numerical solver.
+The solver stacks translation before rotation. Featherstone spatial motion vectors stack angular before linear components. Both are valid representations when the matrix rows, residual and code agree; a permutation is required before treating one as the other. Damping, posture bias, initial guess, joint clipping and the acceptance tolerance together define this particular numerical solver.
 
 **Worked limit check:** At 30 updates/s and a 0.25 m/s target-speed bound, one positional increment is at most $$0.25/30=0.00833\ldots\,\mathrm{m}$$. A 40 mm operator request therefore cannot become a 40 mm one-tick target jump. The same arithmetic does not guarantee a physical tool speed in a fault.
 
 ### A step is accepted only if it is reached
 
-The inverse kinematics can fail for a target that is inside the box but outside the reach of the arm. The
+The inverse kinematics can fail for a target that is inside the virtual workspace but outside the reach of the arm. The
 controller takes a step only if the solution reaches the target within 5 mm and 5°. If not, the arm holds and the
-record marks the frame as `blocked`. With the gripper pointing straight down, the arm cannot go above
-approximately 0.12 m because of the wrist limit. Tilt the phone to tilt the gripper and reach higher.
+record marks the frame as `blocked`. With the rod vertical, almost all of the virtual workspace is reachable: the blocked
+targets are at its top ($$z$$ = 0.25 m) close to the base ($$x \le$$ 0.20 m) or at its sides
+($$\lvert y \rvert$$ = 0.25 m). Move lower or back toward the centre of the virtual workspace.
 
 ### When the stream stops
 
