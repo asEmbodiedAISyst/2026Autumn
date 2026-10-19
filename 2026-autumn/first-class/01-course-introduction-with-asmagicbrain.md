@@ -63,6 +63,10 @@ A person, controller or policy selects actions. The body and environment determi
 
 **Designing data begins before a file is saved.** It includes choosing the task and starting conditions, the actions and interventions, the observations to retain, and the conditions to cover. It also includes deciding which comparison will establish whether the records were useful. More recordings of an easy case may leave the important uncertainty untouched.
 
+![Experience-generating system showing live feedback, optional recording and provenance, and subsequent interpretation or learning.](../resources/class01/figures/01-experience-generating-system.png)
+
+*Figure 1. A physical interaction can support both live feedback and subsequent learning or experimental revision. Dashed paths represent information retained when logging is enabled. Commands and measured motion are distinct. This is a conceptual schematic, not a measured result.*
+
 ### A short historical perspective
 
 Physical AI connects several established lines of inquiry. The following examples offer useful questions rather than a single historical progression.
@@ -137,6 +141,10 @@ Your project should connect a precise question to an implemented system, interpr
 ## Teaching team demonstrations
 
 The teaching assistants introduce the asMagicBrain Platform through a LEAP Hand and a reBot leader–follower arm arrangement. Before each demonstration, identify the action source, observations, control mode and operating boundary. The designated operator controls the system; keep the stop available and remain outside its motion area.
+
+![Four TA demonstration pathways: hand retargeting, cube rotation, leader–follower arms and an iPhone-guided pusher.](../resources/class01/figures/02-four-ta-demonstration-pathways.png)
+
+*Figure 2. The four demonstrations connect guidance or observations to mapping, robot commands and physical response. Cube-task feedback depends on the prepared setup; the TA identifies the actual observation channels and control mode. Live motion alone does not establish recording or online learning.*
 
 ### LEAP Hand: real-time hand retargeting
 

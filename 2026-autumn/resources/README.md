@@ -4,6 +4,7 @@ All course resources are organized by class in this folder. Each `classXX/` cont
 
 | Class | Package | Availability and interpretation |
 |---|---|---|
+| 01 | [Introduction and platform demonstrations](../first-class/01-course-introduction-with-asmagicbrain.md) | Conceptual illustrations of experience generation and the four TA pathways; not recorded performance evidence. |
 | 02 | [Actuator basics](class02/practical/README.md) | The active lesson uses the hardware record, not the older simulation files retained in the source package. Geometry is not an identified dynamics model. |
 | 03 | [Fixture digitization](class03/practical/README.md) | Validation establishes model structure and loading. It does not identify physical dynamics or validate a hardware controller. |
 | 04 | [Single-actuator identification](class04/practical/README.md) | The current source results/overall_heldout_result.csv reports 30 held-out XC330 episodes, mean baseline RMSE 0.02064688985201488 rad and fitted RMSE 0.0148139849688432 rad (28.2508% reduction). Earlier source README values describe a stale result. Effective fit parameters are not isolated motor constants. |
