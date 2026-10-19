@@ -4,6 +4,8 @@ description: 04 December 2026 · 09:00–10:50 · L12 | SONG Chaoyang
 
 # 21 Final Project Showcase
 
+Read the [assessment guide](resources/assessment-guide.md) for the criteria and point allocations used to mark this work.
+
 The **2026 Autumn showcase** brings all eight teams together for live presentations, questions, posters and awards. We adapt [RSS's live presentation over video](https://roboticsconference.org/2026/information/presentationInstructions/) to our class: **each team's presentation is followed immediately by its own Q&A**, with the other teams in the audience.
 
 Follow the project scope and demonstration plan agreed with the instructor under the [course assessment guidance](student.md#project-scope-and-assessment-guidance). The video-backed presentation is required for every team. Conditional instructions for operating hardware below are operating arrangements, not approval of a simulation-only assessment scope or a new requirement for every team to run hardware live. Live demonstrations and awards do not replace the assessed code, results and video.

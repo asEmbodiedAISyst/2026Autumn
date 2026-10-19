@@ -4,6 +4,8 @@ description: 18 November 2026 · 10:30–11:50 · CR6 | SONG Chaoyang
 
 # 14 Final Project III: System
 
+Read the [assessment guide](../resources/assessment-guide.md) for the criteria and point allocations used to mark this work.
+
 ## How we will use this class
 
 **Most of this class is reserved for final-project preparation with your team.** After a short introduction, use the working time to trace your physical system, sensing, action, control and recording interfaces. Discuss questions and evidence with the teaching team as you work. The readings and filled examples below are references for your project; use them to support your decisions and worksheet entries.

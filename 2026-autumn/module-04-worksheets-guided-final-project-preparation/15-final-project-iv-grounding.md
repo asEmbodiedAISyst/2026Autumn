@@ -4,6 +4,8 @@ description: 20 November 2026 · 09:00–10:50 · L12 | SONG Chaoyang
 
 # 15 Final Project IV: Grounding
 
+Read the [assessment guide](../resources/assessment-guide.md) for the criteria and point allocations used to mark this work.
+
 ## How we will use this class
 
 **Most of this class is reserved for final-project preparation with your team.** After a short introduction, use the working time to check the correspondence between your model or commands and the physical evidence. Discuss questions and evidence with the teaching team as you work. The readings and filled examples below are references for your project; use them to support your decisions and worksheet entries.

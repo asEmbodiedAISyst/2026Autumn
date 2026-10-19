@@ -17,6 +17,7 @@ Read the class notes on GitBook; use the public student repository for code, mod
 | Find practical files and setup instructions | [Course resources](resources/README.md) |
 | Download a worksheet and check its filename | [Six worksheet submissions](resources/project-workbook/README.md) |
 | Open my team's private repository | [Team01–Team08 repository links](first-class/01-course-introduction-with-asmagicbrain.md#your-assigned-team-repository) |
+| Understand how work is marked | [Assessment guide](resources/assessment-guide.md) |
 | Check a deadline | [Important deadlines](#important-deadlines) |
 | Prepare final project artifacts | [Poster](module-05-final-project-submissions/18-final-poster-submission.md) · [Code](module-05-final-project-submissions/19-final-code-submission.md) · [Video and final worksheets](module-05-final-project-submissions/20-final-video-submission.md) · [Showcase](21-final-project-showcase.md) |
 
@@ -114,7 +115,7 @@ Assessment combines individual participation with a progressive team project.
 
 The course description specifies a physical prototype. Simulation and recorded-data examples in individual classes support preparation and bounded simulation claims; they do not by themselves approve a simulation-only final project. Confirm your project scope and demonstration plan with the instructor when preparing [Worksheet 1: Claim](module-04-worksheets-guided-final-project-preparation/12-final-project-i-claim.md). Do not infer a hardware exemption or a requirement for a live hardware demonstration from a class example or the showcase programme.
 
-The category weights above are the published assessment allocation. Obtain the instructor-approved marking criteria and the allocation within the six staged records before the project checkpoints. Worksheet support/context labels describe evidence; they are not marks. Submission instructions and award descriptions do not substitute for marking criteria.
+The [assessment guide](resources/assessment-guide.md) gives the criteria, point allocations and marking levels for every component, including each of the six worksheet checkpoints. The category weights above remain unchanged. Worksheet support/context labels describe evidence; they are not marks. Submission instructions and award descriptions do not substitute for marking criteria.
 
 ### Academic Integrity
 

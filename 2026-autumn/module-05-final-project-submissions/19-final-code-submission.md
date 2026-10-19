@@ -4,6 +4,8 @@ description: 01 December 2026 · Deadline 10:20 · No class meeting | SONG Chaoy
 
 # 19 Final Code Submission
 
+Read the [assessment guide](../resources/assessment-guide.md) for the criteria and point allocations used to mark this work.
+
 **Deadline: 1 December 2026, 10:20 — Abu Dhabi time (UTC+4).**
 
 **Public holiday: no class meeting. The submission deadline remains in effect.**

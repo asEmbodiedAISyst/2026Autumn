@@ -60,3 +60,5 @@
 
 * [Course resources and practical files](resources/README.md)
 * [Worksheet templates and submission guide](resources/project-workbook/README.md)
+
+* [Assessment guide](resources/assessment-guide.md)

@@ -4,6 +4,8 @@ description: 24 November 2026 · 09:00–10:20 · CR6 | SONG Chaoyang
 
 # 16 Final Project V: Learning
 
+Read the [assessment guide](../resources/assessment-guide.md) for the criteria and point allocations used to mark this work.
+
 ## How we will use this class
 
 **Most of this class is reserved for final-project preparation with your team.** After a short introduction, use the working time to connect your data to a model, controller, estimate or design change and an evaluation. Discuss questions and evidence with the teaching team as you work. The readings and filled examples below are references for your project; use them to support your decisions and worksheet entries.

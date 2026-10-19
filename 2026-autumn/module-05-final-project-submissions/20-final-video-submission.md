@@ -4,6 +4,8 @@ description: 02 December 2026 · Deadline 11:50 · No class meeting | SONG Chaoy
 
 # 20 Final Video Submission
 
+Read the [assessment guide](../resources/assessment-guide.md) for the criteria and point allocations used to mark this work.
+
 **Deadline: 2 December 2026, 11:50 — Abu Dhabi time (UTC+4).**
 
 **Public holiday: no class meeting. The submission deadline remains in effect.**

@@ -2,6 +2,7 @@
 
 Return to the [course home and linked schedule](../student.md#teaching-schedule). Read the relevant class page before downloading or running its practical files. **Public course files are learning resources; submit assessed work in your assigned private team repository.**
 
+- **Assessment:** read the [assessment guide](assessment-guide.md) for weights, criteria and marking levels.
 - **Classes 01–11:** use the class packages below for illustrations, code, models and data. Follow the linked instructions and their availability notes.
 - **Classes 12–17:** open the [worksheet templates and submission guide](project-workbook/README.md); filled examples and source papers are linked separately on each class page.
 - **Classes 18–21:** use the [poster](../module-05-final-project-submissions/18-final-poster-submission.md), [code](../module-05-final-project-submissions/19-final-code-submission.md), [video and final worksheets](../module-05-final-project-submissions/20-final-video-submission.md) and [showcase](../21-final-project-showcase.md) instructions.

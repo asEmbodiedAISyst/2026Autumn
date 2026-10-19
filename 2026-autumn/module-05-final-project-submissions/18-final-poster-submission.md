@@ -4,6 +4,8 @@ description: 27 November 2026 · 09:00–10:50 · L12 | SONG Chaoyang
 
 # 18 Final Poster Submission
 
+Read the [assessment guide](../resources/assessment-guide.md) for the criteria and point allocations used to mark this work.
+
 ## How we will use this class
 
 **Most of this class is reserved for final-project and poster preparation with your team.** After a short introduction, work on the connection between your claim, system, evidence and conclusion. Use the examples below when deciding what the poster should show, and discuss unclear claims or figures with the teaching team. Use the working time to improve the project evidence and finish the poster together.
