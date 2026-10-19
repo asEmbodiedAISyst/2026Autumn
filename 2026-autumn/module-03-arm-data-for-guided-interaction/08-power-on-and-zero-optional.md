@@ -47,6 +47,12 @@ Linux and macOS:
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
+If `curl` is not found, as on a fresh Ubuntu, install it with `sudo apt install curl`, or use `wget` instead:
+
+```bash
+wget -qO- https://astral.sh/uv/install.sh | sh
+```
+
 Open a new terminal afterwards, so that the `uv` command is found. Check it with `uv --version`.
 
 </details>
@@ -60,7 +66,9 @@ cd 2026-autumn/resources/class08/practical/additional_material
 uv sync --group real                  # the drivers of the physical arm
 ```
 
-If you already have the course checkout, update it with `git pull --ff-only` before opening the class package.
+{% hint style="info" %}
+If you cloned the repository in an earlier class, run `git pull` in the `rob7103` folder instead of `git clone`.
+{% endhint %}
 
 ---
 

@@ -14,30 +14,40 @@ The code is the pusher package of the course, `rebot_pusher`, for the pusher too
 
 You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (Apple silicon or Intel).
 
-The setup below installs `uv` in a course-local `.course-tools` environment and class dependencies in a package-local `.venv`. It does not change a system Python installation. If `uv` is already available, the three `.course-tools` bootstrap lines may be skipped.
+<details>
 
+<summary>Install uv (once)</summary>
+
+`uv` installs Python and the packages of each class folder. Install it once, following the
+[uv installation page](https://docs.astral.sh/uv/getting-started/installation/) or with this command, the same on
+Linux and macOS:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+If `curl` is not found, as on a fresh Ubuntu, install it with `sudo apt install curl`, or use `wget` instead:
+
+```bash
+wget -qO- https://astral.sh/uv/install.sh | sh
+```
+
+Open a new terminal afterwards, so that the `uv` command is found. Check it with `uv --version`.
+
+</details>
 
 Get the code and make the environment:
 
 ```bash
 git clone https://github.com/asEmbodiedAISyst/2026Autumn.git rob7103
 cd rob7103
-python3 -m venv .course-tools
-.course-tools/bin/python -m pip install uv
-export PATH="$PWD/.course-tools/bin:$PATH"
 cd 2026-autumn/resources/class10/practical/additional_material/rebot_pusher
 uv sync
 ```
 
-If you already have the checkout, start from its `rob7103/` root and update it with `git pull --ff-only`; do not clone another copy or recreate an existing `.course-tools` environment. Continue from the `export PATH` line, then enter this page's package directory. Each class has its own `.venv`; switching to another class package does not reuse its dependencies automatically.
-
-In every additional terminal, open the **same package directory** and expose the course-local `uv` command before running the examples:
-
-```bash
-export PATH="$(git rev-parse --show-toplevel)/.course-tools/bin:$PATH"
-```
-
-This line assumes the terminal is already inside the cloned repository. Omit it if your existing `uv` is already on `PATH`. Check `pwd` before using a relative data or output path.
+{% hint style="info" %}
+If you cloned the repository in an earlier class, run `git pull` in the `rob7103` folder instead of `git clone`.
+{% endhint %}
 
 `uv sync` installs the declared MuJoCo, LeRobot and PyTorch dependencies into the package-local `.venv`. Download and setup time depend on the platform.
 
