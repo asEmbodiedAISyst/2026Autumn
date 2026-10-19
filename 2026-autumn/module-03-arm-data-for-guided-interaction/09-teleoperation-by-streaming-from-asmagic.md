@@ -8,9 +8,9 @@ description: 06 November 2026 · 09:00–10:50 · L12 | WEI Jinqi & SONG Chaoyan
 
 > What must align for a teleoperated demonstration to become usable robot data?
 
-The leader supplies an operator pose; the follower must convert that pose into feasible motion. The class task is **use an iPhone with asMagic to teleoperate a simulated pusher and move a cube toward its target**. This continues Class 08's joint/frame/control conventions and prepares Class 10's demonstrations.
+The leader supplies an operator pose; the follower must convert that pose into feasible motion. The class task is **use an iPhone with asMagic to teleoperate the simulated arm with the pusher tool and move a cube toward its target**. This continues Class 08's joint/frame/control conventions and prepares Class 10's demonstrations.
 
-The source also includes a gripper bridge and a real-phone gripper recording. We use those as explicit interface examples. A pusher has a different tool centre and a nonzero phone-to-tip offset, so the two cases must not silently share one action schema.
+The source also includes a gripper bridge and a real-phone gripper recording. We use those as explicit interface examples. The pusher tool has a different tool centre and a nonzero phone-to-tip offset, so the two cases must not silently share one action schema.
 
 By the end of this class, you should be able to:
 
@@ -163,7 +163,7 @@ $$
 $$
 
 The columns are the phone axes expressed in the gripper frame: phone $$x$$ is gripper $$y$$, phone $$y$$ is
-gripper $$x$$, phone $$z$$ is gripper $$-z$$. This matrix declares the body-axis correspondence for the gripper example. A mounted pusher also needs a camera-to-tip translation; its source script supplies a rigid transform.
+gripper $$x$$, phone $$z$$ is gripper $$-z$$. This matrix declares the body-axis correspondence for the gripper example. An arm-mounted pusher also needs a camera-to-tip translation; its source script supplies a rigid transform.
 
 Hold the phone as in the left panel: screen up and parallel to the table, the back camera toward the table, its
 right edge pointing forward, away from the base. The top of the phone, with the camera, then points to the left
@@ -206,9 +206,9 @@ teleoperation system.
 
 ---
 
-## A mounted pusher changes the tool transform
+## An arm-mounted pusher changes the tool transform
 
-For the source pusher, the phone camera is displaced from the rod tip. Let $${}^{P}T_E$$ be the calibrated pose of the tip frame in the phone frame. Then
+For the pusher tool, the phone camera is displaced from the pusher tip. Let $${}^{P}T_E$$ be the calibrated pose of the tip frame in the phone frame. Then
 
 $$
 {}^{W}T_E={}^W T_P\,{}^P T_E,\qquad
@@ -223,12 +223,12 @@ The gripper example above supplies the body-axis rotation and a convenient relat
 
 ### Limits on the target
 
-The **virtual workspace** is a software limit: a box that the target of the rod tip must stay in. It is set in the
+The **virtual workspace** is a software limit: a box that the target of the pusher tip must stay in. It is set in the
 script, apart from the workspace of the arm, the region that the hardware can reach.
 
 | Stage | Rule |
 | --- | --- |
-| Virtual workspace | rod tip in $$x$$ 0.15–0.50 m, $$y$$ ±0.25 m, $$z$$ 0.005–0.25 m |
+| Virtual workspace | pusher tip in $$x$$ 0.15–0.50 m, $$y$$ ±0.25 m, $$z$$ 0.005–0.25 m |
 | Speed | 0.25 m/s and 90 °/s |
 | Inverse kinematics | damped least squares on the MuJoCo Jacobian, 30 iterations per period |
 
@@ -279,7 +279,7 @@ The solver stacks translation before rotation. Featherstone spatial motion vecto
 
 The inverse kinematics can fail for a target that is inside the virtual workspace but outside the reach of the arm. The
 controller takes a step only if the solution reaches the target within 5 mm and 5°. If not, the arm holds and the
-record marks the frame as `blocked`. With the rod vertical, almost all of the virtual workspace is reachable: the blocked
+record marks the frame as `blocked`. With the pusher tool vertical, almost all of the virtual workspace is reachable: the blocked
 targets are at its top ($$z$$ = 0.25 m) close to the base ($$x \le$$ 0.20 m) or at its sides
 ($$\lvert y \rvert$$ = 0.25 m). Move lower or back toward the centre of the virtual workspace.
 
@@ -297,7 +297,7 @@ teleoperation on the simulated arm.
 
 ### The source gripper recording and the pusher task
 
-The following source video is a gripper-interface recording with a real iPhone and the simulated arm. It illustrates the mapping and record contract, not the pusher task score. The class demonstration and practice use the source pusher script: an iPhone drives the simulated rod tip to push the black cube into the green target. The pusher script is already part of the source package; it is not a newly invented deployment.
+The following source video is a gripper-interface recording with a real iPhone and the simulated arm. It illustrates the mapping and record contract, not the pusher task score. The class demonstration and practice use the source pusher script: an iPhone drives the simulated pusher tip to push the black cube into the green target. The pusher script is already part of the source package; it is not a newly invented deployment.
 
 {% embed url="https://1750588168-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FCq8PJ6eHO7umpiGK34s5%2Fuploads%2Fgit-blob-6702971cb3f5f34868a0d0afff07075f7c82031a%2Fteleop-sim-iphone.mp4?alt=media" %}
 An iPhone with asMagic drives the simulated arm; front and side cameras of the scene (8 s).
@@ -381,15 +381,15 @@ one frame later minus the target. The lag stays within 5°.
 
 The source supplies a **separate physical gripper script**, `teleop_rebot_rs_real.py`. It reuses the gripper mapping, keys and seven-channel record conventions, while replacing the simulation backend with seven CAN-connected motors. Its declared gains, 0.1 s target filter and 2° per-cycle joint bound belong to that physical gripper configuration. Agreement of the high-level interface is not a physical commissioning result.
 
-The physical **pusher** clip is another configuration: the gripper is removed, six arm motors carry the tool, and the source uses the Class 10 `rebot_pusher` package. The source reports 11 pusher Push Cube episodes from 10 October 2026; the practice page links its retained video. Those records are not a seven-motor gripper run, a new class execution or an autonomous-policy success rate. Physical operation remains optional teaching-team work after its own checks. The required classroom demonstration remains iPhone control of the simulated pusher.
+The physical **pusher tool** clip is another configuration: the gripper is removed, six arm motors carry the tool, and the source uses the Class 10 `rebot_pusher` package. The source reports 11 Push Cube episodes with the arm-mounted pusher from 10 October 2026; the practice page links its retained video. Those records are not a seven-motor gripper run, a new class execution or an autonomous-policy success rate. Physical operation remains optional teaching-team work after its own checks. The required classroom demonstration remains iPhone control of the simulated arm with the pusher tool.
 
 ---
 
 ## Instructor and TA demonstration
 
-The instructor or TA uses the [source pusher simulation procedure](09-practice.md#teleoperate-the-pusher-with-the-iphone). Before engaging, show the cube, target and rod tip and predict the sign of each phone translation. Engage the clutch, push toward the target, pause and reposition the phone, then re-engage. Show a stream interruption and distinguish the held target from an IK-blocked target. Save a new record only if its tool, frame, timestamps and outcome can be identified.
+The instructor or TA uses the [source pusher simulation procedure](09-practice.md#teleoperate-the-pusher-tool-with-the-iphone). Before engaging, show the cube, target and pusher tip and predict the sign of each phone translation. Engage the clutch, push toward the target, pause and reposition the phone, then re-engage. Show a stream interruption and distinguish the held target from an IK-blocked target. Save a new record only if its tool, frame, timestamps and outcome can be identified.
 
-A deterministic local phone publisher is a protocol and mapping fallback. Its circle or tilt is not a successful human pusher demonstration. If an iPhone session is unavailable, inspect the supplied source figures/video and explain the mapping instead of claiming a new task completion. The original gripper procedure remains an optional interface comparison.
+A deterministic local phone publisher is a protocol and mapping fallback. Its circle or tilt is not a successful human demonstration with the pusher tool. If an iPhone session is unavailable, inspect the supplied source figures/video and explain the mapping instead of claiming a new task completion. The original gripper procedure remains an optional interface comparison.
 
 ## Student activity
 

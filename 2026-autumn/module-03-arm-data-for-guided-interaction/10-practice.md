@@ -90,8 +90,8 @@ uv run python -m rebot_sim.teleop.fake_phone --pattern circle --hold tool --imag
 ### Start the recorder
 
 The mapping is that of the pusher tool in [Class 09 — Practice](09-practice.md#the-pusher-tool): the tool
-moves with the phone as one rigid body. Hold the phone as it sits on the robot tool, in landscape, the main
-camera looking at the table in front of you; best, mount it in the handheld print `hardware/hand_tool.stl`.
+moves with the phone as one rigid body. Hold the phone as it sits on the arm-mounted pusher, in landscape, the main
+camera looking at the table in front of you; best, mount it in the handheld pusher `hardware/hand_tool.stl`.
 
 {% tabs %}
 {% tab title="Linux" %}
@@ -151,7 +151,7 @@ Open `datasets/my_sim_teleop/meta/info.json`. Find the three features and their 
 
 | Feature | Shape | Content |
 | --- | --- | --- |
-| `observation.images.phone` | 480 × 640 × 3 | the image of the phone on the robot tool |
+| `observation.images.phone` | 480 × 640 × 3 | the image of the phone on the arm-mounted pusher |
 | `observation.state` | 9 | the measured tip pose: position and orientation |
 | `action` | 9 | accepted tool-pose target for this transition, after controller limits; not the next measured pose |
 
@@ -225,10 +225,10 @@ For the core classroom response, inspect one supplied or newly recorded episode,
 The same task can be recorded without the arm: you hold the tool with the phone and push a real cube.
 
 {% hint style="info" %}
-**Photo to be added:** the handheld print with the iPhone mounted on it.
+**Photo to be added:** the handheld pusher with the iPhone mounted on it.
 {% endhint %}
 
-Print the handheld tool `hardware/hand_tool.stl`, the 40 mm cube `hardware/cube_40mm.stl` and the goal sheet
+Print the handheld pusher `hardware/hand_tool.stl`, the 40 mm cube `hardware/cube_40mm.stl` and the goal sheet
 `hardware/goal_squares_a4.pdf` at 100 %. Network and app are as in the simulation route.
 
 {% stepper %}
@@ -251,7 +251,7 @@ Put the cube and the goal there.
 {% step %}
 ### Calibrate the keyboard session, then start each episode
 
-The command above uses keyboard mode, without `--gesture`. At the initial calibration prompt, rest the rod tip on the table for one second, or press Enter while the tip is on the table to accept its current height. Wait for “Table height calibrated”. This sets the session's table-height reference.
+The command above uses keyboard mode, without `--gesture`. At the initial calibration prompt, rest the pusher tip on the table for one second, or press Enter while the tip is on the table to accept its current height. Wait for “Table height calibrated”. This sets the session's table-height reference.
 
 Lift the tool to approximately 12 cm, the arm's nominal start height, and keep it still. Press **Enter to start recording**, then push. After saving or discarding an episode, place the next cube/goal, return to the start pose and press Enter to start again. A touch between keyboard episodes does not invoke per-episode table sampling. If the ARKit reference drifts, stop and calibrate a new, separately identified recording session; keep both session IDs in the contract.
 {% endstep %}
@@ -298,7 +298,7 @@ For gesture input, add `--gesture --voice` to the optional handheld command. Com
 
 | Gesture | Event |
 | --- | --- |
-| Rest the rod tip on the table, then lift the tool | per-episode table sample in gesture mode; a missing valid touch leaves the previous reference in use |
+| Rest the pusher tip on the table, then lift the tool | per-episode table sample in gesture mode; a missing valid touch leaves the previous reference in use |
 | Rest the tool at the start pose, then move | the episode starts |
 | Lift the tip 8 cm and hold still for 0.7 s | the episode is saved |
 | Shake or twist the tool fast | the episode is discarded |

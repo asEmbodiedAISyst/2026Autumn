@@ -226,7 +226,7 @@ Compare your result only after establishing the checkpoint/scene/executor identi
 **Try:**
 
 * `--n-action-steps 100`: the arm executes the whole chunk before the policy looks again;
-* `--embodiment handheld`: the same policy on the handheld tool, as in the data;
+* `--embodiment handheld`: the same policy on the handheld pusher, as in the data;
 * the checkpoint after 20k steps, `checkpoints/020000/pretrained_model`.
 {% endstep %}
 

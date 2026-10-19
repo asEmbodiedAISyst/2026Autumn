@@ -15,7 +15,7 @@ motion to a reliable executor. SayCan grounds language choices in a repertoire o
 ## One call per step
 
 `agent_control.py` applies this approach to the pusher tool, with Claude as the model. Each control step is one call
-to the model. The model receives the phone image with a 5 cm table grid, the rod-tip position and the results of
+to the model. The model receives the phone image with a 5 cm table grid, the pusher-tip position and the results of
 its earlier actions. The grid is projected from the known camera pose: a table point $$P$$ goes to the pixel
 
 $$
@@ -31,7 +31,7 @@ The model must call exactly one tool per step. A tool call is a structured reque
 
 | Tool | What it does |
 | --- | --- |
-| `move` | up to three relative moves of the rod tip (forward, left, up, in cm; optional yaw) |
+| `move` | up to three relative moves of the pusher tip (forward, left, up, in cm; optional yaw) |
 | `locate` | the model gives a pixel; the script gives back its table coordinates (the inverse of the projection) |
 | `push` | push mode only: the model marks the cube and the goal; a fixed primitive pushes along the line, at most 6 cm per call |
 | `done` | the episode ends; in simulation the simulator checks the claim |
@@ -50,7 +50,7 @@ plans again. With `locate`, the model does the perception, and the script does t
 
 <div><figure><img src="../resources/class11/figures/source/agent-step-1.png" alt="Step mode, start pose"><figcaption><p>Figure 4. Step mode, start pose. Step mode: start pose.</p></figcaption></figure> <figure><img src="../resources/class11/figures/source/agent-step-2.png" alt="Step mode, tip behind the cube"><figcaption><p>Figure 5. Step mode, tip behind the cube.</p></figcaption></figure> <figure><img src="../resources/class11/figures/source/agent-step-3.png" alt="Step mode, success"><figcaption><p>Figure 6. Step mode, success. After the last push: success.</p></figcaption></figure></div>
 
-Yellow and cyan lines: the 5 cm table grid, labels in cm. Red circle: the rod tip projected on the table. Red
+Yellow and cyan lines: the 5 cm table grid, labels in cm. Red circle: the pusher tip projected on the table. Red
 arrow: the forward direction. Top row: push mode with Sonnet 5.5. Bottom row: step mode with Opus 5.5.
 
 ## Episodes in simulation

@@ -30,6 +30,7 @@
   * [Practice: teleoperate the simulated pusher](module-03-arm-data-for-guided-interaction/09-practice.md)
 * [10 Collect Demonstrations for Robot Learning](module-03-arm-data-for-guided-interaction/10-collect-data-for-reinforcement-learning.md)
   * [Practice: record and audit pusher data](module-03-arm-data-for-guided-interaction/10-practice.md)
+  * [Optional: data from the physical bench](module-03-arm-data-for-guided-interaction/10-physical-bench-optional.md)
 * [11 Sim2Real Gap in Hardware Deployment](module-03-arm-data-for-guided-interaction/11-sim2real-gap-in-hardware-deployment.md)
   * [Practice: policy evidence and deployment checks](module-03-arm-data-for-guided-interaction/11-practice.md)
   * [Optional: a VLM as the simulation controller](module-03-arm-data-for-guided-interaction/11-vlm-controller-optional.md)

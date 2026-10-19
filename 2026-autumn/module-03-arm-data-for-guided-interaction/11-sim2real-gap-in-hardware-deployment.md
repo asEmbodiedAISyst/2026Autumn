@@ -38,7 +38,7 @@ flowchart LR
 
 ### What the network learns
 
-The policy is a function $$\pi_\theta$$ from the current phone image $$o_t$$ and rod-tip state $$s_t$$ to a chunk
+The policy is a function $$\pi_\theta$$ from the current phone image $$o_t$$ and pusher-tip state $$s_t$$ to a chunk
 of future actions:
 
 $$
@@ -105,10 +105,10 @@ action goes back to the motors through the inverse kinematics of Class 09.
 
 
 
-<div><figure><img src="../resources/class11/figures/source/zero-pose-tool.png" alt="Zero pose of the arm with the tool"><figcaption><p>Figure 1. Zero pose of the arm with the tool.</p></figcaption></figure> <figure><img src="../resources/class11/figures/source/start-pose-tool.png" alt="Episode start pose of the arm with the tool"><figcaption><p>Figure 2. Episode start pose of the arm with the tool. Episode start pose: rod tip 12 cm above the table.</p></figcaption></figure></div>
+<div><figure><img src="../resources/class11/figures/source/zero-pose-tool.png" alt="Zero pose of the arm with the tool"><figcaption><p>Figure 1. Zero pose of the arm with the tool.</p></figcaption></figure> <figure><img src="../resources/class11/figures/source/start-pose-tool.png" alt="Episode start pose of the arm with the tool"><figcaption><p>Figure 2. Episode start pose of the arm with the tool. Episode start pose: pusher tip 12 cm above the table.</p></figcaption></figure></div>
 
 At the start of each episode the arm moves to its start pose. That pose fixes the episode frame $$e$$. Its origin
-is the rod tip, and its heading is the heading of the tool. For data in the table frame, $$z = 0$$ is at the table. An action
+is the pusher tip, and its heading is the heading of the tool. For data in the table frame, $$z = 0$$ is at the table. An action
 $$a = ({}^{e}p, {}^{e}R)$$ becomes a target in the base frame $$b$$ of the arm:
 
 $$
@@ -202,7 +202,7 @@ The arm block uses two kinds of controller. Each uses a different part of the mo
 
 | Controller | Uses the dynamics model | Uses data | In the course |
 | --- | --- | --- | --- |
-| Model-based: joint PD with gravity feed-forward | $$g(q)$$ from RNEA (Class 08) | the motion-test record checks the declared gravity model | every motor command |
+| Model-based: joint PD with gravity feed-forward | $$g(q)$$ from RNEA (Class 08) | a gravity hold on the physical arm checks the declared gravity model | every motor command |
 | Model-based: inverse kinematics | the kinematics and the Jacobian (Classes 08, 09) | none | teleoperation and every rollout |
 | Learning-based: imitation policy (ACT, Diffusion Policy, SmolVLA) | no; it learns image-to-motion from data | demonstrations | Push Cube from the phone image |
 
@@ -278,7 +278,7 @@ number of actions executed per chunk.
 
 | ACT, Push Cube, 60k steps | $$n$$ = 10 | $$n$$ = 100 |
 | --- | --- | --- |
-| on the handheld tool (as in the data) | 70 % | 58 % |
+| on the handheld pusher (as in the data) | 70 % | 58 % |
 | on the arm | 62 % | 56 % |
 
 **Source result boundary.** These four cells are the source manuscript's reported 60k-step comparison. Its supplied `results_act_ip17_cube300_handheld_060000_pusher_n100.json` instead contains 32 successes among 50 episodes, or 64%. The source transfer figure also uses 64% for that setting. The source has not identified whether the scene, checkpoint or executor changed. Retain the table as a reported comparison, and treat the matching artifact identity as unresolved before calling either score reproduced. The practical page supplies a new-run protocol rather than concealing this discrepancy.

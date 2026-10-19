@@ -10,14 +10,14 @@ description: 04 November 2026 · 10:30–11:50 · CR6 | WEI Jinqi & SONG Chaoyan
 
 Classes 02–05 connected actuator requests with physical responses; Classes 06–07 studied a hand's task and observation contracts. We now apply the same discipline to the Seeed reBot Arm B601-RS: six arm joints and a parallel gripper. Moving it requires a consistent mechanism description, joint order, frames, controller and record.
 
-The core class route is **control in simulation**. The kit and physical motion-test record explain the apparatus behind the model. Assembly, power-on and encoder-zero procedures are optional preparation references for the teaching team; students are not asked to assemble or power the arm.
+The core class route is **control in simulation**. The kit explains the apparatus behind the model. Assembly, power-on and encoder-zero procedures are optional preparation references for the teaching team; students are not asked to assemble or power the arm.
 
 By the end of this class, you should be able to:
 
 - Identify the kit, motors, power path and shared CAN bus.
 - Read joint order, units, signs, model ranges and software limits.
 - Relate forward kinematics and joint dynamics to the configured controller.
-- Interpret a bounded simulation and the separate physical motion-test record.
+- Interpret a bounded simulation.
 - State which commissioning checks require the physical apparatus.
 
 [Lecture](#the-arm-and-its-kit) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
@@ -132,9 +132,9 @@ seven commands and seven answers, one after the other.
 
 | Layer | On the course arm |
 | --- | --- |
-| Your script | Python, for example `real_gripper_motion_test.py` |
+| Your script | Python, for example `real_gripper_drag.py` |
 | Arm driver | `lerobot-robot-seeed-b601`, the LeRobot driver of the arm |
-| Motor library | `motorbridge`: turns a command into a RobStride CAN frame |
+| Motor library | [`motorbridge`](https://github.com/motorbridge/motorbridge): turns a command into a RobStride CAN frame |
 | Operating system | Linux SocketCAN: the network interface `can0`, driver `peak_usb` |
 | Adapter | PCAN-USB: moves frames between USB and the CAN bus |
 | Motor | RobStride driver: decodes the frame, runs its control loop, answers |
@@ -150,7 +150,6 @@ The section on commanding the motors shows what one frame contains.
 | CAD and user manual of the RS-06 | `RS06-new.step`, `RS06User Manual260428.pdf` | [RobStride Product_Information, `RS06/`](https://github.com/RobStride/Product_Information/tree/main/Product%20Literature/RS06) |
 | CAD and user manual of the RS-00 | `RS00.step`, `RS00User Manual260428.pdf` | [RobStride Product_Information, `RS00/`](https://github.com/RobStride/Product_Information/tree/main/Product%20Literature/RS00) |
 | Course model (MJCF) | [`rebot_b601_rs.xml`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class08/practical/additional_material/model/rebot_b601_rs_mjcf/rebot_b601_rs.xml) | [course repository, `additional_material/model/rebot_b601_rs_mjcf/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class08/practical/additional_material/model/rebot_b601_rs_mjcf), with the meshes |
-| Motion-test data of the physical arm | [`motion_test_20261010_000129.json`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class08/practical/additional_material/results/motion_test_20261010_000129.json) | [course repository, `additional_material/results/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class08/practical/additional_material/results) |
 
 ---
 
@@ -178,16 +177,27 @@ For joints 1–6 the factor is a sign. +1 keeps the value; −1 reverses it, so 
 motor for +30°. For the gripper the factor is a scale: action 0–45 becomes motor 0–270°. The factor comes from the
 vendor LeRobot driver (`joint_directions`) and is a software convention, not a gear ratio.
 
-`observation.state` is the motor angle itself; it is not multiplied by the factor. Thus, for joints 3–5, the state
-and the action of the same pose have opposite signs.
-
 ### Three numbers for one joint
 
-| Quantity | Unit | Relation |
+| Value | In simulation | On the physical arm |
 | --- | --- | --- |
-| MuJoCo joint angle | rad | equals the motor angle in radians |
-| `observation.state` | degrees | the motor angle |
-| `action` | command space | motor target = action factor × action |
+| Joint angle $$q$$ | the MuJoCo joint position `qpos`, in rad | the angle of the motor output shaft, in rad, from the feedback frame of the motor |
+| `observation.state` | $$q$$ in degrees, what the arm measured | the same: the feedback angle in degrees |
+| `action` | the command of the dataset, in degrees of command space, what the arm was asked to do | the same command, sent through the vendor LeRobot driver |
+
+The three values are related by
+
+$$
+\texttt{observation.state} = \frac{180}{\pi}\,q, \qquad
+q_{target} = \frac{\pi}{180}\,(\text{action factor} \times \texttt{action}).
+$$
+
+The joint angle and `observation.state` are one measurement in two units: radians in MuJoCo and on the CAN bus,
+degrees in the dataset. The `action` is a request, not a measurement: the action factor turns it into a motor
+target in degrees, and the simulation or the driver converts that target to radians. When the joint has reached
+its target, `observation.state` ≈ action factor × `action`, so for joints 3–5 the state and the action have opposite
+signs. The gripper follows the same rule in motor degrees; the simulation converts its 0–270° to a finger stroke of
+0–0.05 m.
 
 The simulated and the physical arm record the same numbers, as in the vendor LeRobot driver. A dataset with one
 sign reversed drives that joint the wrong way. Thus, check the action factors before you use any data.
@@ -285,7 +295,7 @@ of the motor. In the MJCF file, one line gives this law for joint 2:
 
 `actuatorgravcomp="true"` on the joint sends $$g(q)$$ through the actuator, so the torque limit also applies to
 it. On the physical arm, the same target goes to the motor in MIT mode (the CAN command below). The physical gains are lower:
-$$K_p$$ = 40 N m/rad for joint 2 in the motion test. The model gains do not authorise you to copy commands
+$$K_p$$ = 40 N m/rad for joint 2 in the bring-up scripts. The model gains do not authorise you to copy commands
 directly to hardware.
 
 ### Requested rate and implemented period
@@ -319,7 +329,7 @@ approximately 0.20 s in the model. This is a property of the model. Measure the 
 
 ### Read the error at its sampling boundary
 
-Define the residual before comparing scores: $$e_k=q_k-q_{d,k}$$ is a signed state-minus-target residual; $$\max_k|e_k|$$ is a trajectory maximum. A pre-step state and a post-step state answer different questions. A model trace, a firmware torque field and an external torque measurement are also different observations. Preserve their identities when reading the saved physical motion-test JSON below.
+Define the residual before comparing scores: $$e_k=q_k-q_{d,k}$$ is a signed state-minus-target residual; $$\max_k|e_k|$$ is a trajectory maximum. A pre-step state and a post-step state answer different questions.
 
 A simulation can advance at the correct simulated period while rendering more slowly in wall-clock time. The 30 Hz stepping calculation above describes the model clock; it does not establish physical bus throughput, phone latency or a GUI refresh rate.
 
@@ -394,7 +404,7 @@ The angle step is then $$8\pi / 65535 \approx 3.8 \times 10^{-4}$$ rad, or 0.022
 
 ---
 
-## Commissioning and the first data
+## Commissioning
 
 ### Three gates
 
@@ -402,7 +412,7 @@ The angle step is then $$8\pi / 65535 \approx 3.8 \times 10^{-4}$$ rad, or 0.022
 flowchart LR
     A["<b>Gate A — Assembly</b><br/>power off<br/><i>screws, cables, CAN termination,<br/>48 V with a switch, base clamped</i>"]
     B["<b>Gate B — Communication</b><br/>motors disabled<br/><i>can0 at 1 Mbit/s, IDs 1–7,<br/>zero and parameter template</i>"]
-    C["<b>Gate C — Motion</b><br/>supervised<br/><i>drag check with the digital twin,<br/>gravity hold, ±10° joint test</i>"]
+    C["<b>Gate C — Motion</b><br/>supervised<br/><i>drag check with the digital twin,<br/>gravity hold</i>"]
     A --> B --> C
 
     style A fill:#e3f2fd,stroke:#1565c0
@@ -422,43 +432,11 @@ A simulated arm that moves correctly shows that the model, the conventions and t
 about a loose screw, a swapped CAN identifier or a motor zero set at the wrong pose. Each physical gate needs its
 own check on the arm. The page [Class 08 — Power-on and zero](08-power-on-and-zero-optional.md) gives the steps of each gate.
 
-### The data of the motion test
-
-The joint test of Gate C writes one JSON file. This is the data contract of that file:
-
-| Field | Content | Unit |
-| --- | --- | --- |
-| `hold.pose_deg` | the 7 motor angles while the arm holds the zero pose | deg |
-| `hold.feedforward_nm` | the model gravity torque $$g(q)$$ of joints 1–6 | N m |
-| `hold.measured_torque_nm` | the torque in the feedback frame of each motor | N m |
-| `hold.model_error_nm` | $$K_p\,(q_d - q)$$: the torque that the model $$g(q)$$ did not give | N m |
-| `gravity_sweep` | joint 2 at 0, 10, 20, 30°: target, measured angle, $$g(q)$$, model error | deg, N m |
-| `gravity_fit` | the fit $$a\cos q_2 + b\sin q_2$$ of the model error, and its largest residual | N m |
-| `joints` | per joint: amplitude, speed, worst tracking error, peak torque, temperature | deg, deg/s, N m, °C |
-| `args`, `kp` | the options of the run and the stiffness of each motor | — |
-
-### What the data say
-
-The file of 10 October 2026 records one run of the test, on joint 2 only.
-
-| Check | Result on the course arm, 10 October 2026 |
-| --- | --- |
-| Folded pose | within 0.62° of zero on all seven motors |
-| Joint 2 (RS-06), ±10° at 5°/s | worst tracking error 1.87° |
-| Joint 2 torque field | peak 1.92 N m reported by firmware; distinct from an independent torque measurement |
-| Motor temperature | 27 °C at the end of the test |
-| Gravity model of joint 2 | error fit $$a = -0.55$$, $$b = 1.18$$ N m, largest residual 0.37 N m, 4 angles from 1° to 30° |
-
-At rest, the motor gives $$\tau_{ff} + K_p\,(q_d - q)$$. The feed-forward is the model $$g(q)$$. Thus the
-position error times $$K_p$$ is a **quasi-static controller residual**, not an independent calibrated torque measurement. It can include gravity-model error, friction, gain mismatch, zero error and external loads. The source fits a gravity-shaped correction from this residual; the four closely spaced angles leave parameter identifiability and generalisation unresolved. A wider, separately tested sweep would improve excitation, but no universal 45° threshold proves identifiability.
-
 ---
 
 ## Instructor and TA demonstration
 
-Use the prepared simulation practice to identify the arm, its joint table and its zero/home poses. Predict the rejected wrist excursion before running the bounded joint test. Show the supplied gain/step figures and compare target, state, units and sampling rule. A lower stiffness changes a closed-loop response, not the mechanism's geometry.
-
-Then display the retained physical joint-2 motion-test record from the source package. Identify its tested joint, maximum tracking error, firmware torque field and temperature. A single-joint summary is not an all-joint qualification or an independently calibrated torque measurement. No student powered operation is required.
+Use the prepared simulation practice to identify the arm, its joint table and its zero/home poses. Predict the rejected wrist excursion before running the bounded joint test. Show the supplied gain/step figures and compare target, state, units and sampling rule. A lower stiffness changes a closed-loop response, not the mechanism's geometry. No student powered operation is required.
 
 The complete simulation procedure is on [Class 08 practice](08-practice.md). [Assembly](08-assembly-optional.md) and [power-on and zero](08-power-on-and-zero-optional.md) are optional teaching-team preparation references.
 
@@ -471,6 +449,8 @@ Use the source practice record or a fresh bounded simulation. Submit the seven c
 Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. [Spatial-vector resources](https://royfeatherstone.org/spatial/v2/index.html).
 
 Lynch, Kevin M., and Frank C. Park. 2017. *Modern Robotics: Mechanics, Planning, and Control*. Cambridge University Press. [Numerical inverse-kinematics explanation](https://modernrobotics.northwestern.edu/nu-gm-book-resource/6-2-numerical-inverse-kinematics-part-1-of-2/).
+
+motorbridge developers. n.d. “motorbridge.” *GitHub*. [Repository](https://github.com/motorbridge/motorbridge).
 
 MuJoCo developers. n.d.-a. “XML Reference.” *MuJoCo Documentation*, version 3.14.0. Accessed October 17, 2026. [Position actuators](https://mujoco.readthedocs.io/en/3.14.0/XMLreference.html#actuator-position) and [joint gravity-compensation routing](https://mujoco.readthedocs.io/en/3.14.0/XMLreference.html#body-joint-actuatorgravcomp).
 

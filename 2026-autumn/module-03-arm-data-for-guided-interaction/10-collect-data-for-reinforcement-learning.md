@@ -30,7 +30,7 @@ The explanation and supplied records can be read without executing code. The sep
 
 | Record | Made by | Necessary content |
 | --- | --- | --- |
-| Demonstration (imitation learning) | human teleoperation, a scripted expert, a handheld tool | observation, selected action, task string, episode identity |
+| Demonstration (imitation learning) | human teleoperation, a scripted expert, a handheld pusher | observation, selected action, task string, episode identity |
 | Online RL experience | the learner's own policy in a simulator | observation, action, reward, next observation, done flag, reset distribution |
 | Evaluation record | the trained policy on held-out seeds | outcome per episode, steps, final error, interventions; never used for training |
 
@@ -46,7 +46,7 @@ demonstration dataset "RL data", you hide this difference.
 
 ### The task of this class
 
-Push Cube: push a black 40 mm cube into a green 60 mm target with the rod tip. The policy sees the cube and the
+Push Cube: push a black 40 mm cube into a green 60 mm target with the pusher tip. The policy sees the cube and the
 target only in the phone image, so it must use vision. One push direction is enough, so a simple policy can learn
 it.
 
@@ -72,7 +72,7 @@ For reinforcement learning, an experience tuple additionally needs the transitio
 
 | Part | Push Cube with the tool |
 | --- | --- |
-| Initial conditions | 40 mm cube and 60 mm goal in $$x$$ 0.30–0.48 m, $$\lvert y \rvert$$ ≤ 0.12 m, 5–10 cm apart, goal within ±70° of $$+x$$; rod tip starts at (0.33, 0, 0.12) m |
+| Initial conditions | 40 mm cube and 60 mm goal in $$x$$ 0.30–0.48 m, $$\lvert y \rvert$$ ≤ 0.12 m, 5–10 cm apart, goal within ±70° of $$+x$$; pusher tip starts at (0.33, 0, 0.12) m |
 | Reset | who moves what, in which order; simulation: a seed; bench: tape marks and a printed layout |
 | Outcome | cube centre within 1.5 cm of the goal centre; time limit 15 s (450 steps) |
 | Interventions | engaging the clutch again; the discard key; timeout; stream loss |
@@ -88,20 +88,20 @@ language input of a vision-language-action policy, so the contract fixes it.
 
 
 
-<figure><img src="../resources/class10/figures/source/arm-pusher-tool-photo.png" alt="The physical arm with the robot print and the phone"><figcaption><p>Figure 1. The physical arm with the robot print and the phone. The physical arm with the pusher tool and the phone.</p></figcaption></figure>
+<figure><img src="../resources/class10/figures/source/arm-pusher-tool-photo.png" alt="The physical arm with the arm-mounted pusher and the phone"><figcaption><p>Figure 1. The physical arm with the arm-mounted pusher and the phone. The physical arm with the pusher tool and the phone.</p></figcaption></figure>
 
 A person cannot demonstrate with the gripper of the arm in hand, but can hold a tool. The course replaces the
-gripper by a printed rod with a plate for the phone. A person records demonstrations with one copy of the tool.
-The arm uses another copy. The approach follows the Universal Manipulation Interface (UMI) (Chi et al. 2024).
+gripper by the pusher tool, a printed rod with a plate for the phone. A person records demonstrations with one copy of the tool.
+The arm uses another copy. The approach follows the Universal Manipulation Interface (UMI) (Chi et al. 2024) and MagiClaw (Wu et al. 2025): one tool of the same structure serves as a handheld device for collection and as the end effector of the robot for deployment.
 
-### Two prints of one tool
+### Two prints of the pusher tool
 
 
 
-<div><figure><img src="../resources/class10/figures/source/pusher-tool-print-handheld.png" alt="The handheld print with a handle"><figcaption><p>Figure 2. The handheld print with a handle. Handheld print, with a handle.</p></figcaption></figure> <figure><img src="../resources/class10/figures/source/pusher-tool-print-robot.png" alt="The robot print with a flange"><figcaption><p>Figure 3. The robot print with a flange. Robot print, with a flange for motor 6.</p></figcaption></figure></div>
+<div><figure><img src="../resources/class10/figures/source/pusher-tool-print-handheld.png" alt="The handheld pusher with a handle"><figcaption><p>Figure 2. The handheld pusher with a handle. Handheld pusher, with a handle.</p></figcaption></figure> <figure><img src="../resources/class10/figures/source/pusher-tool-print-robot.png" alt="The arm-mounted pusher with a flange"><figcaption><p>Figure 3. The arm-mounted pusher with a flange. Arm-mounted pusher, with a flange for motor 6.</p></figcaption></figure></div>
 
-Rod, plate and camera are at the same position relative to the rod tip in both prints. Thus the nominal camera-to-tip geometry is shared when a person or the arm holds it. Background, hands, lighting, image timing and mounting tolerances can still change the observation. The phone image is the observation of the policy. The phone pose gives
-the pose of the rod tip. The STL files of both prints are in the class folder
+Rod, plate and camera are at the same position relative to the pusher tip in both prints. Thus the nominal camera-to-tip geometry is shared when a person or the arm holds it. Background, hands, lighting, image timing and mounting tolerances can still change the observation. The phone image is the observation of the policy. The phone pose gives
+the pose of the pusher tip. The STL files of both prints are in the class folder
 (`rebot_pusher/hardware/hand_tool.stl`, `robot_tool.stl`).
 
 ### Conditions for sharing demonstrations across embodiments
@@ -110,7 +110,7 @@ the pose of the rod tip. The STL files of both prints are in the class folder
 | --- | --- |
 | Matched camera-to-tip geometry | the camera is on the tool; compare actual views for occlusion and appearance |
 | Relative pose | each episode has its own frame (below); only gravity is shared by the phone and the robot |
-| Declared executor limits | simulation-controller contract: tip virtual workspace x 0.22–0.56 m, y ±0.20 m, z 0.003–0.20 m; linear speed 0.25 m/s, angular speed 2 rad/s, rod tilt 30°, yaw ±60° |
+| Declared executor limits | simulation-controller contract: tip virtual workspace x 0.22–0.56 m, y ±0.20 m, z 0.003–0.20 m; linear speed 0.25 m/s, angular speed 2 rad/s, pusher-tool tilt 30°, yaw ±60° |
 
 The scripted simulation expert stores controller-limited targets. The assigned simulated-arm teleoperation command on the [practice page](10-practice.md#start-the-recorder) explicitly selects those limits; `--robot sim` alone retains the script's different teleoperation defaults. Physical handheld recording does not clip measured poses to this contract: its next-pose labels require a separate executability audit. Equal limits are a condition to establish when sharing demonstrations, not a property guaranteed by equal field names. The supplied later checker diagnoses observed-pose reachability, speed, tilt and yaw; it does not test virtual-workspace membership, angular speed or contact dynamics.
 
@@ -119,9 +119,9 @@ The scripted simulation expert stores controller-limited targets. The assigned s
 The Class 09 pusher bridge uses its own six-joint diagnostic record. This class switches to the source `rebot_pusher` learning recorder, whose state/action are nine-component tip poses. Its `DATA_FORMAT.md` and the Class 09 bridge comments also use different phone-axis wording. Before sharing a physical input across packages, verify the installed app axes and each camera-to-tip transform. Agreement of the file name `asMagic` alone does not resolve that convention.
 
 
-Every episode has its own frame $$e$$. Its $$x, y$$ origin is the rod tip at the first frame, its $$x$$ axis is
+Every episode has its own frame $$e$$. Its $$x, y$$ origin is the pusher tip at the first frame, its $$x$$ axis is
 the heading $$\psi_0$$ of the tool at the first frame, and $$z$$ points up. With the table as the height reference
-(the physical collection below), the pose at time $$t$$ is
+(see [Data from the physical bench](10-physical-bench-optional.md)), the pose at time $$t$$ is
 
 $$
 {}^{e}p_t = R_z(\psi_0)^{\top}\big({}^{w}p_t - o\big), \quad o = \big(p_{0,x},\; p_{0,y},\; z_{table}\big), \qquad
@@ -136,8 +136,8 @@ numbers for the same motion, without a calibration between the phone and the rob
 | Feature | Content |
 | --- | --- |
 | `observation.images.phone` | the phone image, 480 × 640 |
-| `observation.state` | rod-tip pose of this frame: position and the first two columns of $${}^{e}R_t$$ (9 values) |
-| `action` | next observed rod-tip pose for handheld recording; accepted next target for arm teleoperation, in the same form |
+| `observation.state` | pusher-tip pose of this frame: position and the first two columns of $${}^{e}R_t$$ (9 values) |
+| `action` | next observed pusher-tip pose for handheld recording; accepted next target for arm teleoperation, in the same form |
 
 The two columns $$a_1, a_2$$ are a continuous representation of the rotation (Zhou et al. 2019). A network output gives back a
 rotation matrix by Gram–Schmidt:
@@ -160,8 +160,8 @@ This pose representation concerns a rigid transform. It is not Featherstone's si
 
 | Way | Who chooses the actions | Where |
 | --- | --- | --- |
-| Scripted expert | a program that knows the true poses of the cube and the target; the course adds small hand-like disturbances | simulation, with the handheld tool |
-| Handheld tool | a person holding the handheld print with the phone; no robot is necessary | physical table (the physical collection below) |
+| Scripted expert | a program that knows the true poses of the cube and the target; the course adds small hand-like disturbances | simulation, with the handheld pusher |
+| Handheld pusher | a person holding the handheld pusher with the phone; no robot is necessary | physical table (see [Data from the physical bench](10-physical-bench-optional.md)) |
 | Teleoperation | a person moving a second phone that drives the arm (Class 09) | simulation or the physical arm |
 
 All three write the same features. The course datasets in simulation come from the scripted expert (the dataset section below).
@@ -206,7 +206,7 @@ dataset without a README cannot be audited by a person.
 
 | Dataset | Episodes | Frames | Mean length | How it was made |
 | --- | --- | --- | --- | --- |
-| Push Cube, handheld tool | 300 | 17 659 | 2.0 s | scripted expert; 355 attempts, 55 discarded because the arm could not reach a pose |
+| Push Cube, handheld pusher | 300 | 17 659 | 2.0 s | scripted expert; 355 attempts, 55 discarded because the arm could not reach a pose |
 
 The Push Cube dataset uses the current simulated scene (the photo texture of the course table and the measured green of
 the printed target), 30 fps, the features of the contract above and `robot_type` `rebot_pusher_tool_handheld`.
@@ -276,84 +276,15 @@ normalisation statistics on the training set only. Write the splits into the REA
 
 ---
 
-## Data from the physical bench (extra)
+## Data from the physical bench
 
-### Two routes, one format
-
-The two routes can share field names while differing in noise, visibility, reset, timing and feasible motion. File-format compatibility is a necessary interface check; it is not sufficient evidence that the records form one learning distribution.
-
-
-| Route | How | Dataset (15 October 2026) |
-| --- | --- | --- |
-| A — Handheld | a person holds the handheld print with the phone; no robot is necessary | 150 Push Cube episodes |
-| B — Teleoperation | a second phone drives the arm with the robot print | 11 Push Cube episodes |
-
-Both routes write the same features and the same `robot_type`, which can satisfy part of a merge tool's structural requirements. Before merging, also establish matched fps, scene, height reference, action-label meaning and timing, and record the participant/session split. A next-measured-pose handheld label and an accepted teleoperation target remain different definitions even when a tool permits the files to be joined.
-
-### The height reference and the table touch
-
-| Height reference (`z_frame`) | $$z = 0$$ at | Written by |
-| --- | --- | --- |
-| `table` | the table | the handheld recorder (default) |
-| `start` | the rod tip at the first frame of the episode | the teleoperation script (default), older handheld data |
-
-Calibration depends on the selected input mode. In the default **keyboard mode**, the recorder calibrates the table once at the beginning of the session: rest the tip for one second or accept its current height with Enter. Lift to about 12 cm, then press Enter again to start each episode. Touching the table while waiting between keyboard episodes does not run the per-episode calibration branch. The estimate can be lowered after a saved episode that went more than 5 mm below it; this is not a general drift correction. Restart and calibrate a new, separately identified session if the reference has drifted.
-
-With **`--gesture`**, rest the tip on the table before each episode, then lift to the start pose, hold still and move to start. That branch searches its 30-second still-sample history for a table touch at least 5 cm below the start. If none is found, it warns and reuses the previous table height; record that warning rather than treating the episode as freshly calibrated. The [optional handheld practice](10-practice.md#optional-physical-handheld-collection) gives separate keyboard and gesture procedures. Do not mix height conventions in one training set.
-
-### What the phone saw
-
-
-
-<div><figure><img src="../resources/class10/figures/source/real-frame-handheld-0.2s.png" alt="Handheld episode at 0.2 s"><figcaption><p>Figure 8. Handheld episode at 0.2 s. Handheld, 0.2 s.</p></figcaption></figure> <figure><img src="../resources/class10/figures/source/real-frame-handheld-4.0s.png" alt="Handheld episode at 4.0 s"><figcaption><p>Figure 9. Handheld episode at 4.0 s. Handheld, 4.0 s.</p></figcaption></figure> <figure><img src="../resources/class10/figures/source/real-frame-handheld-9.0s.png" alt="Handheld episode at 9.0 s"><figcaption><p>Figure 10. Handheld episode at 9.0 s. Handheld, 9.0 s.</p></figcaption></figure></div>
-
-A handheld episode on the course table with the printed green goal. The rod is always at the same place in the
-image, as the tool design intends.
-
-### The audit of 161 physical episodes
-
-<figure><img src="../resources/class10/figures/source/real-audit.png" alt="Audit of the physical data: start height, duration and speed"><figcaption><p>Figure 11. Audit of the physical data: start height, duration and speed.</p></figcaption></figure>
-
-The figure shows the start height of the 150 handheld episodes, the duration of all 161 episodes and the tip speed
-of each episode. Three findings changed the data. None of them occurs in simulation, where the scripted operator
-always starts at the same pose.
-
-| Finding | Measured | Consequence |
-| --- | --- | --- |
-| 1. Start height | median 9.4 cm, instruction 12 cm; only 69 of 150 within ±2.5 cm | with `start` heights the arm pushes 3 cm too high; the height axis now refers to the table |
-| 2. Scene | white sheet with a drawn outline against the course table with the printed goal | the merge succeeds without an error, but teaches two scenes; a merge is a decision |
-| 3. Speed and duration | median 6.8 s (handheld) and 13.3 s (teleoperated); 95th-percentile tip speed above 25 cm/s in 11 episodes (8 handheld, 3 teleoperated) | the arm clips these moments; in the kinematic replay all 150 handheld episodes are reachable, and 16 exceed the speed (95th percentile), tilt or yaw limit |
-
-### Estimate the simulated scene from the data
-
-Observation agreement is one relevant Sim2Real condition, alongside geometry, control, timing and contact. The source estimated the following scene values from physical records; this is more informative than assuming that visually plausible rendering is sufficient:
-
-| Scene value | Estimated from | Result |
-| --- | --- | --- |
-| Camera field of view | the asMagic intrinsics of the iPhone 17 Pro: $$\mathrm{fov}_y = 2\arctan(c_y / f_y)$$ | 54.4° (the first model assumed 57°) |
-| Table texture | a photo of the table with the A4 goal sheet on it; the sheet corners give a homography $$\tilde u' \sim H\,\tilde u$$ to a true top view at a known scale | light oak texture, 1.2 × 0.8 m |
-| Goal colour | the pixels of the printed goal in the rectified photo | opaque green `#066a45` |
-| Table height | the table touches of the handheld episodes | $$z = 0$$ of the `table` frame |
-| Object sizes | the printed objects | 40 mm cube, 60 mm goal square |
-
-#### Simulation and reality, side by side
-
-
-
-<div><figure><img src="../resources/class10/figures/source/real-frame-handheld-0.2s.png" alt="Real phone image"><figcaption><p>Figure 12. Real phone image.</p></figcaption></figure> <figure><img src="../resources/class11/figures/source/agent-step-1.png" alt="Simulated phone image with the estimated scene"><figcaption><p>Figure 13. Simulated phone image with the estimated scene. Simulated phone image, estimated scene (with the grid of Class 11).</p></figcaption></figure></div>
-
-The same provenance discipline applies to dynamics. Class 08 used the motion-test log to examine a quasi-static controller residual relative to the declared gravity model. Damping and friction require suitable dynamic excitation and an identification protocol; the static sweep alone does not identify them. A parameter added to the MJCF needs its source, units, fitted conditions and validation record.
-
-#### What the estimate does not fix
-
-A policy trained only on 300 simulated episodes was worse than holding still on real images (Class 11). A closer scene makes the gap smaller. It does not remove light changes, motion
-blur or the hand of the operator. For this course case, physical data and physical evaluation remain necessary evidence. Mixing simulated and physical data is a decision that the held-out evaluation must support, not an automatic improvement.
+The physical recordings of Push Cube, their audit and the estimate of the simulated scene are on the page [Data from the physical bench](10-physical-bench-optional.md).
 
 ---
 
 ## Instructor and TA demonstration
 
-Use the [source practice page](10-practice.md) for the single core task: teleoperate the simulated pusher with the iPhone, push the cube into the green target, and save or discard the episode. Show `info.json`, `stats.json`, one action/state row and the recorded image. Explain the table/start height convention before comparing any two records.
+Use the [source practice page](10-practice.md) for the single core task: with the iPhone, teleoperate the simulated arm with the pusher tool and push the cube into the green target, and save or discard the episode. Show `info.json`, `stats.json`, one action/state row and the recorded image. Explain the table/start height convention before comparing any two records.
 
 Then inspect the ten-episode Push Cube pilot. Run or read the source numeric audit first, predict which faults it can miss, then inspect visibility and the source reachability check. The audit reference is a check after a student's decision, not a substitute for the reasoning. The 150 handheld/11 teleoperated physical records are retained Push Cube evidence for comparison; they are not newly collected in class.
 
@@ -365,13 +296,19 @@ The separate practice gives the complete five-episode collection and ten-episode
 
 ## References
 
+ASMagic Team. 2026. “asmagic.” Version 0.1.4. Released January 19, 2026. *Python Package Index*. [Versioned API and data-format documentation](https://pypi.org/project/asmagic/0.1.4/).
+
 Chi, Cheng, Zhenjia Xu, Chuer Pan, Eric Cousineau, Benjamin Burchfiel, Siyuan Feng, Russ Tedrake, and Shuran Song. 2024. “Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots.” In *Proceedings of Robotics: Science and Systems*. [Paper and project](https://umi-gripper.github.io/).
 
 Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. [Spatial-vector resources](https://royfeatherstone.org/spatial/v2/index.html).
 
 Ross, Stephane, Geoffrey Gordon, and Drew Bagnell. 2011. “A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning.” In *Proceedings of the Fourteenth International Conference on Artificial Intelligence and Statistics*, 15:627–35. [Primary paper](https://proceedings.mlr.press/v15/ross11a.html).
 
+Shenzhen AncoraSpring Robotics Technology Co., Ltd. n.d. “asMagic.” *Apple App Store*. Accessed October 17, 2026. [Original app listing](https://apps.apple.com/us/app/asmagic/id6661033548).
+
 Sutton, Richard S., and Andrew G. Barto. 2018. *Reinforcement Learning: An Introduction*. 2nd ed. MIT Press. [Publisher record](https://mitpress.mit.edu/9780262039246/reinforcement-learning/).
+
+Wu, Tianyu, Xudong Han, Haoran Sun, Zishang Zhang, Bangchao Huang, Chaoyang Song, and Fang Wan. 2025. “MagiClaw: A Dual-Use, Vision-Based Soft Gripper for Bridging the Human Demonstration to Robotic Deployment Gap.” In *Data@CoRL 2025 Workshop*. [arXiv:2509.19169](https://arxiv.org/abs/2509.19169).
 
 Zhao, Tony Z., Vikash Kumar, Sergey Levine, and Chelsea Finn. 2023. “Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware.” In *Proceedings of Robotics: Science and Systems*. [Primary paper](https://www.roboticsproceedings.org/rss19/p016.html).
 

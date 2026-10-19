@@ -1,6 +1,6 @@
 # Class 09 — Practice
 
-The core demonstration uses an iPhone with asMagic to teleoperate the **simulated pusher** and push a black cube into its green target. The pusher script and commands below come from the source practice. A deterministic local phone publisher tests the protocol without an iPhone; its motion is not a successful human cube-pushing trial. The original gripper workflow remains an optional comparison. See [Class 09](09-teleoperation-by-streaming-from-asmagic.md) for frames, mapping, IK and timing.
+The core demonstration uses an iPhone with asMagic to teleoperate the **simulated arm with the pusher tool** and push a black cube into its green target. The pusher script and commands below come from the source practice. A deterministic local phone publisher tests the protocol without an iPhone; its motion is not a successful human cube-pushing trial. The original gripper workflow remains an optional comparison. See [Class 09](09-teleoperation-by-streaming-from-asmagic.md) for frames, mapping, IK and timing.
 
 ---
 
@@ -69,13 +69,13 @@ Click the MuJoCo window first: the keys work when the window has the focus.
 | Space | Engage or pause the mapping; re-engagement stores the current phone and tool poses as references. |
 | Right arrow | Start recording; press again to stop and save the diagnostic episode. |
 | Left arrow | Discard the recording in progress. |
-| Enter | Gripper comparison only: open/close. The pusher has no gripper and reports that fact. |
+| Enter | Gripper comparison only: open/close. The pusher tool has no gripper; the script reports that fact. |
 
 Close the window to quit. An active recording is saved on window closure; use the discard key first if you do not want to retain it.
 
 ---
 
-## Teleoperate the pusher with the iPhone
+## Teleoperate the pusher tool with the iPhone
 
 ### The pusher tool
 
@@ -87,9 +87,9 @@ uv run python code/fake_phone.py
 
 For the iPhone route, do not start the local publisher; use the phone IP in the pusher command.
 
-The pusher is the tool of Classes 10 and 11: a printed rod with the iPhone on it. The phone sits on the tool, so
-the tool moves with the phone as one rigid body. The phone camera is approximately 16 cm behind the rod tip, so a
-rotation of the phone swings the tip about the phone, as the printed tool does in your hand.
+The pusher tool of Classes 10 and 11 is a printed rod with the iPhone on it. The phone sits on the tool, so
+the tool moves with the phone as one rigid body. The phone camera is approximately 16 cm behind the pusher tip, so a
+rotation of the phone swings the tip about the phone, as the handheld pusher does in your hand.
 
 {% tabs %}
 {% tab title="Linux" %}
@@ -112,7 +112,7 @@ forward and down at the table, and press Space. The scene has the black cube and
 
 The two command lines in each operating-system tab are **alternatives**: run one local-publisher client or one iPhone client, not both. Replace `<phone IP>` with the address shown by the app; the angle-bracket text is not a literal shell argument.
 
-**Try:** with `fake_phone.py --pattern tilt` the phone only rotates. Watch the rod tip: it moves several
+**Try:** with `fake_phone.py --pattern tilt` the phone only rotates. Watch the pusher tip: it moves several
 centimetres while the phone stays in place.
 
 
@@ -273,9 +273,9 @@ The gripper is one end effector. The mapping can be reused with another tool whe
 
 | What | Gripper | Pusher tool |
 | --- | --- | --- |
-| Model | `rebot_b601_rs.xml`, `tcp` site between the fingertips | `rebot_b601_rs_pusher.xml` with `tool_pusher.xml`, `tcp` site at the rod tip |
-| Start pose | gripper down, TCP at (0.25, 0, 0.10) m | rod down, tip at (0.22, 0, 0.10) m |
-| `ee_tf_iphone` | the phone is held like the gripper: one constant rotation, no offset | the phone is mounted on the tool: rotation and position of the phone camera in the rod-tip frame |
+| Model | `rebot_b601_rs.xml`, `tcp` site between the fingertips | `rebot_b601_rs_pusher.xml` with `tool_pusher.xml`, `tcp` site at the pusher tip |
+| Start pose | gripper down, TCP at (0.25, 0, 0.10) m | pusher tool down, tip at (0.22, 0, 0.10) m |
+| `ee_tf_iphone` | the phone is held like the gripper: one constant rotation, no offset | the phone is mounted on the tool: rotation and position of the phone camera in the pusher-tip frame |
 
 ### An end effector of your own
 
@@ -288,12 +288,12 @@ The gripper is one end effector. The mapping can be reused with another tool whe
    and the virtual workspace of the `tcp` site.
 5. Run it with the phone simulator first, then with the iPhone.
 
-### The pusher on the physical arm
+### The arm-mounted pusher on the physical arm
 
 {% embed url="https://1750588168-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FCq8PJ6eHO7umpiGK34s5%2Fuploads%2Fgit-blob-faabf7de6ae3aebac849b2c12e998a34590a9571%2Fteleop-real-pusher.mp4?alt=media" %}
 Phone teleoperation of the physical arm with the pusher tool: Push Cube (18 s).
 {% endembed %}
 
-The physical arm with the pusher runs with the package of Class 10, `rebot_pusher`. A second phone on the robot
-tool gives the camera image. The arm must first pass the power-on of [Class 08](08-power-on-and-zero-optional.md), and only
+The physical arm with the arm-mounted pusher runs with the package of Class 10, `rebot_pusher`. A second phone on the arm-mounted
+pusher gives the camera image. The arm must first pass the power-on of [Class 08](08-power-on-and-zero-optional.md), and only
 the teaching team runs it.

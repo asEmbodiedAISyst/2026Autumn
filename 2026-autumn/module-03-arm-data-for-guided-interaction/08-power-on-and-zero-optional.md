@@ -126,7 +126,7 @@ ip -details link show can0          # UP, ERROR-ACTIVE
 uv run motorbridge-cli scan --vendor robstride --channel can0 --start-id 1 --end-id 7
 ```
 
-**Expected:** `can0` is `UP` and `ERROR-ACTIVE` at bitrate 1000000, and the scan reports
+**Expected:** `can0` is `UP` and `ERROR-ACTIVE` at bitrate 1000000, and the [motorbridge](https://github.com/motorbridge/motorbridge) scan reports
 `scan done: 7 motor(s) found`.
 {% endstep %}
 
@@ -251,8 +251,7 @@ skipped. Without `--joints` it tests joints 1–6 one at a time. At the end the 
 | Power switch | no torque | falls to its mechanical stops |
 
 **Expected** for joint 2: approximately 2° tracking error (2–5° is normal, the abort is at 15°), a peak torque of
-approximately 2 N m and no temperature rise. The script writes a JSON log to `outputs/real_gripper/`. The class
-page gives its [data contract and the result of 10 October 2026](08-lets-build-a-simple-arm-and-turn-it-on.md#the-data-of-the-motion-test).
+approximately 2 N m and no temperature rise. The script writes a JSON log to `outputs/real_gripper/`.
 {% endstep %}
 {% endstepper %}
 
