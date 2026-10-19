@@ -283,20 +283,21 @@ The static gravity effort is the inverse-dynamics result $$g(q)=\operatorname{RN
 
 
 $$
-\tau_i = \mathrm{clip}\Big(K_{p,i}\,(q_{d,i} - q_i) - K_{d,i}\,\dot q_i + g_i(q),\; \pm\tau_{max,i}\Big)
+\tau_i = \mathrm{clip}\Big(K_{p,i}\,(q_{d,i} - q_i) - K_{d,i}\,\dot q_i,\; \pm\tau_{max,i}\Big) + g_i(q)
 $$
 
 Each joint has a position actuator with stiffness $$K_p$$ and damping $$K_d$$. It receives one target $$q_d$$ per
 control period. $$g(q)$$ is the gravity torque: the torque that holds the arm still against gravity at the pose
-$$q$$. MuJoCo computes the compensation from the model mass distribution and gravity. The torque is limited to the peak torque
-of the motor. In the MJCF file, one line gives this law for joint 2:
+$$q$$. MuJoCo computes the compensation from the model mass distribution and gravity. The PD term is limited to the peak
+torque of the motor (`forcerange`). In the MJCF file, one line gives this law for joint 2:
 
 ```xml
 <position name="joint2" joint="joint2" kp="50.0" kv="5.0" ctrlrange="0 3.14" forcerange="-36 36"/>
 ```
 
-`actuatorgravcomp="true"` on the joint sends $$g(q)$$ through the actuator, so the torque limit also applies to
-it. On the physical arm, the same target goes to the motor in MIT mode (the CAN command below). The physical gains are lower:
+`actuatorgravcomp="true"` on the joint adds $$g(q)$$ to the actuator torque. `forcerange` does not limit this term;
+only a joint `actuatorfrcrange` would, and the model sets none. On the physical arm, the same target goes to the motor
+in MIT mode (the CAN command below), and the motor limits its whole output, the feed-forward included. The physical gains are lower:
 $$K_p$$ = 40 N m/rad for joint 2 in the bring-up scripts. The model gains do not authorise you to copy commands
 directly to hardware.
 
