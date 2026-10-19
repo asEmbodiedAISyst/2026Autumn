@@ -109,10 +109,6 @@ needs it.
 Metal parts, printed parts, screw bags and the base plate. Paired parts are engraved with L or R: sort them into
 left and right before you start.
 
-{% hint style="info" %}
-**Photo to be added:** all structural parts laid flat, each labelled with the name used below.
-{% endhint %}
-
 ---
 
 ## Base (sub-assembly A)
@@ -134,10 +130,6 @@ Also: ID1 (RS06), AXK5578 flat thrust bearing ×1, `4× HM4×70`, `6× HM4×16`
 - ⚠️ The **▲ arrow** on the base plate points **forward** (toward the front of the arm).
 - ⚠️ ID1's **connector faces the long edge** of the base plate.
 - The screws go through the plate into the motor (around video 2:12).
-
-{% hint style="info" %}
-**Photo to be added:** underside of the base plate showing the screws, plus ID1's connector direction (one shot from above, one from below).
-{% endhint %}
 
 ### Thrust bearing + base shaft
 
@@ -184,10 +176,6 @@ The upper-arm frame arrives **pre-assembled as one piece** (two metal side plate
 - Lay it **textured side up**.
 - Remove the screws on the upward-facing side. Keep them; you'll need them again in 4.5.
 
-{% hint style="info" %}
-**Photo to be added:** both sides of the frame before disassembly, with the screws to remove circled.
-{% endhint %}
-
 ### Pre-route the cable: ID2 ⇄ ID3
 
 <figure><img src="../resources/class08/figures/source/assembly/steps/s04_3.png" alt="Source assembly view: Pre-route the cable: ID2 ⇄ ID3"><figcaption><p>Figure 14. Source assembly view: Pre-route the cable: ID2 ⇄ ID3.</p></figcaption></figure>
@@ -220,10 +208,6 @@ The upper-arm frame arrives **pre-assembled as one piece** (two metal side plate
 2. Flip the arm and move the screws over from the other side (video 5:30), then fix this side's motors with `12× KM3×7`.
 3. `Green cover ─[2× KA3×12]→ upper arm`
 
-{% hint style="info" %}
-**Photo to be added:** close-up of the two KA3×12 next to ID3 after flipping. The video only says to move the screws over from the other side and doesn't show exactly which ones.
-{% endhint %}
-
 ### Self-check
 
 <figure><img src="../resources/class08/figures/source/assembly/steps/s04_7.png" alt="Source assembly view: Self-check"><figcaption><p>Figure 18. Source assembly view: Self-check.</p></figcaption></figure>
@@ -237,10 +221,6 @@ The upper-arm frame arrives **pre-assembled as one piece** (two metal side plate
 <figure><img src="../resources/class08/figures/source/assembly/steps/s04_8.png" alt="Source assembly view: Upper-arm limit blocks L / R"><figcaption><p>Figure 19. Source assembly view: Upper-arm limit blocks L / R.</p></figcaption></figure>
 
 `Limit block L ─[2× KA3×12]→ ID2 output side`, then flip: `Limit block R ─[2× KA3×12]→ same spot on the back`
-
-{% hint style="info" %}
-**Photo to be added:** close-up of both limit blocks installed (both sides), showing which way the L/R markings face.
-{% endhint %}
 
 {% hint style="success" %}
 **Result:** upper-arm sub-assembly B (ID2 + ID3)
@@ -269,10 +249,6 @@ The cable shown in this part of the video is the wrong one (an on-screen note in
 1. `300mm double-elbow cable → ID4`, tighten the plug screws.
 2. Remove 2 screws from the pre-assembled forearm (video 7:45).
 3. Feed the cable through the inside of the forearm.
-
-{% hint style="info" %}
-**Photo to be added:** which 2 screws are removed at 7:45, circled.
-{% endhint %}
 
 ### First side
 
@@ -370,20 +346,12 @@ Also: ID7 (RS00), MGN9 linear rail ×1 + carriages ×2, module-1 16-tooth gear �
 2. `Front metal bracket ─[6× KM3×7]→ front of ID7`
 3. `Gear adapter ─[6× KM3×7]→ ID7 output disc`
 
-{% hint style="info" %}
-**Photo to be added:** screw positions on ID7's rear covers, and how many HM3×12 in total.
-{% endhint %}
-
 ### Gear + rail base
 
 <figure><img src="../resources/class08/figures/source/assembly/steps/s07_3.png" alt="Source assembly view: Gear + rail base"><figcaption><p>Figure 36. Source assembly view: Gear + rail base.</p></figcaption></figure>
 
 1. Slide the gear onto the adapter's shaft and **tighten the gear's set screw** with a hex key.
 2. Fit the green rail base over it.
-
-{% hint style="info" %}
-**Photo to be added:** close-up of the gear set screw, and how the green rail base is held in place (the video doesn't explain).
-{% endhint %}
 
 ### Linear rail
 
@@ -399,10 +367,6 @@ Also: ID7 (RS00), MGN9 linear rail ×1 + carriages ×2, module-1 16-tooth gear �
 
 1. `Rack + slider block ─[HM3×6]` (make two sets)
 2. Line up the holes and mount both racks on the carriages, meshing with the gear. ⚠️ **Left and right travel must be symmetric.** Push them by hand and check both sides open the same distance.
-
-{% hint style="info" %}
-**Photo to be added:** rack positions with the gripper fully closed and fully open (one shot each), as a reference for “symmetric”.
-{% endhint %}
 
 ### Fingers
 
@@ -479,9 +443,6 @@ Also: 6803ZZ bearing ×1, `6× HM4×16`, `HM3×8`
 2. Back side: fit the bearing first, then elbow connector R, fixed the same way.
 3. Plug the 300mm double-elbow cable coming out of the forearm into ID3 and tighten the plug screws.
 
-{% hint style="info" %}
-**Photo to be added:** the back (R side) after assembly, to confirm how many screws of which type. The video only says “same procedure”.
-{% endhint %}
 
 ---
 
@@ -550,10 +511,6 @@ Also: `4× HM3×6`, `3× HM3×12`, 200mm double-elbow cable ×2
 
 Use the two 200mm angled cables to connect the body and the gripper (ID6 ⇄ ID7, etc.).
 
-{% hint style="info" %}
-**Photo to be added:** overall view of the cable routing from wrist to gripper. The video doesn't say which cable goes where between ID4 and ID7.
-{% endhint %}
-
 {% hint style="success" %}
 **Result:** complete arm body
 {% endhint %}
@@ -590,10 +547,6 @@ unplug a motor cable while the power is on.
 <figure><img src="../resources/class08/figures/source/assembly/steps/s12_3.png" alt="Source assembly view: Debug board (optional)"><figcaption><p>Figure 60. Source assembly view: Debug board (optional).</p></figcaption></figure>
 
 The free RobStride debug board usually isn't needed. Use it only to tune low-level parameters of an individual motor.
-
-{% hint style="info" %}
-**Photo to be added:** both sides of the splitter board (CANH/CANL silkscreen, XT30 port positions).
-{% endhint %}
 
 ---
 

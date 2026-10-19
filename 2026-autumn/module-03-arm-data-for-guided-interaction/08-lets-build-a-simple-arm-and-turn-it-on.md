@@ -32,9 +32,6 @@ The explanation and supplied records can be read without executing code. The sep
 
 <figure><img src="../resources/class08/figures/source/arm-seeed.png" alt="The reBot Arm B601-RS"><figcaption><p>Figure 1. The reBot Arm B601-RS (image: Seeed Studio).</p></figcaption></figure>
 
-{% hint style="info" %}
-**Photo to be added:** the course arm on the bench, clamped to the table, with its supply.
-{% endhint %}
 
 The course arm is the Seeed reBot Arm B601-RS. It has six joints and a parallel gripper. It is clamped to the
 bench, with its 48 V supply behind it. Each joint is a RobStride motor of the kind seen in Class 02.

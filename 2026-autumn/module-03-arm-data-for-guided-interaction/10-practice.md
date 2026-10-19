@@ -224,9 +224,6 @@ For the core classroom response, inspect one supplied or newly recorded episode,
 
 The same task can be recorded without the arm: you hold the tool with the phone and push a real cube.
 
-{% hint style="info" %}
-**Photo to be added:** the handheld pusher with the iPhone mounted on it.
-{% endhint %}
 
 Print the handheld pusher `hardware/hand_tool.stl`, the 40 mm cube `hardware/cube_40mm.stl` and the goal sheet
 `hardware/goal_squares_a4.pdf` at 100 %. Network and app are as in the simulation route.
