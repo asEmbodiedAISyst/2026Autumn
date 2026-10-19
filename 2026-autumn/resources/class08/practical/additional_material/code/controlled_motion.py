@@ -258,8 +258,6 @@ def main() -> None:
     if args.no_viewer:
         run(sim, args.mode, show=lambda: None, trace=lambda p: None)
         return
-    if sys.platform == "darwin" and "mjpython" not in sys.executable:
-        sys.exit("On macOS the viewer must run under mjpython:  uv run mjpython code/controlled_motion.py")
     from mujoco import viewer
 
     with viewer.launch_passive(sim.model, sim.data) as v:

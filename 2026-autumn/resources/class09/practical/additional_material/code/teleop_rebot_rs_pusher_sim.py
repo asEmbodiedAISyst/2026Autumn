@@ -139,8 +139,6 @@ def main() -> None:
     args = ap.parse_args()
     if args.debug:
         log.setLevel("DEBUG")
-    if not args.no_viewer and sys.platform == "darwin" and "mjpython" not in sys.executable:
-        sys.exit("On macOS the viewer must run under mjpython:  uv run mjpython code/teleop_rebot_rs_pusher_sim.py ...")
 
     sim = PusherSim()
     ee_R_iphone, ee_p_iphone = ee_tf_iphone_from_model(sim.model)

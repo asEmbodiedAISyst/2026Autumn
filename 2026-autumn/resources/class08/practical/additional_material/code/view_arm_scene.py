@@ -27,7 +27,6 @@ How the script works, in four steps:
 from __future__ import annotations
 
 import argparse
-import sys
 from pathlib import Path
 
 import mujoco
@@ -105,8 +104,6 @@ def main() -> None:
     if args.list:
         return
     # 4. Viewer. On macOS the window must run under mjpython, which gives the main thread to the GUI.
-    if sys.platform == "darwin" and "mjpython" not in sys.executable:
-        sys.exit("On macOS the viewer must run under mjpython:  uv run mjpython code/view_arm_scene.py")
     import time
 
     from mujoco import viewer
