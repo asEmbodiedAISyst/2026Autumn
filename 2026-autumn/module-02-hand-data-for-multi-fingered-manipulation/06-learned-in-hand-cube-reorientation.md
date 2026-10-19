@@ -23,7 +23,7 @@ By the end of this class, you should be able to:
 
 [Lecture](#start-with-the-hand-cube-and-task) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The supplied source figures, declared interface, worked calculations and recorded diagnostic patterns support the demonstration and activity. The [source support package](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/practical/README.md) provides the available models, records and original simulation/physical videos, together with explicit missing-file notes. The active deployment bundle containing the checkpoint, bridge, training configuration and raw NPZ logs is referenced outside the source snapshot; the archived hand model also has missing mesh dependencies. The page therefore interprets the author's recorded evidence; it does not claim a fresh policy execution or require powered hardware.
+The supplied source figures, declared interface, worked calculations and recorded diagnostic patterns support the demonstration and activity. The [source support package](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/additional_material/README.md) provides the available models, records and original simulation/physical videos, together with explicit missing-file notes. The active deployment bundle containing the checkpoint, bridge, training configuration and raw NPZ logs is referenced outside the source snapshot; the archived hand model also has missing mesh dependencies. The page therefore interprets the author's recorded evidence; it does not claim a fresh policy execution or require powered hardware.
 
 ## Start with the hand, cube and task
 
@@ -215,7 +215,7 @@ Low reported rotation progress, low fingertip-contact fraction and short episode
 
 ## Inspect the simulation preview before the physical record
 
-The [original simulation preview (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/practical/additional_material/evidence/videos/continuous_z_model400_preview_30s.mp4) accompanies the sampled frames below. Follow a fingertip and its contact with the cube through the intervening motion; keep this early-policy preview distinct from an autonomous-success benchmark. The link opens the original file page, where the recording can be downloaded for playback.
+The [original simulation preview (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/additional_material/evidence/videos/continuous_z_model400_preview_30s.mp4) accompanies the sampled frames below. Follow a fingertip and its contact with the cube through the intervening motion; keep this early-policy preview distinct from an autonomous-success benchmark. The link opens the original file page, where the recording can be downloaded for playback.
 
 Identify which digits appear to support the cube and which reposition. Then ask what the images can show without an independent numerical object-motion record.
 
@@ -229,7 +229,7 @@ A coherent-looking sequence is useful for locating contacts and formulating a qu
 
 ### Keep operator intervention visible
 
-Use the [original physical recording (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/practical/additional_material/evidence/videos/rgb.mp4) to inspect what happens between the sampled frames. Locate manual contact or replacement before judging the motion as autonomous; the recording remains assisted evidence.
+Use the [original physical recording (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/additional_material/evidence/videos/rgb.mp4) to inspect what happens between the sampled frames. Locate manual contact or replacement before judging the motion as autonomous; the recording remains assisted evidence.
 
 ![Source physical-trial filmstrip with visible manual intervention](../resources/class06/figures/source/fig07_hardware_continuous_z_sequence.png)
 
