@@ -1,18 +1,18 @@
 # Class 10 — Practice
 
-This folder holds the code of the practice. The steps below are the same as on the [practice page](../../../../module-03-arm-data-for-guided-interaction/10-practice.md), written for reading on GitHub or in an editor.
+This folder holds the code of the practice. The steps below are the same as on the [practice page](../../../module-03-arm-data-for-guided-interaction/10-practice.md), written for reading on GitHub or in an editor.
 
 On this page you collect Push Cube demonstrations in simulation: you teleoperate the simulated arm with the iPhone
 and record what it does. Then you look at what you collected. After class you can also collect with the iPhone in
-your hand. The class page [Class 10](../../../../module-03-arm-data-for-guided-interaction/10-collect-data-for-reinforcement-learning.md) explains the task, the tool, the episode frame and the dataset.
+your hand. The class page [Class 10](../../../module-03-arm-data-for-guided-interaction/10-collect-data-for-reinforcement-learning.md) explains the task, the tool, the episode frame and the dataset.
 
 ---
 
 ## Set up
 
 The code is the pusher package of the course, `rebot_pusher`, for the pusher tool of the end of
-[Class 09 — Practice](../../../../module-03-arm-data-for-guided-interaction/09-practice.md#the-pusher-tool). Class 11 uses the same package:
-[`2026-autumn/resources/class10/additional_material/rebot_pusher/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class10/additional_material/rebot_pusher).
+[Class 09 — Practice](../../../module-03-arm-data-for-guided-interaction/09-practice.md#the-pusher-tool). Class 11 uses the same package:
+[`2026-autumn/resources/class10/additional_material/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class10/additional_material).
 
 You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (Apple silicon or Intel).
 
@@ -43,7 +43,7 @@ Get the code and make the environment:
 ```bash
 git clone https://github.com/asEmbodiedAISyst/2026Autumn.git rob7103
 cd rob7103
-cd 2026-autumn/resources/class10/additional_material/rebot_pusher
+cd 2026-autumn/resources/class10/additional_material
 uv sync
 ```
 
@@ -57,11 +57,11 @@ with `uv run mjpython`; the other commands keep `uv run python`.
 
 | Script | What it does |
 | --- | --- |
-| [`scripts/teleop_real.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/additional_material/rebot_pusher/scripts/teleop_real.py) | Teleoperation with the iPhone; `--robot sim --record` records the simulated arm |
-| [`scripts/check_handheld_dataset.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/additional_material/rebot_pusher/scripts/check_handheld_dataset.py) | Checks observed poses with simulated-arm inverse kinematics; reports reachability, speed, tilt and yaw |
-| [`rebot_sim/teleop/fake_phone.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/additional_material/rebot_pusher/rebot_sim/teleop/fake_phone.py) | Phone simulator, for a test without an iPhone |
-| [`scripts/record_handheld.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/additional_material/rebot_pusher/scripts/record_handheld.py) | Optional: records demonstrations with the iPhone in your hand, phone pose and image, to a LeRobot dataset |
-| [`DATA_FORMAT.md`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/additional_material/rebot_pusher/DATA_FORMAT.md) | The features, the episode frame and the height reference of the datasets |
+| [`scripts/teleop_real.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/additional_material/scripts/teleop_real.py) | Teleoperation with the iPhone; `--robot sim --record` records the simulated arm |
+| [`scripts/check_handheld_dataset.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/additional_material/scripts/check_handheld_dataset.py) | Checks observed poses with simulated-arm inverse kinematics; reports reachability, speed, tilt and yaw |
+| [`rebot_sim/teleop/fake_phone.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/additional_material/rebot_sim/teleop/fake_phone.py) | Phone simulator, for a test without an iPhone |
+| [`scripts/record_handheld.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/additional_material/scripts/record_handheld.py) | Optional: records demonstrations with the iPhone in your hand, phone pose and image, to a LeRobot dataset |
+| [`DATA_FORMAT.md`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/additional_material/DATA_FORMAT.md) | The features, the episode frame and the height reference of the datasets |
 
 ---
 
@@ -75,7 +75,7 @@ with `uv run mjpython`; the other commands keep `uv run python`.
 > points, can delay the stream, and the arm then moves in jerks.
 
 Open asMagic, open **Data Streaming**, switch **AR Data** on and read the IP address of the phone. The app and its
-pages are shown in [Class 09 — Practice](../../../../module-03-arm-data-for-guided-interaction/09-practice.md#start-with-the-iphone).
+pages are shown in [Class 09 — Practice](../../../module-03-arm-data-for-guided-interaction/09-practice.md#start-with-the-iphone).
 
 **No iPhone?** Start the phone simulator in a second terminal and use `--phone-ip 127.0.0.1` below:
 
@@ -85,7 +85,7 @@ uv run python -m rebot_sim.teleop.fake_phone --pattern circle --hold tool --imag
 
 ### Start the recorder
 
-The mapping is that of the pusher tool in [Class 09 — Practice](../../../../module-03-arm-data-for-guided-interaction/09-practice.md#the-pusher-tool): the tool
+The mapping is that of the pusher tool in [Class 09 — Practice](../../../module-03-arm-data-for-guided-interaction/09-practice.md#the-pusher-tool): the tool
 moves with the phone as one rigid body. Hold the phone as it sits on the arm-mounted pusher, in landscape, the main
 camera looking at the table in front of you; best, mount it in the handheld pusher `hardware/hand_tool.stl`.
 
@@ -170,7 +170,7 @@ The class folder has a pilot of ten simulated handheld episodes. Five have a del
 `additional_material/code/`. Run it from the package folder, with the environment of the package:
 
 ```bash
-uv run python ../code/audit_dataset.py ../data/pilot_push_cube_handheld
+uv run python code/audit_dataset.py data/pilot_push_cube_handheld
 ```
 
 Expected output (shortened):
@@ -184,7 +184,7 @@ Visibility and reachability are NOT assessed; geometric success alone does not a
 
 The numeric script flags the truncated final recorded state and excessive command speed. It does not assess visibility, orientation or reachability and does not find every unacceptable demonstration. Compare the recorded source reachability metrics and inspect the images as separate evidence.
 
-After writing your decision, read [the acceptance interpretation](../data/pilot_push_cube_handheld/ACCEPTANCE.md), alongside `../data/pilot_push_cube_handheld/audit_reference.json` from the current working directory. The JSON preserves injected-fault labels, source outcomes and metrics; it does not contain a complete accept/reject verdict. Episode 3 has no injected fault but reachability 0.903, below 0.98. Six episodes already have a recorded gate failure under this interpretation; four are eligible for image/remaining-contract review, not automatically accepted. Do not force the rejection count to five.
+After writing your decision, read [the acceptance interpretation](data/pilot_push_cube_handheld/ACCEPTANCE.md), alongside `data/pilot_push_cube_handheld/audit_reference.json` from the current working directory. The JSON preserves injected-fault labels, source outcomes and metrics; it does not contain a complete accept/reject verdict. Episode 3 has no injected fault but reachability 0.903, below 0.98. Six episodes already have a recorded gate failure under this interpretation; four are eligible for image/remaining-contract review, not automatically accepted. Do not force the rejection count to five.
 
 ---
 

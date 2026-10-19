@@ -3,8 +3,8 @@
 Run the audit script on the pilot dataset, open two or three episodes in the viewer if time allows, and give a verdict
 for every episode BEFORE you open `audit_reference.json`.
 
-    cd additional_material/rebot_pusher        # from the class folder; uv sync once
-    uv run python ../code/audit_dataset.py ../data/pilot_push_cube_handheld
+    cd additional_material        # from the class folder; uv sync once
+    uv run python code/audit_dataset.py data/pilot_push_cube_handheld
 
 | Episode | Accept / reject | Reason (one line, with the number you used) |
 | --- | --- | --- |

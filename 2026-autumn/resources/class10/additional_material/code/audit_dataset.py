@@ -1,6 +1,6 @@
 """Audit a supplied LeRobot v3 sample without training or robot drivers.
 
-Run from additional_material/rebot_pusher (after uv sync): uv run python ../code/audit_dataset.py ../data/pilot_push_cube_handheld --json outputs/pilot-audit.json
+Run from additional_material (after uv sync): uv run python code/audit_dataset.py data/pilot_push_cube_handheld --json outputs/pilot-audit.json
 A final recorded distance below 0.015m is a geometric snapshot check, not a complete rollout verdict.
 Visibility, orientation quality and IK reachability require separate evidence. A successful task is not automatically an acceptable demonstration.
 """

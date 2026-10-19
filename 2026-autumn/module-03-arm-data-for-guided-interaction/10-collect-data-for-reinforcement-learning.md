@@ -102,7 +102,7 @@ The arm uses another copy. The approach follows the Universal Manipulation Inter
 
 Rod, plate and camera are at the same position relative to the pusher tip in both prints. Thus the nominal camera-to-tip geometry is shared when a person or the arm holds it. Background, hands, lighting, image timing and mounting tolerances can still change the observation. The phone image is the observation of the policy. The phone pose gives
 the pose of the pusher tip. The STL files of both prints are in the class folder
-(`rebot_pusher/hardware/hand_tool.stl`, `robot_tool.stl`).
+(`additional_material/hardware/hand_tool.stl`, `robot_tool.stl`).
 
 ### Conditions for sharing demonstrations across embodiments
 
@@ -116,7 +116,7 @@ The scripted simulation expert stores controller-limited targets. The assigned s
 
 ### The episode frame
 
-The Class 09 pusher bridge uses its own six-joint diagnostic record. This class switches to the source `rebot_pusher` learning recorder, whose state/action are nine-component tip poses. Its `DATA_FORMAT.md` and the Class 09 bridge comments also use different phone-axis wording. Before sharing a physical input across packages, verify the installed app axes and each camera-to-tip transform. Agreement of the file name `asMagic` alone does not resolve that convention.
+The Class 09 pusher bridge uses its own six-joint diagnostic record. This class switches to the `rebot_pusher` learning recorder, whose state/action are nine-component tip poses. Its `DATA_FORMAT.md` and the Class 09 bridge comments also use different phone-axis wording. Before sharing a physical input across packages, verify the installed app axes and each camera-to-tip transform. Agreement of the file name `asMagic` alone does not resolve that convention.
 
 
 Every episode has its own frame $$e$$. Its $$x, y$$ origin is the pusher tip at the first frame, its $$x$$ axis is

@@ -1,9 +1,9 @@
 """Make the Class 10 pilot dataset: a small set of handheld Push Cube episodes that includes episodes a data
 audit must reject.
 
-Run it from ``additional_material/rebot_pusher`` (it imports ``rebot_sim`` of that package)::
+Run it from ``additional_material`` (it imports ``rebot_sim`` of this package)::
 
-    uv run python ../code/make_pilot_dataset.py --root datasets/pilot_push_cube_handheld
+    uv run python code/make_pilot_dataset.py --root datasets/pilot_push_cube_handheld
 
 Every episode is written, successful or not (unlike ``scripts/generate_tool_demos.py``, which drops failures),
 so that students can find the bad ones. The script writes ``audit_reference.json`` next to the dataset with the
@@ -31,7 +31,7 @@ from pathlib import Path
 if sys.platform.startswith("linux"):
     os.environ.setdefault("MUJOCO_GL", "egl")
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "rebot_pusher"))  # rebot_sim of the class package
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # rebot_sim of the class package
 
 import mujoco  # noqa: E402
 import numpy as np  # noqa: E402

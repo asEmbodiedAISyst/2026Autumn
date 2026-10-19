@@ -1,6 +1,6 @@
 # Agent videos
 
-The course lead adds two videos of Claude as the controller of the pusher tool (`rebot_pusher/scripts/agent_control.py`):
+The course lead adds two videos of Claude as the controller of the pusher tool (`scripts/agent_control.py`):
 
 | File | Content | State |
 | --- | --- | --- |

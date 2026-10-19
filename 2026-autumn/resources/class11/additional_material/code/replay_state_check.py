@@ -6,7 +6,7 @@ from pathlib import Path
 import sys,json,argparse
 import numpy as np
 import mujoco
-sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'rebot_pusher'))
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from rebot_sim.sim import RebotSim
 from rebot_sim.robot import PUSHER_HOME_QPOS
 
