@@ -54,10 +54,10 @@ Each link opens a **separate PDF for this class only**, including its review pag
 | Example | Filled worksheet | Paper |
 | --- | --- | --- |
 | ALOHA / ACT | [Filled Learning worksheet](../resources/project-workbook/examples/class16/ALOHA-Class16-Learning.pdf) | [Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware](https://arxiv.org/abs/2304.13705v1) |
-| UMI | [Filled Learning worksheet](../resources/project-workbook/examples/class16/UMI-Class16-Learning.pdf) | [Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots](https://arxiv.org/abs/2402.10329v1) |
+| UMI | [Filled Learning worksheet](../resources/project-workbook/examples/class16/UMI-Class16-Learning.pdf) | [Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots](https://arxiv.org/abs/2402.10329v3) |
 | DROID | [Filled Learning worksheet](../resources/project-workbook/examples/class16/DROID-Class16-Learning.pdf) | [DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset](https://arxiv.org/abs/2403.12945v1) |
 | BridgeData V2 | [Filled Learning worksheet](../resources/project-workbook/examples/class16/BridgeDataV2-Class16-Learning.pdf) | [BridgeData V2: A Dataset for Robot Learning at Scale](https://arxiv.org/abs/2308.12952v1) |
-| LEAP Hand | [Filled Learning worksheet](../resources/project-workbook/examples/class16/LEAP-Class16-Learning.pdf) | [LEAP Hand: Low-Cost, Efficient, and Anthropomorphic Hand for Robot Learning](https://arxiv.org/abs/2309.06440) |
+| LEAP Hand | [Filled Learning worksheet](../resources/project-workbook/examples/class16/LEAP-Class16-Learning.pdf) | [LEAP Hand: Low-Cost, Efficient, and Anthropomorphic Hand for Robot Learning](https://arxiv.org/abs/2309.06440v1) |
 | NeuralFeels | [Filled Learning worksheet](../resources/project-workbook/examples/class16/NeuralFeels-Class16-Learning.pdf) | [Neural feels with neural fields: Visuo-tactile perception for in-hand manipulation](https://arxiv.org/abs/2312.13469v1) |
-| Walk These Ways | [Filled Learning worksheet](../resources/project-workbook/examples/class16/WalkTheseWays-Class16-Learning.pdf) | [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](https://arxiv.org/abs/2212.03238) |
-| DayDreamer | [Filled Learning worksheet](../resources/project-workbook/examples/class16/DayDreamer-Class16-Learning.pdf) | [DayDreamer: World Models for Physical Robot Learning](https://arxiv.org/abs/2206.14176) |
+| Walk These Ways | [Filled Learning worksheet](../resources/project-workbook/examples/class16/WalkTheseWays-Class16-Learning.pdf) | [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](https://arxiv.org/abs/2212.03238v1) |
+| DayDreamer | [Filled Learning worksheet](../resources/project-workbook/examples/class16/DayDreamer-Class16-Learning.pdf) | [DayDreamer: World Models for Physical Robot Learning](https://arxiv.org/abs/2206.14176v1) |

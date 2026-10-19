@@ -58,10 +58,10 @@ Each link opens a **separate PDF for this class only**, including its review pag
 | Example | Filled worksheet | Paper |
 | --- | --- | --- |
 | ALOHA / ACT | [Filled Claim worksheet](../resources/project-workbook/examples/class12/ALOHA-Class12-Claim.pdf) | [Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware](https://arxiv.org/abs/2304.13705v1) |
-| UMI | [Filled Claim worksheet](../resources/project-workbook/examples/class12/UMI-Class12-Claim.pdf) | [Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots](https://arxiv.org/abs/2402.10329v1) |
+| UMI | [Filled Claim worksheet](../resources/project-workbook/examples/class12/UMI-Class12-Claim.pdf) | [Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots](https://arxiv.org/abs/2402.10329v3) |
 | DROID | [Filled Claim worksheet](../resources/project-workbook/examples/class12/DROID-Class12-Claim.pdf) | [DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset](https://arxiv.org/abs/2403.12945v1) |
 | BridgeData V2 | [Filled Claim worksheet](../resources/project-workbook/examples/class12/BridgeDataV2-Class12-Claim.pdf) | [BridgeData V2: A Dataset for Robot Learning at Scale](https://arxiv.org/abs/2308.12952v1) |
-| LEAP Hand | [Filled Claim worksheet](../resources/project-workbook/examples/class12/LEAP-Class12-Claim.pdf) | [LEAP Hand: Low-Cost, Efficient, and Anthropomorphic Hand for Robot Learning](https://arxiv.org/abs/2309.06440) |
+| LEAP Hand | [Filled Claim worksheet](../resources/project-workbook/examples/class12/LEAP-Class12-Claim.pdf) | [LEAP Hand: Low-Cost, Efficient, and Anthropomorphic Hand for Robot Learning](https://arxiv.org/abs/2309.06440v1) |
 | NeuralFeels | [Filled Claim worksheet](../resources/project-workbook/examples/class12/NeuralFeels-Class12-Claim.pdf) | [Neural feels with neural fields: Visuo-tactile perception for in-hand manipulation](https://arxiv.org/abs/2312.13469v1) |
-| Walk These Ways | [Filled Claim worksheet](../resources/project-workbook/examples/class12/WalkTheseWays-Class12-Claim.pdf) | [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](https://arxiv.org/abs/2212.03238) |
-| DayDreamer | [Filled Claim worksheet](../resources/project-workbook/examples/class12/DayDreamer-Class12-Claim.pdf) | [DayDreamer: World Models for Physical Robot Learning](https://arxiv.org/abs/2206.14176) |
+| Walk These Ways | [Filled Claim worksheet](../resources/project-workbook/examples/class12/WalkTheseWays-Class12-Claim.pdf) | [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](https://arxiv.org/abs/2212.03238v1) |
+| DayDreamer | [Filled Claim worksheet](../resources/project-workbook/examples/class12/DayDreamer-Class12-Claim.pdf) | [DayDreamer: World Models for Physical Robot Learning](https://arxiv.org/abs/2206.14176v1) |

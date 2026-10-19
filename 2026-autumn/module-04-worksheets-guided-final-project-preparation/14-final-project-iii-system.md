@@ -54,10 +54,10 @@ Each link opens a **separate PDF for this class only**, including its review pag
 | Example | Filled worksheet | Paper |
 | --- | --- | --- |
 | ALOHA / ACT | [Filled System worksheet](../resources/project-workbook/examples/class14/ALOHA-Class14-System.pdf) | [Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware](https://arxiv.org/abs/2304.13705v1) |
-| UMI | [Filled System worksheet](../resources/project-workbook/examples/class14/UMI-Class14-System.pdf) | [Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots](https://arxiv.org/abs/2402.10329v1) |
+| UMI | [Filled System worksheet](../resources/project-workbook/examples/class14/UMI-Class14-System.pdf) | [Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots](https://arxiv.org/abs/2402.10329v3) |
 | DROID | [Filled System worksheet](../resources/project-workbook/examples/class14/DROID-Class14-System.pdf) | [DROID: A Large-Scale In-The-Wild Robot Manipulation Dataset](https://arxiv.org/abs/2403.12945v1) |
 | BridgeData V2 | [Filled System worksheet](../resources/project-workbook/examples/class14/BridgeDataV2-Class14-System.pdf) | [BridgeData V2: A Dataset for Robot Learning at Scale](https://arxiv.org/abs/2308.12952v1) |
-| LEAP Hand | [Filled System worksheet](../resources/project-workbook/examples/class14/LEAP-Class14-System.pdf) | [LEAP Hand: Low-Cost, Efficient, and Anthropomorphic Hand for Robot Learning](https://arxiv.org/abs/2309.06440) |
+| LEAP Hand | [Filled System worksheet](../resources/project-workbook/examples/class14/LEAP-Class14-System.pdf) | [LEAP Hand: Low-Cost, Efficient, and Anthropomorphic Hand for Robot Learning](https://arxiv.org/abs/2309.06440v1) |
 | NeuralFeels | [Filled System worksheet](../resources/project-workbook/examples/class14/NeuralFeels-Class14-System.pdf) | [Neural feels with neural fields: Visuo-tactile perception for in-hand manipulation](https://arxiv.org/abs/2312.13469v1) |
-| Walk These Ways | [Filled System worksheet](../resources/project-workbook/examples/class14/WalkTheseWays-Class14-System.pdf) | [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](https://arxiv.org/abs/2212.03238) |
-| DayDreamer | [Filled System worksheet](../resources/project-workbook/examples/class14/DayDreamer-Class14-System.pdf) | [DayDreamer: World Models for Physical Robot Learning](https://arxiv.org/abs/2206.14176) |
+| Walk These Ways | [Filled System worksheet](../resources/project-workbook/examples/class14/WalkTheseWays-Class14-System.pdf) | [Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior](https://arxiv.org/abs/2212.03238v1) |
+| DayDreamer | [Filled System worksheet](../resources/project-workbook/examples/class14/DayDreamer-Class14-System.pdf) | [DayDreamer: World Models for Physical Robot Learning](https://arxiv.org/abs/2206.14176v1) |
