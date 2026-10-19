@@ -55,3 +55,8 @@
 ***
 
 * [21 Final Project Showcase](21-final-project-showcase.md)
+
+## Resources
+
+* [Course resources and practical files](resources/README.md)
+* [Worksheet templates and submission guide](resources/project-workbook/README.md)

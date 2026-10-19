@@ -20,9 +20,11 @@ By the end of this class, you should be able to:
 - Distinguish a physical interaction, its recorded traces and an interpretation of those traces.
 - Explain the different roles of feedback control, a learned policy and a predictive model.
 - Compare the collection and learning arrangements of ALOHA, LEAP Hand and UMI.
-- Identify your team and its repository, and explain the course's project and submission pathway.
+- Confirm your team and assigned repository, report any access issue, and explain the course's project and submission pathway.
 
 ## Lecture
+
+We begin with one actuator experiment, use it to explain how physical interaction becomes useful experience, then follow the same questions through the four platform demonstrations. By the end of the class, you will have a confirmed team and know where to find course materials and submit project work.
 
 ### Begin with a motor, a lever and a question
 
@@ -140,7 +142,7 @@ Your project should connect a precise question to an implemented system, interpr
 
 ## Teaching team demonstrations
 
-The teaching assistants introduce the asMagicBrain Platform through a LEAP Hand and a reBot leader–follower arm arrangement. Before each demonstration, identify the action source, observations, control mode and operating boundary. The designated operator controls the system; keep the stop available and remain outside its motion area.
+The teaching assistants introduce the asMagicBrain Platform through four pathways: hand retargeting, cube rotation, leader–follower teleoperation and an iPhone-guided pusher. Before each demonstration, identify the action source, observations, control mode and operating boundary. The designated operator controls the system; keep the stop available and remain outside its motion area.
 
 ![Four TA demonstration pathways: hand retargeting, cube rotation, leader–follower arms and an iPhone-guided pusher.](../resources/class01/figures/02-four-ta-demonstration-pathways.png)
 
@@ -185,11 +187,11 @@ Distinguish the tracked phone pose, the commanded robot motion and the pusher's 
 | Leader–follower arms | How does the leader's movement become a follower command? |
 | iPhone-guided pusher | How are captured motion, robot coordinates and contact connected? |
 
-For each demonstration, ask what is displayed live, whether data are being recorded, and what evidence would be needed to evaluate the behavior beyond the selected attempt. The teaching team can show a labelled recording if a live demonstration is unavailable.
+For each demonstration, be ready to explain **who or what chooses the action, what is observed, and what would need to be recorded to evaluate the result**. Use Figure 2 to trace the path from guidance or observations to physical response. The TA will state which channels are displayed live and which, if any, are saved. These are discussion prompts, not an additional submission. The teaching team can show a labelled recording if a live demonstration is unavailable.
 
 ### Course and repository walkthrough
 
-Open the course and one assigned team repository. Locate the notes, resources, submission folders and an example result with its configuration. Distinguish saving locally, committing and pushing. Explain which remote version the teaching team retains at a deadline.
+Start at the [course home page](../student.md): open a class from its teaching schedule, then find the [practical resources](../resources/README.md) and [worksheet templates](../resources/project-workbook/README.md). Open an assigned team repository and locate its README and submission folders. Use a supplied class result to identify the record and its configuration. Distinguish saving locally, committing and pushing. Explain which remote version the teaching team retains at a deadline.
 
 asMagicBrain is demonstrated as part of the platform workflow. Students can also access the course materials and manage project files with GitHub, GitBook and standard development tools; installing asMagicBrain is not a condition for joining a team.
 
@@ -197,11 +199,13 @@ asMagicBrain is demonstrated as part of the platform workflow. Students can also
 
 **Eight teams must be formed and their membership confirmed by the end of Class 01.**
 
-1. Join one of the eight teams and confirm its member list with the teaching assistants.
+1. Join one of the eight teams. Confirm with the teaching assistants that every student belongs to exactly one team.
 2. Receive or confirm your assigned **Team01–Team08** identifier.
 3. Identify the matching private repository in the table below and check access where available.
 4. Locate its README, checkpoint folders and final submission folders.
 5. Report unresolved membership or access issues to the teaching team before leaving.
+
+**Before leaving, check that the TA has confirmed your team identifier and member list, and that you know your assigned repository link.** Report whether repository access works or needs follow-up.
 
 The teaching assistants retain the confirmed roster. Repository-access problems are recorded for follow-up rather than delaying confirmation of the team list. This activity adds no graded worksheet or upload.
 
@@ -234,6 +238,10 @@ Use your two-digit team number in place of `NN`, for example `Team01-poster.pdf`
 Commit and push the deliverable to `main` before its deadline, then inspect the files on GitHub. A saved local file or unpushed commit is not available for collection. At each deadline the teaching team captures the remote revision, records its commit, GitHub push time and collection time separately, and retains that revision. The deadline concerns when the version reached GitHub, not its local commit date. Later changes remain later work; they do not replace the collected snapshot.
 
 No release, tag, manifest or separate student collection record is required. The folders are the submission route. Classes 18–20 explain preparation of each artifact; these are progressive opportunities to finalize the same project.
+
+## Check your understanding
+
+Choose one of the four demonstrations. Explain the action source, one observation, one useful record and one limitation of the shown result. Connect your answer to Figure 1: how could those records guide a later experiment or learning step? Discuss your answer with a teammate; no upload is required.
 
 ## Further reading
 

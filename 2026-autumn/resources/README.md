@@ -1,5 +1,15 @@
 # Course resources
 
+Return to the [course home and linked schedule](../student.md#teaching-schedule). Read the relevant class page before downloading or running its practical files. **Public course files are learning resources; submit assessed work in your assigned private team repository.**
+
+- **Classes 01–11:** use the class packages below for illustrations, code, models and data. Follow the linked instructions and their availability notes.
+- **Classes 12–17:** open the [worksheet templates and submission guide](project-workbook/README.md); filled examples and source papers are linked separately on each class page.
+- **Classes 18–21:** use the [poster](../module-05-final-project-submissions/18-final-poster-submission.md), [code](../module-05-final-project-submissions/19-final-code-submission.md), [video and final worksheets](../module-05-final-project-submissions/20-final-video-submission.md) and [showcase](../21-final-project-showcase.md) instructions.
+
+To download code or a folder, open the [public student repository](https://github.com/asEmbodiedAISyst/2026Autumn), then clone it or choose **Code → Download ZIP**. Packages are under `2026-autumn/resources/classXX/`; use the selected class's setup instructions.
+
+## Class packages
+
 All course resources are organized by class in this folder. Each `classXX/` contains its classroom assets and selected records; `classXX/practical/` contains the selected teaching-author code, data and models where supplied. This is the single practical distribution for Classes 02–11. The linked current lecture/practice page is the instruction entry point for each selected task. Retained source runtime, data and model files keep their original bytes; obsolete alternative scripts and superseded recipe documents are retired from the current distribution.
 
 | Class | Package | Availability and interpretation |
