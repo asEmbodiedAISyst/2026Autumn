@@ -17,7 +17,6 @@ Read the class notes on GitBook; use the public student repository for code, mod
 | Find practical files and setup instructions | [Course resources](resources/README.md) |
 | Download a worksheet and check its filename | [Six worksheet submissions](resources/project-workbook/README.md) |
 | Open my team's private repository | [Team01–Team08 repository links](first-class/01-course-introduction-with-asmagicbrain.md#your-assigned-team-repository) |
-| See who developed the course | [Contributors and acknowledgments](resources/contributors-and-acknowledgments.md) |
 | Understand how work is marked | [Assessment guide](resources/assessment-guide.md) |
 | Check a deadline | [Important deadlines](#important-deadlines) |
 | Prepare final project artifacts | [Poster](module-05-final-project-submissions/18-final-poster-submission.md) · [Code](module-05-final-project-submissions/19-final-code-submission.md) · [Video and final worksheets](module-05-final-project-submissions/20-final-video-submission.md) · [Showcase](21-final-project-showcase.md) |
