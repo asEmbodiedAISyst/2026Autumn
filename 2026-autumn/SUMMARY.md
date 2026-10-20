@@ -11,6 +11,7 @@
 
 * [02 Actuator Basics for Controlled Action](module-01-actuator-data-for-1-dof-systems/02-actuator-basics-for-controlled-action.md)
 * [03 Basic Digitization of Physical Embodiment](module-01-actuator-data-for-1-dof-systems/03-basic-digitization-of-physical-embodiment.md)
+  * [Practice: assemble and simulate the B0 fixture](module-01-actuator-data-for-1-dof-systems/03-practice.md)
   * [RS06 fixture digitization](module-01-actuator-data-for-1-dof-systems/03-rs06-fixture-digitization.md)
 * [04 Basic Quantification of Sim2Real Gap](module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md)
   * [RS06 hardware identification](module-01-actuator-data-for-1-dof-systems/04-rs06-hardware-identification.md)
