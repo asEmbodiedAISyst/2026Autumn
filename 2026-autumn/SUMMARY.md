@@ -62,3 +62,5 @@
 * [Worksheet templates and submission guide](resources/project-workbook/README.md)
 
 * [Assessment guide](resources/assessment-guide.md)
+
+* [Contributors and acknowledgments](resources/contributors-and-acknowledgments.md)
