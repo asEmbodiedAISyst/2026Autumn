@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+recordings/
+*.log
+*.blg
+*.aux
+*.out
+*.bbl
+*.synctex.gz
+MUJOCO_LOG.TXT

@@ -1,0 +1,6 @@
+NOTES ON CAD VERSUS THE BUILT FIXTURE
+=====================================
+
+The available CAD assemblies and the accepted physical fixture record use the same nominal payload locations: B0 at -60/+60 mm, B1 at -80/+80 mm, B2 at -100/+100 mm and G1 at +60/+100 mm.
+
+CAD material mass must not be substituted for the physical mass record. The values used for the built fixture are 22 g for the link and 44 g for each complete pin-and-payload assembly, giving 110 g in every loaded configuration. 
