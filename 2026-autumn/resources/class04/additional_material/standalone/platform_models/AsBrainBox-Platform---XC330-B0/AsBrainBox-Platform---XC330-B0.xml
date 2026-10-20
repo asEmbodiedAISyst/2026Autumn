@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="AsBrainBox-Platform---XC330-B0">
+  <compiler angle="radian" eulerseq="XYZ" inertiafromgeom="false" />
+  <option timestep="0.002" integrator="implicitfast" />
+  <statistic center="0 0 0.20" extent="1.35" />
+  <asset>
+    <material name="b0_moving_parts_black" rgba="0.035 0.040 0.045 1" specular="0.12" shininess="0.15" />
+    <material name="extbar_dark_grey" rgba="0.18 0.20 0.23 1" specular="0.25" shininess="0.25" />
+    <material name="xc330_black_matte" rgba="0.025 0.030 0.035 1" specular="0.08" shininess="0.10" />
+    <material name="extbar_grey" rgba="0.48 0.50 0.53 1" specular="0.35" shininess="0.30" />
+    <material name="platform_grey" rgba="0.38 0.40 0.43 1" specular="0.20" shininess="0.30" />
+    <material name="structure_grey" rgba="0.45 0.47 0.50 1" specular="0.20" shininess="0.30" />
+    <material name="silver_metal" rgba="0.70 0.72 0.74 1" specular="0.80" shininess="0.80" reflectance="0.30" />
+    <material name="screen_metal" rgba="0.28 0.30 0.33 1" specular="0.80" shininess="0.80" reflectance="0.22" />
+    <material name="asbrain_dark_grey" rgba="0.12 0.14 0.16 1" specular="0.25" shininess="0.30" />
+    <mesh name="CustomOpticalPlate540500X2020---Part-1_1" file="meshes/CustomOpticalPlate540500X2020---Part-1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="VerticalPlate500mm---Part-1_1" file="meshes/VerticalPlate500mm---Part-1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="VerticalSIDEPlatex2---Part-1_1" file="meshes/VerticalSIDEPlatex2---Part-1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="VerticalSIDEPlatex2---Part-1_2" file="meshes/VerticalSIDEPlatex2---Part-1_2.stl" scale="0.001 0.001 0.001" />
+    <mesh name="Handles---Part-1_1" file="meshes/Handles---Part-1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="Handles---Part-1_2" file="meshes/Handles---Part-1_2.stl" scale="0.001 0.001 0.001" />
+    <mesh name="Handles---Part-1_3" file="meshes/Handles---Part-1_3.stl" scale="0.001 0.001 0.001" />
+    <mesh name="Lenovo-PC_1__Screen-7_1" file="meshes/Lenovo-PC_1__Screen-7_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="AsBrainBox---oneBody_1" file="meshes/AsBrainBox---oneBody_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="ExtBar_to_S102-V2-1_1" file="meshes/ExtBar_to_S102-V2-1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="1DOF-B0_1__XC330-M288-T_1" file="meshes/1DOF-B0_1__XC330-M288-T_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="1DOF-B0_1__Link_1" file="meshes/1DOF-B0_1__Link_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="1DOF-B0_1__Pin_1" file="meshes/1DOF-B0_1__Pin_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="1DOF-B0_1__Pin-1_1" file="meshes/1DOF-B0_1__Pin-1_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="1DOF-B0_1__Payload_1" file="meshes/1DOF-B0_1__Payload_1.stl" scale="0.001 0.001 0.001" />
+    <mesh name="1DOF-B0_1__Payload-1_1" file="meshes/1DOF-B0_1__Payload-1_1.stl" scale="0.001 0.001 0.001" />
+    <material name="component_orange" rgba="0.95 0.28 0.04 1" specular="0.45" shininess="0.45" />
+    <texture name="scene_skybox" type="skybox" builtin="gradient" rgb1="0.82 0.90 0.98" rgb2="0.34 0.48 0.64" width="512" height="3072" />
+    <texture name="scene_wood_texture" type="2d" file="scene_light_oak_wood.png" />
+    <material name="scene_light_wood" texture="scene_wood_texture" texuniform="true" texrepeat="1 1" reflectance="0.08" specular="0.14" shininess="0.20" />
+  </asset>
+  <visual>
+    <headlight active="1" ambient="0.45 0.45 0.45" diffuse="0.85 0.85 0.85" specular="0.25 0.25 0.25" />
+    <global azimuth="135" elevation="-32" />
+  </visual>
+  <worldbody>
+    <light directional="true" pos="-0.5 0.5 3" dir="0 0 -1" />
+    <body name="CustomOpticalPlate540500X2020---Part-1_1" pos="-5.532904753503463e-05 0.0 0.0049999682819581275" euler="3.141592653589793 -1.110223024625156e-16 3.141592653589793">
+      <geom name="CustomOpticalPlate540500X2020---Part-1_1_geom" type="mesh" mesh="CustomOpticalPlate540500X2020---Part-1_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="platform_grey" />
+      <inertial mass="10.41996283351753" pos="9.467021240172653e-06 -0.0035463321536156386 0.0024999998727092457" fullinertia="0.2478673622451801 0.21999271702475795 0.4678166627625245 -2.014334304623872e-05 -1.2555297220990027e-14 2.083453375575442e-12" />
+      <body name="VerticalPlate500mm---Part-1_1" pos="-2.3227947343329448e-17 0.1275 -0.2449999999999999" euler="-1.5707963267948966 1.5707963267948963 0">
+        <geom name="VerticalPlate500mm---Part-1_1_geom" type="mesh" mesh="VerticalPlate500mm---Part-1_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="structure_grey" />
+        <inertial mass="7.396023049990199" pos="-3.161544926800987e-05 8.501432168028079e-16 0.0024999999833674558" fullinertia="0.12890029531761937 0.15875759697002173 0.2876270755253424 1.9188998530576494e-15 1.3959389200124412e-12 1.1842251545007998e-16" />
+        <body name="VerticalSIDEPlatex2---Part-1_1" pos="0.05500000000000025 0.22999999999999998 -0.18249999999999997" euler="1.5707963267948966 3.450331232545478e-16 -1.2490009027032762e-16">
+          <geom name="VerticalSIDEPlatex2---Part-1_1_geom" type="mesh" mesh="VerticalSIDEPlatex2---Part-1_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="structure_grey" />
+          <inertial mass="2.3035497006228174" pos="-0.05512275379143843 0.2425000000000002 0.0024999999887574376" fullinertia="0.002763398517174693 0.04613435627641298 0.048888156669921704 -8.530682007412066e-17 1.6865839385224343e-12 4.867708077419091e-17" />
+        </body>
+        <body name="VerticalSIDEPlatex2---Part-1_2" pos="0.05500000000000007 -0.22500000000000014 -0.18250000000000008" euler="1.5707963267948966 6.568586551522576e-47 7.888609052210113e-31">
+          <geom name="VerticalSIDEPlatex2---Part-1_2_geom" type="mesh" mesh="VerticalSIDEPlatex2---Part-1_2" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="structure_grey" />
+          <inertial mass="2.3035497006228174" pos="-0.05512275379143847 0.24249999999999994 0.002499999988757417" fullinertia="0.00276339851717517 0.04613435627641277 0.04888815666992172 -1.387778780781447e-17 1.6865222828861645e-12 -1.387778780781447e-17" />
+        </body>
+        <body name="ExtBar_to_S102-V2-1_1" pos="0.07 -0.2100000000000003 -0.014300000000000068" euler="1.5707963267948966 6.123233995736767e-17 1.5707963267948966">
+          <geom name="ExtBar_to_S102-V2-1_1_geom" type="mesh" mesh="ExtBar_to_S102-V2-1_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="extbar_dark_grey" />
+          <inertial mass="0.19052635139470175" pos="3.1553590371055585e-10 -0.012535781220292395 0.014401444144200325" fullinertia="0.0001402059375074302 5.098892984076868e-05 0.0001052399071482784 -1.4186698585555292e-12 1.3422596268667438e-12 3.7152242181494835e-05" />
+          <body name="1DOF-B0_1__XC330-M288-T_1" pos="0.0 -0.057499999999999996 0.05450000000000003" euler="1.5707963267948966 2.832769448823995e-16 -1.0947644252537633e-47">
+            <geom name="1DOF-B0_1__XC330-M288-T_1_geom" type="mesh" mesh="1DOF-B0_1__XC330-M288-T_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="xc330_black_matte" />
+            <inertial mass="0.11859055178842119" pos="4.097970962178011e-06 -0.0072331443601574815 -0.007246003852890742" fullinertia="1.6884391390671605e-05 9.152223120594168e-06 1.5061659016227247e-05 3.5294120733636584e-09 -2.6551424854321516e-09 -3.8279861906513623e-07" />
+            <body name="1DOF-B0_1__Link_1" pos="0.0 0.0 0.013500000000000005" euler="-1.5707963267948968 -0.0 0.0">
+              <joint name="Revolute-2" type="hinge" axis="-2.904236570985221e-32 1.0 1.5803402234563293e-16" pos="3.290475351358513e-07 0.007000000000000062 3.1718041860747016e-08" />
+              <geom name="1DOF-B0_1__Link_1_geom" type="mesh" mesh="1DOF-B0_1__Link_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="b0_moving_parts_black" />
+              <inertial mass="0.14821449448070137" pos="-1.3869794202037155e-13 0.00015810322560298574 2.4985688687858892e-20" fullinertia="6.47558864024303e-06 0.0005623832488894712 0.0005568648874237081 2.0383000842727483e-17 3.2212076106506496e-33 -4.328087801350101e-19" />
+              <body name="1DOF-B0_1__Pin_1" pos="0.06 -8.881784197001253e-18 0.0" euler="3.141592653589793 -0.0 0.0">
+                <geom name="1DOF-B0_1__Pin_1_geom" type="mesh" mesh="1DOF-B0_1__Pin_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="b0_moving_parts_black" />
+                <inertial mass="0.018182432438364052" pos="2.007816135574103e-13 2.753353101070388e-16 4.3512346549997547e-32" fullinertia="3.85503447041316e-06 1.3405543352554977e-07 3.855034479097457e-06 -4.563135893448367e-17 -2.168404344971081e-19 1.078321759629149e-19" />
+                <body name="1DOF-B0_1__Payload_1" pos="0.0 0.0 0.0" euler="0.0 -0.0 0.0">
+                  <geom name="1DOF-B0_1__Payload_1_geom" type="mesh" mesh="1DOF-B0_1__Payload_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="b0_moving_parts_black" />
+                  <inertial mass="0.43982322850095584" pos="-8.260059303211165e-15 -8.881784197001253e-18 -1.4036240822579853e-33" fullinertia="0.0001466414100955507 9.292968351258535e-05 0.0001433782263649836 5.467307415256955e-34 -3.469446951953614e-18 -8.75334324136844e-19" />
+                </body>
+              </body>
+              <body name="1DOF-B0_1__Pin-1_1" pos="-0.06 -8.881784197001253e-18 0.0" euler="0.0 -0.0 0.0">
+                <geom name="1DOF-B0_1__Pin-1_1_geom" type="mesh" mesh="1DOF-B0_1__Pin-1_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="b0_moving_parts_black" />
+                <inertial mass="0.018182432438364052" pos="2.007638499890163e-13 2.753353101070388e-16 4.3512346549997547e-32" fullinertia="3.85503447041316e-06 1.340554335251161e-07 3.855034479097186e-06 -4.56178064073276e-17 2.168404344970937e-19 -5.880412856355683e-22" />
+                <body name="1DOF-B0_1__Payload-1_1" pos="0.0 0.0 0.0" euler="0.0 -0.0 0.0">
+                  <geom name="1DOF-B0_1__Payload-1_1_geom" type="mesh" mesh="1DOF-B0_1__Payload-1_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="b0_moving_parts_black" />
+                  <inertial mass="0.43982322850095584" pos="-8.242295734817162e-15 -8.881784197001253e-18 -1.4036240822579853e-33" fullinertia="0.0001466414100955507 9.292968351259923e-05 0.00014337822636497494 1.5599156063296676e-36 -3.632657171416865e-50 -7.972586148436961e-21" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="Handles---Part-1_1" pos="-0.25 0.0782724199623874 -1.3877787807814457e-17" euler="-1.5707963267948966 1.836970198721029e-16 1.5707963267948966">
+        <geom name="Handles---Part-1_1_geom" type="mesh" mesh="Handles---Part-1_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="silver_metal" />
+        <inertial mass="0.5539273580134878" pos="-0.004428680952855813 -0.012500000000000022 0.02964078233805264" fullinertia="0.00014120353750664977 0.0019347321755266295 0.0018514531661053156 4.1387685069192685e-21 -5.984888215935374e-07 -2.2597632125689916e-19" />
+      </body>
+      <body name="Handles---Part-1_2" pos="0.25 0.0717275800376125 -0.01000000000000003" euler="-1.5707963267948966 -6.123233995736766e-17 -1.5707963267948966">
+        <geom name="Handles---Part-1_2_geom" type="mesh" mesh="Handles---Part-1_2" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="silver_metal" />
+        <inertial mass="0.5539273580134878" pos="-0.004428680952855795 -0.012499999999999992 0.02964078233805264" fullinertia="0.00014120353750662863 0.0019347321755266178 0.0018514531661053151 1.2217234725075718e-20 -5.984888215935367e-07 -2.618413626196093e-19" />
+      </body>
+      <body name="Handles---Part-1_3" pos="-0.008272419962387418 -0.27 -0.010000000000000009" euler="-1.5707963267948966 -1.2246467991473552e-16 3.141592653589793">
+        <geom name="Handles---Part-1_3_geom" type="mesh" mesh="Handles---Part-1_3" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="silver_metal" />
+        <inertial mass="0.5539273580134878" pos="-0.004428680952855801 -0.012500000000000023 0.029640782338052514" fullinertia="0.0001412035375066355 0.0019347321755266151 0.0018514531661053013 9.907833120052435e-21 -5.984888215911304e-07 -9.361178190423779e-19" />
+      </body>
+      <body name="AsBrainBox---oneBody_1" pos="0.00849999999999995 0.35364914703891864 7.210898544940392e-16" euler="3.141592653589793 1.1102230246251556e-16 1.5707963267948966">
+        <geom name="AsBrainBox---oneBody_1_geom" type="mesh" mesh="AsBrainBox---oneBody_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="asbrain_dark_grey" />
+        <inertial mass="7.736871363428" pos="-0.14347204722155077 -0.14715769088025527 0.1072358034978499" fullinertia="0.04025787010498175 0.031379285655509126 0.021260613205417334 0.00013548986149500232 0.00019308052721289448 -0.00019658225054133952" />
+      </body>
+      <body name="Lenovo-PC_1__Screen-7_1" pos="0.6046227605510546 -0.3413368809556418 0.06427730179441818" euler="2.9347226223261376 9.227360695591519e-18 -3.141592653589793">
+        <geom name="Lenovo-PC_1__Screen-7_1_geom" type="mesh" mesh="Lenovo-PC_1__Screen-7_1" pos="0 0 0" euler="0 0 0" contype="0" conaffinity="0" group="2" material="screen_metal" />
+        <inertial mass="7.86973531843706" pos="-2.7563588379943427e-05 0.37603762230136034 0.1790837265456594" fullinertia="0.07235744452743878 0.10470459108631049 0.10462360862935348 3.0397944738308282e-05 1.1767957933150405e-05 -0.0246221586572309" />
+      </body>
+    </body>
+    <light name="scene_key_light" pos="-0.6 0.4 1.8" dir="0.25 -0.20 -1" directional="true" diffuse="0.95 0.92 0.86" specular="0.30 0.30 0.30" castshadow="true" />
+    <geom name="scene_light_wood_desk" type="box" pos="0 0 -0.045" size="1.15 0.80 0.045" material="scene_light_wood" friction="1 0.005 0.0001" contype="1" conaffinity="1" />
+    <geom name="scene_light_wood_desk_leg_1" type="box" pos="-1.03 -0.68 -0.47" size="0.045 0.045 0.425" material="scene_light_wood" contype="1" conaffinity="1" />
+    <geom name="scene_light_wood_desk_leg_2" type="box" pos="-1.03 0.68 -0.47" size="0.045 0.045 0.425" material="scene_light_wood" contype="1" conaffinity="1" />
+    <geom name="scene_light_wood_desk_leg_3" type="box" pos="1.03 -0.68 -0.47" size="0.045 0.045 0.425" material="scene_light_wood" contype="1" conaffinity="1" />
+    <geom name="scene_light_wood_desk_leg_4" type="box" pos="1.03 0.68 -0.47" size="0.045 0.045 0.425" material="scene_light_wood" contype="1" conaffinity="1" />
+  </worldbody>
+</mujoco>
