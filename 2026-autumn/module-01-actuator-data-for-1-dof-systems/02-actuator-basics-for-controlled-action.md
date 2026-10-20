@@ -487,7 +487,7 @@ Read the retained motor-only record as a hardware example rather than as a simul
 
 ### Activities during the explanation and demonstration
 
-Use these questions as discussion prompts while reading the examples and watching the demonstration. They build toward the unpowered inspection and short team comparison below; they are not nine separate submissions.
+Use these questions as discussion prompts while reading the examples and watching the demonstration. They build toward the unpowered inspection and short team comparison below; they are not nine separate written tasks.
 
 | Activity | What to do | What the response should establish |
 |---|---|---|
@@ -515,7 +515,7 @@ Teams then prepare a short XC330-M288-T/XL330-M288-T comparison using official s
 - one consequence for an intended mechanism;
 - one property that remains unknown from the available evidence.
 
-Explain why encoder resolution is not the same as positioning accuracy and why stall torque and no-load speed are not simultaneous capabilities. Return all units before submitting the short comparison. The [activity sheet](../resources/class02/activity.md) provides the response format; equivalent labelled notes are acceptable.
+Explain why encoder resolution is not the same as positioning accuracy and why stall torque and no-load speed are not simultaneous capabilities. Return all units before discussing the short comparison. The [activity sheet](../resources/class02/activity.md) provides the response format; equivalent labelled notes are acceptable.
 
 ### Optional activities after class
 

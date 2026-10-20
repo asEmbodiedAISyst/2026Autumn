@@ -264,21 +264,10 @@ uv run python simulation_only/demo.py
 
 The prepared simulation scene places the B0 fixture on the asBrain platform with the laptop visible in the environment.
 
-Run the prepared B0 comparison activity with:
+Run the prepared B0 data-generation activity with:
 
 ```bash
 uv run python simulation_only/b0_data_collection.py
 ```
 
-The activity writes the paired data, comparison figure, and numerical summary to `outputs/`.
-
-## Submission
-
-Submit:
-
-- the completed Fusion 360 B0 assembly;
-- the direct ACDC4Robot MJCF export and meshes;
-- one image showing the revolute joint axis;
-- one image showing the completed B0 payload placement;
-- the supplied actuator-enabled B0 XML used for simulation; and
-- the output files produced by the prepared B0 simulation activity.
+The activity writes the simulation data, figure, and numerical summary to `outputs/`.

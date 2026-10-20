@@ -229,7 +229,7 @@ Finish by contrasting H2's approximately 0.029 rad held-out physical tracking er
 
 ## Student activity
 
-Use the source parameter tables and held-out figures to submit one comparison with four parts: identify the RS06 replay input and fixed gains; explain why the two fitting methods can return different effective parameters; compare one controller's model discrepancy, tracking and repeat measure; and state a bounded model-use decision with one unresolved physical question. Support the response with an identified figure or source score table. Keep the selected episode separate from the 15-episode controller mean.
+Use the source parameter tables and held-out figures to develop one comparison with four parts: identify the RS06 replay input and fixed gains; explain why the two fitting methods can return different effective parameters; compare one controller's model discrepancy, tracking and repeat measure; and state a bounded model-use decision with one unresolved physical question. Support the response with an identified figure or source score table. Keep the selected episode separate from the 15-episode controller mean.
 
 An optional mechanics check uses the Class 03 CAD fixture inertia and the integral equation above to explain which term changes when B0 becomes B1 and which term becomes important for G1. Do not copy the XC330's 110 g mass or inner-reference interface into this calculation.
 

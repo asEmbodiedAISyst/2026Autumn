@@ -133,12 +133,13 @@ def main() -> None:
     parser.add_argument("--no-viewer", action="store_true", help="headless/CI only; normal lesson opens the MuJoCo viewer")
     parser.add_argument("--no-dashboard", action="store_true", help="disable both visual dashboards")
     parser.add_argument("--save-only", action="store_true", help="save analysis images without opening plot windows")
-    parser.add_argument("--playback-speed", type=float, default=1.0, help="visual replay multiplier (default: 1.0)")
+    parser.add_argument("--playback-speed", type=float, default=0.5, help="visual replay multiplier (default: 0.5)")
     args = parser.parse_args()
     if args.playback_speed <= 0:
         parser.error("--playback-speed must be greater than zero")
 
     records = load_records()
+    print("Phase 1/4: loaded 15 recorded V5 B0/H2 hardware episodes.")
     candidates = [(d, a) for d in (0.0, .002, .01, .04, .08) for a in (0.0, .0002, .001, .003)]
     calibration_keys = [key for key, (_, repeat, _, _) in records.items() if repeat in (1, 2)]
     validation_keys = [key for key, (_, repeat, _, _) in records.items() if repeat == 3]
@@ -150,11 +151,13 @@ def main() -> None:
             errors.append(rmse(replay(frame, commands, *candidate), frame.position_meas_rad.to_numpy()))
         scores[candidate] = float(np.mean(errors))
     chosen = min(candidates, key=scores.__getitem__)
+    print(f"Phase 2/4: selected effective damping={chosen[0]:.4g}, armature={chosen[1]:.4g} using R01/R02.")
 
     out = ROOT / "outputs"; out.mkdir(exist_ok=True)
     rows: list[dict[str, object]] = []
     full_trace: list[pd.DataFrame] = []
     representative_trace: pd.DataFrame | None = None
+    print("Phase 3/4: replaying the baseline and identified models for all 15 episodes.")
     for key, (profile, repeat, frame, commands) in records.items():
         measured = frame.position_meas_rad.to_numpy(dtype=float)
         baseline = replay(frame, commands, 0.0, 0.0)
@@ -175,6 +178,7 @@ def main() -> None:
     all_replays.to_csv(out / "b0_full_h2_replays.csv", index=False)
     representative_trace.to_csv(out / "b0_identification_replay.csv", index=False)
 
+    print("Phase 4/4: opening the paced held-out P04 chirp R03 replay and live comparison dashboard.")
     representative_plot = present(MODEL, representative_trace.time_s.to_numpy(), representative_trace.hardware_position_rad.to_numpy(), representative_trace.after_identification_rad.to_numpy(), "Class 04 — full H2 identified replay", "representative held-out V5 P04 chirp, R03\ncalibration used P01–P05, repeats R01/R02\nwhite cursor = moving MuJoCo frame", out / "b0_identification_gap.png", no_viewer=args.no_viewer, no_dashboard=args.no_dashboard, playback_speed=args.playback_speed, baseline=representative_trace.before_identification_rad.to_numpy())
     summary_plot = build_summary(metrics, representative_trace, chosen, out / "b0_full_h2_before_after_summary.png", disabled=args.no_dashboard, save_only=args.save_only)
 

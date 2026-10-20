@@ -132,7 +132,7 @@ The source manufacturer manual identifies the ratings. A peak-torque limit in a 
 
 ## Student activity
 
-Using the four supplied configurations, submit a short comparison: identify one property that changes B0-to-B1, one that changes balanced-to-G1, and one that remains a modelling assumption. Calculate the fixture-inertia ratio and the approximate G1 maximum gravity moment. Name the units and explain why CAD properties, starting joint-loss values and hardware-fitted effective parameters require different evidence. Use the XML excerpt to distinguish a position target from the direct torque input in the XC330 main lesson.
+Using the four supplied configurations, develop a short comparison: identify one property that changes B0-to-B1, one that changes balanced-to-G1, and one that remains a modelling assumption. Calculate the fixture-inertia ratio and the approximate G1 maximum gravity moment. Name the units and explain why CAD properties, starting joint-loss values and hardware-fitted effective parameters require different evidence. Use the XML excerpt to distinguish a position target from the direct torque input in the XC330 main lesson.
 
 ## Source records
 

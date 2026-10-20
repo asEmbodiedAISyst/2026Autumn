@@ -57,7 +57,8 @@ def _dashboard(time_s: np.ndarray, hardware: np.ndarray, simulated: np.ndarray, 
     if interactive:
         figure.canvas.manager.set_window_title(title + " — live dashboard")
         plt.show(block=False)
-    return {"plt": plt, "figure": figure, "cursors": (cursor_a, cursor_b), "interactive": interactive, "output": output}
+    progress = card_axis.text(.05, .14, "REPLAY PROGRESS\npreparing frame", va="top", family="monospace", fontsize=10.5, linespacing=1.45, color="#ffffff")
+    return {"plt": plt, "figure": figure, "cursors": (cursor_a, cursor_b), "progress": progress, "interactive": interactive, "output": output}
 
 
 def present(model_path: Path, time_s: np.ndarray, hardware: np.ndarray, simulated: np.ndarray, title: str, details: str, output: Path, *, no_viewer: bool, no_dashboard: bool, playback_speed: float, baseline: np.ndarray | None = None) -> Path | None:
@@ -89,9 +90,17 @@ def present(model_path: Path, time_s: np.ndarray, hardware: np.ndarray, simulate
             if dashboard:
                 for cursor in dashboard["cursors"]:
                     cursor.set_xdata([time_s[index], time_s[index]])
+                error_deg = np.rad2deg(simulated[index] - hardware[index])
+                dashboard["progress"].set_text(f"REPLAY PROGRESS\n{time_s[index]:5.2f} / {time_s[-1]:5.2f} s\nframe {index + 1:,} / {len(time_s):,}\ncurrent residual {error_deg:+.2f}°")
                 if dashboard["interactive"]:
                     dashboard["figure"].canvas.draw_idle(); dashboard["figure"].canvas.flush_events()
             if elapsed >= time_s[-1]:
+                if window:
+                    while window.is_running():
+                        window.sync()
+                        if dashboard and dashboard["interactive"]:
+                            dashboard["figure"].canvas.flush_events()
+                        time.sleep(.05)
                 break
             time.sleep(.01)
     finally:
@@ -101,6 +110,8 @@ def present(model_path: Path, time_s: np.ndarray, hardware: np.ndarray, simulate
         dashboard["figure"].canvas.draw()
         output.parent.mkdir(exist_ok=True)
         dashboard["figure"].savefig(output, dpi=160, facecolor=dashboard["figure"].get_facecolor())
+        if dashboard["interactive"]:
+            dashboard["plt"].show(block=True)
         dashboard["plt"].close(dashboard["figure"])
         return output
     return None

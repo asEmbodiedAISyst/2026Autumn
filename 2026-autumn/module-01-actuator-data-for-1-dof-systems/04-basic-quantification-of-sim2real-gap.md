@@ -18,7 +18,7 @@ By the end of this class, you should be able to:
 - calculate and interpret position root-mean-square error;
 - state a model-use claim whose scope matches the available evidence.
 
-[Instructor and TA guide](#class-04-ta-guide--full-v5-h2-beforeafter-identification) · [Student guide](#class-04-student-guide--full-sim2real-identification-experiment) · [Practical package](../resources/class04/README.md)
+[Class 04 practice](04-practice.md) · [Practical package](../resources/class04/README.md)
 
 ## From a digitized fixture to a measured prediction claim
 
@@ -234,80 +234,6 @@ The supporting record contains the episode index, paired hardware/simulation sam
 
 The complete supporting package is available in the [Class 04 practical resources](../resources/class04/README.md). It includes the [episode index](../resources/class04/additional_material/data/EPISODES_USED.csv), [paired hardware/simulation samples](../resources/class04/additional_material/data/paired_simulation_hardware_samples.csv.gz), [fitted parameters](../resources/class04/additional_material/data/fitted_parameters.csv), [frozen-selection record](../resources/class04/additional_material/data/FROZEN_SELECTION_BEFORE_HELD_OUT.json), [optimizer candidates](../resources/class04/additional_material/data/optimizer_candidates.csv), [compact held-out trace](../resources/class04/additional_material/data/minimal_heldout_episode_B1_H2_P06_R01.csv.gz), [fit and replay code](../resources/class04/additional_material/code/full_fit_and_replay.py), generated models, raw motor-side records, and matched demonstration media.
 
-## Class 04 TA guide — full V5 H2 before/after identification
+## Practice
 
-The normal Class 04 command is deliberately complete but simulation-only: it uses embedded V5 physical records and never opens a serial port.
-
-```bash
-uv sync
-uv run pytest
-uv run python simulation_only/b0_identification.py
-```
-
-### Experiment design
-
-The local data set has all 15 V5 B0/H2 episodes: P01–P05 and R01–R03. The script calibrates on R01/R02 across every profile and validates on all R03 episodes. Each baseline and identified response is generated in MuJoCo; the physical curves are the copied V5 measurements.
-
-After the representative held-out MuJoCo replay, leave the analysis layout open for discussion. It contains:
-
-- before/after RMSE for every V5 episode;
-- profile-level average before/after RMSE;
-- a detailed P04 chirp R03 trace; and
-- fitted values plus held-out aggregate error.
-
-All visual and numerical results are saved in `outputs/` for later analysis. Use `b0_full_h2_episode_metrics.csv` for a compact table and `b0_full_h2_replays.csv` for complete sampled traces.
-
-### Physical reference
-
-No physical collection is needed for Class 04. If a physical station demonstration is desired, this standalone folder also includes the guarded selected H2 physical runner:
-
-```bash
-uv run python simulation_and_hardware/live_b0_collection.py --protocol h2_calibration --enable-motion
-```
-
-That opt-in command remains limited to the separately selected P01 + P02 + P03, one repeat, and keeps the MuJoCo twin open while the motor moves. It is not part of the Class 04 identification dataset collection.
-
-## Class 04 student guide — full Sim2Real identification experiment
-
-### Run it
-
-```bash
-uv sync
-uv run pytest
-uv run python simulation_only/b0_identification.py
-```
-
-This is simulation only. It does **not** command a motor or collect new hardware data. Instead, it uses all of the actual V5 B0/H2 physical results embedded in this project:
-
-- P01 slow triangle, P02 multisine, P03 smooth levels, P04 chirp, and P05 wide sine;
-- repeats R01, R02, and R03 for each profile — 15 experiments total.
-
-### What the command does
-
-1. Runs the baseline MuJoCo model against every recorded V5 command.
-2. Fits effective damping and armature with R01/R02 from all five profiles (10 experiments).
-3. Re-runs all experiments using the fitted model.
-4. Evaluates R03 from all five profiles as independently held-out validation (5 experiments).
-5. Plays a focused MuJoCo replay of the held-out P04 chirp R03 test.
-6. Opens a full layout after the replay and saves it for analysis.
-
-The layout includes per-episode before/after RMSE, mean RMSE by profile, a held-out trace, and a compact report card.
-
-Color key: cyan = physical V5 measurement, gray dashed = baseline before identification, orange = model after identification, red = post-identification residual.
-
-### Saved analysis
-
-- `outputs/b0_full_h2_before_after_summary.png`
-- `outputs/b0_full_h2_episode_metrics.csv`
-- `outputs/b0_full_h2_replays.csv`
-- `outputs/b0_identification_report.json`
-
-### Useful options
-
-```bash
-# Faster graphical replay
-uv run python simulation_only/b0_identification.py --playback-speed 1.5
-
-# Save all figures without opening graphical windows
-uv run python simulation_only/b0_identification.py --no-viewer --save-only --playback-speed 100
-```
+Complete the [Class 04 practice](04-practice.md). It installs the required Ubuntu tools, obtains only the Class 04 files, replays the complete 15-episode B0/H2 record, identifies the effective model on R01/R02, and evaluates the frozen model on R03. The paced MuJoCo replay and live dashboard show the current frame, elapsed time, and residual; the final scene remains open before the saved analysis layout is opened.

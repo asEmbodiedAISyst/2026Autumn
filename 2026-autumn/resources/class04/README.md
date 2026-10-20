@@ -1,6 +1,6 @@
 # Class 04 classroom resources
 
-[Lecture](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md) · [Selected practical](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class04/additional_material)
+[Lecture](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md) · [Practice](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-01-actuator-data-for-1-dof-systems/04-practice.md) · [Additional material](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class04/additional_material)
 
 This folder contains the classroom figures, recordings, manuals and selected scientific records used by the lesson. Runtime code, models and practical instructions are provided through the selected practical above.
 

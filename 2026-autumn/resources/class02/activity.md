@@ -22,7 +22,7 @@ Can stall torque and no-load speed be achieved simultaneously? Does 4,096 counts
 
 ## Record and check returns
 
-Submit one short team comparison with labelled inspection notes and source evidence. Equivalent handwritten notes are sufficient. Confirm that every unit has been returned. This activity requires no installation, powered operation or parameter fitting.
+Keep one short team comparison with labelled inspection notes and source evidence. Equivalent handwritten notes are sufficient. Confirm that every unit has been returned. This activity requires no installation, powered operation or parameter fitting.
 
 ## Optional document search
 

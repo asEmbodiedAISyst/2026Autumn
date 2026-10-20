@@ -8,7 +8,7 @@ description: 23 October 2026 · 09:00–10:50 · L12 | Mohamed HALWANI & SONG Ch
 
 > What must a digital model preserve before it can represent a physical mechanism?
 
-Class 02 introduced the XC330 actuator, its operating modes, commands, and measured response. This class extends that foundation from the actuator alone to the physical mechanism connected to it. The mechanism must be described through geometry, rigid bodies, joints, frames, mass properties, inputs, and measurable outputs before its simulated behavior can be compared with hardware.
+Class 02 introduced the XC330 actuator, its operating modes, commands, and measured response. This class extends that foundation from the actuator alone to the physical mechanism connected to it. The mechanism must be described through geometry, rigid bodies, joints, frames, mass properties, inputs, and measurable outputs before its behavior can be studied in simulation.
 
 By the end of this class, you should be able to:
 
@@ -16,7 +16,7 @@ By the end of this class, you should be able to:
 - identify the bodies, joints, frames, units, mass properties, inputs, and outputs required for a one-degree-of-freedom model;
 - explain how one fixture design can be represented through several mass configurations;
 - inspect a CAD-to-MJCF conversion and identify the assumptions introduced during export;
-- compare measured and simulated motion without treating geometric agreement as dynamic validation.
+- distinguish fixture digitization from the dynamic identification carried out in Class 04.
 
 [Practice](03-practice.md) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Practical package](../resources/class03/additional_material/README.md)
 
@@ -50,9 +50,9 @@ The same fixture is prepared in five configurations so that geometry, mass place
 
 The labels M0, B0, B1, B2, and G1 identify fixture configurations within this apparatus. They are not general robotics categories and do not identify equivalent configurations on another platform.
 
-## The B2 configuration across simulation, CAD, and hardware
+## From the B2 fixture to its executable model
 
-B2 is the wide symmetric configuration. Its 22 g link carries two complete 44 g pin–payload assemblies at −100 mm and +100 mm from the XC330 output axis. The simulation, CAD, and physical records describe the same arrangement through different forms of evidence.
+B2 is the wide symmetric configuration. Its 22 g link carries two complete 44 g pin–payload assemblies at −100 mm and +100 mm from the XC330 output axis. The physical fixture and CAD assembly establish the arrangement that is encoded as an executable MuJoCo model.
 
 ![B2 loaded in MuJoCo on the asBrain platform](../resources/class03/figures/source/B2_model_loaded.png)
 
@@ -66,7 +66,7 @@ B2 is the wide symmetric configuration. Its 22 g link carries two complete 44 g 
 
 *Figure 4. The physical B2 fixture provides evidence of the assembled link, payloads, and actuator interface.*
 
-The three representations contain the same mechanical elements: the fixed platform and XC330 housing, the output axis, the link, and two payload assemblies. The photograph records the assembled hardware, the CAD model defines its designed geometry and relationships, and the MJCF expresses the corresponding bodies, joint, inertial properties, and simulation interfaces. Their shared structure establishes geometric and mechanical correspondence, but it does not yet establish predictive dynamic agreement.
+The physical fixture, CAD model, and MJCF contain the same mechanical elements: the fixed platform and XC330 housing, the output axis, the link, and two payload assemblies. The fixture and CAD establish the geometry and assembly relationships; the MJCF carries those declared bodies, joint, inertial properties, and interfaces into simulation.
 
 | Property | Physical or design source | MJCF representation |
 |---|---|---|
@@ -76,7 +76,7 @@ The three representations contain the same mechanical elements: the fixed platfo
 | Complete moving mass | accepted mass record | body masses and inertial declarations |
 | Joint range | declared operating envelope | range of −π/2 to +π/2 rad |
 | Collision behavior | free-motion simulation scope | disabled contact between fixture geometries |
-| Motion response | encoder and command records | simulated joint state under the same command |
+| Simulated response | declared torque input | simulated joint state |
 
 ## Mass placement across the fixture family
 
@@ -189,7 +189,7 @@ Each configuration contains one revolute joint aligned with the XC330 output axi
 
 *Figure 14. M0, B0, B1, B2, and G1 at zero joint angle show the unloaded motor, symmetric payload offsets, and asymmetric same-side loading on the common asBrain platform.*
 
-The rendered configurations show how a common one-degree-of-freedom mechanism represents different mass placements. B0, B1, and B2 preserve symmetric loading while increasing the distance of each payload from the joint axis. G1 places both payloads on the same side and introduces a gravity moment. These geometric and inertial declarations define the mechanism being simulated; agreement with physical motion additionally depends on damping, friction, actuator response, and timing. This distinction separates physical digitization from dynamic system identification.
+The rendered configurations show how a common one-degree-of-freedom mechanism represents different mass placements. B0, B1, and B2 preserve symmetric loading while increasing the distance of each payload from the joint axis. G1 places both payloads on the same side and introduces a gravity moment. These geometric and inertial declarations define the mechanism being simulated. Dynamic identification requires additional assumptions about damping, friction, actuator response, and timing; it begins in Class 04.
 
 
 ## Instructor and TA demonstration
@@ -198,11 +198,11 @@ Use the [Class 03 practice](03-practice.md) to introduce the B0 assembly, its re
 
 ## Student activity
 
-Complete the [Class 03 practice](03-practice.md). Submit the selected assembly, the fixed and moving bodies, the joint relationships, the B0 moving-mass declaration, and one observation from the simulation comparison.
+Complete the [Class 03 practice](03-practice.md) to assemble the B0 fixture, export its MJCF structure, and run the prepared simulation.
 
 ## Connection to Class 04
 
-The B2 records establish the fixture-digitization method. The standalone activity uses the validated compact B0 model because the included V5 physical command and telemetry record was collected with B0. The paired record and model use the accepted 110 g fixture declaration and must carry the same configuration identity when their responses are compared.
+The B2 records establish the fixture-digitization method. The standalone activity uses the compact B0 model because it provides the 110 g configuration that Class 04 later uses for its recorded-motion experiment.
 
 [Class 04](04-basic-quantification-of-sim2real-gap.md) uses the complete P01–P05, R01–R03 experiment to quantify the pre-identification Sim2Real gap. Effective parameters are fitted on R01 and R02 and evaluated independently on R03. The [RS06 fixture companion](03-rs06-fixture-digitization.md) applies the same digitization principles to a different actuator and fixture.
 
@@ -213,8 +213,7 @@ The B2 records establish the fixture-digitization method. The standalone activit
 | Standalone TA and student package | [Standalone package](../resources/class03/additional_material/standalone/README.md) |
 | B2 CAD and MJCF | [STEP assembly](../resources/class03/additional_material/cad/STEP/1DOF-B2.step) and [B2 model](../resources/class03/additional_material/models/1DOF-B2.xml) |
 | Accepted masses and positions | [Measurement record](../resources/class03/additional_material/measurements/AS_BUILT_DIMENSIONS_MASSES_AND_POSITIONS.txt) |
-| Model-to-record comparison | [Comparison record](../resources/class03/additional_material/results/ACTUAL_DIGITAL_COMPARISON.txt) |
 | Structural model checks | [JSON](../resources/class03/additional_material/results/model_validation.json), [CSV](../resources/class03/additional_material/results/tables/model_validation.csv), and [validator](../resources/class03/additional_material/code/validate_models.py) |
 | Simulation figures | [Renderer](../resources/class03/additional_material/code/render_models.py) |
 
-The source package retains the CAD, accepted measurements, MJCFs, meshes, photographs, hardware records, and executable activities used by the course. Featherstone, R. 2008. *Rigid Body Dynamics Algorithms*. Springer, supplies the rigid-body dynamics and frame background used in the lesson.
+The source package retains the CAD, accepted measurements, MJCFs, meshes, photographs, and executable activities used by the course. Featherstone, R. 2008. *Rigid Body Dynamics Algorithms*. Springer, supplies the rigid-body dynamics and frame background used in the lesson.
