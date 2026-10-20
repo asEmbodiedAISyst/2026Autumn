@@ -181,7 +181,7 @@ def main() -> None:
     representative_trace.to_csv(out / "b0_identification_replay.csv", index=False)
 
     print("Phase 4/4: opening the paced held-out P04 chirp R03 replay and live comparison dashboard.", flush=True)
-    representative_plot = present(MODEL, representative_trace.time_s.to_numpy(), representative_trace.hardware_position_rad.to_numpy(), representative_trace.after_identification_rad.to_numpy(), "Class 04 — full H2 identified replay", "representative held-out V5 P04 chirp, R03\ncalibration used P01–P05, repeats R01/R02\nwhite cursor = moving MuJoCo frame", out / "b0_identification_gap.png", no_viewer=args.no_viewer, no_dashboard=args.no_dashboard, playback_speed=args.playback_speed, baseline=representative_trace.before_identification_rad.to_numpy())
+    representative_plot = present(MODEL, representative_trace.time_s.to_numpy(), representative_trace.hardware_position_rad.to_numpy(), representative_trace.after_identification_rad.to_numpy(), "Class 04 — full H2 identified replay", "representative held-out V5 P04 chirp, R03\ncalibration used P01–P05, repeats R01/R02\nwhite cursor = moving MuJoCo frame", out / "b0_identification_gap.png", no_viewer=args.no_viewer, no_dashboard=(args.no_dashboard or args.save_only), playback_speed=args.playback_speed, baseline=representative_trace.before_identification_rad.to_numpy())
     summary_plot = build_summary(metrics, representative_trace, chosen, out / "b0_full_h2_before_after_summary.png", disabled=args.no_dashboard, save_only=args.save_only)
 
     validation = metrics.query("split == 'validation'")
