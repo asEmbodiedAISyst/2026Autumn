@@ -13,6 +13,7 @@ Read the class notes on GitBook; use the public student repository for code, mod
 | I need to… | Open |
 | --- | --- |
 | Get started and form my team | [Class 01](first-class/01-course-introduction-with-asmagicbrain.md) |
+| Read the textbook working draft | [Textbook — Working Draft](textbook-working-draft.md) |
 | Find a class | [Linked teaching schedule](#teaching-schedule) |
 | Find practical files and setup instructions | [Course resources](resources/README.md) |
 | Download a worksheet and check its filename | [Six worksheet submissions](resources/project-workbook/README.md) |
