@@ -39,8 +39,8 @@ Find the exact model text printed on the motor. Then locate the output horn, the
 
 The two connectors are part of the same TTL bus path: the documentation identifies the three conductors as **GND**, **VDD**, and **DATA**. The presence of two sockets makes a daisy-chain physically possible; it does not assign an ID, prove a baud rate, or show that the motor is powered.
 
-![ROBOTIS TTL connector pinout diagram](../resources/class02/figures/robotis-xc330/connector Information.png)
-
+![ROBOTIS TTL connector pinout diagram](../resources/class02/figures/robotis-xc330/connector_information.png)
+![ROBOTIS XC##)Pin-in-out](../resources/class02/figures/robotis-xc330/pin-in-out.png)
 
 *Figure 2. Official ROBOTIS TTL connector pinout: GND, VDD and DATA. Compare the diagram with the visible cable and connector orientation without unplugging it. Source: ROBOTIS, XC330-M288-T e-Manual, “Connector Information.”*
 
