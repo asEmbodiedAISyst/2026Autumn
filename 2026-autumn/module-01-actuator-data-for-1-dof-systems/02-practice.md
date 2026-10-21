@@ -100,6 +100,13 @@ Then find one RS06 specification in the manual that cannot be safely measured he
 
 Return all items to the TA. Inspection can establish visible interfaces and topology; it cannot establish powered operation, configuration, feedback validity, fastening quality under load, or actuator performance.
 
+---
+
+## 5. Get Autodesk Fusion for education
+
+Please visit their [official website](https://www.autodesk.com/education/edu-software/fusion). Then click "Request free access" to select Fusion. Choose student plan to verify your information by following the sign up instruction on the page.
+
+
 ## Figure sources
 
 - ROBOTIS. *XC330-M288-T e-Manual*: [retained manual](../resources/class02/materials/additional_material/manuals/XC330-M288-T_eManual.html), “How to Assemble” and “Connector Information.”
