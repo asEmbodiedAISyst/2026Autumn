@@ -86,7 +86,6 @@ Then find one RS06 specification in the manual that cannot be safely measured he
 
 ## 4. Consolidate the inspection record
 
-One shared record per pair or team is sufficient.
 
 | Item | Record |
 | --- | --- |
@@ -95,9 +94,9 @@ One shared record per pair or team is sufficient.
 | XC330 evidence boundary | One visible fact and one fact that requires documentation or a powered test |
 | RS06 identity | Exact label and visible mechanical/electrical interfaces |
 | RS06 documentation check | One specification with unit, condition and document location |
-| Open question | One property inspection alone cannot establish |
+| Open question | What is one property inspection alone cannot establish ? |
 
-Return all items to the TA without changing their connections. Inspection can establish visible interfaces and topology; it cannot establish powered operation, configuration, feedback validity, fastening quality under load, or actuator performance.
+Return all items to the TA. Inspection can establish visible interfaces and topology; it cannot establish powered operation, configuration, feedback validity, fastening quality under load, or actuator performance.
 
 ## Figure sources
 
