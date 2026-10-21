@@ -12,16 +12,6 @@ The class page [Controlled action as a physical feedback process](02-actuator-ba
 
 ---
 
-## The 15-minute route
-
-| Time | Task | Evidence to record |
-| --- | --- | --- |
-| 0–2 min | Confirm the handling boundary and identify the station components | The station is unpowered; the items you will inspect |
-| 2–6 min | Inspect the XC330 mechanical interfaces | Exact label, output/horn, mounting and connector locations |
-| 6–10 min | Trace the XC330 connection path | Visible sequence of interface, cable(s), motor, and separate power path |
-| 10–13 min | Inspect the RS06 | Exact label, output/mounting interface, and connection arrangement |
-| 13–15 min | Compare evidence and complete the inspection record | One observation, one documentation-backed claim, and one open question |
-
 ## Safety and handling boundary
 
 Before starting, confirm with the TA that the station is unpowered and disconnected from its supply. Leave every switch off and every cable as found.
@@ -35,10 +25,13 @@ Before starting, confirm with the TA that the station is unpowered and disconnec
 The purpose is to establish visible interfaces and topology, not to test motion or communication.
 
 ---
+## 0. Check the XC330 Manual: 
 
-## 1. Read the XC330 as a physical object — 4 minutes
+Link: https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288
 
-Find the exact model text printed on the motor. Then locate the output horn, the horn-retaining screw, the housing, mounting points, and the two 3-pin connectors. Point to them only if the TA permits; do not turn the horn or loosen a screw.
+## 1. Read the XC330 as a physical object
+
+Find the exact model text printed on the motor. Then locate the output horn, the horn-retaining screw, the housing, mounting points, and the two 3-pin connectors.
 
 ![ROBOTIS XC330 horn and screw installation illustration](../resources/class02/figures/robotis-xc330/x330-horn-screw.png)
 
@@ -54,7 +47,7 @@ The two connectors are part of the same TTL bus path: the documentation identifi
 
 ---
 
-## 2. Trace the XC330 station without changing it — 4 minutes
+## 2. Trace the XC330 station without changing it
 
 Start at the XC330 and follow every visible cable to the next component. Continue through the USB/TTL interface and the station's separate power connection. Use Figure 3 as a naming guide, but record only connections that you can actually see on your station. If a part of the path is hidden, write **not established** rather than guessing.
 
@@ -77,7 +70,7 @@ For each visible link, identify its likely role:
 
 ---
 
-## 3. Inspect the RS06 as a different actuator — 3 minutes
+## 3. Inspect the RS06 as a different actuator
 
 The RS06 should not be treated as a larger XC330. Locate its exact label, output flange or shaft, housing, mounting interface, and cable/connector. Compare the mechanical output and connection arrangement with the XC330 before consulting a specification.
 
@@ -91,7 +84,7 @@ Then find one RS06 specification in the manual that cannot be safely measured he
 
 ---
 
-## 4. Consolidate the inspection record — 2 minutes
+## 4. Consolidate the inspection record
 
 One shared record per pair or team is sufficient.
 
