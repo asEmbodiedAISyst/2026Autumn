@@ -18,7 +18,7 @@ By the end of this class, you should be able to:
 - inspect a CAD-to-MJCF conversion and identify the assumptions introduced during export;
 - distinguish fixture digitization from the dynamic identification carried out in Class 04.
 
-[Practice](03-practice.md) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) · [Practical package](../resources/class03/additional_material/README.md)
+[Practice](03-practice.md) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity) 
 
 ## Digital representations of physical mechanisms
 
