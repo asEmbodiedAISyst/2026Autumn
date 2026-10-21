@@ -27,7 +27,7 @@ The purpose is to establish visible interfaces and topology, not to test motion 
 ---
 ## 0. Check the XC330 Manual: 
 
-Link: https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288
+[XC330-M288-T Manual](https://docs.robotis.com/docs/dxl/model_reference/x_series/xc_series/xc330-m288)
 
 ## 1. Read the XC330 as a physical object
 
@@ -95,6 +95,7 @@ Then find one RS06 specification in the manual that cannot be safely measured he
 | RS06 identity | Exact label and visible mechanical/electrical interfaces |
 | RS06 documentation check | One specification with unit, condition and document location |
 | Open question | What is one property inspection alone cannot establish ? |
+| Open question | What is Daisy Chain ? |
 
 Return all items to the TA. Inspection can establish visible interfaces and topology; it cannot establish powered operation, configuration, feedback validity, fastening quality under load, or actuator performance.
 
