@@ -462,73 +462,11 @@ When information conflicts, keep the conflicting statements and their document l
 
 ## Instructor and TA demonstration
 
-Follow the path from an application through the asBrain/interface arrangement to the actuator and back through telemetry. The teaching team uses either a prepared station or the identified motor-only recording below. Identify the actual interface in use: the saved data do not establish that a newly configured asBrain station has been tested.
-
-![Communication and power components for the XC330 station](../resources/class02/figures/03-interface-components.png)
-
-*Figure 12. Course hardware components used to discuss the communication and power paths. A USB interface and a power connection perform different functions. The associated connection photograph in the package does not show a complete energized setup.*
-
-During the demonstration, follow these questions in order:
-
-1. Which device, firmware, mode and mechanical assembly are present? Where is electrical power supplied, and where is the mechanical output constrained?
-2. What quantity does the application send? Does the interface encode a target position, speed, current-related reference or another command?
-3. What bounded motion/reference does the prepared station execute? Which internal reference or profile is available to inspect?
-4. Which quantities return? Identify reported position, velocity, current-related information and status without renaming them as independent output torque.
-5. How do goal and response differ during motion or reversal? What evidence would distinguish a physical load effect from a unit or timing error?
-6. How does the teaching team close the operation and return the station to its prepared state?
-
-When the prepared teaching station is available, students observe the teaching team's powered operation. The unpowered inspection activity does not require students to connect or configure a drive. Mode comparisons use qualified operations or clearly identified records; they should not suggest that different devices and loads form a controlled causal comparison.
-
-If a live station is unavailable, use Figure 1 and the supplied record: XC330-M288-T, ID 5, firmware 53, Mode 5, motor-only M0 assembly. Its goal, trajectory, position and electrical/status signals support the same interpretation questions. Reading RS06/RS00 protocol examples from manuals is a documentation demonstration, not a recorded or live RS motion test.
-
-Read the retained motor-only record as a hardware example rather than as a simulation: it contains 2,601 telemetry samples and 1,301 host-command records. The two counts differ because commands and observations are logged on different schedules. Trace one request, internal trajectory and measured position, then identify which status channels help distinguish a communication/configuration problem from a mechanical response. Sample count alone does not establish a constant acquisition rate.
+[Class 02 practice](02-practice.md) a reference for guiding the actuator inspection exercise. Use it to ensure the students properly verify mechanical and electrical parts of the actuators ! 
 
 ## Student activity
 
-### Activities during the explanation and demonstration
-
-Use these questions as discussion prompts while reading the examples and watching the demonstration. They build toward the unpowered inspection and short team comparison below; they are not nine separate written tasks.
-
-| Activity | What to do | What the response should establish |
-|---|---|---|
-| Establish physical feedback | Explain what evidence is needed beyond a 30-degree command display | Separate reference, physical output and measurement location |
-| Read the stepper example | Interpret ten full-step commands for an ideal 200-step/revolution arrangement | 18 degrees is a commanded expectation; feedback is needed to establish actual displacement |
-| Compare control objectives | Predict behaviour when requesting angle, speed or effort | Name the regulated variable and what remains unspecified |
-| Work the effort example | Evaluate the proportional and damping contributions | 0.18 N m is a hypothetical reference before limits, not measured torque |
-| Read a recorded reversal | Locate goal, trajectory and reported position in Figure 1 | Identify signal identity and timing before explaining tracking differences |
-| Read the product curves | Locate the stall and no-load conditions | Explain why their maxima cannot occur together |
-| Identify research hardware | Find the original LEAP/Lite actuator models and one ALOHA actuator family | Distinguish a platform name from a verified model/revision |
-| Address one device | Distinguish ID 5 from a 4 Mbit/s bus setting and trace a request/readback | Separate destination, communication rate and physical response |
-| Follow the teaching station | Trace application, interface, power, output and returning telemetry | Connect software action to physical evidence |
-
-### Unpowered inspection and short team comparison
-
-Each student inspects **one unpowered XC330**, identifies its model label, output, housing/mounting and connectors, then returns it. The teaching team also circulates an unpowered XL330 for comparison. Keep power disconnected; do not disassemble either unit or force the output.
-
-Identify which properties can be observed directly and which require documentation. For example, the connector is visible, whereas the interpretation of a current register comes from the exact model's documentation.
-
-Teams then prepare a short XC330-M288-T/XL330-M288-T comparison using official sources. Record:
-
-- one shared property;
-- one construction or mass difference;
-- one torque or speed difference, including units, supply and rating condition;
-- one consequence for an intended mechanism;
-- one property that remains unknown from the available evidence.
-
-Explain why encoder resolution is not the same as positioning accuracy and why stall torque and no-load speed are not simultaneous capabilities. Return all units before discussing the short comparison. The [activity sheet](../resources/class02/activity.md) provides the response format; equivalent labelled notes are acceptable.
-
-### Optional activities after class
-
-1. **Find the documents yourself.** Select XC330, XL330, RS06, RS00 or a robot's other actuator. Find original-brand TDS information, UDS/user-manual information and relevant safety documentation. Record actual document titles, revisions, URLs, units and operating conditions. Identify one rating in the TDS and one instruction in the UDS that governs its use. Mark a separate SDS as not found or not established where appropriate; do not invent one.
-2. **Verify a robot's actuator choice.** Choose a research system. Record exact actuator models, number and role, hardware revision, control interface and evidence source. Explain what the paper's action representation asks the low-level actuator system to do. Mark an unverified model as unresolved.
-3. **Prepare a defensible selection.** Compare two actuators for a finger, arm joint or mobile mechanism. Separate requirements from advertised maxima. Identify one missing measurement that could change the decision.
-4. **Interpret one real discrepancy.** Use the supplied XC330 recording or the RS06 cooling statements to explain how a researcher should preserve and investigate inconsistent information. Do not replace an unresolved condition with an assumed value.
-
-These activities extend the same question that opened the class: how does a numerical request become controlled physical action, and what evidence lets us establish that it did?
-
-## Carry the question forward
-
-A command becomes motion through a particular mechanism, transmission and load. Class 03 makes that mechanism explicit in a digital representation, then asks which properties the representation preserves and which require measurement.
+Complete [Class 02 practice](02-practice.md), it is your hands-on guide for evaluating robotic actuators before use. Follow these steps to safely verify your motor's mechanical and electrical integrity before integrating it into your system.
 
 ## References
 
