@@ -4,11 +4,11 @@
 
 ## Available material
 
-XC330 fixture MJCFs and meshes, CAD and measurement records, reproducible figures, simulation activities, embedded B0 data, and guarded hardware-demonstration tools.
+XC330 fixture MJCFs and meshes, CAD and measurement records, reproducible figures, structural simulation activities, and guarded hardware-demonstration tools.
 
 ## Evidence and execution boundary
 
-The student activity is simulation-only and uses the embedded B0 physical record. The TA demonstration contains the separate guarded procedure for the physical XC330 station.
+The student activity is simulation-only and examines model structure and mass distribution without using a hardware trajectory. The TA demonstration contains the separate guarded procedure for the physical XC330 station.
 
 ## Source and file identity
 

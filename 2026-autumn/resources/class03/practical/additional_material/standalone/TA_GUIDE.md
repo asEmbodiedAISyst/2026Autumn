@@ -1,8 +1,8 @@
-# Class 03 TA guide — XC330 B0 collection and connection setup
+# Class 03 TA guide — XC330 B0 fixture and connection setup
 
 ## Purpose and safety boundary
 
-Students use simulation and the embedded V5 record. The TA station demonstrates the physical B0 XC330 collection. Keep the fixture clear, use its mechanical range, and run only one program that owns the serial port at a time.
+Students use structural simulation and a controlled mass-distribution activity. The TA station demonstrates the physical B0 fixture and its XC330 connection. Keep the fixture clear, use its mechanical range, and run only one program that owns the serial port at a time.
 
 The Class 03 hardware profile is copied from V5:
 
@@ -73,13 +73,14 @@ This opens a focused live MuJoCo B0 twin while it collects the bounded 0.18 Hz p
 
 The original V5 B0 campaign is a multi-condition experiment (H1–H5, P01–P06, and repeats), rather than one longer safe teaching motion. The default 8-second command remains the supervised classroom demo. Select the exact controller/profile/repeat subset before scheduling a full physical campaign.
 
-## 3. Connect it to the student result
+## 3. Connect the fixture to its MJCF structure
 
-Run the visual simulation comparison beside the hardware station. It opens the focused MuJoCo B0 XC330 view and a live cyan-hardware/orange-MuJoCo/red-residual dashboard:
+Run the structural inspection and open the B0 model:
 
 ```bash
-uv run python simulation_only/b0_data_collection.py
+uv run python simulation_only/demo.py
+uv run python simulation_only/demo.py --viewer B0 --viewer-seconds 30
 ```
 
-Emphasize that the resulting pre-identification gap is expected. Class 04 uses the included record to fit parameters; Class 03 does not claim that the prepared model has been identified.
+Relate the physical platform, XC330 housing, output axis, link, pins, and payloads to the MJCF body hierarchy. Identify the one hinge joint and the rigid descendants that move with the link. The inspection establishes model structure and declared properties; dynamic response comparison begins in Class 04.
 
