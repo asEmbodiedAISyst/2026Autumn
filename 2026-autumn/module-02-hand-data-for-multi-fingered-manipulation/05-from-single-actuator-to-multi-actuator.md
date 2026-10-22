@@ -406,9 +406,48 @@ Use Figures 9–10 to identify what marker detection establishes and what an opt
 
 ## Student activity
 
+### Reproduce the sixteen-motor evidence package
+
+Install the Ubuntu packages required for the supplied analysis and MuJoCo renderer:
+
+```bash
+sudo apt update
+sudo apt install -y git curl libgl1 libglfw3
+```
+
+Install `uv` if it is not already available, then make it available in the current terminal:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source "$HOME/.local/bin/env"
+uv --version
+```
+
+Download only the Class 05 lesson and its complete evidence package:
+
+```bash
+git clone --depth 1 --filter=blob:none --no-checkout https://github.com/asEmbodiedAISyst/2026Autumn.git rob7103-class05
+cd rob7103-class05
+git sparse-checkout init --no-cone
+git sparse-checkout set \
+  /2026-autumn/module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator.md \
+  /2026-autumn/resources/class05/
+git checkout main
+cd 2026-autumn/resources/class05/additional_material
+```
+
+Rebuild the combined sixteen-actuator models, then regenerate the tables and figures from the retained results:
+
+```bash
+uv run --python 3.12 --with-requirements code/requirements.txt python code/build_and_validate_combined_16.py
+uv run --python 3.12 --with-requirements code/requirements.txt python code/analyze_class05.py
+```
+
+The first command reports `"all_models_passed": true` after stepping each combined model and checking its correspondence with the independent one-degree-of-freedom models. The second command writes reconstructed figures to `paper/figures/` and reports the held-out mean RMSE reduction.
+
 ### Compare two source motor records and make a bounded decision
 
-Use the source four-row motor/controller table, heatmaps and selected B1 trace. Produce one compact record:
+Use the source four-row motor/controller table, heatmaps, selected B1 trace, and the regenerated files in `results/`. Produce one compact record:
 
 1. Record the H1 baseline/fitted means for motors 0 and 9 and calculate one reduction. Use H2 to distinguish smallest absolute error from largest percentage reduction.
 2. Explain why 480 held-out motor records represent thirty shared events, and state a grouping-preserving split rule.
