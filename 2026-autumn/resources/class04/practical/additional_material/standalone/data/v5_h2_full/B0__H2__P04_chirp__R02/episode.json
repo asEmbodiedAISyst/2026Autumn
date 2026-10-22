@@ -1,0 +1,105 @@
+{
+  "command_count": 1401,
+  "completion_status": "complete",
+  "controller_id": "H2",
+  "controller_write_order": [
+    "torque_disable_ID5",
+    "verify_model_ID_and_baud",
+    "set_mode_and_direction_while_torque_off",
+    "write_and_freeze_protection_gain_profile_and_effort_registers",
+    "readback_and_goal_equal_present",
+    "enable_only_ID5_after_all_live_gates"
+  ],
+  "critical_registers_match_before_after": true,
+  "dynamixel_id": 5,
+  "end_utc": "2026-08-26T10:39:38.418372+00:00",
+  "episode_id": "B0__H2__P04_chirp__R02",
+  "experiment_start_goal_position_raw": 2048,
+  "experiment_start_position_error_ticks": 0,
+  "experiment_start_position_raw_signed": 2048,
+  "failures": [],
+  "fixture": {
+    "absolute_payload_center_distance_mm": 60,
+    "complete_payload_includes_pin": true,
+    "complete_payload_mass_each_g": 44,
+    "fixture_revision": "2026-08-26-recollection-110g",
+    "gravity_moment_design": "approximately canceled by symmetry",
+    "link_mass_g": 22,
+    "mass_property_status": "measured masses supplied for the 2026-08-26 recollection: two complete 44 g payload assemblies including their pins plus one 22 g link; recompute link inertia from geometry before identification",
+    "payload_center_positions_mm": [
+      -60,
+      60
+    ],
+    "payload_commonality": "same 3D-printed weight design is used for every weighted V5 configuration",
+    "payload_count": 2,
+    "payload_identity_each_side": "P-B0 as installed",
+    "payload_print_infill_percent": 50,
+    "pdf_preliminary_center_positions_mm_superseded": [
+      -50,
+      50
+    ],
+    "pdf_preliminary_inertia_kg_m2_superseded": 0.00025,
+    "total_external_moving_mass_g": 110,
+    "type": "balanced equal-payload branches",
+    "user_correction": "V5 PDF preliminary \u00b150 mm is superseded by the physical \u00b160 mm configuration"
+  },
+  "gravity_loaded_active_zero_start": false,
+  "hardware_position_d_gain_raw": 150,
+  "hardware_position_i_gain_raw": 0,
+  "hardware_position_p_gain_raw": 800,
+  "initial_position_raw_signed": 2048,
+  "measurement_boundary": {
+    "present_current_semantics": "XC330 input-supply current telemetry",
+    "primary_output": "Present Position",
+    "supporting_channels": [
+      "Present Velocity",
+      "Present Current",
+      "Present PWM"
+    ],
+    "torque_channel_available": false,
+    "torque_policy": "Do not derive or label output torque without an independent force/torque calibration."
+  },
+  "mechanical_configuration": "B0",
+  "mujoco_kp": null,
+  "mujoco_kv": null,
+  "profile_id": "P04_chirp",
+  "profile_statistics": {
+    "active_sample_count": 1201,
+    "active_start_index": 0,
+    "duration_s": 14.0,
+    "maximum_abs_acceleration_rad_s2": 139.06591890119606,
+    "maximum_abs_step_rad": 0.02794715239225226,
+    "maximum_abs_velocity_rad_s": 2.7822460437978958,
+    "maximum_rad": 0.5999997929865194,
+    "minimum_rad": -0.5999996042747802,
+    "sample_count": 1401
+  },
+  "repeat_id": "R02",
+  "role": "model_selection",
+  "schema_version": 1,
+  "source_type": "new_V5_physical_hardware_measurement",
+  "start_host_monotonic_ns": 1295915101187914,
+  "start_required_at_zero": true,
+  "start_utc": "2026-08-26T10:39:24.357687+00:00",
+  "telemetry_count": 2801,
+  "telemetry_timing_quality": {
+    "achieved_rate_hz": 200.0104516175816,
+    "checks": {
+      "absolute_max_gap": true,
+      "minimum_rate": true,
+      "outlier_fraction": true,
+      "p99_9_gap": true
+    },
+    "max_gap_s": 0.006390131,
+    "mean_gap_s": 0.004999738723214285,
+    "outlier_count": 0,
+    "outlier_fraction": 0.0,
+    "p99_9_gap_s": 0.006319177616000001,
+    "passed": true
+  },
+  "terminal_torque_disabled": true,
+  "torque_channel_created": false,
+  "zero_start_tolerance_ticks": 5,
+  "zeroing_data_file": null,
+  "zeroing_event_count": 0
+}

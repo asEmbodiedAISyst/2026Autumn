@@ -1,14 +1,14 @@
 # Class 04: Single-actuator identification
 
-[Lecture](../../../module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md) · [04-rs06-hardware-identification](../../../module-01-actuator-data-for-1-dof-systems/04-rs06-hardware-identification.md)
+[Lecture](../../../module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md) · [Standalone experiment](additional_material/standalone/README.md) · [TA guide](additional_material/standalone/TA_GUIDE.md) · [Student guide](additional_material/standalone/STUDENT_GUIDE.md) · [04-rs06-hardware-identification](../../../module-01-actuator-data-for-1-dof-systems/04-rs06-hardware-identification.md)
 
 ## Available material
 
-Raw campaigns, paired samples, frozen parameters, full-fit/replay/analysis code, MJCF and the RS06 identification package.
+Embedded B0/H2 physical records, B0 MJCF and meshes, simulation-only identification code, tests, analysis outputs, the extended XC330 source campaign, and the RS06 identification package.
 
 ## Evidence and execution boundary
 
-The current source results/overall_heldout_result.csv reports 30 held-out XC330 episodes, mean baseline RMSE 0.02064688985201488 rad and fitted RMSE 0.0148139849688432 rad (28.2508% reduction). Earlier source README values describe a stale result. Effective fit parameters are not isolated motor constants.
+The standard classroom experiment reads 15 embedded V5 B0/H2 physical episodes and never collects new hardware data. It fits on R01/R02 for profiles P01–P05 and validates on the five R03 episodes. The retained extended campaign separately reports 30 held-out B1/G1 episodes, mean baseline RMSE 0.02064688985201488 rad and fitted RMSE 0.0148139849688432 rad. Results and parameter values from these two experiments must remain separate. Effective fit parameters are not isolated motor constants.
 
 ## Source and file identity
 

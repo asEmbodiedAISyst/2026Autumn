@@ -1,0 +1,11 @@
+# Copied from V5 B0 collection configuration.
+serial_port = "/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FTBIHS39-if00-port0"
+baud_rate_bps = 4000000
+motor_id = 5
+expected_model_number = 1240
+expected_firmware_version = 53
+operating_mode = 5
+goal_min_raw = 1024
+goal_max_raw = 3072
+iphone_ip = "10.127.52.4"
+asmagic_port = 8000
