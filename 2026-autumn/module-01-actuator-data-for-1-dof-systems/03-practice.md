@@ -262,12 +262,23 @@ uv run pytest
 uv run python simulation_only/demo.py
 ```
 
-The prepared simulation scene places the B0 fixture on the asBrain platform with the laptop visible in the environment.
+The prepared simulation model places the B0 fixture on the asBrain platform. The lecture figures retain the laptop as scene context, while the interactive MJCF contains the fixture and platform required for mechanical inspection.
 
-Run the prepared B0 data-generation activity with:
+Open the B0 model for a longer structural inspection:
 
 ```bash
-uv run python simulation_only/b0_data_collection.py
+uv run python simulation_only/demo.py --viewer B0 --viewer-seconds 30
 ```
 
-The activity writes the simulation data, figure, and numerical summary to `outputs/`.
+The inspection reports the generalized-coordinate, velocity, and actuator dimensions; joint axis and range; external moving mass; gravity bias at the declared pose; and number of collision-enabled geometries. It writes these declarations to `outputs/model_inspection.json`.
+
+Run the simulation-only mass-distribution activity:
+
+```bash
+uv run python simulation_only/activity.py \
+  --model B0 --payload-scale 1.25 --torque-nm 0.05 --duration-s 0.10
+```
+
+This controlled simulation keeps the B0 geometry and applied torque fixed while increasing the mass and inertia of both complete pin–payload assemblies by 25%. Use `outputs/b0_inertia_response_activity.json` to relate the declared mass change to joint inertia and initial angular acceleration. The modified case is hypothetical and does not represent another measured fixture.
+
+Conclude the practice by identifying the fixed body, moving body, hinge axis, rigid attachments, accepted B0 moving mass, actuator input, sensor outputs, and one modeling assumption that must remain associated with the exported MJCF.

@@ -34,12 +34,15 @@ def inspect(config: str) -> dict[str, object]:
     data.qpos[0] = 0.4
     data.ctrl[0] = 0.0
     mujoco.mj_forward(model, data)
+    subtree_mass = descendants_mass(model, "XC330-M288-T")
+    external_moving_mass = 0.0 if config == "M0" else subtree_mass
     return {
         "configuration": config,
         "nq_nv_nu": [int(model.nq), int(model.nv), int(model.nu)],
         "joint_axis": model.jnt_axis[joint_id].tolist(),
         "joint_range_rad": model.jnt_range[joint_id].tolist(),
-        "moving_mass_kg": descendants_mass(model, "XC330-M288-T"),
+        "external_moving_mass_kg": external_moving_mass,
+        "numerical_placeholder_mass_kg": subtree_mass if config == "M0" else 0.0,
         "gravity_bias_at_q_0p4_Nm": float(data.qfrc_bias[0]),
         "collision_enabled_geoms": int(((model.geom_contype != 0) | (model.geom_conaffinity != 0)).sum()),
     }
