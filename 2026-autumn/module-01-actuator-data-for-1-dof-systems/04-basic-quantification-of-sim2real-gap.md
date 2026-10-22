@@ -18,7 +18,7 @@ By the end of this class, you should be able to:
 - calculate and interpret position root-mean-square error;
 - state a model-use claim whose scope matches the available evidence.
 
-[Class 04 practice](04-practice.md) · [Practical package](../resources/class04/README.md)
+[Lecture](#from-a-digitized-fixture-to-a-measured-prediction-claim) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
 ## From a digitized fixture to a measured prediction claim
 
@@ -34,7 +34,7 @@ Figure 1 is the shared vocabulary for the record:
 - **B0**, **B1**, and **B2** are balanced 110 g external fixtures. The equal payload assemblies are placed symmetrically, so their ideal static gravity moments cancel while their rotational inertia changes.
 - **G1** carries the same 110 g external mass asymmetrically. Its static gravity moment does not cancel.
 - **H1** and **H2** name the two XC330 controller settings. They are different hardware conditions, not labels for simulation quality.
-- An episode identifier, such as `B1__H2__P06_heldout_composite__R01`, states the fixture, controller, motion profile, and repetition.
+- An episode identifier, such as `B0__H2__P04_chirp__R03`, states the fixture, controller, motion profile, and repetition.
 - The recorded inner reference, hardware position, synthetic baseline, and hardware-fitted replay remain separate signals. Their names are not interchangeable.
 
 ## 1. The experiment in one view
@@ -90,7 +90,13 @@ The asMagic recording documents physical motion for the held-out B1/H2 composite
 
 The video, before-motion photograph, command record, telemetry record, and replay trace share the same episode identifier. This maintains the connection between visible hardware motion and the numerical comparison without treating video frames as calibrated motion capture.
 
-The motion profiles have distinct decision roles:
+The motion profiles have distinct decision roles.
+
+### Seven trajectories, three roles
+
+![The seven commanded position profiles, coloured by their role.](../resources/class04/figures/source/rs06/rs06_profiles.png)
+
+*Figure 3. The seven commanded position profiles, coloured by their role.*
 
 | Profile group | Profiles | Decision role |
 |---|---|---|
@@ -104,7 +110,7 @@ The data are opened in that order. Calibration establishes candidate parameters;
 
 The B1 and G1 hardware fixtures, their MuJoCo representations, and the B1/H2 held-out replay document the declared geometry, loading conditions, and position comparison.
 
-![Figure 3. B1 and G1 hardware fixtures, corresponding MuJoCo models, and the B1/H2 held-out position replay.](../resources/class04/figures/source/physical_and_simulation_configurations.png)
+![Figure 4. B1 and G1 hardware fixtures, corresponding MuJoCo models, and the B1/H2 held-out position replay.](../resources/class04/figures/source/physical_and_simulation_configurations.png)
 
 ## 3. What is compared
 
@@ -162,7 +168,7 @@ Four bounded starts are fitted independently for H1 and H2 on the calibration pr
 
 Neither selected H1 nor H2 parameter reaches an upper fitting bound. The terms still remain effective closed-loop parameters, because the position record alone cannot uniquely separate inertia and damping from timing, effort scaling, compliance, or reference interpolation.
 
-![Figure 4. Selected parameter values normalized to the widened fitting intervals. Neither controller fit reaches an upper limit.](../resources/class04/figures/source/parameter_bounds.png)
+![Figure 5. Selected parameter values normalized to the widened fitting intervals. Neither controller fit reaches an upper limit.](../resources/class04/figures/source/parameter_bounds.png)
 
 ## 5. Held-out error
 
@@ -178,7 +184,7 @@ The final aggregate is the arithmetic mean of episode RMSE values. Equal episode
 
 The held-out conditions are B1 and G1, which have equal external mass and different gravity loading.
 
-![Figure 5. Held-out fixture callouts. B1 is balanced; G1 has the same external mass but an asymmetric gravity load.](../resources/class04/figures/source/heldout_fixture_callouts.png)
+![Figure 6. Held-out fixture callouts. B1 is balanced; G1 has the same external mass but an asymmetric gravity load.](../resources/class04/figures/source/heldout_fixture_callouts.png)
 
 | Fixture | Controller | Episodes | Baseline mean RMSE (rad) | Fitted mean RMSE (rad) |
 |---|---|---:|---:|---:|
@@ -192,7 +198,7 @@ Across all 30 held-out episodes, the frozen hardware-fitted replay reduces the m
 
 The asymmetric G1 condition remains harder to predict than B1, especially under H1.
 
-![Figure 6. Held-out mean episode position RMSE for the synthetic baseline and frozen hardware fit.](../resources/class04/figures/source/heldout_error_overview.png)
+![Figure 7. Held-out mean episode position RMSE for the synthetic baseline and frozen hardware fit.](../resources/class04/figures/source/heldout_error_overview.png)
 
 The largest fitted held-out error occurs in `G1__H1__P07_heldout_sine_hold__R01`: fitted RMSE is 0.026859 rad and baseline RMSE is 0.029262 rad. The fitted replay improves the trace but leaves a directional residual bias of about -0.0171 rad. This observation is evidence of remaining mismatch, not a unique identification of its cause.
 
@@ -200,7 +206,7 @@ The largest fitted held-out error occurs in `G1__H1__P07_heldout_sine_hold__R01`
 
 The B1/H2 composite episode did not influence parameter fitting or candidate selection. Its hardware-fitted replay has an RMSE of 0.002743 rad, compared with 0.010119 rad for the synthetic baseline.
 
-![Figure 7. Recorded inner reference, measured position, and frozen hardware-fitted replay for the held-out B1/H2 composite episode.](../resources/class04/figures/source/good_heldout_episode.png)
+![Figure 8. Recorded inner reference, measured position, and frozen hardware-fitted replay for the held-out B1/H2 composite episode.](../resources/class04/figures/source/good_heldout_episode.png)
 
 The signal definitions are:
 
@@ -234,6 +240,114 @@ The supporting record contains the episode index, paired hardware/simulation sam
 
 The complete supporting package is available in the [Class 04 practical resources](../resources/class04/README.md). It includes the [episode index](../resources/class04/additional_material/data/EPISODES_USED.csv), [paired hardware/simulation samples](../resources/class04/additional_material/data/paired_simulation_hardware_samples.csv.gz), [fitted parameters](../resources/class04/additional_material/data/fitted_parameters.csv), [frozen-selection record](../resources/class04/additional_material/data/FROZEN_SELECTION_BEFORE_HELD_OUT.json), [optimizer candidates](../resources/class04/additional_material/data/optimizer_candidates.csv), [compact held-out trace](../resources/class04/additional_material/data/minimal_heldout_episode_B1_H2_P06_R01.csv.gz), [fit and replay code](../resources/class04/additional_material/code/full_fit_and_replay.py), generated models, raw motor-side records, and matched demonstration media.
 
-## Practice
+## Instructor and TA demonstration
 
-Complete the [Class 04 practice](04-practice.md). It installs the required Ubuntu tools, obtains only the Class 04 files, replays the complete 15-episode B0/H2 record, identifies the effective model on R01/R02, and evaluates the frozen model on R03. The paced MuJoCo replay and live dashboard show the current frame, elapsed time, and residual; the final scene remains open before the saved analysis layout is opened.
+### Prepare the Ubuntu workspace
+
+Install Git, `curl`, and the desktop libraries used by MuJoCo:
+
+```bash
+sudo apt update
+sudo apt install -y git curl libgl1 libglfw3
+```
+
+Install `uv` when it is not already available:
+
+```bash
+uv --version || (curl -LsSf https://astral.sh/uv/install.sh | sh)
+source "$HOME/.local/bin/env"
+uv --version
+```
+
+Clone only the Class 04 lesson and resources, then enter the standalone activity directory:
+
+```bash
+git clone --depth 1 --filter=blob:none --no-checkout \
+  https://github.com/asEmbodiedAISyst/2026Autumn.git \
+  rob7103-class04
+cd rob7103-class04
+git sparse-checkout init --no-cone
+git sparse-checkout set \
+  /2026-autumn/module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md \
+  /2026-autumn/resources/class04/
+git checkout main
+cd 2026-autumn/resources/class04/additional_material/standalone
+```
+
+The normal Class 04 command is deliberately complete but simulation-only: it uses embedded V5 physical records and never opens a serial port.
+
+```bash
+uv sync
+uv run pytest
+uv run python simulation_only/b0_identification.py
+```
+
+### Experiment design
+
+The local data set has all 15 V5 B0/H2 episodes: P01–P05 and R01–R03. The script calibrates on R01/R02 across every profile and validates on all R03 episodes. Each baseline and identified response is generated in MuJoCo; the physical curves are the copied V5 measurements.
+
+After the representative held-out MuJoCo replay, leave the analysis layout open for discussion. It contains:
+
+- before/after RMSE for every V5 episode;
+- profile-level average before/after RMSE;
+- a detailed P04 chirp R03 trace; and
+- fitted values plus held-out aggregate error.
+
+All visual and numerical results are saved in `outputs/` for later analysis. Use `b0_full_h2_episode_metrics.csv` for a compact table and `b0_full_h2_replays.csv` for complete sampled traces.
+
+### Physical reference
+
+No physical collection is needed for Class 04. If a physical station demonstration is desired, this standalone folder also includes the guarded selected H2 physical runner:
+
+```bash
+uv run python simulation_and_hardware/live_b0_collection.py --protocol h2_calibration --enable-motion
+```
+
+That opt-in command remains limited to the separately selected P01 + P02 + P03, one repeat, and keeps the MuJoCo twin open while the motor moves. It is not part of the Class 04 identification dataset collection.
+
+## Student activity
+
+Continue in the standalone activity directory prepared above.
+
+### Run it
+
+```bash
+uv sync
+uv run pytest
+uv run python simulation_only/b0_identification.py
+```
+
+This is simulation only. It does **not** command a motor or collect new hardware data. Instead, it uses all of the actual V5 B0/H2 physical results embedded in this project:
+
+- P01 slow triangle, P02 multisine, P03 smooth levels, P04 chirp, and P05 wide sine;
+- repeats R01, R02, and R03 for each profile — 15 experiments total.
+
+### What the command does
+
+1. Runs the baseline MuJoCo model against every recorded V5 command.
+2. Fits effective damping and armature with R01/R02 from all five profiles (10 experiments).
+3. Re-runs all experiments using the fitted model.
+4. Evaluates R03 from all five profiles as independently held-out validation (5 experiments).
+5. Plays a focused MuJoCo replay of the held-out P04 chirp R03 test.
+6. Opens a full layout after the replay and saves it for analysis.
+
+The layout includes per-episode before/after RMSE, mean RMSE by profile, a held-out trace, and a compact report card.
+
+Color key: cyan = physical V5 measurement, gray dashed = baseline before identification, orange = model after identification, red = post-identification residual.
+
+### Saved analysis
+
+- `outputs/b0_full_h2_before_after_summary.png`
+- `outputs/b0_full_h2_episode_metrics.csv`
+- `outputs/b0_full_h2_replays.csv`
+- `outputs/b0_identification_report.json`
+
+### Useful options
+
+```bash
+# Faster graphical replay
+uv run python simulation_only/b0_identification.py --playback-speed 1.5
+
+# Save all figures without opening graphical windows
+uv run python simulation_only/b0_identification.py --no-viewer --save-only --playback-speed 100
+```
