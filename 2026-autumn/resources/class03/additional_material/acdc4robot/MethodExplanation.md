@@ -74,17 +74,17 @@ Although the `<model>` element of SDFormat has more sub-elements to describe a r
 ## Fusion 360 to URDF
 | URDF Element | Fusion 360 Elements | Transformation |
 | ------------ | ------------------- | -------------- |
-| Joint *i* origin $^{L_{i-1}}T_{J_{i}}$| $^{W}T_{L_{i-1}}$, $^{W}T_{J_{i}}$ | $^{L_{i-1}}T_{J_{i}} = {(^{W}T_{L_{i-1}})}^{T} \cdot {^{W}T_{J_{i}}}$ |
-| Joint *i* axis $^{J_{i}}\vec{a}$| $^{W}\vec{a}$, $^{W}T_{J_{i}}$| $^{J_{i}}\vec{a} = {(^{W}T_{J_{i}})}^{T} \cdot ^{W}\vec{a}$ |
-| Link *i*'s inertial origin $^{J_{i}}{T_{L_{i}CoM}}$ | $^{W}T_{J_{i}}$, $^{W}{T_{L_{i}CoM}}$ | $^{J_{i}}{T_{L_{i}CoM}} = {(^{W}T_{J_{i}})^{T}} \cdot {^{W}{T_{L_{i}CoM}}}$ |
-|Link *i*'s visual origin $^{J_{i}}T_{L_{i}}$ | $^{W}T_{J_{i}}$, $^{W}T_{L_{i}}$ | $^{J_{i}}T_{L_{i}} = {(^{W}T_{J_{i}})^{T}} \cdot {^{W}T_{L_{i}}}$ |
-|Link *i*'s collision origin $^{J_{i}}T_{L_{i}}$ | $^{W}T_{J_{i}}$, $^{W}T_{L_{i}}$ | $^{J_{i}}T_{L_{i}} = {(^{W}T_{J_{i}})^{T}} \cdot {^{W}T_{L_{i}}}$ |
+| Joint *i* origin $$^{L_{i-1}}T_{J_{i}}$$| $$^{W}T_{L_{i-1}}$$, $$^{W}T_{J_{i}}$$ | $$^{L_{i-1}}T_{J_{i}} = {(^{W}T_{L_{i-1}})}^{T} \cdot {^{W}T_{J_{i}}}$$ |
+| Joint *i* axis $$^{J_{i}}\vec{a}$$| $$^{W}\vec{a}$$, $$^{W}T_{J_{i}}$$| $$^{J_{i}}\vec{a} = {(^{W}T_{J_{i}})}^{T} \cdot ^{W}\vec{a}$$ |
+| Link *i*'s inertial origin $$^{J_{i}}{T_{L_{i}CoM}}$$ | $$^{W}T_{J_{i}}$$, $$^{W}{T_{L_{i}CoM}}$$ | $$^{J_{i}}{T_{L_{i}CoM}} = {(^{W}T_{J_{i}})^{T}} \cdot {^{W}{T_{L_{i}CoM}}}$$ |
+|Link *i*'s visual origin $$^{J_{i}}T_{L_{i}}$$ | $$^{W}T_{J_{i}}$$, $$^{W}T_{L_{i}}$$ | $$^{J_{i}}T_{L_{i}} = {(^{W}T_{J_{i}})^{T}} \cdot {^{W}T_{L_{i}}}$$ |
+|Link *i*'s collision origin $$^{J_{i}}T_{L_{i}}$$ | $$^{W}T_{J_{i}}$$, $$^{W}T_{L_{i}}$$ | $$^{J_{i}}T_{L_{i}} = {(^{W}T_{J_{i}})^{T}} \cdot {^{W}T_{L_{i}}}$$ |
 
 ## Fusion 360 to SDFormat
 | SDF Element | Fusion 360 Elements | Transformation |
 | ----------- | ------------------- | -------------- |
-| Joint *i* pose $^{L_{i}}T_{J_{iC}}$ | $^{W}T_{L_{i}}$, $^{W}T_{J_{iC}}$ | $^{L_{i}}T_{J_{iC}} = {(^{W}T_{L_{i}})^{T}} \cdot {^{W}T_{J_{iC}}}$|
-| Joint *i* axis1 $^{J_{iC}}\vec{a_1}$| $^{W}\vec{a_1}$, $^{W}T_{J_{iC}}$ | $^{J_{iC}}\vec{a_1} = {(^{W}T_{J_{iC}})^{T}} \cdot {^{W}\vec{a_1}}$ |
-| Joint *i* axis1 $^{J_{iC}}\vec{a_2}$| $^{W}\vec{a_2}$, $^{W}T_{J_{iC}}$ | $^{J_{iC}}\vec{a_2} = {(^{W}T_{J_{iC}})^{T}} \cdot {^{W}\vec{a_2}}$ |
-| Link *i*'s pose $^{W}T_{L_{i}}$ | $^{W}T_{L_{i}}$ | $^{W}T_{L_{i}} = {^{W}T_{L_{i}}}$ |
-| Link *i*'s inertial pose $^{L_{i}}T_{L_{i}COM}$ | $^{W}T_{L_{i}}$, $^{W}{T_{L_{i}CoM}}$ | $^{L_{i}}T_{L_{i}COM} = {(^{W}T_{L_{i}})^{T}} \cdot {^{W}{T_{L_{i}CoM}}}$ |
+| Joint *i* pose $$^{L_{i}}T_{J_{iC}}$$ | $$^{W}T_{L_{i}}$$, $$^{W}T_{J_{iC}}$$ | $$^{L_{i}}T_{J_{iC}} = {(^{W}T_{L_{i}})^{T}} \cdot {^{W}T_{J_{iC}}}$$|
+| Joint *i* axis1 $$^{J_{iC}}\vec{a_1}$$| $$^{W}\vec{a_1}$$, $$^{W}T_{J_{iC}}$$ | $$^{J_{iC}}\vec{a_1} = {(^{W}T_{J_{iC}})^{T}} \cdot {^{W}\vec{a_1}}$$ |
+| Joint *i* axis1 $$^{J_{iC}}\vec{a_2}$$| $$^{W}\vec{a_2}$$, $$^{W}T_{J_{iC}}$$ | $$^{J_{iC}}\vec{a_2} = {(^{W}T_{J_{iC}})^{T}} \cdot {^{W}\vec{a_2}}$$ |
+| Link *i*'s pose $$^{W}T_{L_{i}}$$ | $$^{W}T_{L_{i}}$$ | $$^{W}T_{L_{i}} = {^{W}T_{L_{i}}}$$ |
+| Link *i*'s inertial pose $$^{L_{i}}T_{L_{i}COM}$$ | $$^{W}T_{L_{i}}$$, $$^{W}{T_{L_{i}CoM}}$$ | $$^{L_{i}}T_{L_{i}COM} = {(^{W}T_{L_{i}})^{T}} \cdot {^{W}{T_{L_{i}CoM}}}$$ |

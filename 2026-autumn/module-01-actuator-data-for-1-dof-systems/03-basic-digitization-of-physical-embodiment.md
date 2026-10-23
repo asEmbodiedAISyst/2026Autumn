@@ -142,7 +142,7 @@ The three representations contain the same mechanical elements: the fixed platfo
 
 The model uses metres, kilograms, seconds, radians, and newton-metres. Its STL source assets are millimetre-scale, so each mesh declaration uses `scale="0.001 0.001 0.001"`. That scale applies to mesh vertices; it does not convert `body pos`, `joint pos`, or inertial positions.
 
-Every coordinate is defined by a point, a reference frame, and a unit. The position of point $P$ expressed in frame $A$ is
+Every coordinate is defined by a point, a reference frame, and a unit. The position of point $$P$$ expressed in frame $$A$$ is
 
 $$
 {}^A p_P={}^A R_B\,{}^B p_P+{}^A p_{O_B}.
@@ -184,7 +184,7 @@ $$
 J(q)\ddot q+b\dot q+\tau_f(\dot q)+\tau_g(q)=\tau_{\mathrm{act}},
 $$
 
-where $q$ is joint angle, $J(q)$ is the inertia about the joint axis, $b\dot q$ represents viscous damping, $\tau_f$ represents other friction effects, $\tau_g$ is the gravity moment, and $\tau_{\mathrm{act}}$ is the actuator torque applied to the modeled joint. For this rigid single-axis fixture, the body geometry and inertial declarations determine the modeled joint inertia for a selected configuration.
+where $$q$$ is joint angle, $$J(q)$$ is the inertia about the joint axis, $$b\dot q$$ represents viscous damping, $$\tau_f$$ represents other friction effects, $$\tau_g$$ is the gravity moment, and $$\tau_{\mathrm{act}}$$ is the actuator torque applied to the modeled joint. For this rigid single-axis fixture, the body geometry and inertial declarations determine the modeled joint inertia for a selected configuration.
 
 The B0, B1, and B2 payload assemblies are positioned symmetrically. Under the ideal declared geometry, equal gravity contributions from opposite sides cancel at corresponding orientations, while the joint-inertia contribution increases with payload radius. G1 places both assemblies on the same side, so their gravity contributions do not cancel.
 

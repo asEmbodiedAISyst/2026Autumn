@@ -134,7 +134,7 @@ K_p(q_r - q) + K_v(\dot{q}_r - \dot{q}),
 \right]\,\mathrm{N\,m}.
 $$
 
-Here, $q_r$ and $\dot{q}_r$ are the recorded inner references; $q$ and $\dot{q}$ are the simulated joint state. H1 and H2 receive separate declared gains. The equation is a replay approximation, not a claim to reproduce hidden XC330 firmware.
+Here, $$q_r$$ and $$\dot{q}_r$$ are the recorded inner references; $$q$$ and $$\dot{q}$$ are the simulated joint state. H1 and H2 receive separate declared gains. The equation is a replay approximation, not a claim to reproduce hidden XC330 firmware.
 
 At each 2 ms MuJoCo step, the replay reads the simulated `q` and `qdot`, interpolates/holds the logged hardware reference, computes the displayed PD torque, clips it to ±0.1551 N m, and writes that torque to the MuJoCo actuator. The hardware had already run once; no simulation state is sent back to the real XC330.
 
