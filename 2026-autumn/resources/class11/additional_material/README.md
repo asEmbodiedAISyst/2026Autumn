@@ -211,7 +211,7 @@ The folder `outputs/eval/act_sim_push_cube/` has `results.json`, with the seed, 
 `ik_ok` and the final distance of every episode, and the videos of the first episodes: the phone image on the left,
 the scene on the right.
 
-The class page reports 62 % for $n$ = 10 and 56 % for $n$ = 100 on the arm. With 50 episodes the standard error is about 7 percentage points; an exact comparison also needs the same checkpoint, scene and seeds.
+The class page reports 62 % for $$n$$ = 10 and 56 % for $$n$$ = 100 on the arm. With 50 episodes the standard error is about 7 percentage points; an exact comparison also needs the same checkpoint, scene and seeds.
 
 **Try:**
 
@@ -225,11 +225,11 @@ The class page reports 62 % for $n$ = 10 and 56 % for $n$ = 100 on the arm. With
 
 The [saved-record activity](#required-saved-record-activity) is the class deliverable. This executable extension follows the optional route above.
 
-* [ ] **Run:** evaluate your policy on 50 episodes, saving the configuration file and every outcome. Write the success rate and the setting ($n$, embodiment,
+* [ ] **Run:** evaluate your policy on 50 episodes, saving the configuration file and every outcome. Write the success rate and the setting ($$n$$, embodiment,
   checkpoint digest, scene, seeds and output record).
 * [ ] **Failure:** pick one failed episode in `results.json` and watch its video. Where does the motion stop, and
   what does the phone image show at that moment?
-* [ ] **One change:** propose one change (more data, more steps, another $n$) and predict its effect. Then run it.
+* [ ] **One change:** propose one change (more data, more steps, another $$n$$) and predict its effect. Then run it.
 * [ ] **Claim:** write the result as a bounded claim, as in the bounded-claim section of the class page: task, data, conditions,
   number of episodes, and the rung it reached.
 
