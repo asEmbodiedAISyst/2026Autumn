@@ -12,6 +12,7 @@
 * [03 Basic Digitization of Physical Embodiment](module-01-actuator-data-for-1-dof-systems/03-basic-digitization-of-physical-embodiment.md)
   * [RS06 fixture digitization](module-01-actuator-data-for-1-dof-systems/03-rs06-fixture-digitization.md)
 * [04 Basic Quantification of Sim2Real Gap](module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md)
+  * [Practice: quantify the B0 Sim2Real gap](module-01-actuator-data-for-1-dof-systems/04-practice.md)
   * [RS06 hardware identification](module-01-actuator-data-for-1-dof-systems/04-rs06-hardware-identification.md)
 
 ## Module 02: Hand Data for Multi-Fingered Manipulation

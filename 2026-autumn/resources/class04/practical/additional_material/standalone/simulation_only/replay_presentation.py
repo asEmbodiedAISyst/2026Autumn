@@ -104,3 +104,29 @@ def present(model_path: Path, time_s: np.ndarray, hardware: np.ndarray, simulate
         dashboard["plt"].close(dashboard["figure"])
         return output
     return None
+
+
+def preview(model_path: Path) -> None:
+    """Open an immediate, simulation-only B0 viewer with a gentle sine motion."""
+    model = mujoco.MjModel.from_xml_path(str(model_path))
+    data = mujoco.MjData(model)
+    body_id = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, XC330_BODY)
+    if body_id < 0:
+        raise RuntimeError(f"Could not find moving XC330 body {XC330_BODY!r}")
+    from mujoco import viewer
+
+    window = viewer.launch_passive(model, data)
+    window.cam.distance = .32; window.cam.azimuth = 140; window.cam.elevation = -18
+    print("Simulation preview is open. Close the MuJoCo window to return to the terminal.", flush=True)
+    started = time.monotonic()
+    try:
+        while window.is_running():
+            elapsed = time.monotonic() - started
+            data.qpos[0] = .35 * np.sin(2.0 * np.pi * .18 * elapsed)
+            data.qvel[0] = .35 * 2.0 * np.pi * .18 * np.cos(2.0 * np.pi * .18 * elapsed)
+            mujoco.mj_forward(model, data)
+            window.cam.lookat[:] = data.xpos[body_id]
+            window.sync()
+            time.sleep(.01)
+    finally:
+        window.close()

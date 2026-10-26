@@ -8,7 +8,7 @@ uv run pytest
 uv run python simulation_only/b0_identification.py
 ```
 
-This is simulation only. It does **not** command a motor or collect new hardware data. Instead, it uses all of the actual V5 B0/H2 physical results embedded in this project:
+This is simulation only. It replays the supplied V5 B0/H2 measurement records:
 
 - P01 slow triangle, P02 multisine, P03 smooth levels, P04 chirp, and P05 wide sine;
 - repeats R01, R02, and R03 for each profile — 15 experiments total.
@@ -24,7 +24,7 @@ This is simulation only. It does **not** command a motor or collect new hardware
 
 The layout includes per-episode before/after RMSE, mean RMSE by profile, a held-out trace, and a compact report card.
 
-Color key: cyan = physical V5 measurement, gray dashed = baseline before identification, orange = model after identification, red = post-identification residual.
+Color key: cyan = recorded V5 measurement, gray dashed = baseline before identification, orange = model after identification, red = post-identification residual.
 
 ## Saved analysis
 

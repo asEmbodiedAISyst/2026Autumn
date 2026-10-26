@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import time
 from pathlib import Path
 
 import matplotlib
@@ -12,7 +13,7 @@ import mujoco
 import numpy as np
 import pandas as pd
 
-from replay_presentation import present
+from replay_presentation import present, preview
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL = ROOT / "platform_models" / "AsBrainBox-Platform---XC330-B0" / "AsBrainBox-Platform---XC330-B0_actuated_mujoco_compatible.xml"
@@ -133,24 +134,49 @@ def main() -> None:
     parser.add_argument("--no-viewer", action="store_true", help="headless/CI only; normal lesson opens the MuJoCo viewer")
     parser.add_argument("--no-dashboard", action="store_true", help="disable both visual dashboards")
     parser.add_argument("--save-only", action="store_true", help="save analysis images without opening plot windows")
+    parser.add_argument("--preview-viewer", action="store_true", help="open an immediate animated MuJoCo preview; no fitting or data processing")
     parser.add_argument("--playback-speed", type=float, default=1.0, help="visual replay multiplier (default: 1.0)")
     args = parser.parse_args()
     if args.playback_speed <= 0:
         parser.error("--playback-speed must be greater than zero")
+    if args.preview_viewer:
+        preview(MODEL)
+        return
 
+
+    print("Loading the 15 embedded V5 B0/H2 episodes...", flush=True)
     records = load_records()
     candidates = [(d, a) for d in (0.0, .002, .01, .04, .08) for a in (0.0, .0002, .001, .003)]
     calibration_keys = [key for key, (_, repeat, _, _) in records.items() if repeat in (1, 2)]
     validation_keys = [key for key, (_, repeat, _, _) in records.items() if repeat == 3]
+    print(
+        f"Fitting {len(candidates)} damping/armature candidates across "
+        f"{len(calibration_keys)} calibration episodes "
+        f"({len(candidates) * len(calibration_keys)} MuJoCo replays before the viewer opens)...",
+        flush=True,
+    )
+    fit_started = time.monotonic()
     scores: dict[tuple[float, float], float] = {}
-    for candidate in candidates:
+    for candidate_index, candidate in enumerate(candidates, start=1):
         errors = []
-        for key in calibration_keys:
+        print(
+            f"[fit {candidate_index:02d}/{len(candidates):02d}] "
+            f"damping={candidate[0]:.4g}, armature={candidate[1]:.4g}",
+            flush=True,
+        )
+        for episode_index, key in enumerate(calibration_keys, start=1):
+            print(f"  replay {episode_index:02d}/{len(calibration_keys):02d}: {key}", flush=True)
             _, _, frame, commands = records[key]
             errors.append(rmse(replay(frame, commands, *candidate), frame.position_meas_rad.to_numpy()))
         scores[candidate] = float(np.mean(errors))
+        print(f"  mean calibration RMSE: {scores[candidate]:.6f} rad", flush=True)
     chosen = min(candidates, key=scores.__getitem__)
-
+    print(
+        f"Fit complete in {time.monotonic() - fit_started:.1f}s; "
+        f"selected damping={chosen[0]:.4g}, armature={chosen[1]:.4g}. "
+        "Generating all before/after traces and opening the replay...",
+        flush=True,
+    )
     out = ROOT / "outputs"; out.mkdir(exist_ok=True)
     rows: list[dict[str, object]] = []
     full_trace: list[pd.DataFrame] = []
