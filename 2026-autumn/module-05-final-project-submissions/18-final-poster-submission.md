@@ -1,5 +1,5 @@
 ---
-description: 27 November 2026 · 09:00–10:50 · L12 | SONG Chaoyang
+description: 27 November 2026 · 09:00–10:50 · Data Observatory (DO) | SONG Chaoyang
 ---
 
 # 18 Final Poster Submission

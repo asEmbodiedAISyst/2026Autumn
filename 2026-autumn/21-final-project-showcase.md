@@ -1,5 +1,5 @@
 ---
-description: 04 December 2026 · 09:00–10:50 · L12 | SONG Chaoyang
+description: 04 December 2026 · 09:00–10:50 · Data Observatory (DO) | SONG Chaoyang
 ---
 
 # 21 Final Project Showcase
@@ -16,7 +16,7 @@ Follow the project scope and demonstration plan agreed with the instructor under
 | 09:10–10:10 | **Team01–Team08**, in order: four-minute presentation, three-minute Q&A and 30 seconds to change teams. |
 | 10:10–10:30 | Poster session: all eight posters open for discussion. |
 | 10:30–10:40 | Awards session. |
-| 10:40–10:50 | Wrap-up and cleaning up: take down posters, pack equipment and leave L12 tidy. |
+| 10:40–10:50 | Wrap-up and cleaning up: take down posters, pack equipment and leave Data Observatory (DO) tidy. |
 
 ## Team presentations and Q&A
 
@@ -28,7 +28,7 @@ Use the video already submitted for Class 20, with its recorded soundtrack muted
 
 ## Poster session
 
-All teams then present their submitted posters at the assigned positions in L12. Keep at least one member at each poster and rotate roles so others can visit projects. All members should remain available for questions from the teaching team.
+All teams then present their submitted posters at the assigned positions in Data Observatory (DO). Keep at least one member at each poster and rotate roles so others can visit projects. All members should remain available for questions from the teaching team.
 
 Explain your contribution, main result and important limitation. Use your submitted repository, results or video for detail. Distinguish your evidence from published examples and identify changes since the collected submission.
 

@@ -1,5 +1,5 @@
 ---
-description: 06 November 2026 · 09:00–10:50 · L12 | WEI Jinqi & SONG Chaoyang
+description: 06 November 2026 · 09:00–10:50 · Data Observatory (DO) | WEI Jinqi & SONG Chaoyang
 ---
 
 # 09 Teleoperation by Streaming from asMagic

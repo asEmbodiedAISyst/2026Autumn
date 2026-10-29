@@ -1,5 +1,5 @@
 ---
-description: 20 November 2026 · 09:00–10:50 · L12 | SONG Chaoyang
+description: 20 November 2026 · 09:00–10:50 · Data Observatory (DO) | SONG Chaoyang
 ---
 
 # 15 Final Project IV: Grounding

@@ -1,5 +1,5 @@
 ---
-description: 23 October 2026 · 09:00–10:50 · L12 | Mohamed HALWANI & SONG Chaoyang
+description: 23 October 2026 · 09:00–10:50 · Data Observatory (DO) | Mohamed HALWANI & SONG Chaoyang
 ---
 
 # 03 The RS06 Fixture: Digitization
