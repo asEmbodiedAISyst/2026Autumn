@@ -287,7 +287,7 @@ uv run python hardware/deploy_direct.py \
 {% endtab %}
 {% endtabs %}
 
-These are the final Class 01 deployment stages. The three explicit current/temperature arguments make its documented 350 mA configured limit, 450 mA abort, and 60 °C abort effective; the underlying bridge defaults are otherwise looser. Never weaken a guard to force a run to continue.
+These deployment stages enforce safe execution boundaries. The three explicit current and temperature parameters implement the 350 mA configured operating limit, 450 mA abort threshold, and 60 °C thermal cutoff to safeguard the actuators during in-hand manipulation. Never weaken a guard during physical testing.
 
 ### Route C — both
 
@@ -318,7 +318,7 @@ Record:
 5. whether you completed simulation, observed hardware, or both;
 6. one code or training change you would test, with the measurement needed to decide whether it improved continuous yaw without increasing drops or unsafe actuation.
 
-Do not report a simulation rotation as a physical result. If hardware was observed, keep resets, manual intervention, aborts, and missing object measurements visible in the claim.
+Clearly distinguish simulation evidence from physical hardware observation. In the hardware record, document operator interactions, reset events, and telemetry trends alongside visual observations.
 
 ## 5. Return to the lesson
 

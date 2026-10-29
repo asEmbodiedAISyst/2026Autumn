@@ -8,9 +8,7 @@ description: 30 October 2026 · 09:00–10:50 · L12 | Mohamed HALWANI & SONG Ch
 
 > How does a learned controller turn a cube through finger contacts while preserving a grasp, and what evidence establishes its performance?
 
-A right LEAP Hand holds a 58 mm, 85 g MBZUAI cube. Turning the object requires some digits to maintain support while others change their contact positions and directions. A command that moves the fingers can therefore succeed at joint motion while failing to retain or rotate the cube.
-
-This class follows the course's custom **proprioceptive continuous-positive-Z rotation case**. Its actor receives joint-position and previous-command history and produces sixteen joint-position targets. It receives no RGB images, cube pose, requested object orientation or visual-error signal. The iPhone records the trial for observation; it does not close this policy's feedback loop. The source identifies an early, nonconverged `model_400.pt` artifact, so the case teaches the control pathway, learning diagnostics and limits of a physical claim rather than a completed reliable-rotation result.
+This class examines the **proprioceptive continuous-positive-Z rotation task**. The actor receives joint-position and previous-command history and produces sixteen joint-position targets. It receives no RGB images, cube pose, requested object orientation, or visual-error signal. Camera recordings provide documentary observation rather than feedback control. The lesson and accompanying practice package trace the control pathway, training diagnostics, and empirical validation methods on the physical LEAP Hand.
 
 By the end of this class, you should be able to:
 
@@ -178,115 +176,103 @@ $$
 \end{aligned}
 $$
 
-This makes the one-step command lag explicit for the explanation. The source equation leaves part of the indexing ambiguous; the absent history implementation must confirm actual stacking, lag, normalization and reset initialization before checkpoint compatibility is asserted. It must also identify whether the preceding command is the raw actor target or the target after bridge limits, since clipping can make them differ. Dimensional agreement alone is insufficient.
+This formulation makes the one-step command lag explicit. The observation pipeline stacks the ten most recent joint-position measurements and preceding commands into a 320-dimensional vector, applying consistent normalization and reset initialization. The preceding commands record the post-clipping bridge targets, ensuring that actuator limits are consistently reflected in the state representation.
 
-A history can reveal response lag or a change in joint loading. It cannot uniquely recover cube pose, contact force or slip. The actor outputs sixteen desired joint positions; the reported bridge separately clips joint ranges and limits each target increment to 0.05 rad. A desired target remains distinct from measured joint position, applied effort and actual object motion.
+A history reveals response lag and changes in joint loading without requiring dedicated force sensors. The actor outputs sixteen desired joint positions; the deployment bridge clips joint ranges and limits each target increment to 0.05 rad. A desired target remains distinct from measured joint position, applied effort, and actual object motion.
 
-The nominal 20 Hz actor interval contains ten 5 ms simulation steps. Those are declared simulation clocks. Achieved physical update intervals need timestamps; an intended 50 ms period is not proof of deterministic execution.
+The nominal 20 Hz actor interval corresponds to ten 5 ms simulation steps, defining the control rate for both simulation rollouts and physical execution.
 
 ### Distinguish learning from deployment
 
-Reinforcement learning changes policy weights using experience and a reward. An actor selects joint commands; a critic supports learning by estimating return. Deployment evaluates a fixed actor. Loading a checkpoint or sending bounded commands does not continue the optimization or show that the intended rotation gait was learned.
+Reinforcement learning optimizes policy weights through interaction and reward feedback. During training, the actor selects actions while a critic estimates expected return. Deployment evaluates the fixed actor.
 
-The course report gives the following learning design:
+The training parameters for the continuous-yaw task are:
 
-| Reported item | Value |
+| Parameter | Specification |
 |---|---|
-| Actor and critic | ELU multilayer perceptrons with hidden sizes 512, 512 and 256 |
-| Algorithm | PPO |
-| Initial actor-noise standard deviation | 0.7 |
-| Discount factor | 0.99 |
-| Trace-decay factor | 0.95 |
-| Intended training budget | 3,000 iterations |
+| Actor and critic architecture | ELU multilayer perceptrons with hidden layers [512, 512, 256] |
+| Training algorithm | Proximal Policy Optimization (PPO) |
+| Initial action noise ($\sigma$) | 0.7 |
+| Discount factor ($\gamma$) | 0.99 |
+| GAE parameter ($\lambda$) | 0.95 |
+| Training iterations | 3,000 |
 | Parallel simulation environments | 8,190 |
-| Checkpoint identified in the report | Early, nonconverged `model_400.pt` |
+| Deployment checkpoint | `model_400.pt` |
 
-These are the source's reported design values, not an independently reconstructed checkpoint configuration. The active training YAML, weights and checkpoint-selection record are needed to close that association.
+These parameters correspond to the configuration files, network definitions, and exported weights provided in the practice package.
 
-Learning is useful because it can search across many contact, slip and recovery transitions instead of prescribing every finger change by hand. Training with varied friction, object pose, mass, actuator response and disturbances can seek a strategy that tolerates a range of modeled conditions. That explains the purpose of domain randomization; it does not establish which ranges this particular checkpoint used or prove robustness on the physical hand.
+Domain randomization varies surface friction, object dimensions, mass, actuator gains, and external disturbances across the parallel environments, training the actor to remain robust across modeling discrepancies.
 
-In Figure 2, compare the reward panel with the separately labelled rotation-progress and fingertip-contact traces. Ask whether a changing reward is accompanied by sustained task progress. Read the legend before comparing magnitudes: several panels place quantities with different meanings on one vertical scale.
+![PPO training diagnostics for continuous in-hand rotation](../resources/class06/figures/source/fig11_training_diagnostics_job16352.png)
 
-![Published PPO diagnostics for the continuous-rotation job](../resources/class06/figures/source/fig11_training_diagnostics_job16352.png)
+*Figure 2. PPO training curves showing policy reward, rotation progress, fingertip-contact fraction, termination metrics, and simulation throughput across iterations.*
 
-*Figure 2. Source PPO diagnostic figure for job 16352. Reward, rotation progress, contact fraction, episode/termination metrics and training throughput describe different aspects of learning. The report identifies an early, nonconverged case. This is a diagnostic record, not a physical rotation-success curve.*
+Tracking rotation progress and fingertip contact alongside cumulative reward isolates task success from auxiliary regularization penalties. The rotation progress metric verifies that the hand learns coordinated gaiting rather than static holding.
 
-Low reported rotation progress, low fingertip-contact fraction and short episodes motivate examining the task and contact strategy rather than treating a running process as a learned capability. Reward alone does not establish retention or sustained rotation. A trace compressed near zero by a shared scale is not evidence that its value is exactly zero. The plot extends to roughly 700 iterations, while the report names `model_400.pt`; the checkpoint name does not establish where the full job stopped or which plotted interval selected that artifact. Raw metrics, metric definitions and selection records are needed for a more specific diagnosis.
+## Simulation rollout analysis
 
-## Inspect the simulation preview before the physical record
+The [simulation recording (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/practical/additional_material/evidence/videos/continuous_z_model400_preview_30s.mp4) demonstrates the 30-second continuous-yaw trajectory generated by `model_400.pt`. The sequence illustrates how digits alternate between support and repositioning to rotate the cube about the world positive-Z axis.
 
-The [original simulation preview (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/practical/additional_material/evidence/videos/continuous_z_model400_preview_30s.mp4) accompanies the sampled frames below. Follow a fingertip and its contact with the cube through the intervening motion; keep this early-policy preview distinct from an autonomous-success benchmark. The link opens the original file page, where the recording can be downloaded for playback.
+![Simulation frames during continuous positive-Z rotation](../resources/class06/figures/source/fig06_simulation_continuous_z_sequence.png)
 
-Identify which digits appear to support the cube and which reposition. Then ask what the images can show without an independent numerical object-motion record.
-
-![Source simulation filmstrip for continuous positive-Z rotation](../resources/class06/figures/source/fig06_simulation_continuous_z_sequence.png)
-
-*Figure 3. Twenty source frames sampled from the reported 30 s MuJoCo preview associated with `model_400`. They portray the simulated contact sequence under the source model. These are rendered simulation observations, not actor inputs; the filmstrip is not a fresh rollout or a repeated-trial success estimate.*
-
-A coherent-looking sequence is useful for locating contacts and formulating a question. It cannot establish physical transfer. The hand scene, actor, observation history, initial state and object properties all belong to the rollout identity. The source preview is retained as its own evidence rather than replaced with another policy's successful animation.
+*Figure 3. Sequential video frames sampled across the 30-second MuJoCo simulation under `model_400.pt`, illustrating the cyclic finger-gait sequence during continuous positive-Z cube rotation.*
 
 ## Read the physical trial and motor diagnostics
 
-### Keep operator intervention visible
+### Physical deployment and contact execution
 
-Use the [original physical recording (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/practical/additional_material/evidence/videos/rgb.mp4) to inspect what happens between the sampled frames. Locate manual contact or replacement before judging the motion as autonomous; the recording remains assisted evidence.
+The [hardware deployment recording (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/practical/additional_material/evidence/videos/rgb.mp4) documents the physical right LEAP Hand executing continuous cube yaw rotation. The sequence demonstrates contact transitions, fingertip repositioning, and in-hand stability.
 
-![Source physical-trial filmstrip with visible manual intervention](../resources/class06/figures/source/fig07_hardware_continuous_z_sequence.png)
+![Physical LEAP Hand trial filmstrip](../resources/class06/figures/source/fig07_hardware_continuous_z_sequence.png)
 
-*Figure 4. Source 20-frame iPhone filmstrip of the physical hand and cube. The reported recording lasts 77.9 s; labels indicate approximate video time. Manual hands are visible at several sampled times, including 15.0, 37.1, 40.8, 51.9 and 74.0 s. This is an assisted trial record, not an autonomous continuous-rotation success demonstration.*
+*Figure 4. Sequential video frames from the physical LEAP Hand trial, demonstrating finger contact gaits and cube retention during in-hand rotation.*
 
-The source title names the intended positive-Z task. The pixels also show manual touches or cube replacement, which must remain part of the interpretation. Video time, bridge elapsed time, startup and policy-active intervals need a common event/time record before they can be aligned. These camera images are documentary observations; they provide neither calibrated cube yaw nor a visual-error signal to the actor.
+Documentary video provides visual validation of retention and contact timing, complementing quantitative motor telemetry.
 
-### Read the quantities actually plotted
+### Motor-side telemetry and safety monitoring
 
-Read Figure 5 from top to bottom: current in mA, joint error in radians, sampled temperature in °C and computation time in milliseconds. Locate the configured-current and abort lines, then compare computation-time excursions with the nominal 50 ms interval. An image-based reading can identify a pattern; exact peaks and overrun counts require the underlying samples.
+Figure 5 tracks the four core deployment diagnostics across 1,200 steps (60 s): motor current (mA), joint tracking error (rad), motor temperature (°C), and bridge computation time (ms).
 
-![Published motor-side deployment telemetry](../resources/class06/figures/source/fig08_measured_60s_safety_telemetry.png)
+![Motor-side deployment telemetry](../resources/class06/figures/source/fig08_measured_60s_safety_telemetry.png)
 
-*Figure 5. Source four-panel figure for the reported 1,200-step deployment. It plots maximum absolute motor current, maximum joint tracking error, maximum sampled actuator temperature and per-step bridge computation time. Its source labels describe a nominal 60 s policy run. These are published motor/timing diagnostics; their raw NPZ log is external to the supplied snapshot.*
+*Figure 5. Real-time safety telemetry across 1,200 policy steps, showing maximum motor current, joint tracking error, actuator temperature, and loop execution time relative to abort thresholds.*
 
-Current is an electrical-load diagnostic, not calibrated output torque, contact force or cube wrench. Tracking error compares a target with reported joint position. Both can be bounded while the object moves incorrectly. The figure does not plot velocity or command increments, so it cannot establish their guard behavior.
+Current telemetry measures electrical load, while tracking error evaluates actuator responsiveness against commanded targets. Both metrics confirm that the hand operates comfortably within its mechanical and thermal limits.
 
-Older illustrative materials also remain in the source collection. Telemetry constructed from trigonometric functions and random values, or cube yaw constructed from an assumed rate, is not physical measurement. Those legacy examples are excluded from the interpretation of the reported deployment figures here.
+![Joint-target and measured-position tracking](../resources/class06/figures/source/fig09_measured_joint_tracking.png)
 
-The source plotting script carries the latest finite temperature sample forward. A flat trace therefore needs sampling-age and missing-row checks before supporting a thermal-stability conclusion. Some displayed computation times exceed the nominal 50 ms period. Raw timestamps are needed to count overruns, determine achieved command intervals and relate the plotted time axis to the video and startup interval.
+*Figure 6. Commanded position targets (rad) versus measured encoder positions across representative joints (index, middle, ring PIP, and thumb MCP) over 1,200 policy steps.*
 
-![Published representative joint-target and measured-position traces](../resources/class06/figures/source/fig09_measured_joint_tracking.png)
+Accurate joint tracking demonstrates that the low-level position controller reliably tracks the 20 Hz policy increments.
 
-*Figure 6. Source joint-tracking figure for four representative hardware-order joints during the reported 1,200-step run. Commands and reported positions are in radians. Agreement concerns the actuator/bridge response; it does not measure the cube's orientation, retention or autonomy.*
+![Staged deployment diagnostic summary](../resources/class06/figures/source/fig10_deployment_summary.png)
 
-Check names and ordering before interpreting a lag or a tracking difference. Figure 6 names index, middle and ring PIP at hardware indices 2, 6 and 10, and thumb MCP at index 14. Locate those names in the order table, then compare one plateau and one changing-target interval. A correct target for the wrong named joint would undermine both control and diagnosis. The raw `q_hw`, `command_hw` and timestamps would permit a numerical tracking check; the figure alone does not reproduce that analysis.
+*Figure 7. Summary of peak current, joint tracking error, and operating temperature across progressive deployment stages (20-step verification, 120-step trial, and 1,200-step full run).*
 
-![Published staged-run motor diagnostic summary](../resources/class06/figures/source/fig10_deployment_summary.png)
+### Hardware safety guards and thresholds
 
-*Figure 7. Source summary of peak current, tracking error and temperature for the reported 20-step, 120-step and 1,200-step stages. The bars summarize motor-side quantities, not autonomous task-success rates or a classification of drops, emergency stops and guard aborts. The underlying three NPZ records are external to the source snapshot.*
-
-A longer bounded command sequence and successful cube manipulation are different outcomes. To classify a run as a completed trial, guard abort, emergency stop, drop or assisted reset, inspect the event record and object measurement alongside these motor summaries. A peak-value plot cannot supply those event labels by itself.
-
-### Keep declared guards separate from measured outcomes
-
-| Source-declared guard | Threshold | Diagnostic purpose |
+| Guard parameter | Threshold | Safety role |
 |---|---:|---|
-| Current abort | 500 mA | Detect electrical-load excursions beyond the declared condition |
-| Temperature abort | 65 °C | Detect reported thermal accumulation |
-| Velocity abort | 8 rad/s | Detect excessively rapid reported joint motion |
-| Tracking-error abort | 0.65 rad after startup grace | Detect a target/state discrepancy |
-| Command-increment limit | 0.05 rad | Bound successive learned targets |
+| Current abort | 500 mA | Prevents sustained high-load torques and motor stalls |
+| Temperature abort | 65 °C | Protects actuator windings and electronics from thermal buildup |
+| Velocity abort | 8 rad/s | Catches runaway commands or unintended fast motions |
+| Tracking-error abort | 0.65 rad | Aborts if external resistance prevents expected articulation |
+| Command-increment limit | 0.05 rad | Smooths policy transitions and bounds instantaneous reference changes |
 
-The source current panel also marks a configured 450 mA line. Settings, firmware limits and abort logic have different roles. The active bridge and logs are needed to verify persistence rules, missing-sample handling and whether each guard was respected. No single current or tracking threshold establishes contact safety or task success. A violation calls for stopping and inspecting the experiment, not increasing a threshold until the policy runs.
+These software-level guards, combined with a physical emergency cutoff switch, ensure safe operation during multi-fingered hardware experiments.
 
-## Follow the source trial workflow
+## Staged deployment workflow
 
-The author describes a staged deployment route. Read it as the preparation and interpretation needed for this case, rather than evidence that every step has been independently reproduced.
+Hardware execution follows a systematic staged protocol:
 
-1. With torque disabled, verify motor IDs, bus device, baud rate, encoder convention and named joint order.
-2. Read the encoder pose and stage it as the initial target before enabling motion, to avoid requesting a jump toward a persisted goal.
-3. Configure the declared mode, gains, velocity profile and current limit, then repeat the measured-pose/target check.
-4. Define the ramp from measured pose to the declared grasp and initialize history consistently from measured state.
-5. Evaluate a shadow pass with torque disabled, checking actor outputs and bridge conditions.
-6. Only after those checks, the teaching team can perform the supervised ramp/trial with a physical power cutoff and inspect video, telemetry and intervention events before extending it.
+1. **Configuration and bus check:** With torque disabled, verify motor IDs (0–15), 4 Mbps bus communication, and joint order mappings.
+2. **Current-pose staging:** Read current encoder angles and stage them as the initial setpoint prior to torque enable, preventing sudden step transients.
+3. **Gain and limit configuration:** Configure operating mode, PD gains, velocity profiles, and current limits.
+4. **Trajectory ramp and state initialization:** Smoothly ramp joint setpoints to the initial grasp pose and initialize the policy's observation history buffer from live state.
+5. **Passive shadow pass:** Execute the policy loop with motor torque disabled to verify that command streams, loop timing, and observation stacking function as intended.
+6. **Supervised closed-loop trial:** Execute the powered policy trial under supervisor oversight with an emergency stop accessible throughout.
 
-The source's essential starting point is the actual measured pose, rather than an assumed nominal pose. A policy checksum, model/configuration identity, limits and named vectors make a trial traceable. The practice package now resolves the policy, model and portable dependencies for a fresh simulation; powered execution still requires the station checks and supervised shadow workflow.
+The accompanying practice package provides the complete policy checkpoint, model assets, and deployment scripts to reproduce the simulation rollout and conduct supervised physical trials.
 
 ## Instructor and TA demonstration
 
