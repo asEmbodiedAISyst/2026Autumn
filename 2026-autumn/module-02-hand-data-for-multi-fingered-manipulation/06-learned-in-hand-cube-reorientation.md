@@ -2,7 +2,7 @@
 description: 30 October 2026 · 09:00–10:50 · L12 | Mohamed HALWANI & SONG Chaoyang
 ---
 
-# 06 Learned In-Hand Cube Reorientation
+# 06 Learned Continuous In-Hand Cube Yaw Rotation
 
 ## Central question
 
@@ -23,13 +23,13 @@ By the end of this class, you should be able to:
 
 [Lecture](#start-with-the-hand-cube-and-task) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-The supplied source figures, declared interface, worked calculations and recorded diagnostic patterns support the demonstration and activity. The [source support package](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/practical/README.md) provides the available models, records and original simulation/physical videos, together with explicit missing-file notes. The active deployment bundle containing the checkpoint, bridge, training configuration and raw NPZ logs is referenced outside the source snapshot; the archived hand model also has missing mesh dependencies. The page therefore interprets the author's recorded evidence; it does not claim a fresh policy execution or require powered hardware.
+The lecture supplies the control and evidence interpretation; the separate [Class 06 practice](06-practice.md) provides a downloadable, runnable package. Students can view the exact stable full-MJLab continuous-yaw trajectory cross-platform, reproduce a fresh rollout in the supplied original environment on a compatible Linux workstation, and study the complete training source. Powered LEAP Hand execution is an optional, supervised TA route after a mandatory shadow pass.
 
 ## Start with the hand, cube and task
 
 The physical question is continuous rotation about the declared positive-Z direction while retaining the cube. There is no requested final orientation for the actor to match. A useful evaluation would measure rotation and retention over a declared interval, including drops, resets and manual assistance. Visible movement alone does not supply those measurements or a trial-success denominator.
 
-Before measuring signed progress, identify the frame whose Z axis defines the task and its positive direction. Clockwise motion in a camera image depends on viewpoint. The missing active task/configuration must establish that axis convention and the rotation/retention rule; the task name alone does not define a measurable success criterion.
+Before measuring signed progress, identify the frame whose Z axis defines the task and its positive direction. Clockwise motion in a camera image depends on viewpoint. The supplied task/configuration and portable viewer establish world positive Z and report unwrapped object yaw; the task name alone would not define a measurable success criterion.
 
 | Component | Source-declared contract |
 |---|---|
@@ -100,7 +100,7 @@ $$
 
 For example, canonical index targets `[0.30, −0.10, 0.50, 0.20]` rad become hardware targets `[−0.10, 0.30, 0.50, 0.20]` rad. The inverse returns the original named vector. Sending the numbers without the swap would request −0.10 rad from the MCP-flexion joint instead of 0.30 rad. The array would still have sixteen entries and valid units.
 
-Both paths matter. Reordering commands while leaving measurements in hardware order makes the actor read the wrong joint state. The active bridge is external to the source snapshot, so this reported permutation still needs verification against the actual implementation. It does not establish encoder offsets, axis signs, motor IDs or handedness.
+Both paths matter. Reordering commands while leaving measurements in hardware order makes the actor read the wrong joint state. The supplied bridge implements this permutation, but a powered station must still verify it against the actual hand. The permutation does not by itself establish encoder offsets, axis signs, motor IDs or handedness.
 
 ### Keep limits attached to the named joints
 
@@ -286,38 +286,15 @@ The author describes a staged deployment route. Read it as the preparation and i
 5. Evaluate a shadow pass with torque disabled, checking actor outputs and bridge conditions.
 6. Only after those checks, the teaching team can perform the supervised ramp/trial with a physical power cutoff and inspect video, telemetry and intervention events before extending it.
 
-The source's essential starting point is the actual measured pose, rather than an assumed nominal pose. A policy checksum, model/configuration identity, limits and named vectors make a trial traceable. The external bundle and model dependencies must be resolved before this description can support a fresh execution; the present demonstration uses the source records.
+The source's essential starting point is the actual measured pose, rather than an assumed nominal pose. A policy checksum, model/configuration identity, limits and named vectors make a trial traceable. The practice package now resolves the policy, model and portable dependencies for a fresh simulation; powered execution still requires the station checks and supervised shadow workflow.
 
 ## Instructor and TA demonstration
 
-### Trace the reported control pathway
-
-Use Figure 1 and the joint-name table to identify MCP flexion, the second MCP-related axis and a distal hinge. Map the example index target into hardware order and bring a measured vector back into canonical order. Relate the history to sixteen measured positions plus sixteen preceding commands per sample.
-
-Work through the 1 N force at the 29 mm lever arm. Explain why that moment is a contact contribution and why a position target is not a measured force or object torque. Relate the independent-fixture actuator evidence to the additional contact uncertainties in the hand.
-
-### Read learning and execution as different results
-
-Use Figures 2–3 to distinguish the reported early training state from the simulated preview. Identify a rotation metric, a contact metric and an episode metric. Explain why their definitions and association with `model_400.pt` matter. No new successful-policy run is implied by this inspection.
-
-### Read the assisted physical record
-
-Use Figures 4–7 together. Identify visible manual intervention, one motor-response quantity and one timing limitation. In Figure 6, connect a plotted hardware index to its named joint before discussing tracking. In Figure 7, compare the three stage labels and units without interpreting the bars as task outcomes. State which missing event or object-state record would distinguish assisted motion from autonomous rotation and motor execution from task success.
+Use the [Class 06 practice](06-practice.md) to introduce the exact continuous-positive-Z/yaw task, show the stable seed-11 full-MJLab trajectory, and relate its object trace to the 320-input/16-output control pathway. If the teaching station is available, demonstrate the mandatory shadow pass and only then an optional short supervised hardware trial. As in Classes 03–05, the detailed procedure lives in the separate practice page.
 
 ## Student activity
 
-Use the supplied source figures, declared interface and worked calculations. Produce one compact evidence record; no hardware operation, new training or substitute policy run is required.
-
-| Field | Required response |
-|---|---|
-| Task and observations | State the continuous-positive-Z objective and list what the actor receives and does not receive |
-| Named command and state | Map the four index targets into reported hardware order, invert the mapping, and name a convention not established by the permutation |
-| Physical calculation | Calculate the moment of the stated 1 N force at 29 mm and identify the wrench's angular and linear blocks |
-| Learning evidence | Select one pattern in Figure 2, explain its bounded implication and name the additional record needed for a stronger diagnosis |
-| Physical execution evidence | Identify at least two visible intervention times and distinguish joint tracking, current and computation time from measured cube rotation |
-| Claim and next measurement | Write one defensible statement about this source trial and specify a time-aligned object measurement that could test the intended motion |
-
-For the named-vector calculation, use canonical index targets `[0.30, −0.10, 0.50, 0.20]` rad. For the physical interpretation, keep manual touches, resets and unsampled intervals visible in the claim. Do not infer a calibrated yaw trace, autonomous-success fraction or guard-compliance statistic from the images alone.
+Complete the [Class 06 practice](06-practice.md). Run the continuous-yaw simulation, inspect the unwrapped cube trace, connect observed contact changes to policy commands, and state a bounded improvement experiment. Hardware is optional and TA-supervised; simulation alone completes the student activity.
 
 ## From proprioception to object measurement
 
@@ -329,6 +306,6 @@ The natural next question is how to observe the cube itself. Calibrated fiducial
 
 Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. [Spatial-vector resources](https://royfeatherstone.org/spatial/v2/index.html).
 
-HALWANI, Mohamed. 2026. “Learned In-Hand Cube Reorientation with a LEAP Hand.” ROB7103/8103 course experiment collection, source revision `f7c118edaadc9f33498669736fa9d99160ff629a`; source lesson blob `606bb2c915ae77b1b701f0a932a2b531bdee15c3`. Includes the custom right-hand model, declared deployment workflow and simulation/physical/training diagnostic figures. The active external deployment bundle is not included in this source snapshot.
+HALWANI, Mohamed. 2026. “Learned Continuous In-Hand Cube Yaw Rotation with a LEAP Hand.” ROB7103/8103 course experiment collection. Includes the custom right-hand model, declared deployment workflow, checkpoint and actor export, original MJLab task/training source, and simulation/physical/training diagnostic figures.
 
 Shaw, Kenneth, Ananye Agarwal, and Deepak Pathak. 2023. “LEAP Hand: Low-Cost, Efficient, and Anthropomorphic Hand for Robot Learning.” arXiv:2309.06440. [Paper](https://arxiv.org/abs/2309.06440). Figure 1 reproduces the source paper's Figure 4; the course's custom controller, model identifiers and experimental records are separately identified above.

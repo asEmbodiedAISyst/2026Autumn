@@ -10,6 +10,7 @@
 
 * [02 Actuator Basics for Controlled Action](module-01-actuator-data-for-1-dof-systems/02-actuator-basics-for-controlled-action.md)
 * [03 Basic Digitization of Physical Embodiment](module-01-actuator-data-for-1-dof-systems/03-basic-digitization-of-physical-embodiment.md)
+  * [Practice: from fixture assembly to MuJoCo](module-01-actuator-data-for-1-dof-systems/03-practice.md)
   * [RS06 fixture digitization](module-01-actuator-data-for-1-dof-systems/03-rs06-fixture-digitization.md)
 * [04 Basic Quantification of Sim2Real Gap](module-01-actuator-data-for-1-dof-systems/04-basic-quantification-of-sim2real-gap.md)
   * [Practice: quantify the B0 Sim2Real gap](module-01-actuator-data-for-1-dof-systems/04-practice.md)
@@ -18,7 +19,9 @@
 ## Module 02: Hand Data for Multi-Fingered Manipulation
 
 * [05 From Single-Actuator to Multi-Actuator](module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator.md)
-* [06 Learned In-Hand Cube Reorientation](module-02-hand-data-for-multi-fingered-manipulation/06-learned-in-hand-cube-reorientation.md)
+  * [Practice: from one actuator to sixteen](module-02-hand-data-for-multi-fingered-manipulation/05-practice.md)
+* [06 Learned Continuous In-Hand Cube Yaw Rotation](module-02-hand-data-for-multi-fingered-manipulation/06-learned-in-hand-cube-reorientation.md)
+  * [Practice: continuous in-hand cube yaw](module-02-hand-data-for-multi-fingered-manipulation/06-practice.md)
 * [07 Rotating a Cube with Visual Feedback](module-02-hand-data-for-multi-fingered-manipulation/07-rotating-a-cube-with-visual-feedback.md)
 
 ## Module 03: Arm Data for Guided Interaction
