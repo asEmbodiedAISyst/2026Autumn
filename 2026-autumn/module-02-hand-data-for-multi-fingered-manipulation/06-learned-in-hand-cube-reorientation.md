@@ -1,5 +1,5 @@
 ---
-description: 30 October 2026 · 09:00–10:50 · Data Observatory (DO) | Mohamed HALWANI & SONG Chaoyang
+description: 30 October 2026 · 09:00–10:50 · DO | Mohamed HALWANI & SONG Chaoyang
 ---
 
 # 06 Learned Continuous In-Hand Cube Yaw Rotation

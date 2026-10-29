@@ -1,5 +1,5 @@
 ---
-description: 13 November 2026 · 09:00–10:50 · Data Observatory (DO) | SONG Chaoyang
+description: 13 November 2026 · 09:00–10:50 · DO | SONG Chaoyang
 ---
 
 # 12 Final Project I: Claim
