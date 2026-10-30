@@ -14,7 +14,7 @@ This is the simulation-only student activity for Class 04. It replays supplied B
 | Validation    | P01–P05, R03     | evaluate the frozen model on 5 B0/H2 episodes not used for fitting    |
 | Visual replay | P04 chirp, R03   | inspect one held-out episode in MuJoCo and the comparison dashboard   |
 
-![The recorded data split for the B0 identification experiment](../.gitbook/assets/data-split.png)
+![The recorded data split for the B0 identification experiment](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/data-split.png)
 
 _Figure 1. R01 and R02 calibrate the effective replay parameters; R03 stays held out until validation._
 
@@ -64,7 +64,7 @@ The program loads all 15 supplied measurement records, fits effective damping an
 
 During the visual comparison: cyan is the recorded measurement, gray dashed is the baseline model, orange is the identified model, and red is the post-identification position residual.
 
-![Before-and-after B0 identification results](../.gitbook/assets/b0_full_h2_before_after_summary.png)
+![Before-and-after B0 identification results](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/b0_full_h2_before_after_summary.png)
 
 ## Read the validation result
 

@@ -42,7 +42,7 @@ Digitization proceeds through a chain of evidence. Physical measurements constra
 | MJCF   | MuJoCo XML Format                 | MuJoCo-specific model language that gives the XML elements mechanical meaning |
 | `.xml` | filename extension                | identifies an XML text file; its contents determine whether it is MJCF        |
 
-![Digitization from the physical fixture to an executable model](../.gitbook/assets/digitization_workflow.png)
+![Digitization from the physical fixture to an executable model](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/digitization_workflow.png)
 
 _Figure 1. Physical measurements, CAD definitions, and MJCF declarations form a traceable description of the physical mechanism._
 
@@ -62,7 +62,7 @@ The same fixture is prepared in five configurations so that geometry, mass place
 | B2            | 22 g |         −100 mm, +100 mm |                110 g | wide symmetric load            |
 | G1            | 22 g |          +60 mm, +100 mm |                110 g | asymmetric gravity-loaded case |
 
-![Mass and payload positions for the five configurations](../.gitbook/assets/configuration_mass_positions.png)
+![Mass and payload positions for the five configurations](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/configuration_mass_positions.png)
 
 _Figure 2. External moving mass and payload-centre positions measured from the XC330 output axis._
 
@@ -88,7 +88,7 @@ This structure permits one MJCF template to represent a family of mechanisms. Co
 
 The link has an accepted mass of 22 g. Each complete pin–payload assembly has an accepted mass of 44 g.
 
-![Fixture components in the CAD record](../.gitbook/assets/fixture-components.png)
+![Fixture components in the CAD record](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/source/fixture-components.png)
 
 _Figure 3. Link, pin, and payload geometry used to construct the moving assembly._
 
@@ -112,15 +112,15 @@ The external moving mass remains 110 g because the same link and payload assembl
 
 B2 is the wide symmetric configuration. Its 22 g link carries two complete 44 g pin–payload assemblies at −100 mm and +100 mm from the XC330 output axis. The simulation, CAD, and physical records describe the same arrangement through different forms of evidence.
 
-![B2 loaded in MuJoCo on the asBrain platform](../.gitbook/assets/B2_model_loaded.png)
+![B2 loaded in MuJoCo on the asBrain platform](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/source/B2_model_loaded.png)
 
 _Figure 4. The B2 MJCF shows the symmetric payload assemblies at −100 mm and +100 mm from the XC330 output axis on the asBrain Box platform._
 
-![B2 Fusion 360 CAD assembly](../.gitbook/assets/1DOF-B2.png)
+![B2 Fusion 360 CAD assembly](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/source/1DOF-B2.png)
 
 _Figure 5. The B2 CAD assembly records component geometry and assembly relationships._
 
-![Physical B2 fixture](../.gitbook/assets/260901-172518_B2_fixture-overview.png)
+![Physical B2 fixture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/source/260901-172518_B2_fixture-overview.png)
 
 _Figure 6. The physical B2 fixture provides evidence of the assembled link, payloads, and actuator interface._
 
@@ -194,31 +194,31 @@ Class 03 establishes the model structure needed by this equation: the moving bod
 
 The B0 CAD assembly illustrates how the physical mechanism becomes a connected rigid-body model. The XC330 output and link form a revolute relationship, while each payload is rigidly attached to its mounting pin. These relationships determine the body hierarchy and joint structure exported to MJCF.
 
-![Joint-origin selection at the XC330 output](../.gitbook/assets/fusion-01-joint-origin.png)
+![Joint-origin selection at the XC330 output](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/fusion-01-joint-origin.png)
 
 _Figure 7. The motor-side joint origin is located at the XC330 output axis._
 
-![Link and motor joint-origin alignment](../.gitbook/assets/fusion-02-component-alignment.png)
+![Link and motor joint-origin alignment](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/fusion-02-component-alignment.png)
 
 _Figure 8. Coincident link-side and motor-side origins define the connection between the actuator and link._
 
-![Fusion revolute-joint motion setting](../.gitbook/assets/fusion-03-revolute-motion.png)
+![Fusion revolute-joint motion setting](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/fusion-03-revolute-motion.png)
 
 _Figure 9. The revolute joint permits rotation about the axis expressed in the Fusion joint frame._
 
-![Payload and pin joint-origin selection](../.gitbook/assets/fusion-04-payload-pin-origins.png)
+![Payload and pin joint-origin selection](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/fusion-04-payload-pin-origins.png)
 
 _Figure 10. Payload and pin origins define the attachment location of the first payload assembly._
 
-![Rigid payload-to-pin relationship](../.gitbook/assets/fusion-05-rigid-payload.png)
+![Rigid payload-to-pin relationship](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/fusion-05-rigid-payload.png)
 
 _Figure 11. The rigid payload-to-pin relationship makes both components part of one moving assembly._
 
-![Second payload and pin attachment origins](../.gitbook/assets/fusion-06-second-payload.png)
+![Second payload and pin attachment origins](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/fusion-06-second-payload.png)
 
 _Figure 12. The second payload uses the same rigid attachment relationship._
 
-![ACDC4Robot MJCF and MuJoCo export settings](../.gitbook/assets/fusion-07-mjcf-export.png)
+![ACDC4Robot MJCF and MuJoCo export settings](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/fusion-07-mjcf-export.png)
 
 _Figure 13. The MJCF export transfers the CAD assembly structure to a MuJoCo model description._
 
@@ -236,7 +236,7 @@ Exported geometry and body structure provide the starting point for simulation. 
 
 Each configuration contains one revolute joint aligned with the XC330 output axis, one actuator, and sensors for joint position, joint velocity, and actuator effort. The named configuration determines the link and payload arrangement, payload-centre positions, and external moving mass. The joint range is −π/2 to +π/2 rad, and collision remains disabled for the free-motion simulation considered in this class.
 
-![MuJoCo front views of the five XC330 fixture configurations](../.gitbook/assets/all-models.png)
+![MuJoCo front views of the five XC330 fixture configurations](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/source/all-models.png)
 
 _Figure 14. M0, B0, B1, B2, and G1 at zero joint angle show the unloaded motor, symmetric payload offsets, and asymmetric same-side loading on the common asBrain platform._
 

@@ -150,7 +150,7 @@ The TCP draws the letters ROB 3 cm above the table, with the gripper vertical. T
 
 Inverse kinematics changes each commanded TCP position into joint targets. The simulated TCP position can lag behind that reference; the speed setting and calculated peak do not establish a measured physical speed. The source example reports a largest simulated TCP tracking error of approximately 6 mm. Compare your own run with that example. The red dots in the viewer trace the simulated TCP path.
 
-<figure><img src="../.gitbook/assets/joint2-tracking.png" alt="Joint 2 tracking during the example"><figcaption><p>Figure 1. Joint 2 tracking during the example.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/joint2-tracking.png" alt="Joint 2 tracking during the example"><figcaption><p>Figure 1. Joint 2 tracking during the example.</p></figcaption></figure>
 {% endstep %}
 
 {% step %}

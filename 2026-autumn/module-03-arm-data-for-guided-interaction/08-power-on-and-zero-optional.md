@@ -133,7 +133,7 @@ Open [https://motorbridge.github.io/motorbridge-studio/](https://motorbridge.git
 {% step %}
 ### Write the zero
 
-<figure><img src="../.gitbook/assets/motorbridge-studio.png" alt="Motorbridge Studio: the reBot Arm tab, Connect, the arm model, First-time Guide, Scan All Joints and Zero All"><figcaption><p>Figure 1. Motorbridge Studio: the reBot Arm tab, Connect, the arm model, First-time Guide, Scan All Joints and Zero All.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/motorbridge-studio.png" alt="Motorbridge Studio: the reBot Arm tab, Connect, the arm model, First-time Guide, Scan All Joints and Zero All"><figcaption><p>Figure 1. Motorbridge Studio: the reBot Arm tab, Connect, the arm model, First-time Guide, Scan All Joints and Zero All.</p></figcaption></figure>
 
 Studio has a **First-time Guide** for the first power-on. It makes the zero and the limits a reliable baseline:
 

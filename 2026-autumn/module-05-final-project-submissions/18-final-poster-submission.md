@@ -32,7 +32,7 @@ For our collected copy, we use `TeamNN-poster-YYMMDD-HHMMSS.pdf`. **Keep your su
 
 Use the original **asRoBallet poster from RSS 2026** as a reference for connecting the contribution, system illustrations and results. Its design, interaction and learning panels show how one project can be explained visually.
 
-![Original asRoBallet RSS 2026 poster with design, interaction, learning and results panels.](../.gitbook/assets/asroballet-poster-original.png)
+![Original asRoBallet RSS 2026 poster with design, interaction, learning and results panels.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class18/figures/asroballet-poster-original.png)
 
 _Figure 1. Original asRoBallet poster preview, Fang Wan et al. (2026), retained from the earlier course notes._ [_Open the full-size image_](../resources/class18/figures/asroballet-poster-original.png) _·_ [_Paper and research source_](https://bionicdl.ancorasir.com/?p=2238)_. Use it as an example; prepare your own A0 PDF._
 

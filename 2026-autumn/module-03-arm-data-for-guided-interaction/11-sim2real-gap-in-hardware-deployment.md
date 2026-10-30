@@ -95,7 +95,7 @@ The loop runs at 30 Hz. The state comes from the motor angles through the forwar
 
 ### From the episode frame to the base frame
 
-<div><figure><img src="../.gitbook/assets/zero-pose-tool.png" alt="Zero pose of the arm with the tool"><figcaption><p>Figure 1. Zero pose of the arm with the tool.</p></figcaption></figure> <figure><img src="../.gitbook/assets/start-pose-tool.png" alt="Episode start pose of the arm with the tool"><figcaption><p>Figure 2. Episode start pose of the arm with the tool. Episode start pose: pusher tip 12 cm above the table.</p></figcaption></figure></div>
+<div><figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class11/figures/source/zero-pose-tool.png" alt="Zero pose of the arm with the tool"><figcaption><p>Figure 1. Zero pose of the arm with the tool.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class11/figures/source/start-pose-tool.png" alt="Episode start pose of the arm with the tool"><figcaption><p>Figure 2. Episode start pose of the arm with the tool. Episode start pose: pusher tip 12 cm above the table.</p></figcaption></figure></div>
 
 At the start of each episode the arm moves to its start pose. That pose fixes the episode frame $$e$$. Its origin is the pusher tip, and its heading is the heading of the tool. For data in the table frame, $$z = 0$$ is at the table. An action $$a = ({}^{e}p, {}^{e}R)$$ becomes a target in the base frame $$b$$ of the arm:
 
@@ -191,7 +191,7 @@ The learned policy decides where the tip must go. The model-based layers below i
 
 ### Five rungs
 
-<figure><img src="../.gitbook/assets/evidence-ladder.png" alt="The evidence ladder"><figcaption><p>Figure 3. The evidence ladder.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class11/figures/source/evidence-ladder.png" alt="The evidence ladder"><figcaption><p>Figure 3. The evidence ladder.</p></figcaption></figure>
 
 The rungs are ordered by cost and by what each one can falsify. A claim is bounded by the highest rung it has reached and by the conditions of that evidence.
 
@@ -209,7 +209,7 @@ A later rung does not repair a wrong earlier interface. Conversely, a failed rol
 
 ### Rung 2: offline replay
 
-<figure><img src="../.gitbook/assets/replay.png" alt="Offline replay of recorded actions in the model"><figcaption><p>Figure 4. Offline replay of recorded actions in the model.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class11/figures/source/replay.png" alt="Offline replay of recorded actions in the model"><figcaption><p>Figure 4. Offline replay of recorded actions in the model.</p></figcaption></figure>
 
 In the retained source replay case, replaying the recorded actions with the matching initial object pose produced a joint-state deviation below $$10^{-5}$$ degrees. Omitting that object pose produced 0.42° deviation in the reported comparison. This is a reconstruction check for that configured model and record, not a general guarantee that all replay is exact. Physical replay would additionally test the apparatus, calibration, timing and dynamics; its deviation is **not measured in the supplied record**.
 
@@ -217,7 +217,7 @@ In the retained source replay case, replaying the recorded actions with the matc
 
 For each held-out frame the policy predicts a chunk, and the predicted pose 1, 10 and 30 frames ahead is compared with what the operator did. A policy that only holds still is the baseline.
 
-<div><figure><img src="../.gitbook/assets/offline-horizon.png" alt="Open-loop prediction error on simulated handheld data"><figcaption><p>Figure 5. Open-loop prediction error on simulated handheld data.</p></figcaption></figure> <figure><img src="../.gitbook/assets/offline-real.png" alt="Open-loop error 1 s ahead of policies trained on physical data"><figcaption><p>Figure 6. Open-loop error 1 s ahead of policies trained on physical data. Physical handheld data.</p></figcaption></figure></div>
+<div><figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class11/figures/source/offline-horizon.png" alt="Open-loop prediction error on simulated handheld data"><figcaption><p>Figure 5. Open-loop prediction error on simulated handheld data.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class11/figures/source/offline-real.png" alt="Open-loop error 1 s ahead of policies trained on physical data"><figcaption><p>Figure 6. Open-loop error 1 s ahead of policies trained on physical data. Physical handheld data.</p></figcaption></figure></div>
 
 | Policy                        | Training data                | Error 1 s ahead (mm) |
 | ----------------------------- | ---------------------------- | -------------------- |

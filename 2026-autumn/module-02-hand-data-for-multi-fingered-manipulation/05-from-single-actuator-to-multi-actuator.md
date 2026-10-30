@@ -42,7 +42,7 @@ For the present campaign, a replay consumes logged internal position and velocit
 
 A smaller prediction error does not establish that the physical actuator tracks better. We are evaluating a representation of an observed experiment, rather than changing the hardware controller.
 
-![Three levels of validation evidence](../.gitbook/assets/evidence_hierarchy.png)
+![Three levels of validation evidence](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class05/figures/source/evidence_hierarchy.png)
 
 _Figure 1. Source evidence hierarchy: a single fixture, simultaneous independent fixtures and a mechanically coupled robot answer different validation questions. Moving to the next level requires evidence about the interactions introduced there; a larger actuator count alone does not supply it._
 
@@ -54,11 +54,11 @@ Preserve the dataset-to-model mapping instead of changing a mass until totals ag
 
 The source describes five configurations: M0 has no external fixture; B0/B1/B2 are balanced arrangements; G1 adds an asymmetric gravity load. The physical array uses two rows and opposing faces, with declared 270 mm spacing on one face, a 135 mm offset on the other, and 500 mm between rows. These dimensions describe the source arrangement, not an independently measured as-built geometry.
 
-![Physical fixtures and combined source simulation](<../.gitbook/assets/physical_and_combined_simulation (1).png>)
+![Physical fixtures and combined source simulation](<https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class05/figures/source/physical_and_combined_simulation.png>)
 
 _Figure 2. Source B2 physical views and a combined sixteen-axis MuJoCo scene. Two camera views are observations of the arrangement, not additional experiments. The scene combines independent fixtures for synchronized execution and visualization; the rack does not supply a flexible-support or electrical model._
 
-![Source physical and simulated configuration gallery](../.gitbook/assets/configuration_real_sim_gallery.png)
+![Source physical and simulated configuration gallery](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class05/figures/source/configuration_real_sim_gallery.png)
 
 _Figure 3. Additional source configuration gallery: two G1 physical views above, with B0/H1 and G1/H2 simulation views below. It supplies physical context for the balanced/asymmetric fixture distinction. Different configurations and camera views are not a matched dynamic validation._
 
@@ -112,7 +112,7 @@ These are diagnostic possibilities, not established causes in the supplied data.
 
 To examine simultaneous-operation effects, keep one motor, fixture and command protocol fixed; compare it alone and with the other motors active while measuring timing and supply. To examine identity, swap the motor while holding the fixture and protocol fixed. Changing identity, fixture and controller together prevents a clean interpretation.
 
-![Source shared and local pathways](../.gitbook/assets/shared_and_local_effects.png)
+![Source shared and local pathways](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class05/figures/source/shared_and_local_effects.png)
 
 _Figure 4. Source shared/local-pathway diagram. Host timing, communication, supply and run history can influence several fixtures while each retains its own mechanism and encoder. Correlated responses need not imply mechanical coupling. The replay starts at logged references; it does not reconstruct those shared pathways._
 
@@ -215,7 +215,7 @@ The authoritative V5 record contains **125 accepted simultaneous science events*
 | Held-out evaluation |            30 |           480 | P06–P07                 |
 | Total               |           125 |         2,000 | Accepted science record |
 
-![Source campaign split](../.gitbook/assets/campaign_split.png)
+![Source campaign split](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class05/figures/source/campaign_split.png)
 
 _Figure 5. Source split of the 125 simultaneous events. Each event contains sixteen motor records. The bars retain both counts; a motor record is not another complete execution of the rack._
 
@@ -264,7 +264,7 @@ Thus 32.0% is a reduction in mean episode position RMSE relative to this baselin
 
 G1 has larger discrepancy than B1 in this table, and H2 has lower discrepancy than H1. These are observed condition differences. G1 also combines P06 and P07 while B1 uses P06, so the aggregate contrast does not isolate gravity as the cause. Neither comparison establishes a generally superior controller or the cost of simultaneous operation.
 
-![Source per-motor held-out comparison](../.gitbook/assets/per_motor_heldout_comparison.png)
+![Source per-motor held-out comparison](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class05/figures/source/per_motor_heldout_comparison.png)
 
 _Figure 6. Source two-panel heatmap for all sixteen motor identities and both controllers. The upper panel is mean fitted position RMSE in radians; the lower is percentage reduction from each cell's synthetic baseline. Each cell averages fifteen held-out records. Read each panel's own scale; colour darkness is not comparable between the quantities._
 
@@ -274,7 +274,7 @@ All source motor/controller cells improve over their paired baseline, but the re
 
 The source's prepared trajectory example is **B1/H2/P06/R01 for motors 0 and 9**. It is a different question from their mixed-condition cell means.
 
-![Source two-motor held-out trajectory](../.gitbook/assets/two_motor_heldout_trace.png)
+![Source two-motor held-out trajectory](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class05/figures/source/two_motor_heldout_trace.png)
 
 _Figure 7. Source B1/H2/P06/R01 trajectory comparison, with motor 0 above motor 9. The plotted quantities are position in radians against episode time in seconds. Both motors share the event identity while retaining their encoders and selected models. This is the author's selected trace, not a newly run comparison._
 
@@ -300,7 +300,7 @@ For motor 0, H2 has the smaller fitted error but the smaller relative reduction 
 
 ### Read fitted parameters in their allowed ranges
 
-![Source selected parameter distributions](../.gitbook/assets/fit_parameter_distributions.png)
+![Source selected parameter distributions](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class05/figures/source/fit_parameter_distributions.png)
 
 _Figure 8. Source armature, damping and friction-loss distributions for 32 selected models. Blue circles denote H1 and orange squares H2. The vertical axis is normalized position within each parameter's fitting bounds: zero is the lower bound and one the upper bound. It is not a raw SI parameter value._
 
@@ -320,11 +320,11 @@ The campaign scores **encoder position**. The cameras help inspect fixture ident
 
 The source assigns four ArUco markers to each motor n: `{4n, 4n+1, 4n+2, 4n+3}`. Markers `4n` and `4n+1` are the rotating-link pair; `4n+2` and `4n+3` describe configuration. Image-plane angle is not a three-dimensional shaft angle under arbitrary perspective, and normalized marker separation is not a calibrated metric distance.
 
-![Source assigned-view ArUco detections](<../.gitbook/assets/aruco_assigned_view_detection (1).png>)
+![Source assigned-view ArUco detections](<https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class05/figures/source/aruco_assigned_view_detection.png>)
 
 _Figure 9. Source representative assigned-view detections. Outlines and IDs are detector outputs in selected camera frames. They show that markers can be located in those views; they do not supply an all-frame detection rate or calibrated joint-angle ground truth._
 
-![Source encoder and optical measurement chains](../.gitbook/assets/encoder_optical_measurement_chain.png)
+![Source encoder and optical measurement chains](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class05/figures/source/encoder_optical_measurement_chain.png)
 
 _Figure 10. Source distinction between the scored encoder path and the optical path. Camera intrinsics/distortion, known marker geometry, camera-to-fixture and marker-to-link transforms, joint zero/sign and time alignment are needed before both paths can be compared as joint-angle measurements._
 
@@ -340,7 +340,7 @@ Hwangbo and colleagues' 2019 ANYmal study combined a learned actuator network wi
 
 The more recent **NeuralActuator** study by Dou and colleagues (2026), used in the author's supporting material, employs a temporal Transformer and differentiable simulation. It predicts a torque surrogate for trajectory propagation and, with the required labels, external-force/contact and motor-condition outputs. The published platforms are OpenManipulator-X, SO-101 and Franka Panda. They are distinct from the local XC330 experiment. [Original paper, version 2](https://arxiv.org/abs/2607.11734v2).
 
-![Source NeuralActuator scope](../.gitbook/assets/neural_actuator_scope.png)
+![Source NeuralActuator scope](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class05/figures/source/neural_actuator_scope.png)
 
 _Figure 11. Source NeuralActuator diagram. The blue history, purple Transformer and teal torque-surrogate/rollout path describe the local modeling route. Orange force/contact and motor-condition heads belong to the published multi-task method and require labels unavailable in this XC330 record. They are not local force-perception results._
 
@@ -376,7 +376,7 @@ The surrogate's ±0.93 N m bound also differs from the population replay's ±0.1
 
 ### Keep the earlier single-motor scores separate
 
-![Source earlier single-motor neural comparison](../.gitbook/assets/single_motor_neural_comparison.png)
+![Source earlier single-motor neural comparison](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class05/figures/source/single_motor_neural_comparison.png)
 
 _Figure 12. Source ID-0 full-trajectory comparison on the earlier 5 Hz sine record. Encoder position is the measured reference for the MAE. The neural replay gives 1.4318° and that run's orange parametric comparator 15.3151°. The lower torque trace is a neural surrogate, not independently measured output torque. This is not the sixteen-motor V5 experiment._
 

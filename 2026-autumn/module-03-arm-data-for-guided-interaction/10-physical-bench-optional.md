@@ -26,13 +26,13 @@ With **`--gesture`**, rest the tip on the table before each episode, then lift t
 
 ## What the phone saw
 
-<div><figure><img src="../.gitbook/assets/real-frame-handheld-0.2s.png" alt="Handheld episode at 0.2 s"><figcaption><p>Figure 1. Handheld episode at 0.2 s. Handheld, 0.2 s.</p></figcaption></figure> <figure><img src="../.gitbook/assets/real-frame-handheld-4.0s.png" alt="Handheld episode at 4.0 s"><figcaption><p>Figure 2. Handheld episode at 4.0 s. Handheld, 4.0 s.</p></figcaption></figure> <figure><img src="../.gitbook/assets/real-frame-handheld-9.0s.png" alt="Handheld episode at 9.0 s"><figcaption><p>Figure 3. Handheld episode at 9.0 s. Handheld, 9.0 s.</p></figcaption></figure></div>
+<div><figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class10/figures/source/real-frame-handheld-0.2s.png" alt="Handheld episode at 0.2 s"><figcaption><p>Figure 1. Handheld episode at 0.2 s. Handheld, 0.2 s.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class10/figures/source/real-frame-handheld-4.0s.png" alt="Handheld episode at 4.0 s"><figcaption><p>Figure 2. Handheld episode at 4.0 s. Handheld, 4.0 s.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class10/figures/source/real-frame-handheld-9.0s.png" alt="Handheld episode at 9.0 s"><figcaption><p>Figure 3. Handheld episode at 9.0 s. Handheld, 9.0 s.</p></figcaption></figure></div>
 
 A handheld episode on the course table with the printed green goal. The pusher tool is always at the same place in the image, as the tool design intends.
 
 ## The audit of 161 physical episodes
 
-<figure><img src="../.gitbook/assets/real-audit.png" alt="Audit of the physical data: start height, duration and speed"><figcaption><p>Figure 4. Audit of the physical data: start height, duration and speed.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class10/figures/source/real-audit.png" alt="Audit of the physical data: start height, duration and speed"><figcaption><p>Figure 4. Audit of the physical data: start height, duration and speed.</p></figcaption></figure>
 
 The figure shows the start height of the 150 handheld episodes, the duration of all 161 episodes and the tip speed of each episode. Three findings changed the data. None of them occurs in simulation, where the scripted operator always starts at the same pose.
 
@@ -56,7 +56,7 @@ Observation agreement is one relevant Sim2Real condition, alongside geometry, co
 
 ### Simulation and reality, side by side
 
-<div><figure><img src="../.gitbook/assets/real-frame-handheld-0.2s.png" alt="Real phone image"><figcaption><p>Figure 5. Real phone image.</p></figcaption></figure> <figure><img src="../.gitbook/assets/agent-step-1.png" alt="Simulated phone image with the estimated scene"><figcaption><p>Figure 6. Simulated phone image with the estimated scene. Simulated phone image, estimated scene (with the grid of Class 11).</p></figcaption></figure></div>
+<div><figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class10/figures/source/real-frame-handheld-0.2s.png" alt="Real phone image"><figcaption><p>Figure 5. Real phone image.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class11/figures/source/agent-step-1.png" alt="Simulated phone image with the estimated scene"><figcaption><p>Figure 6. Simulated phone image with the estimated scene. Simulated phone image, estimated scene (with the grid of Class 11).</p></figcaption></figure></div>
 
 The same provenance discipline applies to dynamics. Damping and friction require suitable dynamic excitation and an identification protocol; the static sweep alone does not identify them. A parameter added to the MJCF needs its source, units, fitted conditions and validation record.
 

@@ -24,7 +24,7 @@ The supplied CAD renders, XML excerpt and saved model-load views support the com
 
 ## The RS06 actuator
 
-![The RS06 outline and mounting dimensions, and the values of its user manual.](../.gitbook/assets/rs06_mechanical_reference.png)
+![The RS06 outline and mounting dimensions, and the values of its user manual.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/source/rs06/rs06_mechanical_reference.png)
 
 _Figure 1. The RS06 outline and mounting dimensions, and the values of its user manual._
 
@@ -44,7 +44,7 @@ The RS06 is a quasi-direct-drive actuator: a brushless motor with field-oriented
 
 ## The fixture and its configurations
 
-![CAD renders of the four configurations M0, B0, B1 and G1.](../.gitbook/assets/rs06_fixture_renders.png)
+![CAD renders of the four configurations M0, B0, B1 and G1.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/source/rs06/rs06_fixture_renders.png)
 
 _Figure 2. CAD renders of the four configurations M0, B0, B1 and G1._
 
@@ -87,7 +87,7 @@ The meshes are millimetre-scale STL files, so each mesh declaration applies `sca
 
 ## The four models in MuJoCo
 
-![The four MJCF files loaded in MuJoCo with the joint at 0 rad.](../.gitbook/assets/rs06-model-loads.png)
+![The four MJCF files loaded in MuJoCo with the joint at 0 rad.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/rs06-model-loads.png)
 
 _Figure 3. The four MJCF files loaded in MuJoCo with the joint at 0 rad._
 
@@ -109,7 +109,7 @@ Use the manufacturer reference, four CAD renders, G1 XML excerpt and saved MuJoC
 
 The primary Class 03 source also supplies this RS06 mechanical reference for reading the mounting and output geometry:
 
-![RS06 mechanical reference retained with the XC330 source digitization record](../.gitbook/assets/rs06_mechanical_reference.png)
+![RS06 mechanical reference retained with the XC330 source digitization record](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/figures/source/rs06/rs06_mechanical_reference.png)
 
 _Figure 4. RS06 mechanical reference retained with the XC330 source digitization record._
 

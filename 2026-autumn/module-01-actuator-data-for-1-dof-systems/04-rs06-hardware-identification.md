@@ -36,7 +36,7 @@ The four configurations M0, B0, B1 and G1 are those of the Class 03 page: motor 
 
 ### Seven trajectories, three roles
 
-![The seven commanded position profiles, coloured by their role.](../.gitbook/assets/rs06_profiles.png)
+![The seven commanded position profiles, coloured by their role.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/rs06/rs06_profiles.png)
 
 _Figure 1. The seven commanded position profiles, coloured by their role._
 
@@ -106,7 +106,7 @@ The three unknowns follow from a bounded linear least-squares fit across windows
 
 ### Identified values
 
-![The identified joint parameters of both methods and both controllers.](../.gitbook/assets/parameter-comparison.png)
+![The identified joint parameters of both methods and both controllers.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/rs06/parameter-comparison.png)
 
 _Figure 2. The identified joint parameters of both methods and both controllers._
 
@@ -136,7 +136,7 @@ and each split reports the mean over its episodes.
 
 Before reading the next figure, name each comparison. Model output gap compares simulated with measured position; tracking compares measured with applied position; repeat variability compares physical responses within a condition. The split labels are categorical summaries, not elapsed time.
 
-![Output gap of each method and controller on the three splits, with the repeat floor.](../.gitbook/assets/split-output-gap.png)
+![Output gap of each method and controller on the three splits, with the repeat floor.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/rs06/split-output-gap.png)
 
 _Figure 3. Output gap of each method and controller on the three splits, with the repeat floor._
 
@@ -162,19 +162,19 @@ The one-sided G1 load was not in the calibration data, and its gap is not larger
 
 ## One held-out episode
 
-![A held-out B1 / H2 / P06 episode: applied command, hardware position and the MuJoCo replay with the identified H2 parameters.](../.gitbook/assets/rs06_good_heldout.png)
+![A held-out B1 / H2 / P06 episode: applied command, hardware position and the MuJoCo replay with the identified H2 parameters.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/rs06/rs06_good_heldout.png)
 
 _Figure 4. A held-out B1 / H2 / P06 episode: applied command, hardware position and the MuJoCo replay with the identified H2 parameters._
 
 This episode did not take part in the fit or in the model selection. The replay follows the hardware lag behind the command, including the two offset switches of the composite profile at 3.5 s and 7.3 s. Its RMSE is 0.0034 rad.
 
-![The first held-out repeat of each controller and fixture, with the command, the hardware and both methods.](../.gitbook/assets/heldout-replays.png)
+![The first held-out repeat of each controller and fixture, with the command, the hardware and both methods.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/rs06/heldout-replays.png)
 
 _Figure 5. The first held-out repeat of each controller and fixture, with the command, the hardware and both methods._
 
 ## A diagnostic of the torque path
 
-![Firmware torque against the gravity torque of the G1 model, in seven static poses.](../.gitbook/assets/static-gravity-diagnostic.png)
+![Firmware torque against the gravity torque of the G1 model, in seven static poses.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/rs06/static-gravity-diagnostic.png)
 
 _Figure 6. Firmware torque against the gravity torque of the G1 model, in seven static poses._
 

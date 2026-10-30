@@ -34,7 +34,7 @@ A calibrated visual estimate could answer questions that joint telemetry alone c
 
 **Visual feedback** goes further: information derived from images influences the next action. There must be a computational path from image capture through estimation and observation construction to a controller. A recording that is watched after the run is visual evidence, rather than a closed visual feedback loop.
 
-![Prospective image-to-action feedback architecture](../.gitbook/assets/vision-loop-classroom.png)
+![Prospective image-to-action feedback architecture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/vision-loop-classroom.png)
 
 _Figure 1. Prospective visual-feedback architecture: image and capture time → pose estimation → frame and age checks → a compatible policy → actuation and contact → a new image. Trace the path that would make visual information affect an action. The current Class 06 actor does not implement this visual input path._
 
@@ -120,7 +120,7 @@ $$
 
 Translation-only addition would give (0.30, 0.03, 0.40) m, a different physical location. This is an analytical coordinate example, not a measured calibration or a new pose-estimation demonstration.
 
-![The same point in camera and hand coordinates](../.gitbook/assets/frame-chain-classroom.png)
+![The same point in camera and hand coordinates](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/frame-chain-classroom.png)
 
 _Figure 2. Geometry of the analytical transform example, shown in the x–y plane. Locate the two origins, follow camera +x along hand +y, and read the same point relative to each origin. The diagram explains coordinates; it reports no camera experiment._
 
@@ -191,7 +191,7 @@ Holding a pose estimate differs from holding an actuator command. An observation
 
 ## Inspect the original asMagic stream
 
-![Original asMagic streaming interface](../.gitbook/assets/asmagic-app.png)
+![Original asMagic streaming interface](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/source/asmagic-app.png)
 
 _Figure 3. The author's original asMagic interface reference: app icon, home page and Data Streaming panel. Locate AR Data, the displayed IP address and port 8000. These controls identify a stream setup; the screenshot does not establish a cube estimator or the current packet schema._
 

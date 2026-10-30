@@ -4,7 +4,7 @@
 
 This page takes you from the five boxes of the kit to a complete arm, ready for the first power-on. Build five sub-assemblies, stack them from the base up, then wire the driver board. The next step is [Class 08 — Power-on and zero](08-power-on-and-zero-optional.md).
 
-<figure><img src="../.gitbook/assets/cover.png" alt="The finished arm"><figcaption><p>Figure 1. The finished arm.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/cover.png" alt="The finished arm"><figcaption><p>Figure 1. The finished arm.</p></figcaption></figure>
 
 {% hint style="info" %}
 **Source.** The photos are frames from the Seeed Studio video [Assembly Tutorial for the Fully Open-Source reBot-RS Robotic Arm](https://www.youtube.com/watch?v=Bv60NPO0TRo) (30:33). The "Video mm:ss" tag on a frame is its time in the video, where you can watch the motion. The part renders come from [Seeed-Projects/reBot-DevArm](https://github.com/Seeed-Projects/reBot-DevArm) (CERN-OHL-W-2.0). Screw and cable specifications follow the bill of materials of that repository.
@@ -50,11 +50,11 @@ The kit does not include tools.
 
 Sort the screw bags against the chart first. Each bag is printed with its specification, for example `KM3x7mm 50PCS`, `KA3x12mm 28PCS` or `HM3x8mm 33PCS`.
 
-<figure><img src="../.gitbook/assets/screws.png" alt="Screw guide"><figcaption><p>Figure 2. Screw guide.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/diagrams/screws.png" alt="Screw guide"><figcaption><p>Figure 2. Screw guide.</p></figcaption></figure>
 
 ### The order of the work
 
-<figure><img src="../.gitbook/assets/assembly_flow.png" alt="Assembly flow"><figcaption><p>Figure 3. Assembly flow.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/diagrams/assembly_flow.png" alt="Assembly flow"><figcaption><p>Figure 3. Assembly flow.</p></figcaption></figure>
 
 ### Joint IDs
 
@@ -76,7 +76,7 @@ The motor IDs are written at the factory and printed on a label on each housing.
 
 ## Unbox: motor kit
 
-<figure><img src="../.gitbook/assets/s01_1.png" alt="Motor kit contents"><figcaption><p>Figure 4. Motor kit contents.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s01_1.png" alt="Motor kit contents"><figcaption><p>Figure 4. Motor kit contents.</p></figcaption></figure>
 
 Check:
 
@@ -91,7 +91,7 @@ Cable types: **single-elbow** has one angled end and one straight end; **double-
 
 ## Unbox: structural kit
 
-<figure><img src="../.gitbook/assets/s02_1.png" alt="Structural kit"><figcaption><p>Figure 5. Structural kit.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s02_1.png" alt="Structural kit"><figcaption><p>Figure 5. Structural kit.</p></figcaption></figure>
 
 Metal parts, printed parts, screw bags and the base plate. Paired parts are engraved with L or R: sort them into left and right before you start.
 
@@ -105,15 +105,15 @@ Metal parts, printed parts, screw bags and the base plate. Paired parts are engr
 
 **Parts for this step**
 
-<figure><img src="../.gitbook/assets/p03.png" alt="Parts – base"><figcaption><p>Figure 6. Parts – base.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/parts/p03.png" alt="Parts – base"><figcaption><p>Figure 6. Parts – base.</p></figcaption></figure>
 
 Also: ID1 (RS06), AXK5578 flat thrust bearing ×1, `4× HM4×70`, `6× HM4×16`
 
-<figure><img src="../.gitbook/assets/s03_1.png" alt="Parts for this step"><figcaption><p>Figure 7. Parts for this step.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s03_1.png" alt="Parts for this step"><figcaption><p>Figure 7. Parts for this step.</p></figcaption></figure>
 
 ### Base plate + ID1
 
-<figure><img src="../.gitbook/assets/s03_2.png" alt="Source assembly view: Base plate + ID1"><figcaption><p>Figure 8. Source assembly view: Base plate + ID1.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s03_2.png" alt="Source assembly view: Base plate + ID1"><figcaption><p>Figure 8. Source assembly view: Base plate + ID1.</p></figcaption></figure>
 
 `Base plate + ID1 ─[4× HM4×70]→ base plate assembly`
 
@@ -127,7 +127,7 @@ Also: ID1 (RS06), AXK5578 flat thrust bearing ×1, `4× HM4×70`, `6× HM4×16`
 
 ### Thrust bearing + base shaft
 
-<figure><img src="../.gitbook/assets/s03_3.png" alt="Source assembly view: Thrust bearing + base shaft"><figcaption><p>Figure 9. Source assembly view: Thrust bearing + base shaft.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s03_3.png" alt="Source assembly view: Thrust bearing + base shaft"><figcaption><p>Figure 9. Source assembly view: Thrust bearing + base shaft.</p></figcaption></figure>
 
 `Base plate assembly + AXK5578 thrust bearing + base shaft → press into place`
 
@@ -137,7 +137,7 @@ Also: ID1 (RS06), AXK5578 flat thrust bearing ×1, `4× HM4×70`, `6× HM4×16`
 
 ### Tighten
 
-<figure><img src="../.gitbook/assets/s03_4.png" alt="Source assembly view: Tighten"><figcaption><p>Figure 10. Source assembly view: Tighten.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s03_4.png" alt="Source assembly view: Tighten"><figcaption><p>Figure 10. Source assembly view: Tighten.</p></figcaption></figure>
 
 `Base shaft ─[6× HM4×16]→ ID1 output disc`
 
@@ -153,11 +153,11 @@ Also: ID1 (RS06), AXK5578 flat thrust bearing ×1, `4× HM4×70`, `6× HM4×16`
 
 **Parts for this step**
 
-<figure><img src="../.gitbook/assets/p04.png" alt="Parts – upper arm"><figcaption><p>Figure 11. Parts – upper arm.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/parts/p04.png" alt="Parts – upper arm"><figcaption><p>Figure 11. Parts – upper arm.</p></figcaption></figure>
 
 Also: ID2, ID3 (RS06), 200mm double-elbow cable ×1, `24× KM3×7`, about 10× `KA3×12`
 
-<figure><img src="../.gitbook/assets/s04_1.png" alt="Parts for this step"><figcaption><p>Figure 12. Parts for this step.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s04_1.png" alt="Parts for this step"><figcaption><p>Figure 12. Parts for this step.</p></figcaption></figure>
 
 {% hint style="info" %}
 The upper-arm frame arrives **pre-assembled as one piece** (two metal side plates around the printed parts). Remove one side before fitting the motors.
@@ -165,7 +165,7 @@ The upper-arm frame arrives **pre-assembled as one piece** (two metal side plate
 
 ### Open the pre-assembled frame
 
-<figure><img src="../.gitbook/assets/s04_2.png" alt="Source assembly view: Open the pre-assembled frame"><figcaption><p>Figure 13. Source assembly view: Open the pre-assembled frame.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s04_2.png" alt="Source assembly view: Open the pre-assembled frame"><figcaption><p>Figure 13. Source assembly view: Open the pre-assembled frame.</p></figcaption></figure>
 
 * Lay it **textured side up**.
 * Remove the screws on the upward-facing side. Keep them; you'll need them again in 4.5.
@@ -176,7 +176,7 @@ The upper-arm frame arrives **pre-assembled as one piece** (two metal side plate
 
 ### Pre-route the cable: ID2 ⇄ ID3
 
-<figure><img src="../.gitbook/assets/s04_3.png" alt="Source assembly view: Pre-route the cable: ID2 ⇄ ID3"><figcaption><p>Figure 14. Source assembly view: Pre-route the cable: ID2 ⇄ ID3.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s04_3.png" alt="Source assembly view: Pre-route the cable: ID2 ⇄ ID3"><figcaption><p>Figure 14. Source assembly view: Pre-route the cable: ID2 ⇄ ID3.</p></figcaption></figure>
 
 `200mm double-elbow cable: one end → ID2, through the upper arm, other end → ID3`
 
@@ -184,14 +184,14 @@ The upper-arm frame arrives **pre-assembled as one piece** (two metal side plate
 
 ### Set the connector directions ⚠️
 
-<figure><img src="../.gitbook/assets/s04_4.png" alt="Source assembly view: Set the connector directions ⚠️"><figcaption><p>Figure 15. Source assembly view: Set the connector directions ⚠️.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s04_4.png" alt="Source assembly view: Set the connector directions ⚠️"><figcaption><p>Figure 15. Source assembly view: Set the connector directions ⚠️.</p></figcaption></figure>
 
 * **ID2**: connector **parallel to the upper arm**, with one side **facing the opening in the arm**.
 * **ID3**: after routing, the connector sits **at an angle to the arm**, so each motor can later be unplugged on its own for debugging.
 
 ### First side plate
 
-<figure><img src="../.gitbook/assets/s04_5.png" alt="Source assembly view: First side plate"><figcaption><p>Figure 16. Source assembly view: First side plate.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s04_5.png" alt="Source assembly view: First side plate"><figcaption><p>Figure 16. Source assembly view: First side plate.</p></figcaption></figure>
 
 `ID2 + ID3 + upper arm (left side plate) ─[12× KM3×7]→ half-built arm`
 
@@ -200,7 +200,7 @@ The upper-arm frame arrives **pre-assembled as one piece** (two metal side plate
 
 ### Other side + green cover
 
-<figure><img src="../.gitbook/assets/s04_6.png" alt="Source assembly view: Other side + green cover"><figcaption><p>Figure 17. Source assembly view: Other side + green cover.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s04_6.png" alt="Source assembly view: Other side + green cover"><figcaption><p>Figure 17. Source assembly view: Other side + green cover.</p></figcaption></figure>
 
 1. `Metal side plate + printed part ─[2× KA3×12]`: **only the two holes next to ID3** (video 5:14).
 2. Flip the arm and move the screws over from the other side (video 5:30), then fix this side's motors with `12× KM3×7`.
@@ -212,7 +212,7 @@ The upper-arm frame arrives **pre-assembled as one piece** (two metal side plate
 
 ### Self-check
 
-<figure><img src="../.gitbook/assets/s04_7.png" alt="Source assembly view: Self-check"><figcaption><p>Figure 18. Source assembly view: Self-check.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s04_7.png" alt="Source assembly view: Self-check"><figcaption><p>Figure 18. Source assembly view: Self-check.</p></figcaption></figure>
 
 * [ ] Both motors' **output faces are flush** (the side-plate texture lines up)
 * [ ] ID2's cable runs horizontally; ID3's cable follows the direction in the picture
@@ -220,7 +220,7 @@ The upper-arm frame arrives **pre-assembled as one piece** (two metal side plate
 
 ### Upper-arm limit blocks L / R
 
-<figure><img src="../.gitbook/assets/s04_8.png" alt="Source assembly view: Upper-arm limit blocks L / R"><figcaption><p>Figure 19. Source assembly view: Upper-arm limit blocks L / R.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s04_8.png" alt="Source assembly view: Upper-arm limit blocks L / R"><figcaption><p>Figure 19. Source assembly view: Upper-arm limit blocks L / R.</p></figcaption></figure>
 
 `Limit block L ─[2× KA3×12]→ ID2 output side`, then flip: `Limit block R ─[2× KA3×12]→ same spot on the back`
 
@@ -238,11 +238,11 @@ The upper-arm frame arrives **pre-assembled as one piece** (two metal side plate
 
 **Parts for this step**
 
-<figure><img src="../.gitbook/assets/p05.png" alt="Parts – forearm"><figcaption><p>Figure 20. Parts – forearm.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/parts/p05.png" alt="Parts – forearm"><figcaption><p>Figure 20. Parts – forearm.</p></figcaption></figure>
 
 Also: ID4 (RS00), **300mm double-elbow cable** (the longest one), `16× KM3×7`, `16× KA3×12`
 
-<figure><img src="../.gitbook/assets/s05_1.png" alt="Parts for this step"><figcaption><p>Figure 21. Parts for this step.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s05_1.png" alt="Parts for this step"><figcaption><p>Figure 21. Parts for this step.</p></figcaption></figure>
 
 {% hint style="warning" %}
 The cable shown in this part of the video is the wrong one (an on-screen note in the top-right corner corrects it). **Use the 300mm double-elbow**, the longest angled cable in the kit.
@@ -250,7 +250,7 @@ The cable shown in this part of the video is the wrong one (an on-screen note in
 
 ### Route the cable
 
-<figure><img src="../.gitbook/assets/s05_2.png" alt="Source assembly view: Route the cable"><figcaption><p>Figure 22. Source assembly view: Route the cable.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s05_2.png" alt="Source assembly view: Route the cable"><figcaption><p>Figure 22. Source assembly view: Route the cable.</p></figcaption></figure>
 
 1. `300mm double-elbow cable → ID4`, tighten the plug screws.
 2. Remove 2 screws from the pre-assembled forearm (video 7:45).
@@ -262,24 +262,24 @@ The cable shown in this part of the video is the wrong one (an on-screen note in
 
 ### First side
 
-<figure><img src="../.gitbook/assets/s05_3.png" alt="Source assembly view: First side"><figcaption><p>Figure 23. Source assembly view: First side.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s05_3.png" alt="Source assembly view: First side"><figcaption><p>Figure 23. Source assembly view: First side.</p></figcaption></figure>
 
 * Place the `U-shaped connector` in the **middle** of the forearm.
 * `ID4 + metal side plate ─[6× KM3×7]`
 * `Forearm + U-shaped connector ─[2× KM3×7]`
 
-<figure><img src="../.gitbook/assets/s05_4.png" alt="Source assembly view: First side"><figcaption><p>Figure 24. Source assembly view: First side.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s05_4.png" alt="Source assembly view: First side"><figcaption><p>Figure 24. Source assembly view: First side.</p></figcaption></figure>
 
 * `Handle ─[3× KA3×12]→ forearm`. Make sure the handle's outline and orientation match the picture.
 * `Internal printed filler ─[4× KA3×12]→ forearm`
 
 ### Second side (same set)
 
-<figure><img src="../.gitbook/assets/s05_5.png" alt="Source assembly view: Second side (same set)"><figcaption><p>Figure 25. Source assembly view: Second side (same set).</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s05_5.png" alt="Source assembly view: Second side (same set)"><figcaption><p>Figure 25. Source assembly view: Second side (same set).</p></figcaption></figure>
 
 `6× KM3×7 (motor)` → `2× KM3×7 (U-part)` → `4× KA3×12 (filler)`
 
-<figure><img src="../.gitbook/assets/s05_6.png" alt="Source assembly view: Second side (same set)"><figcaption><p>Figure 26. Source assembly view: Second side (same set).</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s05_6.png" alt="Source assembly view: Second side (same set)"><figcaption><p>Figure 26. Source assembly view: Second side (same set).</p></figcaption></figure>
 
 * `Handle ─[3× KA3×12]`
 * `Green cover ─[2× KA3×12]→ forearm`
@@ -294,11 +294,11 @@ The cable shown in this part of the video is the wrong one (an on-screen note in
 
 **Parts for this step**
 
-<figure><img src="../.gitbook/assets/p06.png" alt="Parts – wrist"><figcaption><p>Figure 27. Parts – wrist.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/parts/p06.png" alt="Parts – wrist"><figcaption><p>Figure 27. Parts – wrist.</p></figcaption></figure>
 
 Also: ID5, ID6 (RS00), `6× KM3×7`, `12× HM3×8`
 
-<figure><img src="../.gitbook/assets/s06_1.png" alt="Parts for this step"><figcaption><p>Figure 28. Parts for this step.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s06_1.png" alt="Parts for this step"><figcaption><p>Figure 28. Parts for this step.</p></figcaption></figure>
 
 {% hint style="info" %}
 The parts labels at video 11:35 say “ID4 / ID5”, but this step's captions and every later step use **ID5 / ID6** (ID4 is already in the forearm). Go by **the label on each motor housing**.
@@ -306,7 +306,7 @@ The parts labels at video 11:35 say “ID4 / ID5”, but this step's captions an
 
 ### ID5 + wrist motor mount
 
-<figure><img src="../.gitbook/assets/s06_2.png" alt="Source assembly view: ID5 + wrist motor mount"><figcaption><p>Figure 29. Source assembly view: ID5 + wrist motor mount.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s06_2.png" alt="Source assembly view: ID5 + wrist motor mount"><figcaption><p>Figure 29. Source assembly view: ID5 + wrist motor mount.</p></figcaption></figure>
 
 `ID5 + wrist motor mount ─[6× KM3×7]`
 
@@ -314,19 +314,19 @@ The parts labels at video 11:35 say “ID4 / ID5”, but this step's captions an
 
 ### Connector on ID5's output
 
-<figure><img src="../.gitbook/assets/s06_3.png" alt="Source assembly view: Connector on ID5&#x27;s output"><figcaption><p>Figure 30. Source assembly view: Connector on ID5's output.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s06_3.png" alt="Source assembly view: Connector on ID5&#x27;s output"><figcaption><p>Figure 30. Source assembly view: Connector on ID5's output.</p></figcaption></figure>
 
 `Wrist connector ─(align locating pin, press tight)─[6× HM3×8]→ ID5 output disc`
 
 ### Second connector
 
-<figure><img src="../.gitbook/assets/s06_4.png" alt="Source assembly view: Second connector"><figcaption><p>Figure 31. Source assembly view: Second connector.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s06_4.png" alt="Source assembly view: Second connector"><figcaption><p>Figure 31. Source assembly view: Second connector.</p></figcaption></figure>
 
 `Other metal connector ─(seat it in the groove first)─[2× HM3×8]`
 
 ### ID6
 
-<figure><img src="../.gitbook/assets/s06_5.png" alt="Source assembly view: ID6"><figcaption><p>Figure 32. Source assembly view: ID6.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s06_5.png" alt="Source assembly view: ID6"><figcaption><p>Figure 32. Source assembly view: ID6.</p></figcaption></figure>
 
 `ID6 ─(align holes)─[4× HM3×8]→ metal connector`
 
@@ -342,15 +342,15 @@ The parts labels at video 11:35 say “ID4 / ID5”, but this step's captions an
 
 **Parts for this step**
 
-<figure><img src="../.gitbook/assets/p07.png" alt="Parts – gripper"><figcaption><p>Figure 33. Parts – gripper.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/parts/p07.png" alt="Parts – gripper"><figcaption><p>Figure 33. Parts – gripper.</p></figcaption></figure>
 
 Also: ID7 (RS00), MGN9 linear rail ×1 + carriages ×2, module-1 16-tooth gear ×1, `HM3×12`, `12× KM3×7`, `6× HM3×26`, `HM3×6`, `8× KM3×16`
 
-<figure><img src="../.gitbook/assets/s07_1.png" alt="Gripper kit"><figcaption><p>Figure 34. Gripper kit.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s07_1.png" alt="Gripper kit"><figcaption><p>Figure 34. Gripper kit.</p></figcaption></figure>
 
 ### ID7 + front and rear metal parts
 
-<figure><img src="../.gitbook/assets/s07_2.png" alt="Source assembly view: ID7 + front and rear metal parts"><figcaption><p>Figure 35. Source assembly view: ID7 + front and rear metal parts.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s07_2.png" alt="Source assembly view: ID7 + front and rear metal parts"><figcaption><p>Figure 35. Source assembly view: ID7 + front and rear metal parts.</p></figcaption></figure>
 
 1. `ID7 + two rear metal covers ─[HM3×12]` (the video doesn't say how many)
 2. `Front metal bracket ─[6× KM3×7]→ front of ID7`
@@ -362,7 +362,7 @@ Also: ID7 (RS00), MGN9 linear rail ×1 + carriages ×2, module-1 16-tooth gear �
 
 ### Gear + rail base
 
-<figure><img src="../.gitbook/assets/s07_3.png" alt="Source assembly view: Gear + rail base"><figcaption><p>Figure 36. Source assembly view: Gear + rail base.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s07_3.png" alt="Source assembly view: Gear + rail base"><figcaption><p>Figure 36. Source assembly view: Gear + rail base.</p></figcaption></figure>
 
 1. Slide the gear onto the adapter's shaft and **tighten the gear's set screw** with a hex key.
 2. Fit the green rail base over it.
@@ -373,7 +373,7 @@ Also: ID7 (RS00), MGN9 linear rail ×1 + carriages ×2, module-1 16-tooth gear �
 
 ### Linear rail
 
-<figure><img src="../.gitbook/assets/s07_4.png" alt="Source assembly view: Linear rail"><figcaption><p>Figure 37. Source assembly view: Linear rail.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s07_4.png" alt="Source assembly view: Linear rail"><figcaption><p>Figure 37. Source assembly view: Linear rail.</p></figcaption></figure>
 
 1. Take out the rail. ⚠️ **Leave the red end plugs in for now**, or the carriages' balls will fall out.
 2. `Rail ─[6× HM3×26]→ rail base`
@@ -381,7 +381,7 @@ Also: ID7 (RS00), MGN9 linear rail ×1 + carriages ×2, module-1 16-tooth gear �
 
 ### Racks
 
-<figure><img src="../.gitbook/assets/s07_5.png" alt="Source assembly view: Racks"><figcaption><p>Figure 38. Source assembly view: Racks.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s07_5.png" alt="Source assembly view: Racks"><figcaption><p>Figure 38. Source assembly view: Racks.</p></figcaption></figure>
 
 1. `Rack + slider block ─[HM3×6]` (make two sets)
 2. Line up the holes and mount both racks on the carriages, meshing with the gear. ⚠️ **Left and right travel must be symmetric.** Push them by hand and check both sides open the same distance.
@@ -392,7 +392,7 @@ Also: ID7 (RS00), MGN9 linear rail ×1 + carriages ×2, module-1 16-tooth gear �
 
 ### Fingers
 
-<figure><img src="../.gitbook/assets/s07_6.png" alt="Source assembly view: Fingers"><figcaption><p>Figure 39. Source assembly view: Fingers.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s07_6.png" alt="Source assembly view: Fingers"><figcaption><p>Figure 39. Source assembly view: Fingers.</p></figcaption></figure>
 
 `Gripper fingers ×2 ─[8× KM3×16]→ carriages`
 
@@ -406,19 +406,19 @@ Also: ID7 (RS00), MGN9 linear rail ×1 + carriages ×2, module-1 16-tooth gear �
 
 **Parts for this step**
 
-<figure><img src="../.gitbook/assets/p08.png" alt="Parts – shoulder"><figcaption><p>Figure 40. Parts – shoulder.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/parts/p08.png" alt="Parts – shoulder"><figcaption><p>Figure 40. Parts – shoulder.</p></figcaption></figure>
 
 Also: 6803ZZ bearing ×1, `6× HM4×16`, `6× HM4×8`, 300mm single-elbow cable
 
 ### Joint bracket L → ID2
 
-<figure><img src="../.gitbook/assets/s08_1.png" alt="Source assembly view: Joint bracket L → ID2"><figcaption><p>Figure 41. Source assembly view: Joint bracket L → ID2.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s08_1.png" alt="Source assembly view: Joint bracket L → ID2"><figcaption><p>Figure 41. Source assembly view: Joint bracket L → ID2.</p></figcaption></figure>
 
 `Joint bracket L ─(press onto ID2 output face)─[6× HM4×16]`
 
 ### Fix the upper arm to the left of the base
 
-<figure><img src="../.gitbook/assets/s08_2.png" alt="Source assembly view: Fix the upper arm to the left of the base"><figcaption><p>Figure 42. Source assembly view: Fix the upper arm to the left of the base.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s08_2.png" alt="Source assembly view: Fix the upper arm to the left of the base"><figcaption><p>Figure 42. Source assembly view: Fix the upper arm to the left of the base.</p></figcaption></figure>
 
 `Upper-arm sub-assembly B ─[3× HM4×8]→ L side of the base shaft`
 
@@ -426,14 +426,14 @@ Also: 6803ZZ bearing ×1, `6× HM4×16`, `6× HM4×8`, 300mm single-elbow cable
 
 ### Right side: bearing + bracket R
 
-<figure><img src="../.gitbook/assets/s08_3.png" alt="Source assembly view: Right side: bearing + bracket R"><figcaption><p>Figure 43. Source assembly view: Right side: bearing + bracket R.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s08_3.png" alt="Source assembly view: Right side: bearing + bracket R"><figcaption><p>Figure 43. Source assembly view: Right side: bearing + bracket R.</p></figcaption></figure>
 
 1. `6803 bearing → back of ID2`
 2. `Joint bracket R ─[3× HM4×8]→ other side of the base shaft`
 
 ### Cable ID1 ⇄ ID2
 
-<figure><img src="../.gitbook/assets/s08_4.png" alt="Source assembly view: Cable ID1 ⇄ ID2"><figcaption><p>Figure 44. Source assembly view: Cable ID1 ⇄ ID2.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s08_4.png" alt="Source assembly view: Cable ID1 ⇄ ID2"><figcaption><p>Figure 44. Source assembly view: Cable ID1 ⇄ ID2.</p></figcaption></figure>
 
 `300mm single-elbow cable: ID1 ⇄ ID2`
 
@@ -447,19 +447,19 @@ Also: 6803ZZ bearing ×1, `6× HM4×16`, `6× HM4×8`, 300mm single-elbow cable
 
 **Parts for this step**
 
-<figure><img src="../.gitbook/assets/p09.png" alt="Parts – elbow"><figcaption><p>Figure 45. Parts – elbow.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/parts/p09.png" alt="Parts – elbow"><figcaption><p>Figure 45. Parts – elbow.</p></figcaption></figure>
 
 Also: 6803ZZ bearing ×1, `6× HM4×16`, `HM3×8`
 
 ### Elbow connector L → ID3
 
-<figure><img src="../.gitbook/assets/s09_1.png" alt="Source assembly view: Elbow connector L → ID3"><figcaption><p>Figure 46. Source assembly view: Elbow connector L → ID3.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s09_1.png" alt="Source assembly view: Elbow connector L → ID3"><figcaption><p>Figure 46. Source assembly view: Elbow connector L → ID3.</p></figcaption></figure>
 
 `Elbow connector L ─(press onto ID3 output)─[6× HM4×16]`
 
 ### Forearm → body, repeat on the back, plug in
 
-<figure><img src="../.gitbook/assets/s09_2.png" alt="Source assembly view: Forearm → body, repeat on the back, plug in"><figcaption><p>Figure 47. Source assembly view: Forearm → body, repeat on the back, plug in.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s09_2.png" alt="Source assembly view: Forearm → body, repeat on the back, plug in"><figcaption><p>Figure 47. Source assembly view: Forearm → body, repeat on the back, plug in.</p></figcaption></figure>
 
 1. `Forearm sub-assembly C ─[4× HM3×8]→ elbow connector L`
 2. Back side: fit the bearing first, then elbow connector R, fixed the same way.
@@ -475,32 +475,32 @@ Also: 6803ZZ bearing ×1, `6× HM4×16`, `HM3×8`
 
 **Parts for this step**
 
-<figure><img src="../.gitbook/assets/p10.png" alt="Parts – wrist joint"><figcaption><p>Figure 48. Parts – wrist joint.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/parts/p10.png" alt="Parts – wrist joint"><figcaption><p>Figure 48. Parts – wrist joint.</p></figcaption></figure>
 
 Also: bearing ×1, `10× HM3×8`
 
 ### Wrist link L → ID4
 
-<figure><img src="../.gitbook/assets/s10_1.png" alt="Source assembly view: Wrist link L → ID4"><figcaption><p>Figure 49. Source assembly view: Wrist link L → ID4.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s10_1.png" alt="Source assembly view: Wrist link L → ID4"><figcaption><p>Figure 49. Source assembly view: Wrist link L → ID4.</p></figcaption></figure>
 
 `Wrist link L ─(press onto ID4 output)─[6× HM3×8]`
 
 ### Mount the wrist sub-assembly
 
-<figure><img src="../.gitbook/assets/s10_2.png" alt="Source assembly view: Mount the wrist sub-assembly"><figcaption><p>Figure 50. Source assembly view: Mount the wrist sub-assembly.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s10_2.png" alt="Source assembly view: Mount the wrist sub-assembly"><figcaption><p>Figure 50. Source assembly view: Mount the wrist sub-assembly.</p></figcaption></figure>
 
 `Wrist sub-assembly D ─[2× HM3×8]→ wrist link L`
 
 ### Right side + cable
 
-<figure><img src="../.gitbook/assets/s10_3.png" alt="Source assembly view: Right side + cable"><figcaption><p>Figure 51. Source assembly view: Right side + cable.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s10_3.png" alt="Source assembly view: Right side + cable"><figcaption><p>Figure 51. Source assembly view: Right side + cable.</p></figcaption></figure>
 
 1. `Bearing → back of ID4`, then `Wrist link R ─[2× HM3×8]`
 2. Connect the cable at the wrist and tighten the plug screws.
 
 ### Cover discs
 
-<figure><img src="../.gitbook/assets/s10_4.png" alt="Source assembly view: Cover discs"><figcaption><p>Figure 52. Source assembly view: Cover discs.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s10_4.png" alt="Source assembly view: Cover discs"><figcaption><p>Figure 52. Source assembly view: Cover discs.</p></figcaption></figure>
 
 Stick the metal cover discs (2-CD) on the outside of each joint to **hide the screws**. They're cosmetic and can go on last.
 
@@ -514,25 +514,25 @@ Once the discs are on, taking a joint apart is a hassle. Fit them after a succes
 
 **Parts for this step**
 
-<figure><img src="../.gitbook/assets/p11.png" alt="Parts – gripper mount"><figcaption><p>Figure 53. Parts – gripper mount.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/parts/p11.png" alt="Parts – gripper mount"><figcaption><p>Figure 53. Parts – gripper mount.</p></figcaption></figure>
 
 Also: `4× HM3×6`, `3× HM3×12`, 200mm double-elbow cable ×2
 
 ### Gripper connector A → ID6
 
-<figure><img src="../.gitbook/assets/s11_1.png" alt="Source assembly view: Gripper connector A → ID6"><figcaption><p>Figure 54. Source assembly view: Gripper connector A → ID6.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s11_1.png" alt="Source assembly view: Gripper connector A → ID6"><figcaption><p>Figure 54. Source assembly view: Gripper connector A → ID6.</p></figcaption></figure>
 
 `Gripper connector A ─[4× HM3×6]→ front of ID6`
 
 ### Gripper → body
 
-<figure><img src="../.gitbook/assets/s11_2.png" alt="Source assembly view: Gripper → body"><figcaption><p>Figure 55. Source assembly view: Gripper → body.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s11_2.png" alt="Source assembly view: Gripper → body"><figcaption><p>Figure 55. Source assembly view: Gripper → body.</p></figcaption></figure>
 
 `Gripper sub-assembly E ─(align with groove)─[3× HM3×12]→ gripper connector A`
 
 ### Cables
 
-<figure><img src="../.gitbook/assets/s11_3.png" alt="Source assembly view: Cables"><figcaption><p>Figure 56. Source assembly view: Cables.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s11_3.png" alt="Source assembly view: Cables"><figcaption><p>Figure 56. Source assembly view: Cables.</p></figcaption></figure>
 
 Use the two 200mm angled cables to connect the body and the gripper (ID6 ⇄ ID7, etc.).
 
@@ -548,11 +548,11 @@ Use the two 200mm angled cables to connect the body and the gripper (ID6 ⇄ ID7
 
 ## Driver board
 
-<figure><img src="../.gitbook/assets/wiring.png" alt="Wiring"><figcaption><p>Figure 57. Wiring.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/diagrams/wiring.png" alt="Wiring"><figcaption><p>Figure 57. Wiring.</p></figcaption></figure>
 
 ### PCAN ⇄ splitter board
 
-<figure><img src="../.gitbook/assets/s12_1.png" alt="Source assembly view: PCAN ⇄ splitter board"><figcaption><p>Figure 58. Source assembly view: PCAN ⇄ splitter board.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s12_1.png" alt="Source assembly view: PCAN ⇄ splitter board"><figcaption><p>Figure 58. Source assembly view: PCAN ⇄ splitter board.</p></figcaption></figure>
 
 1. Take out the 2-pin JST cable, the PCAN module and the power/CAN splitter board.
 2. Strip the loose ends of the JST cable.
@@ -560,7 +560,7 @@ Use the two 200mm angled cables to connect the body and the gripper (ID6 ⇄ ID7
 
 ### The last three connections
 
-<figure><img src="../.gitbook/assets/s12_2.png" alt="Source assembly view: The last three connections"><figcaption><p>Figure 59. Source assembly view: The last three connections.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s12_2.png" alt="Source assembly view: The last three connections"><figcaption><p>Figure 59. Source assembly view: The last three connections.</p></figcaption></figure>
 
 1. `300mm double-straight cable: splitter ⇄ ID1`
 2. `PCAN USB → computer`
@@ -572,7 +572,7 @@ Make every signal connection and check red and black first. **Connect the 48 V s
 
 ### Debug board (optional)
 
-<figure><img src="../.gitbook/assets/s12_3.png" alt="Source assembly view: Debug board (optional)"><figcaption><p>Figure 60. Source assembly view: Debug board (optional).</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/assembly/steps/s12_3.png" alt="Source assembly view: Debug board (optional)"><figcaption><p>Figure 60. Source assembly view: Debug board (optional).</p></figcaption></figure>
 
 The free RobStride debug board usually isn't needed. Use it only to tune low-level parameters of an individual motor.
 

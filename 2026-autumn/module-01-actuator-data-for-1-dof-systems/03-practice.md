@@ -24,7 +24,7 @@ Extract the archive to a writable folder before beginning the practice.
 
 The B0 fixture contains one fixed XC330 housing and one moving assembly. The moving assembly consists of the link, two payloads, and two pins. The payload centers are positioned symmetrically at 60 mm on either side of the XC330 rotation axis.
 
-![B0 component arrangement](../.gitbook/assets/configuration_table_and_masses_110g.png)
+![B0 component arrangement](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/milestone_figures/configuration_table_and_masses_110g.png)
 
 _Figure 1. B0 places two complete pin–payload assemblies symmetrically at 60 mm from the XC330 rotation axis, giving a 110 g external moving assembly._
 
@@ -53,8 +53,8 @@ The parts are assembled in the following order:
 
 |                                                                                        |                                                                                 |
 | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| ![Importing the supplied component files](../.gitbook/assets/01_import_step_files.png) | ![Insert Component command](../.gitbook/assets/02_insert_component_command.png) |
-| ![Selecting the M0 component](../.gitbook/assets/03_select_m0_component.png)           | ![M0 XC330 component in the design](../.gitbook/assets/04_m0_inserted.png)      |
+| ![Importing the supplied component files](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/01_import_step_files.png) | ![Insert Component command](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/02_insert_component_command.png) |
+| ![Selecting the M0 component](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/03_select_m0_component.png)           | ![M0 XC330 component in the design](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/04_m0_inserted.png)      |
 
 _Figure 2. The M0 component is inserted as the fixed starting body of the B0 assembly._
 
@@ -72,14 +72,14 @@ _Figure 2. The M0 component is inserted as the fixed starting body of the B0 ass
 
 |                                                                            |                                                                                          |
 | -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| ![Link inserted beside the XC330](../.gitbook/assets/05_link_inserted.png) | ![Joint command in the Assemble menu](../.gitbook/assets/06_joint_command.png)           |
-| ![Selecting the link center](../.gitbook/assets/07_select_link_origin.png) | ![Selecting the XC330 output center](../.gitbook/assets/08_select_motor_horn_origin.png) |
+| ![Link inserted beside the XC330](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/05_link_inserted.png) | ![Joint command in the Assemble menu](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/06_joint_command.png)           |
+| ![Selecting the link center](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/07_select_link_origin.png) | ![Selecting the XC330 output center](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/08_select_motor_horn_origin.png) |
 
 _Figure 3. The joint origins are selected at the link center and the XC330 output center._
 
 |                                                                                       |                                                                                     |
 | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| ![Revolute-joint alignment preview](../.gitbook/assets/09_revolute_joint_preview.png) | ![Completed link-to-XC330 joint](../.gitbook/assets/10_revolute_joint_complete.png) |
+| ![Revolute-joint alignment preview](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/09_revolute_joint_preview.png) | ![Completed link-to-XC330 joint](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/10_revolute_joint_complete.png) |
 
 _Figure 4. The revolute joint places the link coaxially with the XC330 output shaft._
 
@@ -97,8 +97,8 @@ _Figure 4. The revolute joint places the link coaxially with the XC330 output sh
 
 |                                                                                 |                                                                                           |
 | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| ![Payload inserted into the assembly](../.gitbook/assets/11_insert_payload.png) | ![B0 mounting hole selected on the link](../.gitbook/assets/12_select_b0_link_hole.png)   |
-| ![Payload joint alignment](../.gitbook/assets/13_payload_joint_preview.png)     | ![Payload joint offset and orientation](../.gitbook/assets/14_payload_joint_settings.png) |
+| ![Payload inserted into the assembly](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/11_insert_payload.png) | ![B0 mounting hole selected on the link](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/12_select_b0_link_hole.png)   |
+| ![Payload joint alignment](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/13_payload_joint_preview.png)     | ![Payload joint offset and orientation](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/14_payload_joint_settings.png) |
 
 _Figure 5. Each payload is rigidly located at one of the two symmetric B0 mounting positions._
 
@@ -113,8 +113,8 @@ _Figure 5. Each payload is rigidly located at one of the two symmetric B0 mounti
 
 |                                                                          |                                                                                   |
 | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
-| ![Pin inserted beside the payload](../.gitbook/assets/15_insert_pin.png) | ![Pin aligned with the payload bore](../.gitbook/assets/16_pin_joint_preview.png) |
-| ![Completed B0 fixture](../.gitbook/assets/17_completed_b0_fixture.png)  |                                                                                   |
+| ![Pin inserted beside the payload](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/15_insert_pin.png) | ![Pin aligned with the payload bore](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/16_pin_joint_preview.png) |
+| ![Completed B0 fixture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/17_completed_b0_fixture.png)  |                                                                                   |
 
 _Figure 6. The pins complete the two rigid payload attachments in the B0 fixture._
 
@@ -147,8 +147,8 @@ Save the completed Fusion design before preparing the export copy.
 
 |                                                                                      |                                                                                                              |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| ![Downloading the ACDC4Robot archive](../.gitbook/assets/01_download_repository.png) | ![Extracting the downloaded archive](../.gitbook/assets/02_extract_archive.png)                              |
-| ![Copying the ACDC4Robot add-in folder](../.gitbook/assets/03_copy_addin_folder.png) | ![Installing the folder in the Fusion 360 add-ins directory](../.gitbook/assets/04_install_addin_folder.png) |
+| ![Downloading the ACDC4Robot archive](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/acdc_installation/01_download_repository.png) | ![Extracting the downloaded archive](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/acdc_installation/02_extract_archive.png)                              |
+| ![Copying the ACDC4Robot add-in folder](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/acdc_installation/03_copy_addin_folder.png) | ![Installing the folder in the Fusion 360 add-ins directory](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class03/practical/additional_material/demonstration/fusion360_steps/acdc_installation/04_install_addin_folder.png) |
 
 _Figure 7. The ACDC4Robot folder is extracted and installed in the Fusion 360 add-ins directory._
 

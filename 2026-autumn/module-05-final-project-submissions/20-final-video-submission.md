@@ -55,7 +55,7 @@ Push these six PDFs to remote `main` and open each on GitHub to check completene
 
 Use the original **asRoBallet RSS 2026 narration transcript** as a reference for explaining the problem, method, evidence and conclusion. Rehearse your explanation before fixing the slideshow or edit timing. The example below is a presentation script.
 
-![Original asRoBallet RSS 2026 narration transcript with twenty numbered spoken points.](../.gitbook/assets/asroballet-narration-original.png)
+![Original asRoBallet RSS 2026 narration transcript with twenty numbered spoken points.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class20/figures/asroballet-narration-original.png)
 
 _Figure 1. Original asRoBallet narration transcript, retained from the earlier course notes._ [_Open the full-size script_](../resources/class20/figures/asroballet-narration-original.png) _·_ [_Paper and research source_](https://bionicdl.ancorasir.com/?p=2238)_. Prepare one video with narration or explanatory captions for this submission._
 

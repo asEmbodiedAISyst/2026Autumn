@@ -28,7 +28,7 @@ The explanation and supplied records can be read without executing code. The sep
 
 ### The reBot Arm B601-RS
 
-<figure><img src="../.gitbook/assets/arm-seeed.png" alt="The reBot Arm B601-RS"><figcaption><p>Figure 1. The reBot Arm B601-RS (image: Seeed Studio).</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/arm-seeed.png" alt="The reBot Arm B601-RS"><figcaption><p>Figure 1. The reBot Arm B601-RS (image: Seeed Studio).</p></figcaption></figure>
 
 {% hint style="info" %}
 **Photo to be added:** the course arm on the bench, clamped to the table, with its supply.
@@ -38,7 +38,7 @@ The course arm is the Seeed reBot Arm B601-RS. It has six joints and a parallel 
 
 ### One kit, five boxes
 
-<figure><img src="../.gitbook/assets/kit-boxes.png" alt="The four boxes of the kit: RS-Pn Power Adapter, RS-Sn Structure Kit, RS-Mn Motor Kit and RS-Gn Gripper Kit"><figcaption><p>Figure 2. The four boxes of the kit: RS-Pn Power Adapter, RS-Sn Structure Kit, RS-Mn Motor Kit and RS-Gn Gripper Kit. Four of the five boxes of the kit.</p></figcaption></figure>
+<figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/kit-boxes.png" alt="The four boxes of the kit: RS-Pn Power Adapter, RS-Sn Structure Kit, RS-Mn Motor Kit and RS-Gn Gripper Kit"><figcaption><p>Figure 2. The four boxes of the kit: RS-Pn Power Adapter, RS-Sn Structure Kit, RS-Mn Motor Kit and RS-Gn Gripper Kit. Four of the five boxes of the kit.</p></figcaption></figure>
 
 The arm comes in five boxes: the power adapter, the structure kit, the motor kit, the clamp and the gripper kit. The [assembly guide](08-assembly-optional.md) lists the content of each box and builds the arm step by step.
 
@@ -182,9 +182,9 @@ The simulated and the physical arm record the same numbers, as in the vendor LeR
 
 ### Read the positive direction
 
-<div><figure><img src="../.gitbook/assets/joint-sweep-1.png" alt="Joint 1 at +30 degrees from home"><figcaption><p>Figure 3. Joint 1 at +30 degrees from home.</p></figcaption></figure> <figure><img src="../.gitbook/assets/joint-sweep-2.png" alt="Joint 2 at +30 degrees from home"><figcaption><p>Figure 4. Joint 2 at +30 degrees from home.</p></figcaption></figure> <figure><img src="../.gitbook/assets/joint-sweep-3.png" alt="Joint 3 at +30 degrees from home"><figcaption><p>Figure 5. Joint 3 at +30 degrees from home.</p></figcaption></figure></div>
+<div><figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/joint-sweep-1.png" alt="Joint 1 at +30 degrees from home"><figcaption><p>Figure 3. Joint 1 at +30 degrees from home.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/joint-sweep-2.png" alt="Joint 2 at +30 degrees from home"><figcaption><p>Figure 4. Joint 2 at +30 degrees from home.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/joint-sweep-3.png" alt="Joint 3 at +30 degrees from home"><figcaption><p>Figure 5. Joint 3 at +30 degrees from home.</p></figcaption></figure></div>
 
-<div><figure><img src="../.gitbook/assets/joint-sweep-4.png" alt="Joint 4 at +30 degrees from home"><figcaption><p>Figure 6. Joint 4 at +30 degrees from home.</p></figcaption></figure> <figure><img src="../.gitbook/assets/joint-sweep-5.png" alt="Joint 5 at +30 degrees from home"><figcaption><p>Figure 7. Joint 5 at +30 degrees from home.</p></figcaption></figure> <figure><img src="../.gitbook/assets/joint-sweep-6.png" alt="Joint 6 at +30 degrees from home"><figcaption><p>Figure 8. Joint 6 at +30 degrees from home.</p></figcaption></figure></div>
+<div><figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/joint-sweep-4.png" alt="Joint 4 at +30 degrees from home"><figcaption><p>Figure 6. Joint 4 at +30 degrees from home.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/joint-sweep-5.png" alt="Joint 5 at +30 degrees from home"><figcaption><p>Figure 7. Joint 5 at +30 degrees from home.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/joint-sweep-6.png" alt="Joint 6 at +30 degrees from home"><figcaption><p>Figure 8. Joint 6 at +30 degrees from home.</p></figcaption></figure></div>
 
 Each image shows one joint at +30° from the home pose (the zero and home configurations below). Read the positive direction of each joint. A target outside the declared limits is skipped and reported. It is not clipped without a message.
 
@@ -214,7 +214,7 @@ The derivative gives the Jacobian, $${}^{w}\dot p_{tcp} = J_p(q)\,\dot q$$. Clas
 
 ### Zero pose and home pose
 
-<div><figure><img src="../.gitbook/assets/zero-pose.png" alt="Zero pose of the model"><figcaption><p>Figure 9. Zero pose of the model.</p></figcaption></figure> <figure><img src="../.gitbook/assets/home-pose.png" alt="Home pose of the model"><figcaption><p>Figure 10. Home pose of the model.</p></figcaption></figure></div>
+<div><figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/zero-pose.png" alt="Zero pose of the model"><figcaption><p>Figure 9. Zero pose of the model.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/home-pose.png" alt="Home pose of the model"><figcaption><p>Figure 10. Home pose of the model.</p></figcaption></figure></div>
 
 | Pose | Joints                                                  | Use                                                            |
 | ---- | ------------------------------------------------------- | -------------------------------------------------------------- |
@@ -279,7 +279,7 @@ At home, joint 4 is approximately −70.8°. A −10° excursion would request �
 
 ### Does it hold, does it follow
 
-<div><figure><img src="../.gitbook/assets/gravcomp-hold.png" alt="Gravity-compensation hold at the home pose"><figcaption><p>Figure 11. Gravity-compensation hold at the home pose. Hold at home, with and without g(q).</p></figcaption></figure> <figure><img src="../.gitbook/assets/step-response.png" alt="Step response of one joint"><figcaption><p>Figure 12. Step response of one joint. A 10° step on one joint.</p></figcaption></figure></div>
+<div><figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/gravcomp-hold.png" alt="Gravity-compensation hold at the home pose"><figcaption><p>Figure 11. Gravity-compensation hold at the home pose. Hold at home, with and without g(q).</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/step-response.png" alt="Step response of one joint"><figcaption><p>Figure 12. Step response of one joint. A 10° step on one joint.</p></figcaption></figure></div>
 
 With gravity compensation, the arm stays within a small error at the home pose. Without it, the PD term alone must carry the weight: the joint sags until $$K_p\,(q_d - q) = g(q)$$. A 10° step settles to within 1° in approximately 0.20 s in the model. This is a property of the model. Measure the physical step response on the arm.
 
@@ -291,7 +291,7 @@ A simulation can advance at the correct simulated period while rendering more sl
 
 ### The cameras of the scene
 
-<div><figure><img src="../.gitbook/assets/camera-front.png" alt="Front camera"><figcaption><p>Figure 13. Front camera.</p></figcaption></figure> <figure><img src="../.gitbook/assets/camera-side.png" alt="Side camera"><figcaption><p>Figure 14. Side camera.</p></figcaption></figure> <figure><img src="../.gitbook/assets/camera-top.png" alt="Top camera"><figcaption><p>Figure 15. Top camera.</p></figcaption></figure> <figure><img src="../.gitbook/assets/camera-wrist.png" alt="Wrist camera"><figcaption><p>Figure 16. Wrist camera.</p></figcaption></figure></div>
+<div><figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/camera-front.png" alt="Front camera"><figcaption><p>Figure 13. Front camera.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/camera-side.png" alt="Side camera"><figcaption><p>Figure 14. Side camera.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/camera-top.png" alt="Top camera"><figcaption><p>Figure 15. Top camera.</p></figcaption></figure> <figure><img src="https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class08/figures/source/camera-wrist.png" alt="Wrist camera"><figcaption><p>Figure 16. Wrist camera.</p></figcaption></figure></div>
 
 The scene has four cameras. `front`, `side` and `top` are fixed; `wrist` moves with the gripper. Each renders 640 × 480 images, the image size of the course datasets.
 

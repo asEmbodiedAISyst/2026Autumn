@@ -26,7 +26,7 @@ A simulation is useful relative to a declared mechanism, input, operating condit
 
 The evaluation tests whether a frozen simulation model improves position prediction for fixture, controller, and motion combinations excluded from parameter fitting.
 
-![Figure 1. Notation key for the fixture configurations, controller conditions, episode identifiers, and trace names.](../.gitbook/assets/experiment_language.png)
+![Figure 1. Notation key for the fixture configurations, controller conditions, episode identifiers, and trace names.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/experiment_language.png)
 
 Figure 1 is the shared vocabulary for the record:
 
@@ -86,7 +86,7 @@ Raw XC330 P/I/D register numbers are not automatically physical SI gains. The `K
 
 The asMagic recording documents physical motion for the held-out B1/H2 composite episode `B1__H2__P06_heldout_composite__R01`. It provides fixture context for the motor-side record and is not used as a joint-angle measurement.
 
-![Figure 2. Physical B1/H2 composite motion recorded by asMagic.](../.gitbook/assets/asmagic_b1_h2_p06_motion_grid.png)
+![Figure 2. Physical B1/H2 composite motion recorded by asMagic.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/asmagic_b1_h2_p06_motion_grid.png)
 
 The video, before-motion photograph, command record, telemetry record, and replay trace share the same episode identifier. This maintains the connection between visible hardware motion and the numerical comparison without treating video frames as calibrated motion capture.
 
@@ -94,7 +94,7 @@ The motion profiles have distinct decision roles.
 
 ### Seven trajectories, three roles
 
-![The seven commanded position profiles, coloured by their role.](../.gitbook/assets/rs06_profiles.png)
+![The seven commanded position profiles, coloured by their role.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/rs06/rs06_profiles.png)
 
 _Figure 3. The seven commanded position profiles, coloured by their role._
 
@@ -110,7 +110,7 @@ The data are opened in that order. Calibration establishes candidate parameters;
 
 The B1 and G1 hardware fixtures, their MuJoCo representations, and the B1/H2 held-out replay document the declared geometry, loading conditions, and position comparison.
 
-![Figure 4. B1 and G1 hardware fixtures, corresponding MuJoCo models, and the B1/H2 held-out position replay.](../.gitbook/assets/physical_and_simulation_configurations.png)
+![Figure 4. B1 and G1 hardware fixtures, corresponding MuJoCo models, and the B1/H2 held-out position replay.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/physical_and_simulation_configurations.png)
 
 ## What is compared
 
@@ -168,7 +168,7 @@ Four bounded starts are fitted independently for H1 and H2 on the calibration pr
 
 Neither selected H1 nor H2 parameter reaches an upper fitting bound. The terms still remain effective closed-loop parameters, because the position record alone cannot uniquely separate inertia and damping from timing, effort scaling, compliance, or reference interpolation.
 
-![Figure 5. Selected parameter values normalized to the widened fitting intervals. Neither controller fit reaches an upper limit.](../.gitbook/assets/parameter_bounds.png)
+![Figure 5. Selected parameter values normalized to the widened fitting intervals. Neither controller fit reaches an upper limit.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/parameter_bounds.png)
 
 ## Held-out error
 
@@ -184,7 +184,7 @@ The final aggregate is the arithmetic mean of episode RMSE values. Equal episode
 
 The held-out conditions are B1 and G1, which have equal external mass and different gravity loading.
 
-![Figure 6. Held-out fixture callouts. B1 is balanced; G1 has the same external mass but an asymmetric gravity load.](../.gitbook/assets/heldout_fixture_callouts.png)
+![Figure 6. Held-out fixture callouts. B1 is balanced; G1 has the same external mass but an asymmetric gravity load.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/heldout_fixture_callouts.png)
 
 | Fixture | Controller | Episodes | Baseline mean RMSE (rad) | Fitted mean RMSE (rad) |
 | ------- | ---------- | -------: | -----------------------: | ---------------------: |
@@ -198,7 +198,7 @@ Across all 30 held-out episodes, the frozen hardware-fitted replay reduces the m
 
 The asymmetric G1 condition remains harder to predict than B1, especially under H1.
 
-![Figure 7. Held-out mean episode position RMSE for the synthetic baseline and frozen hardware fit.](../.gitbook/assets/heldout_error_overview.png)
+![Figure 7. Held-out mean episode position RMSE for the synthetic baseline and frozen hardware fit.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/heldout_error_overview.png)
 
 The largest fitted held-out error occurs in `G1__H1__P07_heldout_sine_hold__R01`: fitted RMSE is 0.026859 rad and baseline RMSE is 0.029262 rad. The fitted replay improves the trace but leaves a directional residual bias of about -0.0171 rad. This observation is evidence of remaining mismatch, not a unique identification of its cause.
 
@@ -206,7 +206,7 @@ The largest fitted held-out error occurs in `G1__H1__P07_heldout_sine_hold__R01`
 
 The B1/H2 composite episode did not influence parameter fitting or candidate selection. Its hardware-fitted replay has an RMSE of 0.002743 rad, compared with 0.010119 rad for the synthetic baseline.
 
-![Figure 8. Recorded inner reference, measured position, and frozen hardware-fitted replay for the held-out B1/H2 composite episode.](../.gitbook/assets/good_heldout_episode.png)
+![Figure 8. Recorded inner reference, measured position, and frozen hardware-fitted replay for the held-out B1/H2 composite episode.](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class04/figures/source/good_heldout_episode.png)
 
 The signal definitions are:
 
