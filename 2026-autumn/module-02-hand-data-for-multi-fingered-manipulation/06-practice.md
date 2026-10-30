@@ -52,7 +52,7 @@ Keep the terminal in the standalone folder.
 On Linux, launch a fresh `model_400.pt` rollout in the supplied full MJLab task:
 
 ```bash
-uv run python simulation/run_exact_mjlab_yaw.py --device cpu
+uv run python simulation/run_yaw_rotation.py
 ```
 
 This is the real policy/environment loop, not a recording. It opens MJLab's interactive MuJoCo viewer and runs task `Mjlab-Leap-Right-HandCube-MBZUAI-Rotate` with seed 11. The first run creates the separate Python 3.10 training environment and therefore downloads a substantially larger simulation stack. Use `--device cuda:0` on a compatible NVIDIA workstation.
