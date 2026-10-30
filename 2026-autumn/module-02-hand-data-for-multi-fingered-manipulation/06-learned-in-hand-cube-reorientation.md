@@ -12,14 +12,14 @@ This class examines the **proprioceptive continuous-positive-Z rotation task**. 
 
 By the end of this class, you should be able to:
 
-- Explain how LEAP joint anatomy permits changing fingertip contacts while preserving support.
-- Map named joint commands and measurements between the reported model and hardware orders.
-- Connect joint targets, actuator response and an angular-first contact wrench to cube motion.
-- Explain the declared 320-input/16-output history-based policy and distinguish learning from execution.
-- Interpret simulation frames, assisted physical frames and motor/training diagnostics as different evidence.
-- Justify a bounded trial claim and identify the object measurement needed to test rotation.
+* Explain how LEAP joint anatomy permits changing fingertip contacts while preserving support.
+* Map named joint commands and measurements between the reported model and hardware orders.
+* Connect joint targets, actuator response and an angular-first contact wrench to cube motion.
+* Explain the declared 320-input/16-output history-based policy and distinguish learning from execution.
+* Interpret simulation frames, assisted physical frames and motor/training diagnostics as different evidence.
+* Justify a bounded trial claim and identify the object measurement needed to test rotation.
 
-[Lecture](#start-with-the-hand-cube-and-task) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](06-learned-in-hand-cube-reorientation.md#start-with-the-hand-cube-and-task) · [Instructor and TA demonstration](06-learned-in-hand-cube-reorientation.md#instructor-and-ta-demonstration) · [Student activity](06-learned-in-hand-cube-reorientation.md#student-activity)
 
 The lecture supplies the control and evidence interpretation; the separate [Class 06 practice](06-practice.md) provides a downloadable, runnable package. Students can view the exact stable full-MJLab continuous-yaw trajectory cross-platform, reproduce a fresh rollout in the supplied original environment on a compatible Linux workstation, and study the complete training source. Powered LEAP Hand execution is an optional, supervised TA route after a mandatory shadow pass.
 
@@ -29,16 +29,16 @@ The physical question is continuous rotation about the declared positive-Z direc
 
 Before measuring signed progress, identify the frame whose Z axis defines the task and its positive direction. Clockwise motion in a camera image depends on viewpoint. The supplied task/configuration and portable viewer establish world positive Z and report unwrapped object yaw; the task name alone would not define a measurable success criterion.
 
-| Component | Source-declared contract |
-|---|---|
-| Hand | Right LEAP Hand; three fingers and an opposing thumb; sixteen independently commanded joints |
-| Actuators | Sixteen XC330 position-controlled DYNAMIXEL actuators |
-| Object | MBZUAI cube, 58 mm per side, nominal mass 85 g |
-| Policy rate | Nominal 20 Hz, one target update per 50 ms |
-| Simulation timing | 5 ms MuJoCo step with decimation ten |
-| Observation | Ten samples containing sixteen joint positions and sixteen previous commands: 320 scalars |
-| Action | Sixteen desired joint positions, subsequently clipped and increment-limited by the bridge |
-| Camera | Documentary recording, excluded from the actor observations |
+| Component         | Source-declared contract                                                                     |
+| ----------------- | -------------------------------------------------------------------------------------------- |
+| Hand              | Right LEAP Hand; three fingers and an opposing thumb; sixteen independently commanded joints |
+| Actuators         | Sixteen XC330 position-controlled DYNAMIXEL actuators                                        |
+| Object            | MBZUAI cube, 58 mm per side, nominal mass 85 g                                               |
+| Policy rate       | Nominal 20 Hz, one target update per 50 ms                                                   |
+| Simulation timing | 5 ms MuJoCo step with decimation ten                                                         |
+| Observation       | Ten samples containing sixteen joint positions and sixteen previous commands: 320 scalars    |
+| Action            | Sixteen desired joint positions, subsequently clipped and increment-limited by the bridge    |
+| Camera            | Documentary recording, excluded from the actor observations                                  |
 
 Classes 02–04 distinguished a requested quantity, measured response and model prediction. Class 05 then separated shared infrastructure from connected mechanics. The hand now adds contact: actuator response changes a fingertip's interaction with the cube, which changes the load seen by other joints. An independent-fixture actuator fit is useful evidence about one part of this loop, but it cannot identify the complete grasp.
 
@@ -50,9 +50,9 @@ Keep three questions visible throughout the case: did the actuators follow their
 
 Human joint names help explain where motion occurs, but a robot's identifiers define its actual software contract. MCP means metacarpophalangeal, the main finger knuckle. PIP and DIP are the proximal and distal interphalangeal hinges. CMC identifies the thumb's carpometacarpal base, and IP its distal interphalangeal hinge.
 
-![Original LEAP Hand kinematic-design figure](../resources/class06/figures/leap-anatomy-source.png)
+![Original LEAP Hand kinematic-design figure](../.gitbook/assets/leap-anatomy-source.png)
 
-*Figure 1. Human joint terminology and the LEAP Hand's powered axes, reproduced from Shaw, Agarwal, and Pathak (2023), [Figure 4](https://arxiv.org/html/2309.06440#S3.F4). The paper credits its human-hand panel to its reference 60. Original source labels are retained. The robot has three fingers and a thumb; the human schematic has five digits. The course model's names and ordering below are a separate contract.*
+_Figure 1. Human joint terminology and the LEAP Hand's powered axes, reproduced from Shaw, Agarwal, and Pathak (2023),_ [_Figure 4_](https://arxiv.org/html/2309.06440#S3.F4)_. The paper credits its human-hand panel to its reference 60. Original source labels are retained. The robot has three fingers and a thumb; the human schematic has five digits. The course model's names and ordering below are a separate contract._
 
 LEAP approximates the useful knuckle motions with two powered axes. The second MCP-related axis is arranged relative to the flexing finger, preserving a useful motion direction when the finger is extended or flexed. A digit can then change its contact direction while the others maintain support. Its visible effect depends on pose; describing it only as opening the finger sideways misses this role in manipulation.
 
@@ -62,12 +62,12 @@ This is a joint-actuated mechanism. Gear response, joint compliance, fingertip d
 
 The custom right-hand model uses these exact joint identifiers. Their order is not inferred from the labels in Figure 1.
 
-| Digit | Model chain from palm toward tip | Physical reading |
-|---|---|---|
-| Index | `if_mcp`, `if_rot`, `if_pip`, `if_dip` | Knuckle flexion, second MCP-related axis, middle hinge, distal hinge |
-| Middle | `mf_mcp`, `mf_rot`, `mf_pip`, `mf_dip` | Same four-stage pattern |
-| Ring | `rf_mcp`, `rf_rot`, `rf_pip`, `rf_dip` | Same four-stage pattern |
-| Thumb | `th_cmc`, `th_axl`, `th_mcp`, `th_ipl` | Base placement, axial motion, knuckle flexion, distal hinge |
+| Digit  | Model chain from palm toward tip       | Physical reading                                                     |
+| ------ | -------------------------------------- | -------------------------------------------------------------------- |
+| Index  | `if_mcp`, `if_rot`, `if_pip`, `if_dip` | Knuckle flexion, second MCP-related axis, middle hinge, distal hinge |
+| Middle | `mf_mcp`, `mf_rot`, `mf_pip`, `mf_dip` | Same four-stage pattern                                              |
+| Ring   | `rf_mcp`, `rf_rot`, `rf_pip`, `rf_dip` | Same four-stage pattern                                              |
+| Thumb  | `th_cmc`, `th_axl`, `th_mcp`, `th_ipl` | Base placement, axial motion, knuckle flexion, distal hinge          |
 
 The prefixes `if_`, `mf_`, `rf_` and `th_` identify index, middle, ring and thumb. The suffix `rot` is the second MCP-related axis of a non-thumb digit; `axl` is the thumb axial axis. The spelling `th_ipl` is the model's exact identifier, including its final `l`. A familiar anatomical name does not guarantee an identical frame, axis sign or array position in another model.
 
@@ -79,12 +79,12 @@ A coordinated `*_mcp` and `*_rot` change can move a fingertip around the cube; `
 
 The source declares two sixteen-joint orders. The custom model/policy order begins each non-thumb digit with MCP flexion followed by the second axis. The reported hardware order swaps those first two entries. The thumb order is unchanged.
 
-| Zero-based positions | Canonical model order | Reported hardware order |
-|---|---|---|
-| 0–3 | `if_mcp`, `if_rot`, `if_pip`, `if_dip` | `if_rot`, `if_mcp`, `if_pip`, `if_dip` |
-| 4–7 | `mf_mcp`, `mf_rot`, `mf_pip`, `mf_dip` | `mf_rot`, `mf_mcp`, `mf_pip`, `mf_dip` |
-| 8–11 | `rf_mcp`, `rf_rot`, `rf_pip`, `rf_dip` | `rf_rot`, `rf_mcp`, `rf_pip`, `rf_dip` |
-| 12–15 | `th_cmc`, `th_axl`, `th_mcp`, `th_ipl` | `th_cmc`, `th_axl`, `th_mcp`, `th_ipl` |
+| Zero-based positions | Canonical model order                  | Reported hardware order                |
+| -------------------- | -------------------------------------- | -------------------------------------- |
+| 0–3                  | `if_mcp`, `if_rot`, `if_pip`, `if_dip` | `if_rot`, `if_mcp`, `if_pip`, `if_dip` |
+| 4–7                  | `mf_mcp`, `mf_rot`, `mf_pip`, `mf_dip` | `mf_rot`, `mf_mcp`, `mf_pip`, `mf_dip` |
+| 8–11                 | `rf_mcp`, `rf_rot`, `rf_pip`, `rf_dip` | `rf_rot`, `rf_mcp`, `rf_pip`, `rf_dip` |
+| 12–15                | `th_cmc`, `th_axl`, `th_mcp`, `th_ipl` | `th_cmc`, `th_axl`, `th_mcp`, `th_ipl` |
 
 Let $$P$$ be the 16-by-16 permutation selecting canonical entries in the zero-based order `[1,0,2,3,5,4,6,7,9,8,10,11,12,13,14,15]`. For target vector $$\mathbf u$$ and measured position vector $$\mathbf q$$, both in radians,
 
@@ -104,12 +104,12 @@ Both paths matter. Reordering commands while leaving measurements in hardware or
 
 The report declares the following deployment ranges. They are controller limits, rather than a complete measurement of the hand's mechanically reachable configurations.
 
-| Joint group | Reported range, rad |
-|---|---|
-| `if/mf/rf_mcp`, `if/mf/rf_pip`, `if/mf/rf_dip` | −0.2618 to 1.9199 |
-| `if/mf/rf_rot` | −0.5236 to 0.5236 |
-| `th_cmc`, `th_axl` | 0 to 1.571 |
-| `th_mcp`, `th_ipl` | −0.3491 to 1.7453 |
+| Joint group                                    | Reported range, rad |
+| ---------------------------------------------- | ------------------- |
+| `if/mf/rf_mcp`, `if/mf/rf_pip`, `if/mf/rf_dip` | −0.2618 to 1.9199   |
+| `if/mf/rf_rot`                                 | −0.5236 to 0.5236   |
+| `th_cmc`, `th_axl`                             | 0 to 1.571          |
+| `th_mcp`, `th_ipl`                             | −0.3491 to 1.7453   |
 
 The source describes applying limits after conversion to hardware order, with an additional deployment margin. A limit array must therefore follow the same names and ordering as its command array. These declared limits do not replace checking the bridge, model revision, sign convention and measured starting pose.
 
@@ -153,11 +153,11 @@ Here $$H$$ is generalized inertia, $$C=c+g$$ contains rigid-body velocity bias a
 
 Class 05's sixteen-actuator record shares communication and supply infrastructure while keeping fixtures mechanically independent. Its response models can reduce an actuator-model discrepancy. They do not identify fingertip deformation, cube friction, inter-finger collision, grasp reset or contact transients.
 
-| Record | Declared quantities | Interpretation |
-|---|---|---|
-| H1 replay-controller map | Proportional coefficient 1.579836 N m/rad; velocity coefficient 0.202115 N m s/rad | Fixed engineering-mapped controller coefficients |
-| Independent-fixture identification | Effective armature, damping and friction | Fitted mechanical-response terms for that experiment boundary |
-| Archived custom hand XML | Position `kp=3.0`, actuator `kv=0.01`, separate joint `damping=0.03` | Source model defaults; active overrides remain unverified |
+| Record                             | Declared quantities                                                                | Interpretation                                                |
+| ---------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| H1 replay-controller map           | Proportional coefficient 1.579836 N m/rad; velocity coefficient 0.202115 N m s/rad | Fixed engineering-mapped controller coefficients              |
+| Independent-fixture identification | Effective armature, damping and friction                                           | Fitted mechanical-response terms for that experiment boundary |
+| Archived custom hand XML           | Position `kp=3.0`, actuator `kv=0.01`, separate joint `damping=0.03`               | Source model defaults; active overrides remain unverified     |
 
 The H1 coefficients are not fitted mechanical parameters. Their numerical relationship to firmware settings follows the declared engineering map; it does not establish equivalence to the active hand controller. The source's gain description and archived XML are different records. The actual training and deployment model, firmware settings, passive terms, effort limits and runtime overrides must be reconciled before claiming the same actuator model was used throughout.
 
@@ -188,24 +188,24 @@ Reinforcement learning optimizes policy weights through interaction and reward f
 
 The training parameters for the continuous-yaw task are:
 
-| Parameter | Specification |
-|---|---|
-| Actor and critic architecture | ELU multilayer perceptrons with hidden layers [512, 512, 256] |
-| Training algorithm | Proximal Policy Optimization (PPO) |
-| Initial action noise ($\sigma$) | 0.7 |
-| Discount factor ($\gamma$) | 0.99 |
-| GAE parameter ($\lambda$) | 0.95 |
-| Training iterations | 3,000 |
-| Parallel simulation environments | 8,190 |
-| Deployment checkpoint | `model_400.pt` |
+| Parameter                        | Specification                                                  |
+| -------------------------------- | -------------------------------------------------------------- |
+| Actor and critic architecture    | ELU multilayer perceptrons with hidden layers \[512, 512, 256] |
+| Training algorithm               | Proximal Policy Optimization (PPO)                             |
+| Initial action noise ($\sigma$)  | 0.7                                                            |
+| Discount factor ($\gamma$)       | 0.99                                                           |
+| GAE parameter ($\lambda$)        | 0.95                                                           |
+| Training iterations              | 3,000                                                          |
+| Parallel simulation environments | 8,190                                                          |
+| Deployment checkpoint            | `model_400.pt`                                                 |
 
 These parameters correspond to the configuration files, network definitions, and exported weights provided in the practice package.
 
 Domain randomization varies surface friction, object dimensions, mass, actuator gains, and external disturbances across the parallel environments, training the actor to remain robust across modeling discrepancies.
 
-![PPO training diagnostics for continuous in-hand rotation](../resources/class06/figures/source/fig11_training_diagnostics_job16352.png)
+![PPO training diagnostics for continuous in-hand rotation](../.gitbook/assets/fig11_training_diagnostics_job16352.png)
 
-*Figure 2. PPO training curves showing policy reward, rotation progress, fingertip-contact fraction, termination metrics, and simulation throughput across iterations.*
+_Figure 2. PPO training curves showing policy reward, rotation progress, fingertip-contact fraction, termination metrics, and simulation throughput across iterations._
 
 Tracking rotation progress and fingertip contact alongside cumulative reward isolates task success from auxiliary regularization penalties. The rotation progress metric verifies that the hand learns coordinated gaiting rather than static holding.
 
@@ -213,9 +213,9 @@ Tracking rotation progress and fingertip contact alongside cumulative reward iso
 
 The [simulation recording (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/practical/additional_material/evidence/videos/continuous_z_model400_preview_30s.mp4) demonstrates the 30-second continuous-yaw trajectory generated by `model_400.pt`. The sequence illustrates how digits alternate between support and repositioning to rotate the cube about the world positive-Z axis.
 
-![Simulation frames during continuous positive-Z rotation](../resources/class06/figures/source/fig06_simulation_continuous_z_sequence.png)
+![Simulation frames during continuous positive-Z rotation](../.gitbook/assets/fig06_simulation_continuous_z_sequence.png)
 
-*Figure 3. Sequential video frames sampled across the 30-second MuJoCo simulation under `model_400.pt`, illustrating the cyclic finger-gait sequence during continuous positive-Z cube rotation.*
+_Figure 3. Sequential video frames sampled across the 30-second MuJoCo simulation under `model_400.pt`, illustrating the cyclic finger-gait sequence during continuous positive-Z cube rotation._
 
 ## Read the physical trial and motor diagnostics
 
@@ -223,9 +223,9 @@ The [simulation recording (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/
 
 The [hardware deployment recording (MP4)](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class06/practical/additional_material/evidence/videos/rgb.mp4) documents the physical right LEAP Hand executing continuous cube yaw rotation. The sequence demonstrates contact transitions, fingertip repositioning, and in-hand stability.
 
-![Physical LEAP Hand trial filmstrip](../resources/class06/figures/source/fig07_hardware_continuous_z_sequence.png)
+![Physical LEAP Hand trial filmstrip](../.gitbook/assets/fig07_hardware_continuous_z_sequence.png)
 
-*Figure 4. Sequential video frames from the physical LEAP Hand trial, demonstrating finger contact gaits and cube retention during in-hand rotation.*
+_Figure 4. Sequential video frames from the physical LEAP Hand trial, demonstrating finger contact gaits and cube retention during in-hand rotation._
 
 Documentary video provides visual validation of retention and contact timing, complementing quantitative motor telemetry.
 
@@ -233,31 +233,31 @@ Documentary video provides visual validation of retention and contact timing, co
 
 Figure 5 tracks the four core deployment diagnostics across 1,200 steps (60 s): motor current (mA), joint tracking error (rad), motor temperature (°C), and bridge computation time (ms).
 
-![Motor-side deployment telemetry](../resources/class06/figures/source/fig08_measured_60s_safety_telemetry.png)
+![Motor-side deployment telemetry](../.gitbook/assets/fig08_measured_60s_safety_telemetry.png)
 
-*Figure 5. Real-time safety telemetry across 1,200 policy steps, showing maximum motor current, joint tracking error, actuator temperature, and loop execution time relative to abort thresholds.*
+_Figure 5. Real-time safety telemetry across 1,200 policy steps, showing maximum motor current, joint tracking error, actuator temperature, and loop execution time relative to abort thresholds._
 
 Current telemetry measures electrical load, while tracking error evaluates actuator responsiveness against commanded targets. Both metrics confirm that the hand operates comfortably within its mechanical and thermal limits.
 
-![Joint-target and measured-position tracking](../resources/class06/figures/source/fig09_measured_joint_tracking.png)
+![Joint-target and measured-position tracking](../.gitbook/assets/fig09_measured_joint_tracking.png)
 
-*Figure 6. Commanded position targets (rad) versus measured encoder positions across representative joints (index, middle, ring PIP, and thumb MCP) over 1,200 policy steps.*
+_Figure 6. Commanded position targets (rad) versus measured encoder positions across representative joints (index, middle, ring PIP, and thumb MCP) over 1,200 policy steps._
 
 Accurate joint tracking demonstrates that the low-level position controller reliably tracks the 20 Hz policy increments.
 
-![Staged deployment diagnostic summary](../resources/class06/figures/source/fig10_deployment_summary.png)
+![Staged deployment diagnostic summary](../.gitbook/assets/fig10_deployment_summary.png)
 
-*Figure 7. Summary of peak current, joint tracking error, and operating temperature across progressive deployment stages (20-step verification, 120-step trial, and 1,200-step full run).*
+_Figure 7. Summary of peak current, joint tracking error, and operating temperature across progressive deployment stages (20-step verification, 120-step trial, and 1,200-step full run)._
 
 ### Hardware safety guards and thresholds
 
-| Guard parameter | Threshold | Safety role |
-|---|---:|---|
-| Current abort | 500 mA | Prevents sustained high-load torques and motor stalls |
-| Temperature abort | 65 °C | Protects actuator windings and electronics from thermal buildup |
-| Velocity abort | 8 rad/s | Catches runaway commands or unintended fast motions |
-| Tracking-error abort | 0.65 rad | Aborts if external resistance prevents expected articulation |
-| Command-increment limit | 0.05 rad | Smooths policy transitions and bounds instantaneous reference changes |
+| Guard parameter         | Threshold | Safety role                                                           |
+| ----------------------- | --------: | --------------------------------------------------------------------- |
+| Current abort           |    500 mA | Prevents sustained high-load torques and motor stalls                 |
+| Temperature abort       |     65 °C | Protects actuator windings and electronics from thermal buildup       |
+| Velocity abort          |   8 rad/s | Catches runaway commands or unintended fast motions                   |
+| Tracking-error abort    |  0.65 rad | Aborts if external resistance prevents expected articulation          |
+| Command-increment limit |  0.05 rad | Smooths policy transitions and bounds instantaneous reference changes |
 
 These software-level guards, combined with a physical emergency cutoff switch, ensure safe operation during multi-fingered hardware experiments.
 
@@ -290,7 +290,7 @@ The natural next question is how to observe the cube itself. Calibrated fiducial
 
 ## References
 
-Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. [Spatial-vector resources](https://royfeatherstone.org/spatial/v2/index.html).
+Featherstone, Roy. 2008. _Rigid Body Dynamics Algorithms_. Springer. [Spatial-vector resources](https://royfeatherstone.org/spatial/v2/index.html).
 
 HALWANI, Mohamed. 2026. “Learned Continuous In-Hand Cube Yaw Rotation with a LEAP Hand.” ROB7103/8103 course experiment collection. Includes the custom right-hand model, declared deployment workflow, checkpoint and actor export, original MJLab task/training source, and simulation/physical/training diagnostic figures.
 

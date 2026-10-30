@@ -2,23 +2,23 @@
 description: Class 04 student practice · quantify the B0 Sim2Real gap with recorded data
 ---
 
-# Class 04 — Practice: quantify the B0 Sim2Real gap
+# Practice: quantify the B0 Sim2Real gap
 
 This is the simulation-only student activity for Class 04. It replays supplied B0/H2 measurement records in MuJoCo, fits effective parameters, and evaluates the frozen model on held-out records.
 
 ## The experiment at a glance
 
-| Stage | Episodes | Purpose |
-| --- | --- | --- |
-| Calibration | P01–P05, R01–R02 | select effective damping and armature from 10 recorded B0/H2 episodes |
-| Validation | P01–P05, R03 | evaluate the frozen model on 5 B0/H2 episodes not used for fitting |
-| Visual replay | P04 chirp, R03 | inspect one held-out episode in MuJoCo and the comparison dashboard |
+| Stage         | Episodes         | Purpose                                                               |
+| ------------- | ---------------- | --------------------------------------------------------------------- |
+| Calibration   | P01–P05, R01–R02 | select effective damping and armature from 10 recorded B0/H2 episodes |
+| Validation    | P01–P05, R03     | evaluate the frozen model on 5 B0/H2 episodes not used for fitting    |
+| Visual replay | P04 chirp, R03   | inspect one held-out episode in MuJoCo and the comparison dashboard   |
 
-![The recorded data split for the B0 identification experiment](../resources/class04/figures/source/data-split.png)
+![The recorded data split for the B0 identification experiment](../.gitbook/assets/data-split.png)
 
-*Figure 1. R01 and R02 calibrate the effective replay parameters; R03 stays held out until validation.*
+_Figure 1. R01 and R02 calibrate the effective replay parameters; R03 stays held out until validation._
 
-## 1. Prepare the student environment
+## Prepare the student environment
 
 From the repository root, enter the Class 04 standalone activity and create its locked Python environment:
 
@@ -30,13 +30,13 @@ uv run pytest
 
 Keep this terminal in the standalone directory for the rest of the activity. The supplied files contain the B0 MuJoCo model, mesh assets, recorded measurement data for all 15 episodes, replay code, and analysis tools.
 
-## 2. Identify the data split
+## Identify the data split
 
 The B0 record describes a 22 g link and two 44 g pin–payload assemblies:
 
-```math
+$$
 m_{ext}=0.022+2(0.044)=0.110\ \mathrm{kg}.
-```
+$$
 
 The recorded B0/H2 dataset contains five profiles (P01–P05), each repeated three times. R01 and R02 are calibration data. R03 is the held-out validation data and must not be used to choose the parameters.
 
@@ -46,7 +46,7 @@ find data/v5_h2_full -mindepth 1 -maxdepth 1 -type d | sort
 
 The command should list 15 episode directories.
 
-## 3. Preview the simulation
+## Preview the simulation
 
 ```bash
 uv run python simulation_only/b0_identification.py --preview-viewer
@@ -54,7 +54,7 @@ uv run python simulation_only/b0_identification.py --preview-viewer
 
 This opens an animated B0 MuJoCo preview immediately. Close the viewer window to return to the terminal.
 
-## 4. Run the full identification experiment
+## Run the full identification experiment
 
 ```bash
 uv run python simulation_only/b0_identification.py --playback-speed 0.5
@@ -64,9 +64,9 @@ The program loads all 15 supplied measurement records, fits effective damping an
 
 During the visual comparison: cyan is the recorded measurement, gray dashed is the baseline model, orange is the identified model, and red is the post-identification position residual.
 
-![Before-and-after B0 identification results](../resources/class04/figures/source/b0_full_h2_before_after_summary.png)
+![Before-and-after B0 identification results](../.gitbook/assets/b0_full_h2_before_after_summary.png)
 
-## 5. Read the validation result
+## Read the validation result
 
 The run saves its analysis in `outputs/`. Inspect the held-out rows and their mean RMSE:
 
@@ -78,7 +78,7 @@ Compare the baseline RMSE and identified-model RMSE for every R03 episode, then 
 
 The conclusion is limited to the B0 record, H2 condition, logged reference, five motion profiles, and recorded timing. The fitted damping and armature are effective replay parameters, not independently identified motor constants.
 
-## 6. Run without graphical windows
+## Run without graphical windows
 
 ```bash
 uv run python simulation_only/b0_identification.py --no-viewer --save-only --playback-speed 100

@@ -19,14 +19,14 @@
 ## Module 02: Hand Data for Multi-Fingered Manipulation
 
 * [05 From Single-Actuator to Multi-Actuator](module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator.md)
-  * [Practice: from one actuator to sixteen](module-02-hand-data-for-multi-fingered-manipulation/05-practice.md)
+  * [Practice: from one actuator to sixteen](module-02-hand-data-for-multi-fingered-manipulation/05-from-single-actuator-to-multi-actuator/practice-from-one-actuator-to-sixteen.md)
 * [06 Learned Continuous In-Hand Cube Yaw Rotation](module-02-hand-data-for-multi-fingered-manipulation/06-learned-in-hand-cube-reorientation.md)
   * [Practice: continuous in-hand cube yaw](module-02-hand-data-for-multi-fingered-manipulation/06-practice.md)
 * [07 Rotating a Cube with Visual Feedback](module-02-hand-data-for-multi-fingered-manipulation/07-rotating-a-cube-with-visual-feedback.md)
 
 ## Module 03: Arm Data for Guided Interaction
 
-* [08 Let's build a simple arm and turn it on](module-03-arm-data-for-guided-interaction/08-lets-build-a-simple-arm-and-turn-it-on.md)
+* [08 Let's Build a Simple Arm and Turn It On](module-03-arm-data-for-guided-interaction/08-lets-build-a-simple-arm-and-turn-it-on.md)
   * [Practice: control the arm in simulation](module-03-arm-data-for-guided-interaction/08-practice.md)
   * [Optional: assembly guide](module-03-arm-data-for-guided-interaction/08-assembly-optional.md)
   * [Optional: power-on and zero](module-03-arm-data-for-guided-interaction/08-power-on-and-zero-optional.md)
@@ -55,7 +55,5 @@
 * [20 Final Video Submission](module-05-final-project-submissions/20-final-video-submission.md)
 
 ## Final Class
-
-***
 
 * [21 Final Project Showcase](21-final-project-showcase.md)

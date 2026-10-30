@@ -14,13 +14,13 @@ We use the author's sixteen-XC330-M288-T V5 campaign to examine this transition.
 
 By the end of this class, you should be able to:
 
-- Distinguish individual variation, shared-operation effects and mechanical coupling.
-- Read the input, output and physical assumptions of a population actuator model.
-- Explain the role of a neural actuator model without confusing it with a control policy.
-- Compare paired held-out predictions while preserving collection-event grouping.
-- State what encoder and camera records establish, and what calibration they still need.
+* Distinguish individual variation, shared-operation effects and mechanical coupling.
+* Read the input, output and physical assumptions of a population actuator model.
+* Explain the role of a neural actuator model without confusing it with a control policy.
+* Compare paired held-out predictions while preserving collection-event grouping.
+* State what encoder and camera records establish, and what calibration they still need.
 
-[Lecture](#review-the-single-actuator-validation-task) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](05-from-single-actuator-to-multi-actuator.md#review-the-single-actuator-validation-task) · [Instructor and TA demonstration](05-from-single-actuator-to-multi-actuator.md#instructor-and-ta-demonstration) · [Student activity](05-from-single-actuator-to-multi-actuator.md#student-activity)
 
 The figures, worked examples and result tables provide a complete reading and activity route on this page. The main demonstration and activity compare two motors in the sixteen-motor campaign. The earlier single-motor Transformer is a separate worked comparison and optional extension. CAD software, motors, cameras and neural-network training are not required to complete the main activity.
 
@@ -34,17 +34,17 @@ The new questions concern scaling: whether a shared parameter vector predicts ev
 
 For the present campaign, a replay consumes logged internal position and velocity references, advances a model and compares predicted joint position with recorded encoder position. A position tracking error compares a reference with the measured response. A model prediction error compares the simulated response with that measured response. A device can track its reference imperfectly while a model predicts that imperfection well.
 
-| Comparison | Question |
-|---|---|
-| Reference versus encoder | How well did the controlled device track its target? |
+| Comparison                | Question                                                |
+| ------------------------- | ------------------------------------------------------- |
+| Reference versus encoder  | How well did the controlled device track its target?    |
 | Prediction versus encoder | How well did the model reproduce the measured response? |
-| One motor versus another | How does predictive performance vary across identities? |
+| One motor versus another  | How does predictive performance vary across identities? |
 
 A smaller prediction error does not establish that the physical actuator tracks better. We are evaluating a representation of an observed experiment, rather than changing the hardware controller.
 
-![Three levels of validation evidence](../resources/class05/figures/source/evidence_hierarchy.png)
+![Three levels of validation evidence](../.gitbook/assets/evidence_hierarchy.png)
 
-*Figure 1. Source evidence hierarchy: a single fixture, simultaneous independent fixtures and a mechanically coupled robot answer different validation questions. Moving to the next level requires evidence about the interactions introduced there; a larger actuator count alone does not supply it.*
+_Figure 1. Source evidence hierarchy: a single fixture, simultaneous independent fixtures and a mechanically coupled robot answer different validation questions. Moving to the next level requires evidence about the interactions introduced there; a larger actuator count alone does not supply it._
 
 ### Preserve fixture identity
 
@@ -54,13 +54,13 @@ Preserve the dataset-to-model mapping instead of changing a mass until totals ag
 
 The source describes five configurations: M0 has no external fixture; B0/B1/B2 are balanced arrangements; G1 adds an asymmetric gravity load. The physical array uses two rows and opposing faces, with declared 270 mm spacing on one face, a 135 mm offset on the other, and 500 mm between rows. These dimensions describe the source arrangement, not an independently measured as-built geometry.
 
-![Physical fixtures and combined source simulation](../resources/class05/figures/source/physical_and_combined_simulation.png)
+![Physical fixtures and combined source simulation](<../.gitbook/assets/physical_and_combined_simulation (1).png>)
 
-*Figure 2. Source B2 physical views and a combined sixteen-axis MuJoCo scene. Two camera views are observations of the arrangement, not additional experiments. The scene combines independent fixtures for synchronized execution and visualization; the rack does not supply a flexible-support or electrical model.*
+_Figure 2. Source B2 physical views and a combined sixteen-axis MuJoCo scene. Two camera views are observations of the arrangement, not additional experiments. The scene combines independent fixtures for synchronized execution and visualization; the rack does not supply a flexible-support or electrical model._
 
-![Source physical and simulated configuration gallery](../resources/class05/figures/source/configuration_real_sim_gallery.png)
+![Source physical and simulated configuration gallery](../.gitbook/assets/configuration_real_sim_gallery.png)
 
-*Figure 3. Additional source configuration gallery: two G1 physical views above, with B0/H1 and G1/H2 simulation views below. It supplies physical context for the balanced/asymmetric fixture distinction. Different configurations and camera views are not a matched dynamic validation.*
+_Figure 3. Additional source configuration gallery: two G1 physical views above, with B0/H1 and G1/H2 simulation views below. It supplies physical context for the balanced/asymmetric fixture distinction. Different configurations and camera views are not a matched dynamic validation._
 
 **Checkpoint:** Which conclusion follows from a smaller held-out prediction error: better prediction for the tested records, better physical tracking, or verified component inertia? Explain the evidence needed for each.
 
@@ -87,7 +87,7 @@ H=\begin{bmatrix}0.020&0.004\\0.004&0.010\end{bmatrix}\;\mathrm{kg\,m^2},\qquad
 \ddot q=\begin{bmatrix}0\\2\end{bmatrix}\;\mathrm{rad/s^2}.
 $$
 
-The inertial effort is [0.008, 0.020] N m. Joint 1 needs inertial effort despite having zero acceleration itself. A diagonal approximation would miss the first contribution. These invented values illustrate the matrix operation; they are not measurements of the XC330 fixtures. Gravity, velocity effects, passive terms and contact must also be included when relevant.
+The inertial effort is \[0.008, 0.020] N m. Joint 1 needs inertial effort despite having zero acceleration itself. A diagonal approximation would miss the first contribution. These invented values illustrate the matrix operation; they are not measurements of the XC330 fixtures. Gravity, velocity effects, passive terms and contact must also be included when relevant.
 
 The source combined scene places sixteen independent hinge fixtures on one simulation clock. Its world-fixed topology is a different mechanical model from a connected hand. It does not represent finger-to-finger or object contact.
 
@@ -101,30 +101,30 @@ For independent fixed-axis fixtures, each diagonal entry is its own fixture iner
 
 A physical rack can share supply, communication, collection clocks and environment even when the fixtures have no intended mechanical connection.
 
-| Pathway | Possible observation | Useful next measurement |
-|---|---|---|
-| Communication and scheduling | Several responses begin late together | Command delivery and sample timestamps |
-| Supply | Errors coincide with simultaneous demand | Supply voltage and current at appropriate points |
-| Mounting and load | Error changes after reassembly | Fixture mass, axis, fit and attachment identity |
-| Temperature | Response changes during a session | Device temperature, elapsed operation and load |
+| Pathway                      | Possible observation                     | Useful next measurement                          |
+| ---------------------------- | ---------------------------------------- | ------------------------------------------------ |
+| Communication and scheduling | Several responses begin late together    | Command delivery and sample timestamps           |
+| Supply                       | Errors coincide with simultaneous demand | Supply voltage and current at appropriate points |
+| Mounting and load            | Error changes after reassembly           | Fixture mass, axis, fit and attachment identity  |
+| Temperature                  | Response changes during a session        | Device temperature, elapsed operation and load   |
 
 These are diagnostic possibilities, not established causes in the supplied data. A shared error pattern can motivate a test without identifying its mechanism. Shared temperatures or warm-up history may influence several devices, but physical thermal interaction also depends on their mounting and environment.
 
 To examine simultaneous-operation effects, keep one motor, fixture and command protocol fixed; compare it alone and with the other motors active while measuring timing and supply. To examine identity, swap the motor while holding the fixture and protocol fixed. Changing identity, fixture and controller together prevents a clean interpretation.
 
-![Source shared and local pathways](../resources/class05/figures/source/shared_and_local_effects.png)
+![Source shared and local pathways](../.gitbook/assets/shared_and_local_effects.png)
 
-*Figure 4. Source shared/local-pathway diagram. Host timing, communication, supply and run history can influence several fixtures while each retains its own mechanism and encoder. Correlated responses need not imply mechanical coupling. The replay starts at logged references; it does not reconstruct those shared pathways.*
+_Figure 4. Source shared/local-pathway diagram. Host timing, communication, supply and run history can influence several fixtures while each retains its own mechanism and encoder. Correlated responses need not imply mechanical coupling. The replay starts at logged references; it does not reconstruct those shared pathways._
 
 ### Read the effective controller
 
 The two campaign contexts use different effective position gains, with the same velocity gain and effort bound:
 
-| Model setting | H1 | H2 |
-|---|---:|---:|
-| Position gain, N m/rad | 1.579836 | 2.106448 |
+| Model setting            |       H1 |       H2 |
+| ------------------------ | -------: | -------: |
+| Position gain, N m/rad   | 1.579836 | 2.106448 |
 | Velocity gain, N m s/rad | 0.202115 | 0.202115 |
-| Effort bound, N m | ±0.1551 | ±0.1551 |
+| Effort bound, N m        |  ±0.1551 |  ±0.1551 |
 
 For one hinge, write the position and velocity errors against the simulated state as
 
@@ -177,11 +177,11 @@ The motor 0 declaration in the supplied H1 XML makes this mapping explicit:
 
 The input itself is not clipped to ±0.1551: the example's reference sum can be 0.5143738 N m. The affine bias first subtracts the simulated position/velocity contribution; the force limit then bounds the resulting actuator output. Because `gear="1"`, its output has the same numerical value as the applied generalized joint torque. This is the same affine feedforward/feedback structure used by the current Class 04 source replay, and it differs from the direct-motor interface inspected in Class 03 (MuJoCo developers n.d.-a, n.d.-b).
 
-| Executable example | Meaning of the input slot | Where feedback is calculated |
-|---|---|---|
-| Class 03 XC330 motor | Generalized torque request | No embedded position servo in the supplied structural model |
-| Class 04 source replay | Position/velocity reference sum | Actuator affine bias subtracts simulated position/velocity |
-| Class 05 combined general actuator | Position/velocity reference sum | XML affine bias subtracts simulated position/velocity |
+| Executable example                 | Meaning of the input slot       | Where feedback is calculated                                |
+| ---------------------------------- | ------------------------------- | ----------------------------------------------------------- |
+| Class 03 XC330 motor               | Generalized torque request      | No embedded position servo in the supplied structural model |
+| Class 04 source replay             | Position/velocity reference sum | Actuator affine bias subtracts simulated position/velocity  |
+| Class 05 combined general actuator | Position/velocity reference sum | XML affine bias subtracts simulated position/velocity       |
 
 **Worked input check.** Let the references be 0.3 rad and 0.2 rad/s, with simulated state 0.2 rad and 0.4 rad/s. Using the rounded coefficients actually present in the combined H1 XML,
 
@@ -208,16 +208,16 @@ Effective armature, damping and friction-loss parameters are selected for each m
 
 The authoritative V5 record contains **125 accepted simultaneous science events**. Every event contains sixteen motor records. The split belongs to complete events, preserving shared timing and experimental grouping.
 
-| Event role | Shared events | Motor records | Profiles used |
-|---|---:|---:|---|
-| Calibration | 72 | 1,152 | P01–P03 |
-| Model selection | 23 | 368 | P04–P05 |
-| Held-out evaluation | 30 | 480 | P06–P07 |
-| Total | 125 | 2,000 | Accepted science record |
+| Event role          | Shared events | Motor records | Profiles used           |
+| ------------------- | ------------: | ------------: | ----------------------- |
+| Calibration         |            72 |         1,152 | P01–P03                 |
+| Model selection     |            23 |           368 | P04–P05                 |
+| Held-out evaluation |            30 |           480 | P06–P07                 |
+| Total               |           125 |         2,000 | Accepted science record |
 
-![Source campaign split](../resources/class05/figures/source/campaign_split.png)
+![Source campaign split](../.gitbook/assets/campaign_split.png)
 
-*Figure 5. Source split of the 125 simultaneous events. Each event contains sixteen motor records. The bars retain both counts; a motor record is not another complete execution of the rack.*
+_Figure 5. Source split of the 125 simultaneous events. Each event contains sixteen motor records. The bars retain both counts; a motor record is not another complete execution of the rack._
 
 There are sixteen motor identities and two controller contexts, giving **32 selected parameter vectors**. Two numerical starts per motor/controller pair produce 64 candidate vectors. Calibration estimates candidates, selection error chooses a successful candidate for each pair, and the source freezes those choices before its held-out scoring stage. A saved stage-order declaration is useful provenance; it is not independent proof of prospective hold-out integrity.
 
@@ -229,15 +229,15 @@ The source [event index](https://github.com/asEmbodiedAISyst/2026Autumn/blob/mai
 
 ### Preserve the prediction boundary and scoring rule
 
-The label **synthetic_baseline** identifies a shared supplied parameter vector. It does not mean that a second hardware motor supplied the comparison trajectory. **hardware_fitted** identifies the selected effective model for each motor/controller pair. Both predictions are compared with the same encoder record.
+The label **synthetic\_baseline** identifies a shared supplied parameter vector. It does not mean that a second hardware motor supplied the comparison trajectory. **hardware\_fitted** identifies the selected effective model for each motor/controller pair. Both predictions are compared with the same encoder record.
 
 This comparison changes both hardware calibration and motor-specific parameterization. It establishes improvement of the selected per-motor fits over the supplied synthetic baseline; it does not isolate whether separate motor models are needed or outperform one shared hardware-calibrated model. That question needs a matched shared-fit/per-motor-fit comparison using the same data roles and held-out scoring. The present saved-record activity does not require new fitting.
 
 | Effective parameter | Shared baseline | Selected motor 0 / H1 |
-|---|---:|---:|
-| Armature, kg m² | 0.000998198 | 0.007187994 |
-| Damping, N m s/rad | 0.014961695 | 0.039311835 |
-| Friction loss, N m | 0.010089165 | 0.017770652 |
+| ------------------- | --------------: | --------------------: |
+| Armature, kg m²     |     0.000998198 |           0.007187994 |
+| Damping, N m s/rad  |     0.014961695 |           0.039311835 |
+| Friction loss, N m  |     0.010089165 |           0.017770652 |
 
 For motor record i, use predicted position $$\hat q$$ and encoder position $$y_q$$ in radians:
 
@@ -255,18 +255,18 @@ $$
 Thus 32.0% is a reduction in mean episode position RMSE relative to this baseline. It is not a failure rate, an uncertainty interval or a percentage of physical correctness. It describes model prediction rather than improved physical reference tracking.
 
 | Fixture / controller | Held-out motor records | Baseline RMSE, rad | Fitted RMSE, rad |
-|---|---:|---:|---:|
-| B1 / H1 | 80 | 0.017982 | 0.004901 |
-| B1 / H2 | 80 | 0.012906 | 0.003580 |
-| G1 / H1 | 160 | 0.032471 | 0.024588 |
-| G1 / H2 | 160 | 0.024148 | 0.020186 |
-| All conditions | 480 | 0.024021 | 0.016338 |
+| -------------------- | ---------------------: | -----------------: | ---------------: |
+| B1 / H1              |                     80 |           0.017982 |         0.004901 |
+| B1 / H2              |                     80 |           0.012906 |         0.003580 |
+| G1 / H1              |                    160 |           0.032471 |         0.024588 |
+| G1 / H2              |                    160 |           0.024148 |         0.020186 |
+| All conditions       |                    480 |           0.024021 |         0.016338 |
 
 G1 has larger discrepancy than B1 in this table, and H2 has lower discrepancy than H1. These are observed condition differences. G1 also combines P06 and P07 while B1 uses P06, so the aggregate contrast does not isolate gravity as the cause. Neither comparison establishes a generally superior controller or the cost of simultaneous operation.
 
-![Source per-motor held-out comparison](../resources/class05/figures/source/per_motor_heldout_comparison.png)
+![Source per-motor held-out comparison](../.gitbook/assets/per_motor_heldout_comparison.png)
 
-*Figure 6. Source two-panel heatmap for all sixteen motor identities and both controllers. The upper panel is mean fitted position RMSE in radians; the lower is percentage reduction from each cell's synthetic baseline. Each cell averages fifteen held-out records. Read each panel's own scale; colour darkness is not comparable between the quantities.*
+_Figure 6. Source two-panel heatmap for all sixteen motor identities and both controllers. The upper panel is mean fitted position RMSE in radians; the lower is percentage reduction from each cell's synthetic baseline. Each cell averages fifteen held-out records. Read each panel's own scale; colour darkness is not comparable between the quantities._
 
 All source motor/controller cells improve over their paired baseline, but the remaining error and improvement vary by identity. A shared event can correlate those cells; the image supplies descriptive summaries, not uncertainty intervals or an explanation for the variation.
 
@@ -274,41 +274,41 @@ All source motor/controller cells improve over their paired baseline, but the re
 
 The source's prepared trajectory example is **B1/H2/P06/R01 for motors 0 and 9**. It is a different question from their mixed-condition cell means.
 
-![Source two-motor held-out trajectory](../resources/class05/figures/source/two_motor_heldout_trace.png)
+![Source two-motor held-out trajectory](../.gitbook/assets/two_motor_heldout_trace.png)
 
-*Figure 7. Source B1/H2/P06/R01 trajectory comparison, with motor 0 above motor 9. The plotted quantities are position in radians against episode time in seconds. Both motors share the event identity while retaining their encoders and selected models. This is the author's selected trace, not a newly run comparison.*
+_Figure 7. Source B1/H2/P06/R01 trajectory comparison, with motor 0 above motor 9. The plotted quantities are position in radians against episode time in seconds. Both motors share the event identity while retaining their encoders and selected models. This is the author's selected trace, not a newly run comparison._
 
-| Legend item | Meaning | Comparison to make |
-|---|---|---|
-| Light-grey inner reference | Logged target generated inside the actuator | Compare with encoder to discuss physical tracking |
-| Black encoder | Reported hardware joint position | Measured output used for prediction RMSE |
-| Grey synthetic baseline | Shared baseline simulation prediction | Compare with black to inspect baseline discrepancy |
-| Teal frozen fit | Selected motor-specific prediction | Compare with black to inspect fitted-model discrepancy |
+| Legend item                | Meaning                                     | Comparison to make                                     |
+| -------------------------- | ------------------------------------------- | ------------------------------------------------------ |
+| Light-grey inner reference | Logged target generated inside the actuator | Compare with encoder to discuss physical tracking      |
+| Black encoder              | Reported hardware joint position            | Measured output used for prediction RMSE               |
+| Grey synthetic baseline    | Shared baseline simulation prediction       | Compare with black to inspect baseline discrepancy     |
+| Teal frozen fit            | Selected motor-specific prediction          | Compare with black to inspect fitted-model discrepancy |
 
 Locate a reversal or a region of visible mismatch before reading an aggregate. A teal curve closer to the black encoder supports better prediction in that part of this record. It does not establish a lower physical tracking error or replace the full held-out evaluation. The [source two-motor subset](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class05/practical/additional_material/data/two_motor_heldout_subset.parquet) preserves paired samples; this lesson does not substitute another selected event or a new simulated rollout.
 
 The source also supplies these cell means, over all fifteen held-out records per motor/controller pair:
 
 | Motor / controller | Baseline RMSE, rad | Fitted RMSE, rad | Reduction |
-|---|---:|---:|---:|
-| 0 / H1 | 0.032695 | 0.019939 | 39.01% |
-| 9 / H1 | 0.033266 | 0.021375 | 35.75% |
-| 0 / H2 | 0.024312 | 0.016654 | 31.50% |
-| 9 / H2 | 0.024736 | 0.017582 | 28.92% |
+| ------------------ | -----------------: | ---------------: | --------: |
+| 0 / H1             |           0.032695 |         0.019939 |    39.01% |
+| 9 / H1             |           0.033266 |         0.021375 |    35.75% |
+| 0 / H2             |           0.024312 |         0.016654 |    31.50% |
+| 9 / H2             |           0.024736 |         0.017582 |    28.92% |
 
 For motor 0, H2 has the smaller fitted error but the smaller relative reduction because its baseline is already better. The numbers are not the selected B1 episode's scores. Inspect each motor's timestamps before joining signals; sharing an event identity does not make row indices a synchronization method.
 
 ### Read fitted parameters in their allowed ranges
 
-![Source selected parameter distributions](../resources/class05/figures/source/fit_parameter_distributions.png)
+![Source selected parameter distributions](../.gitbook/assets/fit_parameter_distributions.png)
 
-*Figure 8. Source armature, damping and friction-loss distributions for 32 selected models. Blue circles denote H1 and orange squares H2. The vertical axis is normalized position within each parameter's fitting bounds: zero is the lower bound and one the upper bound. It is not a raw SI parameter value.*
+_Figure 8. Source armature, damping and friction-loss distributions for 32 selected models. Blue circles denote H1 and orange squares H2. The vertical axis is normalized position within each parameter's fitting bounds: zero is the lower bound and one the upper bound. It is not a raw SI parameter value._
 
-| Fitted term | Declared fitting range | Selected range | Selected median |
-|---|---|---|---|
-| Armature | 0.0002–0.010 kg m² | 0.00505–0.00719 kg m² | 0.00603 kg m² |
-| Damping | 0.003–0.150 N m s/rad | 0.03747–0.04806 N m s/rad | 0.04321 N m s/rad |
-| Friction loss | 0.002–0.050 N m | 0.00200–0.02340 N m | Not summarized here |
+| Fitted term   | Declared fitting range | Selected range            | Selected median     |
+| ------------- | ---------------------- | ------------------------- | ------------------- |
+| Armature      | 0.0002–0.010 kg m²     | 0.00505–0.00719 kg m²     | 0.00603 kg m²       |
+| Damping       | 0.003–0.150 N m s/rad  | 0.03747–0.04806 N m s/rad | 0.04321 N m s/rad   |
+| Friction loss | 0.002–0.050 N m        | 0.00200–0.02340 N m       | Not summarized here |
 
 A normalized value of 0.5 means halfway between that term's bounds, not 0.5 kg m² or 0.5 N m. No selected value reaches an upper bound in the source summary. Some friction values are at or near the lower bound; being away from the upper bound is not proof of unique or correct physical parameters.
 
@@ -320,13 +320,13 @@ The campaign scores **encoder position**. The cameras help inspect fixture ident
 
 The source assigns four ArUco markers to each motor n: `{4n, 4n+1, 4n+2, 4n+3}`. Markers `4n` and `4n+1` are the rotating-link pair; `4n+2` and `4n+3` describe configuration. Image-plane angle is not a three-dimensional shaft angle under arbitrary perspective, and normalized marker separation is not a calibrated metric distance.
 
-![Source assigned-view ArUco detections](../resources/class05/figures/source/aruco_assigned_view_detection.png)
+![Source assigned-view ArUco detections](<../.gitbook/assets/aruco_assigned_view_detection (1).png>)
 
-*Figure 9. Source representative assigned-view detections. Outlines and IDs are detector outputs in selected camera frames. They show that markers can be located in those views; they do not supply an all-frame detection rate or calibrated joint-angle ground truth.*
+_Figure 9. Source representative assigned-view detections. Outlines and IDs are detector outputs in selected camera frames. They show that markers can be located in those views; they do not supply an all-frame detection rate or calibrated joint-angle ground truth._
 
-![Source encoder and optical measurement chains](../resources/class05/figures/source/encoder_optical_measurement_chain.png)
+![Source encoder and optical measurement chains](../.gitbook/assets/encoder_optical_measurement_chain.png)
 
-*Figure 10. Source distinction between the scored encoder path and the optical path. Camera intrinsics/distortion, known marker geometry, camera-to-fixture and marker-to-link transforms, joint zero/sign and time alignment are needed before both paths can be compared as joint-angle measurements.*
+_Figure 10. Source distinction between the scored encoder path and the optical path. Camera intrinsics/distortion, known marker geometry, camera-to-fixture and marker-to-link transforms, joint zero/sign and time alignment are needed before both paths can be compared as joint-angle measurements._
 
 A camera-derived angle needs the joint axis and a fixed reference as well as those transforms. Occlusion, pose ambiguity and timing add uncertainty. At approximately constant speed of 1 rad/s, a 40 ms delay alone can create about **0.04 rad** apparent disagreement. This first-order calculation is illustrative; it is not a measured delay in this campaign.
 
@@ -340,9 +340,9 @@ Hwangbo and colleagues' 2019 ANYmal study combined a learned actuator network wi
 
 The more recent **NeuralActuator** study by Dou and colleagues (2026), used in the author's supporting material, employs a temporal Transformer and differentiable simulation. It predicts a torque surrogate for trajectory propagation and, with the required labels, external-force/contact and motor-condition outputs. The published platforms are OpenManipulator-X, SO-101 and Franka Panda. They are distinct from the local XC330 experiment. [Original paper, version 2](https://arxiv.org/abs/2607.11734v2).
 
-![Source NeuralActuator scope](../resources/class05/figures/source/neural_actuator_scope.png)
+![Source NeuralActuator scope](../.gitbook/assets/neural_actuator_scope.png)
 
-*Figure 11. Source NeuralActuator diagram. The blue history, purple Transformer and teal torque-surrogate/rollout path describe the local modeling route. Orange force/contact and motor-condition heads belong to the published multi-task method and require labels unavailable in this XC330 record. They are not local force-perception results.*
+_Figure 11. Source NeuralActuator diagram. The blue history, purple Transformer and teal torque-surrogate/rollout path describe the local modeling route. Orange force/contact and motor-condition heads belong to the published multi-task method and require labels unavailable in this XC330 record. They are not local force-perception results._
 
 A torque surrogate can be learned through pose prediction without independently measured joint torque. That does not turn the surrogate into a calibrated torque sensor. Force and motor-condition claims need their own labels and evaluation.
 
@@ -350,16 +350,16 @@ A torque surrogate can be learned through pose prediction without independently 
 
 The author's local ID-0 example uses two Transformer layers, hidden dimension 64, four attention heads and feed-forward dimension 128. Its eight current features, accompanied by recent history, are:
 
-| Feature order | Source field or construction | Units and source during rollout |
-|---:|---|---|
-| 1 | Command goal from `q_cmd_rad`, with declared center offset | rad; recorded command |
-| 2 | Simulated joint position | rad; simulation state |
-| 3 | Simulated joint velocity | rad/s; simulation state |
-| 4 | `present_current_mA` | mA; recorded telemetry |
-| 5 | `present_pwm_raw` | Raw device counts; recorded telemetry |
-| 6 | `present_input_voltage_V` | V; recorded telemetry |
-| 7 | `present_temperature_C` | °C; recorded telemetry |
-| 8 | Command goal minus simulated position | rad; constructed feature |
+| Feature order | Source field or construction                               | Units and source during rollout       |
+| ------------: | ---------------------------------------------------------- | ------------------------------------- |
+|             1 | Command goal from `q_cmd_rad`, with declared center offset | rad; recorded command                 |
+|             2 | Simulated joint position                                   | rad; simulation state                 |
+|             3 | Simulated joint velocity                                   | rad/s; simulation state               |
+|             4 | `present_current_mA`                                       | mA; recorded telemetry                |
+|             5 | `present_pwm_raw`                                          | Raw device counts; recorded telemetry |
+|             6 | `present_input_voltage_V`                                  | V; recorded telemetry                 |
+|             7 | `present_temperature_C`                                    | °C; recorded telemetry                |
+|             8 | Command goal minus simulated position                      | rad; constructed feature              |
 
 The command goal is not the V5 replay's internal `Position Trajectory`. Let $$q_{d,k}$$ denote that local recorded command and $$z_k^{\mathrm{recorded}}$$ the electrical/status channels. The important dependence is
 
@@ -376,9 +376,9 @@ The surrogate's ±0.93 N m bound also differs from the population replay's ±0.1
 
 ### Keep the earlier single-motor scores separate
 
-![Source earlier single-motor neural comparison](../resources/class05/figures/source/single_motor_neural_comparison.png)
+![Source earlier single-motor neural comparison](../.gitbook/assets/single_motor_neural_comparison.png)
 
-*Figure 12. Source ID-0 full-trajectory comparison on the earlier 5 Hz sine record. Encoder position is the measured reference for the MAE. The neural replay gives 1.4318° and that run's orange parametric comparator 15.3151°. The lower torque trace is a neural surrogate, not independently measured output torque. This is not the sixteen-motor V5 experiment.*
+_Figure 12. Source ID-0 full-trajectory comparison on the earlier 5 Hz sine record. Encoder position is the measured reference for the MAE. The neural replay gives 1.4318° and that run's orange parametric comparator 15.3151°. The lower torque trace is a neural surrogate, not independently measured output torque. This is not the sixteen-motor V5 experiment._
 
 The source [full-trajectory report](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class05/practical/additional_material/neural_actuator/results/xc330_lecture_comparison.json) identifies that earlier case and comparator. A separate saved test summary reports short-window MAE 0.4023° and RMSE 1.4078° over 1,168 rollout samples; the best validation MAE is 0.2729°. These are different aggregates, not alternative values for the plotted full trajectory. The full rollout is initialized once, while short windows are initialized from measured state, so accumulated drift and scored intervals differ.
 
@@ -455,13 +455,13 @@ Use the source four-row motor/controller table, heatmaps, selected B1 trace, and
 4. Read one parameter in Figure 8 against its units and bounds. Propose a measurement that could distinguish a physical-resistance explanation from timing or effort-scaling error.
 5. Write one supported model-use statement and one unresolved transfer or measurement question.
 
-| Field | Required entry |
-|---|---|
+| Field                 | Required entry                                                                         |
+| --------------------- | -------------------------------------------------------------------------------------- |
 | Identity and boundary | Motor IDs, controller, scored encoder output and selected-event versus cell-mean scope |
-| Numerical comparison | Paired model errors, units and one reduction calculation |
-| Grouping | Shared-event count and split rule |
-| Interpretation | Supported observation and unresolved explanation |
-| Next measurement | Quantity, controlled conditions and claim to be tested |
+| Numerical comparison  | Paired model errors, units and one reduction calculation                               |
+| Grouping              | Shared-event count and split rule                                                      |
+| Interpretation        | Supported observation and unresolved explanation                                       |
+| Next measurement      | Quantity, controlled conditions and claim to be tested                                 |
 
 For further practice, use Figure 12 and the eight-feature table to explain the earlier neural result. Identify which inputs come from the command/simulator and which remain recorded physical telemetry. State why the full-trajectory MAE, short-window test score and V5 mean episode RMSE cannot be treated as the same metric or dataset.
 
@@ -473,16 +473,16 @@ For further practice, use Figure 12 and the eight-feature table to explain the e
 
 Dou, Zhiyang, John U. Onyemelukwe, Hangxing Zhang, Heng Zhang, Minghao Guo, Yunsheng Tian, Michal Piotr Lipiec, Joshua Jacob, Chao Liu, Peter Yichen Chen, Yuri Ivanov, and Wojciech Matusik. 2026. “NeuralActuator: Neural Actuation Modeling for Robot Dynamics and External Force Perception.” arXiv:2607.11734v2, revised 17 July 2026. [Paper](https://arxiv.org/abs/2607.11734v2).
 
-Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer.
+Featherstone, Roy. 2008. _Rigid Body Dynamics Algorithms_. Springer.
 
 HALWANI, Mohamed. 2026. “From One Actuator to Sixteen: Controllers, Evidence, and Model Comparison.” ROB7103/8103 course collection, source revision `f7c118edaadc9f33498669736fa9d99160ff629a`; lesson blob `a439402b0a1e495582d25c4d869887ba52866067`. The V5 population archive, source figures, combined models and separate ID-0 neural report are the practical evidence used here.
 
-Hwangbo, Jemin, Joonho Lee, Alexey Dosovitskiy, Dario Bellicoso, Vassilios Tsounis, Vladlen Koltun, and Marco Hutter. 2019. “Learning Agile and Dynamic Motor Skills for Legged Robots.” *Science Robotics* 4 (26): eaau5872. [Article](https://doi.org/10.1126/scirobotics.aau5872), [open manuscript](https://arxiv.org/abs/1901.08652).
+Hwangbo, Jemin, Joonho Lee, Alexey Dosovitskiy, Dario Bellicoso, Vassilios Tsounis, Vladlen Koltun, and Marco Hutter. 2019. “Learning Agile and Dynamic Motor Skills for Legged Robots.” _Science Robotics_ 4 (26): eaau5872. [Article](https://doi.org/10.1126/scirobotics.aau5872), [open manuscript](https://arxiv.org/abs/1901.08652).
 
-MuJoCo developers. n.d.-a. “Computation.” *MuJoCo Documentation*, version 3.3.7. Accessed 17 October 2026. [Actuation model](https://mujoco.readthedocs.io/en/3.3.7/computation/index.html#actuation-model).
+MuJoCo developers. n.d.-a. “Computation.” _MuJoCo Documentation_, version 3.3.7. Accessed 17 October 2026. [Actuation model](https://mujoco.readthedocs.io/en/3.3.7/computation/index.html#actuation-model).
 
-MuJoCo developers. n.d.-b. “XML Reference.” *MuJoCo Documentation*, version 3.3.7. Accessed 17 October 2026. [General actuator](https://mujoco.readthedocs.io/en/3.3.7/XMLreference.html#actuator-general).
+MuJoCo developers. n.d.-b. “XML Reference.” _MuJoCo Documentation_, version 3.3.7. Accessed 17 October 2026. [General actuator](https://mujoco.readthedocs.io/en/3.3.7/XMLreference.html#actuator-general).
 
-OpenCV contributors. n.d. “Detection of ArUco Markers.” *OpenCV Documentation*, version 4.13.0. Accessed 17 October 2026. [Marker detection and pose estimation](https://docs.opencv.org/4.13.0/d5/dae/tutorial_aruco_detection.html).
+OpenCV contributors. n.d. “Detection of ArUco Markers.” _OpenCV Documentation_, version 4.13.0. Accessed 17 October 2026. [Marker detection and pose estimation](https://docs.opencv.org/4.13.0/d5/dae/tutorial_aruco_detection.html).
 
-ROBOTIS. n.d. “XC330-M288-T.” *DYNAMIXEL e-Manual*. Accessed 18 October 2026. [Exact-model specifications and control table](https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/).
+ROBOTIS. n.d. “XC330-M288-T.” _DYNAMIXEL e-Manual_. Accessed 18 October 2026. [Exact-model specifications and control table](https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/).

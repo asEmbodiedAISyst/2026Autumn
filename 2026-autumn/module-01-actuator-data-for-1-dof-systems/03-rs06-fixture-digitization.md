@@ -2,7 +2,7 @@
 description: 23 October 2026 · 09:00–10:50 · DO | Mohamed HALWANI & SONG Chaoyang
 ---
 
-# 03 The RS06 Fixture: Digitization
+# RS06 fixture digitization
 
 ## Central question
 
@@ -14,56 +14,50 @@ The RS06 load masses below are CAD-derived. They are not the XC330's declared 11
 
 By the end of this class, you should be able to:
 
-- Compare fixture inertia and gravity first moment without treating them as the same property.
-- Trace the RS06 joint, mesh units and position-actuator input through the model.
-- Distinguish CAD-derived properties, manufacturer ratings and later fitted joint terms.
+* Compare fixture inertia and gravity first moment without treating them as the same property.
+* Trace the RS06 joint, mesh units and position-actuator input through the model.
+* Distinguish CAD-derived properties, manufacturer ratings and later fitted joint terms.
 
-[Lecture](#the-rs06-actuator) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](03-rs06-fixture-digitization.md#the-rs06-actuator) · [Instructor and TA demonstration](03-rs06-fixture-digitization.md#instructor-and-ta-demonstration) · [Student activity](03-rs06-fixture-digitization.md#student-activity)
 
 The supplied CAD renders, XML excerpt and saved model-load views support the comparison. They are source records; inspecting them does not claim a new physical measurement or model run.
 
 ## The RS06 actuator
 
-![The RS06 outline and mounting dimensions, and the values of its user manual.](../resources/class03/figures/source/rs06/rs06_mechanical_reference.png)
+![The RS06 outline and mounting dimensions, and the values of its user manual.](../.gitbook/assets/rs06_mechanical_reference.png)
 
-*Figure 1. The RS06 outline and mounting dimensions, and the values of its user manual.*
+_Figure 1. The RS06 outline and mounting dimensions, and the values of its user manual._
 
-| Item (user manual) | RS06 |
-| --- | --- |
-| Gear ratio | 9 : 1 |
-| Rated torque | 11 N m at 100 rpm |
-| Peak torque | 36 N m |
-| No-load speed | 480 rpm |
-| Mass | 621 g ± 3 g |
-| Supply | 48 V (15–60 V) |
-| Interface | CAN, 1 Mbit/s |
+| Item (user manual) | RS06              |
+| ------------------ | ----------------- |
+| Gear ratio         | 9 : 1             |
+| Rated torque       | 11 N m at 100 rpm |
+| Peak torque        | 36 N m            |
+| No-load speed      | 480 rpm           |
+| Mass               | 621 g ± 3 g       |
+| Supply             | 48 V (15–60 V)    |
+| Interface          | CAN, 1 Mbit/s     |
 
 These manufacturer ratings retain the manual’s operating and cooling conditions; the 11 N m figure is not a measured continuous capability of this fixture. [Class 02](02-actuator-basics-for-controlled-action.md#inspect-the-rs06-and-rs00-documentation) discusses the supplied manual revision and its unresolved cooling-dimension discrepancy.
 
-The RS06 is a quasi-direct-drive actuator: a brushless motor with field-oriented control, an encoder and a
-9 : 1 gear in one housing. The low gear ratio keeps the joint backdrivable, so the load and the friction of the
-joint act on the motor. The motor runs its own position or impedance loop and receives targets over CAN.
+The RS06 is a quasi-direct-drive actuator: a brushless motor with field-oriented control, an encoder and a 9 : 1 gear in one housing. The low gear ratio keeps the joint backdrivable, so the load and the friction of the joint act on the motor. The motor runs its own position or impedance loop and receives targets over CAN.
 
 ## The fixture and its configurations
 
-![CAD renders of the four configurations M0, B0, B1 and G1.](../resources/class03/figures/source/rs06/rs06_fixture_renders.png)
+![CAD renders of the four configurations M0, B0, B1 and G1.](../.gitbook/assets/rs06_fixture_renders.png)
 
-*Figure 2. CAD renders of the four configurations M0, B0, B1 and G1.*
+_Figure 2. CAD renders of the four configurations M0, B0, B1 and G1._
 
-The RS06 is mounted with its output axis horizontal. A profile link is fixed to the output flange, and payload
-discs can be fixed at its ends. Four configurations exist:
+The RS06 is mounted with its output axis horizontal. A profile link is fixed to the output flange, and payload discs can be fixed at its ends. Four configurations exist:
 
-| ID | Configuration | Moving mass (kg) | Inertia about the joint (kg m²) | Gravity first moment (kg m) |
-| --- | --- | ---: | ---: | ---: |
-| M0 | motor only | 0 | 0 | 0 |
-| B0 | balanced link | 0.6872 | 0.01291 | −3.7 × 10⁻⁵ |
-| B1 | balanced link with both payloads | 2.4072 | 0.05768 | −3.7 × 10⁻⁵ |
-| G1 | one-sided payload | 1.5472 | 0.03529 | −0.1290 |
+| ID | Configuration                    | Moving mass (kg) | Inertia about the joint (kg m²) | Gravity first moment (kg m) |
+| -- | -------------------------------- | ---------------: | ------------------------------: | --------------------------: |
+| M0 | motor only                       |                0 |                               0 |                           0 |
+| B0 | balanced link                    |           0.6872 |                         0.01291 |                 −3.7 × 10⁻⁵ |
+| B1 | balanced link with both payloads |           2.4072 |                         0.05768 |                 −3.7 × 10⁻⁵ |
+| G1 | one-sided payload                |           1.5472 |                         0.03529 |                     −0.1290 |
 
-B0 and B1 are nearly balanced in the CAD record: their first moments are close to zero, and B1 has about 4.5 times the fixture inertia of B0. G1 carries one
-payload on one side, so gravity pulls the joint with up to $$0.1290 \times 9.81 = 1.27$$ N m. The values come
-from the CAD exports. They are not measurements of the built fixtures, and the inertia does not include the rotor
-of the motor.
+B0 and B1 are nearly balanced in the CAD record: their first moments are close to zero, and B1 has about 4.5 times the fixture inertia of B0. G1 carries one payload on one side, so gravity pulls the joint with up to $$0.1290 \times 9.81 = 1.27$$ N m. The values come from the CAD exports. They are not measurements of the built fixtures, and the inertia does not include the rotor of the motor.
 
 {% hint style="info" %}
 The images are CAD renders, not photographs of the built fixtures.
@@ -71,24 +65,18 @@ The images are CAD renders, not photographs of the built fixtures.
 
 ## From CAD to MJCF
 
-Each configuration is a Fusion 360 assembly with two components: the fixed base with the motor housing, and the
-moving part with the link and the payloads. ACDC4Robot exports it to MJCF with one revolute joint, and the export
-report lists no warnings and no errors. The exported files are then frozen as the hardware-matched models, one per
-configuration.
+Each configuration is a Fusion 360 assembly with two components: the fixed base with the motor housing, and the moving part with the link and the payloads. ACDC4Robot exports it to MJCF with one revolute joint, and the export report lists no warnings and no errors. The exported files are then frozen as the hardware-matched models, one per configuration.
 
-| MJCF element | In the RS06 model (`G1.xml`) |
-| --- | --- |
-| `option` | `timestep="0.002"`, `integrator="implicitfast"`, gravity −9.81 m/s² |
-| `body` `base_link` | the fixed base and the motor housing, 0.528 kg |
-| `body` `playload-1` | the moving link and payloads, with its CAD mass, centre of mass and full inertia tensor |
-| `joint` `rs06_joint` | hinge about the local −x axis, range ±1.1 rad; `armature="0.00125"`, `damping="0.00044"`, `frictionloss="0.048"` |
-| `actuator` `rs06_position` | position servo, `kp="50"`, `kv="3.38"`, `ctrlrange="-0.9 0.9"`, `forcerange="-36 36"` |
-| `sensor` | `q` (joint position), `qdot` (joint velocity), `tau_actuator` (actuator torque) |
+| MJCF element               | In the RS06 model (`G1.xml`)                                                                                     |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `option`                   | `timestep="0.002"`, `integrator="implicitfast"`, gravity −9.81 m/s²                                              |
+| `body` `base_link`         | the fixed base and the motor housing, 0.528 kg                                                                   |
+| `body` `playload-1`        | the moving link and payloads, with its CAD mass, centre of mass and full inertia tensor                          |
+| `joint` `rs06_joint`       | hinge about the local −x axis, range ±1.1 rad; `armature="0.00125"`, `damping="0.00044"`, `frictionloss="0.048"` |
+| `actuator` `rs06_position` | position servo, `kp="50"`, `kv="3.38"`, `ctrlrange="-0.9 0.9"`, `forcerange="-36 36"`                            |
+| `sensor`                   | `q` (joint position), `qdot` (joint velocity), `tau_actuator` (actuator torque)                                  |
 
-The meshes are millimetre-scale STL files, so each mesh declaration applies `scale="0.001 0.001 0.001"`. The
-joint values `armature`, `damping` and `frictionloss` are starting values. Class 04 identifies them from hardware
-data. The actuator gains copy the first hardware controller setting as a fixed modelling assumption; equality of the numerical values does not establish calibrated controller equivalence. M0 keeps a moving body
-with a tiny mass as numerical regularization. Its zero external-fixture inertia is not a claim that the physical rotor has zero inertia.
+The meshes are millimetre-scale STL files, so each mesh declaration applies `scale="0.001 0.001 0.001"`. The joint values `armature`, `damping` and `frictionloss` are starting values. Class 04 identifies them from hardware data. The actuator gains copy the first hardware controller setting as a fixed modelling assumption; equality of the numerical values does not establish calibrated controller equivalence. M0 keeps a moving body with a tiny mass as numerical regularization. Its zero external-fixture inertia is not a claim that the physical rotor has zero inertia.
 
 ```xml
 <joint name="rs06_joint" type="hinge" axis="-1.0 0.0 0.0" range="-1.1 1.1"
@@ -99,18 +87,15 @@ with a tiny mass as numerical regularization. Its zero external-fixture inertia 
 
 ## The four models in MuJoCo
 
-![The four MJCF files loaded in MuJoCo with the joint at 0 rad.](../resources/class03/figures/rs06-model-loads.png)
+![The four MJCF files loaded in MuJoCo with the joint at 0 rad.](../.gitbook/assets/rs06-model-loads.png)
 
-*Figure 3. The four MJCF files loaded in MuJoCo with the joint at 0 rad.*
+_Figure 3. The four MJCF files loaded in MuJoCo with the joint at 0 rad._
 
-Load each model and compare it with its CAD render: the link direction, the payload positions and the joint axis
-must agree.
+Load each model and compare it with its CAD render: the link direction, the payload positions and the joint axis must agree.
 
-The source model check evaluates gravity torque at zero velocity. M0 has no external-fixture gravity moment; B0 and B1 are nearly balanced, consistent with their small CAD first moments. G1 reaches 1.266 N m, the
-value of its gravity first moment. This check connects the CAD mass properties to the dynamics before any
-hardware runs.
+The source model check evaluates gravity torque at zero velocity. M0 has no external-fixture gravity moment; B0 and B1 are nearly balanced, consistent with their small CAD first moments. G1 reaches 1.266 N m, the value of its gravity first moment. This check connects the CAD mass properties to the dynamics before any hardware runs.
 
----
+***
 
 ## Read the fixture inertia before interpreting a response
 
@@ -124,9 +109,9 @@ Use the manufacturer reference, four CAD renders, G1 XML excerpt and saved MuJoC
 
 The primary Class 03 source also supplies this RS06 mechanical reference for reading the mounting and output geometry:
 
-![RS06 mechanical reference retained with the XC330 source digitization record](../resources/class03/figures/source/rs06/rs06_mechanical_reference.png)
+![RS06 mechanical reference retained with the XC330 source digitization record](../.gitbook/assets/rs06_mechanical_reference.png)
 
-*Figure 4. RS06 mechanical reference retained with the XC330 source digitization record.*
+_Figure 4. RS06 mechanical reference retained with the XC330 source digitization record._
 
 The source manufacturer manual identifies the ratings. A peak-torque limit in a model is not a measurement of delivered effort in the later position-mode experiment.
 

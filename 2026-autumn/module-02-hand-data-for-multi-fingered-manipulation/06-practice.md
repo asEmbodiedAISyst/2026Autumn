@@ -1,8 +1,10 @@
 ---
-description: Class 06 student practice · run continuous cube yaw in simulation and optionally on a LEAP Hand
+description: >-
+  Class 06 student practice · run continuous cube yaw in simulation and
+  optionally on a LEAP Hand
 ---
 
-# Class 06 — Practice: continuous in-hand cube yaw
+# Practice: continuous in-hand cube yaw
 
 Run the supplied learned policy in a visible simulation, inspect its measured cube-yaw trace, and—only at a supervised teaching station—optionally compare it with the physical right LEAP Hand. You may complete the simulation route, observe the hardware route, or do both.
 
@@ -14,11 +16,10 @@ Download [Class 06 continuous-yaw standalone package](../resources/class06/pract
 
 Extract the archive. It creates `Class06_Continuous_Yaw_Standalone`, containing the policy, complete MuJoCo model and assets, hardware bridge, safety configuration, checkpoint, tests, and original MJLab task/training source. No course-repository checkout is needed.
 
-## 1. Prepare the environment
+## Prepare the environment
 
 {% tabs %}
 {% tab title="Linux" %}
-
 ```bash
 sudo apt update
 sudo apt install -y curl libgl1 libglfw3
@@ -28,11 +29,9 @@ cd Class06_Continuous_Yaw_Standalone
 uv sync
 uv run pytest
 ```
-
 {% endtab %}
 
 {% tab title="macOS" %}
-
 Install [Homebrew](https://brew.sh/) first if `brew --version` is unavailable.
 
 ```bash
@@ -41,13 +40,12 @@ cd Class06_Continuous_Yaw_Standalone
 uv sync
 uv run pytest
 ```
-
 {% endtab %}
 {% endtabs %}
 
 Keep the terminal in the standalone folder.
 
-## 2. Choose a route
+## Choose a route
 
 ### Route A — run the checkpoint in the exact simulation
 
@@ -63,19 +61,15 @@ The original MuJoCo-Warp training stack is Linux-oriented. For a lightweight Lin
 
 {% tabs %}
 {% tab title="Linux" %}
-
 ```bash
 uv run python simulation/replay_exact_mjlab_yaw.py
 ```
-
 {% endtab %}
 
 {% tab title="macOS" %}
-
 ```bash
 uv run mjpython simulation/replay_exact_mjlab_yaw.py
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -83,23 +77,19 @@ The portable viewer must show the cube held by the fingers and palm throughout t
 
 This portable viewer is a smooth state replay, not a new policy rollout. `simulation/run_yaw_rotation.py` is a lightweight live native-MuJoCo evaluation that runs the exported actor directly on CPU without needing the heavy GPU/Warp training stack.
 
-During the first ~5 seconds ($t = 0 \to 5.0$s), the history buffer warms up and the fingers adjust from the static pre-grasp pose into the palm pocket, causing rapid initial reorientation. Once settled ($t \ge 5.0$s), the fingers maintain a smooth, rhythmic positive-Z rotation at ~16.5°–20°/s for the remaining 25 seconds. To skip the initial settling transient and view only the steady continuous rotation:
+During the first \~5 seconds ($t = 0 \to 5.0$s), the history buffer warms up and the fingers adjust from the static pre-grasp pose into the palm pocket, causing rapid initial reorientation. Once settled ($t \ge 5.0$s), the fingers maintain a smooth, rhythmic positive-Z rotation at \~16.5°–20°/s for the remaining 25 seconds. To skip the initial settling transient and view only the steady continuous rotation:
 
 {% tabs %}
 {% tab title="Linux" %}
-
 ```bash
 uv run python simulation/replay_exact_mjlab_yaw.py --start-time 5.0
 ```
-
 {% endtab %}
 
 {% tab title="macOS" %}
-
 ```bash
 uv run mjpython simulation/replay_exact_mjlab_yaw.py --start-time 5.0
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -107,19 +97,15 @@ For a slower visual replay without the settling transient, use:
 
 {% tabs %}
 {% tab title="Linux" %}
-
 ```bash
 uv run python simulation/replay_exact_mjlab_yaw.py --start-time 5.0 --playback-speed 0.5
 ```
-
 {% endtab %}
 
 {% tab title="macOS" %}
-
 ```bash
 uv run mjpython simulation/replay_exact_mjlab_yaw.py --start-time 5.0 --playback-speed 0.5
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -131,21 +117,17 @@ Install the optional serial dependency:
 
 {% tabs %}
 {% tab title="Linux" %}
-
 ```bash
 uv sync --extra hardware
 ls -l /dev/serial/by-id/
 ```
-
 {% endtab %}
 
 {% tab title="macOS" %}
-
 ```bash
 uv sync --extra hardware
 ls -l /dev/cu.usbserial-*
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -153,19 +135,15 @@ Set the verified adapter path in each terminal:
 
 {% tabs %}
 {% tab title="Linux" %}
-
 ```bash
 export LEAP_PORT="/dev/serial/by-id/REPLACE_WITH_THE_ACTUAL_ADAPTER"
 ```
-
 {% endtab %}
 
 {% tab title="macOS" %}
-
 ```bash
 export LEAP_PORT="/dev/cu.usbserial-REPLACE_WITH_THE_ACTUAL_ADAPTER"
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -173,7 +151,6 @@ In Terminal A, start the exact final Class 01 continuous-yaw server with `model_
 
 {% tabs %}
 {% tab title="Linux" %}
-
 ```bash
 uv run python scripts/serve_policy.py \
   --task Mjlab-Leap-Right-HandCube-MBZUAI-Rotate \
@@ -182,11 +159,9 @@ uv run python scripts/serve_policy.py \
   --bind tcp://127.0.0.1:5555 \
   --keep-alive
 ```
-
 {% endtab %}
 
 {% tab title="macOS" %}
-
 ```bash
 uv run python scripts/serve_policy.py \
   --task Mjlab-Leap-Right-HandCube-MBZUAI-Rotate \
@@ -195,7 +170,6 @@ uv run python scripts/serve_policy.py \
   --bind tcp://127.0.0.1:5555 \
   --keep-alive
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -203,7 +177,6 @@ In Terminal B, the TA runs the full non-actuating shadow pass. Replace only the 
 
 {% tabs %}
 {% tab title="Linux" %}
-
 ```bash
 uv run python hardware/deploy_direct.py \
   --server-endpoint tcp://127.0.0.1:5555 \
@@ -218,11 +191,9 @@ uv run python hardware/deploy_direct.py \
   --temperature-abort-c 60 \
   --log-file "outputs/shadow_$(date +%Y%m%d_%H%M%S).npz"
 ```
-
 {% endtab %}
 
 {% tab title="macOS" %}
-
 ```bash
 uv run python hardware/deploy_direct.py \
   --server-endpoint tcp://127.0.0.1:5555 \
@@ -237,7 +208,6 @@ uv run python hardware/deploy_direct.py \
   --temperature-abort-c 60 \
   --log-file "outputs/shadow_$(date +%Y%m%d_%H%M%S).npz"
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -245,7 +215,6 @@ Only after the shadow log passes inspection, run the final six-second physical s
 
 {% tabs %}
 {% tab title="Linux" %}
-
 ```bash
 uv run python hardware/deploy_direct.py \
   --server-endpoint tcp://127.0.0.1:5555 \
@@ -262,11 +231,9 @@ uv run python hardware/deploy_direct.py \
   --temperature-abort-c 60 \
   --log-file "outputs/physical_$(date +%Y%m%d_%H%M%S).npz"
 ```
-
 {% endtab %}
 
 {% tab title="macOS" %}
-
 ```bash
 uv run python hardware/deploy_direct.py \
   --server-endpoint tcp://127.0.0.1:5555 \
@@ -283,7 +250,6 @@ uv run python hardware/deploy_direct.py \
   --temperature-abort-c 60 \
   --log-file "outputs/physical_$(date +%Y%m%d_%H%M%S).npz"
 ```
-
 {% endtab %}
 {% endtabs %}
 
@@ -293,21 +259,21 @@ These deployment stages enforce safe execution boundaries. The three explicit cu
 
 Complete Route A first. Then observe Route B and compare the object-level simulation trace with the physical video and bridge telemetry. Joint tracking and current alone do not measure physical cube yaw; a calibrated, time-aligned object-pose record is required for that comparison.
 
-## 3. Inspect and extend the source
+## Inspect and extend the source
 
 The archive includes every source needed by the portable run and the original training project:
 
-- `policy/`, `simulation/`, `scripts/`, `hardware/`, and `models/` contain the runnable deployment path.
-- `training_source/project/` contains the original MJLab task, reward/event definitions, robot configuration, training, playback, evaluation, export scripts, and its locked environment files.
-- `training_source/training_params/` contains the exported environment and agent configurations.
-- `checkpoint/model_400.pt` and `checkpoint/policy_weights.npz` preserve the original and portable actor representations.
-- `reference/` contains the original stable preview and the exact seed-11 state trajectory used by the cross-platform viewer.
+* `policy/`, `simulation/`, `scripts/`, `hardware/`, and `models/` contain the runnable deployment path.
+* `training_source/project/` contains the original MJLab task, reward/event definitions, robot configuration, training, playback, evaluation, export scripts, and its locked environment files.
+* `training_source/training_params/` contains the exported environment and agent configurations.
+* `checkpoint/model_400.pt` and `checkpoint/policy_weights.npz` preserve the original and portable actor representations.
+* `reference/` contains the original stable preview and the exact seed-11 state trajectory used by the cross-platform viewer.
 
 The portable viewer runs on Linux and macOS. The original accelerated training stack uses Python 3.10, MJLab/MuJoCo Warp, PyTorch, and GPU-oriented dependencies; use a compatible Linux/CUDA workstation for reproduction. Read `training_source/README.md` before changing it.
 
 On a compatible Linux MJLab workstation, reproduce the original stable preview from scratch from `training_source/` with the bundle command documented in `training_source/README.md`. That full route is not presented as a macOS command because its original MuJoCo-Warp/CUDA environment is Linux-oriented.
 
-## 4. Submit one bounded evidence record
+## Submit one bounded evidence record
 
 Record:
 
@@ -320,7 +286,6 @@ Record:
 
 Clearly distinguish simulation evidence from physical hardware observation. In the hardware record, document operator interactions, reset events, and telemetry trends alongside visual observations.
 
-## 5. Return to the lesson
+## Return to the lesson
 
 The [Class 06 lesson](06-learned-in-hand-cube-reorientation.md) explains the joint-order contract, history observation, contact mechanics, training evidence, and limits of a physical deployment claim.
-

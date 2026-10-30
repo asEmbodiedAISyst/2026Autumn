@@ -14,13 +14,13 @@ The source also includes a gripper bridge and a real-phone gripper recording. We
 
 By the end of this class, you should be able to:
 
-- Trace operator pose through mapping, limits, inverse kinematics and the robot response.
-- Read frame labels, units, quaternion ordering and tool transforms.
-- Explain the clutch and distinguish a relative mapping from a physical calibration.
-- Interpret sample age, a blocked target and the action/state alignment.
-- Demonstrate the source iPhone-to-pusher simulation route or analyse its retained record.
+* Trace operator pose through mapping, limits, inverse kinematics and the robot response.
+* Read frame labels, units, quaternion ordering and tool transforms.
+* Explain the clutch and distinguish a relative mapping from a physical calibration.
+* Interpret sample age, a blocked target and the action/state alignment.
+* Demonstrate the source iPhone-to-pusher simulation route or analyse its retained record.
 
-[Lecture](#command-and-response) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](09-teleoperation-by-streaming-from-asmagic.md#command-and-response) · [Instructor and TA demonstration](09-teleoperation-by-streaming-from-asmagic.md#instructor-and-ta-demonstration) · [Student activity](09-teleoperation-by-streaming-from-asmagic.md#student-activity)
 
 The explanation and supplied records can be read without executing code. The separate [practice page](09-practice.md) retains the source workflow, setup and commands. A reported result is identified as a retained source record; a new execution must save its own configuration and outcome.
 
@@ -35,48 +35,42 @@ flowchart LR
     C[robot cameras] --> R
 ```
 
-| Path | Content | Rate |
-| --- | --- | --- |
-| Command | phone pose → mapping → gripper target → limits → inverse kinematics → joint targets | 60 Hz phone, 30 Hz control |
-| Response | motor angles, camera images, timestamps → recorder | 30 Hz |
+| Path     | Content                                                                             | Rate                       |
+| -------- | ----------------------------------------------------------------------------------- | -------------------------- |
+| Command  | phone pose → mapping → gripper target → limits → inverse kinematics → joint targets | 60 Hz phone, 30 Hz control |
+| Response | motor angles, camera images, timestamps → recorder                                  | 30 Hz                      |
 
-The command path decides what the arm must do. The response path records what the arm did and what its cameras
-saw. A demonstration is usable data only when both paths are recorded under one episode identity.
+The command path decides what the arm must do. The response path records what the arm did and what its cameras saw. A demonstration is usable data only when both paths are recorded under one episode identity.
 
 ### The phone alone is not a robot record
 
-The phone stream has the pose of the phone and its own camera image. It does not have the joint angles of the
-arm, the robot cameras, or the commands after the limits and the inverse kinematics. A phone stream alone does not establish what action this follower executed; a learning task requires a suitable action/observation record and task contract.
+The phone stream has the pose of the phone and its own camera image. It does not have the joint angles of the arm, the robot cameras, or the commands after the limits and the inverse kinematics. A phone stream alone does not establish what action this follower executed; a learning task requires a suitable action/observation record and task contract.
 
 ### What the leader must measure
 
-In teleoperation the operator moves a leader device and the robot, the follower, repeats the motion. Our follower
-is the simulated reBot arm with the pusher tool for the cube task. The command path starts from the pose of the operator's hand. Thus the leader must measure a
-pose, position and orientation, many times per second and without jumps.
+In teleoperation the operator moves a leader device and the robot, the follower, repeats the motion. Our follower is the simulated reBot arm with the pusher tool for the cube task. The command path starts from the pose of the operator's hand. Thus the leader must measure a pose, position and orientation, many times per second and without jumps.
 
 {% hint style="info" %}
-**Question for the class.** The follower is the reBot arm. What could the leader be? Name a device that you know
-and say what it measures: a joint angle, a velocity, or a full pose.
+**Question for the class.** The follower is the reBot arm. What could the leader be? Name a device that you know and say what it measures: a joint angle, a velocity, or a full pose.
 {% endhint %}
 
 <details>
 
 <summary>Some possible leaders</summary>
 
-| Leader | What it measures | What it needs |
-| --- | --- | --- |
-| A leader arm, a small copy of the robot | joint angles | the same kinematics as the follower |
-| A joystick or a 3D mouse | velocities, not a pose | the operator integrates the motion in the head |
-| A VR controller | a full pose | a headset and its tracking |
-| A motion-capture system | a full pose | a room of cameras and markers |
-| A smartphone with AR tracking | a full pose, from its cameras and inertial sensors | only the phone |
+| Leader                                  | What it measures                                   | What it needs                                  |
+| --------------------------------------- | -------------------------------------------------- | ---------------------------------------------- |
+| A leader arm, a small copy of the robot | joint angles                                       | the same kinematics as the follower            |
+| A joystick or a 3D mouse                | velocities, not a pose                             | the operator integrates the motion in the head |
+| A VR controller                         | a full pose                                        | a headset and its tracking                     |
+| A motion-capture system                 | a full pose                                        | a room of cameras and markers                  |
+| A smartphone with AR tracking           | a full pose, from its cameras and inertial sensors | only the phone                                 |
 
 </details>
 
-Our group developed an iPhone app, asMagic, that streams the pose of the phone to a computer. The phone becomes
-the leader: the operator holds it like the gripper, and the gripper follows.
+Our group developed an iPhone app, asMagic, that streams the pose of the phone to a computer. The phone becomes the leader: the operator holds it like the gripper, and the gripper follows.
 
----
+***
 
 ## An iPhone as the leader
 
@@ -93,10 +87,7 @@ From the [asMagic documentation](https://doc.ancoraspring.com/asmagic):
 
 {% columns %}
 {% column width="33%" %}
-
-
-<figure><img src="../resources/class09/figures/source/asmagic-qr.png" alt="QR code for the asMagic App Store page"><figcaption><p>Figure 1. QR code for the asMagic App Store page. Scan to install.</p></figcaption></figure>
-
+<figure><img src="../.gitbook/assets/asmagic-qr.png" alt="QR code for the asMagic App Store page"><figcaption><p>Figure 1. QR code for the asMagic App Store page. Scan to install.</p></figcaption></figure>
 {% endcolumn %}
 
 {% column width="67%" valign="middle" %}
@@ -108,28 +99,22 @@ From the [asMagic documentation](https://doc.ancoraspring.com/asmagic):
 
 ### The device
 
+<figure><img src="../.gitbook/assets/app-screens.png" alt="The asMagic icon on the iPhone home screen, the home page of the app and the Data Streaming page with the IP address"><figcaption><p>Figure 2. The asMagic icon on the iPhone home screen, the home page of the app and the Data Streaming page with the IP address. The app on the iPhone, its home page and the Data Streaming page.</p></figcaption></figure>
 
-
-<figure><img src="../resources/class09/figures/source/app-screens.png" alt="The asMagic icon on the iPhone home screen, the home page of the app and the Data Streaming page with the IP address"><figcaption><p>Figure 2. The asMagic icon on the iPhone home screen, the home page of the app and the Data Streaming page with the IP address. The app on the iPhone, its home page and the Data Streaming page.</p></figcaption></figure>
-
-The course uses an iPhone Pro with the asMagic app. The phone tracks its own pose with ARKit, from its cameras and
-its inertial sensors. The Pro models also have a LiDAR sensor, so the app can stream depth. The phone needs no SIM
-card: it uses Wi-Fi only.
+The course uses an iPhone Pro with the asMagic app. The phone tracks its own pose with ARKit, from its cameras and its inertial sensors. The Pro models also have a LiDAR sensor, so the app can stream depth. The phone needs no SIM card: it uses Wi-Fi only.
 
 ### The phone stream is data too
 
 The app publishes over the local network with ZeroMQ on port 8000. This is the data contract of the stream:
 
-| Channel | Content | Unit | Rate |
-| --- | --- | --- | --- |
-| Pose | position (3) and quaternion (4) of the phone in the ARKit world frame | m, unit quaternion | approximately 60 Hz |
-| Colour image | the image of the main camera | pixels | with the pose |
-| Depth | LiDAR depth image (Pro models) | m | with the pose |
-| Intrinsics | focal lengths $$f_x, f_y$$ and principal point $$c_x, c_y$$ | pixels | with the image |
+| Channel      | Content                                                               | Unit               | Rate                |
+| ------------ | --------------------------------------------------------------------- | ------------------ | ------------------- |
+| Pose         | position (3) and quaternion (4) of the phone in the ARKit world frame | m, unit quaternion | approximately 60 Hz |
+| Colour image | the image of the main camera                                          | pixels             | with the pose       |
+| Depth        | LiDAR depth image (Pro models)                                        | m                  | with the pose       |
+| Intrinsics   | focal lengths $$f_x, f_y$$ and principal point $$c_x, c_y$$           | pixels             | with the image      |
 
-The source lesson assumes a gravity-aligned, z-up tracking frame. The receiver parses the incoming pose; that assumption must be checked against the installed app and any upstream conversion. Native phone APIs and bridge conversions need their own declared axis conventions; do not assume every raw ARKit packet already has these axes. The tracking origin and heading are arbitrary at the start, and drift is a reason to inspect and reset the mapping rather than assume a fixed global calibration. Class 10 shows the
-effect of this drift on data. The intrinsics give the field of view of the camera:
-$$\mathrm{fov}_y = 2\arctan\!\big(c_y / f_y\big)$$.
+The source lesson assumes a gravity-aligned, z-up tracking frame. The receiver parses the incoming pose; that assumption must be checked against the installed app and any upstream conversion. Native phone APIs and bridge conversions need their own declared axis conventions; do not assume every raw ARKit packet already has these axes. The tracking origin and heading are arbitrary at the start, and drift is a reason to inspect and reset the mapping rather than assume a fixed global calibration. Class 10 shows the effect of this drift on data. The intrinsics give the field of view of the camera: $$\mathrm{fov}_y = 2\arctan\!\big(c_y / f_y\big)$$.
 
 ### Four steps to start
 
@@ -138,23 +123,19 @@ $$\mathrm{fov}_y = 2\arctan\!\big(c_y / f_y\big)$$.
 3. Start the teleoperation script with that IP address.
 4. Switch **AR Data** on. The script reports `phone stream received`.
 
----
+***
 
 ## Frames
 
 ### Naming transforms
 
-We write $${}^{a}T_{b}$$ for the pose of frame $$b$$ expressed in frame $$a$$, and $${}^{a}R_{b}$$ for its
-rotation. With this notation the chain of frames reads from left to right. Two transforms combine when the inner
-letters agree: $${}^{a}T_{c} = {}^{a}T_{b}\,{}^{b}T_{c}$$.
+We write $${}^{a}T_{b}$$ for the pose of frame $$b$$ expressed in frame $$a$$, and $${}^{a}R_{b}$$ for its rotation. With this notation the chain of frames reads from left to right. Two transforms combine when the inner letters agree: $${}^{a}T_{c} = {}^{a}T_{b}\,{}^{b}T_{c}$$.
 
 ### The phone frame and the gripper frame
 
-<figure><img src="../resources/class09/figures/source/frames-mapping.png" alt="Left: the iPhone placed where the gripper is, with its frame. Right: the gripper at the home pose with the end-effector frame. Same view in both panels."><figcaption><p>Figure 3. Left: the iPhone placed where the gripper is, with its frame. Right: the gripper at the home pose with the end-effector frame. Same view in both panels.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/frames-mapping.png" alt="Left: the iPhone placed where the gripper is, with its frame. Right: the gripper at the home pose with the end-effector frame. Same view in both panels."><figcaption><p>Figure 3. Left: the iPhone placed where the gripper is, with its frame. Right: the gripper at the home pose with the end-effector frame. Same view in both panels.</p></figcaption></figure>
 
-The app gives the phone frame of ARKit: $$x$$ toward the bottom of the phone (the charging port), $$y$$ toward
-its right edge, $$z$$ out of the screen. Thus the back camera, at the top end of the phone, looks along $$-z$$. The end-effector frame is at the TCP: $$z$$ points out of the
-gripper, $$y$$ along the finger opening, $$x$$ across the fingers.
+The app gives the phone frame of ARKit: $$x$$ toward the bottom of the phone (the charging port), $$y$$ toward its right edge, $$z$$ out of the screen. Thus the back camera, at the top end of the phone, looks along $$-z$$. The end-effector frame is at the TCP: $$z$$ points out of the gripper, $$y$$ along the finger opening, $$x$$ across the fingers.
 
 ### One constant rotation
 
@@ -162,22 +143,17 @@ $$
 {}^{ee}R_{iphone} = \begin{bmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & -1 \end{bmatrix}
 $$
 
-The columns are the phone axes expressed in the gripper frame: phone $$x$$ is gripper $$y$$, phone $$y$$ is
-gripper $$x$$, phone $$z$$ is gripper $$-z$$. This matrix declares the body-axis correspondence for the gripper example. An arm-mounted pusher also needs a camera-to-tip translation; its source script supplies a rigid transform.
+The columns are the phone axes expressed in the gripper frame: phone $$x$$ is gripper $$y$$, phone $$y$$ is gripper $$x$$, phone $$z$$ is gripper $$-z$$. This matrix declares the body-axis correspondence for the gripper example. An arm-mounted pusher also needs a camera-to-tip translation; its source script supplies a rigid transform.
 
-Hold the phone as in the left panel: screen up and parallel to the table, the back camera toward the table, its
-right edge pointing forward, away from the base. The top of the phone, with the camera, then points to the left
-when you look outward from the base of the arm, and to the right when you face the arm. Treat this as the source gripper convention. Verify axes against the installed app and receiver before reusing the mapping on a physical follower.
+Hold the phone as in the left panel: screen up and parallel to the table, the back camera toward the table, its right edge pointing forward, away from the base. The top of the phone, with the camera, then points to the left when you look outward from the base of the arm, and to the right when you face the arm. Treat this as the source gripper convention. Verify axes against the installed app and receiver before reusing the mapping on a physical follower.
 
----
+***
 
 ## A clutched, relative mapping
 
 ### Why relative motion
 
-The ARKit world of the phone and the robot base are two unrelated frames. The mapping does not calibrate one to the
-other. It uses only the motion of the phone since a chosen moment. The operator can stand anywhere and hold the
-phone in a comfortable way.
+The ARKit world of the phone and the robot base are two unrelated frames. The mapping does not calibrate one to the other. It uses only the motion of the phone since a chosen moment. The operator can stand anywhere and hold the phone in a comfortable way.
 
 ### Engage
 
@@ -185,9 +161,7 @@ $$
 {}^{wr}p_{ee} = {}^{wr}p_{ee,0} + s\,{}^{wr}R_{w}\,\big({}^{w}p_{iphone} - {}^{w}p_{iphone,0}\big)
 $$
 
-Space stores the phone pose and the gripper pose as references (index 0). Then the gripper position is its
-reference plus the displacement of the phone, rotated into the robot frame $$wr$$ and scaled by $$s$$. The
-rotation $${}^{wr}R_{w}$$ is fixed at engage from the two reference orientations and the matrix above.
+Space stores the phone pose and the gripper pose as references (index 0). Then the gripper position is its reference plus the displacement of the phone, rotated into the robot frame $$wr$$ and scaled by $$s$$. The rotation $${}^{wr}R_{w}$$ is fixed at engage from the two reference orientations and the matrix above.
 
 ### Rotation follows the same way
 
@@ -195,16 +169,13 @@ $$
 {}^{wr}R_{ee} = {}^{wr}R_{w}\;{}^{w}R_{iphone}\;{}^{iphone}R_{ee}
 $$
 
-The gripper orientation is the phone orientation through the same fixed rotations. A tilt of the phone is a tilt
-of the gripper about the corresponding axis.
+The gripper orientation is the phone orientation through the same fixed rotations. A tilt of the phone is a tilt of the gripper about the corresponding axis.
 
 ### Pause and engage again
 
-Space again pauses: the arm holds its last target, and the phone can move freely. The next Space stores new
-references. Thus the operator can move the hand to a new place without moving the arm. This is the clutch of a
-teleoperation system.
+Space again pauses: the arm holds its last target, and the phone can move freely. The next Space stores new references. Thus the operator can move the hand to a new place without moving the arm. This is the clutch of a teleoperation system.
 
----
+***
 
 ## An arm-mounted pusher changes the tool transform
 
@@ -223,19 +194,17 @@ The gripper example above supplies the body-axis rotation and a convenient relat
 
 ### Limits on the target
 
-The **virtual workspace** is a software limit: a box that the target of the pusher tip must stay in. It is set in the
-script, apart from the workspace of the arm, the region that the hardware can reach.
+The **virtual workspace** is a software limit: a box that the target of the pusher tip must stay in. It is set in the script, apart from the workspace of the arm, the region that the hardware can reach.
 
-| Stage | Rule |
-| --- | --- |
-| Virtual workspace | pusher tip in $$x$$ 0.15–0.50 m, $$y$$ ±0.25 m, $$z$$ 0.005–0.25 m |
-| Speed | 0.25 m/s and 90 °/s |
+| Stage              | Rule                                                                  |
+| ------------------ | --------------------------------------------------------------------- |
+| Virtual workspace  | pusher tip in $$x$$ 0.15–0.50 m, $$y$$ ±0.25 m, $$z$$ 0.005–0.25 m    |
+| Speed              | 0.25 m/s and 90 °/s                                                   |
 | Inverse kinematics | damped least squares on the MuJoCo Jacobian, 30 iterations per period |
 
 ### One step of the inverse kinematics
 
-The Jacobian of Class 08 relates joint velocities to the velocity of the TCP. The inverse kinematics uses it
-backwards. For a target position $$p_d$$ and orientation $$R_d$$, the error is
+The Jacobian of Class 08 relates joint velocities to the velocity of the TCP. The inverse kinematics uses it backwards. For a target position $$p_d$$ and orientation $$R_d$$, the error is
 
 $$
 e = \begin{bmatrix} p_d - p \\ \tfrac12\, e_R \end{bmatrix}, \qquad
@@ -246,13 +215,8 @@ where $$r_k$$ and $$r_{d,k}$$ are the columns of $$R$$ and $$R_d$$.
 
 The two factors ½ have different jobs:
 
-- **The ½ inside $$e_R$$ is part of the orientation error.** For a rotation by an angle $$\theta$$ about a unit
-  axis $$a$$, the sum $$\sum_k r_k \times r_{d,k}$$ equals $$2\sin\theta\,a$$. The ½ turns it into
-  $$e_R = \sin\theta\,a \approx \theta\,a$$: the rotation still to do, in radians, about its axis.
-- **The ½ in front of $$e_R$$ is a weight.** It says how much one radian of orientation error counts against one
-  metre of position error: here 1 rad weighs as much as 0.5 m. The code multiplies the rotation rows of $$J$$ by the
-  same ½, so the error and the Jacobian stay consistent. Without damping, this weight would not change the step;
-  it matters through the damping, near a singularity, where the solver must trade position against orientation.
+* **The ½ inside** $$e_R$$ **is part of the orientation error.** For a rotation by an angle $$\theta$$ about a unit axis $$a$$, the sum $$\sum_k r_k \times r_{d,k}$$ equals $$2\sin\theta\,a$$. The ½ turns it into $$e_R = \sin\theta\,a \approx \theta\,a$$: the rotation still to do, in radians, about its axis.
+* **The ½ in front of** $$e_R$$ **is a weight.** It says how much one radian of orientation error counts against one metre of position error: here 1 rad weighs as much as 0.5 m. The code multiplies the rotation rows of $$J$$ by the same ½, so the error and the Jacobian stay consistent. Without damping, this weight would not change the step; it matters through the damping, near a singularity, where the solver must trade position against orientation.
 
 The step is the damped least-squares solution (Lynch and Park 2017, chap. 6):
 
@@ -260,8 +224,7 @@ $$
 \Delta q = J^{\top}\big(J J^{\top} + \lambda^2 I\big)^{-1} e \;+\; \big(I - J^{+} J\big)\,k\,(q_{home} - q)
 $$
 
-The damping $$\lambda^2 = 10^{-3}$$ regularises the inverse near a singularity. It does not by itself enforce every step bound or prove global reachability. The second term biases the arm toward home. With a damped inverse it is not an exact null-space projection and can change the task residual; the subsequent acceptance check remains necessary. The step is limited to
-0.2 rad. The rotation rows of $$J$$ are scaled by ½, as the rotation error is. In the code:
+The damping $$\lambda^2 = 10^{-3}$$ regularises the inverse near a singularity. It does not by itself enforce every step bound or prove global reachability. The second term biases the arm toward home. With a damped inverse it is not an exact null-space projection and can change the task residual; the subsequent acceptance check remains necessary. The step is limited to 0.2 rad. The rotation rows of $$J$$ are scaled by ½, as the rotation error is. In the code:
 
 ```python
 J = np.vstack([self.jacp[:, self.dofadr], 0.5 * self.jacr[:, self.dofadr]])     # from mj_jacSite
@@ -277,23 +240,17 @@ The solver stacks translation before rotation. Featherstone spatial motion vecto
 
 ### A step is accepted only if it is reached
 
-The inverse kinematics can fail for a target that is inside the virtual workspace but outside the reach of the arm. The
-controller takes a step only if the solution reaches the target within 5 mm and 5°. If not, the arm holds and the
-record marks the frame as `blocked`. With the pusher tool vertical, almost all of the virtual workspace is reachable: the blocked
-targets are at its top ($$z$$ = 0.25 m) close to the base ($$x \le$$ 0.20 m) or at its sides
-($$\lvert y \rvert$$ = 0.25 m). Move lower or back toward the centre of the virtual workspace.
+The inverse kinematics can fail for a target that is inside the virtual workspace but outside the reach of the arm. The controller takes a step only if the solution reaches the target within 5 mm and 5°. If not, the arm holds and the record marks the frame as `blocked`. With the pusher tool vertical, almost all of the virtual workspace is reachable: the blocked targets are at its top ($$z$$ = 0.25 m) close to the base ($$x \le$$ 0.20 m) or at its sides ($$\lvert y \rvert$$ = 0.25 m). Move lower or back toward the centre of the virtual workspace.
 
 ### When the stream stops
 
-If no phone sample arrives for 0.25 s, the arm holds its last target and the log reports the loss. It continues
-when the stream comes back. A hold can also follow an operator pause or a stationary request. The saved fields support a partial diagnosis: sample age indicates stale input and `blocked` records the controller's reach check, but neither field records engagement or a Space-key event. A fresh stream with a stationary target does not distinguish a pause from an engaged operator who is holding still.
+If no phone sample arrives for 0.25 s, the arm holds its last target and the log reports the loss. It continues when the stream comes back. A hold can also follow an operator pause or a stationary request. The saved fields support a partial diagnosis: sample age indicates stale input and `blocked` records the controller's reach check, but neither field records engagement or a Space-key event. A fresh stream with a stationary target does not distinguish a pause from an engaged operator who is holding still.
 
----
+***
 
 ## Teleoperation in simulation
 
-With the device, the frames, the mapping and the inverse kinematics, everything is ready. First try
-teleoperation on the simulated arm.
+With the device, the frames, the mapping and the inverse kinematics, everything is ready. First try teleoperation on the simulated arm.
 
 ### The source gripper recording and the pusher task
 
@@ -303,29 +260,21 @@ The following source video is a gripper-interface recording with a real iPhone a
 An iPhone with asMagic drives the simulated arm; front and side cameras of the scene (8 s).
 {% endembed %}
 
-
-
-The gripper video shows an episode recorded with a real iPhone and the simulated arm. The video is made from the record:
-the recorded joint commands are sent again to the same model, and the two scene cameras are rendered. The
-simulation needs no arm and no CAN bus, so you can rehearse teleoperation with only a phone. The practice page
-shows how to run it yourself.
+The gripper video shows an episode recorded with a real iPhone and the simulated arm. The video is made from the record: the recorded joint commands are sent again to the same model, and the two scene cameras are rendered. The simulation needs no arm and no CAN bus, so you can rehearse teleoperation with only a phone. The practice page shows how to run it yourself.
 
 ### Why rehearse in simulation
 
-In simulation a wrong mapping, a lost stream or a reach limit costs nothing. You see each fault in the record
-before you see it on hardware. The source provides physical variants, but configuration, calibration and operating limits require a separate physical commissioning record. Simulation rehearsal does not authorise hardware operation.
+In simulation a wrong mapping, a lost stream or a reach limit costs nothing. You see each fault in the record before you see it on hardware. The source provides physical variants, but configuration, calibration and operating limits require a separate physical commissioning record. Simulation rehearsal does not authorise hardware operation.
 
----
+***
 
 ## Timing
 
 ### Two rates
 
-<figure><img src="../resources/class09/figures/source/timing.png" alt="Timing of the phone stream and the control loop"><figcaption><p>Figure 4. Timing of the phone stream and the control loop.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/timing.png" alt="Timing of the phone stream and the control loop"><figcaption><p>Figure 4. Timing of the phone stream and the control loop.</p></figcaption></figure>
 
-The phone publishes at approximately 60 Hz. The control loop and the recorder run at 30 Hz. In every control
-period the script uses the latest phone sample, so approximately every second sample is skipped. The record keeps
-the age of the sample that was used.
+The phone publishes at approximately 60 Hz. The control loop and the recorder run at 30 Hz. In every control period the script uses the latest phone sample, so approximately every second sample is skipped. The record keeps the age of the sample that was used.
 
 ### Two clocks and a sample-selection rule
 
@@ -335,15 +284,13 @@ A nominal 60 Hz stream does not guarantee a new packet for every controller upda
 
 ### What the recorder writes about time
 
-Every frame stores elapsed time from a monotonic clock, the age of the phone sample
-(`phone_age`) and the `blocked` flag. The metadata calls this elapsed timestamp wall-clock time; it is not a synchronised phone timestamp. These columns let you measure the recorded control interval and jitter, identify stale samples and inspect reach-check failures. They cannot identify every cause of a hold. Use the manual intervention record to interpret deliberate pauses and stream interruptions; if that record is missing, keep the ambiguity explicit. Adding an engagement field would require a separately versioned recorder and schema, rather than relabelling these historical records.
+Every frame stores elapsed time from a monotonic clock, the age of the phone sample (`phone_age`) and the `blocked` flag. The metadata calls this elapsed timestamp wall-clock time; it is not a synchronised phone timestamp. These columns let you measure the recorded control interval and jitter, identify stale samples and inspect reach-check failures. They cannot identify every cause of a hold. Use the manual intervention record to interpret deliberate pauses and stream interruptions; if that record is missing, keep the ambiguity explicit. Adding an engagement field would require a separately versioned recorder and schema, rather than relabelling these historical records.
 
----
+***
 
 ## The episode record
 
 The example in this section is the source gripper bridge, with seven driver-style channels and two scene cameras. The Class 09 pusher bridge removes the gripper and retains six joint channels plus front, side and phone images. Class 10 switches to the `rebot_pusher` learning recorder with nine-component tip-pose features. These contracts are not interchangeable: identify the script, recorder and tool before reusing a row.
-
 
 ### Folder layout
 
@@ -357,25 +304,21 @@ episode_000/
 
 ### Units and signs
 
-`state` is the motor angle in degrees, and `action` is in command space, as in the LeRobot driver of the physical
-arm. The motor target is
+`state` is the motor angle in degrees, and `action` is in command space, as in the LeRobot driver of the physical arm. The motor target is
 
 $$
 \text{motor target} = \text{action} \times [1, 1, -1, -1, -1, 1, 6]
 $$
 
-Thus the elbow state and action use opposite sign conventions; their numerical values need not have opposite signs at every instant, for example during a reversal or large tracking error. The state is the observation before the
-action of the same frame is applied. Keep this alignment when constructing a supervised target: the action request and the response after its application belong at different points in a transition.
+Thus the elbow state and action use opposite sign conventions; their numerical values need not have opposite signs at every instant, for example during a reversal or large tracking error. The state is the observation before the action of the same frame is applied. Keep this alignment when constructing a supervised target: the action request and the response after its application belong at different points in a transition.
 
 ### A real episode
 
-<figure><img src="../resources/class09/figures/source/traces.png" alt="Traces of an eight-second episode recorded with an iPhone"><figcaption><p>Figure 5. Traces of an eight-second episode recorded with an iPhone.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/traces.png" alt="Traces of an eight-second episode recorded with an iPhone"><figcaption><p>Figure 5. Traces of an eight-second episode recorded with an iPhone.</p></figcaption></figure>
 
-This is the seven-channel gripper episode shown in the source video above. It is not the Class 09 six-joint pusher diagnostic or the Class 10 nine-component tip-pose learning record. The left panel shows the raw elbow channels, the middle panel the
-same channels after the direction vector, the right panel the tracking lag of the first three joints: the state
-one frame later minus the target. The lag stays within 5°.
+This is the seven-channel gripper episode shown in the source video above. It is not the Class 09 six-joint pusher diagnostic or the Class 10 nine-component tip-pose learning record. The left panel shows the raw elbow channels, the middle panel the same channels after the direction vector, the right panel the tracking lag of the first three joints: the state one frame later minus the target. The lag stays within 5°.
 
----
+***
 
 ## The physical arm
 
@@ -383,7 +326,7 @@ The source supplies a **separate physical gripper script**, `teleop_rebot_rs_rea
 
 The physical **pusher tool** clip is another configuration: the gripper is removed, six arm motors carry the tool, and the source uses the Class 10 `rebot_pusher` package. The source reports 11 Push Cube episodes with the arm-mounted pusher from 10 October 2026; the practice page links its retained video. Those records are not a seven-motor gripper run, a new class execution or an autonomous-policy success rate. Physical operation remains optional teaching-team work after its own checks. The required classroom demonstration remains iPhone control of the simulated arm with the pusher tool.
 
----
+***
 
 ## Instructor and TA demonstration
 
@@ -397,14 +340,14 @@ Use the demonstration or source practice to record three phone motions and their
 
 ## References
 
-ASMagic Team. 2026. “asmagic.” Version 0.1.4. Released January 19, 2026. *Python Package Index*. [Versioned API and data-format documentation](https://pypi.org/project/asmagic/0.1.4/). This identifies the Python interface, not an installed iOS build or a physical-frame calibration.
+ASMagic Team. 2026. “asmagic.” Version 0.1.4. Released January 19, 2026. _Python Package Index_. [Versioned API and data-format documentation](https://pypi.org/project/asmagic/0.1.4/). This identifies the Python interface, not an installed iOS build or a physical-frame calibration.
 
-Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. [Spatial-vector resources](https://royfeatherstone.org/spatial/v2/index.html).
+Featherstone, Roy. 2008. _Rigid Body Dynamics Algorithms_. Springer. [Spatial-vector resources](https://royfeatherstone.org/spatial/v2/index.html).
 
-Lynch, Kevin M., and Frank C. Park. 2017. *Modern Robotics: Mechanics, Planning, and Control*. Cambridge University Press. [Numerical inverse kinematics](https://modernrobotics.northwestern.edu/nu-gm-book-resource/6-2-numerical-inverse-kinematics-part-1-of-2/).
+Lynch, Kevin M., and Frank C. Park. 2017. _Modern Robotics: Mechanics, Planning, and Control_. Cambridge University Press. [Numerical inverse kinematics](https://modernrobotics.northwestern.edu/nu-gm-book-resource/6-2-numerical-inverse-kinematics-part-1-of-2/).
 
-MuJoCo developers. n.d. “Simulation.” *MuJoCo Documentation*, version 3.14.0. Accessed October 17, 2026. [Simulation stepping and control](https://mujoco.readthedocs.io/en/3.14.0/programming/simulation.html).
+MuJoCo developers. n.d. “Simulation.” _MuJoCo Documentation_, version 3.14.0. Accessed October 17, 2026. [Simulation stepping and control](https://mujoco.readthedocs.io/en/3.14.0/programming/simulation.html).
 
-Seeed Studio. n.d. “reBot RS Mechanical Description.” *reBot-DevArm*, commit `c247ea9cb0da29cd52c31953659cc8c47e6d1a6e`. [RS mechanical source](https://github.com/Seeed-Projects/reBot-DevArm/tree/c247ea9cb0da29cd52c31953659cc8c47e6d1a6e/Rebot_Arm_description/RS). The [bundled notice](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class09/practical/additional_material/model/rebot_b601_rs_mjcf/NOTICE.md) and [CERN-OHL-W licence](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class09/practical/additional_material/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W) accompany the adapted model; the teleoperation controller and recording schema are separate course software choices.
+Seeed Studio. n.d. “reBot RS Mechanical Description.” _reBot-DevArm_, commit `c247ea9cb0da29cd52c31953659cc8c47e6d1a6e`. [RS mechanical source](https://github.com/Seeed-Projects/reBot-DevArm/tree/c247ea9cb0da29cd52c31953659cc8c47e6d1a6e/Rebot_Arm_description/RS). The [bundled notice](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class09/practical/additional_material/model/rebot_b601_rs_mjcf/NOTICE.md) and [CERN-OHL-W licence](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class09/practical/additional_material/model/rebot_b601_rs_mjcf/LICENSE.CERN-OHL-W) accompany the adapted model; the teleoperation controller and recording schema are separate course software choices.
 
-Shenzhen AncoraSpring Robotics Technology Co., Ltd. n.d. “asMagic.” *Apple App Store*. Accessed October 17, 2026. [Original app listing](https://apps.apple.com/us/app/asmagic/id6661033548).
+Shenzhen AncoraSpring Robotics Technology Co., Ltd. n.d. “asMagic.” _Apple App Store_. Accessed October 17, 2026. [Original app listing](https://apps.apple.com/us/app/asmagic/id6661033548).

@@ -14,13 +14,13 @@ Classes 02–05 separated requested quantities, measured quantities and simulate
 
 By the end of this class, you should be able to:
 
-- Distinguish visual evaluation from visual feedback and object reorientation from puzzle solving.
-- Relate device, camera, marker, object and hand frames without treating them as interchangeable.
-- Explain how calibration, projection and object geometry connect an image to a metric estimate.
-- Interpret measurement age, missing detections, noise, bias and occlusion.
-- Specify the observations and evidence needed before adding vision to a learned manipulation system.
+* Distinguish visual evaluation from visual feedback and object reorientation from puzzle solving.
+* Relate device, camera, marker, object and hand frames without treating them as interchangeable.
+* Explain how calibration, projection and object geometry connect an image to a metric estimate.
+* Interpret measurement age, missing detections, noise, bias and occlusion.
+* Specify the observations and evidence needed before adding vision to a learned manipulation system.
 
-[Lecture](#what-vision-adds-to-the-manipulation-problem) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Lecture](07-rotating-a-cube-with-visual-feedback.md#what-vision-adds-to-the-manipulation-problem) · [Instructor and TA demonstration](07-rotating-a-cube-with-visual-feedback.md#instructor-and-ta-demonstration) · [Student activity](07-rotating-a-cube-with-visual-feedback.md#student-activity)
 
 The supplied architecture and geometry figures, app screenshots and worked calculations support the core demonstration and activity. A live stream inspection is conditional on a configured original asMagic receiver. The source has not yet supplied a complete calibrated cube estimator connected to the Class 06 actor, so no powered hand operation or completed visual-control deployment is required.
 
@@ -34,20 +34,20 @@ A calibrated visual estimate could answer questions that joint telemetry alone c
 
 **Visual feedback** goes further: information derived from images influences the next action. There must be a computational path from image capture through estimation and observation construction to a controller. A recording that is watched after the run is visual evidence, rather than a closed visual feedback loop.
 
-![Prospective image-to-action feedback architecture](../resources/class07/figures/vision-loop-classroom.png)
+![Prospective image-to-action feedback architecture](../.gitbook/assets/vision-loop-classroom.png)
 
-*Figure 1. Prospective visual-feedback architecture: image and capture time → pose estimation → frame and age checks → a compatible policy → actuation and contact → a new image. Trace the path that would make visual information affect an action. The current Class 06 actor does not implement this visual input path.*
+_Figure 1. Prospective visual-feedback architecture: image and capture time → pose estimation → frame and age checks → a compatible policy → actuation and contact → a new image. Trace the path that would make visual information affect an action. The current Class 06 actor does not implement this visual input path._
 
-OpenAI et al. (2018), in *Learning Dexterous In-Hand Manipulation*, provide a reference system that combined learned dexterous manipulation, simulation randomization and a camera-based observation path on a Shadow Hand. Their robot, observations, training and evaluation must be considered together. The later Rubik's Cube work also involved reasoning about internal face permutations. Rotating a rigid cube and solving a puzzle are different tasks.
+OpenAI et al. (2018), in _Learning Dexterous In-Hand Manipulation_, provide a reference system that combined learned dexterous manipulation, simulation randomization and a camera-based observation path on a Shadow Hand. Their robot, observations, training and evaluation must be considered together. The later Rubik's Cube work also involved reasoning about internal face permutations. Rotating a rigid cube and solving a puzzle are different tasks.
 
 Our Class 06 source instead studies continuous positive-Z rotation of a 58 mm, 85 g cube using joint-history feedback. Its task, observations and evaluation differ from the Shadow Hand reference. A similar-looking hand or lettered cube does not establish a compatible policy interface.
 
 ### Two possible roles for an object-pose estimate
 
-| Role | What the estimate influences | What must be established |
-|---|---|---|
-| Evaluation and diagnosis | Recorded measurements and conclusions after or alongside a run | Object identity, calibration, timestamps, validity and an evaluation rule |
-| Closed-loop visual control | Current or future controller actions | All evaluation requirements, plus a compatible observation/action interface and controller validation |
+| Role                       | What the estimate influences                                   | What must be established                                                                              |
+| -------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Evaluation and diagnosis   | Recorded measurements and conclusions after or alongside a run | Object identity, calibration, timestamps, validity and an evaluation rule                             |
+| Closed-loop visual control | Current or future controller actions                           | All evaluation requirements, plus a compatible observation/action interface and controller validation |
 
 A pose estimate can be useful before it is safe or appropriate to feed it to a controller. Conversely, a visually convincing demonstration does not establish the accuracy of the estimate used during control. Keep the measurement record and the action record distinct.
 
@@ -59,12 +59,12 @@ A pose estimate can be useful before it is safe or appropriate to feed it to a c
 
 A pose contains position and orientation relative to a declared reference. A device-tracking system may report the phone in its tracking world. An image-based marker detector may report a marker relative to the camera. A manipulation controller may require the cube relative to the hand or robot world. These are different physical relationships.
 
-| Quantity | Meaning | Why it is insufficient alone |
-|---|---|---|
-| Device AR pose | Device relative to its tracking world | The cube can move independently of the phone |
-| Marker pose | Marker relative to camera | Marker origin and axes can differ from the cube's |
-| Object pose | Cube relative to a stated frame | The controller still needs compatible frames, timing and conventions |
-| Joint positions | Robot joint configuration | They do not directly measure cube orientation under slip |
+| Quantity        | Meaning                               | Why it is insufficient alone                                         |
+| --------------- | ------------------------------------- | -------------------------------------------------------------------- |
+| Device AR pose  | Device relative to its tracking world | The cube can move independently of the phone                         |
+| Marker pose     | Marker relative to camera             | Marker origin and axes can differ from the cube's                    |
+| Object pose     | Cube relative to a stated frame       | The controller still needs compatible frames, timing and conventions |
+| Joint positions | Robot joint configuration             | They do not directly measure cube orientation under slip             |
 
 An estimated pose should travel with its capture timestamp, frame names, units, orientation convention, object identity and validity status. A confidence score needs a definition; a large arbitrary score is not a calibrated uncertainty bound. An image packet can be new while its last valid object estimate is old.
 
@@ -120,9 +120,9 @@ $$
 
 Translation-only addition would give (0.30, 0.03, 0.40) m, a different physical location. This is an analytical coordinate example, not a measured calibration or a new pose-estimation demonstration.
 
-![The same point in camera and hand coordinates](../resources/class07/figures/frame-chain-classroom.png)
+![The same point in camera and hand coordinates](../.gitbook/assets/frame-chain-classroom.png)
 
-*Figure 2. Geometry of the analytical transform example, shown in the x–y plane. Locate the two origins, follow camera +x along hand +y, and read the same point relative to each origin. The diagram explains coordinates; it reports no camera experiment.*
+_Figure 2. Geometry of the analytical transform example, shown in the x–y plane. Locate the two origins, follow camera +x along hand +y, and read the same point relative to each origin. The diagram explains coordinates; it reports no camera experiment._
 
 If a controller instead expects object pose in world W, an additional declared hand-to-world map is required:
 
@@ -143,7 +143,7 @@ u=f_x\frac{X_C}{Z_C}+c_x,\qquad
 v=f_y\frac{Y_C}{Z_C}+c_y.
 $$
 
-The focal lengths are in pixels and the principal point is (c_x, c_y). This equation assumes the camera's stated axis convention and an appropriate treatment of lens distortion. A physical camera's intrinsics must match the image resolution and processing used by the estimator.
+The focal lengths are in pixels and the principal point is (c\_x, c\_y). This equation assumes the camera's stated axis convention and an appropriate treatment of lens distortion. A physical camera's intrinsics must match the image resolution and processing used by the estimator.
 
 A 70 mm segment parallel to the image plane, observed with a 700 px focal length at 0.50 m, spans approximately
 
@@ -191,9 +191,9 @@ Holding a pose estimate differs from holding an actuator command. An observation
 
 ## Inspect the original asMagic stream
 
-![Original asMagic streaming interface](../resources/class07/figures/source/asmagic-app.png)
+![Original asMagic streaming interface](../.gitbook/assets/asmagic-app.png)
 
-*Figure 3. The author's original asMagic interface reference: app icon, home page and Data Streaming panel. Locate AR Data, the displayed IP address and port 8000. These controls identify a stream setup; the screenshot does not establish a cube estimator or the current packet schema.*
+_Figure 3. The author's original asMagic interface reference: app icon, home page and Data Streaming panel. Locate AR Data, the displayed IP address and port 8000. These controls identify a stream setup; the screenshot does not establish a cube estimator or the current packet schema._
 
 The author's Class 07 plan uses the original asMagic app to publish device AR pose, color images, depth and intrinsics over a network, with port 8000 stated in the plan. Availability and synchronization of these fields must be checked in the actual receiver. A phone's AR pose tracks the phone relative to its AR world; it does not directly track the cube in the hand.
 
@@ -240,13 +240,13 @@ Teams complete the following record using the supplied figures, analytical examp
 5. If a valid object estimator is provided, vary viewpoint or cover part of the marker and record acceptance behavior. Without an estimator, describe image visibility without inventing pose-error measurements.
 6. State one additional component or measurement needed before visual information could influence a compatible hand controller.
 
-| Response field | What to record |
-|---|---|
-| Controller | Class 06 proprioceptive input/action contract |
-| Geometry | Frames, transform direction and point calculation |
-| Timing | Clock assumption, age calculation and limitation |
+| Response field         | What to record                                             |
+| ---------------------- | ---------------------------------------------------------- |
+| Controller             | Class 06 proprioceptive input/action contract              |
+| Geometry               | Frames, transform direction and point calculation          |
+| Timing                 | Clock assumption, age calculation and limitation           |
 | Available observations | Actual stream fields or a clearly marked unavailable field |
-| Conclusion | What was observed, and what remains unverified |
+| Conclusion             | What was observed, and what remains unverified             |
 
 A team can complete the geometry and interface analysis without a phone. Where stream access is provided, students inspect observations rather than commanding a physical hand.
 
@@ -256,7 +256,7 @@ Class 08 introduces a different mechanism; Class 09 uses phone motion to command
 
 ## References
 
-Featherstone, Roy. 2008. *Rigid Body Dynamics Algorithms*. Springer. [Coordinate-transform guidance](https://royfeatherstone.org/spatial/v2/xforms.html).
+Featherstone, Roy. 2008. _Rigid Body Dynamics Algorithms_. Springer. [Coordinate-transform guidance](https://royfeatherstone.org/spatial/v2/xforms.html).
 
 Handa, Ankur, Karl Van Wyk, Wei Yang, Jacky Liang, Yu-Wei Chao, Qian Wan, Stan Birchfield, Nathan Ratliff, and Dieter Fox. 2019. “DexPilot: Vision Based Teleoperation of Dexterous Robotic Hand-Arm System.” arXiv:1910.03135. [Paper](https://arxiv.org/abs/1910.03135).
 

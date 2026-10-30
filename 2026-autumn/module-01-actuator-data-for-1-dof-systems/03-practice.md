@@ -1,4 +1,4 @@
-# Class 03 — Practice: assembling and exporting the B0 fixture
+# Practice: from fixture assembly to MuJoCo
 
 This practice begins with the supplied M0 XC330 component and separate link, payload, and pin components. The parts are assembled into the B0 configuration in Fusion 360, assigned the required joints, exported as MJCF through ACDC4Robot, and prepared for actuation in MuJoCo.
 
@@ -8,13 +8,13 @@ Download [Class 03 Fusion 360–to–MuJoCo practice package](../resources/class
 
 The package contains:
 
-- the M0 XC330 starting component;
-- separate link, payload, and pin STEP files;
-- the completed B0 assembly for geometric verification;
-- the Fusion 360 assembly sequence;
-- an offline copy of the ACDC4Robot add-in;
-- the actuator-enabled B0 XML and its mesh assets; and
-- the prepared Class 03 MuJoCo project.
+* the M0 XC330 starting component;
+* separate link, payload, and pin STEP files;
+* the completed B0 assembly for geometric verification;
+* the Fusion 360 assembly sequence;
+* an offline copy of the ACDC4Robot add-in;
+* the actuator-enabled B0 XML and its mesh assets; and
+* the prepared Class 03 MuJoCo project.
 
 Extract the archive to a writable folder before beginning the practice.
 
@@ -24,9 +24,9 @@ Extract the archive to a writable folder before beginning the practice.
 
 The B0 fixture contains one fixed XC330 housing and one moving assembly. The moving assembly consists of the link, two payloads, and two pins. The payload centers are positioned symmetrically at 60 mm on either side of the XC330 rotation axis.
 
-![B0 component arrangement](../resources/class03/practical/additional_material/demonstration/milestone_figures/configuration_table_and_masses_110g.png)
+![B0 component arrangement](../.gitbook/assets/configuration_table_and_masses_110g.png)
 
-*Figure 1. B0 places two complete pin–payload assemblies symmetrically at 60 mm from the XC330 rotation axis, giving a 110 g external moving assembly.*
+_Figure 1. B0 places two complete pin–payload assemblies symmetrically at 60 mm from the XC330 rotation axis, giving a 110 g external moving assembly._
 
 The parts are assembled in the following order:
 
@@ -40,23 +40,23 @@ The parts are assembled in the following order:
 1. Start Fusion 360 and create a project named `Class03_B0_Fixture`.
 2. Locate the supplied CAD parts in `01_Fusion360/STEP/`.
 3. Upload the following files:
-   - `1DOF-M0.step`
-   - `Link.step`
-   - `Payload.step`
-   - `Pin.step`
-   - `1DOF-B0.step`
+   * `1DOF-M0.step`
+   * `Link.step`
+   * `Payload.step`
+   * `Pin.step`
+   * `1DOF-B0.step`
 4. Create a new design and save it as `Class03_B0_Assembly`.
 5. Select **Insert → Insert Component**.
 6. Select `1DOF-M0` from the project and insert it into the current design.
 7. Break the external link to the inserted component.
 8. Ground the XC330 motor housing. It must remain fixed throughout the joint test.
 
-|  |  |
-| --- | --- |
-| ![Importing the supplied component files](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/01_import_step_files.png) | ![Insert Component command](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/02_insert_component_command.png) |
-| ![Selecting the M0 component](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/03_select_m0_component.png) | ![M0 XC330 component in the design](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/04_m0_inserted.png) |
+|                                                                                        |                                                                                 |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| ![Importing the supplied component files](../.gitbook/assets/01_import_step_files.png) | ![Insert Component command](../.gitbook/assets/02_insert_component_command.png) |
+| ![Selecting the M0 component](../.gitbook/assets/03_select_m0_component.png)           | ![M0 XC330 component in the design](../.gitbook/assets/04_m0_inserted.png)      |
 
-*Figure 2. The M0 component is inserted as the fixed starting body of the B0 assembly.*
+_Figure 2. The M0 component is inserted as the fixed starting body of the B0 assembly._
 
 ### Join the link to the XC330 output
 
@@ -70,18 +70,18 @@ The parts are assembled in the following order:
 8. Set the joint angle to `0 deg`, then confirm the joint.
 9. Drag the link through a small positive and negative angle. The link must rotate about the XC330 shaft while the motor housing remains fixed.
 
-|  |  |
-| --- | --- |
-| ![Link inserted beside the XC330](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/05_link_inserted.png) | ![Joint command in the Assemble menu](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/06_joint_command.png) |
-| ![Selecting the link center](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/07_select_link_origin.png) | ![Selecting the XC330 output center](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/08_select_motor_horn_origin.png) |
+|                                                                            |                                                                                          |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| ![Link inserted beside the XC330](../.gitbook/assets/05_link_inserted.png) | ![Joint command in the Assemble menu](../.gitbook/assets/06_joint_command.png)           |
+| ![Selecting the link center](../.gitbook/assets/07_select_link_origin.png) | ![Selecting the XC330 output center](../.gitbook/assets/08_select_motor_horn_origin.png) |
 
-*Figure 3. The joint origins are selected at the link center and the XC330 output center.*
+_Figure 3. The joint origins are selected at the link center and the XC330 output center._
 
-|  |  |
-| --- | --- |
-| ![Revolute-joint alignment preview](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/09_revolute_joint_preview.png) | ![Completed link-to-XC330 joint](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/10_revolute_joint_complete.png) |
+|                                                                                       |                                                                                     |
+| ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| ![Revolute-joint alignment preview](../.gitbook/assets/09_revolute_joint_preview.png) | ![Completed link-to-XC330 joint](../.gitbook/assets/10_revolute_joint_complete.png) |
 
-*Figure 4. The revolute joint places the link coaxially with the XC330 output shaft.*
+_Figure 4. The revolute joint places the link coaxially with the XC330 output shaft._
 
 ### Position the two B0 payloads
 
@@ -95,12 +95,12 @@ The parts are assembled in the following order:
 8. Insert the second payload and choose **Make Independent**.
 9. Repeat the rigid-joint operation at the symmetric link hole on the opposite side of the XC330 axis.
 
-|  |  |
-| --- | --- |
-| ![Payload inserted into the assembly](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/11_insert_payload.png) | ![B0 mounting hole selected on the link](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/12_select_b0_link_hole.png) |
-| ![Payload joint alignment](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/13_payload_joint_preview.png) | ![Payload joint offset and orientation](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/14_payload_joint_settings.png) |
+|                                                                                 |                                                                                           |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| ![Payload inserted into the assembly](../.gitbook/assets/11_insert_payload.png) | ![B0 mounting hole selected on the link](../.gitbook/assets/12_select_b0_link_hole.png)   |
+| ![Payload joint alignment](../.gitbook/assets/13_payload_joint_preview.png)     | ![Payload joint offset and orientation](../.gitbook/assets/14_payload_joint_settings.png) |
 
-*Figure 5. Each payload is rigidly located at one of the two symmetric B0 mounting positions.*
+_Figure 5. Each payload is rigidly located at one of the two symmetric B0 mounting positions._
 
 ### Insert the two pins
 
@@ -111,12 +111,12 @@ The parts are assembled in the following order:
 5. Repeat the rigid-joint operation for the second payload.
 6. Move the revolute joint through a small positive and negative angle.
 
-|  |  |
-| --- | --- |
-| ![Pin inserted beside the payload](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/15_insert_pin.png) | ![Pin aligned with the payload bore](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/16_pin_joint_preview.png) |
-| ![Completed B0 fixture](../resources/class03/practical/additional_material/demonstration/fusion360_steps/assembly/17_completed_b0_fixture.png) |  |
+|                                                                          |                                                                                   |
+| ------------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
+| ![Pin inserted beside the payload](../.gitbook/assets/15_insert_pin.png) | ![Pin aligned with the payload bore](../.gitbook/assets/16_pin_joint_preview.png) |
+| ![Completed B0 fixture](../.gitbook/assets/17_completed_b0_fixture.png)  |                                                                                   |
 
-*Figure 6. The pins complete the two rigid payload attachments in the B0 fixture.*
+_Figure 6. The pins complete the two rigid payload attachments in the B0 fixture._
 
 The link, both payloads, and both pins must move as one rigid assembly. The motor housing must remain fixed. Compare the result with `1DOF-B0.step`; the reference file verifies the completed geometry but does not replace the assembly procedure.
 
@@ -124,13 +124,13 @@ The link, both payloads, and both pins must move as one rigid assembly. The moto
 
 Confirm the following properties:
 
-- one revolute joint connects the link to the XC330 output;
-- the revolute axis is coaxial with the motor shaft;
-- both payloads and both pins are rigidly attached;
-- the two payload centers are 60 mm from the motor axis on opposite sides;
-- the external moving assembly is the 22 g link plus two 44 g pin–payload assemblies, for a total of 110 g;
-- repeated payload and pin occurrences are independent; and
-- component names contain only letters, numbers, and underscores.
+* one revolute joint connects the link to the XC330 output;
+* the revolute axis is coaxial with the motor shaft;
+* both payloads and both pins are rigidly attached;
+* the two payload centers are 60 mm from the motor axis on opposite sides;
+* the external moving assembly is the 22 g link plus two 44 g pin–payload assemblies, for a total of 110 g;
+* repeated payload and pin occurrences are independent; and
+* component names contain only letters, numbers, and underscores.
 
 Save the completed Fusion design before preparing the export copy.
 
@@ -145,12 +145,12 @@ Save the completed Fusion design before preparing the export copy.
 7. Select `Fusion2Robot` under **My Add-Ins** and choose **Run**.
 8. Enable **Run on Startup** for subsequent sessions.
 
-|  |  |
-| --- | --- |
-| ![Downloading the ACDC4Robot archive](../resources/class03/practical/additional_material/demonstration/fusion360_steps/acdc_installation/01_download_repository.png) | ![Extracting the downloaded archive](../resources/class03/practical/additional_material/demonstration/fusion360_steps/acdc_installation/02_extract_archive.png) |
-| ![Copying the ACDC4Robot add-in folder](../resources/class03/practical/additional_material/demonstration/fusion360_steps/acdc_installation/03_copy_addin_folder.png) | ![Installing the folder in the Fusion 360 add-ins directory](../resources/class03/practical/additional_material/demonstration/fusion360_steps/acdc_installation/04_install_addin_folder.png) |
+|                                                                                      |                                                                                                              |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| ![Downloading the ACDC4Robot archive](../.gitbook/assets/01_download_repository.png) | ![Extracting the downloaded archive](../.gitbook/assets/02_extract_archive.png)                              |
+| ![Copying the ACDC4Robot add-in folder](../.gitbook/assets/03_copy_addin_folder.png) | ![Installing the folder in the Fusion 360 add-ins directory](../.gitbook/assets/04_install_addin_folder.png) |
 
-*Figure 7. The ACDC4Robot folder is extracted and installed in the Fusion 360 add-ins directory.*
+_Figure 7. The ACDC4Robot folder is extracted and installed in the Fusion 360 add-ins directory._
 
 ### Prepare and export the MJCF model
 
@@ -234,8 +234,8 @@ The ACDC4Robot export transfers the bodies, geometry, inertial properties, and r
 
 Use the supplied actuator-enabled model:
 
-- repository: [`resources/class03/practical/additional_material/standalone/models/1DOF-B0.xml`](../resources/class03/practical/additional_material/standalone/models/1DOF-B0.xml)
-- downloaded package: `03_MuJoCo/standalone/models/1DOF-B0.xml`
+* repository: [`resources/class03/practical/additional_material/standalone/models/1DOF-B0.xml`](../resources/class03/practical/additional_material/standalone/models/1DOF-B0.xml)
+* downloaded package: `03_MuJoCo/standalone/models/1DOF-B0.xml`
 
 The ready B0 model associates a torque actuator with `actuator_joint`:
 

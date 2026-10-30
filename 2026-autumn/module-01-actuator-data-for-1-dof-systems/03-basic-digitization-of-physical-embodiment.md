@@ -12,14 +12,15 @@ Class 02 introduced the XC330 actuator, its operating modes, commands, and measu
 
 By the end of this class, you should be able to:
 
-- distinguish a visual model from a mechanically meaningful digital representation;
-- identify the bodies, joints, frames, units, mass properties, inputs, and outputs required for a one-degree-of-freedom model;
-- explain how one fixture design can be represented through several mass configurations;
-- inspect a CAD-to-MJCF conversion and identify the assumptions introduced during export;
-- explain the difference between XML syntax and the MJCF model format; and
-- relate the digitized mass, inertia, gravity, and actuation declarations to a one-degree-of-freedom equation of motion.
+* distinguish a visual model from a mechanically meaningful digital representation;
+* identify the bodies, joints, frames, units, mass properties, inputs, and outputs required for a one-degree-of-freedom model;
+* explain how one fixture design can be represented through several mass configurations;
+* inspect a CAD-to-MJCF conversion and identify the assumptions introduced during export;
+* explain the difference between XML syntax and the MJCF model format; and
+* relate the digitized mass, inertia, gravity, and actuation declarations to a one-degree-of-freedom equation of motion.
 
-[Practice](03-practice.md) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
+[Practice](03-practice.md) · [Instructor and TA demonstration](03-basic-digitization-of-physical-embodiment.md#instructor-and-ta-demonstration) · [Student activity](03-basic-digitization-of-physical-embodiment.md#student-activity)
+
 ## Digital representations of physical mechanisms
 
 A photograph records appearance from one viewpoint. CAD describes designed geometry, assembly structure, reference frames, and assigned materials. A simulation description adds mechanical connectivity, mass properties, actuator inputs, sensors, gravity, contact rules, and numerical settings. Similar-looking renderings can therefore represent different mechanisms.
@@ -34,16 +35,16 @@ Digitization proceeds through a chain of evidence. Physical measurements constra
 
 **MJCF**, the MuJoCo XML Format, is MuJoCo's model-description language written using XML syntax. MJCF defines the permitted elements, their attributes, units, defaults, and mechanical interpretation. An MJCF file therefore uses the `.xml` extension, but not every XML file is an MJCF model. The root `<mujoco>` element identifies the document as an MJCF model, while sections such as `<asset>`, `<worldbody>`, `<actuator>`, and `<sensor>` describe resources, rigid-body structure, inputs, and observable quantities.
 
-| Term | Meaning | Role in this class |
-|---|---|---|
-| MuJoCo | Multi-Joint dynamics with Contact | physics engine that loads and simulates the mechanism |
-| XML | Extensible Markup Language | general syntax used to structure the text file |
-| MJCF | MuJoCo XML Format | MuJoCo-specific model language that gives the XML elements mechanical meaning |
-| `.xml` | filename extension | identifies an XML text file; its contents determine whether it is MJCF |
+| Term   | Meaning                           | Role in this class                                                            |
+| ------ | --------------------------------- | ----------------------------------------------------------------------------- |
+| MuJoCo | Multi-Joint dynamics with Contact | physics engine that loads and simulates the mechanism                         |
+| XML    | Extensible Markup Language        | general syntax used to structure the text file                                |
+| MJCF   | MuJoCo XML Format                 | MuJoCo-specific model language that gives the XML elements mechanical meaning |
+| `.xml` | filename extension                | identifies an XML text file; its contents determine whether it is MJCF        |
 
-![Digitization from the physical fixture to an executable model](../resources/class03/figures/digitization_workflow.png)
+![Digitization from the physical fixture to an executable model](../.gitbook/assets/digitization_workflow.png)
 
-*Figure 1. Physical measurements, CAD definitions, and MJCF declarations form a traceable description of the physical mechanism.*
+_Figure 1. Physical measurements, CAD definitions, and MJCF declarations form a traceable description of the physical mechanism._
 
 ## A reusable one-degree-of-freedom fixture
 
@@ -53,18 +54,17 @@ Several physical parts can therefore belong to one moving body. Rigidly attachin
 
 The same fixture is prepared in five configurations so that geometry, mass placement, gravity loading, and inertia can be varied while the actuator and platform remain common.
 
-| Configuration | Link | Payload-centre positions | External moving mass | Mechanical purpose |
-|---|---:|---:|---:|---|
-| M0 | none | — | 0 g | motor and platform reference |
-| B0 | 22 g | −60 mm, +60 mm | 110 g | compact symmetric load |
-| B1 | 22 g | −80 mm, +80 mm | 110 g | intermediate symmetric load |
-| B2 | 22 g | −100 mm, +100 mm | 110 g | wide symmetric load |
-| G1 | 22 g | +60 mm, +100 mm | 110 g | asymmetric gravity-loaded case |
+| Configuration | Link | Payload-centre positions | External moving mass | Mechanical purpose             |
+| ------------- | ---: | -----------------------: | -------------------: | ------------------------------ |
+| M0            | none |                        — |                  0 g | motor and platform reference   |
+| B0            | 22 g |           −60 mm, +60 mm |                110 g | compact symmetric load         |
+| B1            | 22 g |           −80 mm, +80 mm |                110 g | intermediate symmetric load    |
+| B2            | 22 g |         −100 mm, +100 mm |                110 g | wide symmetric load            |
+| G1            | 22 g |          +60 mm, +100 mm |                110 g | asymmetric gravity-loaded case |
 
-![Mass and payload positions for the five configurations](../resources/class03/figures/configuration_mass_positions.png)
+![Mass and payload positions for the five configurations](../.gitbook/assets/configuration_mass_positions.png)
 
-*Figure 2. External moving mass and payload-centre positions measured from the XC330 output axis.*
-
+_Figure 2. External moving mass and payload-centre positions measured from the XC330 output axis._
 
 The labels M0, B0, B1, B2, and G1 identify fixture configurations within this apparatus. They are not general robotics categories and do not identify equivalent configurations on another platform.
 
@@ -76,11 +76,11 @@ B1 and B2 keep the same 110 g external moving mass as B0 while moving the two 44
 
 G1 retains the 22 g link and the same two complete payload assemblies but places both payloads on the positive side of the axis. This breaks the symmetry of the B-series configurations. Its nonzero mass first moment makes gravity loading possible when the gravity vector has a moment arm about the joint axis.
 
-| Configuration group | Quantity retained | Quantity changed | Mechanical concept isolated |
-|---|---|---|---|
-| M0 to B0 | actuator and platform | external moving assembly | addition of a connected load |
-| B0 to B1 to B2 | component masses and symmetry | payload radius | rotational inertia from mass placement |
-| B-series to G1 | link and payload masses | symmetry and mass first moment | configuration-dependent gravity moment |
+| Configuration group | Quantity retained             | Quantity changed               | Mechanical concept isolated            |
+| ------------------- | ----------------------------- | ------------------------------ | -------------------------------------- |
+| M0 to B0            | actuator and platform         | external moving assembly       | addition of a connected load           |
+| B0 to B1 to B2      | component masses and symmetry | payload radius                 | rotational inertia from mass placement |
+| B-series to G1      | link and payload masses       | symmetry and mass first moment | configuration-dependent gravity moment |
 
 This structure permits one MJCF template to represent a family of mechanisms. Configuration identity must remain attached to every CAD assembly, MJCF file, image, and result because equal total mass does not imply equal dynamics.
 
@@ -88,9 +88,9 @@ This structure permits one MJCF template to represent a family of mechanisms. Co
 
 The link has an accepted mass of 22 g. Each complete pin–payload assembly has an accepted mass of 44 g.
 
-![Fixture components in the CAD record](../resources/class03/figures/source/fixture-components.png)
+![Fixture components in the CAD record](../.gitbook/assets/fixture-components.png)
 
-*Figure 3. Link, pin, and payload geometry used to construct the moving assembly.*
+_Figure 3. Link, pin, and payload geometry used to construct the moving assembly._
 
 B0, B1, and B2 are symmetric about the output axis. Their ideal gravitational first moments cancel at the reference pose, while their rotational inertia increases as the payloads move outward. G1 places both payloads on the same side and produces a gravity moment when gravity has a moment arm about the joint axis.
 
@@ -112,29 +112,29 @@ The external moving mass remains 110 g because the same link and payload assembl
 
 B2 is the wide symmetric configuration. Its 22 g link carries two complete 44 g pin–payload assemblies at −100 mm and +100 mm from the XC330 output axis. The simulation, CAD, and physical records describe the same arrangement through different forms of evidence.
 
-![B2 loaded in MuJoCo on the asBrain platform](../resources/class03/figures/source/B2_model_loaded.png)
+![B2 loaded in MuJoCo on the asBrain platform](../.gitbook/assets/B2_model_loaded.png)
 
-*Figure 4. The B2 MJCF shows the symmetric payload assemblies at −100 mm and +100 mm from the XC330 output axis on the asBrain Box platform.*
+_Figure 4. The B2 MJCF shows the symmetric payload assemblies at −100 mm and +100 mm from the XC330 output axis on the asBrain Box platform._
 
-![B2 Fusion 360 CAD assembly](../resources/class03/figures/source/1DOF-B2.png)
+![B2 Fusion 360 CAD assembly](../.gitbook/assets/1DOF-B2.png)
 
-*Figure 5. The B2 CAD assembly records component geometry and assembly relationships.*
+_Figure 5. The B2 CAD assembly records component geometry and assembly relationships._
 
-![Physical B2 fixture](../resources/class03/figures/source/260901-172518_B2_fixture-overview.png)
+![Physical B2 fixture](../.gitbook/assets/260901-172518_B2_fixture-overview.png)
 
-*Figure 6. The physical B2 fixture provides evidence of the assembled link, payloads, and actuator interface.*
+_Figure 6. The physical B2 fixture provides evidence of the assembled link, payloads, and actuator interface._
 
 The three representations contain the same mechanical elements: the fixed platform and XC330 housing, the output axis, the link, and two payload assemblies. The photograph records the assembled hardware, the CAD model defines its designed geometry and relationships, and the MJCF expresses the corresponding bodies, joint, inertial properties, and simulation interfaces. Their shared structure establishes geometric and mechanical correspondence, but it does not yet establish predictive dynamic agreement.
 
-| Property | Physical or design source | MJCF representation |
-|---|---|---|
-| Component identity and arrangement | physical fixture and CAD assembly | MJCF body hierarchy and visual geometry |
-| Revolute motion | actuator output and CAD joint | one MJCF hinge joint |
-| Payload-centre positions | accepted dimension record | pin body positions in metres |
-| Complete moving mass | accepted mass record | body masses and inertial declarations |
-| Joint range | declared operating envelope | range of −π/2 to +π/2 rad |
-| Collision behavior | free-motion simulation scope | disabled contact between fixture geometries |
-| Motion response | encoder and command records | simulated joint state under the same command |
+| Property                           | Physical or design source         | MJCF representation                          |
+| ---------------------------------- | --------------------------------- | -------------------------------------------- |
+| Component identity and arrangement | physical fixture and CAD assembly | MJCF body hierarchy and visual geometry      |
+| Revolute motion                    | actuator output and CAD joint     | one MJCF hinge joint                         |
+| Payload-centre positions           | accepted dimension record         | pin body positions in metres                 |
+| Complete moving mass               | accepted mass record              | body masses and inertial declarations        |
+| Joint range                        | declared operating envelope       | range of −π/2 to +π/2 rad                    |
+| Collision behavior                 | free-motion simulation scope      | disabled contact between fixture geometries  |
+| Motion response                    | encoder and command records       | simulated joint state under the same command |
 
 ## Encoding the fixture in MJCF
 
@@ -152,14 +152,14 @@ Point coordinates require both rotation and translation between frames, whereas 
 
 ### Geometry, collision, and inertia describe different properties
 
-| MJCF element | Role in this fixture |
-|---|---|
-| `body` | Builds the XC330, link, pin, and payload hierarchy |
-| `joint` | Declares the single hinge and its range |
-| `geom` | Supplies visual or collision geometry |
-| `inertial` | Declares mass, centre of mass, and inertia tensor |
-| `actuator` | Defines the simulation control input |
-| `sensor` | Reports joint position, velocity, and actuator effort |
+| MJCF element | Role in this fixture                                  |
+| ------------ | ----------------------------------------------------- |
+| `body`       | Builds the XC330, link, pin, and payload hierarchy    |
+| `joint`      | Declares the single hinge and its range               |
+| `geom`       | Supplies visual or collision geometry                 |
+| `inertial`   | Declares mass, centre of mass, and inertia tensor     |
+| `actuator`   | Defines the simulation control input                  |
+| `sensor`     | Reports joint position, velocity, and actuator effort |
 
 Collision is disabled in the fixture models because this class considers unconstrained rotational motion rather than contact. Visual geometry determines appearance, collision geometry determines possible contact, and inertial declarations determine mass distribution. A visible surface therefore does not imply that contact is active.
 
@@ -184,7 +184,7 @@ $$
 J(q)\ddot q+b\dot q+\tau_f(\dot q)+\tau_g(q)=\tau_{\mathrm{act}},
 $$
 
-where $q$ is joint angle, $J(q)$ is the inertia about the joint axis, $b\dot q$ represents viscous damping, $\tau_f$ represents other friction effects, $\tau_g$ is the gravity moment, and $\tau_{\mathrm{act}}$ is the actuator torque applied to the modeled joint. For this rigid single-axis fixture, the body geometry and inertial declarations determine the modeled joint inertia for a selected configuration.
+where $q$ is joint angle, $J(q)$ is the inertia about the joint axis, $b\dot q$ represents viscous damping, $\tau\_f$ represents other friction effects, $\tau\_g$ is the gravity moment, and $\tau\_{\mathrm{act\}}$ is the actuator torque applied to the modeled joint. For this rigid single-axis fixture, the body geometry and inertial declarations determine the modeled joint inertia for a selected configuration.
 
 The B0, B1, and B2 payload assemblies are positioned symmetrically. Under the ideal declared geometry, equal gravity contributions from opposite sides cancel at corresponding orientations, while the joint-inertia contribution increases with payload radius. G1 places both assemblies on the same side, so their gravity contributions do not cancel.
 
@@ -194,33 +194,33 @@ Class 03 establishes the model structure needed by this equation: the moving bod
 
 The B0 CAD assembly illustrates how the physical mechanism becomes a connected rigid-body model. The XC330 output and link form a revolute relationship, while each payload is rigidly attached to its mounting pin. These relationships determine the body hierarchy and joint structure exported to MJCF.
 
-![Joint-origin selection at the XC330 output](../resources/class03/figures/fusion-01-joint-origin.png)
+![Joint-origin selection at the XC330 output](../.gitbook/assets/fusion-01-joint-origin.png)
 
-*Figure 7. The motor-side joint origin is located at the XC330 output axis.*
+_Figure 7. The motor-side joint origin is located at the XC330 output axis._
 
-![Link and motor joint-origin alignment](../resources/class03/figures/fusion-02-component-alignment.png)
+![Link and motor joint-origin alignment](../.gitbook/assets/fusion-02-component-alignment.png)
 
-*Figure 8. Coincident link-side and motor-side origins define the connection between the actuator and link.*
+_Figure 8. Coincident link-side and motor-side origins define the connection between the actuator and link._
 
-![Fusion revolute-joint motion setting](../resources/class03/figures/fusion-03-revolute-motion.png)
+![Fusion revolute-joint motion setting](../.gitbook/assets/fusion-03-revolute-motion.png)
 
-*Figure 9. The revolute joint permits rotation about the axis expressed in the Fusion joint frame.*
+_Figure 9. The revolute joint permits rotation about the axis expressed in the Fusion joint frame._
 
-![Payload and pin joint-origin selection](../resources/class03/figures/fusion-04-payload-pin-origins.png)
+![Payload and pin joint-origin selection](../.gitbook/assets/fusion-04-payload-pin-origins.png)
 
-*Figure 10. Payload and pin origins define the attachment location of the first payload assembly.*
+_Figure 10. Payload and pin origins define the attachment location of the first payload assembly._
 
-![Rigid payload-to-pin relationship](../resources/class03/figures/fusion-05-rigid-payload.png)
+![Rigid payload-to-pin relationship](../.gitbook/assets/fusion-05-rigid-payload.png)
 
-*Figure 11. The rigid payload-to-pin relationship makes both components part of one moving assembly.*
+_Figure 11. The rigid payload-to-pin relationship makes both components part of one moving assembly._
 
-![Second payload and pin attachment origins](../resources/class03/figures/fusion-06-second-payload.png)
+![Second payload and pin attachment origins](../.gitbook/assets/fusion-06-second-payload.png)
 
-*Figure 12. The second payload uses the same rigid attachment relationship.*
+_Figure 12. The second payload uses the same rigid attachment relationship._
 
-![ACDC4Robot MJCF and MuJoCo export settings](../resources/class03/figures/fusion-07-mjcf-export.png)
+![ACDC4Robot MJCF and MuJoCo export settings](../.gitbook/assets/fusion-07-mjcf-export.png)
 
-*Figure 13. The MJCF export transfers the CAD assembly structure to a MuJoCo model description.*
+_Figure 13. The MJCF export transfers the CAD assembly structure to a MuJoCo model description._
 
 The CAD-to-MJCF conversion preserves the joint origin, joint axis, motion type, rigid grouping, component identity, and inertial data. These declarations give the exported model its mechanical meaning; geometry alone is insufficient.
 
@@ -232,15 +232,13 @@ The add-in therefore transfers a mechanical description rather than creating one
 
 Exported geometry and body structure provide the starting point for simulation. Actuators, sensors, contact settings, controller gains, damping, friction, and other simulation-specific declarations are completed in the MJCF according to the purpose of the model. A successful export preserves the assembly relationships; it does not by itself establish that the model reproduces physical dynamic response.
 
-
 ## Mechanical meaning of the MJCF representation
 
 Each configuration contains one revolute joint aligned with the XC330 output axis, one actuator, and sensors for joint position, joint velocity, and actuator effort. The named configuration determines the link and payload arrangement, payload-centre positions, and external moving mass. The joint range is −π/2 to +π/2 rad, and collision remains disabled for the free-motion simulation considered in this class.
 
+![MuJoCo front views of the five XC330 fixture configurations](../.gitbook/assets/all-models.png)
 
-![MuJoCo front views of the five XC330 fixture configurations](../resources/class03/figures/source/all-models.png)
-
-*Figure 14. M0, B0, B1, B2, and G1 at zero joint angle show the unloaded motor, symmetric payload offsets, and asymmetric same-side loading on the common asBrain platform.*
+_Figure 14. M0, B0, B1, B2, and G1 at zero joint angle show the unloaded motor, symmetric payload offsets, and asymmetric same-side loading on the common asBrain platform._
 
 The rendered configurations show how a common one-degree-of-freedom mechanism represents different mass placements. B0, B1, and B2 preserve symmetric loading while increasing the distance of each payload from the joint axis. G1 places both payloads on the same side and introduces a gravity moment. These geometric and inertial declarations define the mechanism being simulated; agreement with physical motion additionally depends on damping, friction, actuator response, and timing. This distinction separates physical digitization from dynamic system identification.
 
@@ -266,12 +264,12 @@ The B2 records establish the fixture-digitization method through a wide symmetri
 
 ## Source records and further reading
 
-| Need | Course record |
-|---|---|
-| Standalone TA and student package | [Standalone package](../resources/class03/practical/additional_material/standalone/README.md) |
-| B2 CAD and MJCF | [STEP assembly](../resources/class03/practical/additional_material/cad/STEP/1DOF-B2.step) and [B2 model](../resources/class03/practical/additional_material/models/1DOF-B2.xml) |
-| Accepted masses and positions | [Measurement record](../resources/class03/practical/additional_material/measurements/AS_BUILT_DIMENSIONS_MASSES_AND_POSITIONS.txt) |
-| Structural model checks | [JSON](../resources/class03/practical/additional_material/results/model_validation.json), [CSV](../resources/class03/practical/additional_material/results/tables/model_validation.csv), and [validator](../resources/class03/practical/additional_material/code/validate_models.py) |
-| Simulation figures | [Renderer](../resources/class03/practical/additional_material/code/render_models.py) |
+| Need                              | Course record                                                                                                                                                                                                                                                                        |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Standalone TA and student package | [Standalone package](../resources/class03/practical/additional_material/standalone/)                                                                                                                                                                                                 |
+| B2 CAD and MJCF                   | [STEP assembly](../resources/class03/practical/additional_material/cad/STEP/1DOF-B2.step) and [B2 model](../resources/class03/practical/additional_material/models/1DOF-B2.xml)                                                                                                      |
+| Accepted masses and positions     | [Measurement record](../resources/class03/practical/additional_material/measurements/AS_BUILT_DIMENSIONS_MASSES_AND_POSITIONS.txt)                                                                                                                                                   |
+| Structural model checks           | [JSON](../resources/class03/practical/additional_material/results/model_validation.json), [CSV](../resources/class03/practical/additional_material/results/tables/model_validation.csv), and [validator](../resources/class03/practical/additional_material/code/validate_models.py) |
+| Simulation figures                | [Renderer](../resources/class03/practical/additional_material/code/render_models.py)                                                                                                                                                                                                 |
 
-The source package retains the CAD, accepted measurements, MJCFs, meshes, photographs, hardware records, and executable activities used by the course. Featherstone, R. 2008. *Rigid Body Dynamics Algorithms*. Springer, supplies the rigid-body dynamics and frame background used in the lesson.
+The source package retains the CAD, accepted measurements, MJCFs, meshes, photographs, hardware records, and executable activities used by the course. Featherstone, R. 2008. _Rigid Body Dynamics Algorithms_. Springer, supplies the rigid-body dynamics and frame background used in the lesson.

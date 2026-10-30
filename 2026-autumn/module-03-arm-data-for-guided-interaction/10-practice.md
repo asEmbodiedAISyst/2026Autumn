@@ -1,16 +1,12 @@
-# Class 10 — Practice
+# Practice: record and audit pusher data
 
-On this page you collect Push Cube demonstrations in simulation: you teleoperate the simulated arm with the iPhone
-and record what it does. Then you look at what you collected. After class you can also collect with the iPhone in
-your hand. The class page [Class 10](10-collect-data-for-reinforcement-learning.md) explains the task, the tool, the episode frame and the dataset.
+On this page you collect Push Cube demonstrations in simulation: you teleoperate the simulated arm with the iPhone and record what it does. Then you look at what you collected. After class you can also collect with the iPhone in your hand. The class page [Class 10](10-collect-data-for-reinforcement-learning.md) explains the task, the tool, the episode frame and the dataset.
 
----
+***
 
 ## Set up
 
-The code is the pusher package of the course, `rebot_pusher`, for the pusher tool of the end of
-[Class 09 — Practice](09-practice.md#the-pusher-tool). Class 11 uses the same package:
-[`2026-autumn/resources/class10/practical/additional_material/rebot_pusher/`](https://github.com/asEmbodiedAISyst/2026Autumn/tree/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher).
+The code is the pusher package of the course, `rebot_pusher`, for the pusher tool of the end of [Class 09 — Practice](09-practice.md#the-pusher-tool). Class 11 uses the same package: [`2026-autumn/resources/class10/practical/additional_material/rebot_pusher/`](../resources/class10/practical/additional_material/rebot_pusher/).
 
 You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (Apple silicon or Intel).
 
@@ -18,9 +14,7 @@ You need Ubuntu 22.04 or 24.04 with a desktop session, or macOS 12 or later (App
 
 <summary>Install uv (once)</summary>
 
-`uv` installs Python and the packages of each class folder. Install it once, following the
-[uv installation page](https://docs.astral.sh/uv/getting-started/installation/) or with this command, the same on
-Linux and macOS:
+`uv` installs Python and the packages of each class folder. Install it once, following the [uv installation page](https://docs.astral.sh/uv/getting-started/installation/) or with this command, the same on Linux and macOS:
 
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -51,18 +45,17 @@ If you cloned the repository in an earlier class, run `git pull` in the `rob7103
 
 `uv sync` installs the declared MuJoCo, LeRobot and PyTorch dependencies into the package-local `.venv`. Download and setup time depend on the platform.
 
-**macOS:** the MuJoCo window must run under `mjpython`. `scripts/teleop_real.py` opens the window, so it runs
-with `uv run mjpython`; the other commands keep `uv run python`.
+**macOS:** the MuJoCo window must run under `mjpython`. `scripts/teleop_real.py` opens the window, so it runs with `uv run mjpython`; the other commands keep `uv run python`.
 
-| Script | What it does |
-| --- | --- |
-| [`scripts/teleop_real.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/scripts/teleop_real.py) | Teleoperation with the iPhone; `--robot sim --record` records the simulated arm |
-| [`scripts/check_handheld_dataset.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/scripts/check_handheld_dataset.py) | Checks observed poses with simulated-arm inverse kinematics; reports reachability, speed, tilt and yaw |
-| [`rebot_sim/teleop/fake_phone.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/rebot_sim/teleop/fake_phone.py) | Phone simulator, for a test without an iPhone |
-| [`scripts/record_handheld.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/scripts/record_handheld.py) | Optional: records demonstrations with the iPhone in your hand, phone pose and image, to a LeRobot dataset |
-| [`DATA_FORMAT.md`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/DATA_FORMAT.md) | The features, the episode frame and the height reference of the datasets |
+| Script                                                                                                                                                                                                     | What it does                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| [`scripts/teleop_real.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/scripts/teleop_real.py)                       | Teleoperation with the iPhone; `--robot sim --record` records the simulated arm                           |
+| [`scripts/check_handheld_dataset.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/scripts/check_handheld_dataset.py) | Checks observed poses with simulated-arm inverse kinematics; reports reachability, speed, tilt and yaw    |
+| [`rebot_sim/teleop/fake_phone.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/rebot_sim/teleop/fake_phone.py)       | Phone simulator, for a test without an iPhone                                                             |
+| [`scripts/record_handheld.py`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/scripts/record_handheld.py)               | Optional: records demonstrations with the iPhone in your hand, phone pose and image, to a LeRobot dataset |
+| [`DATA_FORMAT.md`](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/resources/class10/practical/additional_material/rebot_pusher/DATA_FORMAT.md)                                       | The features, the episode frame and the height reference of the datasets                                  |
 
----
+***
 
 ## Collect data in simulation
 
@@ -71,13 +64,10 @@ with `uv run mjpython`; the other commands keep `uv run python`.
 ### Connect the phone
 
 {% hint style="warning" %}
-**The computer and the iPhone must be on the same local network**, for example both on the campus Wi-Fi. The
-script reads the stream from the IP address of the phone. A complex network, with many devices or several access
-points, can delay the stream, and the arm then moves in jerks.
+**The computer and the iPhone must be on the same local network**, for example both on the campus Wi-Fi. The script reads the stream from the IP address of the phone. A complex network, with many devices or several access points, can delay the stream, and the arm then moves in jerks.
 {% endhint %}
 
-Open asMagic, open **Data Streaming**, switch **AR Data** on and read the IP address of the phone. The app and its
-pages are shown in [Class 09 — Practice](09-practice.md#start-with-the-iphone).
+Open asMagic, open **Data Streaming**, switch **AR Data** on and read the IP address of the phone. The app and its pages are shown in [Class 09 — Practice](09-practice.md#teleoperate-the-pusher-tool-with-the-iphone).
 
 **No iPhone?** Start the phone simulator in a second terminal and use `--phone-ip 127.0.0.1` below:
 
@@ -89,9 +79,7 @@ uv run python -m rebot_sim.teleop.fake_phone --pattern circle --hold tool --imag
 {% step %}
 ### Start the recorder
 
-The mapping is that of the pusher tool in [Class 09 — Practice](09-practice.md#the-pusher-tool): the tool
-moves with the phone as one rigid body. Hold the phone as it sits on the arm-mounted pusher, in landscape, the main
-camera looking at the table in front of you; best, mount it in the handheld pusher `hardware/hand_tool.stl`.
+The mapping is that of the pusher tool in [Class 09 — Practice](09-practice.md#the-pusher-tool): the tool moves with the phone as one rigid body. Hold the phone as it sits on the arm-mounted pusher, in landscape, the main camera looking at the table in front of you; best, mount it in the handheld pusher `hardware/hand_tool.stl`.
 
 {% tabs %}
 {% tab title="Linux" %}
@@ -117,12 +105,12 @@ These options select the lecture's virtual workspace and motion limits, and the 
 
 The keys work in the MuJoCo window and in the terminal:
 
-| Key | Action |
-| --- | --- |
-| Space | engage or pause; while paused the arm holds and you can move the phone freely |
-| Right arrow or `r` | end the episode and save it |
-| Left arrow or `d` | end the episode and discard it |
-| `q` | quit |
+| Key                | Action                                                                        |
+| ------------------ | ----------------------------------------------------------------------------- |
+| Space              | engage or pause; while paused the arm holds and you can move the phone freely |
+| Right arrow or `r` | end the episode and save it                                                   |
+| Left arrow or `d`  | end the episode and discard it                                                |
+| `q`                | quit                                                                          |
 {% endstep %}
 
 {% step %}
@@ -134,12 +122,11 @@ Press Space, push the cube into the green target, and press the Right arrow to s
 [episode 1] end: save, saved (91 frames)
 ```
 
-The arm then goes back to a new start pose with a new layout of the cube and the target. Record five episodes.
-For this successful-demonstration collection, a failed push is discarded with the Left arrow. Record its rejection reason separately; discarded data do not remove failures from a later policy-evaluation denominator.
+The arm then goes back to a new start pose with a new layout of the cube and the target. Record five episodes. For this successful-demonstration collection, a failed push is discarded with the Left arrow. Record its rejection reason separately; discarded data do not remove failures from a later policy-evaluation denominator.
 {% endstep %}
 {% endstepper %}
 
----
+***
 
 ## Inspect what you collected
 
@@ -149,15 +136,13 @@ For this successful-demonstration collection, a failed push is discarded with th
 
 Open `datasets/my_sim_teleop/meta/info.json`. Find the three features and their shapes:
 
-| Feature | Shape | Content |
-| --- | --- | --- |
-| `observation.images.phone` | 480 × 640 × 3 | the image of the phone on the arm-mounted pusher |
-| `observation.state` | 9 | the measured tip pose: position and orientation |
-| `action` | 9 | accepted tool-pose target for this transition, after controller limits; not the next measured pose |
+| Feature                    | Shape         | Content                                                                                            |
+| -------------------------- | ------------- | -------------------------------------------------------------------------------------------------- |
+| `observation.images.phone` | 480 × 640 × 3 | the image of the phone on the arm-mounted pusher                                                   |
+| `observation.state`        | 9             | the measured tip pose: position and orientation                                                    |
+| `action`                   | 9             | accepted tool-pose target for this transition, after controller limits; not the next measured pose |
 
-Find also the names of the state, the fps (30) and `robot_type` (`rebot_pusher_tool_sim`). Then open
-`meta/stats.json`: these are the numbers that normalise the data for training. `DATA_FORMAT.md` gives the frame
-of each episode and the units.
+Find also the names of the state, the fps (30) and `robot_type` (`rebot_pusher_tool_sim`). Then open `meta/stats.json`: these are the numbers that normalise the data for training. `DATA_FORMAT.md` gives the frame of each episode and the units.
 {% endstep %}
 
 {% step %}
@@ -182,8 +167,7 @@ A `!` means this source diagnostic found reachability below 98%, peak speed abov
 {% step %}
 ### Audit a pilot with faults
 
-The class folder has a pilot of ten simulated handheld episodes. Five have a deliberately injected change; that count is not an acceptance target. The audit script is in
-`additional_material/code/`. Run it from the package folder, with the environment of the package:
+The class folder has a pilot of ten simulated handheld episodes. Five have a deliberately injected change; that count is not an acceptance target. The audit script is in `additional_material/code/`. Run it from the package folder, with the environment of the package:
 
 ```bash
 uv run python ../code/audit_dataset.py ../data/pilot_push_cube_handheld
@@ -204,7 +188,7 @@ After writing your decision, read [the acceptance interpretation](../resources/c
 {% endstep %}
 {% endstepper %}
 
----
+***
 
 ## Student activity
 
@@ -213,12 +197,10 @@ For the core classroom response, inspect one supplied or newly recorded episode,
 * [ ] **Collect:** record five teleoperated episodes of Push Cube in simulation.
 * [ ] **Inspect:** write the features, their shapes, the fps and `robot_type` of your dataset.
 * [ ] **Check:** run the pose-sequence diagnostic. Report its assumed frame and reach fraction; does 100% IK success establish that the cube reached its target?
-* [ ] **Contract:** write a `README.md` for your dataset: task, scene, operator, date, height reference, rejects.
-  Which items of the data contract of the class page does `info.json` not have?
-* [ ] **Audit:** accept or reject each of the ten pilot episodes, with one reason each. Then compare with
-  the acceptance interpretation and `audit_reference.json`; distinguish an injected fault from a gate failure and state any review still needed.
+* [ ] **Contract:** write a `README.md` for your dataset: task, scene, operator, date, height reference, rejects. Which items of the data contract of the class page does `info.json` not have?
+* [ ] **Audit:** accept or reject each of the ten pilot episodes, with one reason each. Then compare with the acceptance interpretation and `audit_reference.json`; distinguish an injected fault from a gate failure and state any review still needed.
 
----
+***
 
 ## Optional physical handheld collection
 
@@ -228,8 +210,7 @@ The same task can be recorded without the arm: you hold the tool with the phone 
 **Photo to be added:** the handheld pusher with the iPhone mounted on it.
 {% endhint %}
 
-Print the handheld pusher `hardware/hand_tool.stl`, the 40 mm cube `hardware/cube_40mm.stl` and the goal sheet
-`hardware/goal_squares_a4.pdf` at 100 %. Network and app are as in the simulation route.
+Print the handheld pusher `hardware/hand_tool.stl`, the 40 mm cube `hardware/cube_40mm.stl` and the goal sheet `hardware/goal_squares_a4.pdf` at 100 %. Network and app are as in the simulation route.
 
 {% stepper %}
 {% step %}
@@ -271,16 +252,14 @@ frame   45 | phone   56 Hz | displacement [-3.9 -10.7  12. ] cm | tilt  0.0 deg 
 {% step %}
 ### Save or discard
 
-Press Enter to save the episode, or `d` and Enter to discard it. After each episode the recorder prints the start
-height above the table:
+Press Enter to save the episode, or `d` and Enter to discard it. After each episode the recorder prints the start height above the table:
 
 ```
 [episode] saved; saved 1/5
 start height 12 cm
 ```
 
-The recorder does not save an episode with an ARKit jump above 3 cm between two frames, or with more than 2 % of
-poses that the arm cannot reach. It warns when the start height is more than 2.5 cm from 12 cm.
+The recorder does not save an episode with an ARKit jump above 3 cm between two frames, or with more than 2 % of poses that the arm cannot reach. It warns when the start height is more than 2.5 cm from 12 cm.
 {% endstep %}
 
 {% step %}
@@ -296,9 +275,9 @@ The recorder itself also performs its declared online checks. Distinguish those 
 
 For gesture input, add `--gesture --voice` to the optional handheld command. Complete the same initial session calibration. Before **every** episode, rest the tip on the table for about 0.5 s, lift to the approximately 12 cm start pose, hold still for about 0.5 s, then move to start. This mode searches the last 30 s of still samples for the table touch; the touch must be at least 5 cm below the start. If it reports no touch, it keeps the previous height. Discard or explicitly flag such an episode for reference review. Voice announces events and placement; verify this optional interface before relying on operation without a keyboard or screen.
 
-| Gesture | Event |
-| --- | --- |
+| Gesture                                              | Event                                                                                                |
+| ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | Rest the pusher tip on the table, then lift the tool | per-episode table sample in gesture mode; a missing valid touch leaves the previous reference in use |
-| Rest the tool at the start pose, then move | the episode starts |
-| Lift the tip 8 cm and hold still for 0.7 s | the episode is saved |
-| Shake or twist the tool fast | the episode is discarded |
+| Rest the tool at the start pose, then move           | the episode starts                                                                                   |
+| Lift the tip 8 cm and hold still for 0.7 s           | the episode is saved                                                                                 |
+| Shake or twist the tool fast                         | the episode is discarded                                                                             |
