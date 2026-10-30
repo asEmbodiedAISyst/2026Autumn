@@ -1,3 +1,4 @@
+# Keep media in resources/ and reference canonical URLs; see ../AGENTS.md.
 root: ./
 
 structure:
