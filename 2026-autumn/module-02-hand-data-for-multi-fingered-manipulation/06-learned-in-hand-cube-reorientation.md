@@ -203,10 +203,6 @@ These parameters correspond to the configuration files, network definitions, and
 
 Domain randomization varies surface friction, object dimensions, mass, actuator gains, and external disturbances across the parallel environments, training the actor to remain robust across modeling discrepancies.
 
-![PPO training diagnostics for continuous in-hand rotation](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class06/figures/source/fig11_training_diagnostics_job16352.png)
-
-_Figure 2. PPO training curves showing policy reward, rotation progress, fingertip-contact fraction, termination metrics, and simulation throughput across iterations._
-
 Tracking rotation progress and fingertip contact alongside cumulative reward isolates task success from auxiliary regularization penalties. The rotation progress metric verifies that the hand learns coordinated gaiting rather than static holding.
 
 ## Simulation rollout analysis
