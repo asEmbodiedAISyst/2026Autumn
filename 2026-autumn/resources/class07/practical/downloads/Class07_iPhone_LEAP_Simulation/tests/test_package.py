@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import json
 import subprocess
 import sys
 
@@ -35,3 +36,27 @@ def test_simulation_and_retargeting_self_check() -> None:
     assert '"model_actuators": 16' in result.stdout
     assert '"retargeted_joints": 16' in result.stdout
     assert '"motor_interface_included": false' in result.stdout
+
+
+def test_stale_feedback_finishes_with_larger_yaw_error() -> None:
+    activity = ROOT / "visual_feedback" / "simulation_only" / "activity.py"
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(activity),
+            "--latency-ms",
+            "150",
+            "--drop-every",
+            "5",
+        ],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    report = json.loads(result.stdout)
+    fresh = report["fresh"]
+    stale = report["intervention"]
+    assert stale["delay_steps"] == 3
+    assert stale["dropped_packets"] == 16
+    assert stale["final_abs_goal_error_deg"] > fresh["final_abs_goal_error_deg"]

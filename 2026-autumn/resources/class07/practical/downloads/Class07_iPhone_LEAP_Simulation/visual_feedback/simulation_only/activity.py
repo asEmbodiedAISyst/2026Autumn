@@ -31,7 +31,11 @@ def simulate(latency_ms: float, drop_every: int, duration_s: float = 4.0) -> dic
         else:
             held_measurement = candidate
         error = wrap_degrees(90.0 - held_measurement)
-        velocity = float(np.clip(2.0 * error, -60.0, 60.0))
+        # A responsive controller makes stale measurements consequential:
+        # delayed feedback continues to apply a correction after the cube has
+        # already moved, creating overshoot rather than a coincidental slower
+        # approach to the target.
+        velocity = float(np.clip(8.0 * error, -60.0, 60.0))
         yaw += velocity * dt
         history.append(yaw)
     return {
