@@ -13,8 +13,9 @@ from typing import Any
 import torch
 
 _REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(_REPO_ROOT) not in sys.path:
-  sys.path.insert(0, str(_REPO_ROOT))
+for _path in (str(_REPO_ROOT / "src"), str(_REPO_ROOT)):
+  if _path not in sys.path:
+    sys.path.insert(0, _path)
 
 from real_world.tracked_cube_filter import (
   FilteredJsonCubePoseSource,

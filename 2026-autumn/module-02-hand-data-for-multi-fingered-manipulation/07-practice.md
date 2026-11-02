@@ -14,7 +14,7 @@ Do not connect a physical LEAP Hand, motor controller or serial interface. The s
 
 By the end of the practice, you can:
 
-- explain how delayed visual observations alter a feedback loop;
+- observe goal-directed cube reorientation in MuJoCo with a known target;
 - connect an asMagic iPhone stream by using the IP address displayed in the app;
 - map human-hand landmarks to the 16 joints of a simulated LEAP Hand; and
 - distinguish image tracking, retargeting and simulated actuation.
@@ -56,33 +56,36 @@ The first installation downloads the vision, retargeting and simulation dependen
 
 Do not continue until the three verification commands complete successfully.
 
-## 2. Observe a delayed visual-feedback loop
+## 2. Reorient the cube toward a known target in MuJoCo
 
-Generate the exact synthetic pose-recovery result:
-
-```bash
-uv run python visual_feedback/simulation_only/demo.py
-```
-
-The script projects a known cube pose into image coordinates and recovers it from the correspondences. A near-zero translation, rotation and reprojection error confirms that the packaged geometry and coordinate conventions agree. It does not constitute a physical camera calibration.
-
-Run the feedback-loop baseline:
+Run the goal-conditioned in-hand cube reorientation simulation with a known target yaw (for example, +90° in the palm frame):
 
 ```bash
-uv run python visual_feedback/simulation_only/activity.py \
-  --latency-ms 0 --drop-every 0
+./run_cube_reorient_simulation.sh 90
 ```
 
-Then introduce 150 ms of observation latency and drop every fifth packet:
+The interactive MuJoCo viewer displays two objects:
+- the **dynamically simulated 58 mm cube** held in the 16-joint LEAP Hand; and
+- a separate detached **non-physical target cube** communicating the requested goal orientation.
 
-```bash
-uv run python visual_feedback/simulation_only/activity.py \
-  --latency-ms 150 --drop-every 5
-```
+The learned visual-yaw policy (`model_4900.pt`) continuously observes the cube error relative to the target and commands finger gait updates to drive the cube into alignment.
 
-Record the reported delay steps, dropped packets and final absolute yaw error for both conditions.
+### Interactive viewer controls
 
-The controller acts on an estimate of the cube state rather than the state itself. With a fresh estimate, the correction is aligned with the current yaw error. Latency changes the feedback loop because the same correction is computed from an earlier state. Packet loss reduces the update rate and forces the controller to hold an older observation. A held observation may prevent discontinuous commands, but it does not become fresh merely because it is reused.
+Use the keyboard and mouse to test different targets during the simulation:
+
+| Key / Input | Action |
+| :--- | :--- |
+| **`F8`** | Step target yaw by **+90°** |
+| **`F7`** | Step target yaw by **-90°** |
+| **`F6`** | Reset target to the current cube orientation |
+| **`F9`** | Sample a new random target orientation |
+| **Mouse** | Double-click the target cube, then **`Ctrl` + Right-drag** to freely rotate it in 3D |
+| **`Space`** | Pause / Resume simulation |
+| **`Enter`** | Reset rollout |
+| **`Esc`** | Exit viewer |
+
+Observe how the finger contact pattern redistributes as the target changes. When the target yaw is reached within the success threshold, the policy settles the fingers to maintain the object orientation without losing contact.
 
 ## 3. Configure asMagic on the iPhone
 
@@ -178,7 +181,7 @@ Stop the program and add `--mirror`. Do not change the robot joint order.
 Submit:
 
 1. the output from `--check`;
-2. the baseline and delayed visual-feedback results;
+2. one screenshot of the MuJoCo cube reorientation simulation showing the manipulated cube aligning with the detached target cube;
 3. one screenshot containing the landmark overlay and simulated LEAP Hand;
 4. a comparison of the two smoothing values; and
 5. one observed embodiment or occlusion limitation.

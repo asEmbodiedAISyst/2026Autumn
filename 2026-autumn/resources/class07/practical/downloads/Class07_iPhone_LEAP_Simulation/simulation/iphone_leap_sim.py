@@ -236,10 +236,15 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Validate dependencies, assets, retargeting and MuJoCo without an iPhone",
     )
+    parser.add_argument(
+        "--demo",
+        action="store_true",
+        help="Run MuJoCo simulation viewer with animated synthetic hand retargeting without an iPhone",
+    )
     args = parser.parse_args()
-    if not args.check:
+    if not args.check and not args.demo:
         if not args.iphone_ip:
-            parser.error("--iphone-ip is required; copy it from asMagic Data Streaming")
+            parser.error("--iphone-ip is required; copy it from asMagic Data Streaming (or use --demo)")
         try:
             ipaddress.ip_address(args.iphone_ip)
         except ValueError as error:
@@ -249,6 +254,47 @@ def parse_args() -> argparse.Namespace:
     if args.duration < 0.0:
         parser.error("--duration must be non-negative")
     return args
+
+
+def run_demo(model: mujoco.MjModel, data: mujoco.MjData, retargeter, mapping: np.ndarray, duration: float = 0.0) -> None:
+    """Launch the MuJoCo viewer and animate synthetic hand retargeting without an iPhone."""
+    viewer = mujoco.viewer.launch_passive(model, data)
+    viewer.cam.distance = 0.45
+    viewer.cam.azimuth = 140.0
+    viewer.cam.elevation = -20.0
+    print("[demo] running standalone MuJoCo simulation viewer with synthetic retargeting")
+    print("[demo] press Esc in the viewer or Ctrl+C in terminal to stop")
+    start_time = time.monotonic()
+    base_points = synthetic_landmarks()
+    try:
+        while viewer.is_running():
+            now = time.monotonic()
+            if duration > 0.0 and (now - start_time) >= duration:
+                break
+            t = now - start_time
+            scale = 0.5 + 0.5 * np.sin(2.5 * t)
+            points = base_points.copy()
+            # Flex fingertips
+            points[8, 1] -= 0.045 * scale
+            points[8, 2] -= 0.035 * scale
+            points[12, 1] -= 0.050 * scale
+            points[12, 2] -= 0.040 * scale
+            points[16, 1] -= 0.045 * scale
+            points[16, 2] -= 0.035 * scale
+            points[4, 0] += 0.025 * scale
+            points[4, 1] -= 0.020 * scale
+
+            q_retarget = retarget_points(retargeter, points)
+            q_target = q_retarget[mapping]
+            data.ctrl[:] = np.clip(
+                q_target, model.actuator_ctrlrange[:, 0], model.actuator_ctrlrange[:, 1]
+            )
+            for _ in range(4):
+                mujoco.mj_step(model, data)
+            viewer.sync()
+            time.sleep(0.02)
+    finally:
+        viewer.close()
 
 
 def main() -> None:
@@ -261,6 +307,11 @@ def main() -> None:
     mapping = retarget_to_sim_indices(retargeter)
     model = mujoco.MjModel.from_xml_path(str(MODEL_PATH))
     data = mujoco.MjData(model)
+
+    if args.demo:
+        run_demo(model, data, retargeter, mapping, args.duration)
+        return
+
     viewer = mujoco.viewer.launch_passive(model, data)
     stream = AsMagicRGBStream(args.iphone_ip, args.port, args.mirror)
 

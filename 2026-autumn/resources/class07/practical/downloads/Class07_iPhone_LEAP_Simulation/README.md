@@ -47,12 +47,13 @@ window shows the simulated 16-joint LEAP Hand following the retargeted posture.
 No command is sent to a physical hand. Press `Q` or Escape to stop. Add
 `--mirror` only when the displayed handedness is reversed.
 
-## Visual-feedback calculation
+## Goal-conditioned cube reorientation in MuJoCo
 
-The package also includes the synthetic pose and timing exercise:
+Run the simulation with a known target yaw angle (e.g. 90° in the palm frame):
 
 ```bash
-uv run python visual_feedback/simulation_only/demo.py
-uv run python visual_feedback/simulation_only/activity.py \
-  --latency-ms 150 --drop-every 5
+./run_cube_reorient_simulation.sh 90
 ```
+
+The interactive viewer displays the manipulated cube in the LEAP Hand and a separate nonphysical goal cube showing the target orientation. Use **F8** to step target yaw by +90°, **F7** for -90°, **F6** to reset to the current cube orientation, and **F9** for a random target.
+
