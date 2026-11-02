@@ -251,13 +251,39 @@ Three correspondence modes are available:
 
 Mirroring, left/right handedness and robot joint order are interface decisions, not display preferences. The script converts retargeter joint order separately for the MuJoCo model and physical IDs 0–15.
 
-| Open-palm correspondence | Closed-hand correspondence |
-| --- | --- |
-| ![Open human palm and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-open-palm.png) | ![Closed human hand and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-closed-hand.png) |
-| **Thumb extension with flexed fingers** | **Partial finger extension** |
-| ![Extended human thumb with flexed fingers and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-thumb-extension.png) | ![Partially extended human fingers and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-partial-extension.png) |
+**(a) Open palm**
 
-*Figure 5. Human landmarks, the MuJoCo LEAP digital twin and joint telemetry across four observed gestures. The retargeter preserves task-relevant fingertip and finger-direction relationships while respecting the simulated hand's different geometry and joint limits.*
+![Open human palm and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-open-palm.png)
+
+**(b) Aligned fingers**
+
+![Aligned human fingers and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-aligned-fingers.png)
+
+**(c) Three-finger extension**
+
+![Three extended human fingers and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-three-finger-extension.png)
+
+**(d) Split-finger extension**
+
+![Split human finger extension and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-split-finger-extension.png)
+
+**(e) Partial finger extension**
+
+![Partially extended human fingers and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-partial-extension.png)
+
+**(f) Mixed finger curl**
+
+![Mixed human finger curl and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-mixed-curl.png)
+
+**(g) Thumb extension with flexed fingers**
+
+![Extended human thumb with flexed fingers and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-thumb-extension.png)
+
+**(h) Closed hand**
+
+![Closed human hand and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-closed-hand.png)
+
+*Figure 5. Human landmarks, the MuJoCo LEAP digital twin and joint telemetry across eight observed gestures. Each full-width panel supports direct comparison of fingertip locations, finger directions, simulated joint posture and the reported joint targets. The retargeter preserves task-relevant correspondence while respecting the simulated hand's different geometry and joint limits.*
 
 For a pinch gesture, fingertip separation and relative fingertip direction are more transferable than a literal copy of every human joint angle. An exact geometric match may still be impossible because the LEAP Hand has different link lengths, joint axes, ranges and digit structure. The optimisation therefore preserves task-relevant relationships while remaining inside robot joint limits.
 
