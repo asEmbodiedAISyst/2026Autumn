@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: in-hand-rotation-mjlab
+Version: 0.1.0
+Summary: In-hand cube rotation task using LEAP hand in MuJoCo with mjlab
+Requires-Python: <3.11,>=3.10
+License-File: LICENSE
+Requires-Dist: mjlab
+Requires-Dist: pyzmq>=25
+Requires-Dist: scipy
+Requires-Dist: numpy==1.26.4
+Requires-Dist: mediapy==1.2.6
+Requires-Dist: mujoco<3.9.0,>=3.7.0.dev0
+Requires-Dist: mujoco-warp
+Dynamic: license-file

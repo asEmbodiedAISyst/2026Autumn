@@ -1,0 +1,19 @@
+{
+  "calibrated": true,
+  "frame_convention": "p_palm = R_palm_camera @ p_camera + translation_palm_camera_m",
+  "note": "Calibrated via in-hand ArUco touchdown reference",
+  "calibrated_timestamp": "2026-10-14T10:48:27.278878+00:00",
+  "translation_palm_camera_m": [
+    0.00402,
+    0.13582,
+    0.53901
+  ],
+  "quaternion_palm_camera_wxyz": [
+    0.00798,
+    0.03517,
+    0.98501,
+    -0.16866
+  ],
+  "camera_ip": "10.127.51.69:8000",
+  "mean_camera_distance_m": 0.2907
+}

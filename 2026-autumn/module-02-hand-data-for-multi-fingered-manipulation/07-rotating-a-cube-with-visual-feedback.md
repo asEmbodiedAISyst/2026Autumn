@@ -6,258 +6,278 @@ description: 03 November 2026 · 09:00–10:20 · CR6 | Mohamed HALWANI & SONG C
 
 ## Central question
 
-> How does visual observation change the robot's feedback loop?
+> How can a camera measurement become a useful, timely and safe action for a multi-fingered hand?
 
-Move a camera around a stationary cube, then rotate the cube while keeping the camera still. The image changes in both cases. A robot must distinguish these motions in the frame in which it acts. It must also establish when an image was captured, whether the object was visible, and what the estimate actually describes.
+Class 06 used a learned policy to rotate a cube through coordinated contact. This class adds visual observation to manipulation: an iPhone streams images through the asMagicApp, perception software estimates either the **cube** or a **human hand**, and the resulting measurement is expressed in a form that a robot system can use.
 
-Classes 02–05 separated requested quantities, measured quantities and simulated state. Class 06 added a learned controller whose input is a history of joint angles and previous commands. **That continuous-rotation actor does not receive cube pose or images.** A camera can first help us observe and evaluate its behavior. Making vision part of its feedback loop would require an explicit estimator-to-controller connection and a compatible controller or newly trained policy. We cannot replace a cube-pose channel that this actor does not have.
+The lesson develops two visual pathways that solve different problems:
 
-By the end of this class, you should be able to:
+| Task | Visual input | Estimated quantity | Robot output |
+| --- | --- | --- | --- |
+| Cube yaw reorientation | ArUco-marked cube | Cube pose in the LEAP palm frame | 16 bounded joint updates from a learned policy |
+| Hand retargeting | Human hand | Hand landmarks and correspondence vectors | A feasible 16-joint LEAP posture |
 
-* Distinguish visual evaluation from visual feedback and object reorientation from puzzle solving.
-* Relate device, camera, marker, object and hand frames without treating them as interchangeable.
-* Explain how calibration, projection and object geometry connect an image to a metric estimate.
-* Interpret measurement age, missing detections, noise, bias and occlusion.
-* Specify the observations and evidence needed before adding vision to a learned manipulation system.
+By the end of the class, you should be able to:
 
-[Lecture](07-rotating-a-cube-with-visual-feedback.md#what-vision-adds-to-the-manipulation-problem) · [Instructor and TA demonstration](07-rotating-a-cube-with-visual-feedback.md#instructor-and-ta-demonstration) · [Student activity](07-rotating-a-cube-with-visual-feedback.md#student-activity)
+- distinguish visual evidence from closed-loop visual feedback;
+- trace a cube pose from pixels through camera and palm frames;
+- explain why calibration, timestamps, validity and occlusion belong to the observation;
+- interpret the 57-value visual-yaw policy input;
+- formulate hand retargeting as a constrained correspondence problem; and
+- identify what must be checked before either pipeline commands hardware.
 
-The supplied architecture and geometry figures, app screenshots and worked calculations support the core demonstration and activity. A live stream inspection is conditional on a configured original asMagic receiver. The source has not yet supplied a complete calibrated cube estimator connected to the Class 06 actor, so no powered hand operation or completed visual-control deployment is required.
+[Lecture](#1-the-asmagicapp-as-an-observation-source) · [Instructor and TA demonstration](#instructor-and-ta-demonstration) · [Student activity](#student-activity)
 
-## What vision adds to the manipulation problem
+## 1. The asMagicApp as an observation source
 
-### A camera can evaluate a controller without controlling it
+The asMagicApp turns an iPhone into a networked sensing device. Its **Data Streaming** tool publishes selected phone measurements to a computer on the same network. In the course configuration, **AR Data** is enabled on port 8000. The app displays the phone's current IP address, which the receiving program uses to create an `ARDataSubscriber` connection.
 
-The Class 06 actor maps a 320-value history to 16 joint targets. Its information comes from 16 measured joint positions and 16 previous commands at each of ten history slots. Contact and object motion influence these signals indirectly, but the input contains no measured cube orientation. Recording an iPhone video alongside a run does not change this information boundary.
+![The asMagicApp and its Data Streaming tool](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/source/asmagic-app.png)
 
-A calibrated visual estimate could answer questions that joint telemetry alone cannot: Did the cube rotate? About which axis? Did it slip relative to the fingers? Was it manually repositioned? A video can support qualitative inspection, but a claim about angular displacement, speed or autonomous success needs a defined measurement and evaluation rule.
+*Figure 1. The asMagicApp provides a Data Streaming interface in which AR Data is enabled and the phone's current network address and port are visible.*
 
-**Visual feedback** goes further: information derived from images influences the next action. There must be a computational path from image capture through estimation and observation construction to a controller. A recording that is watched after the run is visual evidence, rather than a closed visual feedback loop.
+The AR Data panel identifies several possible fields, including device pose, depth, RGB, velocity and rotation rate. Availability in a stream does not mean that every field belongs in a given estimator. The visual-yaw pipeline uses the JPEG-encoded RGB image and the camera intrinsics attached to each frame. The hand-retargeting pipeline also uses RGB, but applies a hand-landmark model rather than an ArUco cube estimator. Neither pipeline treats the phone's device pose as the pose of the cube or the configuration of the human fingers.
 
-![Prospective image-to-action feedback architecture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/vision-loop-classroom.png)
+The receiving software decodes the color bytes into an image and keeps only the most recent frame in a one-element queue. This prevents a slow consumer from processing an increasingly old backlog. It reduces queue growth but does not eliminate camera exposure time, encoding, Wi-Fi transport, decoding or estimator latency. Capture time and measurement age therefore remain part of the observation contract.
 
-_Figure 1. Prospective visual-feedback architecture: image and capture time → pose estimation → frame and age checks → a compatible policy → actuation and contact → a new image. Trace the path that would make visual information affect an action. The current Class 06 actor does not implement this visual input path._
+For cube tracking, the receiver converts the per-frame asMagic intrinsics into the camera matrix used at the streamed image resolution. The supplied adapter expects the intrinsics reference to correspond to 1920 × 1440 and rejects an unexpected portrait or auto-rotated aspect ratio. The phone is therefore kept in landscape orientation, with the app foregrounded and the screen unlocked. Because distortion coefficients are not supplied by this interface, the adapter uses zero coefficients and keeps the cube near the image centre. Depth is not used in the supplied tracker because depth-to-color registration is not established by the package.
 
-OpenAI et al. (2018), in _Learning Dexterous In-Hand Manipulation_, provide a reference system that combined learned dexterous manipulation, simulation randomization and a camera-based observation path on a Shadow Hand. Their robot, observations, training and evaluation must be considered together. The later Rubik's Cube work also involved reasoning about internal face permutations. Rotating a rigid cube and solving a puzzle are different tasks.
+The stream carries data in camera and device conventions. It does not by itself provide:
 
-Our Class 06 source instead studies continuous positive-Z rotation of a 58 mm, 85 g cube using joint-history feedback. Its task, observations and evaluation differ from the Shadow Hand reference. A similar-looking hand or lettered cube does not establish a compatible policy interface.
+- the pose of the marked cube in the camera frame;
+- the camera-to-palm calibration;
+- human-hand landmarks or their correspondence to LEAP joints;
+- a validity decision for an occluded object; or
+- a control action for the robot.
 
-### Two possible roles for an object-pose estimate
+These quantities are produced by the perception, calibration and control stages introduced below. The asMagicApp is the sensing and transport layer at the beginning of those pipelines.
 
-| Role                       | What the estimate influences                                   | What must be established                                                                              |
-| -------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| Evaluation and diagnosis   | Recorded measurements and conclusions after or alongside a run | Object identity, calibration, timestamps, validity and an evaluation rule                             |
-| Closed-loop visual control | Current or future controller actions                           | All evaluation requirements, plus a compatible observation/action interface and controller validation |
+## 2. From an image to a cube pose
 
-A pose estimate can be useful before it is safe or appropriate to feed it to a controller. Conversely, a visually convincing demonstration does not establish the accuracy of the estimate used during control. Keep the measurement record and the action record distinct.
+Visual feedback requires a complete causal path:
 
-**Checkpoint:** A video shows the cube moving while the joint-history actor runs. What evidence would establish that vision caused the actor to change its action?
+> image and capture time → marker detection → camera-frame cube pose → palm-frame cube pose → policy observation → bounded joint target → contact → next image
 
-## Define what a visual measurement means
+If the video is only watched after the run, it is **visual evidence**, not visual feedback. Vision becomes feedback only when a quantity derived from an image can change a subsequent action.
 
-### Pose is always relative to a frame
+![ArUco-marked cube](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/source-recordings/fig01_mbzuai_cube_aruco_preview.png)
 
-A pose contains position and orientation relative to a declared reference. A device-tracking system may report the phone in its tracking world. An image-based marker detector may report a marker relative to the camera. A manipulation controller may require the cube relative to the hand or robot world. These are different physical relationships.
+*Figure 2. The marked 58 mm cube used by the supplied visual-yaw task. Known marker geometry provides 3-D/2-D correspondences; it does not make calibration, visibility or timing automatic.*
 
-| Quantity        | Meaning                               | Why it is insufficient alone                                         |
-| --------------- | ------------------------------------- | -------------------------------------------------------------------- |
-| Device AR pose  | Device relative to its tracking world | The cube can move independently of the phone                         |
-| Marker pose     | Marker relative to camera             | Marker origin and axes can differ from the cube's                    |
-| Object pose     | Cube relative to a stated frame       | The controller still needs compatible frames, timing and conventions |
-| Joint positions | Robot joint configuration             | They do not directly measure cube orientation under slip             |
+### Pixels and known geometry
 
-An estimated pose should travel with its capture timestamp, frame names, units, orientation convention, object identity and validity status. A confidence score needs a definition; a large arbitrary score is not a calibrated uncertainty bound. An image packet can be new while its last valid object estimate is old.
-
-### Transform coordinates before combining observations
-
-Let H denote the hand frame, C the camera, M a marker and O the object. Define a point-coordinate transform by what it maps:
-
-$$
-{}^HT_C=\begin{bmatrix}{}^HR_C&{}^Hp_C\\0&1\end{bmatrix}.
-$$
-
-It maps coordinates expressed in C into H. The rotation maps camera-frame directions into hand-frame directions, while the translation is the camera origin expressed in H. If an estimator returns object-to-camera pose, then
-
-$$
-{}^HT_O={}^HT_C\,{}^CT_O.
-$$
-
-The rightmost map acts first. If the estimator observes a marker fixed to a cube face, include the known object pose relative to that marker:
-
-$$
-{}^HT_O={}^HT_C\,{}^CT_M\,{}^MT_O.
-$$
-
-A marker's origin on a face is not the cube center. Here $${}^MT_O$$ maps object-frame coordinates into marker coordinates; using its inverse would reverse that relationship. The marker mounting and physical dimensions belong to the measurement model, just as link geometry belonged to the actuator fixture model in Class 03.
-
-The inverse transform is
-
-$$
-({}^HT_C)^{-1}=\begin{bmatrix}({}^HR_C)^\mathsf T&-({}^HR_C)^\mathsf T{}^Hp_C\\0&1\end{bmatrix}.
-$$
-
-Negating translation without rotating it is not a general inverse. A moving phone also requires the camera-to-hand relationship at the relevant observation time; a fixed calibration applies only while the mounting relationship stays fixed.
-
-A device AR pose alone does not supply $${}^HT_C$$. Using it in this chain also needs the mounting transform between the tracked device and camera, a relation between the AR world and the hand, and compatible timestamps. Inspect those relationships before multiplying pose arrays returned by different systems.
-
-These are 4 × 4 maps for points and rigid-body pose. Featherstone's 6 × 6 spatial transforms act on motion or force vectors with declared ordering. Do not apply a point transform directly to an angular-first spatial wrench, and do not identify an image-based pose vector with a spatial velocity (Featherstone 2008).
-
-### Worked example: rotate before translating
-
-Suppose the camera is rotated 90° about hand z and its origin is 0.10 m along hand x:
-
-$$
-{}^HR_C=\begin{bmatrix}0&-1&0\\1&0&0\\0&0&1\end{bmatrix},\qquad
-{}^Hp_C=\begin{bmatrix}0.10\\0\\0\end{bmatrix}\;\mathrm m.
-$$
-
-For a point whose camera coordinates are (0.20, 0.03, 0.40) m,
-
-$$
-{}^Hp_O={}^HR_C{}^Cp_O+{}^Hp_C
-=\begin{bmatrix}0.07\\0.20\\0.40\end{bmatrix}\;\mathrm m.
-$$
-
-Translation-only addition would give (0.30, 0.03, 0.40) m, a different physical location. This is an analytical coordinate example, not a measured calibration or a new pose-estimation demonstration.
-
-![The same point in camera and hand coordinates](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/frame-chain-classroom.png)
-
-_Figure 2. Geometry of the analytical transform example, shown in the x–y plane. Locate the two origins, follow camera +x along hand +y, and read the same point relative to each origin. The diagram explains coordinates; it reports no camera experiment._
-
-If a controller instead expects object pose in world W, an additional declared hand-to-world map is required:
-
-$$
-{}^W\widehat T_O={}^WT_H\,{}^H\widehat T_O.
-$$
-
-The hat marks an estimate. Quaternion ordering, active/passive rotation meaning and transform direction must agree at the software boundary. A four-value quaternion does not by itself identify those conventions.
-
-## Connect pixels to physical geometry
-
-### Projection explains why scale and calibration matter
-
-For an ideal camera point with positive depth,
+For an ideal pinhole camera,
 
 $$
 u=f_x\frac{X_C}{Z_C}+c_x,\qquad
 v=f_y\frac{Y_C}{Z_C}+c_y.
 $$
 
-The focal lengths are in pixels and the principal point is (c\_x, c\_y). This equation assumes the camera's stated axis convention and an appropriate treatment of lens distortion. A physical camera's intrinsics must match the image resolution and processing used by the estimator.
+The intrinsic parameters $f_x,f_y,c_x,c_y$ must match the image resolution. A pose solver then uses known 3-D marker corners and detected 2-D image corners to estimate the cube pose. If the marker size, corner order or distortion model is wrong, a plausible overlay can still give the wrong metric pose.
 
-A 70 mm segment parallel to the image plane, observed with a 700 px focal length at 0.50 m, spans approximately
+The supplied cube defines six markers, one on each face. Multiple faces improve visibility, but a finger can still hide corners. A tracker therefore needs both a pose and a validity decision. Marker geometry also fixes metric scale: an incorrect marker width biases the recovered translation even when the image overlay appears stable. Temporal smoothing can reduce random variation, but it cannot remove a systematic scale error.
 
-$$
-w_{\mathrm{px}}=700\frac{0.070}{0.50}=98\;\mathrm{px}.
-$$
+## 3. Frames turn a pose into a meaningful observation
 
-At 1.00 m it spans about 49 px. These are illustrative projection calculations; they do not change the Class 06 cube dimensions or supply an experimentally measured camera calibration. A wrong assumed marker size produces a wrong metric scale even when its image outline looks plausible.
-
-Perspective-n-Point methods estimate pose from known 3D points, corresponding image points and calibration. Detecting the right object, identifying its points and maintaining their correspondence are additional problems. A letter on a face may help a viewer recognize it without supplying sufficient robust geometric correspondences under fingertip occlusion.
-
-A low reprojection residual measures agreement with the image observations and model used in fitting. It is not independent proof that marker dimensions, camera calibration or metric pose are correct. Separate reference measurements are needed to evaluate physical accuracy.
-
-### Visibility, noise and bias require different responses
-
-Fingers may hide a marker exactly when contact changes the cube motion. The network may still deliver images while the estimator has insufficient evidence. Sending a zero pose invents a measurement. Holding the last pose preserves an old value; it does not make that value current.
-
-Random noise may vary between observations. A calibration error can bias every estimate in the same direction. Averaging can reduce some random variation while retaining bias, and smoothing can introduce lag. An estimator should report rejection or missing data explicitly so that the controller or experimenter can distinguish lack of evidence from a confident stationary object.
-
-Useful records include raw images, camera calibration, capture times, estimated poses, accepted/rejected detections and the reasons for rejection. Preserve the object and camera setup identity with the record. Without this evidence, a manipulation failure cannot be attributed specifically to perception.
-
-## Measure age rather than assuming a frame rate
-
-If capture and controller-use timestamps share a synchronized time base, the observation age is
+Let $C$ be the camera frame, $B$ the cube body frame and $P$ the LEAP palm frame. The tracker estimates $\widehat T^C_B$ and the measured camera mount provides $T^P_C$. The policy needs
 
 $$
-a=t_u-t_c.
+\widehat T^P_B(t_{\mathrm{image}})=T^P_C\widehat T^C_B(t_{\mathrm{image}}).
 $$
 
-Capture, network receipt and controller use are distinct events. Transport, processing, queues and scheduling all contribute. Timestamps from unsynchronized clocks can contain an unknown offset; their difference is not automatically a latency measurement.
+The rightmost transform acts first. The camera-to-palm transform must be measured for the actual mount. A phone's AR/device pose is not the cube pose and is not automatically the palm-to-camera calibration.
 
-At 20 Hz, three control intervals equal 150 ms. Under approximately constant angular speed of 1 rad/s, a pose that old differs from the current orientation by roughly
+| Quantity | Meaning | Common error |
+| --- | --- | --- |
+| Device AR pose | Phone relative to its AR world | Treating it as cube pose |
+| Marker pose | One marker relative to the camera | Treating the face centre as the cube centre |
+| Cube pose | Cube body relative to the camera | Omitting the marker-to-cube geometry |
+| Palm-frame cube pose | Cube relative to the robot palm | Using an unmeasured camera-to-palm transform |
+
+### Worked transform
+
+Suppose the camera is rotated $90^\circ$ about palm $z$ and its origin is 0.10 m along palm $x$:
 
 $$
-\Delta\theta\approx\omega a=1(0.15)=0.15\;\mathrm{rad}\approx8.59^\circ.
+{}^PR_C=\begin{bmatrix}0&-1&0\\1&0&0\\0&0&1\end{bmatrix},\qquad
+{}^Pp_C=\begin{bmatrix}0.10\\0\\0\end{bmatrix}\mathrm{m}.
 $$
 
-This local approximation explains why age can matter. It is not a measured delay, a Class 06 success threshold, or a prediction that every delayed trajectory has that error. Continuous rotation needs its own evaluation rule.
+For a cube-centre estimate ${}^Cp_B=(0.20,0.03,0.40)$ m,
 
-The source notes describe nominal pose streaming around 60 Hz and possible Wi-Fi delays of 50–150 ms. Treat these as setup-dependent expectations to measure on the actual configuration, rather than universal app guarantees. Sixty packets per second do not guarantee sixty valid cube estimates or bounded capture-to-use age.
+$$
+{}^Pp_B={}^PR_C{}^Cp_B+{}^Pp_C
+=\begin{bmatrix}0.07\\0.20\\0.40\end{bmatrix}\mathrm{m}.
+$$
 
-Holding a pose estimate differs from holding an actuator command. An observation-handling rule must specify what happens during rejection, and a controller-handling rule must specify how action changes. A pause, a last-command hold and a predicted state each need their own operating conditions and validation. They are design choices, not automatic safety properties.
+Adding the translation without rotating first gives $(0.30,0.03,0.40)$ m and represents a different physical point.
 
-**Checkpoint:** If a packet arrives now but contains yesterday's last valid pose, which timestamp determines measurement age? How should the system distinguish that packet from a fresh estimate?
+The transform $T^P_C$ remains valid only while the camera mount retains the calibrated relationship to the palm. If the mount moves, marker detection can remain visually stable while the reported palm-frame cube pose becomes systematically displaced or rotated. Recalibration is required after any change to the camera mount, hand base or reference geometry.
 
-## Inspect the original asMagic stream
+## 4. Goal-directed visual yaw
 
-![Original asMagic streaming interface](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/source/asmagic-app.png)
+The supplied policy requests a relative yaw change while retaining a full 3-D rotation representation. Its orientation error is
 
-_Figure 3. The author's original asMagic interface reference: app icon, home page and Data Streaming panel. Locate AR Data, the displayed IP address and port 8000. These controls identify a stream setup; the screenshot does not establish a cube estimator or the current packet schema._
+$$
+R_{\mathrm{err}}=R^P_{B,\mathrm{observed}}
+\left(R^P_{B,\mathrm{goal}}\right)^T.
+$$
 
-The author's Class 07 plan uses the original asMagic app to publish device AR pose, color images, depth and intrinsics over a network, with port 8000 stated in the plan. Availability and synchronization of these fields must be checked in the actual receiver. A phone's AR pose tracks the phone relative to its AR world; it does not directly track the cube in the hand.
+Using a continuous 6-D rotation representation avoids the discontinuity of wrapping a single angle at $\pm\pi$. The actor receives 57 values:
 
-The source [Class 09 practice](../module-03-arm-data-for-guided-interaction/09-practice.md#teleoperate-the-pusher-tool-with-the-iphone) provides the next concrete application of the phone stream: mapping device motion to a simulated arm's pusher target. That is phone-pose teleoperation. It is neither cube-pose estimation nor human-finger retargeting. Its supplied receiver and frame conventions must be inspected as implemented; a conceptual frame diagram is not evidence that every software package uses identical axes.
+| Observation group | Count | Purpose |
+| --- | ---: | --- |
+| Joint position relative to reference grasp | 16 | Current contact-producing configuration |
+| Joint tracking error | 16 | Difference between requested and measured joints |
+| Cube translation in palm frame | 3 | Object location relative to the hand |
+| Continuous rotation error | 6 | Observed orientation relative to the goal |
+| Previous action | 16 | Short-term action context and continuity |
+| **Total** | **57** | One policy observation |
 
-For this class, the source materials establish a stream-inspection and visual-feedback design discussion. They do not yet supply a complete calibrated cube estimator connected to the continuous-rotation actor. Keep that boundary visible when planning or presenting the demonstration.
+The policy returns 16 bounded joint updates. It is an inference artifact: loading `model_4900.pt` runs learned weights; it does not retrain the policy.
 
-## Formulate a future visual-feedback learning problem
+![Visual-yaw sequence](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/source-recordings/fig04_visual_yaw_sequence.jpg)
 
-A learning formulation begins with the available observations. One possible observation set is measured joint state together with estimated object pose, age and validity. A corresponding actor must be trained or otherwise designed for those fields. Adding them to the fixed Class 06 network changes its input contract and requires compatible weights; camera values cannot simply be appended to its 320 inputs.
+*Figure 3. Frames from a supplied deployment recording. The images are experimental evidence; the pose packet, policy input and command log establish the feedback path.*
 
-Training can randomize measurement delay, noise, visibility and dropout under declared distributions. Ground-truth simulator state can support rewards and evaluation without being secretly supplied as a visual observation. Randomization is a hypothesis about robustness; the resulting controller still needs held-out tests under meaningful conditions.
+Each observation group resolves a different ambiguity. Joint position identifies the configuration that forms the current contacts. Joint tracking error separates commanded motion from measured response. Cube translation locates the object relative to the palm. Rotation error supplies goal progress. Previous action provides short-term control context. Removing any group changes the information available to the trained actor and would require a compatible policy rather than an ad hoc change to the input vector.
 
-Report accepted-pose accuracy and coverage alongside manipulation behavior. A tracker returning accepted estimates for 70 of 100 required samples has 70% coverage. Accuracy must be evaluated separately on those accepted estimates; acceptance alone does not make them correct, and their error does not describe the 30 missing inputs. This is arithmetic illustrating an evaluation distinction, not a result from our setup.
+### Simulation task and training artifact
 
-Human-hand retargeting is another problem: mapping observed landmarks to robot joints under different link lengths, joint axes and limits. DexPilot is a reference example on a different hand-arm system (Handa et al. 2019). It requires finger observations and a declared correspondence; an ordinary device-pose stream does not supply those observations automatically. Retargeting remains an optional direction rather than the required Class 07 implementation.
+The supplied MuJoCo task uses the flat right LEAP Hand and a cube model with a 58 mm edge length and 85 g mass. Physics advances at 200 Hz, while the policy selects a new action at 20 Hz. Each policy action therefore spans ten physics steps in which contacts, joint motion and cube dynamics evolve. This separation is important: the controller does not directly prescribe a cube rotation. It changes joint targets, the simulated actuators move the fingers, contact forces act on the cube, and the next observation reports the result.
+
+Training uses discrete relative yaw goals of −90°, +90° or 180°. A training episode lasts 50 seconds unless the cube falls below the permitted height or a non-finite state is detected. A goal is considered successful when the orientation error is below 10°. The task retains the cube near the palm while rotating it, because matching yaw after dropping or ejecting the object would not constitute successful in-hand manipulation.
+
+The selected checkpoint is `model_4900.pt`, saved at PPO iteration 4900 from a run configured for 5000 iterations with seed 7. The actor and critic use multilayer perceptrons with hidden widths 512, 512 and 256. PPO collects 32 steps per environment, uses a learning rate of $10^{-3}$, discount factor $\gamma=0.99$, generalized-advantage parameter $\lambda=0.95$, and an entropy coefficient of 0.003. The checkpoint contains actor and critic parameters, optimizer state, observation-normalization statistics and the saved iteration number. The preserved parameter files define the training run; the portable bundle does not contain the TensorBoard event history needed to plot a complete reward-versus-iteration learning curve.
+
+The reward combines task achievement with object retention and controlled motion:
+
+| Term | Weight | Training purpose |
+| --- | ---: | --- |
+| Orientation alignment | +5.0 | Reduce the cube-to-goal orientation error continuously |
+| Palm-relative position | +0.5 | Keep the cube in a useful in-hand region |
+| Success | +2000.0 before time-step scaling | Reward reaching the 10° goal region |
+| Cube fallen | −100.0 | Reject solutions that lose the object |
+| Hand-pose cost | −0.5 | Discourage unnecessary departure from useful hand configurations |
+| Action-rate cost | −0.001 | Discourage abrupt command changes |
+| Energy cost | −0.001 | Discourage unnecessarily costly motion |
+
+The actor is trained with corrupted observations rather than perfect state alone. Joint-position channels receive bounded noise and up to one policy-step lag. Camera-derived cube position and orientation channels use their own noise ranges and up to two policy-step lag. Held observations are also introduced. The critic receives clean task information during training, but the actor must choose actions from the corrupted interface it will use at deployment. This asymmetric arrangement lets the value function use accurate simulator state while teaching the action policy to tolerate an imperfect measurement channel.
+
+### Visualizing reorientation progress
+
+The simulation viewer displays the manipulated cube in the hand and a separate nonphysical goal cube. The goal cube communicates the requested orientation but has no mass, collision or contact effect. Progress is visible when the labeled faces of the manipulated cube approach the orientation shown by the goal cube while the fingers preserve contact and keep the object above the palm.
+
+| Initial orientation and goal | Early contact redistribution |
+| --- | --- |
+| ![Initial simulated cube orientation and goal](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/simulation-progress/reorientation-01-initial.jpg) | ![Early simulated finger and cube motion](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/simulation-progress/reorientation-02-contact.jpg) |
+| **Intermediate orientation change** | **Later goal-directed orientation** |
+| ![Intermediate simulated cube reorientation](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/simulation-progress/reorientation-03-progress.jpg) | ![Later simulated cube reorientation](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/simulation-progress/reorientation-04-later.jpg) |
+
+*Figure 4. Frames from the supplied MuJoCo goal-conditioned reorientation visualization. The sequence shows progress within one rollout, not improvement across training iterations. The detached cube represents the requested orientation; the cube held by the fingers is the dynamically simulated object.*
+
+The sequence exposes two simultaneous requirements. The cube orientation must approach the target, and the contact arrangement must remain capable of supporting the cube. A policy that minimizes angular error for one instant but loses the object immediately afterwards has not solved the task. The position reward, fall penalty, hand-pose cost and action regularization shape this balance.
+
+### How visual feedback enhances reorientation
+
+In a purely proprioceptive continuous-rotation task, the controller observes the hand and its recent commands but does not directly know the cube's current orientation. It can learn a repeating finger gait that often produces rotation, yet slip, incomplete contact or an unexpected cube pose may go undetected. The same joint motion can produce different object motion under different contact conditions.
+
+Visual feedback changes the problem from **produce a rotation pattern** to **reduce a measured object-to-goal error**. At every update, the measured cube pose contributes a new orientation error. If the cube rotates less than expected, the remaining error stays large and the policy can continue correcting. If the cube moves toward the wrong yaw, the sign and structure of the error change. As the cube approaches the goal, the error contracts and the learned action can settle rather than continuing an open-loop rotation pattern.
+
+This feedback loop adds five capabilities:
+
+1. **Outcome observation:** the controller receives evidence of what happened to the object, not only what happened to the joints.
+2. **Goal dependence:** the same hand state can produce different actions for −90°, +90° and 180° targets.
+3. **Slip compensation:** unexpected object motion appears in the next visual error and can influence the next correction.
+4. **Explicit completion:** the system can evaluate a 10° success region from object pose rather than infer success from elapsed time or finger motion.
+5. **Diagnostic separation:** joint tracking, object translation and object rotation are represented separately, making actuator error, object slip and goal error distinguishable.
+
+The enhancement is conditional on measurement quality. A biased camera-to-palm transform creates a biased goal error. Latency makes the controller correct an earlier state. Occlusion can remove the object observation precisely when fingers change contact. Visual feedback therefore improves task observability, but only when calibration, validity and timing remain explicit parts of the loop.
+
+## 5. Time, dropout and occlusion are part of the measurement
+
+A useful pose packet contains more than six pose values:
+
+```text
+{pose, capture_time, camera_frame, object_id, valid, reprojection_error}
+```
+
+When capture and controller clocks share a time base, pose age at use is
+
+$$
+a=t_{\mathrm{use}}-t_{\mathrm{capture}}.
+$$
+
+At 20 Hz, three control periods are 150 ms. If the cube rotates at approximately 1 rad/s, a 150 ms-old orientation can differ by about
+
+$$
+\Delta\theta\approx\omega a=0.15\;\mathrm{rad}=8.59^\circ.
+$$
+
+This is a local timing estimate, not a guaranteed tracking error. Unsynchronised clocks add an unknown offset. A packet arriving now may still contain an old pose.
+
+| Condition | Correct interpretation | Possible guarded response |
+| --- | --- | --- |
+| Fresh valid estimate | Current visual evidence is available | Build the next policy observation |
+| New image, rejected detection | No valid cube estimate from this image | Reject, pause or use a declared short grace rule |
+| Repeated last pose | The estimate is ageing | Mark it stale; do not call it a new measurement |
+| Large reprojection error | Image/model agreement is poor | Reject or reduce authority |
+
+Holding a pose can smooth a brief occlusion, but it does not make the pose current. Continuing an action through occlusion is a controller policy and must have a bounded duration, a tested stop response and recorded evidence. An invalid detection must remain distinguishable from a valid zero-valued measurement; substituting a zero pose invents evidence that the camera did not provide.
+
+## 6. Hand retargeting: correspondence before command
+
+Cube tracking estimates an **object**. Hand retargeting estimates an **operator gesture**. They may share a camera, but they do not share an output contract.
+
+A human and LEAP Hand have different link lengths, joint axes, digit counts and limits. Copying human joint angles is therefore not meaningful. Retargeting searches for a feasible LEAP configuration $\mathbf q$ whose robot landmarks or vectors correspond to the observed human hand:
+
+$$
+\mathbf q^*=\underset{\mathbf q_{\min}\leq\mathbf q\leq\mathbf q_{\max}}{\arg\min}
+\;\mathcal L\!\left(f_{\mathrm{LEAP}}(\mathbf q),\mathbf x_{\mathrm{human}}\right)
++\lambda\lVert\mathbf q-\mathbf q_{\mathrm{previous}}\rVert^2.
+$$
+
+The second term discourages abrupt frame-to-frame changes. Bounds prevent visually plausible human gestures from requesting infeasible robot joints.
+
+The supplied pipeline is:
+
+> asMagicApp/webcam image → MediaPipe hand landmarks → palm-centred vectors → Dex-Retargeting optimisation → joint-order conversion → MuJoCo LEAP posture
+
+Three correspondence modes are available:
+
+- `enhanced`: includes additional phalanx information for long-finger curl;
+- `dexpilot`: emphasises fingertip and pinch-like relations; and
+- `vector`: uses the stock vector formulation.
+
+Mirroring, left/right handedness and robot joint order are interface decisions, not display preferences. The script converts retargeter joint order separately for the MuJoCo model and physical IDs 0–15.
+
+| Open-palm correspondence | Closed-hand correspondence |
+| --- | --- |
+| ![Open human palm and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-open-palm.png) | ![Closed human hand and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-closed-hand.png) |
+| **Thumb extension with flexed fingers** | **Partial finger extension** |
+| ![Extended human thumb with flexed fingers and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-thumb-extension.png) | ![Partially extended human fingers and corresponding simulated LEAP posture](https://raw.githubusercontent.com/asEmbodiedAISyst/2026Autumn/main/2026-autumn/resources/class07/figures/hand-retargeting-partial-extension.png) |
+
+*Figure 5. Human landmarks, the MuJoCo LEAP digital twin and joint telemetry across four observed gestures. The retargeter preserves task-relevant fingertip and finger-direction relationships while respecting the simulated hand's different geometry and joint limits.*
+
+For a pinch gesture, fingertip separation and relative fingertip direction are more transferable than a literal copy of every human joint angle. An exact geometric match may still be impossible because the LEAP Hand has different link lengths, joint axes, ranges and digit structure. The optimisation therefore preserves task-relevant relationships while remaining inside robot joint limits.
 
 ## Instructor and TA demonstration
 
-### Identify the observation boundary
-
-Use the [Class 06 input definition](06-learned-in-hand-cube-reorientation.md#history-provides-indirect-feedback) and Figure 1. Trace image → estimate → frame/age check, then identify the additional connection and compatible policy required for visual control. Compare that prospective path with the documentary camera in Class 06. State that the existing actor remains proprioceptive; the architecture is a design explanation, not a new policy demonstration.
-
-### Inspect a configured stream
-
-When the author's original asMagic receiver setup is available, inspect the actual device pose, image and metadata fields. Record the app/receiver version, coordinate conventions and timestamps. Move the phone around a stationary object, then move the object with the phone fixed. Explain which changes are represented by device tracking and which require an object estimator.
-
-A viewpoint or occlusion comparison may be shown as an object-pose experiment only when the estimator, calibration and validity output are actually present. Otherwise describe what the images show and identify the missing estimator. A stream arriving in Python or MuJoCo is not by itself a successful visual hand-control deployment.
-
-### Work through the coordinate example
-
-Use Figure 2 to predict the sign of each hand-frame coordinate, then rotate the example point before adding translation. Locate the extra object-to-marker and hand-to-world relationships that an implementation would need. Explain why a camera origin and a cube center cannot be treated as the same point.
-
-No powered hand control is required. If the receiver or calibrated estimator is unavailable, keep the session to the supplied interface figures, geometry and observation-contract analysis; record the missing component rather than claiming a completed live demonstration.
+Run the supplied visual-yaw simulation with a +90° goal, then show the software-only hand-retargeting preview. Identify the cube-pose feedback path, timestamp/validity check, landmark correspondence and LEAP digital-twin posture. The detailed student procedure is in [Class 07 practice](07-practice.md).
 
 ## Student activity
 
-Teams complete the following record using the supplied figures, analytical examples and any configured source stream that is actually available.
+Complete [Class 07 practice](07-practice.md). Compare fresh and delayed/dropout visual observations, then retarget an open hand, closed hand and pinch gesture in simulation. Record one supported result and one limitation before hardware deployment.
 
-1. Explain why Class 06 video recording is not visual feedback to its current actor.
-2. Complete the worked point transform and identify the units and map direction.
-3. Calculate the 150 ms constant-speed discrepancy and state its assumptions.
-4. Identify device pose, camera intrinsics, image timestamp and object pose as separate fields. Mark unavailable fields explicitly.
-5. If a valid object estimator is provided, vary viewpoint or cover part of the marker and record acceptance behavior. Without an estimator, describe image visibility without inventing pose-error measurements.
-6. State one additional component or measurement needed before visual information could influence a compatible hand controller.
+## Resources
 
-| Response field         | What to record                                             |
-| ---------------------- | ---------------------------------------------------------- |
-| Controller             | Class 06 proprioceptive input/action contract              |
-| Geometry               | Frames, transform direction and point calculation          |
-| Timing                 | Clock assumption, age calculation and limitation           |
-| Available observations | Actual stream fields or a clearly marked unavailable field |
-| Conclusion             | What was observed, and what remains unverified             |
-
-A team can complete the geometry and interface analysis without a phone. Where stream access is provided, students inspect observations rather than commanding a physical hand.
-
-## Carry the observation contract to an arm
-
-Class 08 introduces a different mechanism; Class 09 uses phone motion to command its simulated pusher. The need to distinguish references, sensed quantities, frames and timestamps carries forward. The object-estimation problem does not disappear, but it must not be confused with device-pose teleoperation.
+- [Simulation-only student practice](07-practice.md)
+- [Downloadable iPhone-to-LEAP simulation package](../resources/class07/practical/downloads/class07-iphone-leap-simulation.zip)
+- [Standalone package README](../resources/class07/practical/downloads/Class07_iPhone_LEAP_Simulation/README.md)
+- [Visual-yaw deployment README](../resources/class07/practical/additional_material/visual_yaw_reorientation/README_FIRST.md)
 
 ## References
 
-Featherstone, Roy. 2008. _Rigid Body Dynamics Algorithms_. Springer. [Coordinate-transform guidance](https://royfeatherstone.org/spatial/v2/xforms.html).
-
-Handa, Ankur, Karl Van Wyk, Wei Yang, Jacky Liang, Yu-Wei Chao, Qian Wan, Stan Birchfield, Nathan Ratliff, and Dieter Fox. 2019. “DexPilot: Vision Based Teleoperation of Dexterous Robotic Hand-Arm System.” arXiv:1910.03135. [Paper](https://arxiv.org/abs/1910.03135).
-
-OpenAI, Marcin Andrychowicz, Bowen Baker, Maciek Chociej, Rafal Jozefowicz, Bob McGrew, Jakub Pachocki, Arthur Petron, Matthias Plappert, Glenn Powell, Alex Ray, Jonas Schneider, Szymon Sidor, Josh Tobin, Peter Welinder, Lilian Weng, and Wojciech Zaremba. 2018. “Learning Dexterous In-Hand Manipulation.” arXiv:1808.00177. [Paper](https://arxiv.org/abs/1808.00177).
+- Shaw, K., Agarwal, A. and Pathak, D. *LEAP Hand: Low-Cost, Efficient, and Anthropomorphic Hand for Robot Learning.* RSS, 2023.
+- Qin, Y. et al. *AnyTeleop: A General Vision-Based Dexterous Robot Arm-Hand Teleoperation System.* RSS, 2023.
+- OpenAI et al. *Learning Dexterous In-Hand Manipulation.* IJRR, 2020.

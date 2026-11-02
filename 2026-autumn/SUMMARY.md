@@ -23,6 +23,7 @@
 * [06 Learned Continuous In-Hand Cube Yaw Rotation](module-02-hand-data-for-multi-fingered-manipulation/06-learned-in-hand-cube-reorientation.md)
   * [Practice: continuous in-hand cube yaw](module-02-hand-data-for-multi-fingered-manipulation/06-practice.md)
 * [07 Rotating a Cube with Visual Feedback](module-02-hand-data-for-multi-fingered-manipulation/07-rotating-a-cube-with-visual-feedback.md)
+  * [Practice: visual feedback and simulated hand retargeting](module-02-hand-data-for-multi-fingered-manipulation/07-practice.md)
 
 ## Module 03: Arm Data for Guided Interaction
 

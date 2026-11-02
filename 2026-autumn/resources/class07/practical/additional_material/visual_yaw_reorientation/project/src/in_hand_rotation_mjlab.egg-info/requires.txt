@@ -1,0 +1,7 @@
+mjlab
+pyzmq>=25
+scipy
+numpy==1.26.4
+mediapy==1.2.6
+mujoco<3.9.0,>=3.7.0.dev0
+mujoco-warp

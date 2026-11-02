@@ -1,9 +1,38 @@
-# Class 07 classroom resources
+# Class 07 resources
 
-[Lecture](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-02-hand-data-for-multi-fingered-manipulation/07-rotating-a-cube-with-visual-feedback.md) · [Selected practical](https://github.com/asEmbodiedAISyst/2026Autumn/blob/main/2026-autumn/module-02-hand-data-for-multi-fingered-manipulation/07-rotating-a-cube-with-visual-feedback.md#instructor-and-ta-demonstration)
+[Lecture](../../module-02-hand-data-for-multi-fingered-manipulation/07-rotating-a-cube-with-visual-feedback.md) · [Simulation practice](../../module-02-hand-data-for-multi-fingered-manipulation/07-practice.md)
 
-This folder contains the classroom figures, recordings, manuals and selected scientific records used by the lesson. The selected practical links to the lesson activity and identifies the available shared streaming source. It does not supply a complete visual-control runtime.
+This directory contains the figures and runnable resources for the cube
+visual-feedback and human-hand-retargeting tasks.
 
-The selected activity covers measurement geometry, frames, observation age and supported stream inspection. A complete cube estimator and compatible visual-control policy are not supplied.
+## Resource map
 
-Illustrations are PNG. Worksheet and manual documents remain PDF; recordings and self-contained interactive explanations retain their native formats. Scientific attribution and the conditions of each record remain with the lesson.
+```text
+class07/
+├── figures/
+│   ├── source-recordings/       # cube and visual-yaw evidence from supplied runs
+│   ├── simulation-progress/     # MuJoCo reorientation rollout screenshots
+│   ├── hand-retargeting-*.png   # human landmarks and MuJoCo correspondence
+│   └── source/                  # asMagic reference
+└── practical/
+    ├── downloads/
+    │   ├── class07-iphone-leap-simulation.zip # student standalone package
+    │   └── Class07_iPhone_LEAP_Simulation/    # unpacked package source
+    └── additional_material/
+        ├── standalone/              # lightweight synthetic pose and timing activity
+        ├── visual_yaw_reorientation/ # checkpoint, task, cube tracker and guarded runtime
+        └── run_visual_yaw_simulation.sh
+```
+
+The package includes the selected checkpoint, six-face ArUco cube geometry,
+MuJoCo assets, calibration and tracking utilities, hand-landmarker model,
+retargeting source, and LEAP model assets. Python virtual
+environments and machine-specific serial/camera settings are intentionally not
+included.
+
+The downloadable student package uses only an iPhone running asMagic and a
+MuJoCo LEAP Hand. It includes a locked Python environment, all model assets and
+a self-check; it contains no motor-command interface. Live LEAP operation is
+restricted to authorised instructor supervision and requires a measured
+camera-to-palm calibration, verified joint order, torque-disabled shadow pass
+and independent power cutoff.

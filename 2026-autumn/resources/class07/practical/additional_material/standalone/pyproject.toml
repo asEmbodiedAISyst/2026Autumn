@@ -1,0 +1,18 @@
+[project]
+name = "class07-visual-feedback-standalone"
+version = "0.1.0"
+description = "Standalone synthetic vision and recorded-hardware exercises for ROB7103 Class 07"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "numpy>=1.26,<3",
+  "opencv-contrib-python-headless>=4.10,<5",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
