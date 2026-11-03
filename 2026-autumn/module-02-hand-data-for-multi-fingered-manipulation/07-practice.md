@@ -49,6 +49,8 @@ The first installation downloads the vision, retargeting and simulation dependen
   "retargeted_joints": 16,
   "finite_state": true,
   "hand_landmarker_loaded": true,
+  "asmagic_version": "1.0.1",
+  "hevc_decoder": "PyAV 18.1.0",
   "iphone_required_for_live_run": true,
   "motor_interface_included": false
 }
@@ -91,12 +93,37 @@ Observe how the finger contact pattern redistributes as the target changes. When
 
 1. Connect the iPhone and computer to the same Wi-Fi network.
 2. Open asMagic.
-3. Open **Panel → Tools → Data Streaming**.
-4. Enable **AR Data** and set the port to `8000`.
-5. Copy the IP address shown in the app.
-6. Keep the iPhone unlocked and asMagic in the foreground.
+3. Hold or mount the iPhone in landscape orientation.
+4. Open **Stream / Data Streaming** in asMagic.
+5. Enable **AR Data** and set the port to `8000`.
+6. Copy the IP address shown in the app.
+7. Keep the iPhone unlocked and asMagic in the foreground.
 
-The IP address belongs to the iPhone. It can change when the phone reconnects to Wi-Fi, so use the value currently displayed by asMagic.
+The IP address belongs to the iPhone. It can change when the phone reconnects to Wi-Fi, so use the value currently displayed by asMagic. The package uses `asmagic 1.0.1` and PyAV to decode the current HEVC stream; the older `asmagic 0.1.4` JPEG-only path produces an empty image window.
+
+Verify that one color frame can be decoded before starting MediaPipe or MuJoCo:
+
+```bash
+uv run python simulation/iphone_leap_sim.py \
+  --iphone-ip PHONE_IP \
+  --port 8000 \
+  --check-stream \
+  --stream-timeout-s 10
+```
+
+The check succeeds only after it prints a JSON report containing:
+
+```json
+{
+  "status": "pass",
+  "mode": "iphone_stream_check",
+  "decoded_bgr_shape": [480, 640, 3],
+  "asmagic_version": "1.0.1",
+  "motor_interface_included": false
+}
+```
+
+The exact decoded dimensions can vary with the selected stream mode. Do not continue until the status is `pass`.
 
 ## 4. Retarget your hand to the simulated LEAP Hand
 
@@ -158,11 +185,15 @@ Compare `--alpha 0.10` with `--alpha 0.25`. Identify which setting follows fast 
 
 ### The window remains on “Waiting for asMagic AR Data”
 
+- run the `--check-stream` command before starting the simulation;
+- confirm that `uv run python -c 'import asmagic; print(asmagic.__version__)'` reports `1.0.1`;
 - confirm that AR Data is enabled on port `8000`;
 - re-enter the current IP shown by asMagic;
 - confirm that both devices are on the same Wi-Fi network;
 - keep the iPhone unlocked and the app in the foreground; and
 - temporarily disable a computer firewall that blocks local port `8000`, if permitted by the lab policy.
+
+HEVC frames depend on earlier packets and periodic key frames. Keep one receiver running while it waits; repeatedly restarting the program can delay image recovery.
 
 ### The image arrives but the simulation holds its pose
 

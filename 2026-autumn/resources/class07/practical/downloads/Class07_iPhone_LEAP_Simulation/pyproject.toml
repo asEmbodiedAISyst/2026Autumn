@@ -4,7 +4,7 @@ version = "1.0.0"
 description = "Simulation-only Class 07 visual feedback and iPhone hand retargeting"
 requires-python = ">=3.11,<3.13"
 dependencies = [
-  "asmagic==0.1.4",
+  "asmagic==1.0.1",
   "dex-retargeting",
   "mediapipe>=0.10,<0.11",
   "mujoco>=3.3,<4",

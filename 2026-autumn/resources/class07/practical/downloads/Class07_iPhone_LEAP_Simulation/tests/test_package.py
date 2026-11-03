@@ -15,6 +15,8 @@ def test_required_assets_are_packaged() -> None:
     assert (ROOT / "simulation" / "leap_hand_model" / "right_hand.xml").is_file()
     assert (ROOT / "simulation" / "dex_retargeting" / "pyproject.toml").is_file()
     assert (ROOT / "run_cube_reorient_simulation.sh").is_file()
+    pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    assert 'asmagic==1.0.1' in pyproject
 
 
 def test_student_launcher_contains_no_motor_interface() -> None:
@@ -35,7 +37,17 @@ def test_simulation_and_retargeting_self_check() -> None:
     assert '"status": "pass"' in result.stdout
     assert '"model_actuators": 16' in result.stdout
     assert '"retargeted_joints": 16' in result.stdout
+    assert '"asmagic_version": "1.0.1"' in result.stdout
+    assert '"hevc_decoder": "PyAV ' in result.stdout
     assert '"motor_interface_included": false' in result.stdout
+
+
+def test_current_asmagic_stream_api_is_used() -> None:
+    source = SCRIPT.read_text(encoding="utf-8")
+    assert ".receive(timeout=" in source
+    assert "packet.color_array" in source
+    assert "cv2.imdecode" not in source
+    assert '"--check-stream"' in source
 
 
 def test_reorient_simulation_launcher_is_executable() -> None:

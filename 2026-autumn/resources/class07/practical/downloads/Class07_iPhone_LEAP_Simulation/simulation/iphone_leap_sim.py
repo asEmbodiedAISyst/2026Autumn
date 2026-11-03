@@ -19,6 +19,8 @@ import mujoco
 import mujoco.viewer
 import numpy as np
 
+import asmagic
+import av
 from asmagic import ARDataSubscriber
 from dex_retargeting.retargeting_config import RetargetingConfig
 
@@ -55,6 +57,7 @@ class AsMagicRGBStream:
         self.mirror = mirror
         self.running = True
         self.connected = False
+        self.last_error: str | None = None
         self.frames: queue.Queue[np.ndarray] = queue.Queue(maxsize=1)
         self.subscriber: ARDataSubscriber | None = None
         self.thread = threading.Thread(target=self._receive, daemon=True)
@@ -72,27 +75,31 @@ class AsMagicRGBStream:
                         verbose=False,
                     )
                     self.connected = True
+                    self.last_error = None
                     print(f"[asMagic] connected to {self.ip}:{self.port}")
-                except Exception:
+                except Exception as error:
+                    self.last_error = str(error)
                     time.sleep(0.5)
                     continue
             try:
-                packet = self.subscriber.get(timeout=100)
+                packet = self.subscriber.receive(timeout=100)
                 if packet is None or not packet.has_color_image:
                     continue
-                encoded = np.frombuffer(packet.color_bytes, dtype=np.uint8)
-                frame = cv2.imdecode(encoded, cv2.IMREAD_COLOR)
-                if frame is None:
+                rgb = packet.color_array
+                if rgb is None:
                     continue
+                frame = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
                 if self.mirror:
                     frame = cv2.flip(frame, 1)
+                self.last_error = None
                 while not self.frames.empty():
                     try:
                         self.frames.get_nowait()
                     except queue.Empty:
                         break
                 self.frames.put_nowait(frame)
-            except Exception:
+            except Exception as error:
+                self.last_error = str(error)
                 time.sleep(0.01)
 
     def get(self, timeout: float = 0.1) -> np.ndarray | None:
@@ -211,6 +218,8 @@ def package_check() -> None:
         "retargeted_joints": int(q_retarget.size),
         "finite_state": bool(np.isfinite(data.qpos).all()),
         "hand_landmarker_loaded": True,
+        "asmagic_version": asmagic.__version__,
+        "hevc_decoder": f"PyAV {av.__version__}",
         "iphone_required_for_live_run": True,
         "motor_interface_included": False,
     }
@@ -237,6 +246,17 @@ def parse_args() -> argparse.Namespace:
         help="Validate dependencies, assets, retargeting and MuJoCo without an iPhone",
     )
     parser.add_argument(
+        "--check-stream",
+        action="store_true",
+        help="Receive and decode one iPhone color frame, then exit without starting MuJoCo",
+    )
+    parser.add_argument(
+        "--stream-timeout-s",
+        type=float,
+        default=10.0,
+        help="Maximum time for --check-stream to wait for a decoded color frame",
+    )
+    parser.add_argument(
         "--demo",
         action="store_true",
         help="Run MuJoCo simulation viewer with animated synthetic hand retargeting without an iPhone",
@@ -253,7 +273,38 @@ def parse_args() -> argparse.Namespace:
         parser.error("--alpha must lie in (0, 1]")
     if args.duration < 0.0:
         parser.error("--duration must be non-negative")
+    if args.stream_timeout_s <= 0.0:
+        parser.error("--stream-timeout-s must be positive")
     return args
+
+
+def check_iphone_stream(args: argparse.Namespace) -> None:
+    """Verify HEVC/JPEG reception without loading MediaPipe or MuJoCo viewers."""
+    stream = AsMagicRGBStream(args.iphone_ip, args.port, args.mirror)
+    deadline = time.monotonic() + args.stream_timeout_s
+    try:
+        while time.monotonic() < deadline:
+            frame = stream.get(timeout=0.2)
+            if frame is None:
+                continue
+            print(json.dumps({
+                "status": "pass",
+                "mode": "iphone_stream_check",
+                "iphone": f"{args.iphone_ip}:{args.port}",
+                "decoded_bgr_shape": list(frame.shape),
+                "asmagic_version": asmagic.__version__,
+                "hevc_decoder": f"PyAV {av.__version__}",
+                "motor_interface_included": False,
+            }, indent=2))
+            return
+    finally:
+        stream.close()
+    detail = f" Last decoder error: {stream.last_error}" if stream.last_error else ""
+    raise RuntimeError(
+        "No decodable asMagic color frame arrived. On the iPhone, open Stream/Data "
+        f"Streaming, set AR Data port {args.port}, switch AR Data ON, keep the app "
+        f"foregrounded, and confirm IP {args.iphone_ip}.{detail}"
+    )
 
 
 def run_demo(model: mujoco.MjModel, data: mujoco.MjData, retargeter, mapping: np.ndarray, duration: float = 0.0) -> None:
@@ -301,6 +352,10 @@ def main() -> None:
     args = parse_args()
     if args.check:
         package_check()
+        return
+
+    if args.check_stream:
+        check_iphone_stream(args)
         return
 
     retargeter = load_retargeter()
