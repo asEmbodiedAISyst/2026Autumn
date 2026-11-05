@@ -7,7 +7,7 @@ dependencies = [
     "mujoco>=3.3",
     "numpy>=1.26",
     "pillow>=10",
-    "asmagic>=0.1.4",
+    "asmagic==1.0.2",
     "pyzmq>=25",
     "protobuf>=4",
     "sharklog>=0.1.2",

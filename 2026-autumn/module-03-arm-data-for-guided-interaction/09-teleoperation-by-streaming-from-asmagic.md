@@ -340,7 +340,7 @@ Use the demonstration or source practice to record three phone motions and their
 
 ## References
 
-ASMagic Team. 2026. “asmagic.” Version 0.1.4. Released January 19, 2026. _Python Package Index_. [Versioned API and data-format documentation](https://pypi.org/project/asmagic/0.1.4/). This identifies the Python interface, not an installed iOS build or a physical-frame calibration.
+ASMagic Team. 2026. “asmagic.” Version 1.0.2. Released November 3, 2026. _Python Package Index_. [Versioned API and data-format documentation](https://pypi.org/project/asmagic/1.0.2/). This identifies the Python interface, not an installed iOS build or a physical-frame calibration.
 
 Featherstone, Roy. 2008. _Rigid Body Dynamics Algorithms_. Springer. [Spatial-vector resources](https://royfeatherstone.org/spatial/v2/index.html).
 

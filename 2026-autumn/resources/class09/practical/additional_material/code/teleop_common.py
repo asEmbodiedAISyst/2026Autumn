@@ -150,7 +150,8 @@ class PhoneReader:
         try:
             while not self._stop.is_set():
                 try:
-                    frame = self.sub.get(timeout=100)  # one get() per frame: all fields of the same instant
+                    # asmagic >= 1.0: receive() replaces get(); one receive() per frame, all fields of the same instant
+                    frame = self.sub.receive(timeout=100)
                     if frame is None or frame.local_pose is None:
                         continue
                     parsed = parse_pose(frame.local_pose)
@@ -159,6 +160,8 @@ class PhoneReader:
                     pos, rot = parsed
                     if self.count == 0:
                         self.pose_format = f"{len(frame.local_pose)} values"
+                except StopIteration:
+                    break  # the subscriber was closed
                 except Exception:
                     continue  # one bad frame must not stop the receiver
                 now = time.monotonic()
