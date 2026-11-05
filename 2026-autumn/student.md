@@ -87,6 +87,8 @@ Examples of unacceptable practice include inventing or altering measurements, hi
 
 ## Recommended Textbook(s)
 
+The course textbook, [**Experience-Generating Physical Systems: Designing Data for Embodied Learning**](textbook-working-draft.md), is available as a working-draft PDF with a reading map for all classes.
+
 1. Featherstone, R. **Rigid Body Dynamics Algorithms**. Springer, 2008. ISBN 978-0-387-74314-1.
 2. Siciliano, B., and Khatib, O., editors. **Springer Handbook of Robotics**. 2nd edition. Springer, 2016. ISBN 978-3-319-32550-7.
 3. Lynch, K. M., and Park, F. C. **Modern Robotics: Mechanics, Planning, and Control**. Cambridge University Press, 2017. ISBN 978-1-107-15630-2.
