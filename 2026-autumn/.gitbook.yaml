@@ -1,3 +1,4 @@
+# main uses forward-only updates; history protection is documented in ../AGENTS.md.
 # Keep media in resources/ and reference canonical URLs; see ../AGENTS.md.
 root: ./
 

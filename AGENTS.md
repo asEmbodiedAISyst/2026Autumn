@@ -16,3 +16,7 @@ Static course illustrations are PNG. Keep worksheet PDFs as PDFs, and retain req
 - Do not use `.gitignore` as an export control: GitBook can commit assets independently of a local Git checkout.
 
 These instructions govern repository maintenance, not student learning activities. The workflow only checks files; it does not delete, relocate, or auto-commit them.
+
+## Main branch history
+
+GitHub ruleset `Protect main history` blocks non-fast-forward updates to `main`, without bypass actors. Preserve remote history: fetch and reconcile concurrent changes, then use ordinary forward commits or merges. Do not reset, replace, or force-push the branch. GitBook Git Sync can continue ordinary pushes; do not disable the ruleset to resolve a sync conflict.
