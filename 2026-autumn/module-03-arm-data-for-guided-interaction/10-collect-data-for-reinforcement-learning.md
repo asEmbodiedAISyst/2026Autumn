@@ -262,7 +262,7 @@ The separate practice gives the complete five-episode collection and ten-episode
 
 ## References
 
-ASMagic Team. 2026. “asmagic.” Version 0.1.4. Released January 19, 2026. _Python Package Index_. [Versioned API and data-format documentation](https://pypi.org/project/asmagic/0.1.4/).
+ASMagic Team. 2026. “asmagic.” Version 1.0.2. Released November 3, 2026. _Python Package Index_. [Versioned API and data-format documentation](https://pypi.org/project/asmagic/1.0.2/).
 
 Chi, Cheng, Zhenjia Xu, Chuer Pan, Eric Cousineau, Benjamin Burchfiel, Siyuan Feng, Russ Tedrake, and Shuran Song. 2024. “Universal Manipulation Interface: In-The-Wild Robot Teaching Without In-The-Wild Robots.” In _Proceedings of Robotics: Science and Systems_. [Paper and project](https://umi-gripper.github.io/).
 

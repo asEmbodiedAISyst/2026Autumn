@@ -98,13 +98,15 @@ class AsmagicPoseReader:
         t0, n0 = time.monotonic(), 0
         while not self._stop.is_set():
             try:
-                frame = self._sub.get(timeout=100)
+                frame = self._sub.receive(timeout=100)  # asmagic >= 1.0: receive() replaces get()
                 if frame is None:
                     continue
                 raw = frame.global_pose if self._use_global else frame.local_pose
                 if raw is None or len(raw) not in (7, 16):
                     continue
                 pos, rot = parse_pose(raw)
+            except StopIteration:
+                break  # the subscriber was closed
             except Exception as e:  # one bad frame must not kill the receiver thread
                 self._errors += 1
                 if self._errors <= 3:
@@ -351,11 +353,14 @@ class AsmagicFrameReader:
             t0, n0 = time.monotonic(), 0
             while not self._stop.is_set():
                 try:
-                    frame = self._sub.get(timeout=100)
+                    frame = self._sub.receive(timeout=100)  # asmagic >= 1.0: receive() replaces get()
                     if frame is None or frame.local_pose is None or len(frame.local_pose) not in (7, 16):
                         continue
                     pos, rot = parse_pose(frame.local_pose)
+                    # RGB (H, W, 3); JPEG or HEVC, decoded by asmagic. None while HEVC waits for a key frame.
                     image = frame.color_array if frame.has_color_image else None
+                except StopIteration:
+                    break  # the subscriber was closed
                 except Exception as e:  # one bad frame must not kill the receiver thread
                     self._errors += 1
                     if self._errors <= 3:

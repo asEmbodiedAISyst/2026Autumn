@@ -72,8 +72,10 @@ def main() -> None:
 
     # First look at one raw frame
     sub = ARDataSubscriber(args.phone_ip, port=args.phone_port)
-    frame = sub.get(timeout=3000)
-    sub.close()
+    try:
+        frame = sub.receive(timeout=3000)  # asmagic >= 1.0: receive() replaces get()
+    finally:
+        sub.close()
     if frame is None:
         print(f"no data within 3 s: check the phone IP ({args.phone_ip}), the network and that the app is on the AR page")
         return
