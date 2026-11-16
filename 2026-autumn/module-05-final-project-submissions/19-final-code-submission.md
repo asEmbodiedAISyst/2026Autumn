@@ -1,18 +1,14 @@
 ---
-description: 01 December 2026 · Deadline 10:20 · No class meeting | SONG Chaoyang
+description: 04 December 2026 · 09:00–10:50 · DO | SONG Chaoyang
 ---
 
 # 19 Final Code Submission
 
-**Deadline: 1 December 2026, 10:20 — Abu Dhabi time (UTC+4).**
-
-**Public holiday: no class meeting. The submission deadline remains in effect.**
+**Deadline · 4 December 2026 at 10:50, Abu Dhabi time (UTC+4).**
 
 ## Team preparation and the submission deadline
 
-This milestone continues your final-project preparation. Use your team's preparation time to finish the implementation, check that the supplied files support the reported results, and make `code/README.md` usable by another reader. Use the guidance below as a reference for that work.
-
-**There is no class meeting on this public holiday.** Work independently with your team and push the required `code/` contents, including `code/README.md`, to your assigned private team repository's `main` branch by the deadline above. Leave time to check the uploaded files on GitHub. The deadline is the submission checkpoint; no separate class attendance or additional progress form is required.
+**Most of this class is reserved for team project work.** Finish the implementation, check that the supplied files support the reported results and make `code/README.md` usable by another reader. Before class ends, push the required code and README to your assigned private team repository’s `main` branch and check the uploaded files on GitHub.
 
 ## Submission requirements
 

@@ -1,18 +1,14 @@
 ---
-description: 02 December 2026 · Deadline 11:50 · No class meeting | SONG Chaoyang
+description: 08 December 2026 · 09:00–10:20 · CR6 | SONG Chaoyang
 ---
 
 # 20 Final Video Submission
 
-**Deadline: 2 December 2026, 11:50 — Abu Dhabi time (UTC+4).**
-
-**Public holiday: no class meeting. The submission deadline remains in effect.**
+**Deadline · 8 December 2026 at 10:20, Abu Dhabi time (UTC+4).**
 
 ## Team preparation and the submission deadline
 
-This milestone continues your final-project preparation. Use your team's preparation time to finish the video, check that it explains your system and evidence, and bring the six final worksheets into agreement with your final project. Use the examples below to improve the explanation of your own work.
-
-**There is no class meeting on this public holiday.** Work independently with your team and push `video/TeamNN-video.mp4` and all six final signed worksheet PDFs in `worksheets/` to your assigned private team repository's `main` branch by the deadline above. Reserve time to check video playback and every PDF on GitHub. Both the video and the final worksheets are required at this checkpoint; a later revision does not replace the collected version.
+**Most of this class is reserved for team project work.** Finish the video and bring the six final worksheets into agreement with your final project. Before class ends, push `video/TeamNN-video.mp4` and the six final signed PDFs in `worksheets/` to your assigned private team repository’s `main` branch. Reserve time to check playback and PDF readability on GitHub.
 
 ## Submission requirements
 
@@ -24,6 +20,8 @@ Use the [RSS 2026 video specifications](https://roboticsconference.org/2026/info
 
 **Course adaptation:** include narration or explanatory captions so the video can be understood without a live presenter. Submit an `.mp4` file named `TeamNN-video.mp4`, replacing `NN` with your two-digit team number: `01`–`08`. Team 01 submits `video/Team01-video.mp4`. Show your team identifier (**Team01–Team08**), project title and authors in the video.
 
+For the [Class 21 showcase](../21-final-project-showcase.md), rehearse a three-minute live talk using an excerpt of this same video. The submitted video may still run up to four minutes.
+
 ## How to submit and how we collect
 
 Commit and push the video to the `main` branch of your assigned team repository before the deadline. Open the uploaded copy on GitHub and check playback. For upload help, use [GitHub’s large-file guidance](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
@@ -34,7 +32,7 @@ For our collected copy, we use `TeamNN-video-YYMMDD-HHMMSS.mp4`. **Keep your sub
 
 ## Final updated worksheets
 
-The **10% consolidated and updated project record** consists of six final signed worksheet PDFs. Submit them in your assigned private repository by **2 December 2026 at 11:50, Abu Dhabi time (UTC+4)**, the same deadline as the video.
+The **10% consolidated and updated project record** consists of six final signed worksheet PDFs. Submit them in your assigned private repository by **8 December 2026 at 10:20, Abu Dhabi time (UTC+4)**, the same deadline as the video.
 
 | Final worksheet | Required path                              |
 | --------------- | ------------------------------------------ |

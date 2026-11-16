@@ -52,7 +52,7 @@
 
 ## Module 05: Final Project Submissions
 
-* [18 Final Poster Submission](module-05-final-project-submissions/18-final-poster-submission.md)
+* [18 Final Worksheet Revisions](module-05-final-project-submissions/18-final-poster-submission.md)
 * [19 Final Code Submission](module-05-final-project-submissions/19-final-code-submission.md)
 * [20 Final Video Submission](module-05-final-project-submissions/20-final-video-submission.md)
 

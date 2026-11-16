@@ -2,17 +2,21 @@
 description: 27 November 2026 · 09:00–10:50 · DO | SONG Chaoyang
 ---
 
-# 18 Final Poster Submission
+# 18 Final Worksheet Revisions
 
 ## How we will use this class
 
-**Most of this class is reserved for final-project and poster preparation with your team.** After a short introduction, work on the connection between your claim, system, evidence and conclusion. Use the examples below when deciding what the poster should show, and discuss unclear claims or figures with the teaching team. Use the working time to improve the project evidence and finish the poster together.
+**Most of this class is reserved for team project work.** Review your six worksheet checkpoints, revise any that need changes and prepare the evidence you will use in your poster, code and video. Bring questions about your claim, system, results or conclusions to the teaching team.
 
-**Before class ends, each team must submit its final poster PDF.** Push `poster/TeamNN-poster.pdf` to your assigned private team repository's `main` branch by the deadline below. Reserve time to open the uploaded PDF, check its layout and confirm that it is the version your team intends to submit for printing. The poster is the required submission for this class; follow the requirements below.
+## Optional worksheet resubmissions
 
-**Deadline: 27 November 2026, 10:50 — Abu Dhabi time (UTC+4).**
+If your team needs to change a worksheet it has already submitted, push a dated, signed revision by **27 November 2026 at 10:50, Abu Dhabi time (UTC+4)**. Save the revised PDF in the corresponding `submissions/classXX/revisions/` folder, retain the original PDF and check the revision on GitHub after pushing to `main`. Explain material changes in the worksheet and obtain every team member's signature.
+
+**Each original Class 12–17 deadline still determines whether that worksheet was submitted late.** If your team has no revisions, you have nothing to resubmit in Class 18. The six final signed worksheet PDFs are due with the video on **8 December at 10:20**. See [Class 20](20-final-video-submission.md#final-updated-worksheets).
 
 ## Submission requirements
+
+**Final poster deadline · 2 December 2026 at 11:50, Abu Dhabi time (UTC+4).** Push `poster/TeamNN-poster.pdf` to the `main` branch of your assigned private team repository. This is an online submission on the public holiday. Reserve time to open the uploaded PDF and check the version intended for printing.
 
 The [RSS 2026 poster instructions](https://roboticsconference.org/2026/information/presentationInstructions/) specify:
 

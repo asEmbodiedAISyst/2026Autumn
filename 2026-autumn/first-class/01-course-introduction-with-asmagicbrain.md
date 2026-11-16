@@ -40,14 +40,18 @@ Each team develops and submits one project in its assigned private GitHub reposi
 
 Open the repository README and locate `poster/`, `code/` and `video/`. These existing folders are the final submission locations. Shared `environment/`, `results/` and `worksheets/` folders support the same project.
 
-| Milestone                                                                                                                          | Main artifact                                                                      | Deadline, Abu Dhabi time (UTC+4) |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | -------------------------------- |
-| [Class 18: poster](../module-05-final-project-submissions/18-final-poster-submission.md)                                           | `poster/TeamNN-poster.pdf`                                                         | 27 November 2026, 10:50          |
-| [Class 19: code](../module-05-final-project-submissions/19-final-code-submission.md)                                               | `code/README.md` and implementation                                                | 1 December 2026, 10:20           |
-| [Class 20: video](../module-05-final-project-submissions/20-final-video-submission.md)                                             | `video/TeamNN-video.mp4`                                                           | 2 December 2026, 11:50           |
-| [Class 20: final updated worksheets](../module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets) | Six final signed PDFs in `worksheets/`, using the six filenames listed in Class 20 | 2 December 2026, 11:50           |
+| Milestone | Main artifact | Deadline or session, Abu Dhabi time (UTC+4) |
+| --- | --- | --- |
+| [Class 18 optional worksheet resubmissions](../module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions) | Dated, signed revisions for any previously submitted worksheets your team changes | 27 November 2026, 10:50 |
+| [Final poster](../module-05-final-project-submissions/18-final-poster-submission.md#submission-requirements) | `poster/TeamNN-poster.pdf` | 2 December 2026, 11:50, online |
+| [Class 19 final code](../module-05-final-project-submissions/19-final-code-submission.md) | `code/README.md` and implementation | 4 December 2026, 10:50 |
+| [Class 20 final video](../module-05-final-project-submissions/20-final-video-submission.md) | `video/TeamNN-video.mp4` | 8 December 2026, 10:20 |
+| [Class 20 final updated worksheets](../module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets) | Six final signed PDFs in `worksheets/` | 8 December 2026, 10:20 |
+| [Class 21 showcase](../21-final-project-showcase.md) | Live presentation, Q&A, posters and demonstrations | 9 December 2026, 10:30–11:30, CR6 |
 
-Use your two-digit team number in place of `NN`, for example `Team01-poster.pdf` and `Team01-video.mp4`. The teaching team appends `-YYMMDD-HHMMSS` to collected filenames, using the GitHub-recorded submission push time in Abu Dhabi time (UTC+4), for example `Team01-poster-261127-104530.pdf`. Students keep code in the existing repository; instructors create `Team01-code-YYMMDD-HHMMSS.zip`.
+The original Class 12–17 deadlines still determine worksheet lateness. Keep the original PDFs when submitting optional revisions.
+
+Use your two-digit team number in place of `NN`, for example `Team01-poster.pdf` and `Team01-video.mp4`. The teaching team appends `-YYMMDD-HHMMSS` to collected filenames, using the GitHub-recorded submission push time in Abu Dhabi time (UTC+4), for example `Team01-poster-261202-114530.pdf`. Students keep code in the existing repository; instructors create `Team01-code-YYMMDD-HHMMSS.zip`.
 
 Commit and push the deliverable to `main` before its deadline, then inspect the files on GitHub. A saved local file or unpushed commit is not available for collection. At each deadline the teaching team captures the remote revision, records its commit, GitHub push time and collection time separately, and retains that revision. The deadline concerns when the version reached GitHub, not its local commit date. Later changes remain later work; they do not replace the collected snapshot.
 
@@ -59,6 +63,6 @@ Show the published course and one assigned team repository. Open its README and 
 
 ## Student activity — 10 minutes
 
-Form eight teams. Each team identifies its assigned repository, confirms authorized access, locates the poster/code/video folders and identifies the three deadlines. Raise an access problem with the teaching team before project work depends on that repository.
+Form eight teams. Each team identifies its assigned repository, confirms authorized access, locates the poster/code/video folders and identifies the final submission deadlines and showcase time. Raise an access problem with the teaching team before project work depends on that repository.
 
 ***

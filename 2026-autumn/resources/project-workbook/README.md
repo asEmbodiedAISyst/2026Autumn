@@ -32,10 +32,14 @@ No email, separate upload, physical hand-in, release, tag or collection form is 
 
 The [editable project record](project-record.md) supports your work; it is not an additional submission. Cite supporting evidence by its existing path in the same private repository. State missing evidence honestly. Keep student IDs and signatures private. Brief guidance and filled examples are on the six class pages.
 
+## Optional Class 18 resubmissions
+
+If you revise a worksheet you have already submitted, push the dated, team-signed revision to its class `revisions/` folder by **27 November 2026 at 10:50**. Preserve the original PDF. The original deadline in the table above still determines whether the worksheet was submitted late. See the [Class 18 instructions](../../module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions).
+
 ## Filled paper examples
 
 The Class 12–17 pages each link eight separate, yellow-highlighted example PDFs and their source papers. Files are grouped under `examples/class12/` through `examples/class17/`. Each PDF contains only the corresponding worksheet and its review page; these examples do not replace the blank team submission worksheets.
 
 ## Final updated worksheet collection
 
-The six final signed worksheets satisfy the **10% consolidated and updated project record**. Push them to remote `main` by **2 December 2026 at 11:50, Abu Dhabi time (UTC+4)**, alongside the video. Use the same six basenames listed above under `worksheets/` instead of `submissions/classXX/`; for example, `worksheets/Team01-Class12-Claim.pdf`. Preserve the earlier checkpoint files. The [Class 20 instructions](../../module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets) list all six exact paths and the collection procedure. No combined PDF or additional form is required.
+The six final signed worksheets satisfy the **10% consolidated and updated project record**. Push them to remote `main` by **8 December 2026 at 10:20, Abu Dhabi time (UTC+4)**, alongside the video. Use the same six basenames listed above under `worksheets/` instead of `submissions/classXX/`; for example, `worksheets/Team01-Class12-Claim.pdf`. Preserve the earlier checkpoint files. The [Class 20 instructions](../../module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets) list all six exact paths and the collection procedure. No combined PDF or additional form is required.
