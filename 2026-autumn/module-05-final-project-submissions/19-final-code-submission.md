@@ -1,14 +1,16 @@
 ---
-description: 04 December 2026 · 09:00–10:50 · DO | SONG Chaoyang
+description: 01 December 2026 · 09:00–10:50 · DO | SONG Chaoyang
 ---
 
 # 19 Final Code Submission
 
-**Deadline · 4 December 2026 at 10:50, Abu Dhabi time (UTC+4).**
+**In-person session:** Tuesday, 1 December 2026, 09:00–10:50 in the Data Observatory (Friday timetable).
+
+**Online submission deadline:** Friday, 4 December 2026 at 10:50 Abu Dhabi time (UTC+4), unchanged. There is no in-person class on 4 December.
 
 ## Team preparation and the submission deadline
 
-**Most of this class is reserved for team project work.** Finish the implementation, check that the supplied files support the reported results and make `code/README.md` usable by another reader. Before class ends, push the required code and README to your assigned private team repository’s `main` branch and check the uploaded files on GitHub.
+**Most of this class is reserved for team project work.** Finish the implementation, check that the supplied files support the reported results and make `code/README.md` usable by another reader. By the online deadline above, push the required code and README to your assigned private team repository’s `main` branch and check the uploaded files on GitHub.
 
 ## Submission requirements
 
