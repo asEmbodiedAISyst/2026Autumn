@@ -34,7 +34,7 @@ The [editable project record](project-record.md) supports your work; it is not a
 
 ## Optional Class 18 resubmissions
 
-If you revise a worksheet you have already submitted, push the dated, team-signed revision to its class `revisions/` folder by **27 November 2026 at 10:50**. Preserve the original PDF. The original deadline in the table above still determines whether the worksheet was submitted late. See the [Class 18 instructions](../../module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions).
+If you revise a worksheet you have already submitted, push the dated, team-signed revision to its class `revisions/` folder by **1 December 2026 at 10:50**. Preserve the original PDF. The original deadline in the table above still determines whether the worksheet was submitted late. See the [Class 18 instructions](../../module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions).
 
 ## Filled paper examples
 

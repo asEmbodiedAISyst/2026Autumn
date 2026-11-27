@@ -37,7 +37,7 @@ At the deadline, the teaching team records the remote `main` commit, collects th
 
 **No separate upload, email, release, tag, manifest or physical hand-in is required.** Later changes do not replace the collected version. Keep the initial PDF; save later dated, signed revisions in `submissions/class15/revisions/`.
 
-If you revise this worksheet after submitting it, you may push a dated, signed revision by **27 November at 10:50** using the [Class 18 instructions](../module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions). The original deadline above still determines whether this worksheet was submitted late.
+If you revise this worksheet after submitting it, you may push a dated, signed revision by **1 December at 10:50** using the [Class 18 instructions](../module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions). The original deadline above still determines whether this worksheet was submitted late.
 
 For the 10% consolidated and updated project record, place your final signed copy in `worksheets/` by **8 December 2026 at 10:20 (UTC+4)**, following the [Class 20 final worksheet instructions](../module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets). Keep this class's collected checkpoint unchanged.
 
