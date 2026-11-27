@@ -42,7 +42,7 @@ Open the repository README and locate `poster/`, `code/` and `video/`. These exi
 
 | Milestone | Main artifact | Deadline or session, Abu Dhabi time (UTC+4) |
 | --- | --- | --- |
-| [Class 18 optional worksheet resubmissions](../module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions) | Dated, signed revisions for any previously submitted worksheets your team changes | 27 November 2026, 10:50 |
+| [Class 18 optional worksheet resubmissions](../module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions) | Dated, signed revisions for any previously submitted worksheets your team changes | 1 December 2026, 10:50 |
 | [Final poster](../module-05-final-project-submissions/18-final-poster-submission.md#submission-requirements) | `poster/TeamNN-poster.pdf` | 2 December 2026, 11:50, online |
 | [Class 19 final code](../module-05-final-project-submissions/19-final-code-submission.md) | `code/README.md` and implementation | 4 December 2026, 10:50 (online) |
 | [Class 20 final video](../module-05-final-project-submissions/20-final-video-submission.md) | `video/TeamNN-video.mp4` | 8 December 2026, 10:20 |
