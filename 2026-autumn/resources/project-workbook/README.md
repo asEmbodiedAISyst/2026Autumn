@@ -34,12 +34,12 @@ The [editable project record](project-record.md) supports your work; it is not a
 
 ## Optional Class 18 resubmissions
 
-If you revise a worksheet you have already submitted, push the dated, team-signed revision to its class `revisions/` folder by **1 December 2026 at 10:50**. Preserve the original PDF. The original deadline in the table above still determines whether the worksheet was submitted late. See the [Class 18 instructions](../../module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions).
+If you revise a worksheet you have already submitted, push the dated, team-signed revision to its class `revisions/` folder by **1 December 2026 at 10:50**. You may submit an electronically filled PDF or a scan of a handwritten revision. Only worksheets your team chooses to revise need to be resubmitted. Preserve the original PDF. The original deadline in the table above still determines whether the worksheet was submitted late. See the [Class 18 instructions](../../module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions).
 
 ## Filled paper examples
 
 The Class 12–17 pages each link eight separate, yellow-highlighted example PDFs and their source papers. Files are grouped under `examples/class12/` through `examples/class17/`. Each PDF contains only the corresponding worksheet and its review page; these examples do not replace the blank team submission worksheets.
 
-## Final updated worksheet collection
+## Project record assessment
 
-The six final signed worksheets satisfy the **10% consolidated and updated project record**. Push them to remote `main` by **8 December 2026 at 10:20, Abu Dhabi time (UTC+4)**, alongside the video. Use the same six basenames listed above under `worksheets/` instead of `submissions/classXX/`; for example, `worksheets/Team01-Class12-Claim.pdf`. Preserve the earlier checkpoint files. The [Class 20 instructions](../../module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets) list all six exact paths and the collection procedure. No combined PDF or additional form is required.
+The **10% consolidated and updated project record** remains a distinct assessment component under the [course grading policy](../../student.md#grading-policy). Preserve the original checkpoints and any optional revisions. The [Class 20 video deadline](../../module-05-final-project-submissions/20-final-video-submission.md) applies to the video only.

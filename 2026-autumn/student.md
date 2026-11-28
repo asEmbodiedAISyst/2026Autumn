@@ -8,7 +8,7 @@ description: 2026 Autumn
 
 This course examines how AI methods become parts of measurable, reproducible, and responsibly operated physical systems. It assumes prior competence in machine learning, computer vision, reinforcement learning, and related AI methods. It does not repeat general AI, kinematics, control, or planning courses. Instead, it concentrates on embodiment, sensing, actuation, communication, calibration, fabrication, simulation, Sim2Real evidence, robot-learning deployment, and experimental diagnosis.
 
-The course normally meets three times a week. The Teaching Schedule includes two make-up meetings in December for the Week 07 public holidays. It includes six linked Embodied AI Meets Design worksheets, one revised worksheet portfolio, and one team final project. An optional two-day Seeed hackathon may be offered as a separate supervised event. Details will be announced separately.
+The course normally meets three times a week. The Teaching Schedule includes two make-up meetings in December for the Week 07 public holidays. It includes six linked Embodied AI Meets Design worksheets, a consolidated and updated project record, and one team final project. An optional two-day Seeed hackathon may be offered as a separate supervised event. Details will be announced separately.
 
 The course begins on October 20, 2026. Access to the supporting source repositories is managed separately and does not determine the copyright or licensing status of the rendered materials.
 
@@ -113,7 +113,7 @@ The course textbook, [**Experience-Generating Physical Systems: Designing Data f
 * 1 Dec, 10:50 · [Optional worksheet resubmissions](module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions)
 * 2 Dec, 11:50 · [Final poster due online](module-05-final-project-submissions/18-final-poster-submission.md#submission-requirements)
 * 4 Dec, 10:50 · [Final code due online](module-05-final-project-submissions/19-final-code-submission.md)
-* 8 Dec, 10:20 · [Final video and six final signed worksheets](module-05-final-project-submissions/20-final-video-submission.md)
+* 8 Dec, 10:20 · [Final video](module-05-final-project-submissions/20-final-video-submission.md)
 * 9 Dec, 10:30–11:30 · [Final Project Showcase](21-final-project-showcase.md) in CR6
 
 ## How to Prepare
@@ -130,7 +130,7 @@ Develop one team project through six worksheets: **Claim → Experience → Syst
 
 Complete one worksheet for each of Classes 12–17. Submit it handwritten and signed by every team member before the end of the corresponding session. If you revise a worksheet you already submitted, you may push a dated, signed revision by **1 December at 10:50**. Keep the original and follow the [Class 18 revision instructions](module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions). Each original Class 12–17 deadline determines whether that worksheet was submitted late.
 
-The 10% consolidated and updated project record is submitted as six final signed worksheet PDFs in `worksheets/` by **8 December 2026 at 10:20 (UTC+4)**; [Class 20](module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets) lists their filenames. Preserve the original Class 12–17 checkpoints. No combined portfolio PDF or additional form is required. The final project also includes reproducible code and environment instructions, relevant data and results, a technical poster and a video with narration or explanatory captions. Present and demonstrate the project at the final showcase. [Class 18](module-05-final-project-submissions/18-final-poster-submission.md), [Class 19](module-05-final-project-submissions/19-final-code-submission.md) and [Class 20](module-05-final-project-submissions/20-final-video-submission.md) state the submission requirements, filenames, deadlines and collection procedure.
+The **10% consolidated and updated project record** remains a distinct assessment component. Preserve the original Class 12–17 checkpoints and any optional revisions. Optional revisions may use electronically filled PDFs, with the date and every team member's signature, under the [Class 18 instructions](module-05-final-project-submissions/18-final-poster-submission.md#optional-worksheet-resubmissions). The 8 December deadline applies to the video only. The final project also includes reproducible code and environment instructions, relevant data and results, a technical poster and a video with narration or explanatory captions. Present and demonstrate the project at the final showcase. [Class 18](module-05-final-project-submissions/18-final-poster-submission.md), [Class 19](module-05-final-project-submissions/19-final-code-submission.md) and [Class 20](module-05-final-project-submissions/20-final-video-submission.md) state the submission requirements, filenames, deadlines and collection procedure.
 
 Use your assigned private team repository for development and final submission. The [Class 01 repository introduction](first-class/01-course-introduction-with-asmagicbrain.md#your-assigned-team-repository) links the eight repositories and explains the folder and deadline-collection workflow.
 

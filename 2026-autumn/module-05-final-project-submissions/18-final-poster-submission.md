@@ -10,9 +10,9 @@ description: 27 November 2026 · 09:00–10:50 · DO | SONG Chaoyang
 
 ## Optional worksheet resubmissions
 
-If your team needs to change a worksheet it has already submitted, push a dated, signed revision by **1 December 2026 at 10:50, Abu Dhabi time (UTC+4)**. Save the revised PDF in the corresponding `submissions/classXX/revisions/` folder, retain the original PDF and check the revision on GitHub after pushing to `main`. Explain material changes in the worksheet and obtain every team member's signature.
+If your team needs to change a worksheet it has already submitted, push a dated, signed revision by **1 December 2026 at 10:50, Abu Dhabi time (UTC+4)**. You may submit an electronically filled PDF or a scan of a handwritten revision. Save the revised PDF in the corresponding `submissions/classXX/revisions/` folder, retain the original PDF and check the revision on GitHub after pushing to `main`. Explain material changes in the worksheet and obtain every team member's signature.
 
-**Each original Class 12–17 deadline still determines whether that worksheet was submitted late.** The optional revision cutoff is the end of the Class 19 work session on Tuesday, 1 December, at 10:50. If your team has no revisions, no resubmission is required. The six final signed worksheet PDFs are due with the video on **8 December at 10:20**. See [Class 20](20-final-video-submission.md#final-updated-worksheets).
+**Each original Class 12–17 deadline still determines whether that worksheet was submitted late.** The optional revision cutoff is the end of the Class 19 work session on Tuesday, 1 December, at 10:50. Only worksheets your team chooses to revise need to be resubmitted. If your team has no revisions, no resubmission is required.
 
 ## Submission requirements
 
