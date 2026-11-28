@@ -46,7 +46,6 @@ Open the repository README and locate `poster/`, `code/` and `video/`. These exi
 | [Final poster](../module-05-final-project-submissions/18-final-poster-submission.md#submission-requirements) | `poster/TeamNN-poster.pdf` | 2 December 2026, 11:50, online |
 | [Class 19 final code](../module-05-final-project-submissions/19-final-code-submission.md) | `code/README.md` and implementation | 4 December 2026, 10:50 (online) |
 | [Class 20 final video](../module-05-final-project-submissions/20-final-video-submission.md) | `video/TeamNN-video.mp4` | 8 December 2026, 10:20 |
-| [Class 20 final updated worksheets](../module-05-final-project-submissions/20-final-video-submission.md#final-updated-worksheets) | Six final signed PDFs in `worksheets/` | 8 December 2026, 10:20 |
 | [Class 21 showcase](../21-final-project-showcase.md) | Live presentation, Q&A, posters and demonstrations | 9 December 2026, 10:30–11:30, CR6 |
 
 The original Class 12–17 deadlines still determine worksheet lateness. Keep the original PDFs when submitting optional revisions.

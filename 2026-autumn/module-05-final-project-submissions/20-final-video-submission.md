@@ -4,11 +4,11 @@ description: 08 December 2026 · 09:00–10:20 · CR6 | SONG Chaoyang
 
 # 20 Final Video Submission
 
-**Deadline · 8 December 2026 at 10:20, Abu Dhabi time (UTC+4).**
+**Video deadline · 8 December 2026 at 10:20, Abu Dhabi time (UTC+4).**
 
 ## Team preparation and the submission deadline
 
-**Most of this class is reserved for team project work.** Finish the video and bring the six final worksheets into agreement with your final project. Before class ends, push `video/TeamNN-video.mp4` and the six final signed PDFs in `worksheets/` to your assigned private team repository’s `main` branch. Reserve time to check playback and PDF readability on GitHub.
+**Most of this class is reserved for team project work.** Finish the video and check that it explains your project and its evidence. Before class ends, push `video/TeamNN-video.mp4` to your assigned private team repository’s `main` branch. Reserve time to check playback on GitHub.
 
 ## Submission requirements
 
@@ -30,24 +30,9 @@ At the deadline, the teaching team records the remote `main` commit, collects th
 
 For our collected copy, we use `TeamNN-video-YYMMDD-HHMMSS.mp4`. **Keep your submitted filename as `TeamNN-video.mp4`; do not add a timestamp.** The teaching team adds the suffix using the GitHub-recorded submission push time, not the collection time. No separate upload, email, release, tag, manifest or student collection record is required.
 
-## Final updated worksheets
+## Project record and worksheet revisions
 
-The **10% consolidated and updated project record** consists of six final signed worksheet PDFs. Submit them in your assigned private repository by **8 December 2026 at 10:20, Abu Dhabi time (UTC+4)**, the same deadline as the video.
-
-| Final worksheet | Required path                              |
-| --------------- | ------------------------------------------ |
-| Claim           | `worksheets/TeamNN-Class12-Claim.pdf`      |
-| Experience      | `worksheets/TeamNN-Class13-Experience.pdf` |
-| System          | `worksheets/TeamNN-Class14-System.pdf`     |
-| Grounding       | `worksheets/TeamNN-Class15-Grounding.pdf`  |
-| Learning        | `worksheets/TeamNN-Class16-Learning.pdf`   |
-| Decision        | `worksheets/TeamNN-Class17-Decision.pdf`   |
-
-Replace `NN` with your assigned two-digit team number, `01`–`08`. Include every required page and your team identifier/project title: both A4 pages for each of Claim through Learning; both A3 Decision sides and its A4 review page for Decision. Retain all 27 Decision checks.
-
-Bring the six worksheets into agreement with your final claim, configuration, evidence and conclusions. Explain material changes in the existing worksheet/review fields, date the revised versions and obtain every member's signature. If a worksheet is unchanged, reuse its signed scan. Preserve the original Class 12–17 submissions and any intermediate revisions in their existing locations.
-
-Push these six PDFs to remote `main` and open each on GitHub to check completeness and readability. The teaching team collects the six named files from `worksheets/` at the video deadline using the same commit, push-time and collection-time procedure above. **No combined PDF, additional form, separate upload or student-created ZIP is required.**
+The **10% consolidated and updated project record** remains a distinct assessment component. For optional worksheet revisions, follow the [Class 18 instructions](18-final-poster-submission.md#optional-worksheet-resubmissions). The 8 December deadline applies to the video only.
 
 ## Example and preparation guidance
 
